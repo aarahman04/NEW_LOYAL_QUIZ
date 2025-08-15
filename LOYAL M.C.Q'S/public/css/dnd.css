@@ -1,0 +1,104 @@
+/* ─────── Drag & Drop Quiz Styles ─────── */
+/* Container for draggable choices */
+.quiz-container #choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+/* Draggable items */
+.quiz-container .draggable {
+  display: inline-block;
+  padding: 0.6em 1em;
+  border: 2px solid var(--primary-blue);
+  border-radius: 0.5rem;
+  background: #fff;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-drag: element;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.quiz-container .draggable:active {
+  cursor: grabbing;
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Drop-zone styling */
+.quiz-container .dropzone {
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+  margin: 0 0.5rem;
+  padding: 0.2em;
+  border: 2px dashed #333;
+  border-radius: 0.5rem;
+  background: var(--light-bg);
+  text-align: center;
+  line-height: 40px;
+  vertical-align: middle;
+  transition: background 0.2s, border-color 0.2s;
+}
+.quiz-container .dropzone.over {
+  background: var(--light-hover);
+  border-color: var(--primary-blue);
+}
+
+/* Correct/Incorrect drop-zone feedback */
+.quiz-container .dropzone.correct {
+  border-color: #28a745;
+  background: var(--correct-bg);
+}
+.quiz-container .dropzone.incorrect {
+  border-color: #dc3545;
+  background: var(--incorrect-bg);
+}
+
+/* Show feedback & explanation inside same quiz container */
+.quiz-container #feedback,
+.quiz-container #explanation {
+  margin-top: 1rem;
+}
+
+/* Ensure Next & Back buttons are visible and styled */
+.quiz-container #back-btn,
+.quiz-container #next-btn {
+  display: inline-block;  /* override any hidden until JS toggles it */
+  margin: 1.5rem 1rem 0 0;
+}
+.quiz-container #next-btn {
+  background-color: var(--btn-bg);
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.quiz-container #next-btn:hover {
+  background-color: var(--btn-hover);
+  transform: scale(1.05);
+}
+.quiz-container #back-btn {
+  background: transparent;
+  color: var(--brand-red);
+  border: 2px solid var(--brand-red);
+  border-radius: 1rem;
+  padding: 0.8rem 1.4rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+.quiz-container #back-btn:hover {
+  background: var(--brand-red);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Utility to hide until toggled by JS */
+.quiz-container .hidden {
+  display: none;
+}
