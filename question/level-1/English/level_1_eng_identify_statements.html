@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Identify Statements</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+const questions = [
+  {
+    question: "Which of the following is a statement?",
+    options: ["The boy is fast.", "How are you?"],
+    correct: "The boy is fast.",
+    explanation: "'The boy is fast' tells something and ends with a period."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The girl is pretty.", "What is your name?"],
+    correct: "The girl is pretty.",
+    explanation: "'The girl is pretty.' is a statement."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The cat slept on the table.", "What is your father’s name?"],
+    correct: "The cat slept on the table.",
+    explanation: "It tells something and ends with a period."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The ocean was calm.", "What is your mother’s name?"],
+    correct: "The ocean was calm.",
+    explanation: "This is a statement."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The road was closed.", "What is his favorite part?"],
+    correct: "The road was closed.",
+    explanation: "It tells about a situation."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The hen was sleeping.", "What was your first impression?"],
+    correct: "The hen was sleeping.",
+    explanation: "It is a statement."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["Some people are scared of spiders.", "Do you like puzzles?"],
+    correct: "Some people are scared of spiders.",
+    explanation: "This is a factual statement."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["I went to the market.", "Does he like dogs?"],
+    correct: "I went to the market.",
+    explanation: "This is a statement."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The cat was not allowed in the house.", "Was the cat allowed in the house?"],
+    correct: "The cat was not allowed in the house.",
+    explanation: "It is a statement."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The dog was sick.", "Why are you crying?"],
+    correct: "The dog was sick.",
+    explanation: "It tells a fact."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The school bell rang very loud.", "What is your favorite song?"],
+    correct: "The school bell rang very loud.",
+    explanation: "It tells something."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The mouse ran behind the cat.", "Did you see that cat?"],
+    correct: "The mouse ran behind the cat.",
+    explanation: "It is a statement."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["Sandy walked up the hill.", "What are you saying?"],
+    correct: "Sandy walked up the hill.",
+    explanation: "It tells about an action."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["Dad is in the front yard.", "Are you lost?"],
+    correct: "Dad is in the front yard.",
+    explanation: "It is a statement."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["I live in Japan.", "What is the capital city of Germany?"],
+    correct: "I live in Japan.",
+    explanation: "It tells where someone lives."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The phone is in my purse.", "Where is my phone?"],
+    correct: "The phone is in my purse.",
+    explanation: "It gives information."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["I have a red pen.", "Do you have a red pen?"],
+    correct: "I have a red pen.",
+    explanation: "It is a statement."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["My bird is colorful.", "What is your favorite animal?"],
+    correct: "My bird is colorful.",
+    explanation: "It tells about something."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["We are in the park.", "Is the train coming?"],
+    correct: "We are in the park.",
+    explanation: "It is a statement."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The cake is sweet.", "Do you like cakes?"],
+    correct: "The cake is sweet.",
+    explanation: "It tells about the cake."
+  }
+];
+</script>
+
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>

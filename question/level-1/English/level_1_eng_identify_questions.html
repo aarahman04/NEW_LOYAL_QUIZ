@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Identify Questions</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+const questions = [
+  {
+    question: "Which of the following is a Question?",
+    options: ["The boy is fast", "How are you?"],
+    correct: "How are you?",
+    explanation: "'How are you?' asks something and ends with a question mark."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["What is your name?", "The girl is pretty."],
+    correct: "What is your name?",
+    explanation: "It is a question asking for information."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["The sky is blue.", "How are they doing?"],
+    correct: "How are they doing?",
+    explanation: "It asks about their well-being."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["The baby was crying.", "Where is your school?"],
+    correct: "Where is your school?",
+    explanation: "It is asking for a location."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["What is the difference between them?", "The bank was full of people."],
+    correct: "What is the difference between them?",
+    explanation: "It asks for a comparison."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Some people can’t eat peanuts.", "Do you like Ms Sandy?"],
+    correct: "Do you like Ms Sandy?",
+    explanation: "It asks for someone's preference."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Do you like grapes?", "Some people are just very scary."],
+    correct: "Do you like grapes?",
+    explanation: "It is asking for an opinion."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Ms Sandy works with my mother.", "Do you like swimming?"],
+    correct: "Do you like swimming?",
+    explanation: "It asks about a preference."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["The cat was not allowed in the house.", "Was the cat allowed in the house?"],
+    correct: "Was the cat allowed in the house?",
+    explanation: "It asks about permission."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["What time is it?", "The rabbit was fluffy."],
+    correct: "What time is it?",
+    explanation: "It is asking for the current time."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Will you go to Sam’s house?", "The school bell rang."],
+    correct: "Will you go to Sam’s house?",
+    explanation: "It is asking about future action."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["What was that on the table?", "The turtle moved too slow."],
+    correct: "What was that on the table?",
+    explanation: "It asks for identification."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Are you lost?", "Dad is in the front yard."],
+    correct: "Are you lost?",
+    explanation: "It asks about someone's situation."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["What is the capital city of Germany?", "I live in Japan."],
+    correct: "What is the capital city of Germany?",
+    explanation: "It asks for factual information."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Where is my phone?", "The phone is in my purse."],
+    correct: "Where is my phone?",
+    explanation: "It asks for an item's location."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Do you have a red pen?", "I have a red pen."],
+    correct: "Do you have a red pen?",
+    explanation: "It is a yes/no question."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["What is your favorite animal?", "My bird is colorful."],
+    correct: "What is your favorite animal?",
+    explanation: "It asks for a preference."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Is the train coming?", "We are in the park."],
+    correct: "Is the train coming?",
+    explanation: "It asks for confirmation."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Do you like cakes?", "The cake is sweet."],
+    correct: "Do you like cakes?",
+    explanation: "It asks for an opinion."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Are you tired?", "I am tired."],
+    correct: "Are you tired?",
+    explanation: "It asks about someone's condition."
+  }
+];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>

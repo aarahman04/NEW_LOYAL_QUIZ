@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>LOYAL M.C.Q's</title>
+  <link rel="stylesheet" href="../../../../css/audio_style.css" />
+  <link rel="stylesheet" href="../../../../css/index.css" />
+</head>
+<body>
+    <body class="index-page">
+    <!-- Header -->
+    <div id="site-header-placeholder"></div>
+    </body>
+  <main>
+    <section class="quiz-container" aria-live="polite">
+      <h3 id="instruction">Listen and choose the correct word.</h3>
+
+      <div class="controls-row">
+        <select id="voice" title="Voice"></select>
+        <button id="playBtn" class="btn primary" aria-label="Play audio">🔊 Play</button>
+      </div>
+
+      <img id="qimg" class="question-image" alt="Question image" src="" />
+      <div id="options" class="options"></div>
+
+      <div id="feedback" class="feedback" role="status"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <div class="nav-row">
+        <button id="prevBtn" class="btn" type="button">⟵ Prev</button>
+        <div class="progress"><span id="index">1</span> / <span id="total">1</span></div>
+        <button id="nextBtn" class="btn" type="button">Next ⟶</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Fry Sight Words 201–300 -->
+  <script>
+    const SW = [
+      "high","near","life","sea","watch",
+      "every","add","always","began","far",
+      "food","head","those","grow","Indian",
+      "between","under","both","took","real",
+      "own","story","paper","river","almost",
+      "below","saw","together","four","let",
+      "country","left","got","carry","above",
+      "plant","don't","group","state","girl",
+      "last","few","often","once","sometimes",
+      "school","while","run","book","mountains",
+      "father","along","important","hear","cut",
+      "keep","might","until","stop","young",
+      "tree","close","children","without","talk",
+      "never","something","side","second","soon",
+      "start","seem","feet","late","being",
+      "city","next","car","miss","leave",
+      "earth","hard","mile","idea","family",
+      "eyes","open","night","enough","it's",
+      "light","example","walk","eat","list",
+      "thought","begin","white","face","song"
+    ];
+
+    // Build questions: each word vs. a nearby distractor
+    const questions = SW.map((w, i) => {
+      const distractor = SW[(i + 1) % SW.length];
+      return {
+        question: "Listen and choose the correct word.",
+        voice: w,
+        options: [w, distractor],
+        correct: w,
+        lang: "en-US"
+      };
+    });
+  </script>
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+  <script src="../../../../js/audio.js"></script>
+  <script src="../../../../js/partials.js"></script>
+</body>
+</html>

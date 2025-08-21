@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drag & Drop – Adjectives</title>
+  <link rel="stylesheet" href="../../../css/question.css" />
+  <link rel="stylesheet" href="../../../css/dnd.css" />
+</head>
+<body>
+
+  <!-- Sticky Header Placeholder -->
+  <div id="site-header-placeholder"></div>
+
+  <!-- *** Make sure to wrap your quiz in THIS container *** -->
+  <main class="quiz-container">
+
+    <!-- Question text (the drag‐zone will be injected here) -->
+    <h3 id="question-text"></h3>
+
+    <!-- The spot where the draggable boxes show up -->
+    <div id="choices"></div>
+
+    <!-- The feedback & explanation panels -->
+    <div id="feedback" class="hidden"></div>
+    <div id="explanation" class="hidden"></div>
+
+    <!-- Back / Next buttons (they’ll be un‐hidden by JS) -->
+    <button id="back-btn" class="hidden">Back</button>
+    <button id="next-btn" class="hidden">Next</button>
+
+  </main>
+
+  <script src="../../../js/drag_and_drop.js"></script>
+  <script>
+    const questions = [
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The girl was ….</span>",
+        options: ["tall", "runs"],               // adj vs verb
+        correct: "tall",
+        explanation: "'tall' describes the height of the girl."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The boy was ….</span>",
+        options: ["thin", "jump"],               // adj vs verb
+        correct: "thin",
+        explanation: "'thin' describes the boy's build."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The school was ….</span>",
+        options: ["big", "went"],                // adj vs verb
+        correct: "big",
+        explanation: "'big' describes the size of the school."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The elephant was ….</span>",
+        options: ["gray", "far"],                // adj vs adverb
+        correct: "gray",
+        explanation: "'gray' describes the color of the elephant."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The school was ….</span>",
+        options: ["great", "far"],               // adj vs adverb (fixed from '… away')
+        correct: "great",
+        explanation: "'great' describes the quality of the school."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The author was ….</span>",
+        options: ["great", "wrote"],             // adj vs verb
+        correct: "great",
+        explanation: "'great' describes the reputation of the author."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The flower was ….</span>",
+        options: ["red", "runs"],                // adj vs verb
+        correct: "red",
+        explanation: "'red' describes the color of the flower."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The airplane was ….</span>",
+        options: ["white", "quickly"],           // adj vs adverb
+        correct: "white",
+        explanation: "'white' describes the color of the airplane."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The grass was ….</span>",
+        options: ["green", "walk"],              // adj vs verb
+        correct: "green",
+        explanation: "'green' describes the color of the grass."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>There was … tree in the yard.</span>",
+        options: ["tall", "one"],                // adj vs determiner/number
+        correct: "tall",
+        explanation: "'tall' describes the tree."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The house was ….</span>",
+        options: ["pink", "runs"],               // adj vs verb
+        correct: "pink",
+        explanation: "'pink' describes the color of the house."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The road was ….</span>",
+        options: ["long", "ran"],                // adj vs verb
+        correct: "long",
+        explanation: "'long' describes the length of the road."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The city was ….</span>",
+        options: ["beautiful", "quickly"],       // adj vs adverb
+        correct: "beautiful",
+        explanation: "'beautiful' describes the appearance of the city."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The city was ….</span>",
+        options: ["crowded", "went"],            // adj vs verb
+        correct: "crowded",
+        explanation: "'crowded' describes how many people were in the city."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The people were ….</span>",
+        options: ["noisy", "quickly"],           // adj vs adverb
+        correct: "noisy",
+        explanation: "'noisy' describes the sound made by the people."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The boy was ….</span>",
+        options: ["quick", "quietly"],           // adj vs adverb
+        correct: "quick",
+        explanation: "'quick' describes how fast the boy was."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The baby was ….</span>",
+        options: ["quiet", "quickly"],           // adj vs adverb
+        correct: "quiet",
+        explanation: "'quiet' describes how little noise the baby made."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The tiger was ….</span>",
+        options: ["fast", "run"],                // adj vs verb
+        correct: "fast",
+        explanation: "'fast' describes the speed of the tiger."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The turtle was ….</span>",
+        options: ["slow", "sleep"],              // adj vs verb
+        correct: "slow",
+        explanation: "'slow' describes the pace of the turtle."
+      },
+      {
+        question: "Choose the correct adjective to complete the sentence.<br><span style='color:black;'>The cat was ….</span>",
+        options: ["sleepy", "slept"],            // adj vs verb (past)
+        correct: "sleepy",
+        explanation: "'sleepy' describes the state of the cat."
+      }
+    ];
+
+    // Kick off the DnD quiz
+    initDragDropQuiz(questions);
+  </script>
+
+  <!-- Footer Placeholder -->
+  <div id="site-footer-placeholder"></div>
+  <script src="../../../js/partials.js"></script>
+</body>
+</html>

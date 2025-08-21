@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Verb Have - Present tense</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "Use the correct present tense to finish the sentence: I ………….. very strong.",
+      options: ["am", "is"],
+      correct: "am",
+      explanation: "'am' is correct because 'I' takes 'am' in present tense."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: He ………. very fast.",
+      options: ["is", "am"],
+      correct: "is",
+      explanation: "'is' is correct because 'He' takes 'is' in present tense."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: We…………. going to travel.",
+      options: ["are", "is"],
+      correct: "are",
+      explanation: "'are' is correct because 'We' takes 'are'."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: She ……….. crying.",
+      options: ["are", "is"],
+      correct: "is",
+      explanation: "'is' is correct for 'She'."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: It……………. on the table.",
+      options: ["is", "are"],
+      correct: "is",
+      explanation: "'is' is correct for 'It'."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: They……….. on the chair.",
+      options: ["am", "are"],
+      correct: "are",
+      explanation: "'are' is correct for 'They'."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: You…………… down stairs.",
+      options: ["are", "am"],
+      correct: "are",
+      explanation: "'are' is correct because 'You' always takes 'are'."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: We ……….. scared.",
+      options: ["is", "are"],
+      correct: "are",
+      explanation: "'are' is correct for 'We'."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: Some birds ……….. not able to fly.",
+      options: ["are", "is"],
+      correct: "are",
+      explanation: "'are' is correct for plural 'birds'."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: My pen………….. gone.",
+      options: ["are", "is"],
+      correct: "is",
+      explanation: "'is' is correct for singular 'pen'."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: Those cars……….. broken.",
+      options: ["are", "is"],
+      correct: "are",
+      explanation: "'are' is correct for plural 'cars'."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: My mom and dad …………… divorced.",
+      options: ["is", "are"],
+      correct: "are",
+      explanation: "'are' is correct for plural subject 'mom and dad'."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: The children………. in the street!",
+      options: ["are", "is"],
+      correct: "are",
+      explanation: "'are' is correct for plural 'children'."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: Your bag…………. on the chair.",
+      options: ["are", "is"],
+      correct: "is",
+      explanation: "'is' is correct for singular 'bag'."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: I……….. reading the book.",
+      options: ["am", "is"],
+      correct: "am",
+      explanation: "'am' is correct for 'I'."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: Some men ………going out.",
+      options: ["are", "is"],
+      correct: "are",
+      explanation: "'are' is correct for plural 'men'."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: She ………. in the library.",
+      options: ["are", "is"],
+      correct: "is",
+      explanation: "'is' is correct for 'She'."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: The river……….. flowing gently.",
+      options: ["is", "are"],
+      correct: "is",
+      explanation: "'is' is correct for singular 'river'."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: Those girls ……….. very pretty.",
+      options: ["is", "are"],
+      correct: "are",
+      explanation: "'are' is correct for plural 'girls'."
+    },
+    {
+      question: "Use the correct present tense to finish the sentence: The pizza …………… hot.",
+      options: ["are", "is"],
+      correct: "is",
+      explanation: "'is' is correct for singular 'pizza'."
+    }
+  ];
+</script>
+
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Verb Have - Past tense</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "Choose the correct tense to complete the sentence: I …….. a cold last month.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct because it shows past possession."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: He ……… a stroke last week.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct as it indicates something in the past."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: She ……….. a beautiful vacation last year.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for past events."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We …………. to go to the hospital last night.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct because it happened yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: They ……… to leave to Germany last week.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for past necessity."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: You ……….. the flu last week.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct to show past illness."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: She …….. a red bicycle when she was a child.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for past possession."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We……… lunch at 1 P.M. yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for past actions."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: He …….. a bad headache this morning.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for past illness."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: I ……….. some free time yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for past free time."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We ……… a car accident last week.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct because it is a past incident."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: They ……… three dogs and a cat.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for possession in the past."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: I …….. pancakes yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for past meals."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: She………… a long day at work.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for past experiences."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We……… a barbecue on Sunday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for past events."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: They…………… Pizza for dinner yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct because it happened yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: He………… a sore throat last week.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for past health condition."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: The team ……. a great season.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for past achievements."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We……….. a picnic last Sunday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for past activities."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: I ……..…. five different jobs last year.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct to indicate past experiences."
+    }
+  ];
+</script>
+
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>

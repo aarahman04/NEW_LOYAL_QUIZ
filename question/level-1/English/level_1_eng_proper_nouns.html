@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Proper Nouns</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+    const questions = [
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["Apple", "Washington", "Boy", "Girl"],
+        correct: "Washington",
+        explanation: "'Washington' is the name of a specific place, so it’s a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["City", "Flower", "Jeddah", "Boy"],
+        correct: "Jeddah",
+        explanation: "'Jeddah' is the name of a specific city, making it a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["River", "The West Bank", "University", "School"],
+        correct: "The West Bank",
+        explanation: "'The West Bank' names a specific region, so it’s a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["Writer", "Charles Dickens", "Poet", "Author"],
+        correct: "Charles Dickens",
+        explanation: "'Charles Dickens' refers to a specific person, making it a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["Horse", "Cat", "Fido", "Dog"],
+        correct: "Fido",
+        explanation: "'Fido' is a specific pet’s name, so it’s a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["Widget Corp.", "Apple", "Google", "Tech Company"],
+        correct: "Google",
+        explanation: "'Google' is the name of a specific company, making it a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["State", "France", "Nation", "Country"],
+        correct: "France",
+        explanation: "'France' is the name of a specific country, so it’s a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["Region", "Country", "City", "Italy"],
+        correct: "Italy",
+        explanation: "'Italy' names a specific country, making it a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["Nation", "India", "Country", "State"],
+        correct: "India",
+        explanation: "'India' is a specific nation, so it’s a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["Creek", "River", "The Nile", "Stream"],
+        correct: "The Nile",
+        explanation: "'The Nile' refers to a specific river, making it a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["Story", "Novel", "Harry Potter", "Book"],
+        correct: "Harry Potter",
+        explanation: "'Harry Potter' is the title of a specific work, so it’s a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["Town", "New York", "City", "Village"],
+        correct: "New York",
+        explanation: "'New York' names a specific city, making it a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["Capital", "Village", "Berlin", "Metropolis"],
+        correct: "Berlin",
+        explanation: "'Berlin' is the name of a specific capital city, so it’s a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["Dock", "Harbor", "Hamburg", "Port"],
+        correct: "Hamburg",
+        explanation: "'Hamburg' names a specific port city, making it a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["Metro", "Paris", "Town", "City"],
+        correct: "Paris",
+        explanation: "'Paris' is the name of a specific city, so it’s a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["Village", "Rome", "Hamlet", "City"],
+        correct: "Rome",
+        explanation: "'Rome' refers to a specific capital, making it a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["Palace", "White House", "Building", "House"],
+        correct: "White House",
+        explanation: "'White House' is the name of a specific building, so it’s a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["Nation", "State", "United States", "Country"],
+        correct: "United States",
+        explanation: "'United States' refers to a specific nation, so it’s a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["School", "Harvard University", "College", "University"],
+        correct: "Harvard University",
+        explanation: "'Harvard University' is the name of a specific institution, making it a proper noun."
+      },
+      {
+        question: "Which of the following is a proper noun?",
+        options: ["River", "Mount Everest", "Lake", "Mountain"],
+        correct: "Mount Everest",
+        explanation: "'Mount Everest' is the name of a specific mountain, so it’s a proper noun."
+      }
+    ];
+  </script>
+
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>

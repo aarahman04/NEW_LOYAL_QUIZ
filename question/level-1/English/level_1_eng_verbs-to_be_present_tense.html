@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Verb to be - present tense</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+    
+   <script>
+  const questions = [
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>I _______ a big garden.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is the correct verb that fits the sentence."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>We _______ a big house.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is the correct verb that fits the sentence."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>We _______ a big problem.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is the correct verb that fits the sentence."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>I _______ new shoes.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is the correct verb that fits the sentence."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>He _______ a big heart.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is used for he/she/it."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>She _______ new clothes.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is the correct verb for 'she'."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>This book _______ beautiful details.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is correct for singular subjects like 'this book'."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>Sam and Sama _______ beautiful pants.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used for plural subjects."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>All duck _______ flat feet.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is correct for plural nouns like 'all duck'."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>My town _______ many restaurants.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is correct for singular nouns like 'my town'."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>My father _______ a beautiful house.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is correct for 'he'."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>I _______ a new puppy.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is correct for 'I'."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>We _______ hamburgers.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is correct for 'we'."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>They _______ three children.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is correct for 'they'."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>It _______ a big garden.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is correct for 'it'."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>You _______ good manners.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is correct for 'you'."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>Sandy _______ many chickens.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is correct for singular proper nouns like 'Sandy'."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>Sandy _______ many cats.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is used for 'Sandy'."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>The puppy _______ brown spots.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is correct for singular subjects like 'the puppy'."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>Our garden _______ many flowers.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is correct for 'our garden'."
+    }
+
+  ];
+</script>
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>
+

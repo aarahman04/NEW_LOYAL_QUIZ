@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Present & Past Tenses</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+    
+   <script>
+  const questions = [
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>I walk to school every day.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Present Tense",
+      explanation: "Habitual action in the present → Present Simple."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>She plays the piano beautifully.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Present Tense",
+      explanation: "General truth/ability described in the present."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>We eat dinner at 8 PM.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Present Tense",
+      explanation: "Scheduled/habitual activity → Present Simple."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>She walked to school yesterday.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Past Tense",
+      explanation: "Finished action with past time marker “yesterday”."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>He danced yesterday.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Past Tense",
+      explanation: "Finished action in the past."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>They played soccer.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Past Tense",
+      explanation: "Past form “played” indicates past tense."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>He watched a movie last week.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Past Tense",
+      explanation: "Past time marker “last week”."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>I cooked dinner for my family.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Past Tense",
+      explanation: "Past form “cooked”."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>We visited the museum last year.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Past Tense",
+      explanation: "Past time marker “last year”."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>We visited my grandparents last night.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Past Tense",
+      explanation: "Past time marker “last night”."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>They love ice-cream.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Present Tense",
+      explanation: "General fact/feeling in the present."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>You love chocolate.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Present Tense",
+      explanation: "Present Simple expresses likes."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>She loves doughnuts.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Present Tense",
+      explanation: "Present state/like → Present Simple."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>The sun rises in the east.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Present Tense",
+      explanation: "Universal truth → Present Simple."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>Birds fly in the sky.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Present Tense",
+      explanation: "General fact → Present Simple."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>Eagles fly in the sky.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Present Tense",
+      explanation: "General fact → Present Simple."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>My brother speaks three languages.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Present Tense",
+      explanation: "Present ability/fact."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>My sister sings beautifully.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Present Tense",
+      explanation: "Describes a present ability/habit."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>My friend speaks French.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Present Tense",
+      explanation: "Present ability/fact."
+    },
+
+    {
+      question:
+        "Determine whether the sentence is in the present or past tense.<br/> <br/>" +
+        "<span style='color:black;'>Water boils at 100 degrees Celsius.</span>",
+      options: ["Present Tense", "Past Tense"],
+      correct: "Present Tense",
+      explanation: "Scientific fact → Present Simple."
+    }
+
+  ];
+</script>
+
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>

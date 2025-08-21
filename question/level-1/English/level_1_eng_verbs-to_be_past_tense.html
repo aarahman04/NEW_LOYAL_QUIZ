@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Verb to be - past tense</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+    
+   <script>
+  const questions = [
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>The brown hen _______ lost?</span>",
+      options: ["was", "were"],
+      correct: "was",
+      explanation: "'Was' is used with singular subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>The brown bear _______ large?</span>",
+      options: ["was", "were"],
+      correct: "was",
+      explanation: "'Was' is used with singular subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>The whales _______ swimming?</span>",
+      options: ["was", "were"],
+      correct: "were",
+      explanation: "'Were' is used with plural subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>The fisherman _______ sick?</span>",
+      options: ["was", "were"],
+      correct: "was",
+      explanation: "'Was' is used with singular subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>The birds _______ far away?</span>",
+      options: ["was", "were"],
+      correct: "were",
+      explanation: "'Were' is used with plural subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>They _______ new to our town?</span>",
+      options: ["was", "were"],
+      correct: "were",
+      explanation: "'Were' is used with plural subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>The ducks _______ very loud?</span>",
+      options: ["was", "were"],
+      correct: "were",
+      explanation: "'Were' is used with plural subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>The dogs _______ all gone?</span>",
+      options: ["was", "were"],
+      correct: "were",
+      explanation: "'Were' is used with plural subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>The children _______ on vacation?</span>",
+      options: ["was", "were"],
+      correct: "were",
+      explanation: "'Were' is used with plural subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>The children _______ in the pool all day?</span>",
+      options: ["was", "were"],
+      correct: "were",
+      explanation: "'Were' is used with plural subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>Mr. and Mrs. Smith _______ very upset?</span>",
+      options: ["was", "were"],
+      correct: "were",
+      explanation: "'Were' is used with plural subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>Mr. and Mrs. Smith _______ very nice people?</span>",
+      options: ["was", "were"],
+      correct: "were",
+      explanation: "'Were' is used with plural subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>Those women _______ really kind?</span>",
+      options: ["was", "were"],
+      correct: "were",
+      explanation: "'Were' is used with plural subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>Sandy and Hayfa _______ friends for many years?</span>",
+      options: ["was", "were"],
+      correct: "were",
+      explanation: "'Were' is used with plural subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>Alexandra and Tom _______ students?</span>",
+      options: ["was", "were"],
+      correct: "were",
+      explanation: "'Were' is used with plural subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>Sandy’s dress _______ on the bed?</span>",
+      options: ["was", "were"],
+      correct: "was",
+      explanation: "'Was' is used with singular subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>They _______ very happy?</span>",
+      options: ["was", "were"],
+      correct: "were",
+      explanation: "'Were' is used with plural subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>We _______ happy to go to the cinema?</span>",
+      options: ["was", "were"],
+      correct: "were",
+      explanation: "'Were' is used with plural subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>It _______ very difficult to move?</span>",
+      options: ["was", "were"],
+      correct: "was",
+      explanation: "'Was' is used with singular subjects in past tense."
+    },
+
+    {
+      question:
+        "Choose the correct tense form to complete the sentence.<br/>" +
+        "<span style='color:black;'>I _______ on the phone all day?</span>",
+      options: ["was", "were"],
+      correct: "was",
+      explanation: "'Was' is used with singular subjects in past tense."
+    }
+
+  ];
+</script>
+
+
+
+
+
+
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>
+

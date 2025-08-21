@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Common Nouns</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+    <script>
+        const questions = [
+  {
+    question: "What is 7 + 8?",
+    options: ["14", "15", "16", "13"],
+    correct: "15",
+    explanation: "7 + 8 = 15"
+  },
+  {
+    question: "What is 6 + 6?",
+    options: ["13", "11", "12", "14"],
+    correct: "12",
+    explanation: "6 + 6 = 12"
+  },
+  {
+    question: "What is 5 + 9?",
+    options: ["14", "13", "15", "12"],
+    correct: "14",
+    explanation: "5 + 9 = 14"
+  },
+  {
+    question: "What is 4 + 7?",
+    options: ["10", "12", "11", "9"],
+    correct: "11",
+    explanation: "4 + 7 = 11"
+  },
+  {
+    question: "What is 3 + 8?",
+    options: ["10", "11", "12", "13"],
+    correct: "11",
+    explanation: "3 + 8 = 11"
+  },
+  {
+    question: "What is 6 + 7?",
+    options: ["14", "12", "13", "11"],
+    correct: "13",
+    explanation: "6 + 7 = 13"
+  },
+  {
+    question: "What is 8 + 6?",
+    options: ["14", "13", "15", "12"],
+    correct: "14",
+    explanation: "8 + 6 = 14"
+  },
+  {
+    question: "What is 5 + 8?",
+    options: ["13", "14", "12", "11"],
+    correct: "13",
+    explanation: "5 + 8 = 13"
+  },
+  {
+    question: "What is 9 + 6?",
+    options: ["15", "14", "13", "12"],
+    correct: "15",
+    explanation: "9 + 6 = 15"
+  },
+  {
+    question: "What is 7 + 5?",
+    options: ["13", "12", "11", "14"],
+    correct: "12",
+    explanation: "7 + 5 = 12"
+  },
+  {
+    question: "What is 2 + 12?",
+    options: ["13", "14", "12", "15"],
+    correct: "14",
+    explanation: "2 + 12 = 14"
+  },
+  {
+    question: "What is 1 + 13?",
+    options: ["14", "13", "15", "12"],
+    correct: "14",
+    explanation: "1 + 13 = 14"
+  },
+  {
+    question: "What is 4 + 9?",
+    options: ["14", "12", "13", "15"],
+    correct: "13",
+    explanation: "4 + 9 = 13"
+  },
+  {
+    question: "What is 6 + 8?",
+    options: ["13", "14", "15", "12"],
+    correct: "14",
+    explanation: "6 + 8 = 14"
+  },
+  {
+    question: "What is 5 + 7?",
+    options: ["13", "11", "12", "14"],
+    correct: "12",
+    explanation: "5 + 7 = 12"
+  },
+  {
+    question: "What is 3 + 9?",
+    options: ["13", "12", "11", "14"],
+    correct: "12",
+    explanation: "3 + 9 = 12"
+  },
+  {
+    question: "What is 2 + 10?",
+    options: ["13", "11", "12", "14"],
+    correct: "12",
+    explanation: "2 + 10 = 12"
+  },
+  {
+    question: "What is 1 + 14?",
+    options: ["15", "14", "13", "12"],
+    correct: "15",
+    explanation: "1 + 14 = 15"
+  },
+  {
+    question: "What is 7 + 6?",
+    options: ["13", "14", "15", "12"],
+    correct: "13",
+    explanation: "7 + 6 = 13"
+  },
+  {
+    question: "What is 4 + 8?",
+    options: ["13", "12", "14", "15"],
+    correct: "12",
+    explanation: "4 + 8 = 12"
+  }
+  ];
+</script>
+
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+  </body>
+</html>
+

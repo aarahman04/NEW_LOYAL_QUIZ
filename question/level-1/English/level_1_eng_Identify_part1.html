@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    …
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+  <div class="question-section">
+    <h3 id="question-text">Loading…</h3>
+    <ul id="options-list" class="options"></ul>
+  </div>
+
+  <div id="feedback" class="hidden"></div>
+  <div id="explanation" class="hidden"></div>
+  <button id="back-btn" class="hidden">Back</button>
+  <button id="next-btn" class="hidden">Next</button>
+</main>
+
+
+    <!-- your question data: only one entry -->
+
+    <script>
+      const questions = [
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/fast image.jpg.png",
+    options: ["I am very sick", "I am very fast"],
+    correct: "I am very fast",
+    explanation:
+      "The correct answer is 'I am very Fast.' "
+  },
+  
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/kid lifitng stone.jpeg",
+    options: ["I am very strong", "I am very sick"],
+    correct: "I am very strong",
+    explanation:
+      "The correct answer is 'I am very strong.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/kindness.png",
+    options: ["I am very rude", "I am very kind"],
+    correct: "I am very kind",
+    explanation:
+      "The correct answer is 'I am very kind.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Big Bear.png",
+    options: ["I am very big", "I am very sleepy"],
+    correct: "I am very big",
+    explanation:
+      "The correct answer is 'I am very big.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Happy.png",
+    options: ["I am very sad", "I am very happy"],
+    correct: "I am very happy",
+    explanation:
+      "The correct answer is 'I am very happy.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Tall Boy.png",
+    options: ["I am very tall", "I am very short"],
+    correct: "I am very tall",
+    explanation:
+      "The correct answer is 'I am very tall.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Cold.png",
+    options: ["I am feeling hot", "I am feeling cold"],
+    correct: "I am feeling cold",
+    explanation:
+      "The correct answer is 'I am feeling cold.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Brave.png",
+    options: ["I am very brave", "I am very scared"],
+    correct: "I am very brave",
+    explanation:
+      "The correct answer is 'I am very brave.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Red Bus.png",
+    options: ["They are in a purple bus", "They are in a red bus"],
+    correct: "They are in a red bus",
+    explanation:
+      "The correct answer is 'They are in a red bus.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Red Pan.png",
+    options: ["I will buy a red pan", "I will buy a yellow pan"],
+    correct: "I will buy a red pan",
+    explanation:
+      "The correct answer is 'I will buy a red pan.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Cotton.png",
+    options: ["It is so hard", "It is so soft"],
+    correct: "It is so soft",
+    explanation:
+      "The correct answer is 'It is so soft.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Hot.png",
+    options: ["It is very hot", "It is very cold"],
+    correct: "It is very hot",
+    explanation:
+      "The correct answer is 'It is very hot.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Red Rug.png",
+    options: ["The rug is blue", "The rug is red"],
+    correct: "The rug is red",
+    explanation:
+      "The correct answer is 'The rug is red'.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Loudly.png",
+    options: ["She is very loud", "She is very quiet"],
+    correct: "She is very loud",
+    explanation:
+      "The correct answer is 'She is very loud.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Small.png",
+    options: ["It is very big", "It is very small"],
+    correct: "It is very small",
+    explanation:
+      "The correct answer is 'It is very small.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Hay.png",
+    options: ["Jim is sitting on the hay", "Jim is standing on the hay"],
+    correct: "Jim is sitting on the hay",
+    explanation:
+      "The correct answer is 'Jim is sitting on the hay'.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Clean.png",
+    options: ["We will not clean them", "We will clean them"],
+    correct: "We will clean them",
+    explanation:
+      "The correct answer is 'We will clean them.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Happy Fam.png",
+    options: ["We are happy", "We are sad"],
+    correct: "We are happy",
+    explanation:
+      "The correct answer is 'We are happy.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Red Cab.png",
+    options: ["I see a blue cab", "I see a red cab"],
+    correct: "I see a red cab",
+    explanation:
+      "The correct answer is 'I see a red cab.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Red Hat.png",
+    options: ["He has a yellow hat", "He has a red hat"],
+    correct: "He has a red hat",
+    explanation:
+      "The correct answer is 'He has a red hat.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Big Bow.png",
+    options: ["She has a big bow", "She has a small bow"],
+    correct: "She has a big bow",
+    explanation:
+      "The correct answer is 'She has a big bow.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Red Bird.png",
+    options: ["I see a purple bird", "I see a red bird"],
+    correct: "I see a red bird",
+    explanation:
+      "The correct answer is 'I see a red bird.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/6.png",
+    options: ["I have six hens", " I have eight hens"],
+    correct: "I have six hens",
+    explanation:
+      "The correct answer is 'I have six hens.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/2.png",
+    options: ["I have five dogs", "I have two dogs"],
+    correct: "I have two dogs",
+    explanation:
+      "The correct answer is 'I have two dogs.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Wet.png",
+    options: ["The box is wet", "The box is dry"],
+    correct: "The box is wet",
+    explanation:
+      "The correct answer is 'The box is wet.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Tall Tree.png",
+    options: ["That tree is short", "That tree is tall"],
+    correct: "That tree is tall",
+    explanation:
+      "The correct answer is 'That tree is tall.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/4 Pens.png",
+    options: ["I have four pens", "I have six pens"],
+    correct: "I have four pens",
+    explanation:
+      "The correct answer is 'I have four pens.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Red Ball.png",
+    options: ["I have a yellow ball", "I have a red ball"],
+    correct: "I have a red ball",
+    explanation:
+      "The correct answer is 'I have a red ball.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Rat.png",
+    options: ["I can see a rat", "I can see a cat"],
+    correct: "I can see a rat",
+    explanation:
+      "The correct answer is 'I can see a rat.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Red Bag.png",
+    options: ["I will buy a black bag", "I will buy a red bag"],
+    correct: "I will buy a red bag",
+    explanation:
+      "The correct answer is 'I will buy a red bag.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Cow.png",
+    options: ["The cow is in the grass", "The cow is in the mud"],
+    correct: "The cow is in the mud",
+    explanation:
+      "The correct answer is .'The cow is in the mud'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/10.png",
+    options: ["I see ten bugs", "I see nine bugs"],
+    correct: "I see ten bugs",
+    explanation:
+      "The correct answer is 'I see ten bugs.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Dog.png",
+    options: ["His cat ran away", "His dog ran away"],
+    correct: "His dog ran away",
+    explanation:
+      "The correct answer is 'His dog ran away.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Red Bin.png",
+    options: ["I see a red bin", "I see a purple bin"],
+    correct: "I see a red bin",
+    explanation:
+      "The correct answer is 'I see a red bin.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Red Cup.png",
+    options: ["My cup is very empty", "My cup is very full"],
+    correct: "My cup is very full",
+    explanation:
+      "The correct answer is 'My cup is very full.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/2 Fans.png",
+    options: ["We have four fans", "We have two fans"],
+    correct: "We have two fans",
+    explanation:
+      "The correct answer is 'We have two fans.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Walking to barn.png",
+    options: ["He will go to the red barn", "He will go to the blue barn"],
+    correct: "He will go to the red barn",
+    explanation:
+      "The correct answer is 'He will go to the red barn.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Hug hen.png",
+    options: ["She will hug the cat", "She will hug the hen"],
+    correct: "She will hug the hen",
+    explanation:
+      "The correct answer is 'She will hug the hen.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Happy kids.png",
+    options: ["They look happy", "They look sad"],
+    correct: "They look happy",
+    explanation:
+      "The correct answer is 'They look happy.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/10 pegs.png",
+    options: ["Twelve pegs are on the mat", "Ten pegs are on the mat"],
+    correct: "Ten pegs are on the mat",
+    explanation:
+      "The correct answer is 'Ten pegs are on the mat.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Bird singing.png",
+    options: ["The bird cannot sing", "The bird can sing"],
+    correct: "The bird can sing",
+    explanation:
+      "The correct answer is 'The bird can sing.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Cow eating.png",
+    options: ["The cow eats hay", "The cow eats grass"],
+    correct: "The cow eats hay",
+    explanation:
+      "The correct answer is 'The cow eats hay.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Small car.png",
+    options: ["The car is big", "The car is small"],
+    correct: "The car is small",
+    explanation:
+      "The correct answer is 'The car is small.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Sheep.png",
+    options: ["The sheep is small", "The sheep is big"],
+    correct: "The sheep is big",
+    explanation:
+      "The correct answer is 'The sheep is big.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/7.png",
+    options: ["I see seven fishes", "I see nine fishes"],
+    correct: "I see seven fishes",
+    explanation:
+      "The correct answer is 'I see seven fishes.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/6 eggs.png",
+    options: ["I will buy eight eggs", "I will buy six eggs"],
+    correct: "I will buy six eggs",
+    explanation:
+      "The correct answer is 'I will buy six eggs.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/10 stars.png",
+    options: ["I see eight stars", "I see ten stars"],
+    correct: "I see ten stars",
+    explanation:
+      "The correct answer is 'I see ten stars.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/door.png",
+    options: ["The door is open", "The door is closed"],
+    correct: "The door is open",
+    explanation:
+      "The correct answer is 'The door is open.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Lights on.png",
+    options: ["The light is switched off", "The light is switched on"],
+    correct: "The light is switched on",
+    explanation:
+      "The correct answer is 'The light is switched on.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng/Socks.png",
+    options: ["My socks are red", "My socks are yellow"],
+    correct: "My socks are red",
+    explanation:
+      "The correct answer is 'My socks are red.'"
+  },
+  // …and so on
+];
+    </script>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>

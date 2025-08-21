@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Adverbs</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+        const questions = [
+          {
+            question: "Identify the adverb in the sentence. <br> <span style='color:black;'>We gladly danced.</span>",
+            options: ["danced", "gladly"],
+            correct: "gladly",
+            explanation: "'Gladly' describes how the action was done, making it an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'The cat runs fast.'?",
+            options: ["cat", "fast", "runs", "the"],
+            correct: "fast",
+            explanation: "'Fast' tells how the cat runs, so it's an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'The dog runs away.'?",
+            options: ["dog", "runs", "away", "the"],
+            correct: "away",
+            explanation: "'Away' tells where the dog runs, making it an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'She talks loudly.'?",
+            options: ["talks", "none", "she", "loudly"],
+            correct: "loudly",
+            explanation: "'Loudly' shows how she talks, so it's an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'We talked slowly.'?",
+            options: ["we", "talked", "none", "slowly"],
+            correct: "slowly",
+            explanation: "'Slowly' describes the way of talking, so it is an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'She paints peacefully.'?",
+            options: ["peacefully", "she", "paint", "paints"],
+            correct: "peacefully",
+            explanation: "'Peacefully' tells how she paints — it’s an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'The baby laughs loudly.'?",
+            options: ["laughs", "baby", "loudly", "the"],
+            correct: "loudly",
+            explanation: "'Loudly' tells how the baby laughs — it’s an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'The woman sings beautifully.'?",
+            options: ["beautifully", "woman", "The", "sings"],
+            correct: "beautifully",
+            explanation: "'Beautifully' tells how she sings — it’s an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'They eat happily.'?",
+            options: ["happily", "They", "eat", "none"],
+            correct: "happily",
+            explanation: "'Happily' shows how they eat, so it's an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'The bird flies high.'?",
+            options: ["the", "high", "flies", "bird"],
+            correct: "high",
+            explanation: "'High' shows where the bird flies — it's an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'He reads quietly in the library.'?",
+            options: ["quietly", "he", "reads", "library"],
+            correct: "quietly",
+            explanation: "'Quietly' describes how he reads — it's an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'The children sleep peacefully.'?",
+            options: ["peacefully", "sleep", "children", "the"],
+            correct: "peacefully",
+            explanation: "'Peacefully' tells how they sleep — it’s an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'She speaks softly.'?",
+            options: ["speaks", "softly", "none", "she"],
+            correct: "softly",
+            explanation: "'Softly' tells how she speaks — it’s an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'The rain falls heavily.'?",
+            options: ["falls", "rain", "heavily", "the"],
+            correct: "heavily",
+            explanation: "'Heavily' shows how the rain falls — it's an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'He sat silently.'?",
+            options: ["he", "silently", "sat", "none"],
+            correct: "silently",
+            explanation: "'Silently' describes how he sat — it’s an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'The bus left early.'?",
+            options: ["left", "early", "the", "bus"],
+            correct: "early",
+            explanation: "'Early' describes when the bus left — it's an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'The cat slept soundly.'?",
+            options: ["the", "soundly", "slept", "cat"],
+            correct: "soundly",
+            explanation: "'Soundly' tells how the cat slept — it's an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'The girl swam frantically.'?",
+            options: ["swam", "frantically", "the", "girl"],
+            correct: "frantically",
+            explanation: "'Frantically' describes how she swam — it's an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'She helped willingly.'?",
+            options: ["willingly", "helped", "none", "she"],
+            correct: "willingly",
+            explanation: "'Willingly' tells how she helped — it's an adverb."
+          },
+          {
+            question: "Which word is the adverb in the sentence: 'The car moved smoothly.'?",
+            options: ["car", "moved", "smoothly", "the"],
+            correct: "smoothly",
+            explanation: "'Smoothly' describes how the car moved — it’s an adverb."
+          }
+        ];
+      </script>
+
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>
+

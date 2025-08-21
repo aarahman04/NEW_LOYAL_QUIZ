@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    …
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+  <div class="question-section">
+    <h3 id="question-text">Loading…</h3>
+    <ul id="options-list" class="options"></ul>
+  </div>
+
+  <div id="feedback" class="hidden"></div>
+  <div id="explanation" class="hidden"></div>
+  <button id="back-btn" class="hidden">Back</button>
+  <button id="next-btn" class="hidden">Next</button>
+</main>
+
+
+    <!-- your question data: only one entry -->
+
+    <script>
+      const questions = [
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/1.jpg",
+    options: ["The rat flew", "The rat ran"],
+    correct: "The rat ran",
+    explanation: "The correct answer is 'The rat ran.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/2.jpg",
+    options: ["The fat cat sat", "The fat cat barked"],
+    correct: "The fat cat sat",
+    explanation: "The correct answer is 'The fat cat sat.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/3.jpg",
+    options: ["The dog dug", "The dog sang"],
+    correct: "The dog dug",
+    explanation: "The correct answer is 'The dog dug.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/4.jpg",
+    options: ["Sam has a car", "Sam has a hat"],
+    correct: "Sam has a hat",
+    explanation: "The correct answer is 'Sam has a hat.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/5.jpg",
+    options: ["Pam is glad", "Pam is sad"],
+    correct: "Pam is sad",
+    explanation: "The correct answer is 'Pam is sad.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/6.jpg",
+    options: ["The sun is cold", "The sun is hot"],
+    correct: "The sun is hot",
+    explanation: "The correct answer is 'The sun is hot.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/7.jpg",
+    options: ["The pig can nap", "The pig can clap"],
+    correct: "The pig can nap",
+    explanation: "The correct answer is 'The pig can nap.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/8.jpg",
+    options: ["The bug is big", "The bug is thin"],
+    correct: "The bug is big",
+    explanation: "The correct answer is 'The bug is big.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/9.jpg",
+    options: ["The fox hid", "The fox laughed"],
+    correct: "The fox hid",
+    explanation: "The correct answer is 'The fox hid.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/10.jpg",
+    options: ["The cat is green", "The cat is red"],
+    correct: "The cat is red",
+    explanation: "The correct answer is 'The cat is red.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/11.jpg",
+    options: ["Ben can cry", "Ben can hop"],
+    correct: "Ben can hop",
+    explanation: "The correct answer is 'Ben can hop.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/12.jpg",
+    options: ["The hen sat", "The hen ran"],
+    correct: "The hen sat",
+    explanation: "The correct answer is 'The hen sat.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/13.jpg",
+    options: ["Dad has a toy", "Dad has a car"],
+    correct: "Dad has a car",
+    explanation: "The correct answer is 'Dad has a car.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/14.jpg",
+    options: ["Mom is glad", "Mom is mad"],
+    correct: "Mom is mad",
+    explanation: "The correct answer is 'Mom is mad.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/15.jpg",
+    options: ["The pan is hot", "The pan is cold"],
+    correct: "The pan is hot",
+    explanation: "The correct answer is 'The pan is hot.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/16.jpg",
+    options: ["The rug is wet", "The rug is soft"],
+    correct: "The rug is wet",
+    explanation: "The correct answer is 'The rug is wet.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/17.jpg",
+    options: ["The frog can jump", "The frog can run"],
+    correct: "The frog can jump",
+    explanation: "The correct answer is 'The frog can jump.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/18.jpg",
+    options: ["The kid ran slow", "The kid ran fast"],
+    correct: "The kid ran fast",
+    explanation: "The correct answer is 'The kid ran fast.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/19.jpg",
+    options: ["I see a cat", "I see a dog"],
+    correct: "I see a cat",
+    explanation: "The correct answer is 'I see a cat.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/20.jpg",
+    options: ["He has a bag", "He has a fan"],
+    correct: "He has a fan",
+    explanation: "The correct answer is 'He has a fan.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/21.jpg",
+    options: ["Sam laid down", "Sam sat up"],
+    correct: "Sam sat up",
+    explanation: "The correct answer is 'Sam sat up.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/22.jpg",
+    options: ["The map is big", "The mat is big"],
+    correct: "The map is big",
+    explanation: "The correct answer is 'The map is big.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/23.jpg",
+    options: ["The cup is gray", "The cup is red"],
+    correct: "The cup is red",
+    explanation: "The correct answer is 'The cup is red.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/24.jpg",
+    options: ["The duck can dig", "The duck can swim"],
+    correct: "The duck can swim",
+    explanation: "The correct answer is 'The duck can swim.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/25.jpg",
+    options: ["The fish is wet", "The fish is dry"],
+    correct: "The fish is wet",
+    explanation: "The correct answer is 'The fish is wet.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/26.jpg",
+    options: ["The bat is white", "The bat is black"],
+    correct: "The bat is black",
+    explanation: "The correct answer is 'The bat is black.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/27.jpg",
+    options: ["The bus is gone", "The bus is here"],
+    correct: "The bus is here",
+    explanation: "The correct answer is 'The bus is here.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/28.jpg",
+    options: ["Tom can run fast", "Tom can sleep"],
+    correct: "Tom can run fast",
+    explanation: "The correct answer is 'Tom can run fast.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/29.jpg",
+    options: ["Meg sat on the mat", "Meg sat on the chair"],
+    correct: "Meg sat on the mat",
+    explanation: "The correct answer is 'Meg sat on the mat.'"  
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/30.jpg",
+    options: ["The dog is happy", "The dog is sad"],
+    correct: "The dog is sad",
+    explanation: "The correct answer is 'The dog is sad.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/31.jpg",
+    options: ["I can see a bug", "I can see a bat"],
+    correct: "I can see a bug",
+    explanation: "The correct answer is 'I can see a bug.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/32.jpg",
+    options: ["The rat is fat", "The rat is small"],
+    correct: "The rat is fat",
+    explanation: "The correct answer is 'The rat is fat.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/33.jpg",
+    options: ["The van is pink", "The van is blue"],
+    correct: "The van is blue",
+    explanation: "The correct answer is 'The van is blue.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/34.jpg",
+    options: ["This is my pen", "This is my bag"],
+    correct: "This is my pen",
+    explanation: "The correct answer is 'This is my pen.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/35.jpg",
+    options: ["The pot is hot", "The pot is cool"],
+    correct: "The pot is hot",
+    explanation: "The correct answer is 'The pot is hot.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/36.jpg",
+    options: ["Kim has a pen", "Kim has a pet"],
+    correct: "Kim has a pet",
+    explanation: "The correct answer is 'Kim has a pet.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/37.jpg",
+    options: ["The fan is small", "The fan is big"],
+    correct: "The fan is big",
+    explanation: "The correct answer is 'The fan is big.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/38.jpg",
+    options: ["The hen is black", "The hen is red"],
+    correct: "The hen is red",
+    explanation: "The correct answer is 'The hen is red.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/39.jpg",
+    options: ["The dog can sit", "The dog can fly"],
+    correct: "The dog can sit",
+    explanation: "The correct answer is 'The dog can sit.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/40.jpg",
+    options: ["The car is fast", "The car is slow"],
+    correct: "The car is fast",
+    explanation: "The correct answer is 'The car is fast.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/41.jpg",
+    options: ["The boy can dig", "The boy can sing"],
+    correct: "The boy can dig",
+    explanation: "The correct answer is 'The boy can dig.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/42.jpg",
+    options: ["The fox slept", "The fox ran"],
+    correct: "The fox ran",
+    explanation: "The correct answer is 'The fox ran.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/43.jpg",
+    options: ["The log is dry", "The log is wet"],
+    correct: "The log is wet",
+    explanation: "The correct answer is 'The log is wet.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/44.jpg",
+    options: ["The mop is new", "The mop is bent"],
+    correct: "The mop is new",
+    explanation: "The correct answer is 'The mop is new.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/45.jpg",
+    options: ["The cup is light", "The cup is big"],
+    correct: "The cup is big",
+    explanation: "The correct answer is 'The cup is big.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/46.jpg",
+    options: ["The pig is pink", "The pig is blue"],
+    correct: "The pig is pink",
+    explanation: "The correct answer is 'The pig is pink.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/47.jpg",
+    options: ["The dog is green", "The dog is black"],
+    correct: "The dog is black",
+    explanation: "The correct answer is 'The dog is black.'"
+  },
+
+  {
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/48.jpg",
+    options: ["The jam is yellow", "The jam is red"],
+    correct: "The jam is red",
+    explanation: "The correct answer is 'The jam is red.'"
+  },
+
+{
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/49.jpg",
+    options: ["I see the sun", "I see the moon"],
+    correct: "I see the sun",
+    explanation: "The correct answer is 'I see the sun.'"
+},
+
+{
+    question: "Select the sentence that best matches the picture.",
+    image: "../../../image/Identify level 1 eng part 2/50.jpg",
+    options: ["Kim is 10", "Kim is playing"],
+    correct: "Kim is 10",
+    explanation: "The correct answer is 'Kim is 10.'"
+}
+  // …and so on
+];
+    </script>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>

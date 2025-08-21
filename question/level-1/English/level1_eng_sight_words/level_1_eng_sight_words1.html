@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>LOYAL M.C.Q's</title>
+  <link rel="stylesheet" href="../../../../css/audio_style.css" />
+  <link rel="stylesheet" href="../../../../css/index.css" />
+</head>
+<body>
+  <!-- Header -->
+  <div id="site-header-placeholder"></div>
+
+  <main>
+    <section class="quiz-container" aria-live="polite">
+      <h3 id="instruction">Listen and choose the correct word.</h3>
+
+      <div class="controls-row">
+        <button id="playBtn" class="btn primary" aria-label="Play audio">🔊 Play</button>
+      </div>
+
+      <img id="qimg" class="question-image" alt="Question image" src="" />
+      <div id="options" class="options"></div>
+
+      <div id="feedback" class="feedback" role="status"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <div class="nav-row">
+        <button id="prevBtn" class="btn" type="button">⟵ Prev</button>
+        <div class="progress"><span id="index">1</span> / <span id="total">1</span></div>
+        <button id="nextBtn" class="btn" type="button">Next ⟶</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- 100 Fry Sight Words (from your chart) -->
+  <script>
+    const SW = [
+      "the","at","there","some","my",
+      "of","be","use","her","than",
+      "and","this","an","would","first",
+      "a","have","each","make","water",
+      "to","from","which","like","been",
+      "in","or","she","him","called",
+      "is","one","do","into","who",
+      "you","had","how","time","am",
+      "that","by","their","has","its",
+      "it","words","if","look","now",
+      "he","but","will","two","find",
+      "was","not","up","more","long",
+      "for","what","other","write","down",
+      "on","all","about","go","day",
+      "are","were","out","see","did",
+      "as","we","many","number","get",
+      "with","when","then","no","come",
+      "his","your","them","way","made",
+      "they","can","these","could","may",
+      "i","said","so","people","part"
+    ];
+
+    // Build questions: each word vs. a nearby distractor
+    const questions = SW.map((w, i) => {
+      const distractor = SW[(i + 1) % SW.length];
+      return {
+        question: "Listen and choose the correct word.",
+        voice: w,
+        options: [w, distractor],
+        correct: w,
+        lang: "en-US"
+      };
+    });
+  </script>
+
+  <!-- Footer Placeholder -->
+  <div id="site-footer-placeholder"></div>
+  <script src="../../../../js/audio.js"></script>
+  <script src="../../../../js/partials.js"></script>
+</body>
+</html>

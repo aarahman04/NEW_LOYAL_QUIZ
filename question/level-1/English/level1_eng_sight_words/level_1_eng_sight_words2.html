@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>LOYAL M.C.Q's</title>
+  <link rel="stylesheet" href="../../../../css/audio_style.css" />
+  <link rel="stylesheet" href="../../../../css/index.css" />
+</head>
+<body>
+    <body class="index-page">
+    <!-- Header -->
+    <div id="site-header-placeholder"></div>
+    </body>
+  <main>
+    <section class="quiz-container" aria-live="polite">
+      <h3 id="instruction">Listen and choose the correct word.</h3>
+
+      <div class="controls-row">
+        <select id="voice" title="Voice"></select>
+        <button id="playBtn" class="btn primary" aria-label="Play audio">🔊 Play</button>
+      </div>
+
+      <img id="qimg" class="question-image" alt="Question image" src="" />
+      <div id="options" class="options"></div>
+
+      <div id="feedback" class="feedback" role="status"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <div class="nav-row">
+        <button id="prevBtn" class="btn" type="button">⟵ Prev</button>
+        <div class="progress"><span id="index">1</span> / <span id="total">1</span></div>
+        <button id="nextBtn" class="btn" type="button">Next ⟶</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Fry Sight Words 101–200 -->
+  <script>
+    const SW = [
+      "over","name","boy","such","change",
+      "new","good","follow","because","off",
+      "sound","sentence","came","turn","play",
+      "take","man","want","here","spell",
+      "only","think","show","why","air",
+      "little","say","also","ask","away",
+      "work","great","around","went","animal",
+      "know","where","form","men","house",
+      "place","help","three","read","point",
+      "years","through","small","need","page",
+      "live","much","set","land","letter",
+      "me","before","put","different","mother",
+      "back","line","end","home","answer",
+      "give","right","does","us","found",
+      "most","too","another","move","study",
+      "very","means","well","try","still",
+      "after","old","large","kind","learn",
+      "things","any","must","hand","should",
+      "our","same","big","picture","America",
+      "just","tell","even","again","world"
+    ];
+
+    // Build questions: each word vs. a nearby distractor
+    const questions = SW.map((w, i) => {
+      const distractor = SW[(i + 1) % SW.length];
+      return {
+        question: "Listen and choose the correct word.",
+        voice: w,
+        options: [w, distractor],
+        correct: w,
+        lang: "en-US"
+      };
+    });
+  </script>
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+
+  <script src="../../../../js/audio.js"></script>
+  <script src="../../../../js/partials.js"></script>
+</body>
+</html>

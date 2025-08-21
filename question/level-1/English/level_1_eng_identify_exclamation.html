@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Identify Exclamations</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+const questions = [
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What a beautiful woman!", "How are you?"],
+    correct: "What a beautiful woman!",
+    explanation: "It shows strong feeling and ends with an exclamation mark."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["That song was really a hit!", "What is your name?"],
+    correct: "That song was really a hit!",
+    explanation: "It expresses excitement."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Wow, I loved that color!", "The girl is beautiful."],
+    correct: "Wow, I loved that color!",
+    explanation: "It shows strong admiration."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Sam helped me so much!", "What is your father’s name?"],
+    correct: "Sam helped me so much!",
+    explanation: "It expresses gratitude and excitement."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Wow, it was a great idea!", "What is your opinion?"],
+    correct: "Wow, it was a great idea!",
+    explanation: "It shows strong approval."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Our dog had five puppies!", "Where is your school?"],
+    correct: "Our dog had five puppies!",
+    explanation: "It expresses surprise."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Yikes, that’s a big spider!", "The road was closed."],
+    correct: "Yikes, that’s a big spider!",
+    explanation: "It shows fear and surprise."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Oops, I dropped my phone!", "The cat was fluffy."],
+    correct: "Oops, I dropped my phone!",
+    explanation: "It expresses sudden realization."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["I can’t believe it, wow!", "Some people are just very scary."],
+    correct: "I can’t believe it, wow!",
+    explanation: "It shows disbelief and amazement."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["That really hurt, ouch!", "I went to the market."],
+    correct: "That really hurt, ouch!",
+    explanation: "It shows pain."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["The cake is amazing!", "What are you typing?"],
+    correct: "The cake is amazing!",
+    explanation: "It shows delight."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["That’s fantastic news!", "Why are you crying?"],
+    correct: "That’s fantastic news!",
+    explanation: "It expresses happiness."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Oh my goodness!", "The mouse ran away."],
+    correct: "Oh my goodness!",
+    explanation: "It expresses surprise."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Your dog bit my leg!", "Sandy walked down the hill."],
+    correct: "Your dog bit my leg!",
+    explanation: "It expresses shock."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Ouch, that hurt me!", "I live in Japan."],
+    correct: "Ouch, that hurt me!",
+    explanation: "It shows pain."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["You are kidding me!", "Where is the police department?"],
+    correct: "You are kidding me!",
+    explanation: "It expresses disbelief."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["How beautiful!", "What is the name of his new baby?"],
+    correct: "How beautiful!",
+    explanation: "It expresses admiration."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Bang, it broke!", "I have a red card."],
+    correct: "Bang, it broke!",
+    explanation: "It imitates a loud sound."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["That is hilarious!", "Is the train coming?"],
+    correct: "That is hilarious!",
+    explanation: "It expresses amusement."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What a mess!", "He drinks coffee."],
+    correct: "What a mess!",
+    explanation: "It expresses disapproval."
+  }
+];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>

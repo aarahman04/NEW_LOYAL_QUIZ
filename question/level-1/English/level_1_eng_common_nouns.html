@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Common Nouns</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+    const questions = [
+      // 20 Common Noun Questions (options shuffled)
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Girl", "Apple", "Car", "Washington"],
+        correct: "Girl",
+        explanation: "'Girl' names a general person, so it’s a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Paris", "Boy", "Rose", "Jeddah"],
+        correct: "Boy",
+        explanation: "'Boy' is a general term for a male child, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Mercury", "Google", "School", "The West Bank"],
+        correct: "School",
+        explanation: "'School' refers to any educational building, so it’s a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["New York", "Harvard University", "Charles Dickens", "Author"],
+        correct: "Author",
+        explanation: "'Author' names a general profession, so it’s a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Dog", "The Rhine", "Fido", "United States"],
+        correct: "Dog",
+        explanation: "'Dog' names any canine, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Roma", "Tech Company", "Sandy’s Bake Shop", "Google"],
+        correct: "Tech Company",
+        explanation: "'Tech Company' is a general business category, so it’s a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Oxford University", "Berlin", "Country", "France"],
+        correct: "Country",
+        explanation: "'Country' names any nation or region, so it’s a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Paris", "Apple", "Harvard University", "River"],
+        correct: "River",
+        explanation: "'River' refers to any watercourse, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Book", "Venus", "Mercury", "Harry Potter"],
+        correct: "Book",
+        explanation: "'Book' names any bound written work, so it’s a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Mount Kilimanjaro", "City", "The Nile", "New York"],
+        correct: "City",
+        explanation: "'City' names any urban area, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["White House", "Volleyball", "City", "Bald Eagle"],
+        correct: "City",
+        explanation: "'City' names any town, so it’s a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Pear", "Apple", "The Nile", "Tree"],
+        correct: "Tree",
+        explanation: "'Tree' is a general term for any woody plant, so it’s a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Flower", "Snickers", "Oreo", "Rose"],
+        correct: "Flower",
+        explanation: "'Flower' names any blossom, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Horse", "Planet", "Denmark", "Mercury"],
+        correct: "Planet",
+        explanation: "'Planet' names any celestial body orbiting a star, so it’s a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Google", "England", "Mountain", "Venus"],
+        correct: "Mountain",
+        explanation: "'Mountain' is a general landform type, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Saturn", "Apple", "Orange", "Fruit"],
+        correct: "Fruit",
+        explanation: "'Fruit' names any edible produce, so it’s a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Car", "Volleyball", "Basketball", "Watermelon"],
+        correct: "Car",
+        explanation: "'Car' names any motor vehicle, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Banana", "School", "University", "Apple"],
+        correct: "School",
+        explanation: "'School' is a general place of learning, so it’s a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Toyota", "Tommy", "Pear", "Egypt"],
+        correct: "Pear",
+        explanation: "'Pear' names any of the fruit, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["New York", "Mercedes", "Harvard University", "Melons"],
+        correct: "Melons",
+        explanation: "'Melons' refers to any type of melon, so it’s a common noun."
+      }
+    ];
+  </script>
+
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>
+

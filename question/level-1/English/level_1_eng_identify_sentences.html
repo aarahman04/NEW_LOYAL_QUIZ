@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Identify Exclamations</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+const questions = [
+  {
+    question: "Which of the following is a Question?",
+    options: ["Was the dog allowed in the house?", "The dog was not allowed in the house."],
+    correct: "Was the dog allowed in the house?",
+    explanation: "A question asks something and ends with a question mark."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Yikes, that’s a big spider!", "The road was closed."],
+    correct: "Yikes, that’s a big spider!",
+    explanation: "It shows fear and surprise."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The school bell rang.", "Will you go to Sam’s house?"],
+    correct: "The school bell rang.",
+    explanation: "A statement tells something and ends with a period."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["That was close, phew!", "Do you like Ms Sandy?"],
+    correct: "That was close, phew!",
+    explanation: "It shows relief."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["What is the capital city of Germany?", "I live in Japan."],
+    correct: "What is the capital city of Germany?",
+    explanation: "It asks for information."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What a surprise!", "Some people can’t eat peanuts."],
+    correct: "What a surprise!",
+    explanation: "It shows amazement."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["Dad leaves to work early.", "Are you sick?"],
+    correct: "Dad leaves to work early.",
+    explanation: "It tells a fact."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["What is your favorite song?", "The school bell rang very loud."],
+    correct: "What is your favorite song?",
+    explanation: "It requests information."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["You scared me!", "Some people are scared of spiders."],
+    correct: "You scared me!",
+    explanation: "It expresses fear."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The cat slept on the table.", "What is your father’s name?"],
+    correct: "The cat slept on the table.",
+    explanation: "It provides information."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Do you like grapes?", "Some people are just very scary."],
+    correct: "Do you like grapes?",
+    explanation: "It asks for an opinion."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Hooray, the weekend is here!", "The bank was full of people."],
+    correct: "Hooray, the weekend is here!",
+    explanation: "It expresses excitement."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The phone is in my car.", "Where is my phone?"],
+    correct: "The phone is in my car.",
+    explanation: "It declares a fact."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Why are you crying?", "That’s fantastic news!"],
+    correct: "Why are you crying?",
+    explanation: "It asks for an explanation."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["This restaurant is great!", "He walks every single day."],
+    correct: "This restaurant is great!",
+    explanation: "It shows admiration."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The rabbit is brown.", "What time is it?"],
+    correct: "The rabbit is brown.",
+    explanation: "It describes something."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["That really hurt, ouch!", "I went to the market."],
+    correct: "That really hurt, ouch!",
+    explanation: "It expresses pain."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["What was your first impression?", "The hen was sleeping."],
+    correct: "What was your first impression?",
+    explanation: "It asks about an opinion."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["She studied yesterday.", "What is she doing?"],
+    correct: "She studied yesterday.",
+    explanation: "It tells something about the past."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Wow, it was a great idea!", "What is your opinion?"],
+    correct: "Wow, it was a great idea!",
+    explanation: "It expresses strong approval."
+  }
+];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>
