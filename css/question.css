@@ -1,0 +1,707 @@
+body {
+    font-family: 'Comic Sans MS';
+    background-color: #f1f5f8;
+    background: #f4f4f9;
+    margin: 0;
+    padding: 0;
+
+
+
+  }
+/* ========== Site Header ========== */
+.site-header {
+  background: #fff;
+  border-bottom: 6px solid #fd2828;
+  color: #171717;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.site-header .header-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-header .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.site-header .logo-icon {
+  font-size: 2.2rem;
+  color: #fd2828;
+}
+.site-header .logo-text {
+  font-family: 'Comic Sans MS';
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+.site-header .main-nav a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #171717;
+  position: relative;
+  padding-bottom: 0.2rem;
+  transition: color 0.2s, transform 0.2s;
+}
+.site-header .main-nav a:hover {
+  color: #fd2828;
+  transform: translateY(-2px);
+}
+.site-header .main-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 3px;
+  background: #fd2828;
+  transition: width 0.3s;
+}
+.site-header .main-nav a:hover::after {
+  width: 100%;
+}
+.site-header .menu-icon {
+  display: none;
+  font-size: 1.8rem;
+  color: #171717;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .site-header .main-nav { display: none; }
+  .site-header .menu-icon { display: block; }
+}
+/* =======================
+   question.css (Kid-Friendly)
+   ======================= */
+
+/* Color Variables */
+:root {
+  --brand-red: #e20000;
+  --primary-blue: #007bff;
+  --light-bg: #fff8e1;
+  --light-hover: #f0f7ff;
+  --correct-bg: #d4edda;
+  --incorrect-bg: #f8d7da;
+  --btn-bg: #007bff;
+  --btn-hover: #0056b3;
+}
+
+/* ========== QUESTION-SPECIFIC IMAGE STYLING ========== */
+img.question-image {
+  display: block;
+  margin: 1.5rem auto;       /* center & breathing room */
+  width: 100%;               /* fluid width */
+  max-width: 400px;          /* desktop cap */
+  aspect-ratio: 4/3;         /* preserve 400×300 ratio */
+  object-fit: contain;       /* or “cover” if you prefer a crop */
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: var(--light-bg);
+  padding: 0.5rem;
+}
+
+/* hide when no image present */
+img.question-image[src=""],
+img.question-image:not([src]) {
+  display: none;
+}
+
+
+
+/* ====================== */
+/*      Quiz Container    */
+/* ====================== */
+.quiz-container {
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 90%;            /* fluid width */
+  max-width: 700px;      /* desktop cap */
+  margin: 4rem auto;     /* vertical breathing + centered */
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* -------- Tablets -------- */
+@media (max-width: 768px) {
+  .quiz-container {
+    width: 85%;          /* fill more of smaller screens */
+    max-width: none;     /* drop the desktop cap */
+    padding: 1.5rem;     
+    margin: 3rem auto;   
+  }
+}
+
+/* -------- Phones -------- */
+@media (max-width: 480px) {
+  .quiz-container {
+    width: 85%;         /* edge-to-edge (minus body padding) */
+    padding: 1rem;
+    margin: 2rem auto;   
+  }
+}
+
+
+/* Question Title */
+h3 {
+  font-family: 'Comic Sans MS';
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--brand-red);
+  margin-bottom: 1.5rem;
+  text-align: left;
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Options List */
+.options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.options li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--light-bg);
+  border: 2px solid #020202;
+  border-radius: 1rem;
+  margin: 0.8rem 0;
+  padding: 1rem 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.options li:hover {
+  background: var(--light-hover);
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+.options li.correct {
+  background-color: var(--correct-bg);
+  border-color: #28a745;
+  color: #155724;
+}
+.options li.incorrect {
+  background-color: var(--incorrect-bg);
+  border-color: #dc3545;
+  color: #721c24;
+}
+
+.option-label {
+  font-weight: 600;
+  color: #000;
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  flex: none;
+}
+.option-text {
+  flex: 1;
+  font-size: 1.2rem;
+}
+
+/* Tick and Cross Icons */
+.icon {
+  width: 32px;
+  height: 32px;
+  margin-left: 1rem;
+}
+
+/* Feedback */
+#feedback {
+  font-weight: bold;
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 1.4rem;
+  color: #333;
+  animation: slideIn 0.5s ease;
+}
+
+/* Explanation */
+#explanation {
+  margin-top: 1.5rem;
+  text-align: left;
+  padding: 1rem 1.2rem;
+  border: 3px solid #ffcccc;
+  border-left: 6px solid var(--primary-blue);
+  background: var(--light-hover);
+  border-radius: 2rem;
+  color: #31708f;
+  font-size: 1.1rem;
+  animation: fadeIn 1s ease;
+  box-sizing: border-box;
+}
+
+/* Buttons */
+button {
+  display: inline-block;
+  margin-top: 2rem;
+  background-color: var(--btn-bg);
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+button:hover {
+  background-color: var(--btn-hover);
+  transform: scale(1.05);
+}
+
+/* Back Button */
+#back-btn {
+  margin-top: 2rem;
+  display: inline-block;
+  background: transparent;
+  color: var(--brand-red);
+  border: 2px solid var(--brand-red);
+  border-radius: 1rem;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.1rem;
+}
+#back-btn:hover {
+  background: var(--brand-red);
+  color: #fff;
+}
+
+/* Utility */
+.hidden { display: none; }
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideIn {
+  from { transform: translateY(-10px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+
+/* ========== Mobile / Tablet Improvements ========== */
+
+@media (max-width: 768px) {
+  img.question-image {
+    display: block;       /* ensures margin:auto works */
+    width: 90%;           /* scaled down for tablets */
+    max-width: none;      /* drop any desktop cap */
+    aspect-ratio: 4/3;    /* keep proportions */
+    height: auto;         /* auto-calc height */
+    margin: 1.5rem auto;  /* vertical breathing + horizontal centering */
+    border: none;         /* remove any stray borders that might shift it */
+  }
+}
+
+  h3 { font-size: 1.8rem; }
+  .options li {
+    display: flex;
+    flex-direction: row;    /* keep label + text on one line */
+    align-items: center;
+    padding: 0.8rem 1rem;
+    border-radius: 0.8rem;
+  }
+  .option-label {
+    font-size: 1rem;        /* same size as text */
+    margin-right: 0.75rem;
+  }
+  .option-text { font-size: 1rem; }
+  button, #back-btn {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+  #feedback, #explanation {
+    font-size: 1rem;
+  }
+
+
+@media (max-width: 480px) {
+  /* tighten up the image on small phones */
+  img.question-image {
+    width: 100%;            /* full width of its container */
+    aspect-ratio: 4/3;
+    height: auto;
+    margin: 1rem auto;
+  }
+
+ 
+  h3 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+  .options li {
+    padding: 0.6rem 0.8rem;
+  }
+  .option-label {
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+  }
+  .option-text { font-size: 0.9rem; }
+  button, #back-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+  #feedback, #explanation {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+  /* ========== Site Footer ========== */
+.site-footer {
+  background: #fafafa;             /* soft off-white */
+  border-top: 6px solid #fd2828;
+  color: #171717;
+  padding: 2rem 1rem 0;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.05);
+}
+.site-footer .footer-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  padding-bottom: 1.5rem;
+}
+.site-footer .footer-section h4 {
+  font-family: 'Comic Sans MS';
+  font-size: 1.3rem;
+  color: #fd2828;
+  margin-bottom: 0.75rem;
+}
+.site-footer .footer-section address,
+.site-footer .footer-section p {
+  font-style: 'Comic Sans MS';
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+.site-footer .footer-links,
+.site-footer .social-links {
+  list-style: none;
+}
+.site-footer .footer-links li,
+.site-footer .social-links li {
+  margin-bottom: 0.5rem;
+}
+.site-footer a {
+  color: #171717;
+  text-decoration: none;
+  transition: color 0.2s, transform 0.2s;
+}
+.site-footer a:hover {
+  color: #fd2828;
+  transform: translateX(3px);
+}
+.site-footer .social-links a {
+  font-size: 1.1rem;
+}
+.site-footer .footer-bottom {
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+@media (max-width: 600px) {
+  .site-footer .footer-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+
+
+  #confetti {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
+overflow: hidden;
+z-index: 1000;
+}
+
+.confetti {
+position: absolute;
+width: 10px;
+height: 10px;
+background-color: red;
+opacity: 0.8;
+animation: fall 3s ease-in-out forwards;
+}
+
+@keyframes fall {
+0% {
+transform: translateY(-100%) rotate(0);
+}
+100% {
+transform: translateY(100vh) rotate(720deg);
+}
+}
+.completion-message {
+text-align: center;
+font-size: 24px;
+font-weight: bold;
+color: #28a745;
+animation: fadeIn 1s ease-in-out;
+}
+.completion-gif {
+margin-top: 20px;
+max-width: 300px;
+width: 100%;
+height: auto;
+border-radius: 10px;
+}
+
+#timer {
+font-size: 1.2em;
+font-weight: bold;
+margin-bottom: 15px;
+color: #ff5722;
+
+}
+#start-timer-btn{
+background-color: #dc3545;
+}
+
+/* container for falling emojis */
+#emoji-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+/* each emoji drop */
+.emoji-drop {
+  position: absolute;
+  top: -2em;
+  font-size: 2rem;
+  user-select: none;
+
+  /* animation settings */
+  animation-name: fall;
+  animation-duration: 3s;           /* default duration */
+  animation-timing-function: linear;
+  animation-iteration-count: 1;     /* run once */
+  animation-fill-mode: forwards;    /* keep it gone at end */
+}
+
+/* falling keyframes */
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+
+        .logo-icon {
+  height: 75px;
+  width: auto;
+}
+
+/* Default styles */
+.logo {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.logo-icon {
+  height: 80px;
+  margin-right: 10px;
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100vw - 80px); /* Prevent overflow beside logo */
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .logo-icon {
+    height: 60px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  .logo-text {
+    font-size: 14px;
+    max-width: calc(100vw - 60px); /* Adjust max-width based on icon size */
+  }
+
+  .logo-icon {
+    height: 60px;
+    margin-right: 8px;
+  }
+
+  .header-inner {
+    padding: 10px;
+  }
+}
+
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px; /* Fixed height for consistency */
+  padding: 0 20px;
+}
+
+/* ───────── Fixed Hamburger & Off-Canvas Nav ───────── */
+
+/* Mobile/Tablet: ≤900px */
+@media (max-width: 900px) {
+  /* Show hamburger button */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  .hamburger span {
+    display: block;
+    height: 3px;
+    background: #ff0808;
+    border-radius: 2px;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+
+  /* Off-canvas nav hidden off-screen */
+  #nav-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background: #f0f0f0;
+    padding-top: 70px;         /* match header height */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+
+  /* Slide in when active */
+  #nav-menu.active {
+    left: 0;
+  }
+}
+
+/* Desktop & larger tablets: >900px */
+@media (min-width: 901px) {
+  /* Hide hamburger button */
+  .hamburger {
+    display: none;
+  }
+
+  /* Reset nav to horizontal, inline layout */
+  #nav-menu {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    background: none;
+    height: auto;
+    left: auto;
+    width: auto;
+    padding: 0;
+    transition: none;
+  }
+}
+
+/* ───────── Logo Alignment ───────── */
+.site-header .header-inner .logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.site-header .logo-icon {
+  height: 50px;
+  width: auto;
+}
+.site-header .logo-text {
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #171717;
+}
+
+/* ───────── Comic sans everywhere ───────── */
+@font-face {
+  font-family: 'Comic Sans MS';
+  src: url('/fonts/comic-sans-ms.woff2') format('woff2'),
+       url('/fonts/comic-sans-ms.woff') format('woff');
+  font-display: swap; /* Ensures text becomes visible using a fallback if the custom font takes a while to load, then swaps to Comic Sans MS once loaded */
+}
+
+/* Apply Comic Sans MS to all elements, ensuring consistency */
+body, .logo-text, header, .hero-card h1, .hero-card p {
+  font-family: 'Comic Sans MS', sans-serif; /* Added a generic fallback for cases where the custom font might fail to load */
+}
+
+/* You don't need these separate media queries for font-family if you've applied it to 'body' above. */
+/* If you want to change font-size for mobile, you'd do it like this: */
+@media (max-width: 768px) {
+  body {
+    font-size: 0.9rem; /* Example: slightly smaller font size for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 0.8rem; /* Example: even smaller font size for very small screens */
+  }
+}
