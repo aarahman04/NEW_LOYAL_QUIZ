@@ -38,6 +38,59 @@ const nextBtn    = document.getElementById("nextBtn");
 const indexSpan  = document.getElementById("index");
 const totalSpan  = document.getElementById("total");
 
+// ---- Voice preferences per browser ----
+const VOICE_PREFS = {
+  chrome: [
+    "Google US English",
+    "Google UK English Female",
+    "Google UK English Male"
+  ],
+  edge: [
+    "Microsoft Christopher Online (Natural) - English (United States)",
+    "Microsoft Aria Online (Natural) - English (United States)"
+  ],
+  safari: ["Samantha", "Alex", "Victoria"],
+  default: ["Google US English", "Samantha"]
+};
+
+function detectBrowser() {
+  const ua = navigator.userAgent;
+  if (ua.includes("Edg/")) return "edge";
+  if (ua.includes("Chrome/") || ua.includes("CriOS/")) return "chrome";
+  if (ua.includes("Firefox/")) return "firefox";
+  if (/Safari/.test(ua) && !/Chrome|CriOS|Edg/.test(ua)) return "safari";
+  return "default";
+}
+
+function chooseBestVoice(voices, desiredLang = "en-US", preferredName = "") {
+  // 1) if a specific name is requested (e.g., from a dropdown), honor it
+  if (preferredName) {
+    const exact  = voices.find(v => v.name === preferredName);
+    const starts = voices.find(v => v.name && v.name.startsWith(preferredName));
+    if (exact || starts) return exact || starts;
+  }
+
+  // 2) browser-specific name preferences
+  const prefs = [
+    ...(VOICE_PREFS[detectBrowser()] || []),
+    ...VOICE_PREFS.default
+  ];
+  for (const name of prefs) {
+    const v = voices.find(v => v.name === name);
+    if (v) return v;
+  }
+
+  // 3) heuristics: Google > Microsoft > any en-US > any en
+  let v =
+    voices.find(v => /Google/i.test(v.name) && v.lang?.startsWith("en")) ||
+    voices.find(v => /Microsoft/i.test(v.name) && v.lang?.startsWith("en")) ||
+    voices.find(v => v.lang === desiredLang) ||
+    voices.find(v => v.lang?.startsWith("en")) ||
+    voices[0];
+
+  return v || null;
+}
+
 // ---------- State ----------
 let QUESTIONS = normalizeInput(RAW);
 let idx = 0;
@@ -232,24 +285,37 @@ function speakText(text, { lang = "en-US", rate = 1.0, pitch = 1.0, preferredVoi
   try { speechSynthesis.cancel(); } catch {}
 
   const u = new SpeechSynthesisUtterance(utter);
-  u.lang  = lang;
-  u.rate  = clamp(rate, 0.5, 2.0);
-  u.pitch = clamp(pitch, 0.5, 2.0);
 
-  const voices = speechSynthesis.getVoices() || [];
-  const match =
-    voices.find(v => v.name === preferredVoiceName) ||
-    voices.find(v => v.name.startsWith(PREFERRED_VOICE_NAME)) || // tolerate suffixes
-    voices.find(v => v.lang === lang) ||
-    voices[0];
+  // Slightly slower = clearer for kids
+  u.rate  = clamp(Number(rate)  || 0.95, 0.7, 1.2);
+  u.pitch = clamp(Number(pitch) || 1.0,  0.5, 2.0);
 
-  if (match) u.voice = match;
+  let voices = speechSynthesis.getVoices() || [];
+
+  // If voices aren’t loaded yet (Chrome sometimes), wait once then speak
+  if (!voices.length) {
+    const once = () => {
+      speechSynthesis.onvoiceschanged = null;
+      speakText(text, { lang, rate: u.rate, pitch: u.pitch, preferredVoiceName });
+    };
+    speechSynthesis.onvoiceschanged = once;
+    return;
+  }
+
+  const best = chooseBestVoice(voices, lang, preferredVoiceName);
+  if (best) {
+    u.voice = best;
+    u.lang  = best.lang || lang;
+  } else {
+    u.lang  = lang;
+  }
 
   speaking = true;
   u.onend = () => { speaking = false; };
-  
+
   speechSynthesis.speak(u);
 }
+
 
 // ---------- Completion Screen ----------
 function showCompletionScreen() {
