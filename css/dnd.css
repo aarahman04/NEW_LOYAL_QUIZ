@@ -129,3 +129,109 @@ body, .logo-text, header, .hero-card h1, .hero-card p {
     font-size: 0.8rem; /* Example: even smaller font size for very small screens */
   }
 }
+
+/* === TWO TARGETS: smaller + centered columns === */
+.two-targets{
+  display:grid;
+  /* cap each box width so they don't look huge on wide screens */
+  grid-template-columns: repeat(2, minmax(160px, 240px));
+  justify-content:center;   /* center the two columns */
+  align-items:start;
+  gap:.8rem;
+  margin:.6rem 0 .6rem;
+  position:relative;
+  z-index:1;
+}
+
+.dropbox{
+  position:relative;
+  min-height:68px;          /* smaller height */
+  padding:.5rem;            /* tighter padding */
+  border:2px dashed #bbb;
+  border-radius:12px;
+  background:#f8fafc;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:border-color .2s, background .2s;
+}
+
+.dropbox::after{
+  content:attr(data-placeholder);
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:rgba(0,0,0,.32);
+  font-size:.95rem;         /* smaller placeholder text */
+  pointer-events:none;
+}
+
+.dropbox.over    { border-color:#6aa9ff; background:#eef5ff; }
+.dropbox.correct { border-color:#1bb34a; background:#e9f9ef; }
+.dropbox.wrong   { border-color:#e23d3d; background:#fdecec; }
+.dropbox.has-value::after { content:""; }
+
+/* Choices centered under the boxes */
+#choices{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:.7rem;
+  margin:.9rem auto 0;
+  min-height:2.6rem;        /* always visible area */
+  width:100%;
+  max-width:720px;
+  position:relative;
+  z-index:2;
+}
+
+.draggable{
+  padding:.55rem .8rem;
+  border-radius:10px;
+  border:1px solid #ddd;
+  background:#fff;
+  cursor:grab;
+  user-select:none;
+  box-shadow:0 1px .5px rgba(0,0,0,.05);
+}
+.draggable:active{ cursor:grabbing; }
+
+.hidden{ display:none!important; }
+
+/* === Mobile: stack & keep compact === */
+@media (max-width:680px){
+  .two-targets{
+    grid-template-columns:1fr;    /* stack vertically */
+    gap:.7rem;
+    max-width:520px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .dropbox{
+    min-height:60px;
+    width:min(360px, 92vw);       /* compact width on phones */
+    margin-inline:auto;
+    padding:.45rem;
+  }
+  #choices{
+    max-width:360px;
+    gap:.55rem;
+    margin-top:.75rem;
+  }
+  .draggable{
+    font-size:1rem;
+    padding:.5rem .7rem;
+  }
+}
+
+/* Emoji rain (unchanged) */
+#emoji-rain{ position:fixed; inset:0; pointer-events:none; z-index:9999; }
+.emoji-drop{ position:fixed; top:-10vh; animation:emoji-fall linear forwards; }
+@keyframes emoji-fall{
+  0%{ transform:translateY(-10vh) rotate(0);   opacity:0; }
+ 10%{ opacity:1; }
+100%{ transform:translateY(110vh) rotate(360deg); opacity:0; }
+}

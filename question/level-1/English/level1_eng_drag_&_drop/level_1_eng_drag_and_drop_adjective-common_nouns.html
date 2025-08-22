@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drag & Drop – Adjective vs Common Nouns</title>
+  <link rel="stylesheet" href="../../../../css/question.css" />
+  <link rel="stylesheet" href="../../../../css/dnd.css" />
+</head>
+<body>
+
+  <!-- Sticky Header Placeholder -->
+  <div id="site-header-placeholder"></div>
+
+  <!-- *** Quiz Container *** -->
+  <main class="quiz-container">
+    <!-- Question text -->
+    <h3 id="question-text"></h3>
+
+    <!-- Two target boxes with customizable transparent placeholders -->
+    <div class="two-targets">
+      <div class="dropbox" data-box="left"  data-placeholder="Adjective"></div>
+      <div class="dropbox" data-box="right" data-placeholder="Common Noun"></div>
+    </div>
+
+    <!-- The spot where the draggable chips show up -->
+    <div id="choices"></div>
+
+    <!-- Feedback & explanation -->
+    <div id="feedback" class="hidden"></div>
+    <div id="explanation" class="hidden"></div>
+
+    <!-- Back / Next buttons -->
+    <button id="back-btn" class="hidden">Back</button>
+    <button id="next-btn" class="hidden">Next</button>
+  </main>
+
+  <!-- Two-box DnD logic (exposes window.initTwoBoxSortQuiz) -->
+  <script src="../../../../js/drag_and_drop.js"></script>
+
+  <script>
+    // 20 items. Left box = Adjective, Right box = Common Noun
+    const questions = [
+      {
+        question: "Drag each word to the correct box.",
+        options: ["tall", "girl"],
+        key: { "tall": "left", "girl": "right" },
+        explanation: "'tall' is an adjective; 'girl' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["boy", "thin"],
+        key: { "thin": "left", "boy": "right" },
+        explanation: "'thin' is an adjective; 'boy' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["big", "school"],
+        key: { "big": "left", "school": "right" },
+        explanation: "'big' is an adjective; 'school' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["elephant", "gray"],
+        key: { "gray": "left", "elephant": "right" },
+        explanation: "'gray' is an adjective; 'elephant' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["great", "author"],
+        key: { "great": "left", "author": "right" },
+        explanation: "'great' is an adjective; 'author' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["flower", "red"],
+        key: { "red": "left", "flower": "right" },
+        explanation: "'red' is an adjective; 'flower' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["white", "airplane"],
+        key: { "white": "left", "airplane": "right" },
+        explanation: "'white' is an adjective; 'airplane' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["grass", "green"],
+        key: { "green": "left", "grass": "right" },
+        explanation: "'green' is an adjective; 'grass' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["pink", "house"],
+        key: { "pink": "left", "house": "right" },
+        explanation: "'pink' is an adjective; 'house' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["long", "road"],
+        key: { "long": "left", "road": "right" },
+        explanation: "'long' is an adjective; 'road' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["beautiful", "city"],
+        key: { "beautiful": "left", "city": "right" },
+        explanation: "'beautiful' is an adjective; 'city' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["crowded", "city"],
+        key: { "crowded": "left", "city": "right" },
+        explanation: "'crowded' is an adjective; 'city' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["people", "noisy"],
+        key: { "noisy": "left", "people": "right" },
+        explanation: "'noisy' is an adjective; 'people' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["boy", "quick"],
+        key: { "quick": "left", "boy": "right" },
+        explanation: "'quick' is an adjective; 'boy' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["quiet", "baby"],
+        key: { "quiet": "left", "baby": "right" },
+        explanation: "'quiet' is an adjective; 'baby' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["tiger", "fast"],
+        key: { "fast": "left", "tiger": "right" },
+        explanation: "'fast' is an adjective; 'tiger' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["slow", "turtle"],
+        key: { "slow": "left", "turtle": "right" },
+        explanation: "'slow' is an adjective; 'turtle' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["sleepy", "cat"],
+        key: { "sleepy": "left", "cat": "right" },
+        explanation: "'sleepy' is an adjective; 'cat' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["black", "box"],
+        key: { "black": "left", "box": "right" },
+        explanation: "'black' is an adjective; 'box' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["yellow", "car"],
+        key: { "yellow": "left", "car": "right" },
+        explanation: "'yellow' is an adjective; 'car' is a common noun."
+      }
+    ];
+
+    // Start the two-box sorter
+    initTwoBoxSortQuiz(questions);
+  </script>
+
+  <!-- Footer Placeholder -->
+  <div id="site-footer-placeholder"></div>
+  <script src="../../../../js/partials.js"></script>
+</body>
+</html>

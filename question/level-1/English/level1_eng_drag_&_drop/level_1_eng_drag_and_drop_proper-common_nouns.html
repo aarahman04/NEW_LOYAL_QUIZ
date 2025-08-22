@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drag & Drop – Proper vs Common Nouns</title>
+  <link rel="stylesheet" href="../../../../css/question.css" />
+  <link rel="stylesheet" href="../../../../css/dnd.css" />
+</head>
+<body>
+
+  <!-- Sticky Header Placeholder -->
+  <div id="site-header-placeholder"></div>
+
+  <!-- *** Quiz Container *** -->
+  <main class="quiz-container">
+    <!-- Question text -->
+    <h3 id="question-text"></h3>
+
+    <!-- Two target boxes with customizable transparent placeholders -->
+    <div class="two-targets">
+      <div class="dropbox" data-box="left"  data-placeholder="Proper Noun"></div>
+      <div class="dropbox" data-box="right" data-placeholder="Common Noun"></div>
+    </div>
+
+    <!-- The spot where the draggable chips show up -->
+    <div id="choices"></div>
+
+    <!-- Feedback & explanation -->
+    <div id="feedback" class="hidden"></div>
+    <div id="explanation" class="hidden"></div>
+
+    <!-- Back / Next buttons -->
+    <button id="back-btn" class="hidden">Back</button>
+    <button id="next-btn" class="hidden">Next</button>
+  </main>
+
+  <!-- Two-box DnD logic (exposes window.initTwoBoxSortQuiz) -->
+  <script src="../../../../js/drag_and_drop.js"></script>
+
+  <script>
+    // 20 items. Left box = Proper Noun, Right box = Common Noun
+    const questions = [
+      {
+        question: "Drag each word to the correct box.",
+        options: ["girl", "Washington"],
+        key: { "Washington": "left", "girl": "right" },
+        explanation: "'Washington' is a proper noun; 'girl' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["boy", "Jeddah"],
+        key: { "Jeddah": "left", "boy": "right" },
+        explanation: "'Jeddah' is a proper noun; 'boy' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["The West Bank", "school"],
+        key: { "The West Bank": "left", "school": "right" },
+        explanation: "'The West Bank' is a proper noun; 'school' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["author", "Charles Dickens"],
+        key: { "Charles Dickens": "left", "author": "right" },
+        explanation: "'Charles Dickens' is a proper noun; 'author' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["Fido", "dog"],
+        key: { "Fido": "left", "dog": "right" },
+        explanation: "'Fido' (a pet's name) is a proper noun; 'dog' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["Google", "tech company"],
+        key: { "Google": "left", "tech company": "right" },
+        explanation: "'Google' is a proper noun; 'tech company' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["country", "France"],
+        key: { "France": "left", "country": "right" },
+        explanation: "'France' is a proper noun; 'country' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["Italy", "country"],
+        key: { "Italy": "left", "country": "right" },
+        explanation: "'Italy' is a proper noun; 'country' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["India", "country"],
+        key: { "India": "left", "country": "right" },
+        explanation: "'India' is a proper noun; 'country' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["river", "The Nile"],
+        key: { "The Nile": "left", "river": "right" },
+        explanation: "'The Nile' is a proper noun; 'river' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["Harry Potter", "book"],
+        key: { "Harry Potter": "left", "book": "right" },
+        explanation: "'Harry Potter' is a proper noun (title); 'book' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["New York", "city"],
+        key: { "New York": "left", "city": "right" },
+        explanation: "'New York' is a proper noun; 'city' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["city", "Berlin"],
+        key: { "Berlin": "left", "city": "right" },
+        explanation: "'Berlin' is a proper noun; 'city' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["Hamburg", "city"],
+        key: { "Hamburg": "left", "city": "right" },
+        explanation: "'Hamburg' is a proper noun; 'city' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["city", "Paris"],
+        key: { "Paris": "left", "city": "right" },
+        explanation: "'Paris' is a proper noun; 'city' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["city", "Roma"],
+        key: { "Roma": "left", "city": "right" },
+        explanation: "'Roma' is a proper noun; 'city' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["house", "White House"],
+        key: { "White House": "left", "house": "right" },
+        explanation: "'White House' is a proper noun; 'house' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["country", "United States"],
+        key: { "United States": "left", "country": "right" },
+        explanation: "'United States' is a proper noun; 'country' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["Harvard University", "university"],
+        key: { "Harvard University": "left", "university": "right" },
+        explanation: "'Harvard University' is a proper noun; 'university' is a common noun."
+      },
+      {
+        question: "Drag each word to the correct box.",
+        options: ["mountain", "Mount Kilimanjaro"],
+        key: { "Mount Kilimanjaro": "left", "mountain": "right" },
+        explanation: "'Mount Kilimanjaro' is a proper noun; 'mountain' is a common noun."
+      }
+    ];
+
+    // Start the two-box sorter
+    initTwoBoxSortQuiz(questions);
+  </script>
+
+  <!-- Footer Placeholder -->
+  <div id="site-footer-placeholder"></div>
+  <script src="../../../../js/partials.js"></script>
+</body>
+</html>
