@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Common Nouns</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "What is 25 + 18?",
+      options: ["43", "41"],
+      correct: "43",
+      explanation: "25 + 18 = 43"
+    },
+    {
+      question: "What is 28 + 12?",
+      options: ["42", "47"],
+      correct: "40",
+      explanation: "28 + 12 = 40"
+    },
+    {
+      question: "What is 33 + 16?",
+      options: ["49", "45"],
+      correct: "49",
+      explanation: "33 + 16 = 49"
+    },
+    {
+      question: "What is 21 + 20?",
+      options: ["41", "44"],
+      correct: "41",
+      explanation: "21 + 20 = 41"
+    },
+    {
+      question: "What is 29 + 18?",
+      options: ["47", "46"],
+      correct: "47",
+      explanation: "29 + 18 = 47"
+    },
+    {
+      question: "What is 25 + 25?",
+      options: ["50", "48"],
+      correct: "50",
+      explanation: "25 + 25 = 50"
+    },
+    {
+      question: "What is 23 + 19?",
+      options: ["44", "42"],
+      correct: "42",
+      explanation: "23 + 19 = 42"
+    },
+    {
+      question: "What is 27 + 17?",
+      options: ["45", "49"],
+      correct: "44",
+      explanation: "27 + 17 = 44"
+    },
+    {
+      question: "What is 24 + 19?",
+      options: ["43", "45"],
+      correct: "43",
+      explanation: "24 + 19 = 43"
+    },
+    {
+      question: "What is 22 + 23?",
+      options: ["45", "47"],
+      correct: "45",
+      explanation: "22 + 23 = 45"
+    },
+    {
+      question: "What is 30 + 16?",
+      options: ["46", "49"],
+      correct: "46",
+      explanation: "30 + 16 = 46"
+    },
+    {
+      question: "What is 36 + 12?",
+      options: ["48", "42"],
+      correct: "48",
+      explanation: "36 + 12 = 48"
+    },
+    {
+      question: "What is 32 + 18?",
+      options: ["49", "50"],
+      correct: "50",
+      explanation: "32 + 18 = 50"
+    },
+    {
+      question: "What is 37 + 12?",
+      options: ["49", "44"],
+      correct: "49",
+      explanation: "37 + 12 = 49"
+    },
+    {
+      question: "What is 40 + 7?",
+      options: ["47", "46"],
+      correct: "47",
+      explanation: "40 + 7 = 47"
+    },
+    {
+      question: "What is 20 + 21?",
+      options: ["41", "42"],
+      correct: "41",
+      explanation: "20 + 21 = 41"
+    },
+    {
+      question: "What is 35 + 14?",
+      options: ["49", "48"],
+      correct: "49",
+      explanation: "35 + 14 = 49"
+    },
+    {
+      question: "What is 26 + 22?",
+      options: ["48", "44"],
+      correct: "48",
+      explanation: "26 + 22 = 48"
+    },
+    {
+      question: "What is 19 + 23?",
+      options: ["42", "45"],
+      correct: "42",
+      explanation: "19 + 23 = 42"
+    },
+    {
+      question: "What is 30 + 13?",
+      options: ["43", "50"],
+      correct: "43",
+      explanation: "30 + 13 = 43"
+    }
+  ];
+</script>
+
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+  </body>
+</html>
