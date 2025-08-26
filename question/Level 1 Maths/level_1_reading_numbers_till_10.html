@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Reading Numbers Till 10</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> One",
+      options: ["1", "2"],
+      correct: "1",
+      explanation: "One = 1"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Two",
+      options: ["3", "2"],
+      correct: "2",
+      explanation: "Two = 2"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Three",
+      options: ["3", "4"],
+      correct: "3",
+      explanation: "Three = 3"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Four",
+      options: ["5", "4"],
+      correct: "4",
+      explanation: "Four = 4"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Five",
+      options: ["6", "5"],
+      correct: "5",
+      explanation: "Five = 5"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Six",
+      options: ["6", "7"],
+      correct: "6",
+      explanation: "Six = 6"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Seven",
+      options: ["8", "7"],
+      correct: "7",
+      explanation: "Seven = 7"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Eight",
+      options: ["9", "8"],
+      correct: "8",
+      explanation: "Eight = 8"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Nine",
+      options: ["10", "9"],
+      correct: "9",
+      explanation: "Nine = 9"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Ten",
+      options: ["11", "10"],
+      correct: "10",
+      explanation: "Ten = 10"
+    }
+  ];
+</script>
+
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+  </body>
+</html>
