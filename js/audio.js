@@ -352,18 +352,23 @@ function showCompletionScreen() {
   if (controlsRow) controlsRow.style.display = "none";
 
   // Home button
-  const homeBtn = document.getElementById("home-btn");
-  if (homeBtn) {
-    homeBtn.addEventListener("click", () => {
-      const headerHome =
-        document.querySelector(".logo-link") ||
-        document.querySelector(".site-header .logo a") ||
-        document.querySelector('nav a[href$="index.html"]');
-      const href = headerHome?.getAttribute("href") || (window.base || "/") + "index.html";
-      location.href = href;
+  choices.innerHTML      = "";
+      clearFeedback();
+      explanation.textContent= "";
+      explanation.classList.add("hidden");
+      nextBtn.style.display  = "none";
+      backBtn.style.display  = "none";
+
+      document.getElementById("home-btn").addEventListener("click", () => {
+        const headerHome =
+          document.querySelector(".logo-link") ||
+          document.querySelector(".site-header .logo a") ||
+          document.querySelector('nav a[href$="index.html"]');
+        const href = headerHome?.getAttribute("href") || (window.base || "/") + "index.html";
+        location.href = href;
     });
   }
-}
+
 
 
 

@@ -231,15 +231,20 @@ function setIcon(iconId, type) {
       </div>
     `;
 
-    optionsList.innerHTML      = "";
-    feedbackDiv.textContent    = "";
-    explanationDiv.textContent = "";
-    explanationDiv.classList.add("hidden");
-    nextBtn.style.display = "none";
-    backBtn.style.display = "none";
+    choices.innerHTML      = "";
+      clearFeedback();
+      explanation.textContent= "";
+      explanation.classList.add("hidden");
+      nextBtn.style.display  = "none";
+      backBtn.style.display  = "none";
 
-    document.getElementById("home-btn").addEventListener("click", () => {
-      window.location.href = window.location.origin + "/index.html";
+      document.getElementById("home-btn").addEventListener("click", () => {
+        const headerHome =
+          document.querySelector(".logo-link") ||
+          document.querySelector(".site-header .logo a") ||
+          document.querySelector('nav a[href$="index.html"]');
+        const href = headerHome?.getAttribute("href") || (window.base || "/") + "index.html";
+        location.href = href;
     });
   }
 })();
