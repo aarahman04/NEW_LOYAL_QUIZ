@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Reading Numbers Till 20</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Zero",
+      options: ["5", "0"],
+      correct: "0",
+      explanation: "Zero = 0"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> One",
+      options: ["7", "1"],
+      correct: "1",
+      explanation: "One = 1"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Two",
+      options: ["2", "9"],
+      correct: "2",
+      explanation: "Two = 2"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Three",
+      options: ["3", "8"],
+      correct: "3",
+      explanation: "Three = 3"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Four",
+      options: ["10", "4"],
+      correct: "4",
+      explanation: "Four = 4"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Five",
+      options: ["6", "5"],
+      correct: "5",
+      explanation: "Five = 5"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Six",
+      options: ["12", "6"],
+      correct: "6",
+      explanation: "Six = 6"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Seven",
+      options: ["7", "14"],
+      correct: "7",
+      explanation: "Seven = 7"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Eight",
+      options: ["8", "15"],
+      correct: "8",
+      explanation: "Eight = 8"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Nine",
+      options: ["20", "9"],
+      correct: "9",
+      explanation: "Nine = 9"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Ten",
+      options: ["10", "18"],
+      correct: "10",
+      explanation: "Ten = 10"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Eleven",
+      options: ["19", "11"],
+      correct: "11",
+      explanation: "Eleven = 11"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Twelve",
+      options: ["16", "12"],
+      correct: "12",
+      explanation: "Twelve = 12"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Thirteen",
+      options: ["13", "5"],
+      correct: "13",
+      explanation: "Thirteen = 13"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Fourteen",
+      options: ["14", "2"],
+      correct: "14",
+      explanation: "Fourteen = 14"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Fifteen",
+      options: ["9", "15"],
+      correct: "15",
+      explanation: "Fifteen = 15"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Sixteen",
+      options: ["1", "16"],
+      correct: "16",
+      explanation: "Sixteen = 16"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Seventeen",
+      options: ["17", "11"],
+      correct: "17",
+      explanation: "Seventeen = 17"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Eighteen",
+      options: ["4", "18"],
+      correct: "18",
+      explanation: "Eighteen = 18"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Nineteen",
+      options: ["19", "7"],
+      correct: "19",
+      explanation: "Nineteen = 19"
+    },
+    {
+      question: "Read the numbers in words. Choose the correct numeral. <br> Twenty",
+      options: ["6", "20"],
+      correct: "20",
+      explanation: "Twenty = 20"
+    }
+  ];
+</script>
+
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+  </body>
+</html>
