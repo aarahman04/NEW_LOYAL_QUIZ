@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Adding Doubles Till 20</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>12 + 12</span>",
+      options: ["24", "22"],
+      correct: "24",
+      explanation: "12 + 12 = 24"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>7 + 7</span>",
+      options: ["15", "14"],
+      correct: "14",
+      explanation: "7 + 7 = 14"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>0 + 0</span>",
+      options: ["0", "2"],
+      correct: "0",
+      explanation: "0 + 0 = 0"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>15 + 15</span>",
+      options: ["30", "28"],
+      correct: "30",
+      explanation: "15 + 15 = 30"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>2 + 2</span>",
+      options: ["5", "4"],
+      correct: "4",
+      explanation: "2 + 2 = 4"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>10 + 10</span>",
+      options: ["19", "20"],
+      correct: "20",
+      explanation: "10 + 10 = 20"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>20 + 20</span>",
+      options: ["40", "30"],
+      correct: "40",
+      explanation: "20 + 20 = 40"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>5 + 5</span>",
+      options: ["10", "12"],
+      correct: "10",
+      explanation: "5 + 5 = 10"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>9 + 9</span>",
+      options: ["17", "18"],
+      correct: "18",
+      explanation: "9 + 9 = 18"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>18 + 18</span>",
+      options: ["36", "34"],
+      correct: "36",
+      explanation: "18 + 18 = 36"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>3 + 3</span>",
+      options: ["7", "6"],
+      correct: "6",
+      explanation: "3 + 3 = 6"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>1 + 1</span>",
+      options: ["1", "2"],
+      correct: "2",
+      explanation: "1 + 1 = 2"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>8 + 8</span>",
+      options: ["16", "18"],
+      correct: "16",
+      explanation: "8 + 8 = 16"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>19 + 19</span>",
+      options: ["37", "38"],
+      correct: "38",
+      explanation: "19 + 19 = 38"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>6 + 6</span>",
+      options: ["11", "12"],
+      correct: "12",
+      explanation: "6 + 6 = 12"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>17 + 17</span>",
+      options: ["35", "34"],
+      correct: "34",
+      explanation: "17 + 17 = 34"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>11 + 11</span>",
+      options: ["21", "22"],
+      correct: "22",
+      explanation: "11 + 11 = 22"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>13 + 13</span>",
+      options: ["27", "26"],
+      correct: "26",
+      explanation: "13 + 13 = 26"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>14 + 14</span>",
+      options: ["29", "28"],
+      correct: "28",
+      explanation: "14 + 14 = 28"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>16 + 16</span>",
+      options: ["31", "32"],
+      correct: "32",
+      explanation: "16 + 16 = 32"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>4 + 4</span>",
+      options: ["9", "8"],
+      correct: "8",
+      explanation: "4 + 4 = 8"
+    }
+  ];
+</script>
+
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+  </body>
+</html>
