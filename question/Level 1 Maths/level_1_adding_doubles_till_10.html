@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Adding Doubles Till 10</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>1 + 1</span>",
+      options: ["1", "2"],
+      correct: "2",
+      explanation: "1 + 1 = 2"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>2 + 2</span>",
+      options: ["4", "6"],
+      correct: "4",
+      explanation: "2 + 2 = 4"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>3 + 3</span>",
+      options: ["9", "6"],
+      correct: "6",
+      explanation: "3 + 3 = 6"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>4 + 4</span>",
+      options: ["8", "12"],
+      correct: "8",
+      explanation: "4 + 4 = 8"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>5 + 5</span>",
+      options: ["15", "10"],
+      correct: "10",
+      explanation: "5 + 5 = 10"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>6 + 6</span>",
+      options: ["12", "14"],
+      correct: "12",
+      explanation: "6 + 6 = 12"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>7 + 7</span>",
+      options: ["16", "14"],
+      correct: "14",
+      explanation: "7 + 7 = 14"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>8 + 8</span>",
+      options: ["18", "16"],
+      correct: "16",
+      explanation: "8 + 8 = 16"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>9 + 9</span>",
+      options: ["19", "18"],
+      correct: "18",
+      explanation: "9 + 9 = 18"
+    },
+    {
+      question: "Add the doubles: <br> <span style='color:black;'>10 + 10</span>",
+      options: ["20", "21"],
+      correct: "20",
+      explanation: "10 + 10 = 20"
+    }
+  ];
+</script>
+
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+  </body>
+</html>
