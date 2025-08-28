@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Convert Numbers Till 30</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>21</span>",
+      options: ["Twenty-One", "Seventeen"],
+      correct: "Twenty-One",
+      explanation: "21 = Twenty-One"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>4</span>",
+      options: ["Four", "Nine"],
+      correct: "Four",
+      explanation: "4 = Four"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>12</span>",
+      options: ["Twelve", "Fifteen"],
+      correct: "Twelve",
+      explanation: "12 = Twelve"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>0</span>",
+      options: ["Zero", "Three"],
+      correct: "Zero",
+      explanation: "0 = Zero"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>27</span>",
+      options: ["Twenty-Seven", "Twenty"],
+      correct: "Twenty-Seven",
+      explanation: "27 = Twenty-Seven"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>8</span>",
+      options: ["Ten", "Eight"],
+      correct: "Eight",
+      explanation: "8 = Eight"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>19</span>",
+      options: ["Nineteen", "Fourteen"],
+      correct: "Nineteen",
+      explanation: "19 = Nineteen"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>25</span>",
+      options: ["Twenty-Five", "Twenty-Two"],
+      correct: "Twenty-Five",
+      explanation: "25 = Twenty-Five"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>2</span>",
+      options: ["Nine", "Two"],
+      correct: "Two",
+      explanation: "2 = Two"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>15</span>",
+      options: ["Sixteen", "Fifteen"],
+      correct: "Fifteen",
+      explanation: "15 = Fifteen"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>29</span>",
+      options: ["Twenty-Nine", "Twenty-Four"],
+      correct: "Twenty-Nine",
+      explanation: "29 = Twenty-Nine"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>6</span>",
+      options: ["Six", "Eleven"],
+      correct: "Six",
+      explanation: "6 = Six"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>11</span>",
+      options: ["Eleven", "Thirteen"],
+      correct: "Eleven",
+      explanation: "11 = Eleven"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>30</span>",
+      options: ["Twenty", "Thirty"],
+      correct: "Thirty",
+      explanation: "30 = Thirty"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>20</span>",
+      options: ["Twenty", "Six"],
+      correct: "Twenty",
+      explanation: "20 = Twenty"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>14</span>",
+      options: ["Fourteen", "Seventeen"],
+      correct: "Fourteen",
+      explanation: "14 = Fourteen"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>9</span>",
+      options: ["Nine", "Five"],
+      correct: "Nine",
+      explanation: "9 = Nine"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>23</span>",
+      options: ["Twenty-Three", "Eighteen"],
+      correct: "Twenty-Three",
+      explanation: "23 = Twenty-Three"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>1</span>",
+      options: ["One", "Four"],
+      correct: "One",
+      explanation: "1 = One"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>5</span>",
+      options: ["Seven", "Five"],
+      correct: "Five",
+      explanation: "5 = Five"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>18</span>",
+      options: ["Nineteen", "Eighteen"],
+      correct: "Eighteen",
+      explanation: "18 = Eighteen"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>7</span>",
+      options: ["Seven", "Twelve"],
+      correct: "Seven",
+      explanation: "7 = Seven"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>17</span>",
+      options: ["Thirteen", "Seventeen"],
+      correct: "Seventeen",
+      explanation: "17 = Seventeen"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>22</span>",
+      options: ["Twenty-Two", "Twenty-Six"],
+      correct: "Twenty-Two",
+      explanation: "22 = Twenty-Two"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>3</span>",
+      options: ["Three", "Eight"],
+      correct: "Three",
+      explanation: "3 = Three"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>28</span>",
+      options: ["Twenty-Eight", "Twenty-One"],
+      correct: "Twenty-Eight",
+      explanation: "28 = Twenty-Eight"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>16</span>",
+      options: ["Sixteen", "Nineteen"],
+      correct: "Sixteen",
+      explanation: "16 = Sixteen"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>26</span>",
+      options: ["Twenty-Four", "Twenty-Six"],
+      correct: "Twenty-Six",
+      explanation: "26 = Twenty-Six"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>13</span>",
+      options: ["Fifteen", "Thirteen"],
+      correct: "Thirteen",
+      explanation: "13 = Thirteen"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>24</span>",
+      options: ["Twenty-Nine", "Twenty-Four"],
+      correct: "Twenty-Four",
+      explanation: "24 = Twenty-Four"
+    },
+    {
+      question: "Convert the given number in words: <br> <span style='color:black;'>10</span>",
+      options: ["Ten", "Six"],
+      correct: "Ten",
+      explanation: "10 = Ten"
+    }
+  ];
+</script>
+
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+  </body>
+</html>
