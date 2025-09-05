@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Cocktails Pop</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+  {
+    "question": "Identify the subject pronoun.<br><span style='color:black'>He went to the market.</span>",
+    "options": ["he", "market"],
+    "correct": "he",
+    "explanation": "“He” is the subject pronoun doing the action."
+  },
+  {
+    "question": "Identify the object pronoun.<br><span style='color:black'>He went to him for help.</span>",
+    "options": ["him", "he"],
+    "correct": "him",
+    "explanation": "“Him” is the object pronoun receiving the action."
+  },
+  {
+    "question": "Identify the subject pronoun.<br><span style='color:black'>She was a little confused.</span>",
+    "options": ["was", "She"],
+    "correct": "She",
+    "explanation": "“She” is the subject pronoun here."
+  },
+  {
+    "question": "Identify the subject pronoun.<br><span style='color:black'>He was the world to her.</span>",
+    "options": ["her", "he"],
+    "correct": "he",
+    "explanation": "“He” is the subject pronoun in this sentence."
+  },
+  {
+    "question": "Identify the object pronoun.<br><span style='color:black'>They told us to leave the country.</span>",
+    "options": ["they", "us"],
+    "correct": "us",
+    "explanation": "“Us” is the object pronoun receiving the action."
+  },
+  {
+    "question": "Identify the object pronoun.<br><span style='color:black'>She always helps me.</span>",
+    "options": ["she", "me"],
+    "correct": "me",
+    "explanation": "“Me” is the object pronoun in this sentence."
+  },
+  {
+    "question": "Identify the subject pronoun.<br><span style='color:black'>He wrote a long letter.</span>",
+    "options": ["long", "he"],
+    "correct": "he",
+    "explanation": "“He” is the subject pronoun writing the letter."
+  },
+  {
+    "question": "Identify the subject pronoun.<br><span style='color:black'>We insist on good service.</span>",
+    "options": ["we", "on"],
+    "correct": "we",
+    "explanation": "“We” is the subject pronoun in this sentence."
+  },
+  {
+    "question": "Identify the subject pronoun.<br><span style='color:black'>I insist on talking to him.</span>",
+    "options": ["him", "I"],
+    "correct": "I",
+    "explanation": "“I” is the subject pronoun."
+  },
+  {
+    "question": "Identify the object pronoun.<br><span style='color:black'>He admires her a lot.</span>",
+    "options": ["he", "her"],
+    "correct": "her",
+    "explanation": "“Her” is the object pronoun admired by him."
+  },
+  {
+    "question": "Identify the object pronoun.<br><span style='color:black'>I always tell you the truth.</span>",
+    "options": ["I", "you"],
+    "correct": "you",
+    "explanation": "“You” is the object pronoun receiving the truth."
+  },
+  {
+    "question": "Identify the subject pronoun.<br><span style='color:black'>She collects her books.</span>",
+    "options": ["her", "she"],
+    "correct": "she",
+    "explanation": "“She” is the subject pronoun collecting the books."
+  },
+  {
+    "question": "Identify the object pronoun.<br><span style='color:black'>She collects her books.</span>",
+    "options": ["her", "she"],
+    "correct": "her",
+    "explanation": "“Her” is the object pronoun showing possession."
+  },
+  {
+    "question": "Identify the subject pronoun.<br><span style='color:black'>He collects them from the airport.</span>",
+    "options": ["he", "them"],
+    "correct": "he",
+    "explanation": "“He” is the subject pronoun collecting them."
+  },
+  {
+    "question": "Identify the object pronoun.<br><span style='color:black'>He collects them from the airport.</span>",
+    "options": ["them", "he"],
+    "correct": "them",
+    "explanation": "“Them” is the object pronoun in this sentence."
+  },
+  {
+    "question": "Identify the subject pronoun.<br><span style='color:black'>I often meet him at the park.</span>",
+    "options": ["I", "him"],
+    "correct": "I",
+    "explanation": "“I” is the subject pronoun performing the action."
+  },
+  {
+    "question": "Identify the object pronoun.<br><span style='color:black'>I often meet him at the park.</span>",
+    "options": ["I", "him"],
+    "correct": "him",
+    "explanation": "“Him” is the object pronoun being met."
+  },
+  {
+    "question": "Identify the subject pronoun.<br><span style='color:black'>She helps him with homework.</span>",
+    "options": ["him", "she"],
+    "correct": "she",
+    "explanation": "“She” is the subject pronoun helping."
+  },
+  {
+    "question": "Identify the object pronoun.<br><span style='color:black'>The teacher gives them extra work.</span>",
+    "options": ["teacher", "them"],
+    "correct": "them",
+    "explanation": "“Them” is the object pronoun receiving the work."
+  },
+  {
+    "question": "Identify the subject pronoun.<br><span style='color:black'>I give them extra work.</span>",
+    "options": ["I", "them"],
+    "correct": "I",
+    "explanation": "“I” is the subject pronoun giving the work."
+  }
+];
+
+
+
+    </script>
+
+    <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>

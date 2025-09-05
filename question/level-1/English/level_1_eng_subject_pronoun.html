@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Subject Pronoun</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>I went to the market.</span>",
+    "options": ["I", "To"],
+    "correct": "I",
+    "explanation": "“I” is the subject pronoun doing the action."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>He was crying all day.</span>",
+    "options": ["was", "he"],
+    "correct": "he",
+    "explanation": "“He” is the subject pronoun performing the action."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>They were carrying out the task.</span>",
+    "options": ["they", "out"],
+    "correct": "they",
+    "explanation": "“They” is the subject pronoun carrying out the task."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>She was not allowed in the classroom.</span>",
+    "options": ["she", "allowed"],
+    "correct": "she",
+    "explanation": "“She” is the subject pronoun here."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>We should move forward.</span>",
+    "options": ["should", "we"],
+    "correct": "we",
+    "explanation": "“We” is the subject pronoun moving forward."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>You should move forward.</span>",
+    "options": ["move", "you"],
+    "correct": "you",
+    "explanation": "“You” is the subject pronoun in this sentence."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>It was raining.</span>",
+    "options": ["raining", "it"],
+    "correct": "it",
+    "explanation": "“It” is the subject pronoun."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>It was snowing.</span>",
+    "options": ["it", "snowing"],
+    "correct": "it",
+    "explanation": "“It” is the subject pronoun."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>I looked carefully for the book.</span>",
+    "options": ["the", "I"],
+    "correct": "I",
+    "explanation": "“I” is the subject pronoun doing the action."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>They went to the right place.</span>",
+    "options": ["to", "they"],
+    "correct": "they",
+    "explanation": "“They” is the subject pronoun here."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>He must go to the bathroom.</span>",
+    "options": ["go", "he"],
+    "correct": "he",
+    "explanation": "“He” is the subject pronoun going to the bathroom."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>It was able to fly.</span>",
+    "options": ["fly", "it"],
+    "correct": "it",
+    "explanation": "“It” is the subject pronoun."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>We wrote our own rules.</span>",
+    "options": ["we", "rules"],
+    "correct": "we",
+    "explanation": "“We” is the subject pronoun writing the rules."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>I believe that!</span>",
+    "options": ["are", "I"],
+    "correct": "I",
+    "explanation": "“I” is the subject pronoun believing."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>I have nothing more to say.</span>",
+    "options": ["I", "say"],
+    "correct": "I",
+    "explanation": "“I” is the subject pronoun in this sentence."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>You were amazing!</span>",
+    "options": ["You", "were"],
+    "correct": "You",
+    "explanation": "“You” is the subject pronoun."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>They were not coming.</span>",
+    "options": ["not", "they"],
+    "correct": "they",
+    "explanation": "“They” is the subject pronoun not coming."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>You can choose between the two cakes.</span>",
+    "options": ["you", "can"],
+    "correct": "you",
+    "explanation": "“You” is the subject pronoun."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>He drove the car.</span>",
+    "options": ["drove", "he"],
+    "correct": "he",
+    "explanation": "“He” is the subject pronoun driving the car."
+  },
+  {
+    "question": "Choose the correct subject pronoun?<br><span style='color:black'>She is swimming in the pond.</span>",
+    "options": ["she", "is"],
+    "correct": "she",
+    "explanation": "“She” is the subject pronoun here."
+  }
+];
+
+
+    </script>
+
+    <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Identify Exclamations</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+const questions = [
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The boy is fast / How are you?</span>",
+    "options": ["The boy is fast", "How are you?"],
+    "correct": "The boy is fast",
+    "explanation": "A statement tells something and ends with a period."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>What is your name? / The girl is pretty.</span>",
+    "options": ["What is your name?", "The girl is pretty."],
+    "correct": "The girl is pretty.",
+    "explanation": "It is a statement because it tells something."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>What is your mother’s name? / The ocean was calm.</span>",
+    "options": ["What is your mother’s name?", "The ocean was calm."],
+    "correct": "The ocean was calm.",
+    "explanation": "This sentence tells something, so it’s a statement."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The boy read many books. / What is your favorite book?</span>",
+    "options": ["The boy read many books.", "What is your favorite book?"],
+    "correct": "The boy read many books.",
+    "explanation": "It ends with a period and tells something."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>What is your name? / The girl is beautiful.</span>",
+    "options": ["What is your name?", "The girl is beautiful."],
+    "correct": "The girl is beautiful.",
+    "explanation": "It’s a statement, not a question."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>What is your father’s name? / The cat slept on the table.</span>",
+    "options": ["What is your father’s name?", "The cat slept on the table."],
+    "correct": "The cat slept on the table.",
+    "explanation": "It tells something and ends with a period."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>How are you? / The sky is blue.</span>",
+    "options": ["How are you?", "The sky is blue."],
+    "correct": "The sky is blue.",
+    "explanation": "It is a statement that describes something."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>What is your opinion? / The sky was full of birds.</span>",
+    "options": ["What is your opinion?", "The sky was full of birds."],
+    "correct": "The sky was full of birds.",
+    "explanation": "It’s a statement because it tells something."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The baby was crying. / What is your opinion?</span>",
+    "options": ["The baby was crying.", "What is your opinion?"],
+    "correct": "The baby was crying.",
+    "explanation": "It tells something and ends with a period."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>What is the difference between them? / The bank was full of people.</span>",
+    "options": ["What is the difference between them?", "The bank was full of people."],
+    "correct": "The bank was full of people.",
+    "explanation": "This is a statement."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The road was closed. / What is his favorite part?</span>",
+    "options": ["The road was closed.", "What is his favorite part?"],
+    "correct": "The road was closed.",
+    "explanation": "It is a statement ending with a period."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The road was open. / What was the quiz about?</span>",
+    "options": ["The road was open.", "What was the quiz about?"],
+    "correct": "The road was open.",
+    "explanation": "It tells something."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>What is his purpose? / The cat was fluffy.</span>",
+    "options": ["What is his purpose?", "The cat was fluffy."],
+    "correct": "The cat was fluffy.",
+    "explanation": "It is a statement describing the cat."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>What was your first impression? / The hen was sleeping.</span>",
+    "options": ["What was your first impression?", "The hen was sleeping."],
+    "correct": "The hen was sleeping.",
+    "explanation": "This is a statement because it tells something."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Some people can’t eat peanuts. / Do you love Ms Sandy?</span>",
+    "options": ["Some people can’t eat peanuts.", "Do you love Ms Sandy?"],
+    "correct": "Some people can’t eat peanuts.",
+    "explanation": "It ends with a period and tells something."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Do you like apples? / Some people are just very sensitive.</span>",
+    "options": ["Do you like apples?", "Some people are just very sensitive."],
+    "correct": "Some people are just very sensitive.",
+    "explanation": "It is a statement."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Do you like apples? / Some people are just very scary.</span>",
+    "options": ["Do you like apples?", "Some people are just very scary."],
+    "correct": "Some people are just very scary.",
+    "explanation": "It tells something, so it’s a statement."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Do you like puzzles? / Some people are scared of spiders.</span>",
+    "options": ["Do you like puzzles?", "Some people are scared of spiders."],
+    "correct": "Some people are scared of spiders.",
+    "explanation": "This is a statement."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Ms Sandy works with my mother. / Do you like swimming?</span>",
+    "options": ["Ms Sandy works with my mother.", "Do you like swimming?"],
+    "correct": "Ms Sandy works with my mother.",
+    "explanation": "It ends with a period and tells something."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Does he like dogs? / I went to the market.</span>",
+    "options": ["Does he like dogs?", "I went to the market."],
+    "correct": "I went to the market.",
+    "explanation": "It is a statement because it tells something."
+  }
+];
+
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>

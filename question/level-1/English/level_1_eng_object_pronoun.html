@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Object Pronouns</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+  {"question":"Sam saw him at school","options":["Sam","him"],"correct":"him","explanation":"“him” is the correct object pronoun in this sentence."},
+  {"question":"The girl took her bag","options":["the","her"],"correct":"her","explanation":"“her” is the correct object pronoun in this sentence."},
+  {"question":"Grandfather blew his whistle","options":["grandfather","his"],"correct":"his","explanation":"“his” is the correct object pronoun in this sentence."},
+  {"question":"Grandma bought him candy.","options":["him","candy"],"correct":"him","explanation":"“him” is the correct object pronoun in this sentence."},
+  {"question":"Sam bit his own tongue.","options":["bit","his"],"correct":"his","explanation":"“his” is the correct object pronoun in this sentence."},
+  {"question":"Sandy got her bag.","options":["Sandy","her"],"correct":"her","explanation":"“her” is the correct object pronoun in this sentence."},
+  {"question":"The pilot gave him water.","options":["him","water"],"correct":"him","explanation":"“him” is the correct object pronoun in this sentence."},
+  {"question":"The manager gave him the book.","options":["him","book"],"correct":"him","explanation":"“him” is the correct object pronoun in this sentence."},
+  {"question":"Please give her the keys.","options":["her","give"],"correct":"her","explanation":"“her” is the correct object pronoun in this sentence."},
+  {"question":"Can you hear me!","options":["me","can"],"correct":"me","explanation":"“me” is the correct object pronoun in this sentence."},
+  {"question":"We like them very much.","options":["we","them"],"correct":"them","explanation":"“them” is the correct object pronoun in this sentence."},
+  {"question":"She met us after class.","options":["she","us"],"correct":"us","explanation":"“us” is the correct object pronoun in this sentence."},
+  {"question":"Please help me with this.","options":["help","me"],"correct":"me","explanation":"“me” is the correct object pronoun in this sentence."},
+  {"question":"Dad told her a story.","options":["dad","her"],"correct":"her","explanation":"“her” is the correct object pronoun in this sentence."},
+  {"question":"Coach praised him today.","options":["coach","him"],"correct":"him","explanation":"“him” is the correct object pronoun in this sentence."},
+  {"question":"Teacher asked us to read.","options":["teacher","us"],"correct":"us","explanation":"“us” is the correct object pronoun in this sentence."},
+  {"question":"They invited me to play.","options":["they","me"],"correct":"me","explanation":"“me” is the correct object pronoun in this sentence."},
+  {"question":"The gift is for her.","options":["gift","her"],"correct":"her","explanation":"“her” is the correct object pronoun in this sentence."},
+  {"question":"Mom called him back.","options":["mom","him"],"correct":"him","explanation":"“him” is the correct object pronoun in this sentence."},
+  {"question":"The teacher guided them.","options":["teacher","them"],"correct":"them","explanation":"“them” is the correct object pronoun in this sentence."}
+];
+
+    </script>
+
+    <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>
