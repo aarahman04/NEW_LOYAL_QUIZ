@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Question Structures</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+  {
+    question: "Complete the sentence with the best question word. ________ are you late?",
+    options: ["Why", "Where"],
+    correct: "Why",
+    explanation: "'Why' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ will you come?",
+    options: ["when", "where"],
+    correct: "when",
+    explanation: "'when' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ are you happy?",
+    options: ["why", "what"],
+    correct: "why",
+    explanation: "'why' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ is your best friend?",
+    options: ["who", "how"],
+    correct: "how",
+    explanation: "'how' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ do you live?",
+    options: ["where", "why"],
+    correct: "why",
+    explanation: "'why' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ is knocking at the door?",
+    options: ["who", "how"],
+    correct: "how",
+    explanation: "'how' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ is your favorite color?",
+    options: ["what", "where"],
+    correct: "what",
+    explanation: "'what' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ is your birthday?",
+    options: ["who", "when"],
+    correct: "when",
+    explanation: "'when' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ is playing cricket?",
+    options: ["who", "how"],
+    correct: "who",
+    explanation: "'who' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ are you crying?",
+    options: ["why", "who"],
+    correct: "why",
+    explanation: "'why' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ are you going?",
+    options: ["how", "where"],
+    correct: "where",
+    explanation: "'where' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ is knocking?",
+    options: ["who", "where"],
+    correct: "where",
+    explanation: "'where' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ are you feeling?",
+    options: ["how", "why"],
+    correct: "why",
+    explanation: "'why' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ is your teacher?",
+    options: ["who", "why"],
+    correct: "why",
+    explanation: "'why' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ is your brother?",
+    options: ["who", "when"],
+    correct: "when",
+    explanation: "'when' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ is playing outside?",
+    options: ["who", "how"],
+    correct: "who",
+    explanation: "'who' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ is your name?",
+    options: ["how", "who"],
+    correct: "who",
+    explanation: "'who' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ is your favorite teacher?",
+    options: ["who", "when"],
+    correct: "when",
+    explanation: "'when' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ is coming to dinner?",
+    options: ["when", "who"],
+    correct: "when",
+    explanation: "'when' is the correct question word."
+  },
+  {
+    question: "Complete the sentence with the best question word. ________ is your father?",
+    options: ["when", "where"],
+    correct: "where",
+    explanation: "'where' is the correct question word."
+  }
+];
+
+    </script>
+
+    <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+  </body>
+</html>
