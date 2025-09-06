@@ -108,7 +108,7 @@ const footerHtml = `
         <ul class="social-links" aria-label="Social Media">
           <li><a href="#" title="Twitter / X"><i class="bi bi-twitter-x icon" aria-hidden="true"></i><span>Twitter / X</span></a></li>
           <li><a href="#" title="Facebook"><i class="bi bi-facebook icon" aria-hidden="true"></i><span>Facebook</span></a></li>
-          <li><a href="#" title="Instagram"><i class="bi bi-instagram icon" aria-hidden="true"></i><span>Instagram</span></a></li>
+          <li><a href="https://www.instagram.com/loyal.int.school?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" title="Instagram"><i class="bi bi-instagram icon" aria-hidden="true"></i><span>Instagram</span></a></li>
         </ul>
       </section>
     </div>
