@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Singular–Plural</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Sandy bought two _______</span>",
+    options: ["Apple", "apples"],
+    correct: "apples",
+    explanation: "Chose plural form because the sentence contains number word 'two'. Correct: 'apples'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Sam wrote three _______</span>",
+    options: ["letter", "letters"],
+    correct: "letters",
+    explanation: "Chose plural form because the sentence contains number word 'three'. Correct: 'letters'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The teacher gave them five _______</span>",
+    options: ["points", "point"],
+    correct: "points",
+    explanation: "Chose plural form because the sentence contains number word 'five'. Correct: 'points'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is on the desk.</span>",
+    options: ["book", "books"],
+    correct: "book",
+    explanation: "Chose singular form because the sentence uses singular verb ('is'/'was'). Correct: 'book'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Those _______ are new.</span>",
+    options: ["cars", "car"],
+    correct: "cars",
+    explanation: "Chose plural form because the sentence uses plural verb ('are'/'were'). Correct: 'cars'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>My _______ is very kind.</span>",
+    options: ["friend", "friends"],
+    correct: "friend",
+    explanation: "Chose singular form because the sentence uses singular verb ('is'/'was'). Correct: 'friend'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ are active.</span>",
+    options: ["student", "students"],
+    correct: "students",
+    explanation: "Chose plural form because the sentence uses plural verb ('are'/'were'). Correct: 'students'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>There are five _______ in the room.</span>",
+    options: ["chair", "chairs"],
+    correct: "chairs",
+    explanation: "Chose plural form because the sentence uses plural verb ('are'/'were'). Correct: 'chairs'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is speaking.</span>",
+    options: ["teachers", "teacher"],
+    correct: "teacher",
+    explanation: "Chose singular form because the sentence uses singular verb ('is'/'was'). Correct: 'teacher'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is working hard.</span>",
+    options: ["man", "men"],
+    correct: "man",
+    explanation: "Chose singular form because the sentence uses singular verb ('is'/'was'). Correct: 'man'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>She has two beautiful _______</span>",
+    options: ["children", "child"],
+    correct: "children",
+    explanation: "Chose plural form because the sentence contains number word 'two'. Correct: 'children'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>There are many _______ over there.</span>",
+    options: ["person", "people"],
+    correct: "people",
+    explanation: "Chose plural form because the sentence uses plural verb ('are'/'were'). Correct: 'people'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ need their books.</span>",
+    options: ["students", "student"],
+    correct: "student",
+    explanation: "Chose singular form because the sentence no clear cue. Correct: 'student'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>My _______ grow in the garden.</span>",
+    options: ["flower", "flowers"],
+    correct: "flower",
+    explanation: "Chose singular form because the sentence no clear cue. Correct: 'flower'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>My _______ was the same.</span>",
+    options: ["answer", "answers"],
+    correct: "answer",
+    explanation: "Chose singular form because the sentence uses singular verb ('is'/'was'). Correct: 'answer'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>There are ten _______ over there.</span>",
+    options: ["rat", "rats"],
+    correct: "rats",
+    explanation: "Chose plural form because the sentence uses plural verb ('are'/'were'). Correct: 'rats'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>I ate one _______</span>",
+    options: ["doughnut", "doughnuts"],
+    correct: "doughnut",
+    explanation: "Chose singular form because the sentence contains number word 'one'. Correct: 'doughnut'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is speaking.</span>",
+    options: ["teachers", "teacher"],
+    correct: "teacher",
+    explanation: "Chose singular form because the sentence uses singular verb ('is'/'was'). Correct: 'teacher'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is talking.</span>",
+    options: ["policemen", "Policeman"],
+    correct: "Policeman",
+    explanation: "Chose singular form because the sentence uses singular verb ('is'/'was'). Correct: 'Policeman'."
+  },
+  {
+    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>That _______ is very old.</span>",
+    options: ["house", "houses"],
+    correct: "house",
+    explanation: "Chose singular form because the sentence uses singular verb ('is'/'was'). Correct: 'house'."
+  }
+];
+
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>

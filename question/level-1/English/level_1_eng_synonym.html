@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Synonym</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {
+          question: "Which of the following is a synonym for road?",
+          options: ["Street", "Boy"],
+          correct: "Street",
+          explanation: "'Street' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for bicycle?",
+          options: ["bike", "car"],
+          correct: "bike",
+          explanation: "'bike' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for bounce?",
+          options: ["sleep", "jump"],
+          correct: "jump",
+          explanation: "'jump' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for grandmother?",
+          options: ["grandma", "mom"],
+          correct: "grandma",
+          explanation: "'grandma' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for kind?",
+          options: ["nice", "love"],
+          correct: "nice",
+          explanation: "'nice' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for father?",
+          options: ["grandpa", "dad"],
+          correct: "dad",
+          explanation: "'dad' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for listen?",
+          options: ["hear", "idea"],
+          correct: "hear",
+          explanation: "'hear' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for hear?",
+          options: ["idea", "listen"],
+          correct: "listen",
+          explanation: "'listen' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for tug?",
+          options: ["pull", "cry"],
+          correct: "pull",
+          explanation: "'pull' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for start?",
+          options: ["begin", "finish"],
+          correct: "begin",
+          explanation: "'begin' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for great?",
+          options: ["good", "bad"],
+          correct: "good",
+          explanation: "'good' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for supper?",
+          options: ["breakfast", "dinner"],
+          correct: "dinner",
+          explanation: "'dinner' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for believe?",
+          options: ["think", "idea"],
+          correct: "think",
+          explanation: "'think' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for grandpa?",
+          options: ["grandmother", "grandfather"],
+          correct: "grandfather",
+          explanation: "'grandfather' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for seat?",
+          options: ["chapter", "chair"],
+          correct: "chair",
+          explanation: "'chair' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for child?",
+          options: ["people", "kids"],
+          correct: "kids",
+          explanation: "'kids' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for afraid?",
+          options: ["scared", "happy"],
+          correct: "scared",
+          explanation: "'scared' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for cold?",
+          options: ["chilly", "hot"],
+          correct: "chilly",
+          explanation: "'chilly' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for hard?",
+          options: ["difficult", "beautiful"],
+          correct: "difficult",
+          explanation: "'difficult' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which of the following is a synonym for garbage?",
+          options: ["dirty", "trash"],
+          correct: "trash",
+          explanation: "'trash' is a synonym for the target word in the question."
+        }
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>

@@ -235,3 +235,32 @@ body, .logo-text, header, .hero-card h1, .hero-card p {
  10%{ opacity:1; }
 100%{ transform:translateY(110vh) rotate(360deg); opacity:0; }
 }
+
+/* === Auto-condense when >2 targets (desktop/tablet) === */
+/* When there are at least 3 dropboxes, make a single row of 3 and shrink boxes */
+@media (min-width: 681px) {
+  .two-targets:has(.dropbox:nth-child(3)) {
+    grid-template-columns: repeat(3, minmax(120px, 180px));
+    gap: .6rem;
+  }
+  .two-targets:has(.dropbox:nth-child(3)) .dropbox {
+    min-height: 56px;
+    padding: .4rem;
+    font-size: 0.9rem;
+    width: clamp(120px, 18vw, 180px);
+  }
+
+  /* If a 4th exists, tighten further and fit all 4 in one line */
+  .two-targets:has(.dropbox:nth-child(4)) {
+    grid-template-columns: repeat(4, minmax(100px, 150px));
+    gap: .55rem;
+  }
+  .two-targets:has(.dropbox:nth-child(4)) .dropbox {
+    min-height: 52px;
+    padding: .35rem;
+    font-size: 0.85rem;
+    width: clamp(100px, 14vw, 150px);
+  }
+}
+
+/* Mobile keeps your existing stacked behavior */

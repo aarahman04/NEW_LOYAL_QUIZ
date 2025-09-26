@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Antonym</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {
+          question: "Which word is an antonym of buy?",
+          options: ["sell", "gift"],
+          correct: "sell",
+          explanation: "'sell' is the opposite (antonym) of 'buy'."
+        },
+        {
+          question: "Which word is an antonym of sell?",
+          options: ["gift", "buy"],
+          correct: "buy",
+          explanation: "'buy' is the opposite (antonym) of 'sell'."
+        },
+        {
+          question: "Which word is an antonym of hot?",
+          options: ["cooking", "cold"],
+          correct: "cooking",
+          explanation: "'cooking' is the opposite (antonym) of 'hot'."
+        },
+        {
+          question: "Which word is an antonym of cold?",
+          options: ["hot", "air conditioner"],
+          correct: "hot",
+          explanation: "'hot' is the opposite (antonym) of 'cold'."
+        },
+        {
+          question: "Which word is an antonym of clean?",
+          options: ["dirty", "Cleaning company"],
+          correct: "dirty",
+          explanation: "'dirty' is the opposite (antonym) of 'clean'."
+        },
+        {
+          question: "Which word is an antonym of bad?",
+          options: ["good", "dirty"],
+          correct: "good",
+          explanation: "'good' is the opposite (antonym) of 'bad'."
+        },
+        {
+          question: "Which word is an antonym of absent?",
+          options: ["good", "Present"],
+          correct: "good",
+          explanation: "'good' is the opposite (antonym) of 'absent'."
+        },
+        {
+          question: "Which word is an antonym of present?",
+          options: ["end", "absent"],
+          correct: "absent",
+          explanation: "'absent' is the opposite (antonym) of 'present'."
+        },
+        {
+          question: "Which word is an antonym of big?",
+          options: ["gift", "small"],
+          correct: "gift",
+          explanation: "'gift' is the opposite (antonym) of 'big'."
+        },
+        {
+          question: "Which word is an antonym of small?",
+          options: ["big", "ant"],
+          correct: "big",
+          explanation: "'big' is the opposite (antonym) of 'small'."
+        },
+        {
+          question: "Which word is an antonym of black?",
+          options: ["green", "white"],
+          correct: "green",
+          explanation: "'green' is the opposite (antonym) of 'black'."
+        },
+        {
+          question: "Which word is an antonym of white?",
+          options: ["black", "pink"],
+          correct: "black",
+          explanation: "'black' is the opposite (antonym) of 'white'."
+        },
+        {
+          question: "Which word is an antonym of day?",
+          options: ["night", "end"],
+          correct: "night",
+          explanation: "'night' is the opposite (antonym) of 'day'."
+        },
+        {
+          question: "Which word is an antonym of early?",
+          options: ["fast", "late"],
+          correct: "fast",
+          explanation: "'fast' is the opposite (antonym) of 'early'."
+        },
+        {
+          question: "Which word is an antonym of late?",
+          options: ["slow", "early"],
+          correct: "slow",
+          explanation: "'slow' is the opposite (antonym) of 'late'."
+        },
+        {
+          question: "Which word is an antonym of hard?",
+          options: ["easy", "forget it"],
+          correct: "easy",
+          explanation: "'easy' is the opposite (antonym) of 'hard'."
+        },
+        {
+          question: "Which word is an antonym of easy?",
+          options: ["hard", "transition"],
+          correct: "hard",
+          explanation: "'hard' is the opposite (antonym) of 'easy'."
+        },
+        {
+          question: "Which word is an antonym of empty?",
+          options: ["full", "trash"],
+          correct: "full",
+          explanation: "'full' is the opposite (antonym) of 'empty'."
+        },
+        {
+          question: "Which word is an antonym of first?",
+          options: ["one", "last"],
+          correct: "one",
+          explanation: "'one' is the opposite (antonym) of 'first'."
+        },
+        {
+          question: "Which word is an antonym of friend?",
+          options: ["enemy", "pal"],
+          correct: "enemy",
+          explanation: "'enemy' is the opposite (antonym) of 'friend'."
+        }
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>

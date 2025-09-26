@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drag & Drop – Proper vs Common Nouns</title>
+  <link rel="stylesheet" href="../../../../css/question.css" />
+  <link rel="stylesheet" href="../../../../css/dnd.css" />
+</head>
+<body>
+
+  <!-- Sticky Header Placeholder -->
+  <div id="site-header-placeholder"></div>
+
+  <!-- *** Quiz Container *** -->
+  <main class="quiz-container">
+    <!-- Question text -->
+    <h3 id="question-text"></h3>
+
+    <!-- Two target boxes with customizable transparent placeholders -->
+    <div class="two-targets">
+      <div class="dropbox" data-box="first"  data-placeholder=""></div>
+      <div class="dropbox" data-box="second" data-placeholder=""></div>
+      <div class="dropbox" data-box="third" data-placeholder=""></div>
+      <div class="dropbox" data-box="forth" data-placeholder=""></div>
+    </div>
+
+    <!-- The spot where the draggable chips show up -->
+    <div id="choices"></div>
+
+    <!-- Feedback & explanation -->
+    <div id="feedback" class="hidden"></div>
+    <div id="explanation" class="hidden"></div>
+
+    <button id="back-btn" class="hidden">Back</button>
+<button id="next-btn" class="hidden">Next</button>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    window.initTwoBoxSortQuiz(questions);
+  });
+</script>
+
+  </main>
+
+  <!-- Two-box DnD logic (exposes window.initTwoBoxSortQuiz) -->
+  <script src="../../../../js/drag_and_drop.js"></script>
+
+  <script>
+    // 20 items. Left box = Proper Noun, Right box = Common Noun
+    const questions = [
+       {
+    question: "Put the words in order to make a complete sentence.",
+    options: ["is", "big", "cat", "The"],
+    key: { "The": "first", "cat": "second", "is": "third", "big": "forth" },
+    explanation: "'The cat is big' is a complete sentence."
+  },
+   {
+    question: "Put the words in order to make a complete sentence.",
+    options: ["is", "big", "cat", "The"],
+    key: { "The": "first", "cat": "second", "is": "third", "big": "forth" },
+    explanation: "'The cat is big' is a complete sentence."
+  },
+   {
+    question: "Put the words in order to make a complete sentence.",
+    options: ["is", "big", "cat", "The"],
+    key: { "The": "first", "cat": "second", "is": "third", "big": "forth" },
+    explanation: "'The cat is big' is a complete sentence."
+  },
+      
+    ];
+
+    // Start the two-box sorter
+    initTwoBoxSortQuiz(questions);
+  </script>
+
+  <!-- Footer Placeholder -->
+  <div id="site-footer-placeholder"></div>
+  <script src="../../../../js/partials.js"></script>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    // pick the quiz you’re running:
+    // initDragDropQuiz(questions);
+    // or
+    // initTwoBoxSortQuiz(questions);
+  });
+</script>
+
+</body>
+</html>
