@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Who / How — Set 1 (20)</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+    <script>
+      const questions = [
+  {
+    "question": "I don’t know ___________ to solve this situation.",
+    "options": [
+      "how",
+      "who"
+    ],
+    "correct": "how",
+    "explanation": "Use 'how' to ask about the manner or method of doing something."
+  },
+  {
+    "question": "___________ is knocking at the door?",
+    "options": [
+      "how",
+      "who"
+    ],
+    "correct": "who",
+    "explanation": "Use 'who' to ask about a person."
+  },
+  {
+    "question": "Sandy showed me ___________ to bake a cake.",
+    "options": [
+      "how",
+      "who"
+    ],
+    "correct": "who",
+    "explanation": "Use 'who' to ask about a person or people."
+  },
+  {
+    "question": "___________ are you?",
+    "options": [
+      "how",
+      "who"
+    ],
+    "correct": "who",
+    "explanation": "Use 'who' to ask about a person or people."
+  },
+  {
+    "question": "She knows ___________ to drive.",
+    "options": [
+      "who",
+      "how"
+    ],
+    "correct": "who",
+    "explanation": "Use 'who' to ask about a person."
+  },
+  {
+    "question": "Sandy knows ___________ to write a long essay.",
+    "options": [
+      "who",
+      "how"
+    ],
+    "correct": "who",
+    "explanation": "Use 'who' to ask about a person or people."
+  },
+  {
+    "question": "___________ called you last night?",
+    "options": [
+      "who",
+      "how"
+    ],
+    "correct": "who",
+    "explanation": "Use 'who' to ask about a person or people."
+  },
+  {
+    "question": "Can you tell me ___________ to get to the station?",
+    "options": [
+      "how",
+      "who"
+    ],
+    "correct": "who",
+    "explanation": "Use 'who' to ask about a person."
+  },
+  {
+    "question": "___________ left this note on my desk?",
+    "options": [
+      "who",
+      "how"
+    ],
+    "correct": "who",
+    "explanation": "Use 'who' to ask about a person or people."
+  },
+  {
+    "question": "He explained ___________ the machine works.",
+    "options": [
+      "who",
+      "how"
+    ],
+    "correct": "who",
+    "explanation": "Use 'who' to ask about a person."
+  },
+  {
+    "question": "___________ is your favorite character in that story?",
+    "options": [
+      "how",
+      "who"
+    ],
+    "correct": "who",
+    "explanation": "Use 'who' to ask about a person or people."
+  },
+  {
+    "question": "___________ is speaking?",
+    "options": [
+      "who",
+      "how"
+    ],
+    "correct": "who",
+    "explanation": "Use 'who' to ask about a person or people."
+  },
+  {
+    "question": "I wonder ___________ they built that big tall tower?",
+    "options": [
+      "how",
+      "who"
+    ],
+    "correct": "who",
+    "explanation": "Use 'who' to ask about a person."
+  },
+  {
+    "question": "___________ painted this beautiful picture?",
+    "options": [
+      "how",
+      "who"
+    ],
+    "correct": "who",
+    "explanation": "Use 'who' to ask about a person or people."
+  },
+  {
+    "question": "Does Sam know ___________ to read?",
+    "options": [
+      "how",
+      "who"
+    ],
+    "correct": "how",
+    "explanation": "Use 'how' to ask about the manner or method of doing something."
+  },
+  {
+    "question": "Do they know ___________ to solve that question?",
+    "options": [
+      "how",
+      "who"
+    ],
+    "correct": "who",
+    "explanation": "Use 'who' to ask about a person."
+  },
+  {
+    "question": "___________ will join us for dinner?",
+    "options": [
+      "how",
+      "who"
+    ],
+    "correct": "who",
+    "explanation": "Use 'who' to ask about a person or people."
+  },
+  {
+    "question": "Sandy asked ___________ you were feeling?",
+    "options": [
+      "who",
+      "how"
+    ],
+    "correct": "who",
+    "explanation": "Use 'who' to ask about a person or people."
+  },
+  {
+    "question": "___________ can teach me?",
+    "options": [
+      "how",
+      "who"
+    ],
+    "correct": "who",
+    "explanation": "Use 'who' to ask about a person or people."
+  },
+  {
+    "question": "___________ will tell me how to do it?",
+    "options": [
+      "who",
+      "how"
+    ],
+    "correct": "how",
+    "explanation": "Use 'how' to ask about the manner or method of doing something."
+  }
+];
+    </script>
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
