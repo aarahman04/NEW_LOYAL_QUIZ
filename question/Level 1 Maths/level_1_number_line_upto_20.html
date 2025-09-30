@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Number Line Upto 20</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "What comes after 7? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["8", "6"],
+      correct: "8",
+      explanation: "On the number line, after 7 comes 8."
+    },
+    {
+      question: "What comes after 15? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["16", "14"],
+      correct: "16",
+      explanation: "On the number line, after 15 comes 16."
+    },
+    {
+      question: "What comes after 2? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["4", "3"],
+      correct: "3",
+      explanation: "On the number line, after 2 comes 3."
+    },
+    {
+      question: "What comes after 18? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["19", "20"],
+      correct: "19",
+      explanation: "On the number line, after 18 comes 19."
+    },
+    {
+      question: "What comes after 10? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["12", "11"],
+      correct: "11",
+      explanation: "On the number line, after 10 comes 11."
+    },
+    {
+      question: "What comes after 0? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["2", "1"],
+      correct: "1",
+      explanation: "On the number line, after 0 comes 1."
+    },
+    {
+      question: "What comes after 5? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["6", "4"],
+      correct: "6",
+      explanation: "On the number line, after 5 comes 6."
+    },
+    {
+      question: "What comes after 12? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["13", "14"],
+      correct: "13",
+      explanation: "On the number line, after 12 comes 13."
+    },
+    {
+      question: "What comes after 9? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["8", "10"],
+      correct: "10",
+      explanation: "On the number line, after 9 comes 10."
+    },
+    {
+      question: "What comes after 19? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["20", "18"],
+      correct: "20",
+      explanation: "On the number line, after 19 comes 20."
+    },
+    {
+      question: "What comes after 3? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["2", "4"],
+      correct: "4",
+      explanation: "On the number line, after 3 comes 4."
+    },
+    {
+      question: "What comes after 14? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["15", "16"],
+      correct: "15",
+      explanation: "On the number line, after 14 comes 15."
+    },
+    {
+      question: "What comes after 8? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["10", "9"],
+      correct: "9",
+      explanation: "On the number line, after 8 comes 9."
+    },
+    {
+      question: "What comes after 6? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["8", "7"],
+      correct: "7",
+      explanation: "On the number line, after 6 comes 7."
+    },
+    {
+      question: "What comes after 16? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["18", "17"],
+      correct: "17",
+      explanation: "On the number line, after 16 comes 17."
+    },
+    {
+      question: "What comes after 11? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["10", "12"],
+      correct: "12",
+      explanation: "On the number line, after 11 comes 12."
+    },
+    {
+      question: "What comes after 4? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["6", "5"],
+      correct: "5",
+      explanation: "On the number line, after 4 comes 5."
+    },
+    {
+      question: "What comes after 1? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["0", "2"],
+      correct: "2",
+      explanation: "On the number line, after 1 comes 2."
+    },
+    {
+      question: "What comes after 17? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["18", "16"],
+      correct: "18",
+      explanation: "On the number line, after 17 comes 18."
+    },
+    {
+      question: "What comes after 13? <br><img src='../../images/numberline-0-20.png' alt='Number line 0 to 20' style='max-width:100%; height:auto;'/>",
+      options: ["14", "12"],
+      correct: "14",
+      explanation: "On the number line, after 13 comes 14."
+    }
+  ];
+</script>
+
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    initMCQQuiz(questions);
+  });
+    </script>
+  </body>
+</html>
