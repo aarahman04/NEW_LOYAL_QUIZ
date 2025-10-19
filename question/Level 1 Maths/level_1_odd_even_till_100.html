@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Odd & Even – Up to 100</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>91</span>",options:["Odd","Even"],correct:"Odd",explanation:"91 is odd."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>80</span>",options:["Odd","Even"],correct:"Even",explanation:"80 is even."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>59</span>",options:["Odd","Even"],correct:"Odd",explanation:"59 is odd."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>72</span>",options:["Odd","Even"],correct:"Even",explanation:"72 is even."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>65</span>",options:["Odd","Even"],correct:"Odd",explanation:"65 is odd."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>100</span>",options:["Odd","Even"],correct:"Even",explanation:"100 is even."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>95</span>",options:["Odd","Even"],correct:"Odd",explanation:"95 is odd."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>82</span>",options:["Odd","Even"],correct:"Even",explanation:"82 is even."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>67</span>",options:["Odd","Even"],correct:"Odd",explanation:"67 is odd."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>50</span>",options:["Odd","Even"],correct:"Even",explanation:"50 is even."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>73</span>",options:["Odd","Even"],correct:"Odd",explanation:"73 is odd."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>86</span>",options:["Odd","Even"],correct:"Even",explanation:"86 is even."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>55</span>",options:["Odd","Even"],correct:"Odd",explanation:"55 is odd."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>60</span>",options:["Odd","Even"],correct:"Even",explanation:"60 is even."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>43</span>",options:["Odd","Even"],correct:"Odd",explanation:"43 is odd."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>76</span>",options:["Odd","Even"],correct:"Even",explanation:"76 is even."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>97</span>",options:["Odd","Even"],correct:"Odd",explanation:"97 is odd."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>90</span>",options:["Odd","Even"],correct:"Even",explanation:"90 is even."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>89</span>",options:["Odd","Even"],correct:"Odd",explanation:"89 is odd."},
+        {question:"Identify whether the number is Odd or Even. <br> <span style='color:black;'>84</span>",options:["Odd","Even"],correct:"Even",explanation:"84 is even."}
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded",()=>{initMCQQuiz(questions);});
+    </script>
+  </body>
+</html>

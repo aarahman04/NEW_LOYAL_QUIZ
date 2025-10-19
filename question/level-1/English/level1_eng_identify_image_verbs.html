@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Identify Verbs</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading…</h3>
+        <ul id="options-list" class="options"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The bunny is hopping</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(1).jpg",
+          options: ["hopping", "bunny"],
+          correct: "hopping",
+          explanation: "“hopping” is the action being done by the bunny."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Sam and Sama play</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(2).jpg",
+          options: ["play", "Sam"],
+          correct: "play",
+          explanation: "“play” is the action; “Sam” is a noun (name)."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The king is talking</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(3).jpg",
+          options: ["talking", "king"],
+          correct: "talking",
+          explanation: "“talking” is the action in progress."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Sama hears the music</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(4).jpg",
+          options: ["hears", "music"],
+          correct: "hears",
+          explanation: "“hears” is the action Sama performs."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The cat sleeps</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(5).jpg",
+          options: ["sleeps", "cat"],
+          correct: "sleeps",
+          explanation: "“sleeps” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The dog naps</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(6).jpg",
+          options: ["naps", "dog"],
+          correct: "naps",
+          explanation: "“naps” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Tim feeds the birds</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(7).jpg",
+          options: ["feeds", "birds"],
+          correct: "feeds",
+          explanation: "“feeds” is the action Tim performs."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The cats dig</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(8).jpg",
+          options: ["dig", "cats"],
+          correct: "dig",
+          explanation: "“dig” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The boys walk</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(9).jpg",
+          options: ["walk", "boys"],
+          correct: "walk",
+          explanation: "“walk” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Sam opens the door</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(10).jpg",
+          options: ["opens", "door"],
+          correct: "opens",
+          explanation: "“opens” is the action Sam performs."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Sama closes the door</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(11).jpg",
+          options: ["closes", "door"],
+          correct: "closes",
+          explanation: "“closes” is the action Sama performs."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">My friend eats the cake</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(12).jpg",
+          options: ["eats", "friend"],
+          correct: "eats",
+          explanation: "“eats” is the action performed by ‘friend’."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The fish swims</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(13).jpg",
+          options: ["swims", "fish"],
+          correct: "swims",
+          explanation: "“swims” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">I wash my clothes</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(14).jpg",
+          options: ["wash", "clothes"],
+          correct: "wash",
+          explanation: "“wash” is the action done by ‘I’."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The chef cuts the onions</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(15).jpg",
+          options: ["cuts", "chef"],
+          correct: "cuts",
+          explanation: "“cuts” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The kids cry</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(16).jpg",
+          options: ["cry", "kids"],
+          correct: "cry",
+          explanation: "“cry” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">I hug mom</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(17).jpg",
+          options: ["hug", "mom"],
+          correct: "hug",
+          explanation: "“hug” is the action done by ‘I’."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The birds fly</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(18).jpg",
+          options: ["fly", "birds"],
+          correct: "fly",
+          explanation: "“fly” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Dad works on the computer</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(19).jpg",
+          options: ["works", "computer"],
+          correct: "works",
+          explanation: "“works” is the action Dad performs."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Sandy chops the meat</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(20).jpg",
+          options: ["chops", "meat"],
+          correct: "chops",
+          explanation: "“chops” is the action Sandy performs."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Nina reads the book</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(21).jpg",
+          options: ["reads", "book"],
+          correct: "reads",
+          explanation: "“reads” is the action Nina performs."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Sama bakes the croissants</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(22).jpg",
+          options: ["bakes", "croissants"],
+          correct: "bakes",
+          explanation: "“bakes” is the action Sama performs."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The boy jumps up and down</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(23).jpg",
+          options: ["jumps", "boy"],
+          correct: "jumps",
+          explanation: "“jumps” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The dogs run very fast</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(24).jpg",
+          options: ["run", "dogs"],
+          correct: "run",
+          explanation: "“run” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The kids ride horses</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(25).jpg",
+          options: ["ride", "horses"],
+          correct: "ride",
+          explanation: "“ride” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The cat sits on the table</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(26).jpg",
+          options: ["sits", "table"],
+          correct: "sits",
+          explanation: "“sits” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Tom pops the balloon</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(27).jpg",
+          options: ["pops", "balloon"],
+          correct: "pops",
+          explanation: "“pops” is the action Tom performs."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Dad helps the old lady cross the road</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(28).jpg",
+          options: ["helps", "lady"],
+          correct: "helps",
+          explanation: "“helps” is the main action in the sentence."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Sam wins the contest</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(29).jpg",
+          options: ["wins", "contest"],
+          correct: "wins",
+          explanation: "“wins” is the action Sam performs."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">I hit the ball</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(30).jpg",
+          options: ["hit", "ball"],
+          correct: "hit",
+          explanation: "“hit” is the action done by ‘I’."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">I throw the ball</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(31).jpg",
+          options: ["throw", "ball"],
+          correct: "throw",
+          explanation: "“throw” is the action done by ‘I’."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">I see an insect on the wall</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(32).jpg",
+          options: ["see", "insect"],
+          correct: "see",
+          explanation: "“see” is the action done by ‘I’."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">I drink water</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(33).jpg",
+          options: ["drink", "water"],
+          correct: "drink",
+          explanation: "“drink” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Tom sips his tea</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(34).jpg",
+          options: ["sips", "tea"],
+          correct: "sips",
+          explanation: "“sips” is the action Tom performs."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Sam and Sama play tug</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(35).jpg",
+          options: ["play", "tug"],
+          correct: "play",
+          explanation: "“play” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Sama makes a beautiful cake</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(36).jpg",
+          options: ["makes", "cake"],
+          correct: "makes",
+          explanation: "“makes” is the action Sama performs."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The children pet the puppies</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(37).jpg",
+          options: ["pet", "puppies"],
+          correct: "pet",
+          explanation: "“pet” is the action the children perform."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The baby rubs his eye</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(38).jpg",
+          options: ["rubs", "eye"],
+          correct: "rubs",
+          explanation: "“rubs” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Mummy pushes the stroller</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(39).jpg",
+          options: ["pushes", "stroller"],
+          correct: "pushes",
+          explanation: "“pushes” is the action Mummy performs."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Ben laughs happily</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(40).jpg",
+          options: ["laughs", "Ben"],
+          correct: "laughs",
+          explanation: "“laughs” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Sam and Sama jog everyday</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(41).jpg",
+          options: ["jog", "everyday"],
+          correct: "jog",
+          explanation: "“jog” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The children mix the cake ingredients</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(42).jpg",
+          options: ["mix", "ingredients"],
+          correct: "mix",
+          explanation: "“mix” is the action the children perform."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Mom zips Didi's beautiful dress</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(43).jpg",
+          options: ["zips", "dress"],
+          correct: "zips",
+          explanation: "“zips” is the action Mom performs."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Nina dips her chips in the hot sauce.</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(44).jpg",
+          options: ["dips", "chips"],
+          correct: "dips",
+          explanation: "“dips” is the action Nina performs."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The mechanic fixes the broken engine</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(45).jpg",
+          options: ["fixes", "engine"],
+          correct: "fixes",
+          explanation: "“fixes” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The baby bites Sam's finger</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(46).jpg",
+          options: ["bites", "finger"],
+          correct: "bites",
+          explanation: "“bites” is the action."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Jim wakes up at 8.00 AM</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(47).jpg",
+          options: ["wakes", "Jim"],
+          correct: "wakes",
+          explanation: "“wakes” is the action Jim performs."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Sandy loves to Smile</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(48).jpg",
+          options: ["loves", "Smile"],
+          correct: "loves",
+          explanation: "“loves” is the main verb; ‘to Smile’ is an infinitive phrase."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">Mom cooks delicious food</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(49).jpg",
+          options: ["cooks", "food"],
+          correct: "cooks",
+          explanation: "“cooks” is the action Mom performs."
+        },
+        {
+          question: `Select the verb in the sentence:<br><span style="color:black">The cop runs fast</span>`,
+          image: "../../../image/level1_eng_identify_image_verbs/lvl_1_eng_identify_image_verbs(50).jpg",
+          options: ["runs", "cop"],
+          correct: "runs",
+          explanation: "“runs” is the action."
+        }
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>

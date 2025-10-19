@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Define</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Full of light</span>",
+          options: ["bright", "do not have light"],
+          correct: "bright",
+          explanation: "“bright” means full of light."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Having a low temperature</span>",
+          options: ["warm", "cold"],
+          correct: "cold",
+          explanation: "“cold” means having a low temperature."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Feeling joy or pleasure</span>",
+          options: ["happy", "fine with the world"],
+          correct: "happy",
+          explanation: "“happy” directly expresses joy or pleasure."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Feeling unhappy</span>",
+          options: ["sad", "not very sad"],
+          correct: "sad",
+          explanation: "“sad” means feeling unhappy."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Moving quickly</span>",
+          options: ["slow", "fast"],
+          correct: "fast",
+          explanation: "“fast” means moving quickly."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Moving with little speed</span>",
+          options: ["slow", "turtle steps"],
+          correct: "slow",
+          explanation: "“slow” means moving with little speed."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Large in size</span>",
+          options: ["big", "maybe big"],
+          correct: "big",
+          explanation: "“big” directly means large in size."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Little in size</span>",
+          options: ["big", "small"],
+          correct: "small",
+          explanation: "“small” means little in size."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Having a high temperature</span>",
+          options: ["hot", "hit"],
+          correct: "hot",
+          explanation: "“hot” means having a high temperature."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Not difficult</span>",
+          options: ["easy", "thinking skills"],
+          correct: "easy",
+          explanation: "“easy” is the opposite of difficult."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Not easy</span>",
+          options: ["talking about it", "difficult"],
+          correct: "difficult",
+          explanation: "“difficult” means not easy."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Caring and helpful</span>",
+          options: ["love you", "kind"],
+          correct: "kind",
+          explanation: "“kind” means caring and helpful."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Feeling mad & upset</span>",
+          options: ["angry", "sleeping"],
+          correct: "angry",
+          explanation: "“angry” means mad or upset."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Free from dirt</span>",
+          options: ["clean", "dirty"],
+          correct: "clean",
+          explanation: "“clean” means free from dirt."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Not clean & covered in dirt</span>",
+          options: ["clean", "dirty"],
+          correct: "dirty",
+          explanation: "“dirty” is the opposite of clean."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Having lived for many years</span>",
+          options: ["young", "old"],
+          correct: "old",
+          explanation: "“old” describes having lived for many years."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Not old</span>",
+          options: ["young", "people"],
+          correct: "young",
+          explanation: "“young” is the opposite of old."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Having power or force</span>",
+          options: ["training", "strong"],
+          correct: "strong",
+          explanation: "“strong” means having power or force."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Not strong</span>",
+          options: ["strong", "weak"],
+          correct: "weak",
+          explanation: "“weak” is the opposite of strong."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Having great height</span>",
+          options: ["tall", "short"],
+          correct: "tall",
+          explanation: "“tall” means of great height."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Not tall in height</span>",
+          options: ["tall", "short"],
+          correct: "short",
+          explanation: "“short” is the opposite of tall."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Having a lot of money</span>",
+          options: ["poor", "rich"],
+          correct: "rich",
+          explanation: "“rich” means having a lot of money."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Not having much money</span>",
+          options: ["rich", "poor"],
+          correct: "poor",
+          explanation: "“poor” means not having much money."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Making you laugh</span>",
+          options: ["happy", "funny"],
+          correct: "funny",
+          explanation: "“funny” means causing laughter."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>Very nice to look at</span>",
+          options: ["ugly", "beautiful"],
+          correct: "beautiful",
+          explanation: "“beautiful” means very nice to look at."
+        }
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>

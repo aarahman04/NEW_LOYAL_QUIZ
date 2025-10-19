@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Prepositions</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">There are so many insects in _________ house.</span>`,
+          options: ["on", "our"],
+          correct: "our",
+          explanation: "“our” completes ‘in our house’."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">There are so many ants _________ the table.</span>`,
+          options: ["in", "on"],
+          correct: "on",
+          explanation: "Use ‘on’ for surfaces."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">The dog naps _________ the mat.</span>`,
+          options: ["on", "in"],
+          correct: "on",
+          explanation: "You nap ‘on’ a mat."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">The cats eat _________ the plate.</span>`,
+          options: ["in", "from"],
+          correct: "from",
+          explanation: "You eat ‘from’ a plate."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">The boy sits _________ the tree.</span>`,
+          options: ["from", "under"],
+          correct: "under",
+          explanation: "He sits ‘under’ the tree."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">Four people can fit _________ that car.</span>`,
+          options: ["inside", "down"],
+          correct: "inside",
+          explanation: "People fit ‘inside’ a car."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">Five people are _________ that group.</span>`,
+          options: ["in", "out"],
+          correct: "in",
+          explanation: "They are ‘in’ the group."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">You should not walk _________ me.</span>`,
+          options: ["behind", "by"],
+          correct: "behind",
+          explanation: "‘Walk behind me’ is correct."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">We walk _________ the park every morning.</span>`,
+          options: ["in", "by"],
+          correct: "in",
+          explanation: "You walk ‘in’ the park."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">Sam sat _________ his mom and dad.</span>`,
+          options: ["because", "between"],
+          correct: "between",
+          explanation: "He sat ‘between’ them."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">Sama went _________ the hill.</span>`,
+          options: ["on", "up"],
+          correct: "up",
+          explanation: "She went ‘up’ the hill."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">The bird sang _________ the tree top.</span>`,
+          options: ["in", "on"],
+          correct: "on",
+          explanation: "At the top: ‘on the treetop.’"
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">I was _________ playing.</span>`,
+          options: ["outside", "between"],
+          correct: "outside",
+          explanation: "‘I was outside playing.’"
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">The tiger hides _________ the rock.</span>`,
+          options: ["behind", "between"],
+          correct: "behind",
+          explanation: "It hides ‘behind’ the rock."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">Fish live _________ water.</span>`,
+          options: ["in", "outside"],
+          correct: "in",
+          explanation: "Fish live ‘in’ water."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">We ate breakfast _________ the pool.</span>`,
+          options: ["by", "on"],
+          correct: "by",
+          explanation: "You can eat ‘by’ the pool."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">He ate pizza _________ his friends.</span>`,
+          options: ["with", "the"],
+          correct: "with",
+          explanation: "He ate pizza ‘with’ his friends."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">We walked _________ the park.</span>`,
+          options: ["with", "through"],
+          correct: "through",
+          explanation: "They walked ‘through’ the park."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">We had lunch _________ noon.</span>`,
+          options: ["through", "at"],
+          correct: "at",
+          explanation: "We had lunch ‘at’ noon (time)."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">She walked _________ the door.</span>`,
+          options: ["toward", "with"],
+          correct: "toward",
+          explanation: "She walked ‘toward’ the door."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">The ball rolled _________ the couch.</span>`,
+          options: ["in", "under"],
+          correct: "under",
+          explanation: "It rolled ‘under’ the couch."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">The cat crawled _________ the couch.</span>`,
+          options: ["in", "under"],
+          correct: "under",
+          explanation: "It crawled ‘under’ the couch."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">The plane flew _________ the mountains.</span>`,
+          options: ["in", "over"],
+          correct: "over",
+          explanation: "It flew ‘over’ the mountains."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">They sat _________ the couch.</span>`,
+          options: ["in", "around"],
+          correct: "around",
+          explanation: "They sat ‘around’ the couch."
+        },
+        {
+          question: `Select the correct word to complete the sentence:<br><span style="color:black">The color _________ the sky is blue.</span>`,
+          options: ["of", "with"],
+          correct: "of",
+          explanation: "‘The color of the sky’ is idiomatic."
+        }
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>

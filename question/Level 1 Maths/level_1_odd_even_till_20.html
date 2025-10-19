@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Odd & Even – Up to 20</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>1</span>",
+      options: ["Odd", "Even"],
+      correct: "Odd",
+      explanation: "1 is not divisible by 2 → Odd."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>2</span>",
+      options: ["Odd", "Even"],
+      correct: "Even",
+      explanation: "2 ÷ 2 = 1 (no remainder) → Even."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>3</span>",
+      options: ["Even", "Odd"],
+      correct: "Odd",
+      explanation: "3 is not divisible by 2 → Odd."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>4</span>",
+      options: ["Even", "Odd"],
+      correct: "Even",
+      explanation: "4 ÷ 2 = 2 → Even."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>5</span>",
+      options: ["Odd", "Even"],
+      correct: "Odd",
+      explanation: "5 is not divisible by 2 → Odd."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>6</span>",
+      options: ["Odd", "Even"],
+      correct: "Even",
+      explanation: "6 ÷ 2 = 3 → Even."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>7</span>",
+      options: ["Even", "Odd"],
+      correct: "Odd",
+      explanation: "7 is not divisible by 2 → Odd."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>8</span>",
+      options: ["Odd", "Even"],
+      correct: "Even",
+      explanation: "8 ÷ 2 = 4 → Even."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>9</span>",
+      options: ["Odd", "Even"],
+      correct: "Odd",
+      explanation: "9 is not divisible by 2 → Odd."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>10</span>",
+      options: ["Even", "Odd"],
+      correct: "Even",
+      explanation: "10 ÷ 2 = 5 → Even."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>11</span>",
+      options: ["Odd", "Even"],
+      correct: "Odd",
+      explanation: "11 is not divisible by 2 → Odd."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>12</span>",
+      options: ["Odd", "Even"],
+      correct: "Even",
+      explanation: "12 ÷ 2 = 6 → Even."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>13</span>",
+      options: ["Even", "Odd"],
+      correct: "Odd",
+      explanation: "13 is not divisible by 2 → Odd."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>14</span>",
+      options: ["Odd", "Even"],
+      correct: "Even",
+      explanation: "14 ÷ 2 = 7 → Even."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>15</span>",
+      options: ["Odd", "Even"],
+      correct: "Odd",
+      explanation: "15 is not divisible by 2 → Odd."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>16</span>",
+      options: ["Even", "Odd"],
+      correct: "Even",
+      explanation: "16 ÷ 2 = 8 → Even."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>17</span>",
+      options: ["Odd", "Even"],
+      correct: "Odd",
+      explanation: "17 is not divisible by 2 → Odd."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>18</span>",
+      options: ["Odd", "Even"],
+      correct: "Even",
+      explanation: "18 ÷ 2 = 9 → Even."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>19</span>",
+      options: ["Even", "Odd"],
+      correct: "Odd",
+      explanation: "19 is not divisible by 2 → Odd."
+    },
+    {
+      question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>20</span>",
+      options: ["Odd", "Even"],
+      correct: "Even",
+      explanation: "20 ÷ 2 = 10 → Even."
+    }
+  ];
+</script>
+
+  <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>

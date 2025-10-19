@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Place Value – Ones & Tens</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'><span style='text-decoration:underline;'>6</span>7</span>",
+          options: ["Ones", "Tens"],
+          correct: "Tens",
+          explanation: "The underlined 6 is in the tens place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'><span style='text-decoration:underline;'>8</span>2</span>",
+          options: ["Tens", "Ones"],
+          correct: "Tens",
+          explanation: "The underlined 8 is in the tens place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'><span style='text-decoration:underline;'>3</span>5</span>",
+          options: ["Ones", "Tens"],
+          correct: "Tens",
+          explanation: "The underlined 3 is in the tens place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'><span style='text-decoration:underline;'>7</span>4</span>",
+          options: ["Tens", "Ones"],
+          correct: "Tens",
+          explanation: "The underlined 7 is in the tens place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'>4<span style='text-decoration:underline;'>9</span></span>",
+          options: ["Ones", "Tens"],
+          correct: "Ones",
+          explanation: "The underlined 9 is in the ones place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'><span style='text-decoration:underline;'>5</span>8</span>",
+          options: ["Tens", "Ones"],
+          correct: "Tens",
+          explanation: "The underlined 5 is in the tens place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'>3<span style='text-decoration:underline;'>1</span></span>",
+          options: ["Ones", "Tens"],
+          correct: "Ones",
+          explanation: "The underlined 1 is in the ones place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'><span style='text-decoration:underline;'>9</span>6</span>",
+          options: ["Tens", "Ones"],
+          correct: "Tens",
+          explanation: "The underlined 9 is in the tens place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'>2<span style='text-decoration:underline;'>4</span></span>",
+          options: ["Ones", "Tens"],
+          correct: "Ones",
+          explanation: "The underlined 4 is in the ones place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'>7<span style='text-decoration:underline;'>3</span></span>",
+          options: ["Tens", "Ones"],
+          correct: "Ones",
+          explanation: "The underlined 3 is in the ones place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'>6<span style='text-decoration:underline;'>8</span></span>",
+          options: ["Ones", "Tens"],
+          correct: "Ones",
+          explanation: "The underlined 8 is in the ones place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'><span style='text-decoration:underline;'>4</span>0</span>",
+          options: ["Tens", "Ones"],
+          correct: "Tens",
+          explanation: "The underlined 4 is in the tens place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'>1<span style='text-decoration:underline;'>2</span></span>",
+          options: ["Tens", "Ones"],
+          correct: "Ones",
+          explanation: "The underlined 2 is in the ones place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'><span style='text-decoration:underline;'>5</span>7</span>",
+          options: ["Tens", "Ones"],
+          correct: "Tens",
+          explanation: "The underlined 5 is in the tens place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'><span style='text-decoration:underline;'>9</span>0</span>",
+          options: ["Tens", "Ones"],
+          correct: "Tens",
+          explanation: "The underlined 9 is in the tens place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'><span style='text-decoration:underline;'>2</span>6</span>",
+          options: ["Tens", "Ones"],
+          correct: "Tens",
+          explanation: "The underlined 2 is in the tens place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'>8<span style='text-decoration:underline;'>3</span></span>",
+          options: ["Ones", "Tens"],
+          correct: "Ones",
+          explanation: "The underlined 3 is in the ones place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'><span style='text-decoration:underline;'>7</span>5</span>",
+          options: ["Tens", "Ones"],
+          correct: "Tens",
+          explanation: "The underlined 7 is in the tens place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'>6<span style='text-decoration:underline;'>4</span></span>",
+          options: ["Ones", "Tens"],
+          correct: "Ones",
+          explanation: "The underlined 4 is in the ones place."
+        },
+        {
+          question: "Identify the place value of the underlined digit. <br> <span style='color:black;'><span style='text-decoration:underline;'>1</span>9</span>",
+          options: ["Tens", "Ones"],
+          correct: "Tens",
+          explanation: "The underlined 1 is in the tens place."
+        }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>

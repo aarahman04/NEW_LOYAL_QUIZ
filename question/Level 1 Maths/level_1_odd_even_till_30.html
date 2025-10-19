@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Odd & Even – Up to 30 (Shuffled)</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>17</span>", options: ["Odd","Even"], correct: "Odd", explanation: "17 is odd." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>24</span>", options: ["Odd","Even"], correct: "Even", explanation: "24 is even." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>14</span>", options: ["Odd","Even"], correct: "Even", explanation: "14 is even." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>11</span>", options: ["Odd","Even"], correct: "Odd", explanation: "11 is odd." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>5</span>",  options: ["Odd","Even"], correct: "Odd", explanation: "5 is odd." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>28</span>", options: ["Odd","Even"], correct: "Even", explanation: "28 is even." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>9</span>",  options: ["Odd","Even"], correct: "Odd", explanation: "9 is odd." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>2</span>",  options: ["Odd","Even"], correct: "Even", explanation: "2 is even." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>23</span>", options: ["Odd","Even"], correct: "Odd", explanation: "23 is odd." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>30</span>", options: ["Odd","Even"], correct: "Even", explanation: "30 is even." },
+
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>7</span>",  options: ["Odd","Even"], correct: "Odd", explanation: "7 is odd." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>18</span>", options: ["Odd","Even"], correct: "Even", explanation: "18 is even." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>27</span>", options: ["Odd","Even"], correct: "Odd", explanation: "27 is odd." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>4</span>",  options: ["Odd","Even"], correct: "Even", explanation: "4 is even." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>29</span>", options: ["Odd","Even"], correct: "Odd", explanation: "29 is odd." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>16</span>", options: ["Odd","Even"], correct: "Even", explanation: "16 is even." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>3</span>",  options: ["Odd","Even"], correct: "Odd", explanation: "3 is odd." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>26</span>", options: ["Odd","Even"], correct: "Even", explanation: "26 is even." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>20</span>", options: ["Odd","Even"], correct: "Even", explanation: "20 is even." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>21</span>", options: ["Odd","Even"], correct: "Odd", explanation: "21 is odd." },
+
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>8</span>",  options: ["Odd","Even"], correct: "Even", explanation: "8 is even." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>12</span>", options: ["Odd","Even"], correct: "Even", explanation: "12 is even." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>19</span>", options: ["Odd","Even"], correct: "Odd", explanation: "19 is odd." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>10</span>", options: ["Odd","Even"], correct: "Even", explanation: "10 is even." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>22</span>", options: ["Odd","Even"], correct: "Even", explanation: "22 is even." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>6</span>",  options: ["Odd","Even"], correct: "Even", explanation: "6 is even." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>15</span>", options: ["Odd","Even"], correct: "Odd", explanation: "15 is odd." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>13</span>", options: ["Odd","Even"], correct: "Odd", explanation: "13 is odd." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>25</span>", options: ["Odd","Even"], correct: "Odd", explanation: "25 is odd." },
+        { question: "Identify whether the number is Odd or Even. <br> <span style='color:black;'>1</span>",  options: ["Odd","Even"], correct: "Odd", explanation: "1 is odd." }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>

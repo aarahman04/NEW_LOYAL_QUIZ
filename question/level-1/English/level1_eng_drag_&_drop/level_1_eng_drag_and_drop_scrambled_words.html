@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scrambled Words</title>
+  <link rel="stylesheet" href="../../../../css/question.css" />
+  <link rel="stylesheet" href="../../../../css/dnd.css" />
+</head>
+<body>
+
+  <!-- Sticky Header Placeholder -->
+  <div id="site-header-placeholder"></div>
+
+  <!-- *** Quiz Container *** -->
+  <main class="quiz-container">
+    <!-- Question text -->
+    <h3 id="question-text"></h3>
+
+    <!-- Four target boxes (keep ids & data-keys consistent with your JS) -->
+    <div class="two-targets">
+      <div class="dropbox" data-box="first"  data-placeholder=""></div>
+      <div class="dropbox" data-box="second" data-placeholder=""></div>
+      <div class="dropbox" data-box="third"  data-placeholder=""></div>
+      <div class="dropbox" data-box="forth"  data-placeholder=""></div>
+    </div>
+
+    <!-- Draggable chips appear here -->
+    <div id="choices"></div>
+
+    <!-- Feedback & explanation -->
+    <div id="feedback" class="hidden"></div>
+    <div id="explanation" class="hidden"></div>
+
+    <button id="back-btn" class="hidden">Back</button>
+    <button id="next-btn" class="hidden">Next</button>
+  </main>
+
+  <!-- Your DnD engine -->
+  <script src="../../../../js/drag_and_drop.js"></script>
+
+  <script>
+    // 25 sentence-order questions (4 words each).
+    // options are scrambled; key maps correct order -> first/second/third/forth
+    const questions = [
+      // 1) The dog can bark
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["bark","The","can","dog"],
+        key: { "The":"first", "dog":"second", "can":"third", "bark":"forth" },
+        explanation: "'The dog can bark' is the correct order."
+      },
+      // 2) The cat is black
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["black","is","cat","The"],
+        key: { "The":"first", "cat":"second", "is":"third", "black":"forth" },
+        explanation: "'The cat is black' is the correct order."
+      },
+      // 3) The bird can sing
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["sing","The","can","bird"],
+        key: { "The":"first", "bird":"second", "can":"third", "sing":"forth" },
+        explanation: "'The bird can sing' is the correct order."
+      },
+      // 4) The bird can fly
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["The","fly","can","bird"],
+        key: { "The":"first", "bird":"second", "can":"third", "fly":"forth" },
+        explanation: "'The bird can fly' is the correct order."
+      },
+      // 5) The bird is singing
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["is","The","singing","bird"],
+        key: { "The":"first", "bird":"second", "is":"third", "singing":"forth" },
+        explanation: "'The bird is singing' is the correct order."
+      },
+      // 6) She is a girl
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["girl","She","is","a"],
+        key: { "She":"first", "is":"second", "a":"third", "girl":"forth" },
+        explanation: "'She is a girl' is the correct order."
+      },
+      // 7) He is a boy
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["boy","is","a","He"],
+        key: { "He":"first", "is":"second", "a":"third", "boy":"forth" },
+        explanation: "'He is a boy' is the correct order."
+      },
+      // 8) The men were working
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["were","The","working","men"],
+        key: { "The":"first", "men":"second", "were":"third", "working":"forth" },
+        explanation: "'The men were working' is the correct order."
+      },
+      // 9) Some apples are green
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["are","Some","green","apples"],
+        key: { "Some":"first", "apples":"second", "are":"third", "green":"forth" },
+        explanation: "'Some apples are green' is the correct order."
+      },
+      // 10) The sky is blue
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["blue","is","The","sky"],
+        key: { "The":"first", "sky":"second", "is":"third", "blue":"forth" },
+        explanation: "'The sky is blue' is the correct order."
+      },
+      // 11) The girl can dance
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["dance","The","girl","can"],
+        key: { "The":"first", "girl":"second", "can":"third", "dance":"forth" },
+        explanation: "'The girl can dance' is the correct order."
+      },
+      // 12) The boy can write
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["write","can","The","boy"],
+        key: { "The":"first", "boy":"second", "can":"third", "write":"forth" },
+        explanation: "'The boy can write' is the correct order."
+      },
+      // 13) You build a house
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["a","house","You","build"],
+        key: { "You":"first", "build":"second", "a":"third", "house":"forth" },
+        explanation: "'You build a house' is the correct order."
+      },
+      // 14) The house is pink
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["pink","house","is","The"],
+        key: { "The":"first", "house":"second", "is":"third", "pink":"forth" },
+        explanation: "'The house is pink' is the correct order."
+      },
+      // 15) The bus is yellow
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["yellow","is","bus","The"],
+        key: { "The":"first", "bus":"second", "is":"third", "yellow":"forth" },
+        explanation: "'The bus is yellow' is the correct order."
+      },
+      // 16) The night is dark
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["dark","night","is","The"],
+        key: { "The":"first", "night":"second", "is":"third", "dark":"forth" },
+        explanation: "'The night is dark' is the correct order."
+      },
+      // 17) Please close the door
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["close","Please","door","the"],
+        key: { "Please":"first", "close":"second", "the":"third", "door":"forth" },
+        explanation: "'Please close the door' is the correct order."
+      },
+      // 18) Please open the door
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["Please","door","open","the"],
+        key: { "Please":"first", "open":"second", "the":"third", "door":"forth" },
+        explanation: "'Please open the door' is the correct order."
+      },
+      // 19) Please do not talk
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["talk","Please","not","do"],
+        key: { "Please":"first", "do":"second", "not":"third", "talk":"forth" },
+        explanation: "'Please do not talk' is the correct order."
+      },
+      // 20) Please let me out
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["out","Please","me","let"],
+        key: { "Please":"first", "let":"second", "me":"third", "out":"forth" },
+        explanation: "'Please let me out' is the correct order."
+      },
+      // 21) Four five six seven
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["seven","four","five","six"],
+        key: { "Four":"first", "five":"second", "six":"third", "seven":"forth" },
+        explanation: "'Four five six seven' is the correct order."
+      },
+      // 22) The boy can paint
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["paint","boy","can","The"],
+        key: { "The":"first", "boy":"second", "can":"third", "paint":"forth" },
+        explanation: "'The boy can paint' is the correct order."
+      },
+      // 23) The wolf was scary
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["was","The","scary","wolf"],
+        key: { "The":"first", "wolf":"second", "was":"third", "scary":"forth" },
+        explanation: "'The wolf was scary' is the correct order."
+      },
+      // 24) I love the rain
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["love","the","I","rain"],
+        key: { "I":"first", "love":"second", "the":"third", "rain":"forth" },
+        explanation: "'I love the rain' is the correct order."
+      },
+      // 25) What is his name
+      {
+        question: "Put the words in order to make a complete sentence.",
+        options: ["name","is","his","What"],
+        key: { "What":"first", "is":"second", "his":"third", "name":"forth" },
+        explanation: "'What is his name' is the correct order."
+      }
+    ];
+
+    // Start the sorter
+    window.addEventListener("DOMContentLoaded", () => {
+      window.initTwoBoxSortQuiz(questions);
+    });
+  </script>
+
+  <!-- Footer Placeholder -->
+  <div id="site-footer-placeholder"></div>
+  <script src="../../../../js/partials.js"></script>
+</body>
+</html>
