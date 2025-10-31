@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Identify Verbs — Images (Set 1–20)</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading…</h3>
+        <ul id="options-list" class="options"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (1).jpg",
+          options: ["runs", "He"],
+          correct: "runs",
+          explanation: "“runs” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (2).jpg",
+          options: ["hops", "Sam"],
+          correct: "hops",
+          explanation: "“hops” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (3).jpg",
+          options: ["eat", "I"],
+          correct: "eat",
+          explanation: "“eat” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (4).jpg",
+          options: ["sing", "We"],
+          correct: "sing",
+          explanation: "“sing” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (5).jpg",
+          options: ["play", "They"],
+          correct: "play",
+          explanation: "“play” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (6).jpg",
+          options: ["reads", "Nina"],
+          correct: "reads",
+          explanation: "“reads” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (7).jpg",
+          options: ["sleeps", "Coco"],
+          correct: "sleeps",
+          explanation: "“sleeps” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (8).jpg",
+          options: ["dances", "Sandy"],
+          correct: "dances",
+          explanation: "“dances” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (9).jpg",
+          options: ["draw", "I"],
+          correct: "draw",
+          explanation: "“draw” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (10).jpg",
+          options: ["clap", "We"],
+          correct: "clap",
+          explanation: "“clap” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (11).jpg",
+          options: ["swim", "They"],
+          correct: "swim",
+          explanation: "“swim” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (12).jpg",
+          options: ["writes", "doctor"],
+          correct: "writes",
+          explanation: "“writes” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (13).jpg",
+          options: ["walks", "Ben"],
+          correct: "walks",
+          explanation: "“walks” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (14).jpg",
+          options: ["paints", "She"],
+          correct: "paints",
+          explanation: "“paints” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (15).jpg",
+          options: ["laughs", "He"],
+          correct: "laughs",
+          explanation: "“laughs” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (16).jpg",
+          options: ["cooks", "Dad"],
+          correct: "cooks",
+          explanation: "“cooks” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (17).jpg",
+          options: ["talk", "They"],
+          correct: "talk",
+          explanation: "“talk” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (18).jpg",
+          options: ["cuts", "Tom"],
+          correct: "cuts",
+          explanation: "“cuts” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (19).jpg",
+          options: ["kicks", "He"],
+          correct: "kicks",
+          explanation: "“kicks” is the action shown."
+        },
+        {
+          question: "Look at the illustration. Select the verb that matches the picture.",
+          image: "../../../image/level1_eng_verbs_pronouns_images/level1_eng_identify_image_verbs (20).jpg",
+          options: ["helps", "He"],
+          correct: "helps",
+          explanation: "“helps” is the action shown."
+        }
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
