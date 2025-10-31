@@ -1,1 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Past Participle</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Beat – beat – ?</span>",
+          options: ["beaten", "beat", "beat ten"],
+          correct: "beaten",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Eat – ate – ?</span>",
+          options: ["eaten", "eating", "eat"],
+          correct: "eaten",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Go – went – ?</span>",
+          options: ["gone", "going", "go"],
+          correct: "gone",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>See – saw – ?</span>",
+          options: ["seen", "sawed", "seeing"],
+          correct: "seen",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Run – ran – ?</span>",
+          options: ["running", "run", "ran"],
+          correct: "run",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Write – wrote – ?</span>",
+          options: ["written", "wrote", "writing"],
+          correct: "written",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Break – broke – ?</span>",
+          options: ["broken", "broke", "breaker"],
+          correct: "broken",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Take – took – ?</span>",
+          options: ["taken", "took", "taking"],
+          correct: "taken",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Choose – chose – ?</span>",
+          options: ["choosing", "chosen", "choose"],
+          correct: "chosen",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Give – gave – ?</span>",
+          options: ["giving", "given", "gave"],
+          correct: "given",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Sing – sang – ?</span>",
+          options: ["sung", "singing", "sing"],
+          correct: "sung",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Swim – swam – ?</span>",
+          options: ["swimming", "swum", "swim"],
+          correct: "swum",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Speak – spoke – ?</span>",
+          options: ["speaking", "spoken", "spoked"],
+          correct: "spoken",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Drive – drove – ?</span>",
+          options: ["driven", "drove", "driving"],
+          correct: "driven",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Fly – flew – ?</span>",
+          options: ["flied", "flying", "flown"],
+          correct: "flown",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Grow – grew – ?</span>",
+          options: ["grown", "growing", "grower"],
+          correct: "grown",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Know – knew – ?</span>",
+          options: ["known", "knowing", "knower"],
+          correct: "known",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Throw – threw – ?</span>",
+          options: ["throwing", "thrown", "thrower"],
+          correct: "thrown",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Show – showed – ?</span>",
+          options: ["showed", "shown", "showing"],
+          correct: "shown",
+          explanation: ""
+        },
+        {
+          question: "Find the correct past participle.<br><span style='color:black'>Blow – blew – ?</span>",
+          options: ["blowed", "blown", "blowing"],
+          correct: "blown",
+          explanation: ""
+        }
+      ];
+    </script>
+
+    <!-- Footer + App Scripts -->
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
 
