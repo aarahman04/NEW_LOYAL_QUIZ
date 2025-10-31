@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Missing Number 0 to 20</title>
+  <link rel="stylesheet" href="../../../css/question.css" />
+</head>
+<body>
+  <div id="site-header-placeholder"></div>
+
+  <main class="quiz-container">
+    <div class="question-section">
+      <h3 id="question-text">Loading…</h3>
+      <ul id="options-list" class="options"></ul>
+    </div>
+    <div id="feedback" class="hidden"></div>
+    <div id="explanation" class="hidden"></div>
+    <button id="back-btn" class="hidden">Back</button>
+    <button id="next-btn" class="hidden">Next</button>
+  </main>
+
+  <script>
+    const questions = [
+      { question: "Choose the number that completes the sequence.<br><span style='color:black'>0, 1, __, 3</span>", options: ["2","4","5"], correct: "2", explanation: "Counting by 1s." },
+      { question: "Choose the number that completes the sequence.<br><span style='color:black'>2, 3, 4, __</span>", options: ["5","6","7"], correct: "5", explanation: "Next after 4 is 5." },
+      { question: "Choose the number that completes the sequence.<br><span style='color:black'>__, 2, 3, 4</span>", options: ["0","1","5"], correct: "1", explanation: "Sequence starts at 1." },
+      { question: "Choose the number that completes the sequence.<br><span style='color:black'>5, __, 7, 8</span>", options: ["6","4","9"], correct: "6", explanation: "6 comes after 5." },
+      { question: "Choose the number that completes the sequence.<br><span style='color:black'>7, 8, __, 10</span>", options: ["9","6","11"], correct: "9", explanation: "9 comes after 8." },
+      { question: "Choose the number that completes the sequence.<br><span style='color:black'>__, 10, 11, 12</span>", options: ["8","9","13"], correct: "9", explanation: "9 is before 10." },
+      { question: "Choose the number that completes the sequence.<br><span style='color:black'>11, 12, 13, __</span>", options: ["14","15","10"], correct: "14", explanation: "Next after 13 is 14." },
+      { question: "Choose the number that completes the sequence.<br><span style='color:black'>3, __, 5, 6</span>", options: ["2","4","7"], correct: "4", explanation: "4 is between 3 and 5." },
+      { question: "Choose the number that completes the sequence.<br><span style='color:black'>__, 6, 7, 8</span>", options: ["4","5","9"], correct: "5", explanation: "5 comes before 6." },
+      { question: "Choose the number that completes the sequence.<br><span style='color:black'>8, 9, __, 11</span>", options: ["10","12","7"], correct: "10", explanation: "10 comes after 9." },
+
+      { question: "Choose the number that completes the sequence.<br><span style='color:black'>12, __, 14, 15</span>", options: ["13","11","16"], correct: "13", explanation: "13 is between 12 and 14." },
+      { question: "Choose the number that completes the sequence.<br><span style='color:black'>__, 14, 15, 16</span>", options: ["12","13","17"], correct: "13", explanation: "13 comes before 14." },
+      { question: "Choose the number that completes the sequence.<br><span style='color:black'>15, 16, __, 18</span>", options: ["17","14","19"], correct: "17", explanation: "17 follows 16." },
+      { question: "Choose the number that completes the sequence.<br><span style='color:black'>18, __, 20</span>", options: ["17","19","21"], correct: "19", explanation: "Counting by 1s." },
+      { question: "Count by 2s to fill the blank.<br><span style='color:black'>4, 6, __, 10</span>", options: ["8","7","9"], correct: "8", explanation: "4,6,8,10…" },
+      { question: "Count by 2s to fill the blank.<br><span style='color:black'>0, 2, 4, __</span>", options: ["5","6","8"], correct: "6", explanation: "0,2,4,6…" },
+      { question: "Count by 2s to fill the blank.<br><span style='color:black'>1, 3, 5, __</span>", options: ["6","7","8"], correct: "7", explanation: "Odd numbers increasing by 2." },
+      { question: "Count back to fill the blank.<br><span style='color:black'>10, 9, __, 7</span>", options: ["6","8","5"], correct: "8", explanation: "10,9,8,7…" },
+      { question: "Count back to fill the blank.<br><span style='color:black'>6, 5, __, 3</span>", options: ["4","2","7"], correct: "4", explanation: "6,5,4,3…" },
+      { question: "Choose the number that starts the counting.<br><span style='color:black'>__, 1, 2, 3</span>", options: ["0","4","-1"], correct: "0", explanation: "Count starts at 0." }
+    ];
+  </script>
+
+  <div id="site-footer-placeholder"></div>
+  <script src="../../../js/script.js"></script>
+  <script src="../../../js/partials.js"></script>
+  <script>window.addEventListener("DOMContentLoaded",()=>{initMCQQuiz(questions);});</script>
+</body>
+</html>
