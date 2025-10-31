@@ -1,1 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Vocabulary & Meaning</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {
+          question: "What is the meaning of learn?",
+          options: ["Gain knowledge or a new skill", "Normal or ordinary skills"],
+          correct: "Gain knowledge or a new skill",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of subject?",
+          options: ["Things you study at school", "Normal or ordinary skills"],
+          correct: "Things you study at school",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of common?",
+          options: ["Things you study at school", "Normal or ordinary"],
+          correct: "Normal or ordinary",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of object?",
+          options: ["A thing or an item", "Remember something because you have seen it before"],
+          correct: "A thing or an item",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of recognize?",
+          options: ["Remember something because you have seen it before", "Things you study at school"],
+          correct: "Remember something because you have seen it before",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning city?",
+          options: ["A large town with tall buildings and many people", "A big fancy meal with many different foods"],
+          correct: "A large town with tall buildings and many people",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of board?",
+          options: ["Just want to sleep and relax", "Having nothing to do or nothing that is interesting"],
+          correct: "Having nothing to do or nothing that is interesting",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of feast?",
+          options: ["When you feel you want to eat a lot", "A big fancy meal with many different foods"],
+          correct: "A big fancy meal with many different foods",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of scurried?",
+          options: ["Moved very quickly", "Walk slowly"],
+          correct: "Moved very quickly",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of care?",
+          options: ["To give something what it needs to stay healthy and happy", "When you feel you want to eat a lot"],
+          correct: "To give something what it needs to stay healthy and happy",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of train?",
+          options: ["An animal or person that keeps you company", "Teach someone to do things"],
+          correct: "Teach someone to do things",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of companion?",
+          options: ["An animal or person that keeps you company", "When you feel you want to eat a lot"],
+          correct: "An animal or person that keeps you company",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of groom?",
+          options: ["To be very happy and healthy", "To wash and brush"],
+          correct: "To wash and brush",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of object?",
+          options: ["Remember something because you have seen it before", "A thing or an item"],
+          correct: "A thing or an item",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of popular?",
+          options: ["Enjoyed by many people", "Be outraged with people"],
+          correct: "Enjoyed by many people",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of cooperate?",
+          options: ["Working very hard to achieve a lot", "Work together to get something done"],
+          correct: "Work together to get something done",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of relationship?",
+          options: ["Talking to someone about something", "A connection with a person"],
+          correct: "A connection with a person",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of chore?",
+          options: ["Listening to your mom", "A small job you must do"],
+          correct: "A small job you must do",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of collect?",
+          options: ["Gather things together", "Try to buy everything you see"],
+          correct: "Gather things together",
+          explanation: ""
+        },
+        {
+          question: "What is the meaning of deliver?",
+          options: ["To take something to the person it belongs to", "To give someone something they don’t want"],
+          correct: "To take something to the person it belongs to",
+          explanation: ""
+        }
+      ];
+    </script>
+
+    <!-- Footer + App Scripts -->
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
 
