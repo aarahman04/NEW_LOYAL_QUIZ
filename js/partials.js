@@ -113,7 +113,7 @@ const footerHtml = `
       </section>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 Loyal's M.C.Q/Innovative model building. All rights reserved.</p>
+      <p>&copy; 2025 Loyal's M.C.Q/Innovative Solutions by MAR. All rights reserved.</p>
     </div>
   </footer>
 `;
