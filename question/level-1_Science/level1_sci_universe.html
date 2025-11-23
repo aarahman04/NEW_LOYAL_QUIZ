@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Universe</title>
-    <!-- point to your question.css in the root css/ folder -->
     <link rel="stylesheet" href="../../../css/question.css" />
   </head>
   <body>
@@ -17,7 +16,6 @@
       <div class="question-section">
         <h3 id="question-text">Loading...</h3>
         <ul class="options" id="options-list">
-          <!-- Options dynamically generated -->
         </ul>
       </div>
       <div id="feedback" class="hidden"></div>
@@ -28,143 +26,257 @@
 
     <script>
       const questions = [
-{
-  question: "What is a group of stars, gas, and dust called?",
-  options: ["galaxy", "planet", "moon", "comet"],
-  correct: "galaxy",
-  explanation: "'Galaxy' is the correct answer because it is a large collection of stars, gas, and dust."
-},
-{
-  question: "What do we call a star that explodes?",
-  options: ["meteor", "supernova", "planet", "moon"],
-  correct: "supernova",
-  explanation: "A supernova is a powerful explosion of a star."
-},
-{
-  question: "What is a shooting star?",
-  options: ["comet", "meteor", "planet", "moon"],
-  correct: "meteor",
-  explanation: "A meteor is often called a shooting star when it burns in Earth's atmosphere."
-},
-{
-  question: "What is a frozen ball of ice and dust called?",
-  options: ["comet", "meteor", "moon", "planet"],
-  correct: "comet",
-  explanation: "A comet is made of ice, dust, and rock."
-},
-{
-  question: "What do we call the study of stars, planets, and space?",
-  options: ["biology", "astronomy", "geography", "chemistry"],
-  correct: "astronomy",
-  explanation: "Astronomy is the study of celestial objects and space."
-},
-{
-  question: "What is the force that keeps planets in place?",
-  options: ["gravity", "magnetism", "friction", "wind"],
-  correct: "gravity",
-  explanation: "Gravity pulls objects together and keeps planets in orbit."
-},
-{
-  question: "What is a cloud of gas and dust in space called?",
-  options: ["nebula", "galaxy", "star", "moon"],
-  correct: "nebula",
-  explanation: "A nebula is a massive cloud of gas and dust where stars can form."
-},
-{
-  question: "What do we call the path a planet follows?",
-  options: ["orbit", "axis", "rotation", "gravity"],
-  correct: "orbit",
-  explanation: "An orbit is the path an object follows around a star or planet."
-},
-{
-  question: "What is a small rock that orbits the Sun called?",
-  options: ["asteroid", "moon", "planet", "comet"],
-  correct: "asteroid",
-  explanation: "Asteroids are rocky objects that orbit the Sun."
-},
-{
-  question: "What do we call the collection of all stars, planets, and galaxies?",
-  options: ["universe", "solar system", "moon", "comet"],
-  correct: "universe",
-  explanation: "The universe contains everything that exists."
-},
-{
-  question: "What is a satellite that goes around a planet?",
-  options: ["moon", "planet", "star", "comet"],
-  correct: "moon",
-  explanation: "A moon is a natural satellite orbiting a planet."
-},
-{
-  question: "What is a comet made of?",
-  options: ["gas and dust", "rocks and soil", "water", "ice cream"],
-  correct: "gas and dust",
-  explanation: "Comets are made of ice, gas, and dust."
-},
-{
-  question: "What do astronauts wear in space to stay safe?",
-  options: ["uniform", "spacesuit", "helmet", "shoes"],
-  correct: "spacesuit",
-  explanation: "A spacesuit protects astronauts in space."
-},
-{
-  question: "What is a black hole?",
-  options: ["dark place in space that pulls everything in", "star", "planet", "moon"],
-  correct: "dark place in space that pulls everything in",
-  explanation: "A black hole has strong gravity that nothing can escape."
-},
-{
-  question: "What is the nearest galaxy to the Milky Way?",
-  options: ["andromeda", "orion", "sagittarius", "triangulum"],
-  correct: "andromeda",
-  explanation: "The Andromeda Galaxy is closest to the Milky Way."
-},
-{
-  question: "What is the Sun mainly made of?",
-  options: ["water", "gas", "rocks", "ice"],
-  correct: "gas",
-  explanation: "The Sun is a giant ball of hot gases like hydrogen and helium."
-},
-{
-  question: "What do we call a space rock that hits Earth?",
-  options: ["meteorite", "comet", "moon", "planet"],
-  correct: "meteorite",
-  explanation: "A meteorite is a meteor that reaches Earth's surface."
-},
-{
-  question: "What is a light-year?",
-  options: [
-    "the time it takes to rotate",
-    "the distance light travels in one year",
-    "the distance to the Moon",
-    "the time for sunrise"
-  ],
-  correct: "the distance light travels in one year",
-  explanation: "A light-year is a unit of distance, not time."
-},
-{
-  question: "What do we call the path Earth follows around the Sun?",
-  options: ["orbit", "rotation", "axis", "gravity"],
-  correct: "orbit",
-  explanation: "Earth moves around the Sun in an orbit."
-},
-{
-  question: "What is a dwarf planet?",
-  options: ["very small planet", "star", "moon", "comet"],
-  correct: "very small planet",
-  explanation: "A dwarf planet is smaller than a normal planet but orbits the Sun."
-}
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The brown dog is happy.</span>",
+          options: ["brown", "the"],
+          correct: "brown",
+          explanation: "'Brown' describes the dog. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The small cat is cute.</span>",
+          options: ["the", "is", "small", "cat"],
+          correct: "small",
+          explanation: "'Small' describes the cat. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I see a big dog.</span>",
+          options: ["see", "I", "big", "dog"],
+          correct: "big",
+          explanation: "'Big' describes the dog. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I see a small cat.</span>",
+          options: ["cat", "small", "I", "see"],
+          correct: "small",
+          explanation: "'Small' describes the cat. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The black horse is fast.</span>",
+          options: ["horse", "is", "black", "the"],
+          correct: "black",
+          explanation: "'Black' describes the horse. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The fluffy puppy is sleepy.</span>",
+          options: ["puppy", "fluffy", "the", "sleepy"],
+          correct: "fluffy",
+          explanation: "'Fluffy' describes the puppy. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The yellow duck is loud.</span>",
+          options: ["duck", "is", "yellow", "the"],
+          correct: "yellow",
+          explanation: "'Yellow' describes the duck. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The funny monkey jumps high.</span>",
+          options: ["monkey", "funny", "jumps", "the"],
+          correct: "funny",
+          explanation: "'Funny' describes the monkey. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I ate a red apple.</span>",
+          options: ["I", "red", "apple", "ate"],
+          correct: "red",
+          explanation: "'Red' describes the apple. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The sweet candy is yummy.</span>",
+          options: ["sweet", "is", "candy", "the"],
+          correct: "sweet",
+          explanation: "'Sweet' describes the candy. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I like cold juice.</span>",
+          options: ["cold", "I", "juice", "like"],
+          correct: "cold",
+          explanation: "'Cold' describes the juice. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>That hot soup was tasty.</span>",
+          options: ["hot", "that", "soup", "was"],
+          correct: "hot",
+          explanation: "'Hot' describes the soup. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I want a big muffin.</span>",
+          options: ["want", "I", "big", "muffin"],
+          correct: "big",
+          explanation: "'Big' describes the muffin. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The green grapes are soft.</span>",
+          options: ["soft", "green", "grapes", "the"],
+          correct: "green",
+          explanation: "'Green' describes the grapes. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The fresh bread is warm.</span>",
+          options: ["bread", "the", "warm", "fresh"],
+          correct: "fresh",
+          explanation: "'Fresh' describes the bread. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The gray elephant is big.</span>",
+          options: ["gray", "is", "elephant", "the"],
+          correct: "gray",
+          explanation: "'Gray' describes the elephant. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The juicy orange is good.</span>",
+          options: ["juicy", "orange", "good", "is"],
+          correct: "juicy",
+          explanation: "'Juicy' describes the orange. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The white cat sleeps soundly.</span>",
+          options: ["white", "sleeps", "the", "cat"],
+          correct: "white",
+          explanation: "'White' describes the cat. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The sour lemonade tastes bad.</span>",
+          options: ["sour", "tastes", "lemonade", "the"],
+          correct: "sour",
+          explanation: "'Sour' describes the lemonade. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Grandfather drives an old car.</span>",
+          options: ["old", "drives", "car", "Grandfather"],
+          correct: "old",
+          explanation: "'Old' describes the car. It's the adjective."
+        },
+        {
+          question: "What is a group of stars, gas, and dust called?",
+          options: ["galaxy", "planet", "moon", "comet"],
+          correct: "galaxy",
+          explanation: "A galaxy is a huge system of stars, gas, and dust."
+        },
+        {
+          question: "What do we call a star that explodes?",
+          options: ["meteor", "supernova", "planet", "moon"],
+          correct: "supernova",
+          explanation: "A supernova is an exploding star."
+        },
+        {
+          question: "What is the name of our galaxy?",
+          options: ["milky way", "andromeda", "orion", "sun"],
+          correct: "milky way",
+          explanation: "We live in the Milky Way galaxy."
+        },
+        {
+          question: "What is a shooting star?",
+          options: ["comet", "meteor", "planet", "moon"],
+          correct: "meteor",
+          explanation: "A meteor appears like a shooting star when it burns in the sky."
+        },
+        {
+          question: "What is a frozen ball of ice and dust called?",
+          options: ["comet", "meteor", "moon", "planet"],
+          correct: "comet",
+          explanation: "A comet is made of ice, dust, and gases."
+        },
+        {
+          question: "What was the name of the first satellite sent into space?",
+          options: ["sputnik", "apollo", "voyager", "hubble"],
+          correct: "sputnik",
+          explanation: "Sputnik was the first artificial satellite."
+        },
+        {
+          question: "What do we call the study of stars and planets?",
+          options: ["astronomy", "biology", "geography", "chemistry"],
+          correct: "astronomy",
+          explanation: "Astronomy is the study of outer space."
+        },
+        {
+          question: "What is the force that keeps planets in orbit?",
+          options: ["gravity", "magnetism", "friction", "wind"],
+          correct: "gravity",
+          explanation: "Gravity keeps planets and moons in orbit."
+        },
+        {
+          question: "What is a cloud of gas and dust in space?",
+          options: ["nebula", "galaxy", "star", "moon"],
+          correct: "nebula",
+          explanation: "A nebula is where stars can form."
+        },
+        {
+          question: "What is the path a planet follows called?",
+          options: ["orbit", "axis", "rotation", "gravity"],
+          correct: "orbit",
+          explanation: "Planets move around the sun in an orbit."
+        },
+        {
+          question: "What is a small rock that orbits the Sun?",
+          options: ["asteroid", "planet", "moon", "comet"],
+          correct: "asteroid",
+          explanation: "Asteroids are rocky objects orbiting the Sun."
+        },
+        {
+          question: "What is the collection of all stars, planets, and galaxies?",
+          options: ["universe", "solar system", "moon", "comet"],
+          correct: "universe",
+          explanation: "The universe contains everything that exists."
+        },
+        {
+          question: "What is a satellite that orbits a planet?",
+          options: ["moon", "planet", "star", "comet"],
+          correct: "moon",
+          explanation: "A moon orbits a planet."
+        },
+        {
+          question: "What is a comet made of?",
+          options: ["gas and dust", "soil", "rocks", "water"],
+          correct: "gas and dust",
+          explanation: "A comet is made of ice, gas, and dust."
+        },
+        {
+          question: "What do astronauts wear in space?",
+          options: ["spacesuit", "uniform", "coat", "helmet"],
+          correct: "spacesuit",
+          explanation: "A spacesuit keeps astronauts safe in space."
+        },
+        {
+          question: "What is a black hole?",
+          options: ["a dark region that pulls everything in", "planet", "star", "moon"],
+          correct: "a dark region that pulls everything in",
+          explanation: "A black hole has very strong gravity."
+        },
+        {
+          question: "What is the nearest galaxy to the Milky Way?",
+          options: ["andromeda", "orion", "triangulum", "sagittarius"],
+          correct: "andromeda",
+          explanation: "The Andromeda Galaxy is closest to ours."
+        },
+        {
+          question: "What is the Sun mainly made of?",
+          options: ["gas", "rocks", "water", "ice"],
+          correct: "gas",
+          explanation: "The Sun is a ball of hot gases."
+        },
+        {
+          question: "What is a space rock that hits Earth called?",
+          options: ["meteorite", "meteor", "comet", "planet"],
+          correct: "meteorite",
+          explanation: "A meteorite is a meteor that reaches Earth's surface."
+        },
+        {
+          question: "What is a light-year?",
+          options: ["distance light travels in one year", "time to rotate", "distance to moon", "speed of light"],
+          correct: "distance light travels in one year",
+          explanation: "A light-year measures distance, not time."
+        }
+
       ];
     </script>
 
-    <!-- Professional Footer -->
     <div id="site-footer-placeholder"></div>
-    <!-- point to your main quiz logic -->
     <script src="../../../js/script.js"></script>
     <script src="../../../js/partials.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => {
-    initMCQQuiz(questions);
-  });
+        initMCQQuiz(questions);
+      });
     </script>
   </body>
 </html>
