@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Animals</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "Which animal says 'moo'?",
+      options: ["dog", "cow", "cat"],
+      correct: "cow",
+      explanation: "Cows make the 'moo' sound."
+    },
+    {
+      question: "Which animal has a long trunk?",
+      options: ["elephant", "lion", "bird"],
+      correct: "elephant",
+      explanation: "Elephants use their trunks to eat and drink."
+    },
+    {
+      question: "Which animal lives in the ocean?",
+      options: ["fish", "horse", "monkey"],
+      correct: "fish",
+      explanation: "Fish live in oceans, rivers, and lakes."
+    },
+    {
+      question: "Which animal hops?",
+      options: ["kangaroo", "snake", "cow"],
+      correct: "kangaroo",
+      explanation: "Kangaroos move by hopping."
+    },
+    {
+      question: "Which animal barks?",
+      options: ["dog", "sheep", "goat"],
+      correct: "dog",
+      explanation: "Dogs bark."
+    },
+    {
+      question: "Which animal can fly?",
+      options: ["bird", "tiger", "cat"],
+      correct: "bird",
+      explanation: "Birds can fly using their wings."
+    },
+    {
+      question: "Which animal has stripes?",
+      options: ["zebra", "pig", "duck"],
+      correct: "zebra",
+      explanation: "Zebras have black and white stripes."
+    },
+    {
+      question: "Which animal gives us milk?",
+      options: ["cow", "lion", "frog"],
+      correct: "cow",
+      explanation: "Cows give milk."
+    },
+    {
+      question: "Which animal has a mane?",
+      options: ["rabbit", "turtle", "lion"],
+      correct: "lion",
+      explanation: "Male lions have a mane around their neck."
+    },
+    {
+      question: "Which animal swims and has scales?",
+      options: ["bird", "dog", "fish"],
+      correct: "fish",
+      explanation: "Fish have scales and swim in water."
+    },
+    {
+      question: "Which animal says 'meow'?",
+      options: ["horse", "cat", "chicken"],
+      correct: "cat",
+      explanation: "Cats make the 'meow' sound."
+    },
+    {
+      question: "Which animal lives on a farm?",
+      options: ["shark", "sheep", "eagle"],
+      correct: "sheep",
+      explanation: "Sheep are common farm animals."
+    },
+    {
+      question: "Which animal has wings?",
+      options: ["butterfly", "cow", "dog"],
+      correct: "butterfly",
+      explanation: "Butterflies have wings and can fly."
+    },
+    {
+      question: "Which animal is the king of the jungle?",
+      options: ["ant", "lion", "rabbit"],
+      correct: "lion",
+      explanation: "The lion is often called the king of the jungle."
+    },
+    {
+      question: "Which animal has a hard shell?",
+      options: ["pig", "cat", "turtle"],
+      correct: "turtle",
+      explanation: "Turtles have a hard protective shell."
+    },
+    {
+      question: "Which animal has long ears?",
+      options: ["rabbit", "frog", "goat"],
+      correct: "rabbit",
+      explanation: "Rabbits have long ears."
+    },
+    {
+      question: "Which animal gives wool?",
+      options: ["sheep", "zebra", "duck"],
+      correct: "sheep",
+      explanation: "Sheep give wool."
+    },
+    {
+      question: "Which animal slithers?",
+      options: ["snake", "horse", "dog"],
+      correct: "snake",
+      explanation: "Snakes move by slithering."
+    },
+    {
+      question: "Which animal lives in trees?",
+      options: ["cow", "fish", "monkey"],
+      correct: "monkey",
+      explanation: "Monkeys often live in trees."
+    },
+    {
+      question: "Which animal quacks?",
+      options: ["duck", "tiger", "sheep"],
+      correct: "duck",
+      explanation: "Ducks make the quacking sound."
+    }
+  ];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
