@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Universe</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+{
+  question: "What is a group of stars, gas, and dust called?",
+  options: ["galaxy", "planet", "moon", "comet"],
+  correct: "galaxy",
+  explanation: "'Galaxy' is the correct answer because it is a large collection of stars, gas, and dust."
+},
+{
+  question: "What do we call a star that explodes?",
+  options: ["meteor", "supernova", "planet", "moon"],
+  correct: "supernova",
+  explanation: "A supernova is a powerful explosion of a star."
+},
+{
+  question: "What is a shooting star?",
+  options: ["comet", "meteor", "planet", "moon"],
+  correct: "meteor",
+  explanation: "A meteor is often called a shooting star when it burns in Earth's atmosphere."
+},
+{
+  question: "What is a frozen ball of ice and dust called?",
+  options: ["comet", "meteor", "moon", "planet"],
+  correct: "comet",
+  explanation: "A comet is made of ice, dust, and rock."
+},
+{
+  question: "What do we call the study of stars, planets, and space?",
+  options: ["biology", "astronomy", "geography", "chemistry"],
+  correct: "astronomy",
+  explanation: "Astronomy is the study of celestial objects and space."
+},
+{
+  question: "What is the force that keeps planets in place?",
+  options: ["gravity", "magnetism", "friction", "wind"],
+  correct: "gravity",
+  explanation: "Gravity pulls objects together and keeps planets in orbit."
+},
+{
+  question: "What is a cloud of gas and dust in space called?",
+  options: ["nebula", "galaxy", "star", "moon"],
+  correct: "nebula",
+  explanation: "A nebula is a massive cloud of gas and dust where stars can form."
+},
+{
+  question: "What do we call the path a planet follows?",
+  options: ["orbit", "axis", "rotation", "gravity"],
+  correct: "orbit",
+  explanation: "An orbit is the path an object follows around a star or planet."
+},
+{
+  question: "What is a small rock that orbits the Sun called?",
+  options: ["asteroid", "moon", "planet", "comet"],
+  correct: "asteroid",
+  explanation: "Asteroids are rocky objects that orbit the Sun."
+},
+{
+  question: "What do we call the collection of all stars, planets, and galaxies?",
+  options: ["universe", "solar system", "moon", "comet"],
+  correct: "universe",
+  explanation: "The universe contains everything that exists."
+},
+{
+  question: "What is a satellite that goes around a planet?",
+  options: ["moon", "planet", "star", "comet"],
+  correct: "moon",
+  explanation: "A moon is a natural satellite orbiting a planet."
+},
+{
+  question: "What is a comet made of?",
+  options: ["gas and dust", "rocks and soil", "water", "ice cream"],
+  correct: "gas and dust",
+  explanation: "Comets are made of ice, gas, and dust."
+},
+{
+  question: "What do astronauts wear in space to stay safe?",
+  options: ["uniform", "spacesuit", "helmet", "shoes"],
+  correct: "spacesuit",
+  explanation: "A spacesuit protects astronauts in space."
+},
+{
+  question: "What is a black hole?",
+  options: ["dark place in space that pulls everything in", "star", "planet", "moon"],
+  correct: "dark place in space that pulls everything in",
+  explanation: "A black hole has strong gravity that nothing can escape."
+},
+{
+  question: "What is the nearest galaxy to the Milky Way?",
+  options: ["andromeda", "orion", "sagittarius", "triangulum"],
+  correct: "andromeda",
+  explanation: "The Andromeda Galaxy is closest to the Milky Way."
+},
+{
+  question: "What is the Sun mainly made of?",
+  options: ["water", "gas", "rocks", "ice"],
+  correct: "gas",
+  explanation: "The Sun is a giant ball of hot gases like hydrogen and helium."
+},
+{
+  question: "What do we call a space rock that hits Earth?",
+  options: ["meteorite", "comet", "moon", "planet"],
+  correct: "meteorite",
+  explanation: "A meteorite is a meteor that reaches Earth's surface."
+},
+{
+  question: "What is a light-year?",
+  options: [
+    "the time it takes to rotate",
+    "the distance light travels in one year",
+    "the distance to the Moon",
+    "the time for sunrise"
+  ],
+  correct: "the distance light travels in one year",
+  explanation: "A light-year is a unit of distance, not time."
+},
+{
+  question: "What do we call the path Earth follows around the Sun?",
+  options: ["orbit", "rotation", "axis", "gravity"],
+  correct: "orbit",
+  explanation: "Earth moves around the Sun in an orbit."
+},
+{
+  question: "What is a dwarf planet?",
+  options: ["very small planet", "star", "moon", "comet"],
+  correct: "very small planet",
+  explanation: "A dwarf planet is smaller than a normal planet but orbits the Sun."
+}
+      ];
+    </script>
+
+    <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    initMCQQuiz(questions);
+  });
+    </script>
+  </body>
+</html>
