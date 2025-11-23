@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Organs</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "Which organ pumps blood through your body?",
+      options: ["brain", "heart", "stomach"],
+      correct: "heart",
+      explanation: "The heart pumps blood throughout the body."
+    },
+    {
+      question: "Which organ helps you think?",
+      options: ["brain", "lungs", "liver"],
+      correct: "brain",
+      explanation: "The brain controls thinking and decision-making."
+    },
+    {
+      question: "Which organ helps you breathe air?",
+      options: ["heart", "lungs", "stomach"],
+      correct: "lungs",
+      explanation: "The lungs help you inhale and exhale air."
+    },
+    {
+      question: "Which organ helps you digest food?",
+      options: ["eyes", "stomach", "ears"],
+      correct: "stomach",
+      explanation: "The stomach digests food."
+    },
+    {
+      question: "Which organ helps you see?",
+      options: ["heart", "brain", "eyes"],
+      correct: "eyes",
+      explanation: "Eyes allow us to see."
+    },
+    {
+      question: "Which organ helps you hear sounds?",
+      options: ["ears", "lungs", "skin"],
+      correct: "ears",
+      explanation: "Ears help detect sounds."
+    },
+    {
+      question: "Which organ helps you smell things?",
+      options: ["nose", "mouth", "hand"],
+      correct: "nose",
+      explanation: "The nose helps you smell."
+    },
+    {
+      question: "Which organ helps you taste food?",
+      options: ["nose", "tongue", "eye"],
+      correct: "tongue",
+      explanation: "The tongue helps in tasting food."
+    },
+    {
+      question: "Which organ covers and protects your body?",
+      options: ["skin", "stomach", "lungs"],
+      correct: "skin",
+      explanation: "The skin covers and protects your body."
+    },
+    {
+      question: "Which organ cleans your blood?",
+      options: ["kidney", "ear", "tongue"],
+      correct: "kidney",
+      explanation: "Kidneys filter and clean the blood."
+    },
+    {
+      question: "Which organ holds food after you eat?",
+      options: ["lungs", "stomach", "brain"],
+      correct: "stomach",
+      explanation: "The stomach holds and breaks down food."
+    },
+    {
+      question: "Which organ controls the whole body?",
+      options: ["lungs", "heart", "brain"],
+      correct: "brain",
+      explanation: "The brain controls all body functions."
+    },
+    {
+      question: "Which organ helps you breathe out air?",
+      options: ["lungs", "eyes", "tongue"],
+      correct: "lungs",
+      explanation: "Lungs help you inhale and exhale."
+    },
+    {
+      question: "Which organ beats all the time?",
+      options: ["stomach", "heart", "ears"],
+      correct: "heart",
+      explanation: "The heart beats continuously."
+    },
+    {
+      question: "Which organ helps you feel touch?",
+      options: ["skin", "nose", "eyes"],
+      correct: "skin",
+      explanation: "The skin senses touch."
+    },
+    {
+      question: "Which organ is inside your head?",
+      options: ["heart", "brain", "kidney"],
+      correct: "brain",
+      explanation: "The brain is inside the skull."
+    },
+    {
+      question: "Which organ helps you balance?",
+      options: ["ear", "skin", "tongue"],
+      correct: "ear",
+      explanation: "Inner ears help maintain balance."
+    },
+    {
+      question: "Which organ helps you breathe oxygen?",
+      options: ["brain", "lungs", "nose"],
+      correct: "lungs",
+      explanation: "The lungs absorb oxygen from the air."
+    },
+    {
+      question: "Which organ is used for smelling?",
+      options: ["tongue", "nose", "eye"],
+      correct: "nose",
+      explanation: "The nose is used to smell things."
+    },
+    {
+      question: "Which organ protects your body from germs?",
+      options: ["skin", "lungs", "heart"],
+      correct: "skin",
+      explanation: "Skin acts as the first protective barrier."
+    }
+  ];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
