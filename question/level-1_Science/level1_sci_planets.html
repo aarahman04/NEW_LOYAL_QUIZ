@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Planets</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "Which planet do we live on?",
+      options: ["mars", "earth", "jupiter"],
+      correct: "earth",
+      explanation: "We live on planet Earth."
+    },
+    {
+      question: "Which planet is known as the red planet?",
+      options: ["mars", "venus", "saturn"],
+      correct: "mars",
+      explanation: "Mars is called the red planet."
+    },
+    {
+      question: "Which planet has rings around it?",
+      options: ["saturn", "mars", "earth"],
+      correct: "saturn",
+      explanation: "Saturn is famous for its rings."
+    },
+    {
+      question: "Which planet is closest to the sun?",
+      options: ["mercury", "earth", "neptune"],
+      correct: "mercury",
+      explanation: "Mercury is the closest planet to the Sun."
+    },
+    {
+      question: "Which planet is the biggest?",
+      options: ["jupiter", "venus", "mars"],
+      correct: "jupiter",
+      explanation: "Jupiter is the largest planet."
+    },
+    {
+      question: "Which planet is called the blue planet?",
+      options: ["mars", "earth", "saturn"],
+      correct: "earth",
+      explanation: "Earth looks blue from space because of water."
+    },
+    {
+      question: "Which planet is second from the sun?",
+      options: ["jupiter", "venus", "mercury"],
+      correct: "venus",
+      explanation: "Venus is the second planet from the Sun."
+    },
+    {
+      question: "Which planet is farthest from the sun?",
+      options: ["earth", "jupiter", "neptune"],
+      correct: "neptune",
+      explanation: "Neptune is the farthest planet."
+    },
+    {
+      question: "Which planet spins the fastest?",
+      options: ["jupiter", "mars", "earth"],
+      correct: "jupiter",
+      explanation: "Jupiter rotates the fastest."
+    },
+    {
+      question: "Which planet is the hottest?",
+      options: ["venus", "mercury", "earth"],
+      correct: "venus",
+      explanation: "Venus is the hottest planet due to thick gases."
+    },
+    {
+      question: "Which planet has a giant red spot?",
+      options: ["mars", "jupiter", "neptune"],
+      correct: "jupiter",
+      explanation: "Jupiter's red spot is a huge storm."
+    },
+    {
+      question: "Which planet is famous for strong winds?",
+      options: ["neptune", "mars", "earth"],
+      correct: "neptune",
+      explanation: "Neptune has extremely strong winds."
+    },
+    {
+      question: "Which planet has the longest day?",
+      options: ["venus", "saturn", "mars"],
+      correct: "venus",
+      explanation: "Venus rotates very slowly."
+    },
+    {
+      question: "Which planet is the coldest?",
+      options: ["earth", "neptune", "mercury"],
+      correct: "neptune",
+      explanation: "Neptune is very far from the Sun and extremely cold."
+    },
+    {
+      question: "Which planet is covered in thick clouds?",
+      options: ["venus", "mars", "jupiter"],
+      correct: "venus",
+      explanation: "Venus is covered in thick toxic clouds."
+    },
+    {
+      question: "Which planet is mostly made of water?",
+      options: ["mercury", "jupiter", "earth"],
+      correct: "earth",
+      explanation: "Earth's surface is mostly water."
+    },
+    {
+      question: "Which planet is known for its bright rings?",
+      options: ["saturn", "venus", "mars"],
+      correct: "saturn",
+      explanation: "Saturn is known for its beautiful rings."
+    },
+    {
+      question: "Which planet is known as the morning star?",
+      options: ["venus", "mars", "jupiter"],
+      correct: "venus",
+      explanation: "Venus appears bright in the morning sky."
+    },
+    {
+      question: "Which planet has the most moons?",
+      options: ["saturn", "jupiter", "earth"],
+      correct: "jupiter",
+      explanation: "Jupiter has the most known moons."
+    },
+    {
+      question: "Which planet has very big storms?",
+      options: ["jupiter", "venus", "earth"],
+      correct: "jupiter",
+      explanation: "Jupiter has massive storms like the Great Red Spot."
+    }
+  ];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
