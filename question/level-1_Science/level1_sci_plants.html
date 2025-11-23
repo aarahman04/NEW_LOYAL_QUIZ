@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Plants</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "What do plants get from sunlight?",
+      options: ["energy", "water", "shade", "air"],
+      correct: "energy",
+      explanation: "Plants use sunlight as energy to make food."
+    },
+    {
+      question: "Which part of the plant holds fruits?",
+      options: ["branch", "root", "seed", "leaf"],
+      correct: "branch",
+      explanation: "Fruits grow on the branches of plants."
+    },
+    {
+      question: "Which kind of plants grow very tall?",
+      options: ["trees", "grass", "flowers", "bushes"],
+      correct: "trees",
+      explanation: "Trees are tall plants."
+    },
+    {
+      question: "Which part of a tree is thick and strong?",
+      options: ["trunk", "leaf", "seed", "root"],
+      correct: "trunk",
+      explanation: "The trunk supports the tree."
+    },
+    {
+      question: "What do flowers turn into after some time?",
+      options: ["fruits", "leaves", "roots", "seeds"],
+      correct: "fruits",
+      explanation: "Flowers grow into fruits."
+    },
+    {
+      question: "What is inside a fruit?",
+      options: ["seeds", "root", "leaves", "stems"],
+      correct: "seeds",
+      explanation: "Fruits contain seeds."
+    },
+    {
+      question: "What do we get from coconut trees?",
+      options: ["coconuts", "apples", "grapes", "mangoes"],
+      correct: "coconuts",
+      explanation: "Coconut trees give coconuts."
+    },
+    {
+      question: "Which part of the plant carries food and water?",
+      options: ["stem", "root", "flower", "seed"],
+      correct: "stem",
+      explanation: "Stems move water and food in the plant."
+    },
+    {
+      question: "Which plant gives us sugar?",
+      options: ["sugarcane", "wheat", "rice", "corn"],
+      correct: "sugarcane",
+      explanation: "Sugar comes from sugarcane."
+    },
+    {
+      question: "Which plant has big green leaves?",
+      options: ["banana plant", "cactus", "pine tree", "rose"],
+      correct: "banana plant",
+      explanation: "Banana plants have large leaves."
+    },
+    {
+      question: "What do plants grow from?",
+      options: ["seeds", "soil", "flowers", "leaves"],
+      correct: "seeds",
+      explanation: "Most plants grow from seeds."
+    },
+    {
+      question: "Which part of the plant makes fruits?",
+      options: ["flower", "root", "leaf", "stem"],
+      correct: "flower",
+      explanation: "Fruits form from flowers."
+    },
+    {
+      question: "What do we call a group of trees?",
+      options: ["forest", "garden", "hill", "river"],
+      correct: "forest",
+      explanation: "A large number of trees is a forest."
+    },
+    {
+      question: "Which plant grows in water?",
+      options: ["lotus", "cactus", "rose", "mango tree"],
+      correct: "lotus",
+      explanation: "Lotus plants grow in water."
+    },
+    {
+      question: "Which plant has a thick stem and stores water?",
+      options: ["cactus", "rice", "corn", "grass"],
+      correct: "cactus",
+      explanation: "Cactus stores water in its stem."
+    },
+    {
+      question: "Which plants give us vegetables like carrots?",
+      options: ["root plants", "flower plants", "tree plants", "leaf plants"],
+      correct: "root plants",
+      explanation: "Carrots are root vegetables."
+    },
+    {
+      question: "Which part of a carrot plant do we eat?",
+      options: ["root", "leaf", "flower", "stem"],
+      correct: "root",
+      explanation: "Carrots are roots."
+    },
+    {
+      question: "Which part of the plant helps it stay upright?",
+      options: ["stem", "root", "leaf", "flower"],
+      correct: "stem",
+      explanation: "The stem keeps a plant upright."
+    },
+    {
+      question: "Which part of the tree has leaves and fruits?",
+      options: ["branches", "roots", "trunk", "bark"],
+      correct: "branches",
+      explanation: "Leaves and fruits grow on branches."
+    },
+    {
+      question: "What do we call green plants that grow on the ground?",
+      options: ["grass", "tree", "flower", "bush"],
+      correct: "grass",
+      explanation: "Grass forms a green layer on the ground."
+    }
+  ];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
