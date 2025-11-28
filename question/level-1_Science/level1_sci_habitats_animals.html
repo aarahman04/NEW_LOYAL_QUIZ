@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Habitats & Animals</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "The desert is very dry. What animal lives there?",
+      options: ["camel", "penguin", "frog"],
+      correct: "camel",
+      explanation: "Camels live in dry desert habitats."
+    },
+    {
+      question: "The forest has many trees. What animal lives there?",
+      options: ["shark", "owl", "dolphin"],
+      correct: "owl",
+      explanation: "Owls commonly live in forest habitats."
+    },
+    {
+      question: "The ocean is full of water. What animal lives there?",
+      options: ["lion", "whale", "tiger"],
+      correct: "whale",
+      explanation: "Whales live in the ocean."
+    },
+    {
+      question: "The Arctic is very cold. What animal lives there?",
+      options: ["polar bear", "monkey", "giraffe"],
+      correct: "polar bear",
+      explanation: "Polar bears live in the Arctic cold regions."
+    },
+    {
+      question: "The jungle is warm and wet. What animal lives there?",
+      options: ["penguin", "elephant", "monkey"],
+      correct: "monkey",
+      explanation: "Monkeys live in warm, wet jungles."
+    },
+    {
+      question: "The grassland has tall grass. What animal lives there?",
+      options: ["zebra", "seal", "crab"],
+      correct: "zebra",
+      explanation: "Zebras live in grassy grassland habitats."
+    },
+    {
+      question: "A pond has calm water. What animal lives there?",
+      options: ["frog", "camel", "fox"],
+      correct: "frog",
+      explanation: "Frogs live in ponds."
+    },
+    {
+      question: "The mountains are rocky. What animal lives there?",
+      options: ["goat", "shark", "snake"],
+      correct: "goat",
+      explanation: "Goats are adapted to live in rocky mountain habitats."
+    },
+    {
+      question: "A farm has barns and fields. What animal lives there?",
+      options: ["cow", "dolphin", "penguin"],
+      correct: "cow",
+      explanation: "Cows live on farms."
+    },
+    {
+      question: "A river is flowing water. What animal lives there?",
+      options: ["cat", "camel", "fish"],
+      correct: "fish",
+      explanation: "Fish live in rivers and streams."
+    },
+    {
+      question: "A cave is dark. What animal lives there?",
+      options: ["cat", "tiger", "bat"],
+      correct: "bat",
+      explanation: "Bats live in dark caves."
+    },
+    {
+      question: "The beach has sand and waves. What animal lives there?",
+      options: ["bee", "tiger", "crab"],
+      correct: "crab",
+      explanation: "Crabs live along sandy beaches."
+    },
+    {
+      question: "The rainforest is rainy. What animal lives there?",
+      options: ["kangaroo", "snake", "penguin"],
+      correct: "snake",
+      explanation: "Snakes live in rainy rainforests."
+    },
+    {
+      question: "The tundra is cold. What animal lives there?",
+      options: ["seal", "monkey", "giraffe"],
+      correct: "seal",
+      explanation: "Seals live in cold tundra regions."
+    },
+    {
+      question: "A savanna is hot with grass. What animal lives there?",
+      options: ["lion", "whale", "penguin"],
+      correct: "lion",
+      explanation: "Lions live in hot grassy savannas."
+    },
+    {
+      question: "Wetlands are muddy and wet. What animal lives there?",
+      options: ["sheep", "heron", "bear"],
+      correct: "heron",
+      explanation: "Herons live in wetlands."
+    },
+    {
+      question: "The coral reef is colorful underwater. What animal lives there?",
+      options: ["clownfish", "fox", "goat"],
+      correct: "clownfish",
+      explanation: "Clownfish live in coral reefs."
+    },
+    {
+      question: "A meadow is open and sunny. What animal lives there?",
+      options: ["bat", "butterfly", "camel"],
+      correct: "butterfly",
+      explanation: "Butterflies live in sunny meadows."
+    },
+    {
+      question: "The swamp is wet and muddy. What animal lives there?",
+      options: ["alligator", "owl", "kangaroo"],
+      correct: "alligator",
+      explanation: "Alligators live in swamps."
+    },
+    {
+      question: "The Arctic ocean is freezing. What animal lives there?",
+      options: ["walrus", "giraffe", "monkey"],
+      correct: "walrus",
+      explanation: "Walruses live in the freezing Arctic ocean."
+    }
+  ];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
