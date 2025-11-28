@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Body Parts</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "Which body part helps you see?",
+      options: ["eyes", "ears", "nose"],
+      correct: "eyes",
+      explanation: "Eyes help you see."
+    },
+    {
+      question: "Which body part helps you smell?",
+      options: ["hands", "nose", "feet"],
+      correct: "nose",
+      explanation: "The nose helps you smell."
+    },
+    {
+      question: "Which body part helps you hear sounds?",
+      options: ["eyes", "mouth", "ears"],
+      correct: "ears",
+      explanation: "Your ears help you hear sounds."
+    },
+    {
+      question: "Which body part helps you taste food?",
+      options: ["tongue", "hair", "elbow"],
+      correct: "tongue",
+      explanation: "Your tongue helps you taste food."
+    },
+    {
+      question: "Which body part helps you walk?",
+      options: ["arms", "legs", "teeth"],
+      correct: "legs",
+      explanation: "You use your legs to walk."
+    },
+    {
+      question: "Which body part helps you pick things up?",
+      options: ["hands", "knees", "shoulders"],
+      correct: "hands",
+      explanation: "You use your hands to hold and pick things up."
+    },
+    {
+      question: "Which part of your body pumps blood?",
+      options: ["brain", "heart", "stomach"],
+      correct: "heart",
+      explanation: "The heart pumps blood through your body."
+    },
+    {
+      question: "Which part of the body do we use to chew food?",
+      options: ["teeth", "fingers", "ears"],
+      correct: "teeth",
+      explanation: "Teeth help us chew food."
+    },
+    {
+      question: "Which body part covers and protects us?",
+      options: ["skin", "tongue", "nose"],
+      correct: "skin",
+      explanation: "Skin covers and protects the whole body."
+    },
+    {
+      question: "Which body part helps us think?",
+      options: ["heart", "brain", "stomach"],
+      correct: "brain",
+      explanation: "The brain controls thinking."
+    },
+    {
+      question: "Which body part helps us breathe?",
+      options: ["lungs", "feet", "hands"],
+      correct: "lungs",
+      explanation: "Lungs help us breathe air."
+    },
+    {
+      question: "Which body part helps us smell flowers?",
+      options: ["ear", "nose", "toe"],
+      correct: "nose",
+      explanation: "The nose helps you smell flowers."
+    },
+    {
+      question: "Which body part bends when you walk?",
+      options: ["knee", "finger", "ear"],
+      correct: "knee",
+      explanation: "Knees bend when we walk."
+    },
+    {
+      question: "Which body part helps us clap?",
+      options: ["legs", "hands", "eyes"],
+      correct: "hands",
+      explanation: "We clap using our hands."
+    },
+    {
+      question: "Which body part helps us run?",
+      options: ["legs", "teeth", "ears"],
+      correct: "legs",
+      explanation: "You run using your legs."
+    },
+    {
+      question: "Which body part shows your hair?",
+      options: ["head", "foot", "wrist"],
+      correct: "head",
+      explanation: "Hair grows on your head."
+    },
+    {
+      question: "On which body part do we wear our shoes?",
+      options: ["hands", "feet", "head"],
+      correct: "feet",
+      explanation: "Shoes are worn on the feet."
+    },
+    {
+      question: "Which body part helps us smile?",
+      options: ["mouth", "nose", "shoulder"],
+      correct: "mouth",
+      explanation: "You smile using your mouth."
+    },
+    {
+      question: "Which body part helps you hold a pencil?",
+      options: ["fingers", "toes", "eyelashes"],
+      correct: "fingers",
+      explanation: "Fingers help you hold and write."
+    },
+    {
+      question: "Which body part helps you blink?",
+      options: ["knees", "eyes", "stomach"],
+      correct: "eyes",
+      explanation: "Your eyes blink to stay moist and clean."
+    }
+  ];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
