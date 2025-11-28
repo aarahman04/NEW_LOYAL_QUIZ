@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Insects</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "What is an insect?",
+      options: ["a fish", "a plant", "an animal with 6 legs"],
+      correct: "an animal with 6 legs",
+      explanation: "An insect is an animal with 6 legs."
+    },
+    {
+      question: "How many legs do insects have?",
+      options: ["8", "6", "4"],
+      correct: "6",
+      explanation: "All insects have 6 legs."
+    },
+    {
+      question: "What do insects use to fly?",
+      options: ["tails", "fins", "wings"],
+      correct: "wings",
+      explanation: "Insects fly using their wings."
+    },
+    {
+      question: "Which insect makes honey?",
+      options: ["bee", "butterfly", "ant"],
+      correct: "bee",
+      explanation: "Bees make honey."
+    },
+    {
+      question: "Which insect has colorful wings?",
+      options: ["fly", "beetle", "butterfly"],
+      correct: "butterfly",
+      explanation: "Butterflies are known for their colorful wings."
+    },
+    {
+      question: "Where do ants live?",
+      options: ["clouds", "ant hills", "sea"],
+      correct: "ant hills",
+      explanation: "Ants live in ant hills."
+    },
+    {
+      question: "Which insect can jump very high?",
+      options: ["bee", "grasshopper", "caterpillar"],
+      correct: "grasshopper",
+      explanation: "Grasshoppers can jump very high."
+    },
+    {
+      question: "Which insect has spots?",
+      options: ["fly", "ladybug", "ant"],
+      correct: "ladybug",
+      explanation: "Ladybugs usually have spots."
+    },
+    {
+      question: "Which insect glows at night?",
+      options: ["firefly", "bee", "grasshopper"],
+      correct: "firefly",
+      explanation: "Fireflies glow at night."
+    },
+    {
+      question: "What do butterflies drink from flowers?",
+      options: ["nectar", "water", "milk"],
+      correct: "nectar",
+      explanation: "Butterflies drink nectar from flowers."
+    },
+    {
+      question: "Which insect has a stinger?",
+      options: ["beetle", "bee", "ant"],
+      correct: "bee",
+      explanation: "Bees have a stinger."
+    },
+    {
+      question: "What do caterpillars turn into?",
+      options: ["butterflies", "frogs", "birds"],
+      correct: "butterflies",
+      explanation: "Caterpillars turn into butterflies."
+    },
+    {
+      question: "Which insect crawls?",
+      options: ["caterpillar", "butterfly", "bee"],
+      correct: "caterpillar",
+      explanation: "Caterpillars crawl."
+    },
+    {
+      question: "Where do bees live?",
+      options: ["bird nests", "holes", "beehives"],
+      correct: "beehives",
+      explanation: "Bees live in beehives."
+    },
+    {
+      question: "Which insect often lands on food?",
+      options: ["ant", "butterfly", "fly"],
+      correct: "fly",
+      explanation: "Flies often land on food."
+    },
+    {
+      question: "What do insects use to smell?",
+      options: ["wings", "antennae", "nose"],
+      correct: "antennae",
+      explanation: "Insects use their antennae to smell."
+    },
+    {
+      question: "Which insect is very tiny?",
+      options: ["grasshopper", "beetle", "ant"],
+      correct: "ant",
+      explanation: "Ants are very tiny insects."
+    },
+    {
+      question: "Which insect can bite?",
+      options: ["mosquito", "ladybug", "butterfly"],
+      correct: "mosquito",
+      explanation: "Mosquitoes can bite and suck blood."
+    },
+    {
+      question: "Which animal builds a web?",
+      options: ["bee", "spider", "ant"],
+      correct: "spider",
+      explanation: "Spiders build webs, although they are not insects."
+    },
+    {
+      question: "Which insect chirps?",
+      options: ["fly", "bee", "cricket"],
+      correct: "cricket",
+      explanation: "Crickets make chirping sounds."
+    }
+  ];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
