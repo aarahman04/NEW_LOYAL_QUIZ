@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Birds</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "What covering do birds have on their bodies?",
+      options: ["feathers", "scales", "fur"],
+      correct: "feathers",
+      explanation: "Birds are covered with feathers." 
+    },
+    {
+      question: "How many legs does a bird have?",
+      options: ["four", "two", "six"],
+      correct: "two",
+      explanation: "Birds have two legs."
+    },
+    {
+      question: "What helps birds fly?",
+      options: ["wings", "tails", "whiskers"],
+      correct: "wings",
+      explanation: "Birds use their wings to fly."
+    },
+    {
+      question: "What is a baby bird called?",
+      options: ["calf", "chick", "pup"],
+      correct: "chick",
+      explanation: "A baby bird is called a chick."
+    },
+    {
+      question: "Where do birds build their homes?",
+      options: ["trees", "water", "caves"],
+      correct: "trees",
+      explanation: "Most birds build their homes in trees."
+    },
+    {
+      question: "What is a bird’s home called?",
+      options: ["den", "nest", "shell"],
+      correct: "nest",
+      explanation: "Birds build nests to live and lay eggs."
+    },
+    {
+      question: "What do many birds eat?",
+      options: ["seeds", "plastic", "metal"],
+      correct: "seeds",
+      explanation: "Many birds eat seeds as their food."
+    },
+    {
+      question: "What sound do birds make?",
+      options: ["roar", "chirp", "moo"],
+      correct: "chirp",
+      explanation: "Birds commonly make a chirping sound."
+    },
+    {
+      question: "What do birds use their beaks for?",
+      options: ["swimming", "digging", "eating"],
+      correct: "eating",
+      explanation: "Birds use their beaks mainly for eating."
+    },
+    {
+      question: "Do all birds fly?",
+      options: ["yes", "no", "sometimes"],
+      correct: "no",
+      explanation: "Some birds like ostriches and penguins cannot fly."
+    },
+    {
+      question: "Which bird cannot fly but runs fast?",
+      options: ["ostrich", "eagle", "parrot"],
+      correct: "ostrich",
+      explanation: "Ostriches are fast runners but cannot fly."
+    },
+    {
+      question: "Which bird can swim and has webbed feet?",
+      options: ["penguin", "owl", "crow"],
+      correct: "penguin",
+      explanation: "Penguins swim using their flipper-like wings."
+    },
+    {
+      question: "What do birds lay?",
+      options: ["stones", "eggs", "leaves"],
+      correct: "eggs",
+      explanation: "All birds lay eggs."
+    },
+    {
+      question: "What helps keep birds warm?",
+      options: ["feathers", "shells", "sticks"],
+      correct: "feathers",
+      explanation: "Feathers help birds stay warm."
+    },
+    {
+      question: "What do owls use to see at night?",
+      options: ["bright colors", "strong legs", "sharp eyes"],
+      correct: "sharp eyes",
+      explanation: "Owls have excellent night vision."
+    },
+    {
+      question: "Which bird has a long neck?",
+      options: ["swan", "robin", "sparrow"],
+      correct: "swan",
+      explanation: "Swans have long, curved necks."
+    },
+    {
+      question: "Which bird is brightly colored and can mimic sounds?",
+      options: ["parrot", "pigeon", "duck"],
+      correct: "parrot",
+      explanation: "Parrots can mimic human speech."
+    },
+    {
+      question: "Why do some birds migrate?",
+      options: ["for better weather", "to hide from trees", "to sleep more"],
+      correct: "for better weather",
+      explanation: "Birds migrate to find suitable climates and food."
+    },
+    {
+      question: "What do birds use their claws for?",
+      options: ["climbing", "swimming", "flying"],
+      correct: "climbing",
+      explanation: "Birds use claws to grip branches and climb."
+    },
+    {
+      question: "Which bird builds very large nests?",
+      options: ["eagle", "sparrow", "penguin"],
+      correct: "eagle",
+      explanation: "Eagles build some of the largest nests in the world."
+    }
+  ];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
