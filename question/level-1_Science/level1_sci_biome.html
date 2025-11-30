@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Biome</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "Which biome is very hot and has very little rain?",
+      options: ["desert", "forest", "ocean"],
+      correct: "desert",
+      explanation: "Deserts are extremely hot and receive very little rainfall."
+    },
+    {
+      question: "Which biome has many trees and animals?",
+      options: ["tundra", "forest", "desert"],
+      correct: "forest",
+      explanation: "Forests have dense trees and many animal species."
+    },
+    {
+      question: "Which biome is covered mostly in water?",
+      options: ["ocean", "grassland", "desert"],
+      correct: "ocean",
+      explanation: "Oceans cover most of Earth’s surface with water."
+    },
+    {
+      question: "Which biome is very cold and has ice and snow?",
+      options: ["tundra", "rainforest", "grassland"],
+      correct: "tundra",
+      explanation: "The tundra is extremely cold with ice and snow."
+    },
+    {
+      question: "Which biome has tall grasses and few trees?",
+      options: ["grassland", "desert", "forest"],
+      correct: "grassland",
+      explanation: "Grasslands are open areas dominated by tall grasses."
+    },
+    {
+      question: "Which biome has lots of rain and many plants?",
+      options: ["rainforest", "tundra", "savanna"],
+      correct: "rainforest",
+      explanation: "Rainforests get heavy rainfall and have rich plant life."
+    },
+    {
+      question: "Which biome is home to cactus plants?",
+      options: ["desert", "ocean", "forest"],
+      correct: "desert",
+      explanation: "Cacti grow in deserts because they store water."
+    },
+    {
+      question: "Which biome has warm weather and tall trees?",
+      options: ["desert", "rainforest", "grassland"],
+      correct: "rainforest",
+      explanation: "Rainforests are warm and full of tall trees."
+    },
+    {
+      question: "Which biome do penguins live in?",
+      options: ["tundra", "desert", "forest"],
+      correct: "tundra",
+      explanation: "Penguins live in cold tundra-like regions."
+    },
+    {
+      question: "Which biome has salty water?",
+      options: ["swimming pool", "ocean", "rainforest"],
+      correct: "ocean",
+      explanation: "Oceans contain salty water."
+    },
+    {
+      question: "Which biome has lions and zebras?",
+      options: ["savanna", "tundra", "jungle"],
+      correct: "savanna",
+      explanation: "Savannas are home to lions, zebras, and many grassland animals."
+    },
+    {
+      question: "Which biome has trees that lose their leaves in fall?",
+      options: ["deciduous forest", "desert", "tundra"],
+      correct: "deciduous forest",
+      explanation: "Deciduous forests have trees that shed leaves in autumn."
+    },
+    {
+      question: "Which biome has many colorful fish?",
+      options: ["swimming pool", "ocean", "tundra"],
+      correct: "ocean",
+      explanation: "Oceans are home to colorful fish and coral reefs."
+    },
+    {
+      question: "Which biome has animals like polar bears?",
+      options: ["ocean", "tundra", "savanna"],
+      correct: "tundra",
+      explanation: "Polar bears are found in the cold tundra biome."
+    },
+    {
+      question: "Which biome has dry grass and grazing animals?",
+      options: ["tundra", "desert", "grassland"],
+      correct: "grassland",
+      explanation: "Grasslands have open dry areas where grazing animals live."
+    },
+    {
+      question: "Which biome has giant trees and lots of vines?",
+      options: ["tundra", "rainforest", "desert"],
+      correct: "rainforest",
+      explanation: "Rainforests are known for giant trees and vines."
+    },
+    {
+      question: "Which biome has animals like camels?",
+      options: ["jungle", "desert", "ocean"],
+      correct: "desert",
+      explanation: "Camels are adapted to survive in deserts."
+    },
+    {
+      question: "Which biome has the most different kinds of animals?",
+      options: ["mountain", "tundra", "rainforest"],
+      correct: "rainforest",
+      explanation: "Rainforests have the highest biodiversity."
+    },
+    {
+      question: "Which biome has little plant life because it’s so cold?",
+      options: ["tundra", "rainforest", "savanna"],
+      correct: "tundra",
+      explanation: "The tundra has very limited plant life due to cold temperatures."
+    },
+    {
+      question: "Which biome has warm grasslands with scattered trees?",
+      options: ["mountain", "savanna", "forest"],
+      correct: "savanna",
+      explanation: "Savannas are warm grasslands with some scattered trees."
+    }
+  ];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
