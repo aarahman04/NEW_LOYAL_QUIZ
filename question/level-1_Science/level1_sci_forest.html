@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Forest</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "Which animal lives in the forest and has a bushy tail?",
+      options: ["squirrel", "shark", "penguin"],
+      correct: "squirrel",
+      explanation: "Squirrels are forest animals known for their bushy tails."
+    },
+    {
+      question: "Which forest animal howls at night?",
+      options: ["fish", "wolf", "turtle"],
+      correct: "wolf",
+      explanation: "Wolves are known for their loud nighttime howls."
+    },
+    {
+      question: "Which animal climbs trees and eats bananas?",
+      options: ["monkey", "whale", "duck"],
+      correct: "monkey",
+      explanation: "Monkeys live in forests and love eating bananas."
+    },
+    {
+      question: "Which animal has big antlers and lives in the forest?",
+      options: ["deer", "dolphin", "deer"],
+      correct: "deer",
+      explanation: "Male deer have large antlers and live in forests."
+    },
+    {
+      question: "Which animal has black and white stripes?",
+      options: ["cow", "zebra", "owl"],
+      correct: "zebra",
+      explanation: "Zebras are striped animals found in forest edges and grasslands."
+    },
+    {
+      question: "Which animal has a long nose called a trunk?",
+      options: ["cow", "elephant", "hawk"],
+      correct: "elephant",
+      explanation: "Elephants use their long trunks to eat, drink, and pick things up."
+    },
+    {
+      question: "Which forest animal sleeps in caves?",
+      options: ["cow", "bear", "seal"],
+      correct: "bear",
+      explanation: "Bears often rest and hibernate in caves."
+    },
+    {
+      question: "Which small animal makes holes in the ground?",
+      options: ["bear", "rabbit", "penguin"],
+      correct: "rabbit",
+      explanation: "Rabbits dig burrows in the ground for shelter."
+    },
+    {
+      question: "Which bird lives in the forest and can turn its head far around?",
+      options: ["owl", "duck", "swan"],
+      correct: "owl",
+      explanation: "Owls can rotate their heads up to 270 degrees."
+    },
+    {
+      question: "Which animal swings from tree branches?",
+      options: ["monkey", "lion", "octopus"],
+      correct: "monkey",
+      explanation: "Monkeys use their arms and tails to swing between branches."
+    },
+    {
+      question: "Which forest animal is known for its sharp quills?",
+      options: ["cow", "porcupine", "goat"],
+      correct: "porcupine",
+      explanation: "Porcupines have sharp quills for protection."
+    },
+    {
+      question: "Which animal is known as the king of the forest?",
+      options: ["bird", "lion", "turtle"],
+      correct: "lion",
+      explanation: "Lions are often called the king of the forest or jungle."
+    },
+    {
+      question: "Which forest animal jumps from tree to tree?",
+      options: ["donkey", "monkey", "seal"],
+      correct: "monkey",
+      explanation: "Monkeys can leap between trees with ease."
+    },
+    {
+      question: "Which animal has stripes and hunts in the forest?",
+      options: ["parrot", "cow", "tiger"],
+      correct: "tiger",
+      explanation: "Tigers have stripes that help them camouflage while hunting."
+    },
+    {
+      question: "Which forest bird pecks holes in trees?",
+      options: ["termite", "penguin", "woodpecker"],
+      correct: "woodpecker",
+      explanation: "Woodpeckers peck into trees to find insects."
+    },
+    {
+      question: "Which animal has a long, bushy tail and steals food?",
+      options: ["raccoon", "jellyfish", "shark"],
+      correct: "raccoon",
+      explanation: "Raccoons are known for their sneaky behavior and masked faces."
+    },
+    {
+      question: "Which small forest animal eats nuts and seeds?",
+      options: ["turtle", "chipmunk", "goose"],
+      correct: "chipmunk",
+      explanation: "Chipmunks store nuts in their cheek pouches."
+    },
+    {
+      question: "Which forest animal is known for its loud roar?",
+      options: ["lion", "rabbit", "cat"],
+      correct: "lion",
+      explanation: "Lions communicate and defend territory with loud roars."
+    },
+    {
+      question: "Which animal changes color to blend in?",
+      options: ["dog", "chameleon", "chicken"],
+      correct: "chameleon",
+      explanation: "Chameleons change their skin color for camouflage."
+    },
+    {
+      question: "Which creature crawls slowly and carries its home on its back?",
+      options: ["snail", "owl", "wolf"],
+      correct: "snail",
+      explanation: "Snails carry their shells and move slowly across the forest floor."
+    }
+  ];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
