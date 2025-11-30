@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Marine Animals</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "What do we call the huge body of salty water on Earth?",
+      options: ["ocean", "pond", "lake"],
+      correct: "ocean",
+      explanation: "The huge salty water body is called an ocean."
+    },
+    {
+      question: "Which animal is the largest in the ocean?",
+      options: ["pink whale", "crab", "blue whale"],
+      correct: "blue whale",
+      explanation: "The blue whale is the largest animal in the ocean."
+    },
+    {
+      question: "Which animal has eight arms?",
+      options: ["octopus", "dolphin", "shark"],
+      correct: "octopus",
+      explanation: "An octopus has eight arms."
+    },
+    {
+      question: "Which ocean animal has sharp teeth and is a fast swimmer?",
+      options: ["tuna", "turtle", "shark"],
+      correct: "shark",
+      explanation: "Sharks are fast swimmers with sharp teeth."
+    },
+    {
+      question: "Which animal lives in a shell in the ocean?",
+      options: ["shark", "dolphin", "snail"],
+      correct: "snail",
+      explanation: "Snails live in shells."
+    },
+    {
+      question: "Which animal has a hard shell and swims slowly?",
+      options: ["sea turtle", "jellyfish", "whale"],
+      correct: "sea turtle",
+      explanation: "Sea turtles have hard shells and swim slowly."
+    },
+    {
+      question: "Which ocean animal has long arms with stingers?",
+      options: ["crab", "seal", "jellyfish"],
+      correct: "jellyfish",
+      explanation: "Jellyfish have long stinging tentacles."
+    },
+    {
+      question: "Which animal blows water from a blowhole?",
+      options: ["fish", "whale", "crab"],
+      correct: "whale",
+      explanation: "Whales blow water through their blowholes."
+    },
+    {
+      question: "Which ocean animal has a big fin and jumps out of the water?",
+      options: ["octopus", "dolphin", "octopus"],
+      correct: "dolphin",
+      explanation: "Dolphins are known for jumping out of the water."
+    },
+    {
+      question: "Which animal has a flat body and can sting?",
+      options: ["clown fish", "stingray", "seal"],
+      correct: "stingray",
+      explanation: "Stingrays have flat bodies and can sting."
+    },
+    {
+      question: "Which animal in the ocean walks sideways?",
+      options: ["turtle", "shark", "crab"],
+      correct: "crab",
+      explanation: "Crabs walk sideways."
+    },
+    {
+      question: "Which animal has a star-shaped body?",
+      options: ["shark", "starfish", "seal"],
+      correct: "starfish",
+      explanation: "Starfish have star-shaped bodies."
+    },
+    {
+      question: "What do we call the salty water that covers most of Earth?",
+      options: ["pond", "river", "ocean"],
+      correct: "ocean",
+      explanation: "Most of Earth is covered by the ocean."
+    },
+    {
+      question: "Which animal has flippers and can clap?",
+      options: ["seal", "octopus", "shark"],
+      correct: "seal",
+      explanation: "Seals can clap with their flippers."
+    },
+    {
+      question: "Which ocean animal has a long nose called a snout?",
+      options: ["penguin", "crab", "swordfish"],
+      correct: "swordfish",
+      explanation: "Swordfish have a long pointed snout."
+    },
+    {
+      question: "Which ocean animal has two big claws?",
+      options: ["lobster", "whale", "seal"],
+      correct: "lobster",
+      explanation: "Lobsters are known for their two large claws."
+    },
+    {
+      question: "Which animal swims in schools?",
+      options: ["fish", "turtle", "stingray"],
+      correct: "fish",
+      explanation: "Fish often swim together in groups called schools."
+    },
+    {
+      question: "Which animal can change colors to hide?",
+      options: ["deer", "shark", "octopus"],
+      correct: "octopus",
+      explanation: "Octopuses can change color for camouflage."
+    },
+    {
+      question: "Which ocean animal has a big mouth and tiny fish swim inside it?",
+      options: ["octopus", "whale shark", "seal"],
+      correct: "whale shark",
+      explanation: "Whale sharks allow tiny fish to swim inside their mouths."
+    },
+    {
+      question: "Which ocean animal has a long, wiggly body like a snake?",
+      options: ["shark", "eel", "turtle"],
+      correct: "eel",
+      explanation: "Eels have long, snake-like bodies."
+    }
+  ];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
