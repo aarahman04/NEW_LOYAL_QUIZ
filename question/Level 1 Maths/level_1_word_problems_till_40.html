@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Word Problems till 40</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {
+          question: "A box has 25 pencils. The teacher adds 10 more pencils. How many pencils are in the box now?",
+          options: ["34", "35", "36"],
+          correct: "35",
+          explanation: "25 + 10 = 35 pencils."
+        },
+        {
+          question: "There are 32 marbles in a jar. The boy gives 12 marbles to his friend. How many marbles are left?",
+          options: ["18", "19", "20"],
+          correct: "20",
+          explanation: "32 − 12 = 20 marbles."
+        },
+        {
+          question: "A bag has 19 sweets. Mother adds 11 more sweets. How many sweets are in the bag now?",
+          options: ["29", "30", "31"],
+          correct: "30",
+          explanation: "19 + 11 = 30 sweets."
+        },
+        {
+          question: "A packet has 40 stickers. The child gives 15 stickers to classmates. How many stickers are left in the packet?",
+          options: ["24", "25", "26"],
+          correct: "25",
+          explanation: "40 − 15 = 25 stickers."
+        },
+        {
+          question: "There are 28 blocks in a box. Eight blocks fall out. How many blocks stay in the box?",
+          options: ["19", "20", "21"],
+          correct: "20",
+          explanation: "28 − 8 = 20 blocks."
+        },
+        {
+          question: "A tray has 17 apples. The shopkeeper puts 13 more apples on the tray. How many apples are on the tray now?",
+          options: ["29", "30", "31"],
+          correct: "30",
+          explanation: "17 + 13 = 30 apples."
+        },
+        {
+          question: "A shop has 30 balloons. Nine balloons pop. How many balloons are left?",
+          options: ["20", "21", "22"],
+          correct: "21",
+          explanation: "30 − 9 = 21 balloons."
+        },
+        {
+          question: "There are 24 toy cars on a table. The boy adds 6 more toy cars. How many toy cars are on the table now?",
+          options: ["29", "30", "31"],
+          correct: "30",
+          explanation: "24 + 6 = 30 toy cars."
+        },
+        {
+          question: "A plate has 31 cookies. The children eat 11 cookies. How many cookies remain on the plate?",
+          options: ["19", "20", "21"],
+          correct: "20",
+          explanation: "31 − 11 = 20 cookies."
+        },
+        {
+          question: "A shelf has 16 storybooks. Mother buys 14 more books. How many books are on the shelf now?",
+          options: ["29", "30", "31"],
+          correct: "30",
+          explanation: "16 + 14 = 30 books."
+        },
+        {
+          question: "There are 29 flowers in a vase. Nine flowers wilt. How many flowers are still fresh?",
+          options: ["19", "20", "21"],
+          correct: "20",
+          explanation: "29 − 9 = 20 flowers."
+        },
+        {
+          question: "A box has 27 crayons. The teacher adds 10 more crayons. How many crayons are in the box now?",
+          options: ["36", "37", "38"],
+          correct: "37",
+          explanation: "27 + 10 = 37 crayons."
+        },
+        {
+          question: "A jar holds 34 marbles. The boy gives 4 marbles to his friend. How many marbles are left in the jar?",
+          options: ["29", "30", "31"],
+          correct: "30",
+          explanation: "34 − 4 = 30 marbles."
+        },
+        {
+          question: "A bag has 23 balls. The coach adds 7 more balls. How many balls are in the bag now?",
+          options: ["29", "30", "31"],
+          correct: "30",
+          explanation: "23 + 7 = 30 balls."
+        },
+        {
+          question: "There are 38 toy animals on a mat. The child gives 9 toys to a friend. How many toy animals stay on the mat?",
+          options: ["28", "29", "30"],
+          correct: "29",
+          explanation: "38 − 9 = 29 toy animals."
+        },
+        {
+          question: "A basket has 21 oranges. Mother buys 9 more oranges. How many oranges are in the basket now?",
+          options: ["29", "30", "31"],
+          correct: "30",
+          explanation: "21 + 9 = 30 oranges."
+        },
+        {
+          question: "There are 26 sweets in a box. The boy gives 6 sweets to his sister. How many sweets are left?",
+          options: ["19", "20", "21"],
+          correct: "20",
+          explanation: "26 − 6 = 20 sweets."
+        },
+        {
+          question: "A jar has 33 candies. Thirteen candies are eaten. How many candies are left in the jar?",
+          options: ["19", "20", "21"],
+          correct: "20",
+          explanation: "33 − 13 = 20 candies."
+        },
+        {
+          question: "A pencil case has 20 pencils. The teacher gives the child 15 more pencils. How many pencils does the child have now?",
+          options: ["34", "35", "36"],
+          correct: "35",
+          explanation: "20 + 15 = 35 pencils."
+        },
+        {
+          question: "A bag has 40 balloons. The children give 20 balloons to friends. How many balloons remain in the bag?",
+          options: ["19", "20", "21"],
+          correct: "20",
+          explanation: "40 − 20 = 20 balloons."
+        }
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>

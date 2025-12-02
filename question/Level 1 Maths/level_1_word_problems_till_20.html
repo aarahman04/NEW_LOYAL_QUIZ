@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Word Problems till 20</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {
+          question: "Ali has 4 apples. He gets 3 more apples. How many apples does Ali have now?",
+          options: ["6", "7", "8"],
+          correct: "7",
+          explanation: "Ali has 4 apples and gets 3 more: 4 + 3 = 7."
+        },
+        {
+          question: "Sara has 10 balloons. Four balloons fly away. How many balloons are left?",
+          options: ["5", "6", "7"],
+          correct: "6",
+          explanation: "10 − 4 = 6 balloons are left."
+        },
+        {
+          question: "Rayan has 5 pencils. His mother gives him 5 more. How many pencils does he have now?",
+          options: ["9", "10", "11"],
+          correct: "10",
+          explanation: "5 + 5 = 10 pencils."
+        },
+        {
+          question: "Maya has 9 chocolates. She eats 2 chocolates. How many chocolates are left?",
+          options: ["7", "6", "8"],
+          correct: "7",
+          explanation: "9 − 2 = 7 chocolates."
+        },
+        {
+          question: "Omar has 7 toy cars. He gets 3 more toy cars. How many toy cars does he have in total?",
+          options: ["9", "10", "11"],
+          correct: "10",
+          explanation: "7 + 3 = 10 toy cars."
+        },
+        {
+          question: "Fatima has 8 flowers. Her friend gives her 4 more flowers. How many flowers does she have now?",
+          options: ["11", "12", "13"],
+          correct: "12",
+          explanation: "8 + 4 = 12 flowers."
+        },
+        {
+          question: "Zaid has 15 marbles. He gives 5 marbles to his friend. How many marbles are left?",
+          options: ["9", "10", "11"],
+          correct: "10",
+          explanation: "15 − 5 = 10 marbles."
+        },
+        {
+          question: "Hiba has 6 candies. She buys 7 more candies. How many candies does she have now?",
+          options: ["12", "13", "14"],
+          correct: "13",
+          explanation: "6 + 7 = 13 candies."
+        },
+        {
+          question: "A box has 14 stickers. Four stickers fall down and are lost. How many stickers are still in the box?",
+          options: ["9", "10", "11"],
+          correct: "10",
+          explanation: "14 − 4 = 10 stickers."
+        },
+        {
+          question: "There are 3 ducks in a pond. Five more ducks swim in. How many ducks are in the pond now?",
+          options: ["7", "8", "9"],
+          correct: "8",
+          explanation: "3 + 5 = 8 ducks."
+        },
+        {
+          question: "A basket has 12 oranges. Mother uses 3 oranges for juice. How many oranges are left?",
+          options: ["8", "9", "10"],
+          correct: "9",
+          explanation: "12 − 3 = 9 oranges."
+        },
+        {
+          question: "Ali has 2 kites. His dad buys 6 more kites. How many kites does Ali have now?",
+          options: ["7", "8", "9"],
+          correct: "8",
+          explanation: "2 + 6 = 8 kites."
+        },
+        {
+          question: "Leena has 16 crayons. Two crayons break. How many crayons can she still use?",
+          options: ["13", "14", "15"],
+          correct: "14",
+          explanation: "16 − 2 = 14 crayons."
+        },
+        {
+          question: "Yusuf has 11 books. He gets 2 books from the library. How many books does he have now?",
+          options: ["12", "13", "14"],
+          correct: "13",
+          explanation: "11 + 2 = 13 books."
+        },
+        {
+          question: "Noor has 9 cookies. She gives 4 cookies to her friend. How many cookies are left with Noor?",
+          options: ["4", "5", "6"],
+          correct: "5",
+          explanation: "9 − 4 = 5 cookies."
+        },
+        {
+          question: "A string has 13 beads. The child adds 4 more beads. How many beads are on the string now?",
+          options: ["16", "17", "18"],
+          correct: "17",
+          explanation: "13 + 4 = 17 beads."
+        },
+        {
+          question: "Hamza has 18 candies. He gives 7 candies to his cousins. How many candies does he have now?",
+          options: ["10", "11", "12"],
+          correct: "11",
+          explanation: "18 − 7 = 11 candies."
+        },
+        {
+          question: "Sana has 5 balloons. She buys 9 more balloons. How many balloons does she have in all?",
+          options: ["13", "14", "15"],
+          correct: "14",
+          explanation: "5 + 9 = 14 balloons."
+        },
+        {
+          question: "A toy box has 19 blocks. Three blocks are lost. How many blocks are still in the box?",
+          options: ["15", "16", "17"],
+          correct: "16",
+          explanation: "19 − 3 = 16 blocks."
+        },
+        {
+          question: "A fruit plate has 4 bananas. The child eats all 4 bananas. How many bananas are left?",
+          options: ["0", "1", "2"],
+          correct: "0",
+          explanation: "4 − 4 = 0 bananas."
+        }
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>

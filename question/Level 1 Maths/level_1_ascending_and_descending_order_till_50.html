@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Ascending &amp; Descending till 50</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {
+          question: "Which shows the numbers 1, 4 and 7 in ascending (small to big) order?",
+          options: ["1, 4, 7", "4, 1, 7", "7, 4, 1"],
+          correct: "1, 4, 7",
+          explanation: "Ascending order means smallest to biggest: 1, 4, 7."
+        },
+        {
+          question: "Which shows the numbers 2, 9 and 5 in descending (big to small) order?",
+          options: ["2, 5, 9", "9, 5, 2", "5, 9, 2"],
+          correct: "9, 5, 2",
+          explanation: "Largest is 9, then 5, then 2: 9, 5, 2."
+        },
+        {
+          question: "Put 6, 3 and 8 in ascending order.",
+          options: ["3, 6, 8", "6, 3, 8", "8, 6, 3"],
+          correct: "3, 6, 8",
+          explanation: "Smallest is 3, then 6, then 8: 3, 6, 8."
+        },
+        {
+          question: "Put 10, 4 and 7 in descending order.",
+          options: ["4, 7, 10", "10, 7, 4", "7, 10, 4"],
+          correct: "10, 7, 4",
+          explanation: "Descending is biggest to smallest: 10, 7, 4."
+        },
+        {
+          question: "Which set is in ascending order?",
+          options: ["12, 15, 18", "18, 12, 15", "15, 18, 12"],
+          correct: "12, 15, 18",
+          explanation: "12 &lt; 15 &lt; 18, so 12, 15, 18 is ascending."
+        },
+        {
+          question: "Which set is in descending order?",
+          options: ["30, 25, 20", "20, 25, 30", "25, 30, 20"],
+          correct: "30, 25, 20",
+          explanation: "30 &gt; 25 &gt; 20, so 30, 25, 20 is descending."
+        },
+        {
+          question: "Put 11, 2 and 9 in ascending order.",
+          options: ["2, 9, 11", "11, 9, 2", "9, 2, 11"],
+          correct: "2, 9, 11",
+          explanation: "Smallest is 2, then 9, then 11: 2, 9, 11."
+        },
+        {
+          question: "Put 14, 4 and 9 in descending order.",
+          options: ["14, 9, 4", "4, 9, 14", "9, 14, 4"],
+          correct: "14, 9, 4",
+          explanation: "Biggest to smallest: 14, 9, 4."
+        },
+        {
+          question: "Which list shows numbers in ascending order?",
+          options: ["5, 8, 11", "11, 8, 5", "8, 5, 11"],
+          correct: "5, 8, 11",
+          explanation: "5 &lt; 8 &lt; 11 so 5, 8, 11 is ascending."
+        },
+        {
+          question: "Which list shows numbers in descending order?",
+          options: ["40, 35, 30", "30, 35, 40", "35, 30, 40"],
+          correct: "40, 35, 30",
+          explanation: "40 &gt; 35 &gt; 30 so 40, 35, 30 is descending."
+        },
+        {
+          question: "Put 2, 10, 4 and 8 in ascending order.",
+          options: ["2, 4, 8, 10", "10, 8, 4, 2", "4, 2, 8, 10"],
+          correct: "2, 4, 8, 10",
+          explanation: "Order from smallest to biggest: 2, 4, 8, 10."
+        },
+        {
+          question: "Put 16, 3, 12 and 7 in descending order.",
+          options: ["16, 12, 7, 3", "3, 7, 12, 16", "16, 7, 12, 3"],
+          correct: "16, 12, 7, 3",
+          explanation: "Order from biggest to smallest: 16, 12, 7, 3."
+        },
+        {
+          question: "Which list is in ascending order?",
+          options: ["21, 23, 25, 27", "27, 25, 23, 21", "23, 21, 25, 27"],
+          correct: "21, 23, 25, 27",
+          explanation: "21 &lt; 23 &lt; 25 &lt; 27, so it is ascending."
+        },
+        {
+          question: "Which list is in descending order?",
+          options: ["50, 45, 40, 35", "35, 40, 45, 50", "50, 40, 45, 35"],
+          correct: "50, 45, 40, 35",
+          explanation: "50 &gt; 45 &gt; 40 &gt; 35, so it is descending."
+        },
+        {
+          question: "Put 9, 16, 13 and 4 in ascending order.",
+          options: ["4, 9, 13, 16", "16, 13, 9, 4", "9, 4, 13, 16"],
+          correct: "4, 9, 13, 16",
+          explanation: "Smallest to biggest: 4, 9, 13, 16."
+        },
+        {
+          question: "Put 28, 15, 19 and 10 in descending order.",
+          options: ["10, 15, 19, 28", "28, 19, 15, 10", "28, 15, 19, 10"],
+          correct: "28, 19, 15, 10",
+          explanation: "Biggest to smallest: 28, 19, 15, 10."
+        },
+        {
+          question: "Which list is in ascending order?",
+          options: ["6, 7, 7, 8", "7, 6, 7, 8", "8, 7, 7, 6"],
+          correct: "6, 7, 7, 8",
+          explanation: "Numbers go up or stay the same: 6, 7, 7, 8."
+        },
+        {
+          question: "Which list is in descending order?",
+          options: ["22, 25, 22, 20", "25, 22, 22, 20", "25, 22, 20, 22"],
+          correct: "25, 22, 22, 20",
+          explanation: "From biggest to smallest (or same): 25, 22, 22, 20."
+        },
+        {
+          question: "Put 32, 29 and 35 in ascending order.",
+          options: ["29, 32, 35", "35, 32, 29", "32, 29, 35"],
+          correct: "29, 32, 35",
+          explanation: "Smallest to biggest: 29, 32, 35."
+        },
+        {
+          question: "Put 18, 11, 15 and 5 in descending order.",
+          options: ["18, 15, 11, 5", "5, 11, 15, 18", "18, 11, 15, 5"],
+          correct: "18, 15, 11, 5",
+          explanation: "Biggest to smallest: 18, 15, 11, 5."
+        }
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
