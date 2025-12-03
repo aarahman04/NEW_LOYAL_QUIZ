@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>State of Matter</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "What do we call water you can pour?",
+      options: ["liquid", "gas", "solid"],
+      correct: "liquid",
+      explanation: "Liquids can be poured because they flow."
+    },
+    {
+      question: "What do we call air we breathe?",
+      options: ["rock", "gas", "leaf"],
+      correct: "gas",
+      explanation: "Air is a gas made of different gases like oxygen and nitrogen."
+    },
+    {
+      question: "What state of matter is warm tea?",
+      options: ["liquid", "gas", "solid"],
+      correct: "liquid",
+      explanation: "Tea is still a liquid when warm."
+    },
+    {
+      question: "What do we call water turning into ice?",
+      options: ["melting", "freezing", "coloring"],
+      correct: "freezing",
+      explanation: "Freezing is when liquid water becomes solid ice."
+    },
+    {
+      question: "What do we call food that rots and breaks down?",
+      options: ["cleaning", "decomposition", "jumping"],
+      correct: "decomposition",
+      explanation: "Decomposition happens when food breaks down naturally."
+    },
+    {
+      question: "What do we call a solid that turns into gas directly?",
+      options: ["sublimation", "freezing", "blowing"],
+      correct: "sublimation",
+      explanation: "Sublimation is when a solid becomes gas without melting."
+    },
+    {
+      question: "What do we call juice in a cup?",
+      options: ["liquid", "gas", "solid"],
+      correct: "liquid",
+      explanation: "Juice is a liquid because it flows and takes the shape of the cup."
+    },
+    {
+      question: "What is a balloon filled with?",
+      options: ["gas", "water", "sand"],
+      correct: "gas",
+      explanation: "Balloons are filled with gases like air or helium."
+    },
+    {
+      question: "What do we call a popsicle melting in the sun?",
+      options: ["freezing", "melting", "blowing"],
+      correct: "melting",
+      explanation: "Heat causes solids like popsicles to melt into liquids."
+    },
+    {
+      question: "What do we call water getting hard in the freezer?",
+      options: ["freezing", "painting", "running"],
+      correct: "freezing",
+      explanation: "Freezing turns liquid water into solid ice."
+    },
+    {
+      question: "What state of matter is a rock?",
+      options: ["solid", "liquid", "gas"],
+      correct: "solid",
+      explanation: "Rocks are hard and have a fixed shape, so they are solids."
+    },
+    {
+      question: "What do we call steam from hot soup?",
+      options: ["gas", "solid", "cookie"],
+      correct: "gas",
+      explanation: "Steam is water vapor, which is a gas."
+    },
+    {
+      question: "What do we call rain puddles drying up?",
+      options: ["eating", "evaporation", "jumping"],
+      correct: "evaporation",
+      explanation: "Evaporation is when liquid turns into gas."
+    },
+    {
+      question: "What do we call cold water drops on a glass?",
+      options: ["forest", "melting", "condensation"],
+      correct: "condensation",
+      explanation: "Condensation forms water droplets on cold surfaces."
+    },
+    {
+      question: "What state of matter is snow?",
+      options: ["liquid", "solid", "gas"],
+      correct: "solid",
+      explanation: "Snow is frozen water in solid form."
+    },
+    {
+      question: "What do we call a snowman disappearing in the sun?",
+      options: ["melting", "freezing", "washing"],
+      correct: "melting",
+      explanation: "Heat melts solid snow into liquid water."
+    },
+    {
+      question: "What do we call ice cream turning soft?",
+      options: ["running", "melting", "freezing"],
+      correct: "melting",
+      explanation: "Ice cream melts when it warms up."
+    },
+    {
+      question: "What do we call water getting cold and turning into ice?",
+      options: ["freezing", "drawing", "floating"],
+      correct: "freezing",
+      explanation: "Freezing is the process of liquid becoming solid."
+    },
+    {
+      question: "What state of matter is milk in a bottle?",
+      options: ["solid", "gas", "liquid"],
+      correct: "liquid",
+      explanation: "Milk flows, so it is a liquid."
+    },
+    {
+      question: "What do we call clouds forming from tiny drops?",
+      options: ["condensation", "freezing", "running"],
+      correct: "condensation",
+      explanation: "Clouds form when water vapor condenses into tiny droplets."
+    }
+  ];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
