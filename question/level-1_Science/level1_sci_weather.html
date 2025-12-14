@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Weather</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "What do we call water falling from clouds?",
+      options: ["rain", "wind", "sun"],
+      correct: "rain",
+      explanation: "Rain is water that falls from clouds."
+    },
+    {
+      question: "Which weather is very hot and bright?",
+      options: ["rainy", "sunny", "windy"],
+      correct: "sunny",
+      explanation: "Sunny weather is hot and bright."
+    },
+    {
+      question: "What do we feel when air moves fast?",
+      options: ["rain", "wind", "snow"],
+      correct: "wind",
+      explanation: "Fast moving air is called wind."
+    },
+    {
+      question: "What falls from the sky in cold weather?",
+      options: ["snow", "star", "sun"],
+      correct: "snow",
+      explanation: "Snow falls from the sky in cold weather."
+    },
+    {
+      question: "Which weather makes us use an umbrella?",
+      options: ["sunny", "rainy", "windy"],
+      correct: "rainy",
+      explanation: "We use umbrellas when it rains."
+    },
+    {
+      question: "What weather is good for flying a kite?",
+      options: ["snowy", "windy", "rainy"],
+      correct: "windy",
+      explanation: "Wind helps kites fly."
+    },
+    {
+      question: "What shines in the sky on a clear day?",
+      options: ["moon", "sun", "cloud"],
+      correct: "sun",
+      explanation: "The sun shines brightly on clear days."
+    },
+    {
+      question: "What weather feels cold and white?",
+      options: ["sunny", "snowy", "rainy"],
+      correct: "snowy",
+      explanation: "Snowy weather is cold and white."
+    },
+    {
+      question: "What weather has many clouds?",
+      options: ["cloudy", "sunny", "windy"],
+      correct: "cloudy",
+      explanation: "Cloudy weather has many clouds."
+    },
+    {
+      question: "What weather helps plants grow?",
+      options: ["rainy", "snowy", "windy"],
+      correct: "rainy",
+      explanation: "Rain gives water to plants."
+    },
+    {
+      question: "What weather makes puddles?",
+      options: ["sunny", "rainy", "windy"],
+      correct: "rainy",
+      explanation: "Rain creates puddles on the ground."
+    },
+    {
+      question: "What weather dries clothes fast?",
+      options: ["sunny", "rainy", "snowy"],
+      correct: "sunny",
+      explanation: "Sun helps clothes dry quickly."
+    },
+    {
+      question: "What weather makes roads wet?",
+      options: ["sunny", "rainy", "cloudy"],
+      correct: "rainy",
+      explanation: "Rain makes roads wet."
+    },
+    {
+      question: "What weather is good for swimming?",
+      options: ["snowy", "sunny", "windy"],
+      correct: "sunny",
+      explanation: "Sunny weather is good for swimming."
+    },
+    {
+      question: "What weather has ice on the ground?",
+      options: ["hot", "cold", "rainy"],
+      correct: "cold",
+      explanation: "Cold weather can form ice."
+    },
+    {
+      question: "What weather brings thunder and lightning?",
+      options: ["stormy", "sunny", "snowy"],
+      correct: "stormy",
+      explanation: "Stormy weather brings thunder and lightning."
+    },
+    {
+      question: "What weather makes the sky gray?",
+      options: ["sunny", "cloudy", "snowy"],
+      correct: "cloudy",
+      explanation: "Clouds make the sky look gray."
+    },
+    {
+      question: "What weather makes us wear gloves?",
+      options: ["hot", "cold", "sunny"],
+      correct: "cold",
+      explanation: "We wear gloves in cold weather."
+    },
+    {
+      question: "What weather is bright and warm?",
+      options: ["rainy", "sunny", "cloudy"],
+      correct: "sunny",
+      explanation: "Sunny weather is bright and warm."
+    },
+    {
+      question: "What weather makes puddles dry?",
+      options: ["sunny", "rainy", "windy"],
+      correct: "sunny",
+      explanation: "Sun helps water dry up."
+    }
+  ];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
