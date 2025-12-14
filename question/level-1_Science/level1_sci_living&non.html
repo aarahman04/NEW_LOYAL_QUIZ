@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Living & Non Living Things</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "Which of the following is a living thing?",
+      options: ["rabbit", "clock", "desk"],
+      correct: "rabbit",
+      explanation: "A rabbit is alive and can grow and move."
+    },
+    {
+      question: "What do living things need to stay alive?",
+      options: ["food and water", "crayons", "pillows"],
+      correct: "food and water",
+      explanation: "Living things need food and water to survive."
+    },
+    {
+      question: "Which of the following is a non-living thing?",
+      options: ["cat", "bird", "pen"],
+      correct: "pen",
+      explanation: "A pen does not grow or breathe, so it is non-living."
+    },
+    {
+      question: "Which living thing grows from a seed?",
+      options: ["plant", "chair", "pillow"],
+      correct: "plant",
+      explanation: "Plants grow from seeds."
+    },
+    {
+      question: "What do living things use for energy?",
+      options: ["food", "paper", "door"],
+      correct: "food",
+      explanation: "Living things get energy from food."
+    },
+    {
+      question: "Which of the following can breathe?",
+      options: ["dog", "book", "rock"],
+      correct: "dog",
+      explanation: "Dogs breathe air, so they are living things."
+    },
+    {
+      question: "Which of the following is a non-living thing?",
+      options: ["stone", "fish", "bird"],
+      correct: "stone",
+      explanation: "A stone does not grow or move on its own."
+    },
+    {
+      question: "What do living things do when they are hungry?",
+      options: ["eat", "turn into toys", "sleep forever"],
+      correct: "eat",
+      explanation: "Living things eat food when they are hungry."
+    },
+    {
+      question: "Which living thing can move by itself?",
+      options: ["horse", "table", "lamp"],
+      correct: "horse",
+      explanation: "A horse can move on its own."
+    },
+    {
+      question: "Which of the following is made by people?",
+      options: ["chair", "tree", "flower"],
+      correct: "chair",
+      explanation: "Chairs are man-made, so they are non-living."
+    },
+    {
+      question: "Which living thing needs sunlight?",
+      options: ["plant", "blanket", "shoe"],
+      correct: "plant",
+      explanation: "Plants need sunlight to grow."
+    },
+    {
+      question: "Which non-living thing can you wear?",
+      options: ["shirt", "dog", "bird"],
+      correct: "shirt",
+      explanation: "A shirt is non-living and can be worn."
+    },
+    {
+      question: "What do living things do over time?",
+      options: ["grow", "turn into plastic", "stay the same"],
+      correct: "grow",
+      explanation: "All living things grow over time."
+    },
+    {
+      question: "Which of the following is alive?",
+      options: ["butterfly", "shoe", "cup"],
+      correct: "butterfly",
+      explanation: "A butterfly is a living organism."
+    },
+    {
+      question: "Which non-living thing can roll only if pushed?",
+      options: ["ball", "ant", "squirrel"],
+      correct: "ball",
+      explanation: "A ball moves only when pushed."
+    },
+    {
+      question: "Which living thing can make a sound?",
+      options: ["cow", "plate", "cup"],
+      correct: "cow",
+      explanation: "Cows can make sounds."
+    },
+    {
+      question: "Which of the following does not need water?",
+      options: ["toy", "plant", "bird"],
+      correct: "toy",
+      explanation: "Toys are non-living and do not need water."
+    },
+    {
+      question: "Which living thing can feel hot or cold?",
+      options: ["boy", "book", "balloon"],
+      correct: "boy",
+      explanation: "Humans can feel temperature changes."
+    },
+    {
+      question: "Which of the following is not alive?",
+      options: ["bottle", "baby", "bird"],
+      correct: "bottle",
+      explanation: "A bottle is non-living."
+    },
+    {
+      question: "What can living things do that non-living things cannot?",
+      options: ["grow", "be carried", "sit still"],
+      correct: "grow",
+      explanation: "Only living things can grow."
+    }
+  ];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
