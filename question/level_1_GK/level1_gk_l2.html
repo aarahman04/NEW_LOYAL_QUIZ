@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Adjectives</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+<script>
+  const questions = [
+    {
+      question: "Which of the following is an animal that has a pouch?",
+      options: ["kangaroo", "dog", "cat"],
+      correct: "kangaroo",
+      explanation: "A kangaroo has a pouch to carry its baby."
+    },
+    {
+      question: "What do we use to lock a door?",
+      options: ["lock", "rope", "paper"],
+      correct: "lock",
+      explanation: "We use a lock to lock a door."
+    },
+    {
+      question: "Which of the following is used to measure length?",
+      options: ["ant", "ruler", "bowl"],
+      correct: "ruler",
+      explanation: "A ruler is used to measure length."
+    },
+    {
+      question: "What do we use to carry water?",
+      options: ["pool", "bucket", "book"],
+      correct: "bucket",
+      explanation: "A bucket is used to carry water."
+    },
+    {
+      question: "What do we eat for breakfast?",
+      options: ["bread & eggs", "stone", "leaf"],
+      correct: "bread & eggs",
+      explanation: "Bread and eggs are common breakfast foods."
+    },
+    {
+      question: "Which of the following is a sense organ?",
+      options: ["ant", "tongue", "bag"],
+      correct: "tongue",
+      explanation: "The tongue helps us taste."
+    },
+    {
+      question: "What do we use to dry our body?",
+      options: ["towel", "spoon", "box"],
+      correct: "towel",
+      explanation: "A towel is used to dry the body."
+    },
+    {
+      question: "Which of the following animals has a long tail?",
+      options: ["money", "monkey", "pig"],
+      correct: "monkey",
+      explanation: "A monkey has a long tail."
+    },
+    {
+      question: "Where can we see stars?",
+      options: ["sky", "river", "road"],
+      correct: "sky",
+      explanation: "We see stars in the sky."
+    },
+    {
+      question: "Which of the following is a kitchen item?",
+      options: ["pan", "pillow", "shoe"],
+      correct: "pan",
+      explanation: "A pan is used in the kitchen for cooking."
+    },
+    {
+      question: "What do we use to sweep the floor?",
+      options: ["room", "broom", "pen"],
+      correct: "broom",
+      explanation: "A broom is used to sweep the floor."
+    },
+    {
+      question: "Which of the following animals lives on a farm?",
+      options: ["car", "hen", "lion"],
+      correct: "hen",
+      explanation: "Hens are commonly found on farms."
+    },
+    {
+      question: "What do we use to draw straight lines?",
+      options: ["ruler", "spoon", "cup"],
+      correct: "ruler",
+      explanation: "A ruler helps draw straight lines."
+    },
+    {
+      question: "What do we use to hear music?",
+      options: ["car", "ears", "nose"],
+      correct: "ears",
+      explanation: "We hear sounds using our ears."
+    },
+    {
+      question: "Which of the following animals pulls a cart?",
+      options: ["ant", "cat", "horse"],
+      correct: "horse",
+      explanation: "A horse can pull a cart."
+    },
+    {
+      question: "What do we drink in summer?",
+      options: ["water", "oil", "ink"],
+      correct: "water",
+      explanation: "Water keeps us hydrated, especially in summer."
+    },
+    {
+      question: "Which of the following is a playground item?",
+      options: ["slime", "slide", "bed"],
+      correct: "slide",
+      explanation: "A slide is found in playgrounds."
+    },
+    {
+      question: "What do we use to open a bottle?",
+      options: ["opener", "comb", "chalk"],
+      correct: "opener",
+      explanation: "A bottle opener is used to open bottles."
+    },
+    {
+      question: "What do we use to erase writing?",
+      options: ["ant", "eraser", "glue"],
+      correct: "eraser",
+      explanation: "An eraser removes pencil writing."
+    },
+    {
+      question: "Which of the following is a body movement?",
+      options: ["talk", "walk", "sit"],
+      correct: "walk",
+      explanation: "Walking is a movement our body does."
+    },
+    {
+      question: "Which animal is known for jumping high?",
+      options: ["kangaroo", "cow", "dog"],
+      correct: "kangaroo",
+      explanation: "Kangaroos are known for jumping high."
+    },
+    {
+      question: "What do we use to stay dry in rain?",
+      options: ["ants", "umbrella", "mat"],
+      correct: "umbrella",
+      explanation: "An umbrella protects us from rain."
+    },
+    {
+      question: "Which of the following is a body covering?",
+      options: ["ant", "skin", "stone"],
+      correct: "skin",
+      explanation: "Skin covers our body."
+    },
+    {
+      question: "What do we use to cook food?",
+      options: ["stove", "pillow", "book"],
+      correct: "stove",
+      explanation: "A stove is used to cook food."
+    },
+    {
+      question: "Which of the following animals has a hump?",
+      options: ["dog", "camel", "sheep"],
+      correct: "camel",
+      explanation: "A camel has a hump on its back."
+    }
+  ];
+</script>
+
+    <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    initMCQQuiz(questions);
+  });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Adjectives</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+<script>
+  const questions = [
+    {
+      question: "Which of the following sense organs helps us smell?",
+      options: ["eyes", "nose", "ears"],
+      correct: "nose",
+      explanation: "We smell using our nose."
+    },
+    {
+      question: "Which of the following objects floats on water?",
+      options: ["stone", "leaf", "coin"],
+      correct: "leaf",
+      explanation: "A leaf is light and can float on water."
+    },
+    {
+      question: "Which of the following animals has a hard shell and claws?",
+      options: ["crab", "dog", "cow"],
+      correct: "crab",
+      explanation: "A crab has a hard shell and claws."
+    },
+    {
+      question: "What do we use to cover our body at night?",
+      options: ["blanket", "plate", "shoe"],
+      correct: "blanket",
+      explanation: "We use a blanket to cover ourselves while sleeping."
+    },
+    {
+      question: "Which of the following birds cannot fly?",
+      options: ["eagle", "ostrich", "pigeon"],
+      correct: "ostrich",
+      explanation: "An ostrich is a bird that cannot fly."
+    },
+    {
+      question: "Which of the following animals has scales?",
+      options: ["fish", "cat", "horse"],
+      correct: "fish",
+      explanation: "Fish have scales on their bodies."
+    },
+    {
+      question: "What do some people wear to see clearly?",
+      options: ["spectacles", "gloves", "socks"],
+      correct: "spectacles",
+      explanation: "Spectacles help people see clearly."
+    },
+    {
+      question: "Which of the following is a water source from the ground?",
+      options: ["sea", "well", "wall"],
+      correct: "well",
+      explanation: "A well gives water from underground."
+    },
+    {
+      question: "What do we use to keep food safe from insects?",
+      options: ["plate", "cover", "chalk"],
+      correct: "cover",
+      explanation: "A cover keeps insects away from food."
+    },
+    {
+      question: "Which of the following animals is known for carrying loads?",
+      options: ["deer", "donkey", "rabbit"],
+      correct: "donkey",
+      explanation: "A donkey is known for carrying loads."
+    },
+    {
+      question: "What do we use to open a closed tin?",
+      options: ["window", "opener", "eraser"],
+      correct: "opener",
+      explanation: "An opener is used to open tins."
+    },
+    {
+      question: "Which of the following objects gives shade?",
+      options: ["tree", "chair", "book"],
+      correct: "tree",
+      explanation: "A tree gives us shade."
+    },
+    {
+      question: "Which of the following animals lives in groups called herds?",
+      options: ["species", "elephant", "fox"],
+      correct: "elephant",
+      explanation: "Elephants often live together in herds."
+    },
+    {
+      question: "Which part of the plant makes food?",
+      options: ["root", "leaf", "stem"],
+      correct: "leaf",
+      explanation: "Leaves make food for the plant."
+    },
+    {
+      question: "What do we wear to protect eyes from dust?",
+      options: ["goggles", "cap", "socks"],
+      correct: "goggles",
+      explanation: "Goggles protect our eyes from dust."
+    },
+    {
+      question: "Which animal has a long sticky tongue?",
+      options: ["fog", "cow", "frog"],
+      correct: "frog",
+      explanation: "A frog uses its sticky tongue to catch insects."
+    },
+    {
+      question: "What do we use to carry groceries?",
+      options: ["basket", "pillow", "towel"],
+      correct: "basket",
+      explanation: "A basket can be used to carry groceries."
+    },
+    {
+      question: "Which is a man-made thing?",
+      options: ["bridge", "river", "hill"],
+      correct: "bridge",
+      explanation: "A bridge is made by people."
+    },
+    {
+      question: "What do we use to clean our ears safely?",
+      options: ["pin", "stick", "cotton"],
+      correct: "cotton",
+      explanation: "Cotton is safer than sharp objects for cleaning."
+    },
+    {
+      question: "Which animal sleeps during the day?",
+      options: ["own", "owl", "crow"],
+      correct: "owl",
+      explanation: "Owls are usually active at night and rest in the day."
+    },
+    {
+      question: "What do we use to protect food from flies?",
+      options: ["national", "net", "chalk"],
+      correct: "net",
+      explanation: "A net cover helps keep flies away from food."
+    },
+    {
+      question: "Which animal has a hump and lives in desert?",
+      options: ["camel", "horse", "cow"],
+      correct: "camel",
+      explanation: "Camels have humps and live in deserts."
+    },
+    {
+      question: "What do we use to keep clothes neat?",
+      options: ["danger", "hanger", "broom"],
+      correct: "hanger",
+      explanation: "We hang clothes on a hanger to keep them neat."
+    },
+    {
+      question: "Which body part helps us walk?",
+      options: ["legs", "hands", "eyes"],
+      correct: "legs",
+      explanation: "We use our legs to walk."
+    },
+    {
+      question: "Which animal has whiskers?",
+      options: ["can", "cat", "cow"],
+      correct: "cat",
+      explanation: "Cats have whiskers on their faces."
+    }
+  ];
+</script>
+
+    <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    initMCQQuiz(questions);
+  });
+    </script>
+  </body>
+</html>
