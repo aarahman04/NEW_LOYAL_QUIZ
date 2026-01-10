@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Level 7</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        {
+          question: "Which force pulls things toward the earth?",
+          options: ["milk", "gravity", "magnet"],
+          correct: "gravity",
+          explanation: "Gravity pulls objects toward the earth."
+        },
+        {
+          question: "Which landform is very high and rocky?",
+          options: ["mountain", "desert", "plain"],
+          correct: "mountain",
+          explanation: "Mountains are high and rocky."
+        },
+        {
+          question: "What do we call a large body of salt water?",
+          options: ["river", "lake", "sea"],
+          correct: "sea",
+          explanation: "A sea is a large body of salt water."
+        },
+        {
+          question: "Which season has heavy snowfall in some places?",
+          options: ["summer", "winter", "rainy"],
+          correct: "winter",
+          explanation: "Snowfall happens in winter."
+        },
+        {
+          question: "What do we call land covered with sand?",
+          options: ["forest", "desert", "island"],
+          correct: "desert",
+          explanation: "Deserts are covered with sand."
+        },
+        {
+          question: "Which water body flows continuously?",
+          options: ["pond", "river", "sea"],
+          correct: "river",
+          explanation: "Rivers flow continuously."
+        },
+        {
+          question: "Which place has many trees and animals?",
+          options: ["forest", "city", "village"],
+          correct: "forest",
+          explanation: "Forests have many trees and animals."
+        },
+        {
+          question: "Which direction is opposite to north?",
+          options: ["east", "west", "south"],
+          correct: "south",
+          explanation: "South is opposite to north."
+        },
+        {
+          question: "What do we call flat land used for farming?",
+          options: ["plain", "hill", "valley"],
+          correct: "plain",
+          explanation: "Plains are flat and good for farming."
+        },
+        {
+          question: "Which landform is surrounded by water on all sides?",
+          options: ["island", "beach", "desert"],
+          correct: "island",
+          explanation: "An island is surrounded by water."
+        },
+        {
+          question: "Which season comes after the rainy season?",
+          options: ["winter", "summer", "spring"],
+          correct: "winter",
+          explanation: "Winter comes after the rainy season."
+        },
+        {
+          question: "Which natural feature gives us fresh water?",
+          options: ["river", "ocean", "sea"],
+          correct: "river",
+          explanation: "Rivers provide fresh water."
+        },
+        {
+          question: "Which place is colder: mountain or desert?",
+          options: ["desert", "mountain", "plain"],
+          correct: "mountain",
+          explanation: "Mountains are colder than deserts."
+        },
+        {
+          question: "Which direction does the sun set in?",
+          options: ["east", "north", "west"],
+          correct: "west",
+          explanation: "The sun sets in the west."
+        },
+        {
+          question: "Which landform is lower than the land around it?",
+          options: ["hill", "valley", "plateau"],
+          correct: "valley",
+          explanation: "A valley is lower than surrounding land."
+        },
+        {
+          question: "Who lived in caves long ago?",
+          options: ["modern people", "early humans", "astronauts"],
+          correct: "early humans",
+          explanation: "Early humans lived in caves."
+        },
+        {
+          question: "What did early humans use to hunt animals?",
+          options: ["guns", "spears", "machines"],
+          correct: "spears",
+          explanation: "Early humans hunted using spears."
+        },
+        {
+          question: "Which tool was used in the stone age?",
+          options: ["stone tools", "iron tools", "plastic tools"],
+          correct: "stone tools",
+          explanation: "Stone tools were used in the stone age."
+        },
+        {
+          question: "Which discovery helped humans see at night?",
+          options: ["wheel", "fire", "paper"],
+          correct: "fire",
+          explanation: "Fire helped humans see at night."
+        },
+        {
+          question: "Which invention helped people travel faster?",
+          options: ["wheel", "book", "cloth"],
+          correct: "wheel",
+          explanation: "The wheel made travel faster."
+        }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>
