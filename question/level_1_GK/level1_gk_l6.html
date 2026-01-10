@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Level 6</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        {
+          question: "Who helps keep our city safe?",
+          options: ["teacher", "doctor", "police officer"],
+          correct: "police officer",
+          explanation: "Police officers help keep our city safe."
+        },
+        {
+          question: "What do we call the place where we live?",
+          options: ["park", "shop", "home"],
+          correct: "home",
+          explanation: "We live in a home."
+        },
+        {
+          question: "Which transport moves on water?",
+          options: ["boat", "bus", "car"],
+          correct: "boat",
+          explanation: "A boat moves on water."
+        },
+        {
+          question: "What do we use to cross the road safely?",
+          options: ["garden", "zebra crossing", "playground"],
+          correct: "zebra crossing",
+          explanation: "We use a zebra crossing to cross roads safely."
+        },
+        {
+          question: "Which building treats sick people?",
+          options: ["library", "school", "hospital"],
+          correct: "hospital",
+          explanation: "Sick people are treated in hospitals."
+        },
+        {
+          question: "Who teaches us in school?",
+          options: ["driver", "teacher", "farmer"],
+          correct: "teacher",
+          explanation: "Teachers teach us in school."
+        },
+        {
+          question: "What do we call people who live near us?",
+          options: ["neighbors", "players", "teachers"],
+          correct: "neighbors",
+          explanation: "People living near us are neighbors."
+        },
+        {
+          question: "Which place has many books?",
+          options: ["zoo", "library", "park"],
+          correct: "library",
+          explanation: "A library has many books."
+        },
+        {
+          question: "What do we use to travel in the air?",
+          options: ["train", "bus", "airplane"],
+          correct: "airplane",
+          explanation: "We travel in the air using an airplane."
+        },
+        {
+          question: "Who grows crops?",
+          options: ["pilot", "tailor", "farmer"],
+          correct: "farmer",
+          explanation: "Farmers grow crops."
+        },
+        {
+          question: "What do we call rules we follow at school?",
+          options: ["games", "laws", "habits"],
+          correct: "laws",
+          explanation: "Rules are called laws."
+        },
+        {
+          question: "Which helper puts out fires?",
+          options: ["policeman", "firefighter", "nurse"],
+          correct: "firefighter",
+          explanation: "Firefighters put out fires."
+        },
+        {
+          question: "Where do we buy fruits?",
+          options: ["hospital", "market", "school"],
+          correct: "market",
+          explanation: "We buy fruits from the market."
+        },
+        {
+          question: "What should we do when the traffic light is red?",
+          options: ["go", "run", "stop"],
+          correct: "stop",
+          explanation: "We should stop at a red light."
+        },
+        {
+          question: "Which part of the plant grows under the soil?",
+          options: ["leaf", "root", "flower"],
+          correct: "root",
+          explanation: "Roots grow under the soil."
+        },
+        {
+          question: "Which animal gives us milk?",
+          options: ["dog", "lion", "cow"],
+          correct: "cow",
+          explanation: "Cows give us milk."
+        },
+        {
+          question: "What do plants need to make food?",
+          options: ["fire", "moonlight", "sunlight"],
+          correct: "sunlight",
+          explanation: "Plants need sunlight to make food."
+        },
+        {
+          question: "Which sense organ helps us see?",
+          options: ["ears", "nose", "eyes"],
+          correct: "eyes",
+          explanation: "We see with our eyes."
+        },
+        {
+          question: "Which of the following objects floats on water?",
+          options: ["stone", "leaf", "coin"],
+          correct: "leaf",
+          explanation: "A leaf floats on water."
+        },
+        {
+          question: "What do we breathe in?",
+          options: ["water", "sand", "oxygen"],
+          correct: "oxygen",
+          explanation: "We breathe in oxygen."
+        }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>
