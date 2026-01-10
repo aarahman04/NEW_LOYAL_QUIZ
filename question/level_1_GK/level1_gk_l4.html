@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Level 4</title>
+    <!-- point to your question.css in the root css/ folder -->
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+   <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+<script>
+const questions = [
+  {
+    question: "Which animal can climb trees easily?",
+    options: ["cow", "monkey", "horse"],
+    correct: "monkey",
+    explanation: "Monkeys can easily climb trees."
+  },
+  {
+    question: "Which part of a plant grows underground?",
+    options: ["flower", "leaf", "root"],
+    correct: "root",
+    explanation: "Roots grow underground."
+  },
+  {
+    question: "Which month comes after January?",
+    options: ["march", "december", "february"],
+    correct: "february",
+    explanation: "February comes after January."
+  },
+  {
+    question: "What do we call frozen water?",
+    options: ["steam", "ice", "rain"],
+    correct: "ice",
+    explanation: "Frozen water is called ice."
+  },
+  {
+    question: "Which sense helps us taste food?",
+    options: ["ear", "nose", "tongue"],
+    correct: "tongue",
+    explanation: "The tongue helps us taste food."
+  },
+  {
+    question: "What do we use to protect our head?",
+    options: ["scarf", "belt", "helmet"],
+    correct: "helmet",
+    explanation: "A helmet protects our head."
+  },
+  {
+    question: "Which color is made by mixing red and yellow?",
+    options: ["green", "orange", "purple"],
+    correct: "orange",
+    explanation: "Red and yellow make orange."
+  },
+  {
+    question: "Which animal stays awake at night?",
+    options: ["hen", "cow", "owl"],
+    correct: "owl",
+    explanation: "Owls are active at night."
+  },
+  {
+    question: "What do we call a place where books are kept?",
+    options: ["kitchen", "library", "garden"],
+    correct: "library",
+    explanation: "Books are kept in a library."
+  },
+  {
+    question: "Which body part helps us balance?",
+    options: ["teeth", "fingers", "legs"],
+    correct: "legs",
+    explanation: "Legs help us balance."
+  },
+  {
+    question: "Which object needs batteries to work?",
+    options: ["broom", "notebook", "remote"],
+    correct: "remote",
+    explanation: "A remote works using batteries."
+  },
+  {
+    question: "Which animal has sharp quills?",
+    options: ["horse", "porcupine", "sheep"],
+    correct: "porcupine",
+    explanation: "Porcupines have sharp quills."
+  },
+  {
+    question: "What do we call water falling from clouds?",
+    options: ["fog", "smoke", "rain"],
+    correct: "rain",
+    explanation: "Rain falls from clouds."
+  },
+  {
+    question: "Which tool is used to dig soil?",
+    options: ["plate", "shovel", "ruler"],
+    correct: "shovel",
+    explanation: "A shovel is used to dig soil."
+  },
+  {
+    question: "Which animal lives both on land and in water?",
+    options: ["frog", "eagle", "lion"],
+    correct: "frog",
+    explanation: "Frogs live on land and in water."
+  },
+  {
+    question: "Which fruit has a hard shell?",
+    options: ["banana", "grape", "coconut"],
+    correct: "coconut",
+    explanation: "Coconuts have a hard shell."
+  },
+  {
+    question: "What helps us stay safe on the road?",
+    options: ["toy car", "traffic light", "bicycle bell"],
+    correct: "traffic light",
+    explanation: "Traffic lights control traffic."
+  },
+  {
+    question: "Which object is used to measure length?",
+    options: ["clock", "scale", "ruler"],
+    correct: "ruler",
+    explanation: "A ruler measures length."
+  },
+  {
+    question: "Which animal has hooves?",
+    options: ["cat", "dog", "horse"],
+    correct: "horse",
+    explanation: "Horses have hooves."
+  },
+  {
+    question: "What do we use to call someone far away?",
+    options: ["spoon", "pillow", "phone"],
+    correct: "phone",
+    explanation: "A phone is used to call people."
+  }
+];
+</script>
+
+    <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    initMCQQuiz(questions);
+  });
+    </script>
+  </body>
+</html>
