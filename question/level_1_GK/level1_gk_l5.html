@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Level 5</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        {
+          question: "How many eyes do we have?",
+          options: ["one", "two", "three"],
+          correct: "two",
+          explanation: "Humans have two eyes."
+        },
+        {
+          question: "What color is the sky?",
+          options: ["blue", "green", "red"],
+          correct: "blue",
+          explanation: "The sky looks blue."
+        },
+        {
+          question: "Which of the following fruits is yellow?",
+          options: ["apple", "banana", "grape"],
+          correct: "banana",
+          explanation: "Banana is yellow in color."
+        },
+        {
+          question: "How many legs does a cat have?",
+          options: ["two", "three", "four"],
+          correct: "four",
+          explanation: "Cats have four legs."
+        },
+        {
+          question: "Which of the following animals can fly?",
+          options: ["bird", "dog", "cow"],
+          correct: "bird",
+          explanation: "Birds can fly."
+        },
+        {
+          question: "What do we drink every day?",
+          options: ["oil", "water", "ink"],
+          correct: "water",
+          explanation: "We drink water daily."
+        },
+        {
+          question: "What shape does a wheel have?",
+          options: ["square", "circle", "triangle"],
+          correct: "circle",
+          explanation: "A wheel is circular."
+        },
+        {
+          question: "Which color is grass?",
+          options: ["yellow", "green", "blue"],
+          correct: "green",
+          explanation: "Grass is green."
+        },
+        {
+          question: "What do we write with?",
+          options: ["pencil", "spoon", "brush"],
+          correct: "pencil",
+          explanation: "We write using a pencil."
+        },
+        {
+          question: "How many hands do we have?",
+          options: ["one", "two", "three"],
+          correct: "two",
+          explanation: "Humans have two hands."
+        },
+        {
+          question: "What do we eat soup with?",
+          options: ["fork", "spoon", "knife"],
+          correct: "spoon",
+          explanation: "Soup is eaten with a spoon."
+        },
+        {
+          question: "Which month comes after January?",
+          options: ["February", "March", "April"],
+          correct: "February",
+          explanation: "February comes after January."
+        },
+        {
+          question: "Which of the animals lays eggs?",
+          options: ["hen", "goat", "cow"],
+          correct: "hen",
+          explanation: "Hens lay eggs."
+        },
+        {
+          question: "What is the color of milk?",
+          options: ["black", "white", "red"],
+          correct: "white",
+          explanation: "Milk is white."
+        },
+        {
+          question: "Which of the following is a vegetable?",
+          options: ["carrot", "mango", "apple"],
+          correct: "carrot",
+          explanation: "Carrot is a vegetable."
+        },
+        {
+          question: "What do we sleep on?",
+          options: ["table", "bed", "chair"],
+          correct: "bed",
+          explanation: "We sleep on a bed."
+        },
+        {
+          question: "Which animal gives us eggs?",
+          options: ["hen", "cow", "dog"],
+          correct: "hen",
+          explanation: "Hens give us eggs."
+        },
+        {
+          question: "How many days are in a week?",
+          options: ["five", "six", "seven"],
+          correct: "seven",
+          explanation: "There are seven days in a week."
+        },
+        {
+          question: "What do we wear on our feet?",
+          options: ["gloves", "shoes", "hat"],
+          correct: "shoes",
+          explanation: "We wear shoes on our feet."
+        },
+        {
+          question: "What is the color of an apple?",
+          options: ["red", "blue", "black"],
+          correct: "red",
+          explanation: "An apple is usually red."
+        }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>
