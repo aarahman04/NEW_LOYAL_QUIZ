@@ -4,190 +4,165 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Level 1</title>
-    <!-- point to your question.css in the root css/ folder -->
     <link rel="stylesheet" href="../../css/question.css" />
   </head>
+
   <body>
 
-   <!-- Sticky Header -->
+    <!-- Sticky Header -->
     <div id="site-header-placeholder"></div>
 
     <!-- Quiz Content -->
     <main class="quiz-container">
       <div class="question-section">
         <h3 id="question-text">Loading...</h3>
-        <ul class="options" id="options-list">
-          <!-- Options dynamically generated -->
-        </ul>
+        <ul class="options" id="options-list"></ul>
       </div>
+
       <div id="feedback" class="hidden"></div>
       <div id="explanation" class="hidden"></div>
+
       <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
       <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
     </main>
-<script>
-  const questions = [
-    {
-      question: "Identify the adjective in the sentence. <br> The brown dog is happy.",
-      options: ["brown", "dog", "is", "the"],
-      correct: "brown",
-      explanation: "'Brown' describes the dog. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The small cat is cute.",
-      options: ["small", "cat", "the", "is"],
-      correct: "small",
-      explanation: "'Small' describes the cat. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> I see a big dog.",
-      options: ["big", "see", "dog", "I"],
-      correct: "big",
-      explanation: "'Big' describes the dog. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The black horse runs fast.",
-      options: ["black", "horse", "runs", "the"],
-      correct: "black",
-      explanation: "'Black' describes the horse. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The fluffy puppy is sleepy.",
-      options: ["fluffy", "puppy", "sleepy", "the"],
-      correct: "fluffy",
-      explanation: "'Fluffy' describes the puppy. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The yellow duck is loud.",
-      options: ["yellow", "duck", "loud", "is"],
-      correct: "yellow",
-      explanation: "'Yellow' describes the duck. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The funny monkey jumps.",
-      options: ["funny", "monkey", "jumps", "the"],
-      correct: "funny",
-      explanation: "'Funny' describes the monkey. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> I ate a red apple.",
-      options: ["red", "apple", "ate", "I"],
-      correct: "red",
-      explanation: "'Red' describes the apple. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The sweet candy is yummy.",
-      options: ["sweet", "candy", "is", "the"],
-      correct: "sweet",
-      explanation: "'Sweet' describes the candy. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> I like cold juice.",
-      options: ["cold", "juice", "like", "I"],
-      correct: "cold",
-      explanation: "'Cold' describes the juice. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> That hot soup was tasty.",
-      options: ["hot", "soup", "that", "was"],
-      correct: "hot",
-      explanation: "'Hot' describes the soup. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The green grapes are soft.",
-      options: ["green", "grapes", "are", "soft"],
-      correct: "green",
-      explanation: "'Green' describes the grapes. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The fresh bread smells nice.",
-      options: ["fresh", "bread", "smells", "nice"],
-      correct: "fresh",
-      explanation: "'Fresh' describes the bread. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The gray elephant is big.",
-      options: ["gray", "elephant", "is", "big"],
-      correct: "gray",
-      explanation: "'Gray' describes the elephant. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The juicy orange tastes good.",
-      options: ["juicy", "orange", "tastes", "good"],
-      correct: "juicy",
-      explanation: "'Juicy' describes the orange. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The white cat sleeps.",
-      options: ["white", "cat", "sleeps", "the"],
-      correct: "white",
-      explanation: "'White' describes the cat. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The sour lemonade tastes bad.",
-      options: ["sour", "lemonade", "tastes", "the"],
-      correct: "sour",
-      explanation: "'Sour' describes the lemonade. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> Grandfather drives an old car.",
-      options: ["old", "drives", "car", "Grandfather"],
-      correct: "old",
-      explanation: "'Old' describes the car. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The tall tree is green.",
-      options: ["tall", "tree", "is", "green"],
-      correct: "tall",
-      explanation: "'Tall' describes the tree. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The little bird can fly.",
-      options: ["little", "bird", "can", "fly"],
-      correct: "little",
-      explanation: "'Little' describes the bird. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The clean room looks nice.",
-      options: ["clean", "room", "looks", "nice"],
-      correct: "clean",
-      explanation: "'Clean' describes the room. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The heavy box is hard to lift.",
-      options: ["heavy", "box", "lift", "hard"],
-      correct: "heavy",
-      explanation: "'Heavy' describes the box. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The brave boy helped me.",
-      options: ["brave", "boy", "helped", "me"],
-      correct: "brave",
-      explanation: "'Brave' describes the boy. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The noisy class was busy.",
-      options: ["noisy", "class", "was", "busy"],
-      correct: "noisy",
-      explanation: "'Noisy' describes the class. It's the adjective."
-    },
-    {
-      question: "Identify the adjective in the sentence. <br> The soft pillow feels good.",
-      options: ["soft", "pillow", "feels", "good"],
-      correct: "soft",
-      explanation: "'Soft' describes the pillow. It's the adjective."
-    }
-  ];
-</script>
-    <!-- Professional Footer -->
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        {
+          question: "What color is the sky?",
+          options: ["red", "blue", "green"],
+          correct: "blue",
+          explanation: "The sky is blue."
+        },
+        {
+          question: "Which of the following animals barks?",
+          options: ["cow", "cat", "dog"],
+          correct: "dog",
+          explanation: "Dogs bark."
+        },
+        {
+          question: "Where do fish live?",
+          options: ["water", "tree", "land"],
+          correct: "water",
+          explanation: "Fish live in water."
+        },
+        {
+          question: "What do we drink when we are thirsty?",
+          options: ["sand", "water", "oil"],
+          correct: "water",
+          explanation: "We drink water when thirsty."
+        },
+        {
+          question: "What is a fruit?",
+          options: ["onion", "apple", "carrot"],
+          correct: "apple",
+          explanation: "Apple is a fruit."
+        },
+        {
+          question: "What do we use to write?",
+          options: ["spoon", "pencil", "shoe"],
+          correct: "pencil",
+          explanation: "We write using a pencil."
+        },
+        {
+          question: "What animal gives milk?",
+          options: ["fish", "hen", "cow"],
+          correct: "cow",
+          explanation: "Cows give milk."
+        },
+        {
+          question: "What color is grass?",
+          options: ["green", "blue", "yellow"],
+          correct: "green",
+          explanation: "Grass is green."
+        },
+        {
+          question: "What can fly in the sky?",
+          options: ["snake", "dog", "bird"],
+          correct: "bird",
+          explanation: "Birds can fly."
+        },
+        {
+          question: "Which of the following do we wear on the head?",
+          options: ["shoes", "hat", "socks"],
+          correct: "hat",
+          explanation: "We wear a hat on the head."
+        },
+        {
+          question: "Which of the following is hot?",
+          options: ["snow", "ice", "fire"],
+          correct: "fire",
+          explanation: "Fire is hot."
+        },
+        {
+          question: "What do bees make?",
+          options: ["honey", "juice", "milk"],
+          correct: "honey",
+          explanation: "Bees make honey."
+        },
+        {
+          question: "Which animal meows?",
+          options: ["dog", "cat", "cow"],
+          correct: "cat",
+          explanation: "Cats meow."
+        },
+        {
+          question: "Where do birds live?",
+          options: ["cave", "water", "nest"],
+          correct: "nest",
+          explanation: "Birds live in nests."
+        },
+        {
+          question: "What do we sleep on?",
+          options: ["table", "bed", "chair"],
+          correct: "bed",
+          explanation: "We sleep on a bed."
+        },
+        {
+          question: "Which of the following is round?",
+          options: ["book", "box", "ball"],
+          correct: "ball",
+          explanation: "A ball is round."
+        },
+        {
+          question: "What color is a banana?",
+          options: ["red", "yellow", "blue"],
+          correct: "yellow",
+          explanation: "Bananas are yellow."
+        },
+        {
+          question: "What is a vegetable?",
+          options: ["apple", "carrot", "cake"],
+          correct: "carrot",
+          explanation: "Carrot is a vegetable."
+        },
+        {
+          question: "What do we use to see?",
+          options: ["nose", "eyes", "ears"],
+          correct: "eyes",
+          explanation: "We see with our eyes."
+        },
+        {
+          question: "What animal hops?",
+          options: ["cow", "kangaroo", "dog"],
+          correct: "kangaroo",
+          explanation: "Kangaroos hop."
+        }
+      ];
+    </script>
+
+    <!-- Footer -->
     <div id="site-footer-placeholder"></div>
-    <!-- point to your main quiz logic -->
+
+    <!-- JS -->
     <script src="../../js/script.js"></script>
     <script src="../../js/partials.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => {
-    initMCQQuiz(questions);
-  });
+        initMCQQuiz(questions);
+      });
     </script>
+
   </body>
 </html>
