@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Level 9</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        {
+          question: "Which direction is between east and south?",
+          options: ["southeast", "southwest", "northeast"],
+          correct: "southeast",
+          explanation: "Southeast lies between east and south."
+        },
+        {
+          question: "Which place receives the most rainfall?",
+          options: ["desert", "rainforest", "plain"],
+          correct: "rainforest",
+          explanation: "Rainforests receive the most rainfall."
+        },
+        {
+          question: "Which landform is made of sand near the sea?",
+          options: ["beach", "hill", "forest"],
+          correct: "beach",
+          explanation: "Beaches are sandy areas near the sea."
+        },
+        {
+          question: "Which season has the shortest days?",
+          options: ["winter", "spring", "summer"],
+          correct: "winter",
+          explanation: "Winter has the shortest days."
+        },
+        {
+          question: "Which water body flows into the sea?",
+          options: ["river", "pond", "well"],
+          correct: "river",
+          explanation: "Rivers flow into the sea."
+        },
+        {
+          question: "Which place is very dry and hot?",
+          options: ["winter", "desert", "mountain"],
+          correct: "desert",
+          explanation: "Deserts are dry and hot."
+        },
+        {
+          question: "Which direction is opposite to northeast?",
+          options: ["southwest", "northwest", "southeast"],
+          correct: "southwest",
+          explanation: "Southwest is opposite to northeast."
+        },
+        {
+          question: "Which landform is higher than hills?",
+          options: ["mountain", "plain", "valley"],
+          correct: "mountain",
+          explanation: "Mountains are higher than hills."
+        },
+        {
+          question: "Which place is close to the poles?",
+          options: ["zoo region", "coastal area", "polar region"],
+          correct: "polar region",
+          explanation: "Polar regions are near the poles."
+        },
+        {
+          question: "Which season comes after winter?",
+          options: ["spring", "autumn", "rainy"],
+          correct: "spring",
+          explanation: "Spring comes after winter."
+        },
+        {
+          question: "Which natural feature gives us fresh water to drink?",
+          options: ["river", "ocean", "sea"],
+          correct: "river",
+          explanation: "Rivers provide fresh water."
+        },
+        {
+          question: "Which ocean animal has a long tail and small body?",
+          options: ["seahorse", "dolphin", "whale"],
+          correct: "seahorse",
+          explanation: "Seahorses have small bodies and long tails."
+        },
+        {
+          question: "Which ocean animal has tentacles with stingers?",
+          options: ["jellyfish", "turtle", "shark"],
+          correct: "jellyfish",
+          explanation: "Jellyfish have stinging tentacles."
+        },
+        {
+          question: "What do we call the moving water of the ocean?",
+          options: ["clouds", "waves", "rain"],
+          correct: "waves",
+          explanation: "Moving ocean water is called waves."
+        },
+        {
+          question: "Which ocean animal is known for jumping out of water?",
+          options: ["zebra", "dolphin", "starfish"],
+          correct: "dolphin",
+          explanation: "Dolphins often jump out of water."
+        },
+        {
+          question: "Which ocean animal has a hard outer body?",
+          options: ["crow", "lobster", "tuna"],
+          correct: "lobster",
+          explanation: "Lobsters have hard outer shells."
+        },
+        {
+          question: "Which planet has the strongest gravity?",
+          options: ["jupiter", "earth", "mars"],
+          correct: "jupiter",
+          explanation: "Jupiter has the strongest gravity."
+        },
+        {
+          question: "Which space object gives light by itself?",
+          options: ["star", "planet", "moon"],
+          correct: "star",
+          explanation: "Stars produce their own light."
+        },
+        {
+          question: "Which planet looks blue from space?",
+          options: ["Earth", "Mercury", "Mars"],
+          correct: "Earth",
+          explanation: "Earth looks blue because of water."
+        },
+        {
+          question: "Which object helps astronauts travel in space?",
+          options: ["airplane", "spaceship", "helicopter"],
+          correct: "spaceship",
+          explanation: "Astronauts travel using spaceships."
+        }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>
