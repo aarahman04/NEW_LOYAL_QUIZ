@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Level 8</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        {
+          question: "Which direction is between south and west?",
+          options: ["southeast", "northwest", "southwest"],
+          correct: "southwest",
+          explanation: "Southwest lies between south and west."
+        },
+        {
+          question: "What do we call moving air?",
+          options: ["cloud", "wind", "rain"],
+          correct: "wind",
+          explanation: "Moving air is called wind."
+        },
+        {
+          question: "Which water body is smaller than a lake?",
+          options: ["sea", "ocean", "pond"],
+          correct: "pond",
+          explanation: "A pond is smaller than a lake."
+        },
+        {
+          question: "Which season has blooming flowers?",
+          options: ["spring", "summer", "winter"],
+          correct: "spring",
+          explanation: "Flowers bloom in spring."
+        },
+        {
+          question: "Which place is covered with ice most of the year?",
+          options: ["plain", "desert", "polar region"],
+          correct: "polar region",
+          explanation: "Polar regions remain icy most of the year."
+        },
+        {
+          question: "Which landform is found at the edge of the sea?",
+          options: ["hill", "coast", "valley"],
+          correct: "coast",
+          explanation: "A coast lies along the edge of the sea."
+        },
+        {
+          question: "What number comes after 12?",
+          options: ["10", "13", "12"],
+          correct: "13",
+          explanation: "13 comes after 12."
+        },
+        {
+          question: "Which direction is opposite to south?",
+          options: ["west", "east", "north"],
+          correct: "north",
+          explanation: "North is opposite to south."
+        },
+        {
+          question: "What do we call an area with many houses and shops?",
+          options: ["forest", "city", "village"],
+          correct: "city",
+          explanation: "A city has many houses and shops."
+        },
+        {
+          question: "Which season has the longest days?",
+          options: ["winter", "autumn", "summer"],
+          correct: "summer",
+          explanation: "Days are longest in summer."
+        },
+        {
+          question: "Which water body does a river flow into?",
+          options: ["pond", "well", "sea"],
+          correct: "sea",
+          explanation: "Most rivers flow into the sea."
+        },
+        {
+          question: "Which place has very cold weather and snow?",
+          options: ["plain", "mountain", "island"],
+          correct: "mountain",
+          explanation: "Mountains are cold and snowy."
+        },
+        {
+          question: "Which direction is between north and west?",
+          options: ["southeast", "northwest", "northeast"],
+          correct: "northwest",
+          explanation: "Northwest lies between north and west."
+        },
+        {
+          question: "Which season comes before winter?",
+          options: ["summer", "autumn", "spring"],
+          correct: "autumn",
+          explanation: "Autumn comes before winter."
+        },
+        {
+          question: "Which landform is flat and low?",
+          options: ["hill", "mountain", "plain"],
+          correct: "plain",
+          explanation: "Plains are flat and low."
+        },
+        {
+          question: "What comes after the month May?",
+          options: ["February", "June", "August"],
+          correct: "June",
+          explanation: "June comes after May."
+        },
+        {
+          question: "Who discovered fire long ago?",
+          options: ["scientists", "early humans", "engineers"],
+          correct: "early humans",
+          explanation: "Early humans discovered fire."
+        },
+        {
+          question: "What did people use to cook food before gas stoves?",
+          options: ["microwave", "firewood", "electricity"],
+          correct: "firewood",
+          explanation: "Firewood was used for cooking."
+        },
+        {
+          question: "Which tool helped people dig the land long ago?",
+          options: ["bowl", "pen", "plough"],
+          correct: "plough",
+          explanation: "A plough was used to dig land."
+        },
+        {
+          question: "What did people live in after caves?",
+          options: ["towers", "huts", "flats"],
+          correct: "huts",
+          explanation: "People lived in huts after caves."
+        }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>
