@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Level 10</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        {
+          question: "What causes day and night on Earth?",
+          options: ["clouds covering the sky", "Earth spinning", "Earth moving closer to the sun"],
+          correct: "Earth spinning",
+          explanation: "Day and night happen because Earth spins on its axis."
+        },
+        {
+          question: "Which layer of Earth do plants grow on?",
+          options: ["lava", "metal", "soil"],
+          correct: "soil",
+          explanation: "Plants grow in soil."
+        },
+        {
+          question: "Why do earthquakes happen?",
+          options: ["strong winds", "moving plates", "heavy rain"],
+          correct: "moving plates",
+          explanation: "Earthquakes happen due to movement of tectonic plates."
+        },
+        {
+          question: "What part of a plant makes food?",
+          options: ["stem", "leaf", "root"],
+          correct: "leaf",
+          explanation: "Leaves make food using sunlight."
+        },
+        {
+          question: "Why do plants need sunlight?",
+          options: ["to sleep", "to breathe", "to grow"],
+          correct: "to grow",
+          explanation: "Sunlight helps plants grow."
+        },
+        {
+          question: "Which part of a plant takes in water?",
+          options: ["leaf", "root", "flower"],
+          correct: "root",
+          explanation: "Roots absorb water from the soil."
+        },
+        {
+          question: "What do seeds need most to start growing?",
+          options: ["wind", "water", "music"],
+          correct: "water",
+          explanation: "Seeds need water to germinate."
+        },
+        {
+          question: "Which plant part holds it upright?",
+          options: ["root", "leaf", "stem"],
+          correct: "stem",
+          explanation: "The stem holds the plant upright."
+        },
+        {
+          question: "Which object gives Earth heat and light?",
+          options: ["star", "sun", "moon"],
+          correct: "sun",
+          explanation: "The sun gives heat and light to Earth."
+        },
+        {
+          question: "What do we call a group of stars that form a shape?",
+          options: ["constellation", "galaxy", "planet"],
+          correct: "constellation",
+          explanation: "A group of stars forming a shape is called a constellation."
+        },
+        {
+          question: "Which object moves around Earth?",
+          options: ["comet", "sun", "moon"],
+          correct: "moon",
+          explanation: "The moon revolves around Earth."
+        },
+        {
+          question: "Which planet is known for rings?",
+          options: ["Venus", "Saturn", "Mars"],
+          correct: "Saturn",
+          explanation: "Saturn is famous for its rings."
+        },
+        {
+          question: "Which organ pumps blood?",
+          options: ["lungs", "heart", "brain"],
+          correct: "heart",
+          explanation: "The heart pumps blood."
+        },
+        {
+          question: "Which body part helps you think?",
+          options: ["stomach", "muscle", "brain"],
+          correct: "brain",
+          explanation: "The brain helps us think."
+        },
+        {
+          question: "Which organ helps you breathe?",
+          options: ["liver", "lungs", "heart"],
+          correct: "lungs",
+          explanation: "Lungs help us breathe."
+        },
+        {
+          question: "What protects your body from germs?",
+          options: ["hair", "nails", "skin"],
+          correct: "skin",
+          explanation: "Skin protects our body from germs."
+        },
+        {
+          question: "Which weather has strong moving air?",
+          options: ["fog", "wind", "heat"],
+          correct: "wind",
+          explanation: "Wind is moving air."
+        },
+        {
+          question: "What tool tells how hot or cold it is?",
+          options: ["ruler", "thermometer", "compass"],
+          correct: "thermometer",
+          explanation: "A thermometer measures temperature."
+        },
+        {
+          question: "Which weather can cause flooding?",
+          options: ["clear sky", "light wind", "heavy rain"],
+          correct: "heavy rain",
+          explanation: "Heavy rain can cause floods."
+        },
+        {
+          question: "Which animals have backbones?",
+          options: ["worms", "mammals", "insects"],
+          correct: "mammals",
+          explanation: "Mammals have backbones."
+        }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>
