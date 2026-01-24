@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Level 13</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        {
+          question: "Which shape has flat faces?",
+          options: ["ball", "ring", "cube"],
+          correct: "cube",
+          explanation: "A cube has flat faces."
+        },
+        {
+          question: "Which shape looks like a can?",
+          options: ["square", "cylinder", "triangle"],
+          correct: "cylinder",
+          explanation: "A can is shaped like a cylinder."
+        },
+        {
+          question: "Which shape rolls and slides?",
+          options: ["cube", "square", "cylinder"],
+          correct: "cylinder",
+          explanation: "A cylinder can roll and also slide."
+        },
+        {
+          question: "Which shape has round top and bottom?",
+          options: ["cube", "cone", "cylinder"],
+          correct: "cylinder",
+          explanation: "A cylinder has round top and bottom."
+        },
+        {
+          question: "Which shape has a point and a round base?",
+          options: ["rectangle", "cone", "cube"],
+          correct: "cone",
+          explanation: "A cone has one point and a round base."
+        },
+        {
+          question: "Which animal eats bamboo?",
+          options: ["horse", "lion", "panda"],
+          correct: "panda",
+          explanation: "Pandas eat bamboo."
+        },
+        {
+          question: "Which animal has a long sticky tongue?",
+          options: ["cow", "sheep", "anteater"],
+          correct: "anteater",
+          explanation: "Anteaters use long sticky tongues to eat insects."
+        },
+        {
+          question: "Which word means not heavy?",
+          options: ["strong", "thick", "light"],
+          correct: "light",
+          explanation: "Light means not heavy."
+        },
+        {
+          question: "Which word means begin again?",
+          options: ["stop", "restart", "finish"],
+          correct: "restart",
+          explanation: "Restart means begin again."
+        },
+        {
+          question: "Which water body forms when snow melts?",
+          options: ["desert", "hill", "stream"],
+          correct: "stream",
+          explanation: "Melting snow forms streams."
+        },
+        {
+          question: "Which water body is natural and still?",
+          options: ["road", "lake", "hill"],
+          correct: "lake",
+          explanation: "A lake is a natural still water body."
+        },
+        {
+          question: "Which water body is salty and very wide?",
+          options: ["pond", "well", "ocean"],
+          correct: "ocean",
+          explanation: "Oceans are salty and very wide."
+        },
+        {
+          question: "Which land has steep sides?",
+          options: ["plain", "cliff", "field"],
+          correct: "cliff",
+          explanation: "Cliffs have steep sides."
+        },
+        {
+          question: "Which day comes after Sunday?",
+          options: ["Thursday", "Month", "Monday"],
+          correct: "Monday",
+          explanation: "Monday comes after Sunday."
+        },
+        {
+          question: "What comes after March?",
+          options: ["April", "May", "June"],
+          correct: "April",
+          explanation: "April comes after March."
+        },
+        {
+          question: "What language do people speak in China?",
+          options: ["English", "Chinese", "Spanish"],
+          correct: "Chinese",
+          explanation: "People in China speak Chinese."
+        },
+        {
+          question: "What language do people speak in France?",
+          options: ["English", "Chinese", "French"],
+          correct: "French",
+          explanation: "People in France speak French."
+        },
+        {
+          question: "What is the national bird of India?",
+          options: ["peacock", "parrot", "eagle"],
+          correct: "peacock",
+          explanation: "Peacock is the national bird of India."
+        },
+        {
+          question: "Which fruit is called the king of fruits?",
+          options: ["apple", "strawberry", "mango"],
+          correct: "mango",
+          explanation: "Mango is called the king of fruits."
+        },
+        {
+          question: "Which food is made from wheat?",
+          options: ["bread", "beef", "salad"],
+          correct: "bread",
+          explanation: "Bread is made from wheat."
+        }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>
