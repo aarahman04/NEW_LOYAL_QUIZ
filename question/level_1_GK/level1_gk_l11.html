@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Level 11</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        {
+          question: "Which body part helps you see?",
+          options: ["eye", "ear", "nose"],
+          correct: "eye",
+          explanation: "We use our eyes to see."
+        },
+        {
+          question: "Which body part helps you hear?",
+          options: ["hand", "ear", "foot"],
+          correct: "ear",
+          explanation: "We hear with our ears."
+        },
+        {
+          question: "Which body part helps you smell?",
+          options: ["nose", "eye", "leg"],
+          correct: "nose",
+          explanation: "The nose helps us smell."
+        },
+        {
+          question: "Which body part helps you think?",
+          options: ["feet", "brain", "foot"],
+          correct: "brain",
+          explanation: "The brain helps us think."
+        },
+        {
+          question: "Which body part helps you eat?",
+          options: ["nose", "mouth", "eye"],
+          correct: "mouth",
+          explanation: "We eat using our mouth."
+        },
+        {
+          question: "Which body part helps you hold things?",
+          options: ["eye", "leg", "hand"],
+          correct: "hand",
+          explanation: "Hands help us hold objects."
+        },
+        {
+          question: "Which invention helps people talk even if far away?",
+          options: ["book", "phone", "spoon"],
+          correct: "phone",
+          explanation: "Phones help people talk from far away."
+        },
+        {
+          question: "Which invention helps us see at night?",
+          options: ["light", "book", "shoe"],
+          correct: "light",
+          explanation: "Light helps us see in the dark."
+        },
+        {
+          question: "Which invention helps us travel fast?",
+          options: ["horse", "table", "car"],
+          correct: "car",
+          explanation: "Cars help us travel fast."
+        },
+        {
+          question: "Which invention helps cook food?",
+          options: ["stove", "pillow", "toy"],
+          correct: "stove",
+          explanation: "A stove is used to cook food."
+        },
+        {
+          question: "Which invention helps us read?",
+          options: ["ball", "book", "cup"],
+          correct: "book",
+          explanation: "Books help us read."
+        },
+        {
+          question: "Which invention helps clean clothes?",
+          options: ["pool", "washing machine", "plate"],
+          correct: "washing machine",
+          explanation: "A washing machine cleans clothes."
+        },
+        {
+          question: "Which invention helps keep food cold?",
+          options: ["fridge", "fan", "clock"],
+          correct: "fridge",
+          explanation: "A fridge keeps food cold."
+        },
+        {
+          question: "Which invention helps watch shows?",
+          options: ["calendar", "television", "bag"],
+          correct: "television",
+          explanation: "Television is used to watch shows."
+        },
+        {
+          question: "Which planet is very hot?",
+          options: ["Mercury", "Earth", "Neptune"],
+          correct: "Mercury",
+          explanation: "Mercury is very close to the sun and very hot."
+        },
+        {
+          question: "Which planet is red?",
+          options: ["Mars", "Venus", "Jupiter"],
+          correct: "Mars",
+          explanation: "Mars is called the red planet."
+        },
+        {
+          question: "Which planet has rings?",
+          options: ["Mars", "Earth", "Saturn"],
+          correct: "Saturn",
+          explanation: "Saturn is famous for its rings."
+        },
+        {
+          question: "Which planet is very big?",
+          options: ["Jupiter", "Mercury", "Earth"],
+          correct: "Jupiter",
+          explanation: "Jupiter is the largest planet."
+        },
+        {
+          question: "Which animal lives in the ocean?",
+          options: ["lion", "fish", "bird"],
+          correct: "fish",
+          explanation: "Fish live in the ocean."
+        },
+        {
+          question: "Which ocean water tastes salty?",
+          options: ["rain", "river", "sea"],
+          correct: "sea",
+          explanation: "Sea water is salty."
+        }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>
