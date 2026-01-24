@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Level 12</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        {
+          question: "Which shape looks like a party hat?",
+          options: ["house", "cone", "square"],
+          correct: "cone",
+          explanation: "A cone looks like a party hat."
+        },
+        {
+          question: "Which shape has one point at the top?",
+          options: ["heart", "cone", "oval"],
+          correct: "cone",
+          explanation: "A cone has one pointed top."
+        },
+        {
+          question: "Which shape can stack easily?",
+          options: ["cube", "circle", "oval"],
+          correct: "cube",
+          explanation: "Cubes can be stacked easily."
+        },
+        {
+          question: "Which shape looks like a can?",
+          options: ["circle", "square", "cylinder"],
+          correct: "cylinder",
+          explanation: "A can is shaped like a cylinder."
+        },
+        {
+          question: "Which shape has round top and bottom?",
+          options: ["heart", "cylinder", "cube"],
+          correct: "cylinder",
+          explanation: "A cylinder has round top and bottom."
+        },
+        {
+          question: "Which animal has a pouch for babies?",
+          options: ["whale", "koala", "sheep"],
+          correct: "koala",
+          explanation: "Koalas carry babies in a pouch."
+        },
+        {
+          question: "Which animal moves very slowly?",
+          options: ["sloth", "dog", "deer"],
+          correct: "sloth",
+          explanation: "Sloths move very slowly."
+        },
+        {
+          question: "Which animal can squirt ink?",
+          options: ["spider", "octopus", "crab"],
+          correct: "octopus",
+          explanation: "Octopus can squirt ink to escape."
+        },
+        {
+          question: "Which animal carries its home?",
+          options: ["hermit crab", "dog", "horse"],
+          correct: "hermit crab",
+          explanation: "Hermit crabs carry shells as homes."
+        },
+        {
+          question: "Which animal can stick to walls?",
+          options: ["seal", "gecko", "sheep"],
+          correct: "gecko",
+          explanation: "Geckos can stick to walls."
+        },
+        {
+          question: "Which animal has a beak and swims?",
+          options: ["camel", "penguin", "cat"],
+          correct: "penguin",
+          explanation: "Penguins swim and have beaks."
+        },
+        {
+          question: "Which animal eats bamboo?",
+          options: ["panda", "horse", "sheep"],
+          correct: "panda",
+          explanation: "Pandas eat bamboo."
+        },
+        {
+          question: "Which body part helps you smell smoke?",
+          options: ["nose", "knee", "elbow"],
+          correct: "nose",
+          explanation: "The nose helps smell smoke."
+        },
+        {
+          question: "Which body part helps you bend your arm?",
+          options: ["knee", "elbow", "neck"],
+          correct: "elbow",
+          explanation: "Elbow helps bend the arm."
+        },
+        {
+          question: "Which body part helps you taste sweet food?",
+          options: ["tongue", "ear", "eye"],
+          correct: "tongue",
+          explanation: "The tongue helps us taste."
+        },
+        {
+          question: "Which body part helps you nod yes?",
+          options: ["feet", "neck", "hand"],
+          correct: "neck",
+          explanation: "The neck helps nod the head."
+        },
+        {
+          question: "Which word means not loud?",
+          options: ["forget", "quiet", "angry"],
+          correct: "quiet",
+          explanation: "Quiet means not loud."
+        },
+        {
+          question: "Which word means very fast?",
+          options: ["speedy", "slow", "late"],
+          correct: "speedy",
+          explanation: "Speedy means very fast."
+        },
+        {
+          question: "Which water body is salty and very wide?",
+          options: ["beach", "ocean", "well"],
+          correct: "ocean",
+          explanation: "Oceans are salty and very large."
+        },
+        {
+          question: "Which land has steep sides?",
+          options: ["food", "plain", "cliff"],
+          correct: "cliff",
+          explanation: "Cliffs have steep sides."
+        }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>
