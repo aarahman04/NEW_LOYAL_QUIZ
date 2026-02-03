@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Level 15</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Level 15 Questions -->
+    <script>
+      const questions = [
+        {
+          question: "Which job focuses on writing computer programs?",
+          options: ["teacher", "programmer", "chef"],
+          correct: "programmer",
+          explanation: "A programmer writes computer programs."
+        },
+        {
+          question: "Which planet is known as the red planet?",
+          options: ["Mars", "Venus", "Jupiter"],
+          correct: "Mars",
+          explanation: "Mars is called the red planet."
+        },
+        {
+          question: "Which food is made from milk?",
+          options: ["bread", "cheese", "rice"],
+          correct: "cheese",
+          explanation: "Cheese is made from milk."
+        },
+        {
+          question: "Which vehicle travels on water?",
+          options: ["car", "airplane", "boat"],
+          correct: "boat",
+          explanation: "Boats travel on water."
+        },
+        {
+          question: "Which computer part is called the brain of the computer?",
+          options: ["keyboard", "cpu", "monitor"],
+          correct: "cpu",
+          explanation: "CPU is the brain of the computer."
+        },
+        {
+          question: "Which job treats sick people?",
+          options: ["doctor", "painter", "driver"],
+          correct: "doctor",
+          explanation: "Doctors treat sick people."
+        },
+        {
+          question: "Which planet is the largest in the solar system?",
+          options: ["Earth", "Jupiter", "Mercury"],
+          correct: "Jupiter",
+          explanation: "Jupiter is the largest planet."
+        },
+        {
+          question: "Which food is sweet?",
+          options: ["salt", "lemon", "sugar"],
+          correct: "sugar",
+          explanation: "Sugar tastes sweet."
+        },
+        {
+          question: "Which vehicle flies in the sky?",
+          options: ["train", "bicycle", "airplane"],
+          correct: "airplane",
+          explanation: "Airplanes fly in the sky."
+        },
+        {
+          question: "Which device is used to type letters?",
+          options: ["mouse", "keyboard", "speaker"],
+          correct: "keyboard",
+          explanation: "Keyboard is used for typing."
+        },
+        {
+          question: "Which job designs buildings?",
+          options: ["architect", "nurse", "farmer"],
+          correct: "architect",
+          explanation: "Architects design buildings."
+        },
+        {
+          question: "Which planet is closest to the sun?",
+          options: ["Mercury", "Saturn", "Earth"],
+          correct: "Mercury",
+          explanation: "Mercury is closest to the sun."
+        },
+        {
+          question: "Which food is a fruit?",
+          options: ["carrot", "apple", "potato"],
+          correct: "apple",
+          explanation: "Apple is a fruit."
+        },
+        {
+          question: "Which vehicle runs on tracks?",
+          options: ["bus", "train", "scooter"],
+          correct: "train",
+          explanation: "Trains run on tracks."
+        },
+        {
+          question: "Which software is used for writing documents?",
+          options: ["browser", "word processor", "game"],
+          correct: "word processor",
+          explanation: "Word processors are used to write documents."
+        },
+        {
+          question: "Which job grows crops?",
+          options: ["pilot", "farmer", "cashier"],
+          correct: "farmer",
+          explanation: "Farmers grow crops."
+        },
+        {
+          question: "Which planet has rings?",
+          options: ["Saturn", "Mars", "Earth"],
+          correct: "Saturn",
+          explanation: "Saturn is famous for its rings."
+        },
+        {
+          question: "Which food is spicy?",
+          options: ["chili", "ice cream", "milk"],
+          correct: "chili",
+          explanation: "Chili is spicy."
+        },
+        {
+          question: "Which vehicle has two wheels?",
+          options: ["car", "truck", "bicycle"],
+          correct: "bicycle",
+          explanation: "Bicycles have two wheels."
+        },
+        {
+          question: "Which job teaches students?",
+          options: ["teacher", "mechanic", "barber"],
+          correct: "teacher",
+          explanation: "Teachers teach students."
+        }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>
