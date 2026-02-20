@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Level 17</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        {
+          question: "What does brave mean?",
+          options: ["afraid", "not afraid", "sad"],
+          correct: "not afraid",
+          explanation: "Brave means not afraid."
+        },
+        {
+          question: "What is a journey?",
+          options: ["a meal", "a long trip", "a book"],
+          correct: "a long trip",
+          explanation: "A journey means a long trip."
+        },
+        {
+          question: "What does honest mean?",
+          options: ["tells the truth", "tells lies", "angry"],
+          correct: "tells the truth",
+          explanation: "Honest means telling the truth."
+        },
+        {
+          question: "What is history?",
+          options: ["study of the future", "study of the past", "study of plants"],
+          correct: "study of the past",
+          explanation: "History is the study of the past."
+        },
+        {
+          question: "Who is a leader?",
+          options: ["a person who guides others", "a student", "a baby"],
+          correct: "a person who guides others",
+          explanation: "A leader guides others."
+        },
+        {
+          question: "What is war?",
+          options: ["a game", "fighting between groups", "a song"],
+          correct: "fighting between groups",
+          explanation: "War is fighting between groups."
+        },
+        {
+          question: "What is a map?",
+          options: ["a toy", "a drawing of places", "a story"],
+          correct: "a drawing of places",
+          explanation: "A map is a drawing of places."
+        },
+        {
+          question: "What is a river?",
+          options: ["flowing water", "dry land", "hot air"],
+          correct: "flowing water",
+          explanation: "A river is flowing water."
+        },
+        {
+          question: "What is a mountain?",
+          options: ["flat land", "very high land", "deep water"],
+          correct: "very high land",
+          explanation: "A mountain is very high land."
+        },
+        {
+          question: "What do plants need to grow?",
+          options: ["water", "toys", "shoes"],
+          correct: "water",
+          explanation: "Plants need water to grow."
+        },
+        {
+          question: "What do we breathe?",
+          options: ["sand", "air", "food"],
+          correct: "air",
+          explanation: "We breathe air."
+        },
+        {
+          question: "Which is a living thing?",
+          options: ["chair", "animal", "stone"],
+          correct: "animal",
+          explanation: "Animals are living things."
+        },
+        {
+          question: "I shine in the day. Who am I?",
+          options: ["moon", "sun", "star"],
+          correct: "sun",
+          explanation: "The sun shines in the day."
+        },
+        {
+          question: "I have hands but cannot clap. What am I?",
+          options: ["clock", "dog", "tree"],
+          correct: "clock",
+          explanation: "A clock has hands but cannot clap."
+        },
+        {
+          question: "What is peace?",
+          options: ["fighting", "no fighting", "noise"],
+          correct: "no fighting",
+          explanation: "Peace means no fighting."
+        },
+        {
+          question: "What does fast mean?",
+          options: ["slow", "quick", "weak"],
+          correct: "quick",
+          explanation: "Fast means quick."
+        },
+        {
+          question: "What is a friend?",
+          options: ["someone who helps you", "someone you do not know", "an animal"],
+          correct: "someone who helps you",
+          explanation: "A friend helps and supports you."
+        },
+        {
+          question: "What is a king?",
+          options: ["a teacher", "a ruler", "a farmer"],
+          correct: "a ruler",
+          explanation: "A king is a ruler."
+        },
+        {
+          question: "What is a monument?",
+          options: ["a new house", "a place from the past", "a shop"],
+          correct: "a place from the past",
+          explanation: "A monument is a place from the past."
+        },
+        {
+          question: "Why do people study history?",
+          options: ["to learn about the past", "to play games", "to sleep"],
+          correct: "to learn about the past",
+          explanation: "People study history to learn about the past."
+        }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>
