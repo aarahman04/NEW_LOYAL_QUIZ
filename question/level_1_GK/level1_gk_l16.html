@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Level 16</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        {
+          question: "What is two plus one?",
+          options: ["one", "three", "five"],
+          correct: "three",
+          explanation: "2 + 1 equals 3."
+        },
+        {
+          question: "Which animal barks?",
+          options: ["cat", "cow", "dog"],
+          correct: "dog",
+          explanation: "Dogs bark."
+        },
+        {
+          question: "What color is the sun?",
+          options: ["blue", "yellow", "green"],
+          correct: "yellow",
+          explanation: "The sun appears yellow."
+        },
+        {
+          question: "Which number is bigger?",
+          options: ["four", "one", "two"],
+          correct: "four",
+          explanation: "Four is bigger than one and two."
+        },
+        {
+          question: "What do plants need to grow?",
+          options: ["water", "sand", "toys"],
+          correct: "water",
+          explanation: "Plants need water to grow."
+        },
+        {
+          question: "How many legs does a bird have?",
+          options: ["four", "three", "two"],
+          correct: "two",
+          explanation: "Birds have two legs."
+        },
+        {
+          question: "What is the shape of a ball?",
+          options: ["square", "circle", "triangle"],
+          correct: "circle",
+          explanation: "A ball is round like a circle."
+        },
+        {
+          question: "Which place do we live on?",
+          options: ["moon", "star", "earth"],
+          correct: "earth",
+          explanation: "We live on Earth."
+        },
+        {
+          question: "What do we use to write?",
+          options: ["spoon", "pencil", "shoe"],
+          correct: "pencil",
+          explanation: "We write with a pencil."
+        },
+        {
+          question: "Which is a fruit?",
+          options: ["carrot", "apple", "potato"],
+          correct: "apple",
+          explanation: "Apple is a fruit."
+        },
+        {
+          question: "What comes after five?",
+          options: ["six", "four", "three"],
+          correct: "six",
+          explanation: "Six comes after five."
+        },
+        {
+          question: "What is the color of grass?",
+          options: ["red", "blue", "green"],
+          correct: "green",
+          explanation: "Grass is green."
+        },
+        {
+          question: "Which day comes after Monday?",
+          options: ["Sunday", "Tuesday", "Friday"],
+          correct: "Tuesday",
+          explanation: "Tuesday comes after Monday."
+        },
+        {
+          question: "What do bees make?",
+          options: ["honey", "milk", "water"],
+          correct: "honey",
+          explanation: "Bees make honey."
+        },
+        {
+          question: "How many eyes do you have?",
+          options: ["one", "two", "three"],
+          correct: "two",
+          explanation: "Humans have two eyes."
+        },
+        {
+          question: "Which shape has three sides?",
+          options: ["circle", "square", "triangle"],
+          correct: "triangle",
+          explanation: "A triangle has three sides."
+        },
+        {
+          question: "What is ten minus one?",
+          options: ["nine", "eight", "seven"],
+          correct: "nine",
+          explanation: "10 - 1 equals 9."
+        },
+        {
+          question: "Which animal can fly?",
+          options: ["dog", "bird", "cow"],
+          correct: "bird",
+          explanation: "Birds can fly."
+        },
+        {
+          question: "Which is hot?",
+          options: ["ice", "fire", "snow"],
+          correct: "fire",
+          explanation: "Fire is hot."
+        },
+        {
+          question: "How many days are there in a week?",
+          options: ["five", "six", "seven"],
+          correct: "seven",
+          explanation: "There are seven days in a week."
+        }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>
