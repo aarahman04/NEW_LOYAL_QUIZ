@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Level 18</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        {
+          question: "Which fish is known as the fastest swimmer?",
+          options: ["tuna", "shark", "sailfish"],
+          correct: "sailfish",
+          explanation: "Sailfish are the fastest swimming fish."
+        },
+        {
+          question: "Which fish can inflate itself when threatened?",
+          options: ["clownfish", "pufferfish", "sardine"],
+          correct: "pufferfish",
+          explanation: "Pufferfish inflate to protect themselves."
+        },
+        {
+          question: "Which fish is famous for its bright orange and white stripes?",
+          options: ["goldfish", "clownfish", "carp"],
+          correct: "clownfish",
+          explanation: "Clownfish are bright orange with white stripes."
+        },
+        {
+          question: "Which fish migrates upstream to lay eggs?",
+          options: ["tuna", "tilapia", "salmon"],
+          correct: "salmon",
+          explanation: "Salmon swim upstream to lay eggs."
+        },
+        {
+          question: "Which fish has a hammer-shaped head?",
+          options: ["hammerhead shark", "reef shark", "zebra"],
+          correct: "hammerhead shark",
+          explanation: "Hammerhead sharks have a hammer-shaped head."
+        },
+        {
+          question: "Which fish is the largest in the world?",
+          options: ["regular fish", "great white shark", "whale shark"],
+          correct: "whale shark",
+          explanation: "The whale shark is the largest fish."
+        },
+        {
+          question: "Which animal is known as the king of the jungle?",
+          options: ["tiger", "lion", "leopard"],
+          correct: "lion",
+          explanation: "The lion is called the king of the jungle."
+        },
+        {
+          question: "Which animal can sleep standing up?",
+          options: ["dog", "elephant", "horse"],
+          correct: "horse",
+          explanation: "Horses can sleep standing up."
+        },
+        {
+          question: "Which is the largest land animal?",
+          options: ["elephant", "hippo", "giraffe"],
+          correct: "elephant",
+          explanation: "Elephants are the largest land animals."
+        },
+        {
+          question: "Which bird cannot fly?",
+          options: ["sparrow", "eagle", "penguin"],
+          correct: "penguin",
+          explanation: "Penguins cannot fly."
+        },
+        {
+          question: "Which animal changes color to match surroundings?",
+          options: ["frog", "lizard", "chameleon"],
+          correct: "chameleon",
+          explanation: "Chameleons change color to blend in."
+        },
+        {
+          question: "Which animal builds dams?",
+          options: ["otter", "crocodile", "beaver"],
+          correct: "beaver",
+          explanation: "Beavers build dams."
+        },
+        {
+          question: "What gets wetter as it dries?",
+          options: ["sponge", "tower", "towel"],
+          correct: "towel",
+          explanation: "A towel gets wetter as it dries you."
+        },
+        {
+          question: "What runs but never walks?",
+          options: ["river", "dog", "cheetah"],
+          correct: "river",
+          explanation: "A river runs but does not walk."
+        },
+        {
+          question: "What is the largest ocean in the world?",
+          options: ["indian ocean", "arctic ocean", "pacific ocean"],
+          correct: "pacific ocean",
+          explanation: "The Pacific Ocean is the largest."
+        },
+        {
+          question: "What is the capital of France?",
+          options: ["Rome", "Paris", "Berlin"],
+          correct: "Paris",
+          explanation: "Paris is the capital of France."
+        },
+        {
+          question: "Which country is famous for the Great Wall?",
+          options: ["Japan", "China", "India"],
+          correct: "China",
+          explanation: "The Great Wall is in China."
+        },
+        {
+          question: "Which is the smallest continent?",
+          options: ["Europe", "Antarctica", "Australia"],
+          correct: "Australia",
+          explanation: "Australia is the smallest continent."
+        },
+        {
+          question: "Which body part helps pump blood?",
+          options: ["heart", "ear", "nose"],
+          correct: "heart",
+          explanation: "The heart pumps blood."
+        },
+        {
+          question: "Which tool tightens bolts?",
+          options: ["wrench", "fork", "pencil"],
+          correct: "wrench",
+          explanation: "A wrench is used to tighten bolts."
+        }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>
