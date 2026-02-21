@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Level 19</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        {
+          question: "What do we call animals without a backbone?",
+          options: ["vertebrate", "invertebrate", "zero skeleton"],
+          correct: "invertebrate",
+          explanation: "Animals without a backbone are called invertebrates."
+        },
+        {
+          question: "What do we call animals with a backbone?",
+          options: ["vertebrate", "invertebrate", "zero skeleton"],
+          correct: "vertebrate",
+          explanation: "Animals with a backbone are called vertebrates."
+        },
+        {
+          question: "What do we call water that falls to Earth?",
+          options: ["precipitation", "water fall", "water ice"],
+          correct: "precipitation",
+          explanation: "Water that falls to Earth is called precipitation."
+        },
+        {
+          question: "What do we call the pattern of weather over many years?",
+          options: ["precipitation", "climate", "evaporation"],
+          correct: "climate",
+          explanation: "Climate is the pattern of weather in a place over many years."
+        },
+        {
+          question: "What is the change from liquid water to water vapor called?",
+          options: ["precipitation", "climate", "evaporation"],
+          correct: "evaporation",
+          explanation: "Evaporation is when liquid water changes into vapor."
+        },
+        {
+          question: "What is the change from gas into liquid called?",
+          options: ["condensation", "vertebrate", "invertebrate"],
+          correct: "condensation",
+          explanation: "Condensation is when gas changes into liquid."
+        },
+        {
+          question: "Which is the largest continent by area?",
+          options: ["Africa", "Asia", "Europe"],
+          correct: "Asia",
+          explanation: "Asia is the largest continent."
+        },
+        {
+          question: "Which is the longest river in the world?",
+          options: ["Amazon", "Nile", "Yangtze"],
+          correct: "Nile",
+          explanation: "The Nile River is the longest river."
+        },
+        {
+          question: "Mount Everest is located in which mountain range?",
+          options: ["Andes", "Alps", "Himalayas"],
+          correct: "Himalayas",
+          explanation: "Mount Everest is in the Himalayas."
+        },
+        {
+          question: "Which country is known as the Land of the Rising Sun?",
+          options: ["China", "Japan", "Korea"],
+          correct: "Japan",
+          explanation: "Japan is called the Land of the Rising Sun."
+        },
+        {
+          question: "What does observe mean?",
+          options: ["when you travel", "when you use your senses", "when you shower"],
+          correct: "when you use your senses",
+          explanation: "Observe means to use your senses carefully."
+        },
+        {
+          question: "What do we call moving air?",
+          options: ["water flow", "wind", "minerals"],
+          correct: "wind",
+          explanation: "Moving air is called wind."
+        },
+        {
+          question: "How hot or cold something is called?",
+          options: ["star", "wind", "temperature"],
+          correct: "temperature",
+          explanation: "Temperature tells how hot or cold something is."
+        },
+        {
+          question: "The top layer of Earth is called:",
+          options: ["soil", "wind", "temperature"],
+          correct: "soil",
+          explanation: "The top layer of Earth is soil."
+        },
+        {
+          question: "A group of stars forming a picture is called:",
+          options: ["soil", "constellation", "temperature"],
+          correct: "constellation",
+          explanation: "A constellation is a group of stars forming a shape."
+        },
+        {
+          question: "A change from liquid to gas is called:",
+          options: ["soil", "natural resource", "evaporation"],
+          correct: "evaporation",
+          explanation: "Evaporation is liquid changing into gas."
+        },
+        {
+          question: "A big ball of hot gas is called:",
+          options: ["star", "sun", "soil"],
+          correct: "star",
+          explanation: "A star is a big ball of hot gas."
+        },
+        {
+          question: "To make used materials into new materials is called:",
+          options: ["recycle", "star", "sun"],
+          correct: "recycle",
+          explanation: "Recycle means to make used materials into new ones."
+        },
+        {
+          question: "Something that solves a problem is called:",
+          options: ["data", "chart", "solution"],
+          correct: "solution",
+          explanation: "A solution solves a problem."
+        },
+        {
+          question: "One spin around is called:",
+          options: ["reduce", "rotation", "chart"],
+          correct: "rotation",
+          explanation: "One full spin is called rotation."
+        }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>
