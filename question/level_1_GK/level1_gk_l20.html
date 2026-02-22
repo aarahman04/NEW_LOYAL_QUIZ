@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Level 20</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        {
+          question: "What is a desert?",
+          options: ["biome", "animal", "city"],
+          correct: "biome",
+          explanation: "A desert is a type of biome with very little rainfall."
+        },
+        {
+          question: "Where does a lion live?",
+          options: ["ocean", "savanna", "tundra"],
+          correct: "savanna",
+          explanation: "Lions usually live in the savanna."
+        },
+        {
+          question: "Where does a frog usually live?",
+          options: ["freshwater", "desert", "air"],
+          correct: "freshwater",
+          explanation: "Frogs usually live near freshwater."
+        },
+        {
+          question: "Where does a tiger live?",
+          options: ["jungle", "ocean", "tundra"],
+          correct: "jungle",
+          explanation: "Tigers live in jungles and forests."
+        },
+        {
+          question: "Where does a shark live?",
+          options: ["river", "ocean", "savanna"],
+          correct: "ocean",
+          explanation: "Sharks live in the ocean."
+        },
+        {
+          question: "Where does a camel live?",
+          options: ["jungle", "desert", "ocean"],
+          correct: "desert",
+          explanation: "Camels live in deserts."
+        },
+        {
+          question: "What is the past of go?",
+          options: ["went", "goed", "go"],
+          correct: "went",
+          explanation: "The past tense of go is went."
+        },
+        {
+          question: "What is the past of eat?",
+          options: ["eated", "ate", "eat"],
+          correct: "ate",
+          explanation: "The past tense of eat is ate."
+        },
+        {
+          question: "Where does a whale live?",
+          options: ["jungle", "ocean", "savanna"],
+          correct: "ocean",
+          explanation: "Whales live in the ocean."
+        },
+        {
+          question: "Where does a penguin live?",
+          options: ["Antarctica", "Desert", "Jungle"],
+          correct: "Antarctica",
+          explanation: "Penguins live in Antarctica."
+        },
+        {
+          question: "What is the past of run?",
+          options: ["runned", "ran", "run"],
+          correct: "ran",
+          explanation: "The past tense of run is ran."
+        },
+        {
+          question: "Where does an elephant live?",
+          options: ["savanna", "ocean", "tundra"],
+          correct: "savanna",
+          explanation: "Elephants live in the savanna."
+        },
+        {
+          question: "What is the past of drink?",
+          options: ["drinked", "drank", "drunk"],
+          correct: "drank",
+          explanation: "The past tense of drink is drank."
+        },
+        {
+          question: "Where does a dolphin live?",
+          options: ["ocean", "savanna", "jungle"],
+          correct: "ocean",
+          explanation: "Dolphins live in the ocean."
+        },
+        {
+          question: "What is the past of fly?",
+          options: ["flied", "flew", "fly"],
+          correct: "flew",
+          explanation: "The past tense of fly is flew."
+        },
+        {
+          question: "What characteristics do cactus have?",
+          options: ["spines", "fins", "feathers"],
+          correct: "spines",
+          explanation: "Cactus plants have spines."
+        },
+        {
+          question: "What is the past of write?",
+          options: ["writed", "wrote", "write"],
+          correct: "wrote",
+          explanation: "The past tense of write is wrote."
+        },
+        {
+          question: "Which ocean is the largest?",
+          options: ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean"],
+          correct: "Pacific Ocean",
+          explanation: "The Pacific Ocean is the largest ocean."
+        },
+        {
+          question: "Which country is known as the Land of the Rising Sun?",
+          options: ["China", "Japan", "Korea"],
+          correct: "Japan",
+          explanation: "Japan is called the Land of the Rising Sun."
+        },
+        {
+          question: "What do we call animals without a backbone?",
+          options: ["vertebrate", "invertebrate", "zero skeleton"],
+          correct: "invertebrate",
+          explanation: "Animals without a backbone are called invertebrates."
+        }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>
