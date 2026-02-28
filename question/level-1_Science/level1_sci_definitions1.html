@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Definitions - Science Terminology</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "What does severe weather mean?",
+      options: ["dangerous weather", "beautiful weather", "normal climate"],
+      correct: "dangerous weather",
+      explanation: "The correct answer is dangerous weather."
+    },
+    {
+      question: "What a time of year mean?",
+      options: ["climate", "data", "season"],
+      correct: "season",
+      explanation: "The correct answer is season."
+    },
+    {
+      question: "Something harmful added to land, air , or water is called:",
+      options: ["climate", "data", "Pollution"],
+      correct: "Pollution",
+      explanation: "The correct answer is Pollution."
+    },
+    {
+      question: "The pattern of weather in a place over many years is called:",
+      options: ["climate", "data", "season"],
+      correct: "climate",
+      explanation: "The correct answer is climate."
+    },
+    {
+      question: "The movement of water from Earth's surface into the air and back again to Earth's surface is called:",
+      options: ["climate", "data", "water cycle"],
+      correct: "water cycle",
+      explanation: "The correct answer is water cycle."
+    },
+    {
+      question: "What is the meaning of reuse?",
+      options: ["to buy again", "to use again", "to throw away"],
+      correct: "to use again",
+      explanation: "The correct answer is to use again."
+    },
+    {
+      question: "The movement of water from Earth's surface into the air and back again to Earth's surface is called:",
+      options: ["climate", "data", "water cycle"],
+      correct: "water cycle",
+      explanation: "The correct answer is water cycle."
+    },
+    {
+      question: "Define temperature?",
+      options: ["climate", "how hot or cold something is", "dangerous weather"],
+      correct: "how hot or cold something is",
+      explanation: "The correct answer is how hot or cold something is."
+    },
+    {
+      question: "Define rotation?",
+      options: ["one spin around", "climate", "dangerous weather"],
+      correct: "one spin around",
+      explanation: "The correct answer is one spin around."
+    },
+    {
+      question: "The movement of water from Earth's surface into the air and back again to Earth's surface is called:",
+      options: ["climate", "data", "water cycle"],
+      correct: "water cycle",
+      explanation: "The correct answer is water cycle."
+    },
+    {
+      question: "Define soil?",
+      options: ["the top layer of the sun", "the second layer of the moon", "the top layer of Earth"],
+      correct: "the top layer of Earth",
+      explanation: "The correct answer is the top layer of Earth."
+    },
+    {
+      question: "To make used materials into new materials is called:",
+      options: ["climate", "data", "recycle"],
+      correct: "recycle",
+      explanation: "The correct answer is recycle."
+    },
+    {
+      question: "A group of stars that forms a picture is called:",
+      options: ["constellation", "data", "recycle"],
+      correct: "constellation",
+      explanation: "The correct answer is constellation."
+    },
+    {
+      question: "A useful material that comes from Earth is called:",
+      options: ["constellation", "natural resources", "recycle"],
+      correct: "natural resources",
+      explanation: "The correct answer is natural resources."
+    },
+    {
+      question: "How something feels is called:",
+      options: ["texture", "dangerous resources", "recycle"],
+      correct: "texture",
+      explanation: "The correct answer is texture."
+    },
+    {
+      question: "The movement of water from Earth's surface into the air and back again to Earth's surface is called:",
+      options: ["climate", "water cycle", "water fall"],
+      correct: "water cycle",
+      explanation: "The correct answer is water cycle."
+    },
+    {
+      question: "A big ball of hot gas is called:",
+      options: ["rock", "football", "sun"],
+      correct: "sun",
+      explanation: "The correct answer is sun."
+    },
+    {
+      question: "What do we call moving air:",
+      options: ["climate", "wind", "clouds"],
+      correct: "wind",
+      explanation: "The correct answer is wind."
+    },
+    {
+      question: "When you describe how it is like outside, is called:",
+      options: ["weather", "water cycle", "Photosynthesis"],
+      correct: "weather",
+      explanation: "The correct answer is weather."
+    },
+    {
+      question: "A natural feature on Earth is called:",
+      options: ["language", "landform", "ocean"],
+      correct: "landform",
+      explanation: "The correct answer is landform."
+    },
+    {
+      question: "The movement of water from Earth's surface into the air and back again to Earth's surface is called:",
+      options: ["climate", "water fall", "water cycle"],
+      correct: "water cycle",
+      explanation: "The correct answer is water cycle."
+    },
+    {
+      question: "The shape of the lighted part of the moon is called:",
+      options: ["data", "climate", "phase"],
+      correct: "phase",
+      explanation: "The correct answer is phase."
+    },
+    {
+      question: "A large body of moving ice is called:",
+      options: ["snow", "glacier", "titanium"],
+      correct: "glacier",
+      explanation: "The correct answer is glacier."
+    },
+    {
+      question: "What is the sun, planets, and other objects that move around the sun called?",
+      options: ["solar system", "galaxy", "universe"],
+      correct: "solar system",
+      explanation: "The correct answer is solar system."
+    },
+    {
+      question: "Small bits of dead plants and dead animals in soil is called:",
+      options: ["materials", "humus", "sand"],
+      correct: "humus",
+      explanation: "The correct answer is humus."
+    },
+    {
+      question: "The way something repeats itself is called:",
+      options: ["materials", "goal", "Pattern"],
+      correct: "Pattern",
+      explanation: "The correct answer is Pattern."
+    },
+    {
+      question: "A a bowl of burning gases that gives a light and heat is called:",
+      options: ["fire", "star", "lighter"],
+      correct: "star",
+      explanation: "The correct answer is star."
+    },
+    {
+      question: "To change something so it can be used again is called:",
+      options: ["material", "plastic", "recycle"],
+      correct: "recycle",
+      explanation: "The correct answer is recycle."
+    },
+    {
+      question: "What does the sign represent ♻ ?",
+      options: ["recycle", "buy new", "Palm Beach"],
+      correct: "recycle",
+      explanation: "The correct answer is recycle."
+    },
+    {
+      question: "When water or ice breaks down rocks is called:",
+      options: ["weatherman", "weathering", "climate"],
+      correct: "weathering",
+      explanation: "The correct answer is weathering."
+    },
+    {
+      question: "A nonliving material that comes from Earth is called:",
+      options: ["material", "mineral", "vitamins"],
+      correct: "mineral",
+      explanation: "The correct answer is mineral."
+    },
+    {
+      question: "Anything that is burned to make heat or power is called:",
+      options: ["microwave", "fuel", "sun"],
+      correct: "fuel",
+      explanation: "The correct answer is fuel."
+    },
+    {
+      question: "A useful material that comes from earth is called:",
+      options: ["vegetables", "national parks", "natural resources"],
+      correct: "natural resources",
+      explanation: "The correct answer is natural resources."
+    },
+    {
+      question: "The closest star to Earth is called:",
+      options: ["sun", "ocean", "moon"],
+      correct: "sun",
+      explanation: "The correct answer is sun."
+    },
+    {
+      question: "A hard, solid part of Earth that is not soil or metal is called:",
+      options: ["soil", "metal", "rock"],
+      correct: "rock",
+      explanation: "The correct answer is rock."
+    },
+    {
+      question: "The change from a liquid to a gas is called:",
+      options: ["rainbow", "evaporation", "erosion"],
+      correct: "evaporation",
+      explanation: "The correct answer is evaporation."
+    },
+    {
+      question: "The change from gas into a liquid is called:",
+      options: ["rainbow", "evaporation", "condensation"],
+      correct: "condensation",
+      explanation: "The correct answer is condensation."
+    },
+    {
+      question: "The change from a liquid to a gas is called:",
+      options: ["rainbow", "evaporation", "erosion"],
+      correct: "evaporation",
+      explanation: "The correct answer is evaporation."
+    },
+    {
+      question: "The change from gas into a liquid is called:",
+      options: ["rainbow", "evaporation", "condensation"],
+      correct: "condensation",
+      explanation: "The correct answer is condensation."
+    },
+    {
+      question: "Water that falls to earth is called:",
+      options: ["Precipitation", "evaporation", "condensation"],
+      correct: "Precipitation",
+      explanation: "The correct answer is Precipitation."
+    },
+    {
+      question: "The change from liquid water to water vapor is called:",
+      options: ["Precipitation", "evaporation", "condensation"],
+      correct: "evaporation",
+      explanation: "The correct answer is evaporation."
+    },
+    {
+      question: "An animal without a backbone is called:",
+      options: ["vertebrate", "invertebrate", "zoology"],
+      correct: "invertebrate",
+      explanation: "The correct answer is invertebrate."
+    },
+    {
+      question: "An animal With a backbone is called:",
+      options: ["vertebrate", "invertebrate", "zoology"],
+      correct: "vertebrate",
+      explanation: "The correct answer is vertebrate."
+    },
+    {
+      question: "When wind or water moves rocks and soil is called:",
+      options: ["climate", "erosion", "evaporation"],
+      correct: "erosion",
+      explanation: "The correct answer is erosion."
+    },
+    {
+      question: "What something is made of is called:",
+      options: ["material", "sun", "data"],
+      correct: "material",
+      explanation: "The correct answer is material."
+    },
+    {
+      question: "Using your senses to study something is called:",
+      options: ["obviously", "observe", "goal"],
+      correct: "observe",
+      explanation: "The correct answer is observe."
+    },
+    {
+      question: "Something you want to do is called:",
+      options: ["data", "Believe", "goal"],
+      correct: "goal",
+      explanation: "The correct answer is goal."
+    },
+    {
+      question: "Another name for a list is:",
+      options: ["chart", "books", "paper"],
+      correct: "chart",
+      explanation: "The correct answer is chart."
+    },
+    {
+      question: "Asking questions and looking for answers is called:",
+      options: ["doubt", "inquiry", "believe"],
+      correct: "inquiry",
+      explanation: "The correct answer is inquiry."
+    },
+    {
+      question: "Something that solves a problem",
+      options: ["arguments", "solution", "fighting"],
+      correct: "solution",
+      explanation: "The correct answer is solution."
+    },
+    {
+      question: "What does severe weather mean?",
+      options: ["dangerous weather", "beautiful weather", "normal climate"],
+      correct: "dangerous weather",
+      explanation: "The correct answer is dangerous weather."
+    },
+    {
+      question: "What a time of year mean?",
+      options: ["climate", "data", "season"],
+      correct: "season",
+      explanation: "The correct answer is season."
+    },
+    {
+      question: "Something harmful added to land, air , or water is called:",
+      options: ["climate", "data", "Pollution"],
+      correct: "Pollution",
+      explanation: "The correct answer is Pollution."
+    },
+    {
+      question: "The pattern of weather in a place over many years is called:",
+      options: ["climate", "data", "season"],
+      correct: "climate",
+      explanation: "The correct answer is climate."
+    },
+    {
+      question: "The movement of water from Earth's surface into the air and back again to Earth's surface is called:",
+      options: ["climate", "data", "water cycle"],
+      correct: "water cycle",
+      explanation: "The correct answer is water cycle."
+    },
+    {
+      question: "What is the meaning of reuse?",
+      options: ["to buy again", "to use again", "to throw away"],
+      correct: "to use again",
+      explanation: "The correct answer is to use again."
+    },
+    {
+      question: "The movement of water from Earth's surface into the air and back again to Earth's surface is called:",
+      options: ["climate", "data", "water cycle"],
+      correct: "water cycle",
+      explanation: "The correct answer is water cycle."
+    },
+    {
+      question: "Define temperature?",
+      options: ["climate", "how hot or cold something is", "dangerous weather"],
+      correct: "how hot or cold something is",
+      explanation: "The correct answer is how hot or cold something is."
+    },
+    {
+      question: "Define rotation?",
+      options: ["one spin around", "climate", "dangerous weather"],
+      correct: "one spin around",
+      explanation: "The correct answer is one spin around."
+    },
+    {
+      question: "The movement of water from Earth's surface into the air and back again to Earth's surface is called:",
+      options: ["climate", "data", "water cycle"],
+      correct: "water cycle",
+      explanation: "The correct answer is water cycle."
+    },
+    {
+      question: "Define soil?",
+      options: ["the top layer of the sun", "the second layer of the moon", "the top layer of Earth"],
+      correct: "the top layer of Earth",
+      explanation: "The correct answer is the top layer of Earth."
+    },
+    {
+      question: "To make used materials into new materials is called:",
+      options: ["climate", "data", "recycle"],
+      correct: "recycle",
+      explanation: "The correct answer is recycle."
+    },
+    {
+      question: "A group of stars that forms a picture is called:",
+      options: ["constellation", "data", "recycle"],
+      correct: "constellation",
+      explanation: "The correct answer is constellation."
+    },
+    {
+      question: "A useful material that comes from Earth is called:",
+      options: ["constellation", "natural resources", "recycle"],
+      correct: "natural resources",
+      explanation: "The correct answer is natural resources."
+    },
+    {
+      question: "How something feels is called:",
+      options: ["texture", "dangerous resources", "recycle"],
+      correct: "texture",
+      explanation: "The correct answer is texture."
+    },
+    {
+      question: "The movement of water from Earth's surface into the air and back again to Earth's surface is called:",
+      options: ["climate", "water cycle", "water fall"],
+      correct: "water cycle",
+      explanation: "The correct answer is water cycle."
+    },
+    {
+      question: "A big ball of hot gas is called:",
+      options: ["rock", "football", "sun"],
+      correct: "sun",
+      explanation: "The correct answer is sun."
+    },
+    {
+      question: "What do we call moving air:",
+      options: ["climate", "wind", "clouds"],
+      correct: "wind",
+      explanation: "The correct answer is wind."
+    },
+    {
+      question: "When you describe how it is like outside, is called:",
+      options: ["weather", "water cycle", "Photosynthesis"],
+      correct: "weather",
+      explanation: "The correct answer is weather."
+    },
+    {
+      question: "A natural feature on Earth is called:",
+      options: ["language", "landform", "ocean"],
+      correct: "landform",
+      explanation: "The correct answer is landform."
+    },
+    {
+      question: "The movement of water from Earth's surface into the air and back again to Earth's surface is called:",
+      options: ["climate", "water fall", "water cycle"],
+      correct: "water cycle",
+      explanation: "The correct answer is water cycle."
+    },
+    {
+      question: "The shape of the lighted part of the moon is called:",
+      options: ["data", "climate", "phase"],
+      correct: "phase",
+      explanation: "The correct answer is phase."
+    },
+    {
+      question: "A large body of moving ice is called:",
+      options: ["snow", "glacier", "titanium"],
+      correct: "glacier",
+      explanation: "The correct answer is glacier."
+    },
+    {
+      question: "What is the sun, planets, and other objects that move around the sun called?",
+      options: ["solar system", "galaxy", "universe"],
+      correct: "solar system",
+      explanation: "The correct answer is solar system."
+    },
+    {
+      question: "Small bits of dead plants and dead animals in soil is called:",
+      options: ["materials", "humus", "sand"],
+      correct: "humus",
+      explanation: "The correct answer is humus."
+    },
+    {
+      question: "The way something repeats itself is called:",
+      options: ["materials", "goal", "Pattern"],
+      correct: "Pattern",
+      explanation: "The correct answer is Pattern."
+    },
+    {
+      question: "A a bowl of burning gases that gives a light and heat is called:",
+      options: ["fire", "star", "lighter"],
+      correct: "star",
+      explanation: "The correct answer is star."
+    },
+    {
+      question: "To change something so it can be used again is called:",
+      options: ["material", "plastic", "recycle"],
+      correct: "recycle",
+      explanation: "The correct answer is recycle."
+    },
+    {
+      question: "What does the sign represent ♻ ?",
+      options: ["recycle", "buy new", "Palm Beach"],
+      correct: "recycle",
+      explanation: "The correct answer is recycle."
+    },
+    {
+      question: "When water or ice breaks down rocks is called:",
+      options: ["weatherman", "weathering", "climate"],
+      correct: "weathering",
+      explanation: "The correct answer is weathering."
+    },
+    {
+      question: "A nonliving material that comes from Earth is called:",
+      options: ["material", "mineral", "vitamins"],
+      correct: "mineral",
+      explanation: "The correct answer is mineral."
+    },
+    {
+      question: "Anything that is burned to make heat or power is called:",
+      options: ["microwave", "fuel", "sun"],
+      correct: "fuel",
+      explanation: "The correct answer is fuel."
+    },
+    {
+      question: "A useful material that comes from earth is called:",
+      options: ["vegetables", "national parks", "natural resources"],
+      correct: "natural resources",
+      explanation: "The correct answer is natural resources."
+    },
+    {
+      question: "The closest star to Earth is called:",
+      options: ["sun", "ocean", "moon"],
+      correct: "sun",
+      explanation: "The correct answer is sun."
+    },
+    {
+      question: "A hard, solid part of Earth that is not soil or metal is called:",
+      options: ["soil", "metal", "rock"],
+      correct: "rock",
+      explanation: "The correct answer is rock."
+    },
+    {
+      question: "The change from a liquid to a gas is called:",
+      options: ["rainbow", "evaporation", "erosion"],
+      correct: "evaporation",
+      explanation: "The correct answer is evaporation."
+    },
+    {
+      question: "The change from gas into a liquid is called:",
+      options: ["rainbow", "evaporation", "condensation"],
+      correct: "condensation",
+      explanation: "The correct answer is condensation."
+    },
+    {
+      question: "The change from a liquid to a gas is called:",
+      options: ["rainbow", "evaporation", "erosion"],
+      correct: "evaporation",
+      explanation: "The correct answer is evaporation."
+    },
+    {
+      question: "The change from gas into a liquid is called:",
+      options: ["rainbow", "evaporation", "condensation"],
+      correct: "condensation",
+      explanation: "The correct answer is condensation."
+    },
+    {
+      question: "Water that falls to earth is called:",
+      options: ["Precipitation", "evaporation", "condensation"],
+      correct: "Precipitation",
+      explanation: "The correct answer is Precipitation."
+    },
+    {
+      question: "The change from liquid water to water vapor is called:",
+      options: ["Precipitation", "evaporation", "condensation"],
+      correct: "evaporation",
+      explanation: "The correct answer is evaporation."
+    },
+    {
+      question: "An animal without a backbone is called:",
+      options: ["vertebrate", "invertebrate", "zoology"],
+      correct: "invertebrate",
+      explanation: "The correct answer is invertebrate."
+    },
+    {
+      question: "An animal With a backbone is called:",
+      options: ["vertebrate", "invertebrate", "zoology"],
+      correct: "vertebrate",
+      explanation: "The correct answer is vertebrate."
+    },
+    {
+      question: "When wind or water moves rocks and soil is called:",
+      options: ["climate", "erosion", "evaporation"],
+      correct: "erosion",
+      explanation: "The correct answer is erosion."
+    },
+    {
+      question: "What something is made of is called:",
+      options: ["material", "sun", "data"],
+      correct: "material",
+      explanation: "The correct answer is material."
+    },
+    {
+      question: "Using your senses to study something is called:",
+      options: ["obviously", "observe", "goal"],
+      correct: "observe",
+      explanation: "The correct answer is observe."
+    },
+    {
+      question: "Something you want to do is called:",
+      options: ["data", "Believe", "goal"],
+      correct: "goal",
+      explanation: "The correct answer is goal."
+    },
+    {
+      question: "Another name for a list is:",
+      options: ["chart", "books", "paper"],
+      correct: "chart",
+      explanation: "The correct answer is chart."
+    },
+    {
+      question: "Asking questions and looking for answers is called:",
+      options: ["doubt", "inquiry", "believe"],
+      correct: "inquiry",
+      explanation: "The correct answer is inquiry."
+    },
+    {
+      question: "Something that solves a problem",
+      options: ["arguments", "solution", "fighting"],
+      correct: "solution",
+      explanation: "The correct answer is solution."
+    }
+  ];
+</script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>

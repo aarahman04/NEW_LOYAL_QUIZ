@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    …
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+  <div class="question-section">
+    <h3 id="question-text">Loading…</h3>
+    <ul id="options-list" class="options"></ul>
+  </div>
+
+  <div id="feedback" class="hidden"></div>
+  <div id="explanation" class="hidden"></div>
+  <button id="back-btn" class="hidden">Back</button>
+  <button id="next-btn" class="hidden">Next</button>
+</main>
+
+
+    <!-- your question data: only one entry -->
+
+    <script>
+      const questions = [
+  {
+    question: "Look at the picture above. What animal does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image1.png",
+    options: ["camel", "Ladybird", "elephant"],
+    correct: "Ladybird",
+    explanation: "The correct answer is Ladybird."
+  },
+  {
+    question: "What is another name for a ladybird?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image1.png",
+    options: ["butterfly", "ladybug", "dragonfly"],
+    correct: "ladybug",
+    explanation: "The correct answer is ladybug."
+  },
+  {
+    question: "What color is a common ladybird?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image1.png",
+    options: ["red with black spots", "blue with white stripes", "green with yellow lines"],
+    correct: "red with black spots",
+    explanation: "The correct answer is red with black spots."
+  },
+  {
+    question: "How many legs does a ladybird have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image1.png",
+    options: ["six", "four", "eight"],
+    correct: "six",
+    explanation: "The correct answer is six."
+  },
+  {
+    question: "What type of animal is a ladybird?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image1.png",
+    options: ["mammal", "insect", "bird"],
+    correct: "insect",
+    explanation: "The correct answer is insect."
+  },
+  {
+    question: "Where do ladybirds live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image1.png",
+    options: ["in gardens and fields", "in oceans", "in deserts"],
+    correct: "in gardens and fields",
+    explanation: "The correct answer is in gardens and fields."
+  },
+  {
+    question: "What do ladybirds use to fly?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image1.png",
+    options: ["fins", "wings", "gills"],
+    correct: "wings",
+    explanation: "The correct answer is wings."
+  },
+  {
+    question: "What shape is a ladybird's body?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image1.png",
+    options: ["long and thin", "round", "square"],
+    correct: "round",
+    explanation: "The correct answer is round."
+  },
+  {
+    question: "Why are ladybirds helpful to plants?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image1.png",
+    options: ["they eat harmful insects", "they eat flowers", "they break leaves"],
+    correct: "they eat harmful insects",
+    explanation: "The correct answer is they eat harmful insects."
+  },
+  {
+    question: "What is a baby ladybird called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image1.png",
+    options: ["larva", "cub", "calf"],
+    correct: "larva",
+    explanation: "The correct answer is larva."
+  },
+  {
+    question: "How many wings does a ladybird have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image1.png",
+    options: ["two", "four", "none"],
+    correct: "four",
+    explanation: "The correct answer is four."
+  },
+  {
+    question: "Can ladybirds fly?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image1.png",
+    options: ["yes", "no", "sometimes"],
+    correct: "yes",
+    explanation: "The correct answer is yes."
+  },
+  {
+    question: "Where do ladybirds lay their eggs?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image1.png",
+    options: ["on leaves", "in water", "under sand"],
+    correct: "on leaves",
+    explanation: "The correct answer is on leaves."
+  },
+  {
+    question: "Are ladybirds big or small insects?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image1.png",
+    options: ["very big", "very small", "huge"],
+    correct: "very small",
+    explanation: "The correct answer is very small."
+  },
+  {
+    question: "What do ladybirds use their antennae for?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image1.png",
+    options: ["smelling and feeling", "swimming", "digging"],
+    correct: "smelling and feeling",
+    explanation: "The correct answer is smelling and feeling."
+  },
+  {
+    question: "Look at the picture above. What animal does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image2.png",
+    options: ["horse", "donkey", "zebra"],
+    correct: "zebra",
+    explanation: "The correct answer is zebra."
+  },
+  {
+    question: "Where do zebras live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image2.png",
+    options: ["ocean", "savanna", "arctic"],
+    correct: "savanna",
+    explanation: "The correct answer is savanna."
+  },
+  {
+    question: "What do zebras eat?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image2.png",
+    options: ["meat", "fish", "grass"],
+    correct: "grass",
+    explanation: "The correct answer is grass."
+  },
+  {
+    question: "What type of animal is a zebra?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image2.png",
+    options: ["carnivore", "herbivore", "omnivore"],
+    correct: "herbivore",
+    explanation: "The correct answer is herbivore."
+  },
+  {
+    question: "What color are zebras?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image2.png",
+    options: ["black and white", "brown and green", "blue and yellow"],
+    correct: "black and white",
+    explanation: "The correct answer is black and white."
+  },
+  {
+    question: "How many legs does a zebra have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image2.png",
+    options: ["two", "ten", "four"],
+    correct: "four",
+    explanation: "The correct answer is four."
+  },
+  {
+    question: "What covers a zebra's body?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image2.png",
+    options: ["scales", "fur with stripes", "feathers"],
+    correct: "fur with stripes",
+    explanation: "The correct answer is fur with stripes."
+  },
+  {
+    question: "What is a baby zebra called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image2.png",
+    options: ["cub", "baby", "calf"],
+    correct: "calf",
+    explanation: "The correct answer is calf."
+  },
+  {
+    question: "Where do zebras find most of their food?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image2.png",
+    options: ["in water", "on grasslands", "in trees"],
+    correct: "on grasslands",
+    explanation: "The correct answer is on grasslands."
+  },
+  {
+    question: "What are groups of zebras called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image2.png",
+    options: ["herds", "schools", "packs"],
+    correct: "herds",
+    explanation: "The correct answer is herds."
+  },
+  {
+    question: "Why do zebras have stripes?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image2.png",
+    options: ["to help protect them", "to fly", "to swim"],
+    correct: "to help protect them",
+    explanation: "The correct answer is to help protect them."
+  },
+  {
+    question: "Where do most zebras live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image2.png",
+    options: ["Farida", "Europe", "Africa"],
+    correct: "Africa",
+    explanation: "The correct answer is Africa."
+  },
+  {
+    question: "Can zebras run fast?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image2.png",
+    options: ["no", "yes", "sometimes"],
+    correct: "yes",
+    explanation: "The correct answer is yes."
+  },
+  {
+    question: "Zebras are similar to which animal?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image2.png",
+    options: ["horse", "lion", "giraffe"],
+    correct: "horse",
+    explanation: "The correct answer is horse."
+  },
+  {
+    question: "How do zebras protect themselves?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image2.png",
+    options: ["by hiding in water", "by running and staying in groups", "by climbing trees"],
+    correct: "by running and staying in groups",
+    explanation: "The correct answer is by running and staying in groups."
+  },
+  {
+    question: "Look at the picture above. What animal does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image3.png",
+    options: ["cat", "donkey", "zebra"],
+    correct: "cat",
+    explanation: "The correct answer is cat."
+  },
+  {
+    question: "What type of animal is a cat?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image3.png",
+    options: ["reptile", "mammal", "bird"],
+    correct: "mammal",
+    explanation: "The correct answer is mammal."
+  },
+  {
+    question: "What do cats drink?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image3.png",
+    options: ["milk or water", "oil", "sand"],
+    correct: "milk or water",
+    explanation: "The correct answer is milk or water."
+  },
+  {
+    question: "What is a baby cat called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image3.png",
+    options: ["puppy", "kitten", "cub"],
+    correct: "kitten",
+    explanation: "The correct answer is kitten."
+  },
+  {
+    question: "How many legs does a cat have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image3.png",
+    options: ["two", "four", "six"],
+    correct: "four",
+    explanation: "The correct answer is four."
+  },
+  {
+    question: "What covers a cat's body?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image3.png",
+    options: ["feathers", "scales", "fur"],
+    correct: "fur",
+    explanation: "The correct answer is fur."
+  },
+  {
+    question: "What sound does a cat make?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image3.png",
+    options: ["bark", "meow", "roar"],
+    correct: "meow",
+    explanation: "The correct answer is meow."
+  },
+  {
+    question: "What do cats use to catch mice?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image3.png",
+    options: ["wings", "class", "claws"],
+    correct: "claws",
+    explanation: "The correct answer is claws."
+  },
+  {
+    question: "What do cats use to feel in the dark?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image3.png",
+    options: ["whiskers", "horns", "wings"],
+    correct: "whiskers",
+    explanation: "The correct answer is whiskers."
+  },
+  {
+    question: "Are cats carnivores or herbivores?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image3.png",
+    options: ["herbivores", "carnivores", "omnivores"],
+    correct: "carnivores",
+    explanation: "The correct answer is carnivores."
+  },
+  {
+    question: "Where do cats like to sleep?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image3.png",
+    options: ["in water", "in trees", "in warm places"],
+    correct: "in warm places",
+    explanation: "The correct answer is in warm places."
+  },
+  {
+    question: "Can cats climb trees?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image3.png",
+    options: ["yes", "no", "sometimes"],
+    correct: "yes",
+    explanation: "The correct answer is yes."
+  },
+  {
+    question: "What do cats clean by licking?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image3.png",
+    options: ["their fur", "their wings", "their fins"],
+    correct: "their fur",
+    explanation: "The correct answer is their fur."
+  },
+  {
+    question: "What do cats use to keep their balance?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image3.png",
+    options: ["fins", "wings", "tail"],
+    correct: "tail",
+    explanation: "The correct answer is tail."
+  },
+  {
+    question: "How do cats show they are happy?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image3.png",
+    options: ["by purring", "by roaring", "by barking"],
+    correct: "by purring",
+    explanation: "The correct answer is by purring."
+  },
+  {
+    question: "Look at the picture above. What animal does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image4.png",
+    options: ["cat", "Penguin", "zebra"],
+    correct: "Penguin",
+    explanation: "The correct answer is Penguin."
+  },
+  {
+    question: "Where do penguins mostly live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image4.png",
+    options: ["desert", "Antarctica", "jungle"],
+    correct: "Antarctica",
+    explanation: "The correct answer is Antarctica."
+  },
+  {
+    question: "What type of animal is a penguin?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image4.png",
+    options: ["mammal", "bird", "reptile"],
+    correct: "bird",
+    explanation: "The correct answer is bird."
+  },
+  {
+    question: "Can penguins fly?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image4.png",
+    options: ["yes", "no", "sometimes"],
+    correct: "no",
+    explanation: "The correct answer is no."
+  },
+  {
+    question: "What do penguins use to swim?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image4.png",
+    options: ["wings as flippers", "legs only", "tails"],
+    correct: "wings as flippers",
+    explanation: "The correct answer is wings as flippers."
+  },
+  {
+    question: "What do penguins eat?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image4.png",
+    options: ["grass", "fish", "fruit"],
+    correct: "fish",
+    explanation: "The correct answer is fish."
+  },
+  {
+    question: "What covers a penguin's body?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image4.png",
+    options: ["fur", "feathers", "scales"],
+    correct: "feathers",
+    explanation: "The correct answer is feathers."
+  },
+  {
+    question: "What is a baby penguin called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image4.png",
+    options: ["cub", "chick", "calf"],
+    correct: "chick",
+    explanation: "The correct answer is chick."
+  },
+  {
+    question: "How many legs does a penguin have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image4.png",
+    options: ["two", "four", "six"],
+    correct: "two",
+    explanation: "The correct answer is two."
+  },
+  {
+    question: "What are penguins good at?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image4.png",
+    options: ["flying", "swimming", "climbing trees"],
+    correct: "swimming",
+    explanation: "The correct answer is swimming."
+  },
+  {
+    question: "What color are most penguins?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image4.png",
+    options: ["blue and yellow", "pink and white", "black and white"],
+    correct: "black and white",
+    explanation: "The correct answer is black and white."
+  },
+  {
+    question: "Where do penguins lay their eggs?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image4.png",
+    options: ["in trees", "on ice or land", "in water"],
+    correct: "on ice or land",
+    explanation: "The correct answer is on ice or land."
+  },
+  {
+    question: "How do penguins keep warm?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image4.png",
+    options: ["thick feathers and fat", "thin skin", "long fur"],
+    correct: "thick feathers and fat",
+    explanation: "The correct answer is thick feathers and fat."
+  },
+  {
+    question: "What are groups of penguins called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image4.png",
+    options: ["herds", "colonies", "packs"],
+    correct: "colonies",
+    explanation: "The correct answer is colonies."
+  },
+  {
+    question: "What type of animal is a penguin?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image4.png",
+    options: ["mammal", "bird", "reptile"],
+    correct: "bird",
+    explanation: "The correct answer is bird."
+  },
+  {
+    question: "Look at the picture above. What animal does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image5.png",
+    options: ["cat", "Penguin", "horse"],
+    correct: "horse",
+    explanation: "The correct answer is horse."
+  },
+  {
+    question: "Where do horses usually live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image5.png",
+    options: ["ocean", "farms and grasslands", "jungle"],
+    correct: "farms and grasslands",
+    explanation: "The correct answer is farms and grasslands."
+  },
+  {
+    question: "What do horses eat?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image5.png",
+    options: ["meat", "grass and hay", "fish"],
+    correct: "grass and hay",
+    explanation: "The correct answer is grass and hay."
+  },
+  {
+    question: "What is a baby horse called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image5.png",
+    options: ["cub", "foal", "calf"],
+    correct: "foal",
+    explanation: "The correct answer is foal."
+  },
+  {
+    question: "How many legs does a horse have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image5.png",
+    options: ["two", "four", "six"],
+    correct: "four",
+    explanation: "The correct answer is four."
+  },
+  {
+    question: "What covers a horse's body?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image5.png",
+    options: ["feathers", "scales", "hair"],
+    correct: "hair",
+    explanation: "The correct answer is hair."
+  },
+  {
+    question: "What type of animals are horses?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image5.png",
+    options: ["carnivores", "herbivores", "omnivores"],
+    correct: "herbivores",
+    explanation: "The correct answer is herbivores."
+  },
+  {
+    question: "What sound does a horse make?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image5.png",
+    options: ["roar", "meow", "neigh"],
+    correct: "neigh",
+    explanation: "The correct answer is neigh."
+  },
+  {
+    question: "What do horses use to run fast?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image5.png",
+    options: ["wings", "strong legs", "fins"],
+    correct: "strong legs",
+    explanation: "The correct answer is strong legs."
+  },
+  {
+    question: "What do horses have on their feet?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image5.png",
+    options: ["paws", "claws", "hooves"],
+    correct: "hooves",
+    explanation: "The correct answer is hooves."
+  },
+  {
+    question: "Where do horses sleep?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image5.png",
+    options: ["in trees", "in stables or fields", "underwater"],
+    correct: "in stables or fields",
+    explanation: "The correct answer is in stables or fields."
+  },
+  {
+    question: "What is a male horse called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image5.png",
+    options: ["stallion", "hen", "bull"],
+    correct: "stallion",
+    explanation: "The correct answer is stallion."
+  },
+  {
+    question: "What is a female horse called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image5.png",
+    options: ["mare", "queen", "doe"],
+    correct: "mare",
+    explanation: "The correct answer is mare."
+  },
+  {
+    question: "What type of animal is a horse?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image5.png",
+    options: ["mammal", "reptile", "bird"],
+    correct: "mammal",
+    explanation: "The correct answer is mammal."
+  },
+  {
+    question: "What color can horses be?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image5.png",
+    options: ["only blue", "many different colors", "only green"],
+    correct: "many different colors",
+    explanation: "The correct answer is many different colors."
+  },
+  {
+    question: "Look at the picture above. What animal does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image6.png",
+    options: ["cat", "turtle", "horse"],
+    correct: "turtle",
+    explanation: "The correct answer is turtle."
+  },
+  {
+    question: "What type of animal is a turtle?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image6.png",
+    options: ["mammal", "reptile", "bird"],
+    correct: "reptile",
+    explanation: "The correct answer is reptile."
+  },
+  {
+    question: "Where do sea turtles live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image6.png",
+    options: ["desert", "ocean", "forest"],
+    correct: "ocean",
+    explanation: "The correct answer is ocean."
+  },
+  {
+    question: "What protects a turtle's body?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image6.png",
+    options: ["fur", "feathers", "shell"],
+    correct: "shell",
+    explanation: "The correct answer is shell."
+  },
+  {
+    question: "How many legs does a turtle have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image6.png",
+    options: ["two", "ten", "four"],
+    correct: "four",
+    explanation: "The correct answer is four."
+  },
+  {
+    question: "What do turtles use to swim?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image6.png",
+    options: ["flippers", "legs", "wings"],
+    correct: "flippers",
+    explanation: "The correct answer is flippers."
+  },
+  {
+    question: "What do turtles eat?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image6.png",
+    options: ["plants or small sea animals", "rocks", "sand"],
+    correct: "plants or small sea animals",
+    explanation: "The correct answer is plants or small sea animals."
+  },
+  {
+    question: "Can turtles lay eggs?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image6.png",
+    options: ["yes", "no", "sometimes"],
+    correct: "yes",
+    explanation: "The correct answer is yes."
+  },
+  {
+    question: "Where do sea turtles lay their eggs?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image6.png",
+    options: ["in trees", "on the beach", "underwater"],
+    correct: "on the beach",
+    explanation: "The correct answer is on the beach."
+  },
+  {
+    question: "How do turtles protect themselves?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image6.png",
+    options: ["by flying", "by hiding in their shell", "by barking"],
+    correct: "by hiding in their shell",
+    explanation: "The correct answer is by hiding in their shell."
+  },
+  {
+    question: "What covers a turtle's body?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image6.png",
+    options: ["scales and shell", "fur", "feathers"],
+    correct: "scales and shell",
+    explanation: "The correct answer is scales and shell."
+  },
+  {
+    question: "How do turtles move on land?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image6.png",
+    options: ["hop", "crawl", "fly"],
+    correct: "crawl",
+    explanation: "The correct answer is crawl."
+  },
+  {
+    question: "What is a baby turtle called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image6.png",
+    options: ["cub", "eggs", "hatchling"],
+    correct: "hatchling",
+    explanation: "The correct answer is hatchling."
+  },
+  {
+    question: "Do turtles have teeth?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image6.png",
+    options: ["yes", "no", "sometimes"],
+    correct: "no",
+    explanation: "The correct answer is no."
+  },
+  {
+    question: "Are turtles fast or slow animals?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image6.png",
+    options: ["fast", "slow", "very fast"],
+    correct: "slow",
+    explanation: "The correct answer is slow."
+  },
+  {
+    question: "Look at the picture above. What fruit does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image7.png",
+    options: ["cat", "apple", "horse"],
+    correct: "apple",
+    explanation: "The correct answer is apple."
+  },
+  {
+    question: "What type of food is an apple?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image7.png",
+    options: ["vegetable", "fruit", "meat"],
+    correct: "fruit",
+    explanation: "The correct answer is fruit."
+  },
+  {
+    question: "What color can apples be?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image7.png",
+    options: ["red green or yellow", "blue only", "black only"],
+    correct: "red green or yellow",
+    explanation: "The correct answer is red green or yellow."
+  },
+  {
+    question: "Where do apples grow?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image7.png",
+    options: ["underground", "on trees", "in water"],
+    correct: "on trees",
+    explanation: "The correct answer is on trees."
+  },
+  {
+    question: "What is inside an apple?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image7.png",
+    options: ["seeds", "bones", "shells"],
+    correct: "seeds",
+    explanation: "The correct answer is seeds."
+  },
+  {
+    question: "Is an apple healthy to eat?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image7.png",
+    options: ["yes, healthy to eat", "no, not healthy to eat", "sometimes"],
+    correct: "yes, healthy to eat",
+    explanation: "The correct answer is yes, healthy to eat."
+  },
+  {
+    question: "What part of the apple do we usually eat?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image7.png",
+    options: ["the seeds", "the roots", "the peel and flesh"],
+    correct: "the peel and flesh",
+    explanation: "The correct answer is the peel and flesh."
+  },
+  {
+    question: "Can apples be made into juice?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image7.png",
+    options: ["yes, apples can be made into juice", "no, apples can't be made into juice", "never"],
+    correct: "yes, apples can be made into juice",
+    explanation: "The correct answer is yes, apples can be made into juice."
+  },
+  {
+    question: "What taste can apples have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image7.png",
+    options: ["candy like taste", "salty only", "sweet or sour"],
+    correct: "sweet or sour",
+    explanation: "The correct answer is sweet or sour."
+  },
+  {
+    question: "What covers the outside of an apple?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_2/image7.png",
+    options: ["skin", "fur", "feathers"],
+    correct: "skin",
+    explanation: "The correct answer is skin."
+  }
+];
+</script>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    initMCQQuiz(questions);
+  });
+    </script>
+  </body>
+</html>

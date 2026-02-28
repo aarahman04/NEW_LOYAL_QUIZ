@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    …
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+  <div class="question-section">
+    <h3 id="question-text">Loading…</h3>
+    <ul id="options-list" class="options"></ul>
+  </div>
+
+  <div id="feedback" class="hidden"></div>
+  <div id="explanation" class="hidden"></div>
+  <button id="back-btn" class="hidden">Back</button>
+  <button id="next-btn" class="hidden">Next</button>
+</main>
+
+
+    <!-- your question data: only one entry -->
+
+    <script>
+      const questions = [
+  {
+    question: "Look at the picture above. What planet does the image represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image1.png",
+    options: ["planet Mars", "planet Earth", "moon"],
+    correct: "planet Earth",
+    explanation: "The correct answer is planet Earth."
+  },
+  {
+    question: "What does the blue part in the picture represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image1.png",
+    options: ["soil", "animals", "water"],
+    correct: "water",
+    explanation: "The correct answer is water."
+  },
+  {
+    question: "What does the green part in the picture represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image1.png",
+    options: ["soil", "land", "water"],
+    correct: "land",
+    explanation: "The correct answer is land."
+  },
+  {
+    question: "How many oceans does planet Earth have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image1.png",
+    options: ["50 oceans", "5 oceans", "2 oceans"],
+    correct: "5 oceans",
+    explanation: "The correct answer is 5 oceans."
+  },
+  {
+    question: "How many continents does planet Earth have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image1.png",
+    options: ["7 continents", "5 continents", "10 continents"],
+    correct: "7 continents",
+    explanation: "The correct answer is 7 continents."
+  },
+  {
+    question: "Look at the picture above. Which planet does the image represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image2.png",
+    options: ["planet Earth", "planet Mars", "moon"],
+    correct: "planet Mars",
+    explanation: "The correct answer is planet Mars."
+  },
+  {
+    question: "What is Mars called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image2.png",
+    options: ["the blue planet", "the red planet", "the green planet"],
+    correct: "the red planet",
+    explanation: "The correct answer is the red planet."
+  },
+  {
+    question: "How many moons does Mars have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image2.png",
+    options: ["two", "five", "one"],
+    correct: "two",
+    explanation: "The correct answer is two."
+  },
+  {
+    question: "What is Mars like?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image2.png",
+    options: ["hot", "cold", "wet"],
+    correct: "cold",
+    explanation: "The correct answer is cold."
+  },
+  {
+    question: "What is found on Mars?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image2.png",
+    options: ["water and fish", "dust and rocks", "trees and grass"],
+    correct: "dust and rocks",
+    explanation: "The correct answer is dust and rocks."
+  },
+  {
+    question: "What does Mars have that is the biggest in the solar system?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image2.png",
+    options: ["ocean", "volcano", "forest"],
+    correct: "volcano",
+    explanation: "The correct answer is volcano."
+  },
+  {
+    question: "What do scientists think Mars had long ago?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image2.png",
+    options: ["ice cream", "water", "animals"],
+    correct: "water",
+    explanation: "The correct answer is water."
+  },
+  {
+    question: "Who has gone to Mars?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image2.png",
+    options: ["robots", "elephants", "cars"],
+    correct: "robots",
+    explanation: "The correct answer is robots."
+  },
+  {
+    question: "Which of the following do people hope to do on Mars one day?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image2.png",
+    options: ["swim in", "visit", "paint"],
+    correct: "visit",
+    explanation: "The correct answer is visit."
+  },
+  {
+    question: "Mars is known as which type of planet?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image2.png",
+    options: ["gas planet", "rocky planet", "water planet"],
+    correct: "rocky planet",
+    explanation: "The correct answer is rocky planet."
+  },
+  {
+    question: "Look at the picture above. What animal does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image3.png",
+    options: ["camel", "element", "elephant"],
+    correct: "camel",
+    explanation: "The correct answer is camel."
+  },
+  {
+    question: "Where do camels live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image3.png",
+    options: ["forest", "ocean", "desert"],
+    correct: "desert",
+    explanation: "The correct answer is desert."
+  },
+  {
+    question: "How long can camels live without water?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image3.png",
+    options: ["a short time", "a long time", "no time"],
+    correct: "a long time",
+    explanation: "The correct answer is a long time."
+  },
+  {
+    question: "What does the blue camels store In their humps?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image3.png",
+    options: ["fat", "sugar", "water"],
+    correct: "fat",
+    explanation: "The correct answer is fat."
+  },
+  {
+    question: "Why do camels have long eyelashes?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image3.png",
+    options: ["to look pretty", "to keep sand out", "to see far"],
+    correct: "to keep sand out",
+    explanation: "The correct answer is to keep sand out."
+  },
+  {
+    question: "What kind of feet do camels have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image3.png",
+    options: ["small feet", "wide feet", "sharp feet"],
+    correct: "wide feet",
+    explanation: "The correct answer is wide feet."
+  },
+  {
+    question: "What do camels eat?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image3.png",
+    options: ["meat", "plants and grass", "fish"],
+    correct: "plants and grass",
+    explanation: "The correct answer is plants and grass."
+  },
+  {
+    question: "What is a baby camel called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image3.png",
+    options: ["puppy", "calf", "cub"],
+    correct: "calf",
+    explanation: "The correct answer is calf."
+  },
+  {
+    question: "How much water can camels drink at one time?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image3.png",
+    options: ["a little water", "a lot of water", "no water"],
+    correct: "a lot of water",
+    explanation: "The correct answer is a lot of water."
+  },
+  {
+    question: "Why do people use camels?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image3.png",
+    options: ["to swim", "to carry heavy loads", "to climb trees"],
+    correct: "to carry heavy loads",
+    explanation: "The correct answer is to carry heavy loads."
+  },
+  {
+    question: "Look at the picture above. What animal does it is represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image4.png",
+    options: ["camel", "element", "elephant"],
+    correct: "elephant",
+    explanation: "The correct answer is elephant."
+  },
+  {
+    question: "Where do elephants mostly live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image4.png",
+    options: ["desert", "savanna and forest", "ocean"],
+    correct: "savanna and forest",
+    explanation: "The correct answer is savanna and forest."
+  },
+  {
+    question: "What do elephants use their trunk for?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image4.png",
+    options: ["flying", "swimming only", "eating and drinking"],
+    correct: "eating and drinking",
+    explanation: "The correct answer is eating and drinking."
+  },
+  {
+    question: "What do elephants eat?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image4.png",
+    options: ["meat", "plants and grass", "fish"],
+    correct: "plants and grass",
+    explanation: "The correct answer is plants and grass."
+  },
+  {
+    question: "How would you describe elephants?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image4.png",
+    options: ["small animals", "large animals", "tiny insect"],
+    correct: "large animals",
+    explanation: "The correct answer is large animals."
+  },
+  {
+    question: "What is a baby elephant called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image4.png",
+    options: ["calf", "cub", "puppy"],
+    correct: "calf",
+    explanation: "The correct answer is calf."
+  },
+  {
+    question: "What do elephants have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image4.png",
+    options: ["wings", "big ears", "fins"],
+    correct: "big ears",
+    explanation: "The correct answer is big ears."
+  },
+  {
+    question: "Why do elephants have big ears?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image4.png",
+    options: ["to fly", "to keep cool", "to climb trees"],
+    correct: "to keep cool",
+    explanation: "The correct answer is to keep cool."
+  },
+  {
+    question: "What are groups of elephants called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image4.png",
+    options: ["packs", "herds", "schools"],
+    correct: "herds",
+    explanation: "The correct answer is herds."
+  },
+  {
+    question: "What do elephants use their tusks for?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image4.png",
+    options: ["dig and protect", "swim", "fly"],
+    correct: "dig and protect",
+    explanation: "The correct answer is dig and protect."
+  },
+  {
+    question: "What are elephants known for?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image4.png",
+    options: ["short memory", "strong memory", "no memory"],
+    correct: "strong memory",
+    explanation: "The correct answer is strong memory."
+  },
+  {
+    question: "How many legs does an elephant have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image4.png",
+    options: ["two", "four", "six"],
+    correct: "four",
+    explanation: "The correct answer is four."
+  },
+  {
+    question: "What can elephants do?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image4.png",
+    options: ["jump very high", "roar like lions", "communicate with sounds"],
+    correct: "communicate with sounds",
+    explanation: "The correct answer is communicate with sounds."
+  },
+  {
+    question: "What type of animals are elephants?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image4.png",
+    options: ["mammals", "reptiles", "birds"],
+    correct: "mammals",
+    explanation: "The correct answer is mammals."
+  },
+  {
+    question: "What do elephants need a lot of?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image4.png",
+    options: ["water", "snow", "sand"],
+    correct: "water",
+    explanation: "The correct answer is water."
+  },
+  {
+    question: "Look at the picture above. What animal does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image5.png",
+    options: ["camel", "lion", "elephant"],
+    correct: "lion",
+    explanation: "The correct answer is lion."
+  },
+  {
+    question: "Where do lions mostly live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image5.png",
+    options: ["ocean", "savanna", "arctic"],
+    correct: "savanna",
+    explanation: "The correct answer is savanna."
+  },
+  {
+    question: "What does a male lion have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image5.png",
+    options: ["trunk", "mane", "shell"],
+    correct: "mane",
+    explanation: "The correct answer is mane."
+  },
+  {
+    question: "What do lions eat?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image5.png",
+    options: ["plants", "meat", "leaves"],
+    correct: "meat",
+    explanation: "The correct answer is meat."
+  },
+  {
+    question: "What is a baby lion called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image5.png",
+    options: ["cub", "calf", "puppy"],
+    correct: "cub",
+    explanation: "The correct answer is cub."
+  },
+  {
+    question: "What are groups of lions called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image5.png",
+    options: ["herds", "prides", "schools"],
+    correct: "prides",
+    explanation: "The correct answer is prides."
+  },
+  {
+    question: "What type of animals are lions?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image5.png",
+    options: ["herbivores", "carnivores", "omnivores"],
+    correct: "carnivores",
+    explanation: "The correct answer is carnivores."
+  },
+  {
+    question: "What is a female lion called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image5.png",
+    options: ["lioness", "queen", "cub"],
+    correct: "lioness",
+    explanation: "The correct answer is lioness."
+  },
+  {
+    question: "Where do lions sleep?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image5.png",
+    options: ["in water", "in grass or dens", "in trees"],
+    correct: "in grass or dens",
+    explanation: "The correct answer is in grass or dens."
+  },
+  {
+    question: "How many legs does a lion have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image5.png",
+    options: ["two", "four", "six"],
+    correct: "four",
+    explanation: "The correct answer is four."
+  },
+  {
+    question: "Why do lions roar?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image5.png",
+    options: ["to swim", "to communicate", "to dig"],
+    correct: "to communicate",
+    explanation: "The correct answer is to communicate."
+  },
+  {
+    question: "What are lions known as?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image5.png",
+    options: ["king of the jungle", "biggest fish", "fastest bird"],
+    correct: "king of the jungle",
+    explanation: "The correct answer is king of the jungle."
+  },
+  {
+    question: "What color is a lion's fur?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image5.png",
+    options: ["blue", "green", "golden brown"],
+    correct: "golden brown",
+    explanation: "The correct answer is golden brown."
+  },
+  {
+    question: "What do lions have that is sharp?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image5.png",
+    options: ["fins", "claws and teeth", "wings"],
+    correct: "claws and teeth",
+    explanation: "The correct answer is claws and teeth."
+  },
+  {
+    question: "Where do African lions live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image5.png",
+    options: ["Europe", "Africa", "Antarctica"],
+    correct: "Africa",
+    explanation: "The correct answer is Africa."
+  },
+  {
+    question: "Look at the picture above. What animal does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image6.png",
+    options: ["lion", "rabbit", "squirrel"],
+    correct: "rabbit",
+    explanation: "The correct answer is rabbit."
+  },
+  {
+    question: "Where do rabbits usually live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image6.png",
+    options: ["ocean", "burrows", "desert"],
+    correct: "burrows",
+    explanation: "The correct answer is burrows."
+  },
+  {
+    question: "What do rabbits eat?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image6.png",
+    options: ["meat", "plants and carrots", "fish"],
+    correct: "plants and carrots",
+    explanation: "The correct answer is plants and carrots."
+  },
+  {
+    question: "What is a baby rabbit called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image6.png",
+    options: ["cub", "kit", "calf"],
+    correct: "kit",
+    explanation: "The correct answer is kit."
+  },
+  {
+    question: "What type of animal is a rabbit?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image6.png",
+    options: ["carnivore", "herbivore", "omnivore"],
+    correct: "herbivore",
+    explanation: "The correct answer is herbivore."
+  },
+  {
+    question: "What do rabbits use to hear very well?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image6.png",
+    options: ["short ears", "long ears", "wings"],
+    correct: "long ears",
+    explanation: "The correct answer is long ears."
+  },
+  {
+    question: "How many legs does a rabbit have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image6.png",
+    options: ["two", "four", "six"],
+    correct: "four",
+    explanation: "The correct answer is four."
+  },
+  {
+    question: "What covers a rabbit's body?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image6.png",
+    options: ["scales", "fur", "feathers"],
+    correct: "fur",
+    explanation: "The correct answer is fur."
+  },
+  {
+    question: "How do rabbits move?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image6.png",
+    options: ["flying", "hopping", "swimming"],
+    correct: "hopping",
+    explanation: "The correct answer is hopping."
+  },
+  {
+    question: "Where do wild rabbits hide?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image6.png",
+    options: ["trees", "burrows", "water"],
+    correct: "burrows",
+    explanation: "The correct answer is burrows."
+  },
+  {
+    question: "What do rabbits use their long teeth for?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image6.png",
+    options: ["eating plants", "swimming", "flying"],
+    correct: "eating plants",
+    explanation: "The correct answer is eating plants."
+  },
+  {
+    question: "What colors can rabbits be?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image6.png",
+    options: ["only blue", "many colors", "only green"],
+    correct: "many colors",
+    explanation: "The correct answer is many colors."
+  },
+  {
+    question: "Are rabbits fast or slow animals?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image6.png",
+    options: ["slow", "very fast", "cannot move"],
+    correct: "very fast",
+    explanation: "The correct answer is very fast."
+  },
+  {
+    question: "What do rabbits use their strong back legs for?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image6.png",
+    options: ["jumping", "flying", "climbing trees"],
+    correct: "jumping",
+    explanation: "The correct answer is jumping."
+  },
+  {
+    question: "Why are rabbits mammals?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image6.png",
+    options: ["they lay eggs", "they have fur and drink milk from their mothers", "they have scales"],
+    correct: "they have fur and drink milk from their mothers",
+    explanation: "The correct answer is they have fur and drink milk from their mothers."
+  },
+  {
+    question: "Look at the picture above. What animal does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image7.png",
+    options: ["lion", "rabbit", "kangaroo"],
+    correct: "kangaroo",
+    explanation: "The correct answer is kangaroo."
+  },
+  {
+    question: "Where do kangaroos live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image7.png",
+    options: ["Africa", "Australia", "Antarctica"],
+    correct: "Australia",
+    explanation: "The correct answer is Australia."
+  },
+  {
+    question: "How do kangaroos move?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image7.png",
+    options: ["crawl", "hop", "swim"],
+    correct: "hop",
+    explanation: "The correct answer is hop."
+  },
+  {
+    question: "What is a baby kangaroo called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image7.png",
+    options: ["cub", "joey", "calf"],
+    correct: "joey",
+    explanation: "The correct answer is joey."
+  },
+  {
+    question: "Where does a baby kangaroo stay after birth?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image7.png",
+    options: ["in a nest", "in a pouch", "in water"],
+    correct: "in a pouch",
+    explanation: "The correct answer is in a pouch."
+  },
+  {
+    question: "What do kangaroos eat?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image7.png",
+    options: ["meat", "plants and grass", "fish"],
+    correct: "plants and grass",
+    explanation: "The correct answer is plants and grass."
+  },
+  {
+    question: "What type of animals are kangaroos?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image7.png",
+    options: ["carnivores", "herbivores", "omnivores"],
+    correct: "herbivores",
+    explanation: "The correct answer is herbivores."
+  },
+  {
+    question: "What do kangaroos use to balance?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image7.png",
+    options: ["tail", "wings", "fins"],
+    correct: "tail",
+    explanation: "The correct answer is tail."
+  },
+  {
+    question: "How many legs does a kangaroo have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image7.png",
+    options: ["two", "four", "six"],
+    correct: "four",
+    explanation: "The correct answer is four."
+  },
+  {
+    question: "Which legs of a kangaroo are the strongest?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image7.png",
+    options: ["front legs", "back legs", "no legs"],
+    correct: "back legs",
+    explanation: "The correct answer is back legs."
+  },
+  {
+    question: "What covers a kangaroo's body?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image7.png",
+    options: ["scales", "fur", "feathers"],
+    correct: "fur",
+    explanation: "The correct answer is fur."
+  },
+  {
+    question: "Why are kangaroos mammals?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image7.png",
+    options: ["they lay eggs", "they have fur and feed milk to their babies", "they have scales"],
+    correct: "they have fur and feed milk to their babies",
+    explanation: "The correct answer is they have fur and feed milk to their babies."
+  },
+  {
+    question: "How can kangaroos jump?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image7.png",
+    options: ["high and far", "only a little", "they cannot jump"],
+    correct: "high and far",
+    explanation: "The correct answer is high and far."
+  },
+  {
+    question: "What is a group of kangaroos called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image7.png",
+    options: ["pride", "mob", "herd"],
+    correct: "mob",
+    explanation: "The correct answer is mob."
+  },
+  {
+    question: "When are kangaroos most active?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image7.png",
+    options: ["at night", "at noon", "in the morning only"],
+    correct: "at night",
+    explanation: "The correct answer is at night."
+  },
+  {
+    question: "Look at the picture above. What animal does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image8.png",
+    options: ["giraffe", "rabbit", "kangaroo"],
+    correct: "giraffe",
+    explanation: "The correct answer is giraffe."
+  },
+  {
+    question: "Where do giraffes live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image8.png",
+    options: ["ocean", "savanna", "arctic"],
+    correct: "savanna",
+    explanation: "The correct answer is savanna."
+  },
+  {
+    question: "What do giraffes eat?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image8.png",
+    options: ["meat", "leaves", "fish"],
+    correct: "leaves",
+    explanation: "The correct answer is leaves."
+  },
+  {
+    question: "What is special about a giraffe's neck?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image8.png",
+    options: ["it is very short", "it is very long", "it is very small"],
+    correct: "it is very long",
+    explanation: "The correct answer is it is very long."
+  },
+  {
+    question: "How many legs does a giraffe have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image8.png",
+    options: ["two", "five", "four"],
+    correct: "four",
+    explanation: "The correct answer is four."
+  },
+  {
+    question: "What covers a giraffe's body?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image8.png",
+    options: ["scales", "fur with spots", "feathers"],
+    correct: "fur with spots",
+    explanation: "The correct answer is fur with spots."
+  },
+  {
+    question: "What type of animal is a giraffe?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image8.png",
+    options: ["carnivore", "omnivores", "herbivore"],
+    correct: "herbivore",
+    explanation: "The correct answer is herbivore."
+  },
+  {
+    question: "What do giraffes use their long necks for?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image8.png",
+    options: ["swimming", "reaching high leaves", "digging"],
+    correct: "reaching high leaves",
+    explanation: "The correct answer is reaching high leaves."
+  },
+  {
+    question: "What is a baby giraffe called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image8.png",
+    options: ["cub", "calf", "chick"],
+    correct: "calf",
+    explanation: "The correct answer is calf."
+  },
+  {
+    question: "How do giraffes drink water?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image8.png",
+    options: ["by flying", "by spreading their legs", "by climbing trees"],
+    correct: "by spreading their legs",
+    explanation: "The correct answer is by spreading their legs."
+  },
+  {
+    question: "What color are giraffes?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image8.png",
+    options: ["blue", "green", "yellowish brown with spots"],
+    correct: "yellowish brown with spots",
+    explanation: "The correct answer is yellowish brown with spots."
+  },
+  {
+    question: "Where do giraffes usually find food?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image8.png",
+    options: ["on tall trees", "under the sea", "in caves"],
+    correct: "on tall trees",
+    explanation: "The correct answer is on tall trees."
+  },
+  {
+    question: "What do giraffes have on their heads?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image8.png",
+    options: ["horns", "small horn like knobs", "wings"],
+    correct: "small horn like knobs",
+    explanation: "The correct answer is small horn like knobs."
+  },
+  {
+    question: "Why are giraffes mammals?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image8.png",
+    options: ["they lay eggs", "they have fur and feed milk to their babies", "they have scales"],
+    correct: "they have fur and feed milk to their babies",
+    explanation: "The correct answer is they have fur and feed milk to their babies."
+  },
+  {
+    question: "What are groups of giraffes called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image8.png",
+    options: ["herds", "schools", "packs"],
+    correct: "herds",
+    explanation: "The correct answer is herds."
+  },
+  {
+    question: "Look at the picture above. What animal does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image9.png",
+    options: ["giraffe", "monkey", "kangaroo"],
+    correct: "monkey",
+    explanation: "The correct answer is monkey."
+  },
+  {
+    question: "Where do monkeys mostly live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image9.png",
+    options: ["desert", "ocean", "jungle"],
+    correct: "jungle",
+    explanation: "The correct answer is jungle."
+  },
+  {
+    question: "What do monkeys eat?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image9.png",
+    options: ["meat only", "bananas and fruits", "rocks"],
+    correct: "bananas and fruits",
+    explanation: "The correct answer is bananas and fruits."
+  },
+  {
+    question: "How do monkeys move in trees?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image9.png",
+    options: ["by swimming", "by climbing and swinging", "by flying"],
+    correct: "by climbing and swinging",
+    explanation: "The correct answer is by climbing and swinging."
+  },
+  {
+    question: "What covers a monkey's body?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image9.png",
+    options: ["scales", "feathers", "fur"],
+    correct: "fur",
+    explanation: "The correct answer is fur."
+  },
+  {
+    question: "How many legs does a monkey have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image9.png",
+    options: ["two", "six", "four"],
+    correct: "four",
+    explanation: "The correct answer is four."
+  },
+  {
+    question: "What do monkeys use to hold branches?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image9.png",
+    options: ["wings", "fins", "hands and feet"],
+    correct: "hands and feet",
+    explanation: "The correct answer is hands and feet."
+  },
+  {
+    question: "What is a baby monkey called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image9.png",
+    options: ["cub", "calf", "infant"],
+    correct: "infant",
+    explanation: "The correct answer is infant."
+  },
+  {
+    question: "What do monkeys use their tails for?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image9.png",
+    options: ["balancing", "flying", "digging"],
+    correct: "balancing",
+    explanation: "The correct answer is balancing."
+  },
+  {
+    question: "Where do monkeys sleep?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_1/image9.png",
+    options: ["in zoos", "in water", "in trees"],
+    correct: "in trees",
+    explanation: "The correct answer is in trees."
+  }
+  
+];
+</script>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    initMCQQuiz(questions);
+  });
+    </script>
+  </body>
+</html>

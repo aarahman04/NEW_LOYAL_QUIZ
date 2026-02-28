@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    …
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+  <div class="question-section">
+    <h3 id="question-text">Loading…</h3>
+    <ul id="options-list" class="options"></ul>
+  </div>
+
+  <div id="feedback" class="hidden"></div>
+  <div id="explanation" class="hidden"></div>
+  <button id="back-btn" class="hidden">Back</button>
+  <button id="next-btn" class="hidden">Next</button>
+</main>
+
+
+    <!-- your question data: only one entry -->
+
+    <script>
+      const questions = [
+  {
+    question: "What object is shown in the image?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image1.png",
+    options: ["bird", "fish", "butterfly"],
+    correct: "fish",
+    explanation: "The correct answer is fish."
+  },
+  {
+    question: "What is the main color of the fish?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image1.png",
+    options: ["blue", "orange", "green"],
+    correct: "orange",
+    explanation: "The correct answer is orange."
+  },
+  {
+    question: "What type of image is shown?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image1.png",
+    options: ["real photograph", "cartoon illustration", "watercolor painting"],
+    correct: "cartoon illustration",
+    explanation: "The correct answer is cartoon illustration."
+  },
+  {
+    question: "What color are the stripes on the fish?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image1.png",
+    options: ["white", "yellow", "red"],
+    correct: "white",
+    explanation: "The correct answer is white."
+  },
+  {
+    question: "How many white stripes are visible on the fish?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image1.png",
+    options: ["one", "two", "three"],
+    correct: "two",
+    explanation: "The correct answer is two."
+  },
+  {
+    question: "Which direction is the fish facing?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image1.png",
+    options: ["left", "right", "up"],
+    correct: "right",
+    explanation: "The correct answer is right."
+  },
+  {
+    question: "How many eyes can be seen on the fish?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image1.png",
+    options: ["one", "two", "three"],
+    correct: "one",
+    explanation: "The correct answer is one."
+  },
+  {
+    question: "Which type of fish does the fish in the image look like?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image1.png",
+    options: ["shark", "dog", "clownfish"],
+    correct: "clownfish",
+    explanation: "The correct answer is clownfish."
+  },
+  {
+    question: "What color are fins of the fish?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image1.png",
+    options: ["orange and dark gray", "blue and white", "green and yellow"],
+    correct: "orange and dark gray",
+    explanation: "The correct answer is orange and dark gray."
+  },
+  {
+    question: "Are fish mammals?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image1.png",
+    options: ["yes, fish are mammals", "no, fish are not mammals", "fish are reptiles"],
+    correct: "no, fish are not mammals",
+    explanation: "The correct answer is no, fish are not mammals."
+  },
+  {
+    question: "What animal is shown in the image?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image2.png",
+    options: ["turtle", "snake", "rabbit"],
+    correct: "turtle",
+    explanation: "The correct answer is turtle."
+  },
+  {
+    question: "What is the main color of the turtle's body?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image2.png",
+    options: ["green", "blue", "red"],
+    correct: "green",
+    explanation: "The correct answer is green."
+  },
+  {
+    question: "What color is the turtle's shell?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image2.png",
+    options: ["red", "yellow", "brown"],
+    correct: "brown",
+    explanation: "The correct answer is brown."
+  },
+  {
+    question: "What type of image is shown?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image2.png",
+    options: ["real photograph", "cartoon illustration", "oil painting"],
+    correct: "cartoon illustration",
+    explanation: "The correct answer is cartoon illustration."
+  },
+  {
+    question: "Which direction is the turtle facing?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image2.png",
+    options: ["left", "right", "up"],
+    correct: "left",
+    explanation: "The correct answer is left."
+  },
+  {
+    question: "What covers the turtle's back?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image2.png",
+    options: ["fur", "shell", "feathers"],
+    correct: "shell",
+    explanation: "The correct answer is shell."
+  },
+  {
+    question: "What type of animal is the turtle?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image2.png",
+    options: ["bird", "reptile", "fish"],
+    correct: "reptile",
+    explanation: "The correct answer is reptile."
+  },
+  {
+    question: "What kind of pattern does the shell have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image2.png",
+    options: ["lines and shapes", "stars", "dots"],
+    correct: "lines and shapes",
+    explanation: "The correct answer is lines and shapes."
+  },
+  {
+    question: "How many turtles are there in all?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image2.png",
+    options: ["one", "three", "four"],
+    correct: "four",
+    explanation: "The correct answer is four."
+  },
+  {
+    question: "What color is the turtle's head?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image2.png",
+    options: ["green", "brown", "black"],
+    correct: "green",
+    explanation: "The correct answer is green."
+  },
+  {
+    question: "What object is shown in the image?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image3.png",
+    options: ["birds", "fish", "butterflies"],
+    correct: "butterflies",
+    explanation: "The correct answer is butterflies."
+  },
+  {
+    question: "How many butterflies are there?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image3.png",
+    options: ["two", "three", "five"],
+    correct: "three",
+    explanation: "The correct answer is three."
+  },
+  {
+    question: "What is the main two colors of the butterfly's body?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image3.png",
+    options: ["yellow - purple", "blue - pink", "red - green"],
+    correct: "yellow - purple",
+    explanation: "The correct answer is yellow - purple."
+  },
+  {
+    question: "What color are the butterfly's wings?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image3.png",
+    options: ["orange", "purple", "brown"],
+    correct: "purple",
+    explanation: "The correct answer is purple."
+  },
+  {
+    question: "What style is the butterfly drawn in?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image3.png",
+    options: ["cartoon", "realistic", "Pencil sketch"],
+    correct: "cartoon",
+    explanation: "The correct answer is cartoon."
+  },
+  {
+    question: "How does the butterfly appear to feel?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image3.png",
+    options: ["angry", "sad", "happy"],
+    correct: "happy",
+    explanation: "The correct answer is happy."
+  },
+  {
+    question: "What decorative elements are around the pink shape?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image3.png",
+    options: ["stars", "leaves", "circles/dots"],
+    correct: "circles/dots",
+    explanation: "The correct answer is circles/dots."
+  },
+  {
+    question: "Which theme best matches the picture?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image3.png",
+    options: ["jungle animals", "space", "nature/insects"],
+    correct: "nature/insects",
+    explanation: "The correct answer is nature/insects."
+  },
+  {
+    question: "Are butterflies mammals?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image3.png",
+    options: ["yes, butterflies are mammals", "no, butterflies are not mammals", "butterflies are both"],
+    correct: "no, butterflies are not mammals",
+    explanation: "The correct answer is no, butterflies are not mammals."
+  },
+  {
+    question: "Are butterflies big or small?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image3.png",
+    options: ["butterflies are small in size", "butterflies are big in size", "butterflies are big as elephants"],
+    correct: "butterflies are small in size",
+    explanation: "The correct answer is butterflies are small in size."
+  },
+  {
+    question: "What is a mammal?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image4.png",
+    options: ["an animal that lays eggs only", "an animal that lives only in water", "an animal that feeds its babies milk"],
+    correct: "an animal that feeds its babies milk",
+    explanation: "The correct answer is an animal that feeds its babies milk."
+  },
+  {
+    question: "Which of the following is a mammal?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image4.png",
+    options: ["frog", "snake", "cow"],
+    correct: "cow",
+    explanation: "The correct answer is cow."
+  },
+  {
+    question: "What covers the body of most mammals?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image4.png",
+    options: ["feathers", "scales", "fur or hair"],
+    correct: "fur or hair",
+    explanation: "The correct answer is fur or hair."
+  },
+  {
+    question: "Which of the following is not a mammal?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image4.png",
+    options: ["cow", "camel", "lizard"],
+    correct: "lizard",
+    explanation: "The correct answer is lizard."
+  },
+  {
+    question: "How do mammals breathe?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image4.png",
+    options: ["through lungs", "through skin", "through machines"],
+    correct: "through lungs",
+    explanation: "The correct answer is through lungs."
+  },
+  {
+    question: "What do baby mammals drink?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image4.png",
+    options: ["water", "juice", "milk"],
+    correct: "milk",
+    explanation: "The correct answer is milk."
+  },
+  {
+    question: "How do most mammals give birth?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image4.png",
+    options: ["eggs", "live babies", "seeds"],
+    correct: "live babies",
+    explanation: "The correct answer is live babies."
+  },
+  {
+    question: "Which statement about mammals is true?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image4.png",
+    options: ["all mammals feed their babies milk", "all mammals live on land", "all mammals depend on people"],
+    correct: "all mammals feed their babies milk",
+    explanation: "The correct answer is all mammals feed their babies milk."
+  },
+  {
+    question: "Which of these is a mammal?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image4.png",
+    options: ["pigeon", "giraffe", "turtle"],
+    correct: "giraffe",
+    explanation: "The correct answer is giraffe."
+  },
+  {
+    question: "What is a mammal?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image4.png",
+    options: ["an animal that lays eggs only", "an animal that feeds its babies milk", "an animal that feeds its babies water"],
+    correct: "an animal that feeds its babies milk",
+    explanation: "The correct answer is an animal that feeds its babies milk."
+  },
+  {
+    question: "What time is shown on the digital clock?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image5.png",
+    options: ["7:00", "8:00", "9:00"],
+    correct: "8:00",
+    explanation: "The correct answer is 8:00."
+  },
+  {
+    question: "What type of clock is shown with numbers 8:00?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image5.png",
+    options: ["digital clock", "wall clock", "sand clock"],
+    correct: "digital clock",
+    explanation: "The correct answer is digital clock."
+  },
+  {
+    question: "What color are the numbers on the digital clock?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image5.png",
+    options: ["red", "green", "orange"],
+    correct: "orange",
+    explanation: "The correct answer is orange."
+  },
+  {
+    question: "Which clock has two bells on top?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image5.png",
+    options: ["digital clock", "alarm clock", "stopwatch"],
+    correct: "alarm clock",
+    explanation: "The correct answer is alarm clock."
+  },
+  {
+    question: "What is the main use of an alarm clock?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image5.png",
+    options: ["to wake up", "to cook food", "to clean room"],
+    correct: "to wake up",
+    explanation: "The correct answer is to wake up."
+  },
+  {
+    question: "How many zeros are in the time 8:00?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image5.png",
+    options: ["one", "two", "three"],
+    correct: "two",
+    explanation: "The correct answer is two."
+  },
+  {
+    question: "Which clock shows time using hands?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image5.png",
+    options: ["digital clock", "alarm clock", "both"],
+    correct: "alarm clock",
+    explanation: "The correct answer is alarm clock."
+  },
+  {
+    question: "The digital clock shows time in which format?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image5.png",
+    options: ["number format", "roman numerals", "alphabet format"],
+    correct: "number format",
+    explanation: "The correct answer is number format."
+  },
+  {
+    question: "Both what are both clocks used to measure ?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image5.png",
+    options: ["weight", "time", "height"],
+    correct: "time",
+    explanation: "The correct answer is time."
+  },
+  {
+    question: "Which clock usually rings loudly?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image5.png",
+    options: ["alarm clock", "digital clock", "wall calendar"],
+    correct: "alarm clock",
+    explanation: "The correct answer is alarm clock."
+  },
+  {
+    question: "What animal is shown in the picture?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image6.png",
+    options: ["fish", "jellyfish", "octopus"],
+    correct: "jellyfish",
+    explanation: "The correct answer is jellyfish."
+  },
+  {
+    question: "What color is the jellyfish in the picture?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image6.png",
+    options: ["blue", "green", "pink"],
+    correct: "pink",
+    explanation: "The correct answer is pink."
+  },
+  {
+    question: "How many eyes does the jellyfish have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image6.png",
+    options: ["one", "two", "three"],
+    correct: "two",
+    explanation: "The correct answer is two."
+  },
+  {
+    question: "Where does a jellyfish live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image6.png",
+    options: ["desert", "forest", "ocean"],
+    correct: "ocean",
+    explanation: "The correct answer is ocean."
+  },
+  {
+    question: "What shape is the top of the jellyfish?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image6.png",
+    options: ["square", "round", "triangle"],
+    correct: "round",
+    explanation: "The correct answer is round."
+  },
+  {
+    question: "How does a jellyfish move?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image6.png",
+    options: ["by flying", "by swimming", "by running"],
+    correct: "by swimming",
+    explanation: "The correct answer is by swimming."
+  },
+  {
+    question: "How many jellyfish can you see?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image6.png",
+    options: ["five", "six", "eight"],
+    correct: "five",
+    explanation: "The correct answer is five."
+  },
+  {
+    question: "What expression does the jellyfish have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image6.png",
+    options: ["angry", "sad", "happy"],
+    correct: "happy",
+    explanation: "The correct answer is happy."
+  },
+  {
+    question: "Do jellyfish have bones?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image6.png",
+    options: ["yes, jellyfish have bones", "no, jellyfish don't have bones", "sometimes"],
+    correct: "no, jellyfish don't have bones",
+    explanation: "The correct answer is no, jellyfish don't have bones."
+  },
+  {
+    question: "Is the jellyfish a land animal or sea animal?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image6.png",
+    options: ["sea animal", "land animal", "sky animal"],
+    correct: "sea animal",
+    explanation: "The correct answer is sea animal."
+  },
+  {
+    question: "What is the main theme of the picture?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image7.png",
+    options: ["nature", "sports", "shopping"],
+    correct: "nature",
+    explanation: "The correct answer is nature."
+  },
+  {
+    question: "What is shining in the sky?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image7.png",
+    options: ["moon", "sun", "star"],
+    correct: "sun",
+    explanation: "The correct answer is sun."
+  },
+  {
+    question: "What color is the sun in the picture?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image7.png",
+    options: ["yellow", "blue", "green"],
+    correct: "yellow",
+    explanation: "The correct answer is yellow."
+  },
+  {
+    question: "What is flowing through the land?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image7.png",
+    options: ["swimming pool", "red", "river"],
+    correct: "river",
+    explanation: "The correct answer is river."
+  },
+  {
+    question: "What can you see flying in the sky?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image7.png",
+    options: ["fish", "birds", "cars"],
+    correct: "birds",
+    explanation: "The correct answer is birds."
+  },
+  {
+    question: "What do you see in the background?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image7.png",
+    options: ["mountains", "buildings", "houses"],
+    correct: "mountains",
+    explanation: "The correct answer is mountains."
+  },
+  {
+    question: "What color are the trees?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image7.png",
+    options: ["purple", "green", "pink"],
+    correct: "green",
+    explanation: "The correct answer is green."
+  },
+  {
+    question: "What is in the sky besides the sun?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image7.png",
+    options: ["clouds", "kites", "planes"],
+    correct: "clouds",
+    explanation: "The correct answer is clouds."
+  },
+  {
+    question: "Which place does the picture show?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image7.png",
+    options: ["city", "countryside", "classroom"],
+    correct: "countryside",
+    explanation: "The correct answer is countryside."
+  },
+  {
+    question: "Is this a picture of the ocean?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image7.png",
+    options: ["yes, the picture is about the ocean", "no, the picture is not about the ocean", "can be both"],
+    correct: "no, the picture is not about the ocean",
+    explanation: "The correct answer is no, the picture is not about the ocean."
+  },
+  {
+    question: "What is shown in the picture?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image8.png",
+    options: ["rainbow", "river", "mountain"],
+    correct: "rainbow",
+    explanation: "The correct answer is rainbow."
+  },
+  {
+    question: "How many clouds are in the picture?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image8.png",
+    options: ["one", "two", "three"],
+    correct: "two",
+    explanation: "The correct answer is two."
+  },
+  {
+    question: "What colors are in the rainbow?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image8.png",
+    options: ["red, yellow, blue", "green, black, white", "pink, brown, gray"],
+    correct: "red, yellow, blue",
+    explanation: "The correct answer is red, yellow, blue."
+  },
+  {
+    question: "What shape is the rainbow?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image8.png",
+    options: ["square", "circle", "arc"],
+    correct: "arc",
+    explanation: "The correct answer is arc."
+  },
+  {
+    question: "What expression do the clouds have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image8.png",
+    options: ["sad", "happy", "angry"],
+    correct: "happy",
+    explanation: "The correct answer is happy."
+  },
+  {
+    question: "Where do we usually see a rainbow?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image8.png",
+    options: ["in the sky", "under the sea", "in a cave"],
+    correct: "in the sky",
+    explanation: "The correct answer is in the sky."
+  },
+  {
+    question: "What color is the middle band of the rainbow?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image8.png",
+    options: ["yellow", "blue", "red"],
+    correct: "yellow",
+    explanation: "The correct answer is yellow."
+  },
+  {
+    question: "What is the outer color of the rainbow?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image8.png",
+    options: ["blue", "red", "yellow"],
+    correct: "red",
+    explanation: "The correct answer is red."
+  },
+  {
+    question: "Between what does the rainbow appear?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image8.png",
+    options: ["trees", "houses", "clouds"],
+    correct: "clouds",
+    explanation: "The correct answer is clouds."
+  },
+  {
+    question: "What kind of picture is this?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image8.png",
+    options: ["cartoon", "photograph", "sketch"],
+    correct: "cartoon",
+    explanation: "The correct answer is cartoon."
+  },
+  {
+    question: "What is shown in the picture?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image9.png",
+    options: ["earth", "moon", "sun"],
+    correct: "earth",
+    explanation: "The correct answer is earth."
+  },
+  {
+    question: "What is holding the earth?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image9.png",
+    options: ["trees", "hands", "clouds"],
+    correct: "hands",
+    explanation: "The correct answer is hands."
+  },
+  {
+    question: "What color is the earth in the picture?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image9.png",
+    options: ["blue and green", "red and yellow", "black and white"],
+    correct: "blue and green",
+    explanation: "The correct answer is blue and green."
+  },
+  {
+    question: "What do the green shapes above the earth look like?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image9.png",
+    options: ["stars", "leaves", "birds"],
+    correct: "leaves",
+    explanation: "The correct answer is leaves."
+  },
+  {
+    question: "What does this picture represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image9.png",
+    options: ["pollution", "space travel", "protecting the environment"],
+    correct: "protecting the environment",
+    explanation: "The correct answer is protecting the environment."
+  },
+  {
+    question: "How many hands are shown?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image9.png",
+    options: ["one", "two", "three"],
+    correct: "two",
+    explanation: "The correct answer is two."
+  },
+  {
+    question: "What is the main theme of the picture?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image9.png",
+    options: ["saving the planet", "playing games", "cooking food"],
+    correct: "saving the planet",
+    explanation: "The correct answer is saving the planet."
+  },
+  {
+    question: "Where do people live in the picture?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image9.png",
+    options: ["on the earth", "on the moon", "in the sky"],
+    correct: "on the earth",
+    explanation: "The correct answer is on the earth."
+  },
+  {
+    question: "Where are the hands placed?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image9.png",
+    options: ["above the earth", "beside the earth", "under the earth"],
+    correct: "under the earth",
+    explanation: "The correct answer is under the earth."
+  },
+  {
+    question: "What does the picture encourage people?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image9.png",
+    options: ["waste resources", "care for nature", "ignore the planet"],
+    correct: "care for nature",
+    explanation: "The correct answer is care for nature."
+  },
+  {
+    question: "Should we love our planet Earth?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image9.png",
+    options: ["Yes, we should love our planet", "no, we should not love our planet", "individuals choice"],
+    correct: "Yes, we should love our planet",
+    explanation: "The correct answer is Yes, we should love our planet."
+  },
+  {
+    question: "What place is shown in the picture?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image10.png",
+    options: ["zoo", "farm", "forest"],
+    correct: "farm",
+    explanation: "The correct answer is farm."
+  },
+  {
+    question: "Which animal is tall with a long face?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image10.png",
+    options: ["horse", "dog", "cat"],
+    correct: "horse",
+    explanation: "The correct answer is horse."
+  },
+  {
+    question: "Which animal has horns?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image10.png",
+    options: ["goat", "chicken", "duck"],
+    correct: "goat",
+    explanation: "The correct answer is goat."
+  },
+  {
+    question: "Which animal says \"moo\"?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image10.png",
+    options: ["cow", "horse", "goat"],
+    correct: "cow",
+    explanation: "The correct answer is cow."
+  },
+  {
+    question: "Which bird is shown with a red comb?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image10.png",
+    options: ["duck", "hen", "pigeon"],
+    correct: "hen",
+    explanation: "The correct answer is hen."
+  },
+  {
+    question: "Which bird is white and small?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image10.png",
+    options: ["duck", "eagle", "parrot"],
+    correct: "duck",
+    explanation: "The correct answer is duck."
+  },
+  {
+    question: "What is in front of the animals?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image10.png",
+    options: ["river", "fence", "house"],
+    correct: "fence",
+    explanation: "The correct answer is fence."
+  },
+  {
+    question: "How many different types of animals are shown?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image10.png",
+    options: ["three", "four", "five"],
+    correct: "four",
+    explanation: "The correct answer is four."
+  },
+  {
+    question: "Where do these animals usually live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image10.png",
+    options: ["farm", "ocean", "desert"],
+    correct: "farm",
+    explanation: "The correct answer is farm."
+  },
+  {
+    question: "What are these animals commonly called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_4/image10.png",
+    options: ["wild animals", "farm animals", "sea animals"],
+    correct: "farm animals",
+    explanation: "The correct answer is farm animals."
+  }
+];
+</script>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    initMCQQuiz(questions);
+  });
+    </script>
+  </body>
+</html>

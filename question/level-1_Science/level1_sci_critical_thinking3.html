@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    …
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+  <div class="question-section">
+    <h3 id="question-text">Loading…</h3>
+    <ul id="options-list" class="options"></ul>
+  </div>
+
+  <div id="feedback" class="hidden"></div>
+  <div id="explanation" class="hidden"></div>
+  <button id="back-btn" class="hidden">Back</button>
+  <button id="next-btn" class="hidden">Next</button>
+</main>
+
+
+    <!-- your question data: only one entry -->
+
+    <script>
+      const questions = [
+  {
+    question: "Look at the picture above. What animal does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image1.png",
+    options: ["alligator", "Ladybird", "elephant"],
+    correct: "alligator",
+    explanation: "The correct answer is alligator."
+  },
+  {
+    question: "What type of animal is an alligator?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image1.png",
+    options: ["fish", "bird", "reptile"],
+    correct: "reptile",
+    explanation: "The correct answer is reptile."
+  },
+  {
+    question: "Where do alligators mostly live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image1.png",
+    options: ["ocean", "desert", "freshwater"],
+    correct: "freshwater",
+    explanation: "The correct answer is freshwater."
+  },
+  {
+    question: "In which countries are alligators mainly found?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image1.png",
+    options: ["India and Japan", "USA and China", "Brazil and Spain", "Canada and Mexico"],
+    correct: "USA and China",
+    explanation: "The correct answer is USA and China."
+  },
+  {
+    question: "What do alligators mostly eat?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image1.png",
+    options: ["plants", "meat", "grass"],
+    correct: "meat",
+    explanation: "The correct answer is meat."
+  },
+  {
+    question: "What is a baby alligator called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image1.png",
+    options: ["puppy", "kitten", "hatchling"],
+    correct: "hatchling",
+    explanation: "The correct answer is hatchling."
+  },
+  {
+    question: "How do alligators reproduce?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image1.png",
+    options: ["lay eggs", "give live birth", "budding"],
+    correct: "lay eggs",
+    explanation: "The correct answer is lay eggs."
+  },
+  {
+    question: "How do alligators breathe?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image1.png",
+    options: ["gills", "lungs", "skin"],
+    correct: "lungs",
+    explanation: "The correct answer is lungs."
+  },
+  {
+    question: "What does an alligator use its tail for?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image1.png",
+    options: ["flying", "swimming", "climbing"],
+    correct: "swimming",
+    explanation: "The correct answer is swimming."
+  },
+  {
+    question: "Which body part of an alligator is very strong?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image1.png",
+    options: ["wings", "jaws", "horns"],
+    correct: "jaws",
+    explanation: "The correct answer is jaws."
+  },
+  {
+    question: "What covers an alligator's body?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image1.png",
+    options: ["fur", "hair", "scales"],
+    correct: "scales",
+    explanation: "The correct answer is scales."
+  },
+  {
+    question: "What does it mean that alligators are cold-blooded?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image1.png",
+    options: ["They make their own heat", "They get heat from the sun", "They live only in cold places", "They have no blood"],
+    correct: "They get heat from the sun",
+    explanation: "The correct answer is They get heat from the sun."
+  },
+  {
+    question: "Where do alligators usually live?:",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image1.png",
+    options: ["skies", "swamps", "volcanoes"],
+    correct: "swamps",
+    explanation: "The correct answer is swamps."
+  },
+  {
+    question: "Where do alligators move best?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image1.png",
+    options: ["in water", "in air", "on snow"],
+    correct: "in water",
+    explanation: "The correct answer is in water."
+  },
+  {
+    question: "How many legs does an alligator have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image1.png",
+    options: ["two", "four", "six"],
+    correct: "four",
+    explanation: "The correct answer is four."
+  },
+  {
+    question: "Which is the larger type of alligator?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image1.png",
+    options: ["American alligator", "Chinese alligator", "Desert alligator", "Mountain alligator"],
+    correct: "American alligator",
+    explanation: "The correct answer is American alligator."
+  },
+  {
+    question: "Look at the picture above. What fruit does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image2.png",
+    options: ["apples", "banana", "strawberries"],
+    correct: "banana",
+    explanation: "The correct answer is banana."
+  },
+  {
+    question: "What color is a ripe banana?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image2.png",
+    options: ["blue", "yellow", "purple"],
+    correct: "yellow",
+    explanation: "The correct answer is yellow."
+  },
+  {
+    question: "Where do bananas grow?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image2.png",
+    options: ["in the ocean", "on a tree-like plant", "under the ground"],
+    correct: "on a tree-like plant",
+    explanation: "The correct answer is on a tree-like plant."
+  },
+  {
+    question: "Which mineral are bananas rich in?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image2.png",
+    options: ["iron", "potassium", "silver"],
+    correct: "potassium",
+    explanation: "The correct answer is potassium."
+  },
+  {
+    question: "What shape is a banana?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image2.png",
+    options: ["square", "round", "curved"],
+    correct: "curved",
+    explanation: "The correct answer is curved."
+  },
+  {
+    question: "What do bananas taste like?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image2.png",
+    options: ["sweet", "salty", "spicy"],
+    correct: "sweet",
+    explanation: "The correct answer is sweet."
+  },
+  {
+    question: "How are bananas usually eaten?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image2.png",
+    options: ["raw", "frozen solid", "burned"],
+    correct: "raw",
+    explanation: "The correct answer is raw."
+  },
+  {
+    question: "What is the outer covering of a banana called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image2.png",
+    options: ["peel", "shell", "bark"],
+    correct: "peel",
+    explanation: "The correct answer is peel."
+  },
+  {
+    question: "What color are unripe bananas?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image2.png",
+    options: ["green", "blue", "black"],
+    correct: "green",
+    explanation: "The correct answer is green."
+  },
+  {
+    question: "What color is the inside of a banana?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image2.png",
+    options: ["red", "white/cream", "orange"],
+    correct: "white/cream",
+    explanation: "The correct answer is white/cream."
+  },
+  {
+    question: "In which climate do bananas grow best?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image2.png",
+    options: ["cold climate", "hot tropical climate", "snowy climate"],
+    correct: "hot tropical climate",
+    explanation: "The correct answer is hot tropical climate."
+  },
+  {
+    question: "How do bananas reproduce?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image2.png",
+    options: ["by seeds", "by eggs", "by spores"],
+    correct: "by seeds",
+    explanation: "The correct answer is by seeds."
+  },
+  {
+    question: "When do bananas turn brown?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image2.png",
+    options: ["when ripe or exposed to air", "when frozen", "when dry"],
+    correct: "when ripe or exposed to air",
+    explanation: "The correct answer is when ripe or exposed to air."
+  },
+  {
+    question: "Are bananas a healthy fruit?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image2.png",
+    options: ["yes, bananas are healthy fruit", "no, bananas are not healthy fruit", "never"],
+    correct: "yes, bananas are healthy fruit",
+    explanation: "The correct answer is yes, bananas are healthy fruit."
+  },
+  {
+    question: "Are bananas fruit or vegetables?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image2.png",
+    options: ["fruits", "vegetables", "fruit & vegetables"],
+    correct: "fruits",
+    explanation: "The correct answer is fruits."
+  },
+  {
+    question: "Look at the picture above. What animal does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image3.png",
+    options: ["monkey", "bear", "fish"],
+    correct: "bear",
+    explanation: "The correct answer is bear."
+  },
+  {
+    question: "What type of animal is a bear?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image3.png",
+    options: ["mammal", "reptile", "bird"],
+    correct: "mammal",
+    explanation: "The correct answer is mammal."
+  },
+  {
+    question: "What covers a bear's body?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image3.png",
+    options: ["scales", "feathers", "fur"],
+    correct: "fur",
+    explanation: "The correct answer is fur."
+  },
+  {
+    question: "What do most bears eat?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image3.png",
+    options: ["only meat", "only plants", "both plants and meat"],
+    correct: "both plants and meat",
+    explanation: "The correct answer is both plants and meat."
+  },
+  {
+    question: "What do bears use to catch fish?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image3.png",
+    options: ["wings", "claws", "horns"],
+    correct: "claws",
+    explanation: "The correct answer is claws."
+  },
+  {
+    question: "What do bears do during winter in cold places?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image3.png",
+    options: ["migrate", "fly away", "hibernate"],
+    correct: "hibernate",
+    explanation: "The correct answer is hibernate."
+  },
+  {
+    question: "How many legs does a bear have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image3.png",
+    options: ["two", "four", "six"],
+    correct: "four",
+    explanation: "The correct answer is four."
+  },
+  {
+    question: "What is a baby bear called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image3.png",
+    options: ["cub", "calf", "pup"],
+    correct: "cub",
+    explanation: "The correct answer is cub."
+  },
+  {
+    question: "Where do many brown bears live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image3.png",
+    options: ["forests", "oceans", "deserts"],
+    correct: "forests",
+    explanation: "The correct answer is forests."
+  },
+  {
+    question: "What strong Sense do bears have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image3.png",
+    options: ["catch", "smell", "touch"],
+    correct: "smell",
+    explanation: "The correct answer is smell."
+  },
+  {
+    question: "Can bears climb trees?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image3.png",
+    options: ["yes, bears can climb trees", "no, bears can't climb trees", "never"],
+    correct: "yes, bears can climb trees",
+    explanation: "The correct answer is yes, bears can climb trees."
+  },
+  {
+    question: "Are bears wild animals?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image3.png",
+    options: ["yes, bears are wild animals", "no, bears are not wild animals", "sometimes"],
+    correct: "yes, bears are wild animals",
+    explanation: "The correct answer is yes, bears are wild animals."
+  },
+  {
+    question: "What do brown bears like to eat from rivers?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image3.png",
+    options: ["cows", "fish", "leaves"],
+    correct: "fish",
+    explanation: "The correct answer is fish."
+  },
+  {
+    question: "What do brown bears use to dig for food?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image3.png",
+    options: ["wings", "claws", "feet"],
+    correct: "claws",
+    explanation: "The correct answer is claws."
+  },
+  {
+    question: "Do brown bears hibernate in winter?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image3.png",
+    options: ["yes, brown bears hibernate in winter", "no, brown bears don't hibernate in winter", "never"],
+    correct: "yes, brown bears hibernate in winter",
+    explanation: "The correct answer is yes, brown bears hibernate in winter."
+  },
+  {
+    question: "Look at the picture above. What animal does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image4.png",
+    options: ["monkey", "frog", "fish"],
+    correct: "frog",
+    explanation: "The correct answer is frog."
+  },
+  {
+    question: "What type of animal is a frog?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image4.png",
+    options: ["reptile", "amphibian", "mammal"],
+    correct: "amphibian",
+    explanation: "The correct answer is amphibian."
+  },
+  {
+    question: "Where do frogs live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image4.png",
+    options: ["only in water", "only on land", "both in water and on land"],
+    correct: "both in water and on land",
+    explanation: "The correct answer is both in water and on land."
+  },
+  {
+    question: "What do frogs use to breathe in water when they are young?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image4.png",
+    options: ["lungs", "gills", "fins"],
+    correct: "gills",
+    explanation: "The correct answer is gills."
+  },
+  {
+    question: "What is a baby frog called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image4.png",
+    options: ["cub", "tadpole", "calf"],
+    correct: "tadpole",
+    explanation: "The correct answer is tadpole."
+  },
+  {
+    question: "What do adult frogs use to breathe?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image4.png",
+    options: ["lungs and skin", "gills only", "wings"],
+    correct: "lungs and skin",
+    explanation: "The correct answer is lungs and skin."
+  },
+  {
+    question: "What do frogs eat?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image4.png",
+    options: ["burgers", "insects", "grass only"],
+    correct: "insects",
+    explanation: "The correct answer is insects."
+  },
+  {
+    question: "How many legs does an adult frog have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image4.png",
+    options: ["two", "ten", "four"],
+    correct: "four",
+    explanation: "The correct answer is four."
+  },
+  {
+    question: "What do Frogs lay?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image4.png",
+    options: ["eggs", "seeds", "fur"],
+    correct: "eggs",
+    explanation: "The correct answer is eggs."
+  },
+  {
+    question: "Where do frogs lay their eggs?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image4.png",
+    options: ["in houses", "in water", "in sand"],
+    correct: "in water",
+    explanation: "The correct answer is in water."
+  },
+  {
+    question: "What helps frogs jump far?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image4.png",
+    options: ["long back legs", "short wings", "small tail"],
+    correct: "long back legs",
+    explanation: "The correct answer is long back legs."
+  },
+  {
+    question: "What covers a frog's body?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image4.png",
+    options: ["fur", "feathers", "smooth skin"],
+    correct: "smooth skin",
+    explanation: "The correct answer is smooth skin."
+  },
+  {
+    question: "Are frogs cold-blooded?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image4.png",
+    options: ["yes, frogs cold-blooded", "no, frogs are not cold-blooded", "sometimes"],
+    correct: "yes, frogs cold-blooded",
+    explanation: "The correct answer is yes, frogs cold-blooded."
+  },
+  {
+    question: "What sound does a frog make?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image4.png",
+    options: ["roar", "croak", "bark"],
+    correct: "croak",
+    explanation: "The correct answer is croak."
+  },
+  {
+    question: "Do frogs have tails as adults?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image4.png",
+    options: ["yes, frogs have tails as adults", "no, frogs don't have tails as adults", "always"],
+    correct: "no, frogs don't have tails as adults",
+    explanation: "The correct answer is no, frogs don't have tails as adults."
+  },
+  {
+    question: "Look at the picture above. What fruit does it represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image5.png",
+    options: ["apple", "strawberries", "mango"],
+    correct: "strawberries",
+    explanation: "The correct answer is strawberries."
+  },
+  {
+    question: "What color is a ripe strawberry?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image5.png",
+    options: ["red", "blue", "yellow"],
+    correct: "red",
+    explanation: "The correct answer is red."
+  },
+  {
+    question: "Where do strawberries grow?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image5.png",
+    options: ["on tall trees", "on small plants", "in deep water"],
+    correct: "on small plants",
+    explanation: "The correct answer is on small plants."
+  },
+  {
+    question: "What do strawberries taste like?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image5.png",
+    options: ["sweet", "salty", "spicy"],
+    correct: "sweet",
+    explanation: "The correct answer is sweet."
+  },
+  {
+    question: "What are the small dots on the outside of a strawberry?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image5.png",
+    options: ["stones", "seeds", "scales"],
+    correct: "seeds",
+    explanation: "The correct answer is seeds."
+  },
+  {
+    question: "What color are unripe strawberries?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image5.png",
+    options: ["green", "purple", "black"],
+    correct: "green",
+    explanation: "The correct answer is green."
+  },
+  {
+    question: "Which vitamin are strawberries rich in?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image5.png",
+    options: ["vitamin c", "vitamin d", "vitamin k"],
+    correct: "vitamin c",
+    explanation: "The correct answer is vitamin c."
+  },
+  {
+    question: "In which season are strawberries commonly harvested?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image5.png",
+    options: ["spring", "winter", "late autumn only"],
+    correct: "spring",
+    explanation: "The correct answer is spring."
+  },
+  {
+    question: "What foods are strawberries commonly used in?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image5.png",
+    options: ["burgers", "ice cream", "glue"],
+    correct: "ice cream",
+    explanation: "The correct answer is ice cream."
+  },
+  {
+    question: "What shape is a strawberry?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image5.png",
+    options: ["square", "heart-shaped", "flat"],
+    correct: "heart-shaped",
+    explanation: "The correct answer is heart-shaped."
+  },
+  {
+    question: "What is the green top part of a strawberry called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image5.png",
+    options: ["crown", "leaf cap", "stem only"],
+    correct: "leaf cap",
+    explanation: "The correct answer is leaf cap."
+  },
+  {
+    question: "Are strawberries fruits?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image5.png",
+    options: ["yes, strawberries are fruit", "no, strawberries are not fruit", "sometimes"],
+    correct: "yes, strawberries are fruit",
+    explanation: "The correct answer is yes, strawberries are fruit."
+  },
+  {
+    question: "What is inside a strawberry?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image5.png",
+    options: ["seeds and soft flesh", "bones", "shell"],
+    correct: "seeds and soft flesh",
+    explanation: "The correct answer is seeds and soft flesh."
+  },
+  {
+    question: "What are strawberries mostly made of?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image5.png",
+    options: ["food", "water", "metal"],
+    correct: "water",
+    explanation: "The correct answer is water."
+  },
+  {
+    question: "Can strawberries be eaten raw?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image5.png",
+    options: ["yes, strawberries be eaten raw", "no, strawberries be eaten raw", "never"],
+    correct: "yes, strawberries be eaten raw",
+    explanation: "The correct answer is yes, strawberries be eaten raw."
+  },
+  {
+    question: "Are strawberries vegetables?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image5.png",
+    options: ["yes, strawberries are vegetables", "no, strawberries are not vegetables", "scientists are not sure"],
+    correct: "no, strawberries are not vegetables",
+    explanation: "The correct answer is no, strawberries are not vegetables."
+  },
+  {
+    question: "Look at the picture above. What does the place represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image6.png",
+    options: ["France", "Jeddah", "Circus"],
+    correct: "Circus",
+    explanation: "The correct answer is Circus."
+  },
+  {
+    question: "What do children often see at a circus?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image6.png",
+    options: ["clowns", "doctors", "teachers"],
+    correct: "clowns",
+    explanation: "The correct answer is clowns."
+  },
+  {
+    question: "What do clowns usually wear?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image6.png",
+    options: ["school uniforms", "colorful clothes", "black suits only"],
+    correct: "colorful clothes",
+    explanation: "The correct answer is colorful clothes."
+  },
+  {
+    question: "What animal is often seen performing at a circus?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image6.png",
+    options: ["elephant", "shark", "dolphin"],
+    correct: "elephant",
+    explanation: "The correct answer is elephant."
+  },
+  {
+    question: "What do acrobats do in a circus?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image6.png",
+    options: ["cook food", "perform tricks and flips", "drive buses"],
+    correct: "perform tricks and flips",
+    explanation: "The correct answer is perform tricks and flips."
+  },
+  {
+    question: "Where does a circus show usually take place?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image6.png",
+    options: ["in a big tent", "in a hospital", "in a classroom"],
+    correct: "in a big tent",
+    explanation: "The correct answer is in a big tent."
+  },
+  {
+    question: "What do children use to buy circus tickets?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image6.png",
+    options: ["leaves", "money", "stones"],
+    correct: "money",
+    explanation: "The correct answer is money."
+  },
+  {
+    question: "What do jugglers throw and catch?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image6.png",
+    options: ["balls", "books", "shoes"],
+    correct: "balls",
+    explanation: "The correct answer is balls."
+  },
+  {
+    question: "What do tightrope walkers walk on?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image6.png",
+    options: ["a rope", "the ground", "a wall"],
+    correct: "a rope",
+    explanation: "The correct answer is a rope."
+  },
+  {
+    question: "What do children feel when watching a fun circus show?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image6.png",
+    options: ["bored", "excited", "sleepy"],
+    correct: "excited",
+    explanation: "The correct answer is excited."
+  },
+  {
+    question: "What do circus performers wear?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image6.png",
+    options: ["costumes", "pajamas", "swimsuits"],
+    correct: "costumes",
+    explanation: "The correct answer is costumes."
+  },
+  {
+    question: "What animal is known for balancing on a ball at a circus?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image6.png",
+    options: ["bear", "giraffe", "whale"],
+    correct: "bear",
+    explanation: "The correct answer is bear."
+  },
+  {
+    question: "What do magicians do at a circus?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image6.png",
+    options: ["fix cars", "perform magic tricks", "teach math"],
+    correct: "perform magic tricks",
+    explanation: "The correct answer is perform magic tricks."
+  },
+  {
+    question: "What do children eat at the circus?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image6.png",
+    options: ["popcorn", "rocks", "grass"],
+    correct: "popcorn",
+    explanation: "The correct answer is popcorn."
+  },
+  {
+    question: "What helps acrobats stay safe while performing?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image6.png",
+    options: ["safety nets", "pillows", "blankets"],
+    correct: "safety nets",
+    explanation: "The correct answer is safety nets."
+  },
+  {
+    question: "Look at the picture above. What does the animal represent?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image7.png",
+    options: ["ants", "fish", "bees"],
+    correct: "bees",
+    explanation: "The correct answer is bees."
+  },
+  {
+    question: "What insect makes honey?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image7.png",
+    options: ["ant", "bee", "fly"],
+    correct: "bee",
+    explanation: "The correct answer is bee."
+  },
+  {
+    question: "Where do bees live?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image7.png",
+    options: ["hive", "cave", "nest in water"],
+    correct: "hive",
+    explanation: "The correct answer is hive."
+  },
+  {
+    question: "What do bees collect from flowers?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image7.png",
+    options: ["jewels", "nectar", "oil"],
+    correct: "nectar",
+    explanation: "The correct answer is nectar."
+  },
+  {
+    question: "What do bees make from nectar?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image7.png",
+    options: ["milk", "honey", "juice"],
+    correct: "honey",
+    explanation: "The correct answer is honey."
+  },
+  {
+    question: "How many legs does a bee have?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image7.png",
+    options: ["four", "eight", "six"],
+    correct: "six",
+    explanation: "The correct answer is six."
+  },
+  {
+    question: "What helps bees fly?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image7.png",
+    options: ["fins", "machines", "wings"],
+    correct: "wings",
+    explanation: "The correct answer is wings."
+  },
+  {
+    question: "What sound does a bee make?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image7.png",
+    options: ["buzz", "bobo", "bark"],
+    correct: "buzz",
+    explanation: "The correct answer is buzz."
+  },
+  {
+    question: "What is the leader of a bee colony called?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image7.png",
+    options: ["queen bee", "king bee", "boss bee"],
+    correct: "queen bee",
+    explanation: "The correct answer is queen bee."
+  },
+  {
+    question: "What do bees use to protect themselves?",
+    image: "../../image/level1_science_critical_thinking/critical_thinking_3/image7.png",
+    options: ["teeth", "sting", "horns"],
+    correct: "sting",
+    explanation: "The correct answer is sting."
+  }
+];
+</script>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    initMCQQuiz(questions);
+  });
+    </script>
+  </body>
+</html>
