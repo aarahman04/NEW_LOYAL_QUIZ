@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    …
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+  <div class="question-section">
+    <h3 id="question-text">Loading…</h3>
+    <ul id="options-list" class="options"></ul>
+  </div>
+
+  <div id="feedback" class="hidden"></div>
+  <div id="explanation" class="hidden"></div>
+  <button id="back-btn" class="hidden">Back</button>
+  <button id="next-btn" class="hidden">Next</button>
+</main>
+
+
+    <!-- your question data: only one entry -->
+
+    <script>
+      const questions = [
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/1.png",
+    options: ["watermelon", "apple", "water"],
+    correct: "watermelon",
+    explanation: "The correct answer is watermelon."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/2.png",
+    options: ["watermelon", "strawberry", "water"],
+    correct: "strawberry",
+    explanation: "The correct answer is strawberry."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/3.png",
+    options: ["bananas", "strawberries", "water"],
+    correct: "bananas",
+    explanation: "The correct answer is bananas."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/4.png",
+    options: ["bananas", "strawberries", "pineapple"],
+    correct: "pineapple",
+    explanation: "The correct answer is pineapple."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/5.png",
+    options: ["bananas", "strawberries", "grapes"],
+    correct: "grapes",
+    explanation: "The correct answer is grapes."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/6.png",
+    options: ["lemons", "lemonade", "grapes"],
+    correct: "lemons",
+    explanation: "The correct answer is lemons."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/7.png",
+    options: ["apple", "avoid", "avocado"],
+    correct: "avocado",
+    explanation: "The correct answer is avocado."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/8.png",
+    options: ["apple", "cherries", "strawberries"],
+    correct: "cherries",
+    explanation: "The correct answer is cherries."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/9.png",
+    options: ["juice", "oats", "oatmeal"],
+    correct: "juice",
+    explanation: "The correct answer is juice."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/10.png",
+    options: ["apple", "orange", "mangosteen"],
+    correct: "mangosteen",
+    explanation: "The correct answer is mangosteen."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/11.png",
+    options: ["apple", "pomegranate", "broccoli"],
+    correct: "pomegranate",
+    explanation: "The correct answer is pomegranate."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/12.png",
+    options: ["coconut", "pomegranate", "broccoli"],
+    correct: "coconut",
+    explanation: "The correct answer is coconut."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/13.png",
+    options: ["bananas", "apples on a tree", "applesauce"],
+    correct: "apples on a tree",
+    explanation: "The correct answer is apples on a tree."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/14.png",
+    options: ["artist", "art", "arrow"],
+    correct: "artist",
+    explanation: "The correct answer is artist."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/15.png",
+    options: ["lighthouse", "school", "mosquitoes"],
+    correct: "lighthouse",
+    explanation: "The correct answer is lighthouse."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/16.png",
+    options: ["spider", "snail", "ant"],
+    correct: "snail",
+    explanation: "The correct answer is snail."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/17.png",
+    options: ["flowers", "plants", "planets"],
+    correct: "flowers",
+    explanation: "The correct answer is flowers."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/18.png",
+    options: ["cooking", "fishing", "student"],
+    correct: "cooking",
+    explanation: "The correct answer is cooking."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/19.png",
+    options: ["kitchen", "living room", "bedroom"],
+    correct: "kitchen",
+    explanation: "The correct answer is kitchen."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/20.png",
+    options: ["referring", "refreshing", "refrigerator"],
+    correct: "refrigerator",
+    explanation: "The correct answer is refrigerator."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/21.png",
+    options: ["dough", "doughnut", "doesn't"],
+    correct: "doughnut",
+    explanation: "The correct answer is doughnut."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/22.png",
+    options: ["healthy food", "junk food", "dinner food"],
+    correct: "healthy food",
+    explanation: "The correct answer is healthy food."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/23.png",
+    options: ["healthy food", "junk food", "dinner food"],
+    correct: "junk food",
+    explanation: "The correct answer is junk food."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/24.png",
+    options: ["eggs", "aggregate", "egoism"],
+    correct: "eggs",
+    explanation: "The correct answer is eggs."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/25.png",
+    options: ["legumes", "lettuce", "later"],
+    correct: "lettuce",
+    explanation: "The correct answer is lettuce."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/26.png",
+    options: ["chicken", "chapter", "check"],
+    correct: "chicken",
+    explanation: "The correct answer is chicken."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/27.png",
+    options: ["jellybeans", "jellyshark", "jellyfish"],
+    correct: "jellyfish",
+    explanation: "The correct answer is jellyfish."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/28.png",
+    options: ["crew", "cow", "come"],
+    correct: "cow",
+    explanation: "The correct answer is cow."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/29.png",
+    options: ["bat", "but", "bit"],
+    correct: "bat",
+    explanation: "The correct answer is bat."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/30.png",
+    options: ["change", "chin", "chain"],
+    correct: "chain",
+    explanation: "The correct answer is chain."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/31.png",
+    options: ["chip", "ship", "should"],
+    correct: "ship",
+    explanation: "The correct answer is ship."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/32.png",
+    options: ["gorgeous", "garlic", "gorilla"],
+    correct: "gorilla",
+    explanation: "The correct answer is gorilla."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/33.png",
+    options: ["goldfish", "gift", "giraffe"],
+    correct: "giraffe",
+    explanation: "The correct answer is giraffe."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/34.png",
+    options: ["door", "donut", "duck"],
+    correct: "duck",
+    explanation: "The correct answer is duck."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/35.png",
+    options: ["egypt", "elephant", "egg"],
+    correct: "elephant",
+    explanation: "The correct answer is elephant."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/36.png",
+    options: ["arm", "anchor", "acorn"],
+    correct: "anchor",
+    explanation: "The correct answer is anchor."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/37.png",
+    options: ["arm", "anchor", "acorn"],
+    correct: "acorn",
+    explanation: "The correct answer is acorn."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/38.png",
+    options: ["arrow", "anchor", "acorn"],
+    correct: "arrow",
+    explanation: "The correct answer is arrow."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/39.png",
+    options: ["arrow", "astronaut", "acorn"],
+    correct: "astronaut",
+    explanation: "The correct answer is astronaut."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/40.png",
+    options: ["baker", "bread", "bird"],
+    correct: "baker",
+    explanation: "The correct answer is baker."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/41.png",
+    options: ["baker", "bread", "bird"],
+    correct: "bread",
+    explanation: "The correct answer is bread."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/42.png",
+    options: ["baker", "dinner", "breakfast"],
+    correct: "breakfast",
+    explanation: "The correct answer is breakfast."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/43.png",
+    options: ["bird", "bitter", "break"],
+    correct: "bird",
+    explanation: "The correct answer is bird."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/44.png",
+    options: ["bird", "butterfly", "break"],
+    correct: "butterfly",
+    explanation: "The correct answer is butterfly."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/45.png",
+    options: ["baby", "butterfly", "break"],
+    correct: "baby",
+    explanation: "The correct answer is baby."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/46.png",
+    options: ["cat", "cut", "can"],
+    correct: "cat",
+    explanation: "The correct answer is cat."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/47.png",
+    options: ["catch", "caroline", "carrot"],
+    correct: "carrot",
+    explanation: "The correct answer is carrot."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/48.png",
+    options: ["catch", "caroline", "cactus"],
+    correct: "cactus",
+    explanation: "The correct answer is cactus."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/49.png",
+    options: ["catch", "crab", "cactus"],
+    correct: "crab",
+    explanation: "The correct answer is crab."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/50.png",
+    options: ["caterpillar", "crab", "cactus"],
+    correct: "caterpillar",
+    explanation: "The correct answer is caterpillar."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/51.png",
+    options: ["draw", "dog", "doesn't"],
+    correct: "dog",
+    explanation: "The correct answer is dog."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/52.png",
+    options: ["dragon", "dog", "doesn't"],
+    correct: "dragon",
+    explanation: "The correct answer is dragon."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/53.png",
+    options: ["dragon", "dice", "doesn't"],
+    correct: "dice",
+    explanation: "The correct answer is dice."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/54.png",
+    options: ["dragon", "dice", "dress"],
+    correct: "dress",
+    explanation: "The correct answer is dress."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/55.png",
+    options: ["even", "egg", "eagle"],
+    correct: "eagle",
+    explanation: "The correct answer is eagle."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/56.png",
+    options: ["even", "eskimo", "eagle"],
+    correct: "eskimo",
+    explanation: "The correct answer is eskimo."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/57.png",
+    options: ["environment", "eskimo", "envelope"],
+    correct: "envelope",
+    explanation: "The correct answer is envelope."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/58.png",
+    options: ["environment", "earth", "envelope"],
+    correct: "earth",
+    explanation: "The correct answer is earth."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/59.png",
+    options: ["elevator", "earth", "elements"],
+    correct: "elevator",
+    explanation: "The correct answer is elevator."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/60.png",
+    options: ["frog", "from", "finally"],
+    correct: "frog",
+    explanation: "The correct answer is frog."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/61.png",
+    options: ["frog", "fish", "finally"],
+    correct: "fish",
+    explanation: "The correct answer is fish."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/62.png",
+    options: ["frog", "fire", "fire truck"],
+    correct: "fire truck",
+    explanation: "The correct answer is fire truck."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/63.png",
+    options: ["frog", "fire distinguisher", "fire truck"],
+    correct: "fire distinguisher",
+    explanation: "The correct answer is fire distinguisher."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/64.png",
+    options: ["girl", "gingerbread", "ginger"],
+    correct: "gingerbread",
+    explanation: "The correct answer is gingerbread."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/65.png",
+    options: ["goat", "ginger bread", "gum"],
+    correct: "goat",
+    explanation: "The correct answer is goat."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/66.png",
+    options: ["guide", "guitar", "gum"],
+    correct: "guitar",
+    explanation: "The correct answer is guitar."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/67.png",
+    options: ["goose", "giraffe", "gum"],
+    correct: "goose",
+    explanation: "The correct answer is goose."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/68.png",
+    options: ["glasses", "glass", "gun"],
+    correct: "glass",
+    explanation: "The correct answer is glass."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/69.png",
+    options: ["glasses", "glass", "gun"],
+    correct: "glasses",
+    explanation: "The correct answer is glasses."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/70.png",
+    options: ["glasses", "gate", "gun"],
+    correct: "gate",
+    explanation: "The correct answer is gate."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/71.png",
+    options: ["how", "hey", "house"],
+    correct: "house",
+    explanation: "The correct answer is house."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/72.png",
+    options: ["hedges", "hedgehog", "house"],
+    correct: "hedgehog",
+    explanation: "The correct answer is hedgehog."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/73.png",
+    options: ["home", "hey", "helicopter"],
+    correct: "helicopter",
+    explanation: "The correct answer is helicopter."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/74.png",
+    options: ["horse", "hey", "helicopter"],
+    correct: "horse",
+    explanation: "The correct answer is horse."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/75.png",
+    options: ["horse", "hospital", "helicopter"],
+    correct: "hospital",
+    explanation: "The correct answer is hospital."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/76.png",
+    options: ["ice cream", "igloo", "iconic"],
+    correct: "igloo",
+    explanation: "The correct answer is igloo."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/77.png",
+    options: ["ice cream", "igloo", "iconic"],
+    correct: "ice cream",
+    explanation: "The correct answer is ice cream."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/78.png",
+    options: ["ice cream", "igloo", "iguana"],
+    correct: "iguana",
+    explanation: "The correct answer is iguana."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/79.png",
+    options: ["ice cream", "island", "iguana"],
+    correct: "island",
+    explanation: "The correct answer is island."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/80.png",
+    options: ["ice cream", "injection", "iguana"],
+    correct: "injection",
+    explanation: "The correct answer is injection."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/81.png",
+    options: ["ink", "injection", "iguana"],
+    correct: "ink",
+    explanation: "The correct answer is ink."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/82.png",
+    options: ["jellybeans", "jelly shark", "jellyfish"],
+    correct: "jellybeans",
+    explanation: "The correct answer is jellybeans."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/83.png",
+    options: ["jellybeans", "jelly shark", "jellyfish"],
+    correct: "jellyfish",
+    explanation: "The correct answer is jellyfish."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/84.png",
+    options: ["jelly", "jump", "jelly fish"],
+    correct: "jump",
+    explanation: "The correct answer is jump."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/85.png",
+    options: ["joker", "jump", "jelly fish"],
+    correct: "joker",
+    explanation: "The correct answer is joker."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/86.png",
+    options: ["joker", "jump", "jam"],
+    correct: "jam",
+    explanation: "The correct answer is jam."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/87.png",
+    options: ["kitten", "kit", "king"],
+    correct: "king",
+    explanation: "The correct answer is king."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/88.png",
+    options: ["koala", "kit", "king"],
+    correct: "koala",
+    explanation: "The correct answer is koala."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/89.png",
+    options: ["koala", "Kangaroo", "king"],
+    correct: "Kangaroo",
+    explanation: "The correct answer is Kangaroo."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/90.png",
+    options: ["like", "list", "leaf"],
+    correct: "leaf",
+    explanation: "The correct answer is leaf."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/91.png",
+    options: ["ladybird", "lady", "lagoon"],
+    correct: "ladybird",
+    explanation: "The correct answer is ladybird."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/92.png",
+    options: ["ladybird", "lion", "lagoon"],
+    correct: "lion",
+    explanation: "The correct answer is lion."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/93.png",
+    options: ["log", "lion", "lagoons"],
+    correct: "log",
+    explanation: "The correct answer is log."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/94.png",
+    options: ["log", "lamb", "language"],
+    correct: "lamb",
+    explanation: "The correct answer is lamb."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/95.png",
+    options: ["money", "monkey", "mouse"],
+    correct: "monkey",
+    explanation: "The correct answer is monkey."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/96.png",
+    options: ["money", "monkey", "mouse"],
+    correct: "money",
+    explanation: "The correct answer is money."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/97.png",
+    options: ["machine", "monkey", "mushroom"],
+    correct: "mushroom",
+    explanation: "The correct answer is mushroom."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/98.png",
+    options: ["milk", "monkey", "mushroom"],
+    correct: "milk",
+    explanation: "The correct answer is milk."
+  },
+  {
+    question: "Which word correctly describes the image?",
+    image: "../../../image/level1_eng_reading_vocabulary_1/99.png",
+    options: ["milk", "mouse", "mushroom"],
+    correct: "mouse",
+    explanation: "The correct answer is mouse."
+  }
+];
+    </script>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    initMCQQuiz(questions);
+  });
+    </script>
+  </body>
+</html>
