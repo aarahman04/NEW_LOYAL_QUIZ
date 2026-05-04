@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Shapes Recognition</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "Which shape has <strong>3 sides</strong>?",
+      options: ["Triangle", "Square", "Circle"],
+      correct: "Triangle",
+      explanation: "A Triangle has 3 sides and 3 corners."
+    },
+    {
+      question: "How many corners does a <strong>Rectangle</strong> have?",
+      options: ["3", "4", "5"],
+      correct: "4",
+      explanation: "A Rectangle has 4 corners (also called vertices)."
+    },
+    {
+      question: "Which shape has <strong>no corners</strong> at all?",
+      options: ["Triangle", "Square", "Circle"],
+      correct: "Circle",
+      explanation: "A Circle is perfectly round and has no corners or sides."
+    },
+    {
+      question: "How many sides does a <strong>Square</strong> have?",
+      options: ["3", "4", "5"],
+      correct: "4",
+      explanation: "A Square has 4 equal sides and 4 corners."
+    },
+    {
+      question: "Which shape looks like a <strong>ball</strong>?",
+      options: ["Triangle", "Rectangle", "Circle"],
+      correct: "Circle",
+      explanation: "A Circle is round like a ball."
+    },
+    {
+      question: "How many sides does a <strong>Triangle</strong> have?",
+      options: ["2", "3", "4"],
+      correct: "3",
+      explanation: "A Triangle has exactly 3 sides and 3 corners."
+    },
+    {
+      question: "Which shape has <strong>4 sides</strong> but they are <strong>not all equal</strong>?",
+      options: ["Square", "Rectangle", "Triangle"],
+      correct: "Rectangle",
+      explanation: "A Rectangle has 4 sides — 2 long sides and 2 short sides."
+    },
+    {
+      question: "How many corners does a <strong>Triangle</strong> have?",
+      options: ["2", "3", "4"],
+      correct: "3",
+      explanation: "A Triangle has 3 corners (vertices) and 3 sides."
+    },
+    {
+      question: "Which shape has <strong>all sides equal</strong> and <strong>4 corners</strong>?",
+      options: ["Circle", "Triangle", "Square"],
+      correct: "Square",
+      explanation: "A Square has 4 equal sides and 4 equal corners."
+    },
+    {
+      question: "How many sides does a <strong>Circle</strong> have?",
+      options: ["0", "1", "2"],
+      correct: "0",
+      explanation: "A Circle has no straight sides. It is a curved shape."
+    },
+    {
+      question: "Which shape has <strong>5 sides</strong>?",
+      options: ["Square", "Pentagon", "Hexagon"],
+      correct: "Pentagon",
+      explanation: "A Pentagon has exactly 5 sides and 5 corners."
+    },
+    {
+      question: "How many sides does a <strong>Pentagon</strong> have?",
+      options: ["4", "5", "6"],
+      correct: "5",
+      explanation: "A Pentagon has 5 sides and 5 corners."
+    },
+    {
+      question: "Which shape has <strong>6 sides</strong>?",
+      options: ["Pentagon", "Hexagon", "Octagon"],
+      correct: "Hexagon",
+      explanation: "A Hexagon has exactly 6 sides and 6 corners."
+    },
+    {
+      question: "How many corners does a <strong>Square</strong> have?",
+      options: ["3", "4", "5"],
+      correct: "4",
+      explanation: "A Square has 4 corners and 4 equal sides."
+    },
+    {
+      question: "Which shape looks like a <strong>door</strong>?",
+      options: ["Circle", "Triangle", "Rectangle"],
+      correct: "Rectangle",
+      explanation: "A Rectangle looks like a door — it has 4 sides with 2 long and 2 short sides."
+    },
+    {
+      question: "A shape has <strong>3 corners</strong>. What is it?",
+      options: ["Circle", "Triangle", "Square"],
+      correct: "Triangle",
+      explanation: "Any shape with 3 corners and 3 sides is a Triangle."
+    },
+    {
+      question: "Which shape has <strong>8 sides</strong>?",
+      options: ["Hexagon", "Octagon", "Pentagon"],
+      correct: "Octagon",
+      explanation: "An Octagon has 8 sides and 8 corners. A stop sign is an octagon!"
+    },
+    {
+      question: "How many sides does a <strong>Rectangle</strong> have?",
+      options: ["3", "4", "5"],
+      correct: "4",
+      explanation: "A Rectangle has 4 sides — 2 long and 2 short."
+    },
+    {
+      question: "Which shape is round like the <strong>sun</strong>?",
+      options: ["Triangle", "Circle", "Square"],
+      correct: "Circle",
+      explanation: "A Circle is perfectly round, just like the sun."
+    },
+    {
+      question: "A shape has <strong>4 equal sides</strong>. What is it?",
+      options: ["Rectangle", "Triangle", "Square"],
+      correct: "Square",
+      explanation: "A Square has 4 sides that are all the same length."
+    },
+    {
+      question: "Which shape has <strong>more sides</strong> — a Triangle or a Square?",
+      options: ["Triangle (3 sides)", "Square (4 sides)", "They are the same"],
+      correct: "Square (4 sides)",
+      explanation: "A Square has 4 sides, while a Triangle has only 3 sides."
+    },
+    {
+      question: "How many corners does a <strong>Circle</strong> have?",
+      options: ["0", "1", "2"],
+      correct: "0",
+      explanation: "A Circle has no corners at all. It is a smooth, curved shape."
+    },
+    {
+      question: "Which shape is like a <strong>pizza slice</strong>?",
+      options: ["Circle", "Triangle", "Rectangle"],
+      correct: "Triangle",
+      explanation: "A pizza slice is shaped like a Triangle — it has 3 sides."
+    },
+    {
+      question: "Which shape has <strong>fewer sides</strong> — a Pentagon or a Triangle?",
+      options: ["Pentagon (5 sides)", "Triangle (3 sides)", "They are the same"],
+      correct: "Triangle (3 sides)",
+      explanation: "A Triangle has only 3 sides, while a Pentagon has 5 sides."
+    },
+    {
+      question: "A <strong>Hexagon</strong> has how many corners?",
+      options: ["5", "6", "7"],
+      correct: "6",
+      explanation: "A Hexagon has 6 sides and 6 corners."
+    },
+    {
+      question: "Which shape looks like a <strong>wheel</strong>?",
+      options: ["Square", "Circle", "Triangle"],
+      correct: "Circle",
+      explanation: "A wheel is shaped like a Circle — perfectly round with no corners."
+    },
+    {
+      question: "Which shape has <strong>the most sides</strong>?",
+      options: ["Triangle", "Square", "Hexagon"],
+      correct: "Hexagon",
+      explanation: "Hexagon has 6 sides, Square has 4, and Triangle has 3."
+    },
+    {
+      question: "A <strong>stop sign</strong> is shaped like which shape?",
+      options: ["Hexagon", "Octagon", "Pentagon"],
+      correct: "Octagon",
+      explanation: "A stop sign is an Octagon — it has 8 sides and 8 corners."
+    },
+    {
+      question: "Which shape has <strong>4 corners</strong> but is <strong>NOT a Square</strong>?",
+      options: ["Triangle", "Circle", "Rectangle"],
+      correct: "Rectangle",
+      explanation: "A Rectangle has 4 corners just like a Square, but its sides are not all equal."
+    },
+    {
+      question: "Which shape is like a <strong>book</strong>?",
+      options: ["Circle", "Triangle", "Rectangle"],
+      correct: "Rectangle",
+      explanation: "A book is shaped like a Rectangle — 4 sides with 2 long and 2 short sides."
+    }
+  ];
+</script>
+
+    <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>

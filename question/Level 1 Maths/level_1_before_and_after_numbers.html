@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Before and After Numbers</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>5</span>?",
+      options: ["4", "6", "7"],
+      correct: "6",
+      explanation: "5 comes before 6. So the number after 5 is 6."
+    },
+    {
+      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>3</span>?",
+      options: ["2", "4", "1"],
+      correct: "2",
+      explanation: "2 comes just before 3 on the number line."
+    },
+    {
+      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>9</span>?",
+      options: ["8", "11", "10"],
+      correct: "10",
+      explanation: "9 comes before 10. So the number after 9 is 10."
+    },
+    {
+      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>7</span>?",
+      options: ["8", "6", "5"],
+      correct: "6",
+      explanation: "6 comes just before 7 on the number line."
+    },
+    {
+      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>14</span>?",
+      options: ["13", "15", "16"],
+      correct: "15",
+      explanation: "14 comes before 15. So the number after 14 is 15."
+    },
+    {
+      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>20</span>?",
+      options: ["21", "18", "19"],
+      correct: "19",
+      explanation: "19 comes just before 20 on the number line."
+    },
+    {
+      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>1</span>?",
+      options: ["3", "2", "0"],
+      correct: "2",
+      explanation: "1 comes before 2. So the number after 1 is 2."
+    },
+    {
+      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>10</span>?",
+      options: ["11", "9", "8"],
+      correct: "9",
+      explanation: "9 comes just before 10 on the number line."
+    },
+    {
+      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>19</span>?",
+      options: ["18", "21", "20"],
+      correct: "20",
+      explanation: "19 comes before 20. So the number after 19 is 20."
+    },
+    {
+      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>15</span>?",
+      options: ["16", "14", "13"],
+      correct: "14",
+      explanation: "14 comes just before 15 on the number line."
+    },
+    {
+      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>25</span>?",
+      options: ["24", "26", "27"],
+      correct: "26",
+      explanation: "25 comes before 26. So the number after 25 is 26."
+    },
+    {
+      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>30</span>?",
+      options: ["31", "28", "29"],
+      correct: "29",
+      explanation: "29 comes just before 30 on the number line."
+    },
+    {
+      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>39</span>?",
+      options: ["38", "41", "40"],
+      correct: "40",
+      explanation: "39 comes before 40. So the number after 39 is 40."
+    },
+    {
+      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>50</span>?",
+      options: ["51", "48", "49"],
+      correct: "49",
+      explanation: "49 comes just before 50 on the number line."
+    },
+    {
+      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>33</span>?",
+      options: ["32", "34", "35"],
+      correct: "34",
+      explanation: "33 comes before 34. So the number after 33 is 34."
+    },
+    {
+      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>22</span>?",
+      options: ["23", "20", "21"],
+      correct: "21",
+      explanation: "21 comes just before 22 on the number line."
+    },
+    {
+      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>47</span>?",
+      options: ["46", "49", "48"],
+      correct: "48",
+      explanation: "47 comes before 48. So the number after 47 is 48."
+    },
+    {
+      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>36</span>?",
+      options: ["37", "35", "34"],
+      correct: "35",
+      explanation: "35 comes just before 36 on the number line."
+    },
+    {
+      question: "What number is <strong>BETWEEN</strong> <span style='color:black;'>8 and 10</span>?",
+      options: ["7", "9", "11"],
+      correct: "9",
+      explanation: "8, 9, 10 — so 9 is between 8 and 10."
+    },
+    {
+      question: "What number is <strong>BETWEEN</strong> <span style='color:black;'>14 and 16</span>?",
+      options: ["13", "17", "15"],
+      correct: "15",
+      explanation: "14, 15, 16 — so 15 is between 14 and 16."
+    },
+    {
+      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>29</span>?",
+      options: ["28", "31", "30"],
+      correct: "30",
+      explanation: "29 comes before 30. So the number after 29 is 30."
+    },
+    {
+      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>45</span>?",
+      options: ["46", "43", "44"],
+      correct: "44",
+      explanation: "44 comes just before 45 on the number line."
+    },
+    {
+      question: "What number is <strong>BETWEEN</strong> <span style='color:black;'>20 and 22</span>?",
+      options: ["19", "21", "23"],
+      correct: "21",
+      explanation: "20, 21, 22 — so 21 is between 20 and 22."
+    },
+    {
+      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>17</span>?",
+      options: ["16", "19", "18"],
+      correct: "18",
+      explanation: "17 comes before 18. So the number after 17 is 18."
+    },
+    {
+      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>12</span>?",
+      options: ["13", "10", "11"],
+      correct: "11",
+      explanation: "11 comes just before 12 on the number line."
+    },
+    {
+      question: "What number is <strong>BETWEEN</strong> <span style='color:black;'>42 and 44</span>?",
+      options: ["41", "43", "45"],
+      correct: "43",
+      explanation: "42, 43, 44 — so 43 is between 42 and 44."
+    },
+    {
+      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>49</span>?",
+      options: ["48", "51", "50"],
+      correct: "50",
+      explanation: "49 comes before 50. So the number after 49 is 50."
+    },
+    {
+      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>27</span>?",
+      options: ["28", "25", "26"],
+      correct: "26",
+      explanation: "26 comes just before 27 on the number line."
+    },
+    {
+      question: "What number is <strong>BETWEEN</strong> <span style='color:black;'>5 and 7</span>?",
+      options: ["4", "6", "8"],
+      correct: "6",
+      explanation: "5, 6, 7 — so 6 is between 5 and 7."
+    },
+    {
+      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>11</span>?",
+      options: ["10", "13", "12"],
+      correct: "12",
+      explanation: "11 comes before 12. So the number after 11 is 12."
+    }
+  ];
+</script>
+
+    <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Counting Objects</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options dynamically generated -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+<script>
+  const questions = [
+    {
+      question: "Which group has <strong>3</strong> objects?",
+      options: ["🍎🍎🍎", "🍎🍎🍎🍎🍎"],
+      correct: "🍎🍎🍎",
+      explanation: "🍎🍎🍎 has 3 apples."
+    },
+    {
+      question: "Which group has <strong>5</strong> objects?",
+      options: ["🌟🌟🌟", "🌟🌟🌟🌟🌟"],
+      correct: "🌟🌟🌟🌟🌟",
+      explanation: "🌟🌟🌟🌟🌟 has 5 stars."
+    },
+    {
+      question: "Which group has <strong>2</strong> objects?",
+      options: ["🐶🐶", "🐶🐶🐶🐶"],
+      correct: "🐶🐶",
+      explanation: "🐶🐶 has 2 dogs."
+    },
+    {
+      question: "Which group has <strong>7</strong> objects?",
+      options: ["🍌🍌🍌🍌🍌🍌🍌", "🍌🍌🍌🍌"],
+      correct: "🍌🍌🍌🍌🍌🍌🍌",
+      explanation: "🍌🍌🍌🍌🍌🍌🍌 has 7 bananas."
+    },
+    {
+      question: "Which group has <strong>4</strong> objects?",
+      options: ["🏠🏠🏠🏠🏠🏠", "🏠🏠🏠🏠"],
+      correct: "🏠🏠🏠🏠",
+      explanation: "🏠🏠🏠🏠 has 4 houses."
+    },
+    {
+      question: "Which group has <strong>6</strong> objects?",
+      options: ["🦋🦋🦋🦋🦋🦋", "🦋🦋🦋🦋🦋🦋🦋🦋"],
+      correct: "🦋🦋🦋🦋🦋🦋",
+      explanation: "🦋🦋🦋🦋🦋🦋 has 6 butterflies."
+    },
+    {
+      question: "Which group has <strong>1</strong> object?",
+      options: ["🌈", "🌈🌈🌈"],
+      correct: "🌈",
+      explanation: "🌈 has 1 rainbow."
+    },
+    {
+      question: "Which group has <strong>8</strong> objects?",
+      options: ["🐠🐠🐠🐠🐠🐠🐠🐠", "🐠🐠🐠🐠🐠"],
+      correct: "🐠🐠🐠🐠🐠🐠🐠🐠",
+      explanation: "🐠🐠🐠🐠🐠🐠🐠🐠 has 8 fish."
+    },
+    {
+      question: "Which group has <strong>9</strong> objects?",
+      options: ["🍕🍕🍕🍕🍕🍕🍕", "🍕🍕🍕🍕🍕🍕🍕🍕🍕"],
+      correct: "🍕🍕🍕🍕🍕🍕🍕🍕🍕",
+      explanation: "🍕🍕🍕🍕🍕🍕🍕🍕🍕 has 9 pizzas."
+    },
+    {
+      question: "Which group has <strong>10</strong> objects?",
+      options: ["🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈", "🎈🎈🎈🎈🎈🎈🎈"],
+      correct: "🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈",
+      explanation: "🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈 has 10 balloons."
+    },
+    {
+      question: "Which group has <strong>11</strong> objects?",
+      options: ["🍦🍦🍦🍦🍦🍦🍦🍦🍦🍦🍦", "🍦🍦🍦🍦🍦🍦🍦🍦"],
+      correct: "🍦🍦🍦🍦🍦🍦🍦🍦🍦🍦🍦",
+      explanation: "🍦🍦🍦🍦🍦🍦🍦🍦🍦🍦🍦 has 11 ice creams."
+    },
+    {
+      question: "Which group has <strong>12</strong> objects?",
+      options: ["🐸🐸🐸🐸🐸🐸🐸🐸🐸", "🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸"],
+      correct: "🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸",
+      explanation: "🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸 has 12 frogs."
+    },
+    {
+      question: "Which group has <strong>13</strong> objects?",
+      options: ["🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸", "🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸"],
+      correct: "🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸",
+      explanation: "🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸 has 13 flowers."
+    },
+    {
+      question: "Which group has <strong>14</strong> objects?",
+      options: ["🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗", "🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗"],
+      correct: "🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗",
+      explanation: "🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗 has 14 cars."
+    },
+    {
+      question: "Which group has <strong>15</strong> objects?",
+      options: ["🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩", "🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩"],
+      correct: "🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩",
+      explanation: "🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩 has 15 donuts."
+    },
+    {
+      question: "Which group has <strong>16</strong> objects?",
+      options: ["🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱", "🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱"],
+      correct: "🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱",
+      explanation: "🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱 has 16 cats."
+    },
+    {
+      question: "Which group has <strong>17</strong> objects?",
+      options: ["⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐", "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐"],
+      correct: "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐",
+      explanation: "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ has 17 stars."
+    },
+    {
+      question: "Which group has <strong>18</strong> objects?",
+      options: ["🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓", "🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓"],
+      correct: "🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓",
+      explanation: "🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓 has 18 strawberries."
+    },
+    {
+      question: "Which group has <strong>19</strong> objects?",
+      options: ["🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝", "🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝"],
+      correct: "🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝",
+      explanation: "🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝 has 19 bees."
+    },
+    {
+      question: "Which group has <strong>20</strong> objects?",
+      options: ["🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀", "🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀"],
+      correct: "🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀",
+      explanation: "🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀 has 20 ribbons."
+    },
+    {
+      question: "How many 🍎 are there? <br><span style='font-size:1.4em;'>🍎🍎🍎🍎</span>",
+      options: ["3", "4", "5"],
+      correct: "4",
+      explanation: "Count carefully: 🍎🍎🍎🍎 = 4 apples."
+    },
+    {
+      question: "How many 🐸 are there? <br><span style='font-size:1.4em;'>🐸🐸🐸🐸🐸🐸</span>",
+      options: ["5", "6", "7"],
+      correct: "6",
+      explanation: "Count carefully: 🐸🐸🐸🐸🐸🐸 = 6 frogs."
+    },
+    {
+      question: "How many 🌟 are there? <br><span style='font-size:1.4em;'>🌟🌟🌟🌟🌟🌟🌟🌟</span>",
+      options: ["7", "8", "9"],
+      correct: "8",
+      explanation: "Count carefully: 🌟🌟🌟🌟🌟🌟🌟🌟 = 8 stars."
+    },
+    {
+      question: "How many 🎈 are there? <br><span style='font-size:1.4em;'>🎈🎈🎈</span>",
+      options: ["2", "3", "4"],
+      correct: "3",
+      explanation: "Count carefully: 🎈🎈🎈 = 3 balloons."
+    },
+    {
+      question: "How many 🦋 are there? <br><span style='font-size:1.4em;'>🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋</span>",
+      options: ["9", "10", "11"],
+      correct: "10",
+      explanation: "Count carefully: 10 butterflies."
+    },
+    {
+      question: "How many 🍕 are there? <br><span style='font-size:1.4em;'>🍕🍕</span>",
+      options: ["1", "2", "3"],
+      correct: "2",
+      explanation: "Count carefully: 🍕🍕 = 2 pizzas."
+    },
+    {
+      question: "How many 🐶 are there? <br><span style='font-size:1.4em;'>🐶🐶🐶🐶🐶🐶🐶🐶🐶</span>",
+      options: ["8", "9", "10"],
+      correct: "9",
+      explanation: "Count carefully: 9 dogs."
+    },
+    {
+      question: "How many 🚗 are there? <br><span style='font-size:1.4em;'>🚗🚗🚗🚗🚗🚗🚗</span>",
+      options: ["6", "7", "8"],
+      correct: "7",
+      explanation: "Count carefully: 🚗🚗🚗🚗🚗🚗🚗 = 7 cars."
+    },
+    {
+      question: "How many 🍦 are there? <br><span style='font-size:1.4em;'>🍦🍦🍦🍦🍦</span>",
+      options: ["4", "5", "6"],
+      correct: "5",
+      explanation: "Count carefully: 🍦🍦🍦🍦🍦 = 5 ice creams."
+    },
+    {
+      question: "How many 🌸 are there? <br><span style='font-size:1.4em;'>🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸</span>",
+      options: ["11", "12", "13"],
+      correct: "12",
+      explanation: "Count carefully: 12 flowers."
+    }
+  ];
+</script>
+
+    <!-- Professional Footer -->
+    <div id="site-footer-placeholder"></div>
+    <!-- point to your main quiz logic -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
