@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    …
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+  <div class="question-section">
+    <h3 id="question-text">Loading…</h3>
+    <ul id="options-list" class="options"></ul>
+  </div>
+
+  <div id="feedback" class="hidden"></div>
+  <div id="explanation" class="hidden"></div>
+  <button id="back-btn" class="hidden">Back</button>
+  <button id="next-btn" class="hidden">Next</button>
+</main>
+
+
+    <!-- your question data: only one entry -->
+
+    <script>
+      const questions = [
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/1.png",
+    options: ["mother", "motorcycle", "must"],
+    correct: "motorcycle",
+    explanation: "The correct answer is motorcycle."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/2.png",
+    options: ["mother", "motorcycle", "must"],
+    correct: "mother",
+    explanation: "The correct answer is mother."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/3.png",
+    options: ["many", "motorcycle", "mango"],
+    correct: "mango",
+    explanation: "The correct answer is mango."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/4.png",
+    options: ["mouse", "mushroom", "mice"],
+    correct: "mouse",
+    explanation: "The correct answer is mouse."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/5.png",
+    options: ["milk", "mushroom", "mice"],
+    correct: "milk",
+    explanation: "The correct answer is milk."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/6.png",
+    options: ["mirror", "mushroom", "might"],
+    correct: "mirror",
+    explanation: "The correct answer is mirror."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/7.png",
+    options: ["might", "milk", "money"],
+    correct: "money",
+    explanation: "The correct answer is money."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/8.png",
+    options: ["monkey", "mild", "money"],
+    correct: "monkey",
+    explanation: "The correct answer is monkey."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/9.png",
+    options: ["mild", "mitten", "milk"],
+    correct: "mitten",
+    explanation: "The correct answer is mitten."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/10.png",
+    options: ["might", "milk", "moon"],
+    correct: "moon",
+    explanation: "The correct answer is moon."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/11.png",
+    options: ["nose", "needs", "needle"],
+    correct: "needle",
+    explanation: "The correct answer is needle."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/12.png",
+    options: ["necklace", "needs", "needle"],
+    correct: "necklace",
+    explanation: "The correct answer is necklace."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/13.png",
+    options: ["no", "not", "nest"],
+    correct: "nest",
+    explanation: "The correct answer is nest."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/14.png",
+    options: ["noodles", "need", "not"],
+    correct: "noodles",
+    explanation: "The correct answer is noodles."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/15.png",
+    options: ["noodles", "nuts", "not"],
+    correct: "nuts",
+    explanation: "The correct answer is nuts."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/16.png",
+    options: ["noodles", "nuts", "neptune"],
+    correct: "neptune",
+    explanation: "The correct answer is neptune."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/17.png",
+    options: ["occupation", "oil", "oyster"],
+    correct: "oyster",
+    explanation: "The correct answer is oyster."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/18.png",
+    options: ["oil", "olive", "oyster"],
+    correct: "oil",
+    explanation: "The correct answer is oil."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/19.png",
+    options: ["oil", "octopus", "oyster"],
+    correct: "octopus",
+    explanation: "The correct answer is octopus."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/20.png",
+    options: ["olive", "octopus", "oyster"],
+    correct: "olive",
+    explanation: "The correct answer is olive."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/21.png",
+    options: ["olive", "owl", "oyster"],
+    correct: "owl",
+    explanation: "The correct answer is owl."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/22.png",
+    options: ["ostrich", "owl", "oyster"],
+    correct: "ostrich",
+    explanation: "The correct answer is ostrich."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/23.png",
+    options: ["ostrich", "otoscope", "oysters"],
+    correct: "otoscope",
+    explanation: "The correct answer is otoscope."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/24.png",
+    options: ["onion", "otoscope", "oysters"],
+    correct: "onion",
+    explanation: "The correct answer is onion."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/25.png",
+    options: ["ostrich", "otoscope", "otter"],
+    correct: "otter",
+    explanation: "The correct answer is otter."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/26.png",
+    options: ["ostrich", "onions", "omelette"],
+    correct: "omelette",
+    explanation: "The correct answer is omelette."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/27.png",
+    options: ["pine trees", "onions", "omelette"],
+    correct: "pine trees",
+    explanation: "The correct answer is pine trees."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/28.png",
+    options: ["parachute", "onions", "omelette"],
+    correct: "parachute",
+    explanation: "The correct answer is parachute."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/29.png",
+    options: ["pumpkin", "penguin", "poppy"],
+    correct: "penguin",
+    explanation: "The correct answer is penguin."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/30.png",
+    options: ["pumpkin", "penguin", "pizza"],
+    correct: "pizza",
+    explanation: "The correct answer is pizza."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/31.png",
+    options: ["pumpkin", "pineapple", "pool"],
+    correct: "pineapple",
+    explanation: "The correct answer is pineapple."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/32.png",
+    options: ["painting", "popcorn", "pool"],
+    correct: "pool",
+    explanation: "The correct answer is pool."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/33.png",
+    options: ["panda", "people", "pool"],
+    correct: "panda",
+    explanation: "The correct answer is panda."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/34.png",
+    options: ["panda", "pencil", "please"],
+    correct: "pencil",
+    explanation: "The correct answer is pencil."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/35.png",
+    options: ["panda", "pencil", "potato"],
+    correct: "potato",
+    explanation: "The correct answer is potato."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/36.png",
+    options: ["plum", "pencil", "pen"],
+    correct: "plum",
+    explanation: "The correct answer is plum."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/37.png",
+    options: ["plum", "peach", "pen"],
+    correct: "peach",
+    explanation: "The correct answer is peach."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/38.png",
+    options: ["plum", "peach", "planet"],
+    correct: "planet",
+    explanation: "The correct answer is planet."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/39.png",
+    options: ["plum", "peach", "planet"],
+    correct: "planet",
+    explanation: "The correct answer is planet."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/40.png",
+    options: ["plum", "pie", "planet"],
+    correct: "pie",
+    explanation: "The correct answer is pie."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/41.png",
+    options: ["paint", "pie", "planet"],
+    correct: "paint",
+    explanation: "The correct answer is paint."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/42.png",
+    options: ["paint", "peacock", "planet"],
+    correct: "peacock",
+    explanation: "The correct answer is peacock."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/43.png",
+    options: ["peacock", "puzzle", "planet"],
+    correct: "puzzle",
+    explanation: "The correct answer is puzzle."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/44.png",
+    options: ["pin", "puzzle", "pig"],
+    correct: "pig",
+    explanation: "The correct answer is pig."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/45.png",
+    options: ["quiet", "queen", "question"],
+    correct: "queen",
+    explanation: "The correct answer is queen."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/46.png",
+    options: ["quiet", "queen", "question"],
+    correct: "question",
+    explanation: "The correct answer is question."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/47.png",
+    options: ["question", "queen", "quiet"],
+    correct: "quiet",
+    explanation: "The correct answer is quiet."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/48.png",
+    options: ["rooster", "root", "rose"],
+    correct: "rooster",
+    explanation: "The correct answer is rooster."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/49.png",
+    options: ["red", "ranges", "rabbit"],
+    correct: "rabbit",
+    explanation: "The correct answer is rabbit."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/50.png",
+    options: ["ribbon", "red", "right"],
+    correct: "ribbon",
+    explanation: "The correct answer is ribbon."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/51.png",
+    options: ["ribbon", "raspberry", "right"],
+    correct: "raspberry",
+    explanation: "The correct answer is raspberry."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/52.png",
+    options: ["ribbon", "race", "rainbow"],
+    correct: "rainbow",
+    explanation: "The correct answer is rainbow."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/53.png",
+    options: ["river", "race", "rainbow"],
+    correct: "river",
+    explanation: "The correct answer is river."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/54.png",
+    options: ["river", "race", "rose"],
+    correct: "rose",
+    explanation: "The correct answer is rose."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/55.png",
+    options: ["rice", "ring", "rose"],
+    correct: "rice",
+    explanation: "The correct answer is rice."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/56.png",
+    options: ["rocket", "rink", "roll"],
+    correct: "rocket",
+    explanation: "The correct answer is rocket."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/57.png",
+    options: ["rocker", "rhino", "roll"],
+    correct: "rhino",
+    explanation: "The correct answer is rhino."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/58.png",
+    options: ["rocker", "ring", "roll"],
+    correct: "ring",
+    explanation: "The correct answer is ring."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/59.png",
+    options: ["rocker", "ring", "roll"],
+    correct: "ring",
+    explanation: "The correct answer is ring."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/60.png",
+    options: ["snake", "sing", "sang"],
+    correct: "snake",
+    explanation: "The correct answer is snake."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/61.png",
+    options: ["socks", "sing", "sang"],
+    correct: "socks",
+    explanation: "The correct answer is socks."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/62.png",
+    options: ["socks", "school", "safety"],
+    correct: "school",
+    explanation: "The correct answer is school."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/63.png",
+    options: ["socks", "school", "snowman"],
+    correct: "snowman",
+    explanation: "The correct answer is snowman."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/64.png",
+    options: ["snow", "school", "snowman"],
+    correct: "snow",
+    explanation: "The correct answer is snow."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/65.png",
+    options: ["saw", "snow", "snowman"],
+    correct: "snow",
+    explanation: "The correct answer is snow."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/66.png",
+    options: ["salt", "snow", "snowman"],
+    correct: "salt",
+    explanation: "The correct answer is salt."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/67.png",
+    options: ["see", "soup", "soap"],
+    correct: "soup",
+    explanation: "The correct answer is soup."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/68.png",
+    options: ["salt", "soap", "snowman"],
+    correct: "soap",
+    explanation: "The correct answer is soap."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/69.png",
+    options: ["salt", "seed", "snowman"],
+    correct: "seed",
+    explanation: "The correct answer is seed."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/70.png",
+    options: ["skunk", "see", "snowman"],
+    correct: "skunk",
+    explanation: "The correct answer is skunk."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/71.png",
+    options: ["skunk", "see", "squirrel"],
+    correct: "squirrel",
+    explanation: "The correct answer is squirrel."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/72.png",
+    options: ["scissors", "see", "squirrel"],
+    correct: "scissors",
+    explanation: "The correct answer is scissors."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/73.png",
+    options: ["scissors", "sunflower", "squirrel"],
+    correct: "sunflower",
+    explanation: "The correct answer is sunflower."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/74.png",
+    options: ["scissors", "snail", "squirrel"],
+    correct: "snail",
+    explanation: "The correct answer is snail."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/75.png",
+    options: ["search", "sea horse", "sorry"],
+    correct: "sea horse",
+    explanation: "The correct answer is sea horse."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/76.png",
+    options: ["salad", "snail", "squirrel"],
+    correct: "salad",
+    explanation: "The correct answer is salad."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/77.png",
+    options: ["salad", "smoke", "squirrel"],
+    correct: "smoke",
+    explanation: "The correct answer is smoke."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/78.png",
+    options: ["salad", "scale", "squirrel"],
+    correct: "scale",
+    explanation: "The correct answer is scale."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/79.png",
+    options: ["salad", "scale", "surf"],
+    correct: "surf",
+    explanation: "The correct answer is surf."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/80.png",
+    options: ["tree", "toe", "turtle"],
+    correct: "toe",
+    explanation: "The correct answer is toe."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/81.png",
+    options: ["tree", "turtle", "took"],
+    correct: "turtle",
+    explanation: "The correct answer is turtle."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/82.png",
+    options: ["truck", "turtle", "took"],
+    correct: "truck",
+    explanation: "The correct answer is truck."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/83.png",
+    options: ["truck", "tongue", "took"],
+    correct: "tongue",
+    explanation: "The correct answer is tongue."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/84.png",
+    options: ["treasure", "tongue", "took"],
+    correct: "treasure",
+    explanation: "The correct answer is treasure."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/85.png",
+    options: ["treasure", "teeth", "took"],
+    correct: "teeth",
+    explanation: "The correct answer is teeth."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/86.png",
+    options: ["turkey", "teeth", "took"],
+    correct: "turkey",
+    explanation: "The correct answer is turkey."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/87.png",
+    options: ["turkey", "teeth", "towel"],
+    correct: "towel",
+    explanation: "The correct answer is towel."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/88.png",
+    options: ["teacher", "teeth", "towel"],
+    correct: "teacher",
+    explanation: "The correct answer is teacher."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/89.png",
+    options: ["teacher", "telescope", "towel"],
+    correct: "telescope",
+    explanation: "The correct answer is telescope."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/90.png",
+    options: ["umbrella", "unfortunately", "universe"],
+    correct: "umbrella",
+    explanation: "The correct answer is umbrella."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/91.png",
+    options: ["umbrella", "unicorn", "up"],
+    correct: "unicorn",
+    explanation: "The correct answer is unicorn."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/92.png",
+    options: ["uranus", "unicorn", "unfortunately"],
+    correct: "uranus",
+    explanation: "The correct answer is uranus."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/93.png",
+    options: ["uranus", "unicorn", "unfortunately"],
+    correct: "uranus",
+    explanation: "The correct answer is uranus."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/94.png",
+    options: ["vest", "vulture", "vote"],
+    correct: "vest",
+    explanation: "The correct answer is vest."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/95.png",
+    options: ["vest", "vegetables", "vote"],
+    correct: "vegetables",
+    explanation: "The correct answer is vegetables."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/96.png",
+    options: ["vest", "village", "vote"],
+    correct: "village",
+    explanation: "The correct answer is village."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/97.png",
+    options: ["window", "windmill", "wind"],
+    correct: "windmill",
+    explanation: "The correct answer is windmill."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/98.png",
+    options: ["you", "youth", "yogurt"],
+    correct: "yogurt",
+    explanation: "The correct answer is yogurt."
+  },
+  {
+    question: "Look at the picture. Choose the word that matches the picture.",
+    image: "../../image/level1_eng_reading_vocabulary_6/99.png",
+    options: ["zero", "zoo", "zebra"],
+    correct: "zebra",
+    explanation: "The correct answer is zebra."
+  }
+];
+    </script>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    initMCQQuiz(questions);
+  });
+    </script>
+  </body>
+</html>
