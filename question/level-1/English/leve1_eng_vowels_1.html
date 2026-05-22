@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    …
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+  <div class="question-section">
+    <h3 id="question-text">Loading…</h3>
+    <ul id="options-list" class="options"></ul>
+  </div>
+
+  <div id="feedback" class="hidden"></div>
+  <div id="explanation" class="hidden"></div>
+  <button id="back-btn" class="hidden">Back</button>
+  <button id="next-btn" class="hidden">Next</button>
+</main>
+
+
+    <!-- your question data: only one entry -->
+
+    <script>
+      const questions = [
+
+  // --- IMAGE 1: Sam & Pam (bats and caps) ---
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a bag of bats.<br>
+Pam has a bag of caps.<br>
+Sam says, "Pass me a cap."<br>
+Pam says, "Pass me a bat."<br>
+Now, Sam and Pam can play!
+</div><br>
+<span style="color:red;">What does Sam have?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/1.jpeg",
+    options: ["bats", "cats", "caps"],
+    correct: "bats",
+    explanation: "The story says Sam has a bag of bats."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a bag of bats.<br>
+Pam has a bag of caps.<br>
+Sam says, "Pass me a cap."<br>
+Pam says, "Pass me a bat."<br>
+Now, Sam and Pam can play!
+</div><br>
+<span style="color:red;">What does Pam have?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/1.jpeg",
+    options: ["bats", "and", "caps"],
+    correct: "caps",
+    explanation: "The story says Pam has a bag of caps."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a bag of bats.<br>
+Pam has a bag of caps.<br>
+Sam says, "Pass me a cap."<br>
+Pam says, "Pass me a bat."<br>
+Now, Sam and Pam can play!
+</div><br>
+<span style="color:red;">What does Sam say?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/1.jpeg",
+    options: ["pass me a cap", "pass me some money", "pass me a cake"],
+    correct: "pass me a cap",
+    explanation: "Sam says 'Pass me a cap' because Pam has the caps."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a bag of bats.<br>
+Pam has a bag of caps.<br>
+Sam says, "Pass me a cap."<br>
+Pam says, "Pass me a bat."<br>
+Now, Sam and Pam can play!
+</div><br>
+<span style="color:red;">What does Pam say?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/1.jpeg",
+    options: ["pass me a cap", "pass me a bat", "pass me a cake"],
+    correct: "pass me a bat",
+    explanation: "Pam says 'Pass me a bat' because Sam has the bats."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a bag of bats.<br>
+Pam has a bag of caps.<br>
+Sam says, "Pass me a cap."<br>
+Pam says, "Pass me a bat."<br>
+Now, Sam and Pam can play!
+</div><br>
+<span style="color:red;">What can Sam and Pam now do?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/1.jpeg",
+    options: ["now Sam and Pam can play!", "now Sandy and Pam can play!", "now Hany and Pam can play!"],
+    correct: "now Sam and Pam can play!",
+    explanation: "After sharing, the story ends with Sam and Pam being able to play."
+  },
+
+  // --- IMAGE 2: Sam the sad rat ---
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam is a sad rat.<br>
+Pam is a bat.<br>
+Sam sees Pam the bat.<br>
+Sam and Pam chat.<br>
+Sam and Pam are pals.<br>
+Now, Sam is not a sad rat.
+</div><br>
+<span style="color:red;">Is Sam happy or sad?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/2.jpeg",
+    options: ["Sam is happy", "Sam is sad", "Sam is jumping"],
+    correct: "Sam is sad",
+    explanation: "At the start of the story, Sam is described as a sad rat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam is a sad rat.<br>
+Pam is a bat.<br>
+Sam sees Pam the bat.<br>
+Sam and Pam chat.<br>
+Sam and Pam are pals.<br>
+Now, Sam is not a sad rat.
+</div><br>
+<span style="color:red;">What is Pam?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/2.jpeg",
+    options: ["Pam is a cat", "Pam is a bat", "Pam is a dad"],
+    correct: "Pam is a bat",
+    explanation: "The story clearly says Pam is a bat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam is a sad rat.<br>
+Pam is a bat.<br>
+Sam sees Pam the bat.<br>
+Sam and Pam chat.<br>
+Sam and Pam are pals.<br>
+Now, Sam is not a sad rat.
+</div><br>
+<span style="color:red;">What is Sam?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/2.jpeg",
+    options: ["Sam is a cat", "Sam is a bat", "Sam is a rat"],
+    correct: "Sam is a rat",
+    explanation: "The story says Sam is a sad rat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam is a sad rat.<br>
+Pam is a bat.<br>
+Sam sees Pam the bat.<br>
+Sam and Pam chat.<br>
+Sam and Pam are pals.<br>
+Now, Sam is not a sad rat.
+</div><br>
+<span style="color:red;">What do Sam and Pam do?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/2.jpeg",
+    options: ["Sam and Pam cry.", "Sam and Pam laugh.", "Sam and Pam chat."],
+    correct: "Sam and Pam chat.",
+    explanation: "The story says Sam and Pam chat and become pals."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam is a sad rat.<br>
+Pam is a bat.<br>
+Sam sees Pam the bat.<br>
+Sam and Pam chat.<br>
+Sam and Pam are pals.<br>
+Now, Sam is not a sad rat.
+</div><br>
+<span style="color:red;">What do Sam and Pam do? (Question 10)</span>`,
+    image: "../../../image/leve1_eng_vowels_1/2.jpeg",
+    options: ["Sam and Pam cry.", "Sam and Pam laugh.", "Sam and Pam chat."],
+    correct: "Sam and Pam chat.",
+    explanation: "Sam and Pam chat together and become pals."
+  },
+
+  // --- IMAGE 3: A man and a cat ---
+  {
+    question: `<div style="text-align:center; color:black;">
+A man has a cat.<br>
+A cat has a hat.<br>
+A man and a cat nap.<br>
+A man and a cat play.<br>
+A man and a cat are pals.<br>
+At last, a man a glad man.
+</div><br>
+<span style="color:red;">What does a man have?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/3.jpeg",
+    options: ["a bat", "a cat", "a hat"],
+    correct: "a cat",
+    explanation: "The first line says a man has a cat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+A man has a cat.<br>
+A cat has a hat.<br>
+A man and a cat nap.<br>
+A man and a cat play.<br>
+A man and a cat are pals.<br>
+At last, a man a glad man.
+</div><br>
+<span style="color:red;">What does a cat have?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/3.jpeg",
+    options: ["a hat", "a mat", "a bag"],
+    correct: "a hat",
+    explanation: "The story says the cat has a hat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+A man has a cat.<br>
+A cat has a hat.<br>
+A man and a cat nap.<br>
+A man and a cat play.<br>
+A man and a cat are pals.<br>
+At last, a man a glad man.
+</div><br>
+<span style="color:red;">What can a man and a cat do?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/3.jpeg",
+    options: ["ran", "nap", "swim"],
+    correct: "nap",
+    explanation: "The story says a man and a cat nap together."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+A man has a cat.<br>
+A cat has a hat.<br>
+A man and a cat nap.<br>
+A man and a cat play.<br>
+A man and a cat are pals.<br>
+At last, a man a glad man.
+</div><br>
+<span style="color:red;">What did the man and a cat do?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/3.jpeg",
+    options: ["right", "read", "play"],
+    correct: "play",
+    explanation: "The story says a man and a cat play together."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+A man has a cat.<br>
+A cat has a hat.<br>
+A man and a cat nap.<br>
+A man and a cat play.<br>
+A man and a cat are pals.<br>
+At last, a man a glad man.
+</div><br>
+<span style="color:red;">How is the man at last?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/3.jpeg",
+    options: ["sad", "mad", "glad"],
+    correct: "glad",
+    explanation: "At the end, the story says the man is a glad man."
+  },
+
+  // --- IMAGE 4: A lad has a bag ---
+  {
+    question: `<div style="text-align:center; color:black;">
+A lad has a bag.<br>
+A bag has a tag.<br>
+A lad can tap a pan.<br>
+A cat can nap.<br>
+A lad and a cat clap.<br>
+At last, a lad has a pal.
+</div><br>
+<span style="color:red;">What does a lad have?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/4.jpeg",
+    options: ["a bag", "a cat", "a pan"],
+    correct: "a bag",
+    explanation: "The story begins by saying a lad has a bag."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+A lad has a bag.<br>
+A bag has a tag.<br>
+A lad can tap a pan.<br>
+A cat can nap.<br>
+A lad and a cat clap.<br>
+At last, a lad has a pal.
+</div><br>
+<span style="color:red;">What does a bag have?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/4.jpeg",
+    options: ["a car", "a tag", "a mat"],
+    correct: "a tag",
+    explanation: "The story says the bag has a tag."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+A lad has a bag.<br>
+A bag has a tag.<br>
+A lad can tap a pan.<br>
+A cat can nap.<br>
+A lad and a cat clap.<br>
+At last, a lad has a pal.
+</div><br>
+<span style="color:red;">What can a lad tap?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/4.jpeg",
+    options: ["a pan", "a bag", "a cat"],
+    correct: "a pan",
+    explanation: "The story says the lad can tap a pan."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+A lad has a bag.<br>
+A bag has a tag.<br>
+A lad can tap a pan.<br>
+A cat can nap.<br>
+A lad and a cat clap.<br>
+At last, a lad has a pal.
+</div><br>
+<span style="color:red;">What does the cat do?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/4.jpeg",
+    options: ["hop", "clap", "nap"],
+    correct: "nap",
+    explanation: "The story says the cat can nap."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+A lad has a bag.<br>
+A bag has a tag.<br>
+A lad can tap a pan.<br>
+A cat can nap.<br>
+A lad and a cat clap.<br>
+At last, a lad has a pal.
+</div><br>
+<span style="color:red;">What do a lad and cat do?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/4.jpeg",
+    options: ["swim", "clap", "tap"],
+    correct: "clap",
+    explanation: "The story says the lad and cat clap together."
+  },
+
+  // --- IMAGE 5: Lad has a cat and an ant ---
+  {
+    question: `<div style="text-align:center; color:black;">
+Lad has a cat and an ant.<br>
+Cat has a bat.<br>
+Ant has a mat.<br>
+Cat naps on the mat.<br>
+Ant ran on the bat.<br>
+Cat chats with ant.<br>
+Ant chats with cat.<br>
+Cat and ant chat all day.<br>
+It is a happy day.
+</div><br>
+<span style="color:red;">What does lad have?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/5.jpeg",
+    options: ["a cat & ant", "a bag", "an ant"],
+    correct: "a cat & ant",
+    explanation: "The story says lad has both a cat and an ant."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Lad has a cat and an ant.<br>
+Cat has a bat.<br>
+Ant has a mat.<br>
+Cat naps on the mat.<br>
+Ant ran on the bat.<br>
+Cat chats with ant.<br>
+Ant chats with cat.<br>
+Cat and ant chat all day.<br>
+It is a happy day.
+</div><br>
+<span style="color:red;">What does cat have?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/5.jpeg",
+    options: ["a dog", "a bat", "a car"],
+    correct: "a bat",
+    explanation: "The story says cat has a bat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Lad has a cat and an ant.<br>
+Cat has a bat.<br>
+Ant has a mat.<br>
+Cat naps on the mat.<br>
+Ant ran on the bat.<br>
+Cat chats with ant.<br>
+Ant chats with cat.<br>
+Cat and ant chat all day.<br>
+It is a happy day.
+</div><br>
+<span style="color:red;">What does ant have?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/5.jpeg",
+    options: ["ant has a bag", "ant has a dog", "ant has a mat"],
+    correct: "ant has a mat",
+    explanation: "The story says ant has a mat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Lad has a cat and an ant.<br>
+Cat has a bat.<br>
+Ant has a mat.<br>
+Cat naps on the mat.<br>
+Ant ran on the bat.<br>
+Cat chats with ant.<br>
+Ant chats with cat.<br>
+Cat and ant chat all day.<br>
+It is a happy day.
+</div><br>
+<span style="color:red;">Where does cat nap?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/5.jpeg",
+    options: ["cat naps on me", "cat naps on the mat", "cat naps on the couch"],
+    correct: "cat naps on the mat",
+    explanation: "The story says cat naps on the mat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Lad has a cat and an ant.<br>
+Cat has a bat.<br>
+Ant has a mat.<br>
+Cat naps on the mat.<br>
+Ant ran on the bat.<br>
+Cat chats with ant.<br>
+Ant chats with cat.<br>
+Cat and ant chat all day.<br>
+It is a happy day.
+</div><br>
+<span style="color:red;">Where did ant ran?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/5.jpeg",
+    options: ["ant ran on us", "ant ran up", "ant ran on the bat"],
+    correct: "ant ran on the bat",
+    explanation: "The story says ant ran on the bat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Lad has a cat and an ant.<br>
+Cat has a bat.<br>
+Ant has a mat.<br>
+Cat naps on the mat.<br>
+Ant ran on the bat.<br>
+Cat chats with ant.<br>
+Ant chats with cat.<br>
+Cat and ant chat all day.<br>
+It is a happy day.
+</div><br>
+<span style="color:red;">Who does cat chat with?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/5.jpeg",
+    options: ["cat chats with Sandy", "cat chats with us", "cat chats with ant"],
+    correct: "cat chats with ant",
+    explanation: "The story says cat chats with ant."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Lad has a cat and an ant.<br>
+Cat has a bat.<br>
+Ant has a mat.<br>
+Cat naps on the mat.<br>
+Ant ran on the bat.<br>
+Cat chats with ant.<br>
+Ant chats with cat.<br>
+Cat and ant chat all day.<br>
+It is a happy day.
+</div><br>
+<span style="color:red;">Who does ant chat with?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/5.jpeg",
+    options: ["ant chats with cat", "cat chats with mother", "ant chats with cat"],
+    correct: "ant chats with cat",
+    explanation: "The story says ant chats with cat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Lad has a cat and an ant.<br>
+Cat has a bat.<br>
+Ant has a mat.<br>
+Cat naps on the mat.<br>
+Ant ran on the bat.<br>
+Cat chats with ant.<br>
+Ant chats with cat.<br>
+Cat and ant chat all day.<br>
+It is a happy day.
+</div><br>
+<span style="color:red;">What does cat and ant do?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/5.jpeg",
+    options: ["cat and ant chat all night", "cat and ant sleep all day", "cat and ant chat all day"],
+    correct: "cat and ant chat all day",
+    explanation: "The story says cat and ant chat all day."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Lad has a cat and an ant.<br>
+Cat has a bat.<br>
+Ant has a mat.<br>
+Cat naps on the mat.<br>
+Ant ran on the bat.<br>
+Cat chats with ant.<br>
+Ant chats with cat.<br>
+Cat and ant chat all day.<br>
+It is a happy day.
+</div><br>
+<span style="color:red;">Who is crying?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/5.jpeg",
+    options: ["cat is crying", "ant is crying", "no one is crying"],
+    correct: "no one is crying",
+    explanation: "It is a happy day — nobody is crying in this story."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Lad has a cat and an ant.<br>
+Cat has a bat.<br>
+Ant has a mat.<br>
+Cat naps on the mat.<br>
+Ant ran on the bat.<br>
+Cat chats with ant.<br>
+Ant chats with cat.<br>
+Cat and ant chat all day.<br>
+It is a happy day.
+</div><br>
+<span style="color:red;">How many boys are there in the short story?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/5.jpeg",
+    options: ["one boy", "two boys", "three boys"],
+    correct: "one boy",
+    explanation: "Only Lad (one boy) is mentioned in the story."
+  },
+
+  // --- IMAGE 6: Sama and Sam (jam and ham) ---
+  {
+    question: `<div style="text-align:center; color:black;">
+Sama has a can of jam.<br>
+Sam has a can of ham.<br>
+Sama and Sam can have jam and ham.<br>
+Sama has a bat.<br>
+Sam has a mat.<br>
+Sama and Sam have a fan.<br>
+Sama and Sam sat on the mat with the fan.
+</div><br>
+<span style="color:red;">What does Sama have?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/6.jpeg",
+    options: ["a fan", "a can of jam", "a mat"],
+    correct: "a can of jam",
+    explanation: "The story says Sama has a can of jam."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sama has a can of jam.<br>
+Sam has a can of ham.<br>
+Sama and Sam can have jam and ham.<br>
+Sama has a bat.<br>
+Sam has a mat.<br>
+Sama and Sam have a fan.<br>
+Sama and Sam sat on the mat with the fan.
+</div><br>
+<span style="color:red;">What does Sam have?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/6.jpeg",
+    options: ["a can of ham", "a bat", "a mat"],
+    correct: "a can of ham",
+    explanation: "The story says Sam has a can of ham."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sama has a can of jam.<br>
+Sam has a can of ham.<br>
+Sama and Sam can have jam and ham.<br>
+Sama has a bat.<br>
+Sam has a mat.<br>
+Sama and Sam have a fan.<br>
+Sama and Sam sat on the mat with the fan.
+</div><br>
+<span style="color:red;">What can Sama and Sam have together?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/6.jpeg",
+    options: ["fan and mat", "jam and ham", "bat and mat"],
+    correct: "jam and ham",
+    explanation: "Together they can have both jam and ham."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sama has a can of jam.<br>
+Sam has a can of ham.<br>
+Sama and Sam can have jam and ham.<br>
+Sama has a bat.<br>
+Sam has a mat.<br>
+Sama and Sam have a fan.<br>
+Sama and Sam sat on the mat with the fan.
+</div><br>
+<span style="color:red;">Who has a bat?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/6.jpeg",
+    options: ["both", "sam", "sama"],
+    correct: "sama",
+    explanation: "The story says Sama has a bat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sama has a can of jam.<br>
+Sam has a can of ham.<br>
+Sama and Sam can have jam and ham.<br>
+Sama has a bat.<br>
+Sam has a mat.<br>
+Sama and Sam have a fan.<br>
+Sama and Sam sat on the mat with the fan.
+</div><br>
+<span style="color:red;">Who has a mat?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/6.jpeg",
+    options: ["sama", "sam", "both"],
+    correct: "sam",
+    explanation: "The story says Sam has a mat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sama has a can of jam.<br>
+Sam has a can of ham.<br>
+Sama and Sam can have jam and ham.<br>
+Sama has a bat.<br>
+Sam has a mat.<br>
+Sama and Sam have a fan.<br>
+Sama and Sam sat on the mat with the fan.
+</div><br>
+<span style="color:red;">Where did Sama and Sam sit?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/6.jpeg",
+    options: ["on a chair", "on the mat", "on a bed"],
+    correct: "on the mat",
+    explanation: "The story says they sat on the mat with the fan."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sama has a can of jam.<br>
+Sam has a can of ham.<br>
+Sama and Sam can have jam and ham.<br>
+Sama has a bat.<br>
+Sam has a mat.<br>
+Sama and Sam have a fan.<br>
+Sama and Sam sat on the mat with the fan.
+</div><br>
+<span style="color:red;">What is in Sama's can?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/6.jpeg",
+    options: ["water", "ham", "jam"],
+    correct: "jam",
+    explanation: "Sama's can has jam in it."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sama has a can of jam.<br>
+Sam has a can of ham.<br>
+Sama and Sam can have jam and ham.<br>
+Sama has a bat.<br>
+Sam has a mat.<br>
+Sama and Sam have a fan.<br>
+Sama and Sam sat on the mat with the fan.
+</div><br>
+<span style="color:red;">What is in Sam's can?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/6.jpeg",
+    options: ["jam", "ham", "juice"],
+    correct: "ham",
+    explanation: "Sam's can has ham in it."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sama has a can of jam.<br>
+Sam has a can of ham.<br>
+Sama and Sam can have jam and ham.<br>
+Sama has a bat.<br>
+Sam has a mat.<br>
+Sama and Sam have a fan.<br>
+Sama and Sam sat on the mat with the fan.
+</div><br>
+<span style="color:red;">What did Sama sit on?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/6.jpeg",
+    options: ["chair", "mat", "table"],
+    correct: "mat",
+    explanation: "Sama and Sam both sat on the mat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sama has a can of jam.<br>
+Sam has a can of ham.<br>
+Sama and Sam can have jam and ham.<br>
+Sama has a bat.<br>
+Sam has a mat.<br>
+Sama and Sam have a fan.<br>
+Sama and Sam sat on the mat with the fan.
+</div><br>
+<span style="color:red;">What did Sam sit on?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/6.jpeg",
+    options: ["bat", "fan", "mat"],
+    correct: "mat",
+    explanation: "Both Sama and Sam sat on the mat with the fan."
+  },
+
+  // --- IMAGE 7: Dan has a van ---
+  {
+    question: `<div style="text-align:center; color:black;">
+Dan has a van.<br>
+Dan has a cat.<br>
+Dan is in the van with the cat.<br>
+Dan is mad.<br>
+The cat is sad.<br>
+The van has no gas.<br>
+Dan has to take a cab with the cat.
+</div><br>
+<span style="color:red;">Who has a van?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/7.jpeg",
+    options: ["dan", "cat", "cab"],
+    correct: "dan",
+    explanation: "The story starts by saying Dan has a van."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Dan has a van.<br>
+Dan has a cat.<br>
+Dan is in the van with the cat.<br>
+Dan is mad.<br>
+The cat is sad.<br>
+The van has no gas.<br>
+Dan has to take a cab with the cat.
+</div><br>
+<span style="color:red;">Who has a cat?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/7.jpeg",
+    options: ["van", "dan", "cab"],
+    correct: "dan",
+    explanation: "The story says Dan has a cat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Dan has a van.<br>
+Dan has a cat.<br>
+Dan is in the van with the cat.<br>
+Dan is mad.<br>
+The cat is sad.<br>
+The van has no gas.<br>
+Dan has to take a cab with the cat.
+</div><br>
+<span style="color:red;">Where is Dan?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/7.jpeg",
+    options: ["in the cab", "in the van", "at home"],
+    correct: "in the van",
+    explanation: "The story says Dan is in the van with the cat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Dan has a van.<br>
+Dan has a cat.<br>
+Dan is in the van with the cat.<br>
+Dan is mad.<br>
+The cat is sad.<br>
+The van has no gas.<br>
+Dan has to take a cab with the cat.
+</div><br>
+<span style="color:red;">Who is with Dan in the van?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/7.jpeg",
+    options: ["a dog and a cat", "dan and the cat", "a man and a girl"],
+    correct: "dan and the cat",
+    explanation: "Dan is in the van with his cat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Dan has a van.<br>
+Dan has a cat.<br>
+Dan is in the van with the cat.<br>
+Dan is mad.<br>
+The cat is sad.<br>
+The van has no gas.<br>
+Dan has to take a cab with the cat.
+</div><br>
+<span style="color:red;">How does Dan feel?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/7.jpeg",
+    options: ["happy", "mad", "flying"],
+    correct: "mad",
+    explanation: "The story says Dan is mad because the van has no gas."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Dan has a van.<br>
+Dan has a cat.<br>
+Dan is in the van with the cat.<br>
+Dan is mad.<br>
+The cat is sad.<br>
+The van has no gas.<br>
+Dan has to take a cab with the cat.
+</div><br>
+<span style="color:red;">How does the cat feel?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/7.jpeg",
+    options: ["sad", "glad", "mad"],
+    correct: "sad",
+    explanation: "The story says the cat is sad."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Dan has a van.<br>
+Dan has a cat.<br>
+Dan is in the van with the cat.<br>
+Dan is mad.<br>
+The cat is sad.<br>
+The van has no gas.<br>
+Dan has to take a cab with the cat.
+</div><br>
+<span style="color:red;">What has no gas?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/7.jpeg",
+    options: ["cab", "van", "cat"],
+    correct: "van",
+    explanation: "The story says the van has no gas."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Dan has a van.<br>
+Dan has a cat.<br>
+Dan is in the van with the cat.<br>
+Dan is mad.<br>
+The cat is sad.<br>
+The van has no gas.<br>
+Dan has to take a cab with the cat.
+</div><br>
+<span style="color:red;">What must Dan take?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/7.jpeg",
+    options: ["bus", "bike", "cab"],
+    correct: "cab",
+    explanation: "Since the van has no gas, Dan must take a cab."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Dan has a van.<br>
+Dan has a cat.<br>
+Dan is in the van with the cat.<br>
+Dan is mad.<br>
+The cat is sad.<br>
+The van has no gas.<br>
+Dan has to take a cab with the cat.
+</div><br>
+<span style="color:red;">Who goes with Dan in the cab?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/7.jpeg",
+    options: ["cat", "van", "gas"],
+    correct: "cat",
+    explanation: "Dan takes a cab with the cat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Dan has a van.<br>
+Dan has a cat.<br>
+Dan is in the van with the cat.<br>
+Dan is mad.<br>
+The cat is sad.<br>
+The van has no gas.<br>
+Dan has to take a cab with the cat.
+</div><br>
+<span style="color:red;">What animal is in the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/7.jpeg",
+    options: ["dog", "cat", "fish"],
+    correct: "cat",
+    explanation: "The only animal in the story is Dan's cat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Dan has a van.<br>
+Dan has a cat.<br>
+Dan is in the van with the cat.<br>
+Dan is mad.<br>
+The cat is sad.<br>
+The van has no gas.<br>
+Dan has to take a cab with the cat.
+</div><br>
+<span style="color:red;">Why is Dan mad?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/7.jpeg",
+    options: ["the van has no gas", "the cat runs away", "the cab is late"],
+    correct: "the van has no gas",
+    explanation: "Dan is mad because the van has no gas."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Dan has a van.<br>
+Dan has a cat.<br>
+Dan is in the van with the cat.<br>
+Dan is mad.<br>
+The cat is sad.<br>
+The van has no gas.<br>
+Dan has to take a cab with the cat.
+</div><br>
+<span style="color:red;">What does Dan have?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/7.jpeg",
+    options: ["van and cat", "dog and bike", "bus and fish"],
+    correct: "van and cat",
+    explanation: "Dan has a van and a cat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Dan has a van.<br>
+Dan has a cat.<br>
+Dan is in the van with the cat.<br>
+Dan is mad.<br>
+The cat is sad.<br>
+The van has no gas.<br>
+Dan has to take a cab with the cat.
+</div><br>
+<span style="color:red;">Who is sad?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/7.jpeg",
+    options: ["dan", "cat", "van"],
+    correct: "cat",
+    explanation: "The story says the cat is sad."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Dan has a van.<br>
+Dan has a cat.<br>
+Dan is in the van with the cat.<br>
+Dan is mad.<br>
+The cat is sad.<br>
+The van has no gas.<br>
+Dan has to take a cab with the cat.
+</div><br>
+<span style="color:red;">What is not in the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/7.jpeg",
+    options: ["van", "cat", "plane"],
+    correct: "plane",
+    explanation: "There is no plane mentioned anywhere in the story."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Dan has a van.<br>
+Dan has a cat.<br>
+Dan is in the van with the cat.<br>
+Dan is mad.<br>
+The cat is sad.<br>
+The van has no gas.<br>
+Dan has to take a cab with the cat.
+</div><br>
+<span style="color:red;">What did dad say?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/7.jpeg",
+    options: ["no dad mentioned", "sit down", "stand up"],
+    correct: "no dad mentioned",
+    explanation: "There is no dad character in this story at all."
+  },
+
+  // --- IMAGE 8: Sam and cat Rad ---
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a cat.<br>
+Sam named the cat Rad.<br>
+Rad is a cat.<br>
+Rad sat on the mat.<br>
+Rad had a can of jam.<br>
+Bad Rad!<br>
+Now, Rad will have a bath.<br>
+Get a rag!
+</div><br>
+<span style="color:red;">What did Sam name the cat?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/8.jpeg",
+    options: ["rad", "max", "tom"],
+    correct: "rad",
+    explanation: "Sam named the cat Rad."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a cat.<br>
+Sam named the cat Rad.<br>
+Rad is a cat.<br>
+Rad sat on the mat.<br>
+Rad had a can of jam.<br>
+Bad Rad!<br>
+Now, Rad will have a bath.<br>
+Get a rag!
+</div><br>
+<span style="color:red;">Who is Rad?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/8.jpeg",
+    options: ["a dog", "a cat", "a fish"],
+    correct: "a cat",
+    explanation: "Rad is Sam's cat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a cat.<br>
+Sam named the cat Rad.<br>
+Rad is a cat.<br>
+Rad sat on the mat.<br>
+Rad had a can of jam.<br>
+Bad Rad!<br>
+Now, Rad will have a bath.<br>
+Get a rag!
+</div><br>
+<span style="color:red;">Where did Rad sit?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/8.jpeg",
+    options: ["on the mat", "on the bed", "on the chair"],
+    correct: "on the mat",
+    explanation: "The story says Rad sat on the mat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a cat.<br>
+Sam named the cat Rad.<br>
+Rad is a cat.<br>
+Rad sat on the mat.<br>
+Rad had a can of jam.<br>
+Bad Rad!<br>
+Now, Rad will have a bath.<br>
+Get a rag!
+</div><br>
+<span style="color:red;">What did Rad have?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/8.jpeg",
+    options: ["a ball", "a can of jam", "a toy"],
+    correct: "a can of jam",
+    explanation: "Rad had a can of jam which made a mess."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a cat.<br>
+Sam named the cat Rad.<br>
+Rad is a cat.<br>
+Rad sat on the mat.<br>
+Rad had a can of jam.<br>
+Bad Rad!<br>
+Now, Rad will have a bath.<br>
+Get a rag!
+</div><br>
+<span style="color:red;">What will Rad have next?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/8.jpeg",
+    options: ["a nap", "a bath", "a walk"],
+    correct: "a bath",
+    explanation: "Because Rad made a mess with the jam, Rad will have a bath."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a cat.<br>
+Sam named the cat Rad.<br>
+Rad is a cat.<br>
+Rad sat on the mat.<br>
+Rad had a can of jam.<br>
+Bad Rad!<br>
+Now, Rad will have a bath.<br>
+Get a rag!
+</div><br>
+<span style="color:red;">Who has a cat?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/8.jpeg",
+    options: ["sam", "rad", "tom"],
+    correct: "sam",
+    explanation: "Sam has the cat named Rad."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a cat.<br>
+Sam named the cat Rad.<br>
+Rad is a cat.<br>
+Rad sat on the mat.<br>
+Rad had a can of jam.<br>
+Bad Rad!<br>
+Now, Rad will have a bath.<br>
+Get a rag!
+</div><br>
+<span style="color:red;">Who is Sam?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/8.jpeg",
+    options: ["a boy", "a cat", "a dog"],
+    correct: "a boy",
+    explanation: "Sam is the boy who owns the cat Rad."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a cat.<br>
+Sam named the cat Rad.<br>
+Rad is a cat.<br>
+Rad sat on the mat.<br>
+Rad had a can of jam.<br>
+Bad Rad!<br>
+Now, Rad will have a bath.<br>
+Get a rag!
+</div><br>
+<span style="color:red;">Where is the jam?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/8.jpeg",
+    options: ["in a can", "in a box", "in a bag"],
+    correct: "in a can",
+    explanation: "The story says Rad had a can of jam."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a cat.<br>
+Sam named the cat Rad.<br>
+Rad is a cat.<br>
+Rad sat on the mat.<br>
+Rad had a can of jam.<br>
+Bad Rad!<br>
+Now, Rad will have a bath.<br>
+Get a rag!
+</div><br>
+<span style="color:red;">What is Rad covered in?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/8.jpeg",
+    options: ["water", "jam", "sand"],
+    correct: "jam",
+    explanation: "Rad got into the can of jam and is covered in it."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a cat.<br>
+Sam named the cat Rad.<br>
+Rad is a cat.<br>
+Rad sat on the mat.<br>
+Rad had a can of jam.<br>
+Bad Rad!<br>
+Now, Rad will have a bath.<br>
+Get a rag!
+</div><br>
+<span style="color:red;">Why is Rad bad?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/8.jpeg",
+    options: ["Rad ran away", "Rad slept", "Rad made a mess"],
+    correct: "Rad made a mess",
+    explanation: "Rad got into the jam and made a mess, so Sam said 'Bad Rad!'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a cat.<br>
+Sam named the cat Rad.<br>
+Rad is a cat.<br>
+Rad sat on the mat.<br>
+Rad had a can of jam.<br>
+Bad Rad!<br>
+Now, Rad will have a bath.<br>
+Get a rag!
+</div><br>
+<span style="color:red;">What do you think would clean Rad?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/8.jpeg",
+    options: ["juice", "bath", "mat"],
+    correct: "bath",
+    explanation: "A bath would clean off all the jam from Rad."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a cat.<br>
+Sam named the cat Rad.<br>
+Rad is a cat.<br>
+Rad sat on the mat.<br>
+Rad had a can of jam.<br>
+Bad Rad!<br>
+Now, Rad will have a bath.<br>
+Get a rag!
+</div><br>
+<span style="color:red;">Where might Rad take a bath?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/8.jpeg",
+    options: ["kitchen", "bathroom", "garden"],
+    correct: "bathroom",
+    explanation: "A bath is normally taken in the bathroom."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a cat.<br>
+Sam named the cat Rad.<br>
+Rad is a cat.<br>
+Rad sat on the mat.<br>
+Rad had a can of jam.<br>
+Bad Rad!<br>
+Now, Rad will have a bath.<br>
+Get a rag!
+</div><br>
+<span style="color:red;">What is the story about?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/8.jpeg",
+    options: ["a trip", "a cat and a mess", "a game"],
+    correct: "a cat and a mess",
+    explanation: "The story is about Rad the cat making a mess with a can of jam."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a cat.<br>
+Sam named the cat Rad.<br>
+Rad is a cat.<br>
+Rad sat on the mat.<br>
+Rad had a can of jam.<br>
+Bad Rad!<br>
+Now, Rad will have a bath.<br>
+Get a rag!
+</div><br>
+<span style="color:red;">What is the mat used for?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/8.jpeg",
+    options: ["sitting", "cooking", "flying"],
+    correct: "sitting",
+    explanation: "Rad sat on the mat, so it is used for sitting."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Sam has a cat.<br>
+Sam named the cat Rad.<br>
+Rad is a cat.<br>
+Rad sat on the mat.<br>
+Rad had a can of jam.<br>
+Bad Rad!<br>
+Now, Rad will have a bath.<br>
+Get a rag!
+</div><br>
+<span style="color:red;">How many cats are there in the short story?</span>`,
+    image: "../../../image/leve1_eng_vowels_1/8.jpeg",
+    options: ["two", "three", "one"],
+    correct: "one",
+    explanation: "There is only one cat in the story — Rad."
+  }
+
+];
+    </script>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    initMCQQuiz(questions);
+  });
+    </script>
+  </body>
+</html>
