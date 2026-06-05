@@ -1,0 +1,1904 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    …
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+  <div class="question-section">
+    <h3 id="question-text">Loading…</h3>
+    <ul id="options-list" class="options"></ul>
+  </div>
+
+  <div id="feedback" class="hidden"></div>
+  <div id="explanation" class="hidden"></div>
+  <button id="back-btn" class="hidden">Back</button>
+  <button id="next-btn" class="hidden">Next</button>
+</main>
+
+
+    <!-- your question data: only one entry -->
+
+    <script>
+      const questions = [
+  // ===== IMAGE 1 : Tom and Ron at the toy shop =====
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom and Ron went to the toy shop.<br>
+Tom and Ron got a box, a top, and a red robot.<br>
+Ron said, "Look at my top. It can hop and spin!"<br>
+Tom said, "I got a robot. It can nod and bop."<br>
+The robot sat in the box.<br>
+Ron put his top on the box.<br>
+Tom and Ron had lots of fun at the toy shop.<br>
+Then Mom said, "Stop. It is not long to go home."<br>
+Tom and Ron got in the van and went home.
+</div><br>
+<span style="color:red;">1. Where did Tom and Ron go?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/1.jpeg",
+    options: ["they went home", "they went school", "they went to the shop"],
+    correct: "they went to the shop",
+    explanation: "The story says Tom and Ron went to the toy shop."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom and Ron went to the toy shop.<br>
+Tom and Ron got a box, a top, and a red robot.<br>
+Ron said, "Look at my top. It can hop and spin!"<br>
+Tom said, "I got a robot. It can nod and bop."<br>
+The robot sat in the box.<br>
+Ron put his top on the box.<br>
+Tom and Ron had lots of fun at the toy shop.<br>
+Then Mom said, "Stop. It is not long to go home."<br>
+Tom and Ron got in the van and went home.
+</div><br>
+<span style="color:red;">2. What kind of shop did Tom and Ron go to?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/1.jpeg",
+    options: ["they went to the grocery shop", "they went to the one dollar shop", "they went to the toy shop"],
+    correct: "they went to the toy shop",
+    explanation: "It was a toy shop where they bought toys."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom and Ron went to the toy shop.<br>
+Tom and Ron got a box, a top, and a red robot.<br>
+Ron said, "Look at my top. It can hop and spin!"<br>
+Tom said, "I got a robot. It can nod and bop."<br>
+The robot sat in the box.<br>
+Ron put his top on the box.<br>
+Tom and Ron had lots of fun at the toy shop.<br>
+Then Mom said, "Stop. It is not long to go home."<br>
+Tom and Ron got in the van and went home.
+</div><br>
+<span style="color:red;">3. Who went to the toy shop?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/1.jpeg",
+    options: ["Tom and Sandy", "Tom and Ron", "Ron and Sandy"],
+    correct: "Tom and Ron",
+    explanation: "The two boys in the story are Tom and Ron."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom and Ron went to the toy shop.<br>
+Tom and Ron got a box, a top, and a red robot.<br>
+Ron said, "Look at my top. It can hop and spin!"<br>
+Tom said, "I got a robot. It can nod and bop."<br>
+The robot sat in the box.<br>
+Ron put his top on the box.<br>
+Tom and Ron had lots of fun at the toy shop.<br>
+Then Mom said, "Stop. It is not long to go home."<br>
+Tom and Ron got in the van and went home.
+</div><br>
+<span style="color:red;">4. What did Tom and Ron get from the shop?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/1.jpeg",
+    options: ["a box, a top, and a red robot", "Tom and Ron got a box", "Toy, car, and red robot"],
+    correct: "a box, a top, and a red robot",
+    explanation: "They got a box, a top, and a red robot."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom and Ron went to the toy shop.<br>
+Tom and Ron got a box, a top, and a red robot.<br>
+Ron said, "Look at my top. It can hop and spin!"<br>
+Tom said, "I got a robot. It can nod and bop."<br>
+The robot sat in the box.<br>
+Ron put his top on the box.<br>
+Tom and Ron had lots of fun at the toy shop.<br>
+Then Mom said, "Stop. It is not long to go home."<br>
+Tom and Ron got in the van and went home.
+</div><br>
+<span style="color:red;">5. What color was the robot?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/1.jpeg",
+    options: ["blue", "red", "yellow"],
+    correct: "red",
+    explanation: "The robot was red."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom and Ron went to the toy shop.<br>
+Tom and Ron got a box, a top, and a red robot.<br>
+Ron said, "Look at my top. It can hop and spin!"<br>
+Tom said, "I got a robot. It can nod and bop."<br>
+The robot sat in the box.<br>
+Ron put his top on the box.<br>
+Tom and Ron had lots of fun at the toy shop.<br>
+Then Mom said, "Stop. It is not long to go home."<br>
+Tom and Ron got in the van and went home.
+</div><br>
+<span style="color:red;">6. What did Tom and Ron get from the shop?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/1.jpeg",
+    options: ["a box, a top, and a red robot", "Tom and Ron got a box", "Toy, car, and red robot"],
+    correct: "a box, a top, and a red robot",
+    explanation: "They got a box, a top, and a red robot."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom and Ron went to the toy shop.<br>
+Tom and Ron got a box, a top, and a red robot.<br>
+Ron said, "Look at my top. It can hop and spin!"<br>
+Tom said, "I got a robot. It can nod and bop."<br>
+The robot sat in the box.<br>
+Ron put his top on the box.<br>
+Tom and Ron had lots of fun at the toy shop.<br>
+Then Mom said, "Stop. It is not long to go home."<br>
+Tom and Ron got in the van and went home.
+</div><br>
+<span style="color:red;">7. What did Ron get?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/1.jpeg",
+    options: ["a car and teddy", "a top", "a teddy"],
+    correct: "a top",
+    explanation: "Ron got a top that can hop and spin."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom and Ron went to the toy shop.<br>
+Tom and Ron got a box, a top, and a red robot.<br>
+Ron said, "Look at my top. It can hop and spin!"<br>
+Tom said, "I got a robot. It can nod and bop."<br>
+The robot sat in the box.<br>
+Ron put his top on the box.<br>
+Tom and Ron had lots of fun at the toy shop.<br>
+Then Mom said, "Stop. It is not long to go home."<br>
+Tom and Ron got in the van and went home.
+</div><br>
+<span style="color:red;">8. What could the top do?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/1.jpeg",
+    options: ["write and spin", "hop and spin", "hop and fly"],
+    correct: "hop and spin",
+    explanation: "Ron said the top can hop and spin."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom and Ron went to the toy shop.<br>
+Tom and Ron got a box, a top, and a red robot.<br>
+Ron said, "Look at my top. It can hop and spin!"<br>
+Tom said, "I got a robot. It can nod and bop."<br>
+The robot sat in the box.<br>
+Ron put his top on the box.<br>
+Tom and Ron had lots of fun at the toy shop.<br>
+Then Mom said, "Stop. It is not long to go home."<br>
+Tom and Ron got in the van and went home.
+</div><br>
+<span style="color:red;">9. What did Tom get?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/1.jpeg",
+    options: ["a red rock", "a red stone", "a red robot"],
+    correct: "a red robot",
+    explanation: "Tom got a red robot."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom and Ron went to the toy shop.<br>
+Tom and Ron got a box, a top, and a red robot.<br>
+Ron said, "Look at my top. It can hop and spin!"<br>
+Tom said, "I got a robot. It can nod and bop."<br>
+The robot sat in the box.<br>
+Ron put his top on the box.<br>
+Tom and Ron had lots of fun at the toy shop.<br>
+Then Mom said, "Stop. It is not long to go home."<br>
+Tom and Ron got in the van and went home.
+</div><br>
+<span style="color:red;">10. What could the robot do?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/1.jpeg",
+    options: ["hop and cry", "nod and bop", "write and draw"],
+    correct: "nod and bop",
+    explanation: "Tom said the robot can nod and bop."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom and Ron went to the toy shop.<br>
+Tom and Ron got a box, a top, and a red robot.<br>
+Ron said, "Look at my top. It can hop and spin!"<br>
+Tom said, "I got a robot. It can nod and bop."<br>
+The robot sat in the box.<br>
+Ron put his top on the box.<br>
+Tom and Ron had lots of fun at the toy shop.<br>
+Then Mom said, "Stop. It is not long to go home."<br>
+Tom and Ron got in the van and went home.
+</div><br>
+<span style="color:red;">11. How many kids were in the shop?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/1.jpeg",
+    options: ["two children", "three children", "one child"],
+    correct: "two children",
+    explanation: "Only Tom and Ron, so two children."
+  },
+
+  // ===== IMAGE 2 : John jogs =====
+  {
+    question: `<div style="text-align:center; color:black;">
+John likes to jog.<br>
+John jogs to the dock.<br>
+John hops on the rocks.<br>
+John looks at the pond.<br>
+John spots a frog on a log.<br>
+Now, John is hot.<br>
+John sits on the dock.<br>
+Plop! John drops his cap on the rocks.<br>
+John pops up.<br>
+He jogs back home.
+</div><br>
+<span style="color:red;">12. What is the name of the character in the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/2.jpeg",
+    options: ["Tom", "frog", "John"],
+    correct: "John",
+    explanation: "The character in this story is John."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+John likes to jog.<br>
+John jogs to the dock.<br>
+John hops on the rocks.<br>
+John looks at the pond.<br>
+John spots a frog on a log.<br>
+Now, John is hot.<br>
+John sits on the dock.<br>
+Plop! John drops his cap on the rocks.<br>
+John pops up.<br>
+He jogs back home.
+</div><br>
+<span style="color:red;">13. What does John like to do?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/2.jpeg",
+    options: ["jog and sleep", "jog", "write"],
+    correct: "jog",
+    explanation: "John likes to jog."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+John likes to jog.<br>
+John jogs to the dock.<br>
+John hops on the rocks.<br>
+John looks at the pond.<br>
+John spots a frog on a log.<br>
+Now, John is hot.<br>
+John sits on the dock.<br>
+Plop! John drops his cap on the rocks.<br>
+John pops up.<br>
+He jogs back home.
+</div><br>
+<span style="color:red;">14. Where does John jog?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/2.jpeg",
+    options: ["to the flowers", "to the dock", "to the table"],
+    correct: "to the dock",
+    explanation: "John jogs to the dock."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+John likes to jog.<br>
+John jogs to the dock.<br>
+John hops on the rocks.<br>
+John looks at the pond.<br>
+John spots a frog on a log.<br>
+Now, John is hot.<br>
+John sits on the dock.<br>
+Plop! John drops his cap on the rocks.<br>
+John pops up.<br>
+He jogs back home.
+</div><br>
+<span style="color:red;">15. Where does John hop?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/2.jpeg",
+    options: ["John hops on the couch", "John hops on the rocks", "John hops on the flowers"],
+    correct: "John hops on the rocks",
+    explanation: "John hops on the rocks."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+John likes to jog.<br>
+John jogs to the dock.<br>
+John hops on the rocks.<br>
+John looks at the pond.<br>
+John spots a frog on a log.<br>
+Now, John is hot.<br>
+John sits on the dock.<br>
+Plop! John drops his cap on the rocks.<br>
+John pops up.<br>
+He jogs back home.
+</div><br>
+<span style="color:red;">16. What does John look at?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/2.jpeg",
+    options: ["John looks at the moon", "John looks at the sun", "John looks at the pond"],
+    correct: "John looks at the pond",
+    explanation: "John looks at the pond."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+John likes to jog.<br>
+John jogs to the dock.<br>
+John hops on the rocks.<br>
+John looks at the pond.<br>
+John spots a frog on a log.<br>
+Now, John is hot.<br>
+John sits on the dock.<br>
+Plop! John drops his cap on the rocks.<br>
+John pops up.<br>
+He jogs back home.
+</div><br>
+<span style="color:red;">17. What does John spot?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/2.jpeg",
+    options: ["John spots a frog on the dog", "John spots a frog on the table", "John spots a frog on the log"],
+    correct: "John spots a frog on the log",
+    explanation: "John spots a frog on a log."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+John likes to jog.<br>
+John jogs to the dock.<br>
+John hops on the rocks.<br>
+John looks at the pond.<br>
+John spots a frog on a log.<br>
+Now, John is hot.<br>
+John sits on the dock.<br>
+Plop! John drops his cap on the rocks.<br>
+John pops up.<br>
+He jogs back home.
+</div><br>
+<span style="color:red;">18. Why does John sit on the dock?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/2.jpeg",
+    options: ["John is sad", "John is hot", "John is cold"],
+    correct: "John is hot",
+    explanation: "John sits down because he is hot."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+John likes to jog.<br>
+John jogs to the dock.<br>
+John hops on the rocks.<br>
+John looks at the pond.<br>
+John spots a frog on a log.<br>
+Now, John is hot.<br>
+John sits on the dock.<br>
+Plop! John drops his cap on the rocks.<br>
+John pops up.<br>
+He jogs back home.
+</div><br>
+<span style="color:red;">19. Where does John sit?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/2.jpeg",
+    options: ["on the mat", "on the dock", "on the rocks"],
+    correct: "on the dock",
+    explanation: "John sits on the dock."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+John likes to jog.<br>
+John jogs to the dock.<br>
+John hops on the rocks.<br>
+John looks at the pond.<br>
+John spots a frog on a log.<br>
+Now, John is hot.<br>
+John sits on the dock.<br>
+Plop! John drops his cap on the rocks.<br>
+John pops up.<br>
+He jogs back home.
+</div><br>
+<span style="color:red;">20. What does John drop on the rocks?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/2.jpeg",
+    options: ["his shoes", "his cap", "his necklace"],
+    correct: "his cap",
+    explanation: "John drops his cap on the rocks."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+John likes to jog.<br>
+John jogs to the dock.<br>
+John hops on the rocks.<br>
+John looks at the pond.<br>
+John spots a frog on a log.<br>
+Now, John is hot.<br>
+John sits on the dock.<br>
+Plop! John drops his cap on the rocks.<br>
+John pops up.<br>
+He jogs back home.
+</div><br>
+<span style="color:red;">21. Where does John jog back to?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/2.jpeg",
+    options: ["John jogs back home", "John jogs to school", "John jogs to hospital"],
+    correct: "John jogs back home",
+    explanation: "John jogs back home."
+  },
+
+  // ===== IMAGE 3 : Bob and the frog =====
+  {
+    question: `<div style="text-align:center; color:black;">
+Bob jogs.<br>
+Bob got a big frog.<br>
+Bob likes the frog a lot.<br>
+Hop! Hop! went the frog.<br>
+Bob hops on a log.<br>
+Bob hops on rocks.<br>
+The frog sits on a log.<br>
+Bob looks on.<br>
+The frog plops in the pond.<br>
+Bob jogs to the dock.<br>
+Bob sits on the dock.<br>
+The frog pops up.<br>
+Bob and the frog jog home.
+</div><br>
+<span style="color:red;">22. What did Bob get?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/3.jpeg",
+    options: ["a big fish", "a big cow", "a big frog"],
+    correct: "a big frog",
+    explanation: "Bob got a big frog."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Bob jogs.<br>
+Bob got a big frog.<br>
+Bob likes the frog a lot.<br>
+Hop! Hop! went the frog.<br>
+Bob hops on a log.<br>
+Bob hops on rocks.<br>
+The frog sits on a log.<br>
+Bob looks on.<br>
+The frog plops in the pond.<br>
+Bob jogs to the dock.<br>
+Bob sits on the dock.<br>
+The frog pops up.<br>
+Bob and the frog jog home.
+</div><br>
+<span style="color:red;">23. What does Bob like a lot?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/3.jpeg",
+    options: ["a frog", "a pig", "a spider"],
+    correct: "a frog",
+    explanation: "Bob likes the frog a lot."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Bob jogs.<br>
+Bob got a big frog.<br>
+Bob likes the frog a lot.<br>
+Hop! Hop! went the frog.<br>
+Bob hops on a log.<br>
+Bob hops on rocks.<br>
+The frog sits on a log.<br>
+Bob looks on.<br>
+The frog plops in the pond.<br>
+Bob jogs to the dock.<br>
+Bob sits on the dock.<br>
+The frog pops up.<br>
+Bob and the frog jog home.
+</div><br>
+<span style="color:red;">24. What did the frog do, hop or fly?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/3.jpeg",
+    options: ["the frog flew", "the frog sang", "the frog hops"],
+    correct: "the frog hops",
+    explanation: "The frog hops (Hop! Hop! went the frog)."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Bob jogs.<br>
+Bob got a big frog.<br>
+Bob likes the frog a lot.<br>
+Hop! Hop! went the frog.<br>
+Bob hops on a log.<br>
+Bob hops on rocks.<br>
+The frog sits on a log.<br>
+Bob looks on.<br>
+The frog plops in the pond.<br>
+Bob jogs to the dock.<br>
+Bob sits on the dock.<br>
+The frog pops up.<br>
+Bob and the frog jog home.
+</div><br>
+<span style="color:red;">25. Where does Bob hop first?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/3.jpeg",
+    options: ["on a log", "on a car", "on a bath"],
+    correct: "on a log",
+    explanation: "Bob hops on a log first."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Bob jogs.<br>
+Bob got a big frog.<br>
+Bob likes the frog a lot.<br>
+Hop! Hop! went the frog.<br>
+Bob hops on a log.<br>
+Bob hops on rocks.<br>
+The frog sits on a log.<br>
+Bob looks on.<br>
+The frog plops in the pond.<br>
+Bob jogs to the dock.<br>
+Bob sits on the dock.<br>
+The frog pops up.<br>
+Bob and the frog jog home.
+</div><br>
+<span style="color:red;">26. Where does Bob hop second?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/3.jpeg",
+    options: ["on a log", "on a car", "on the rocks"],
+    correct: "on the rocks",
+    explanation: "Bob hops on the rocks second."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Bob jogs.<br>
+Bob got a big frog.<br>
+Bob likes the frog a lot.<br>
+Hop! Hop! went the frog.<br>
+Bob hops on a log.<br>
+Bob hops on rocks.<br>
+The frog sits on a log.<br>
+Bob looks on.<br>
+The frog plops in the pond.<br>
+Bob jogs to the dock.<br>
+Bob sits on the dock.<br>
+The frog pops up.<br>
+Bob and the frog jog home.
+</div><br>
+<span style="color:red;">27. Where does the frog sit?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/3.jpeg",
+    options: ["on the couch", "on the sock", "on the log"],
+    correct: "on the log",
+    explanation: "The frog sits on a log."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Bob jogs.<br>
+Bob got a big frog.<br>
+Bob likes the frog a lot.<br>
+Hop! Hop! went the frog.<br>
+Bob hops on a log.<br>
+Bob hops on rocks.<br>
+The frog sits on a log.<br>
+Bob looks on.<br>
+The frog plops in the pond.<br>
+Bob jogs to the dock.<br>
+Bob sits on the dock.<br>
+The frog pops up.<br>
+Bob and the frog jog home.
+</div><br>
+<span style="color:red;">28. Where does the frog plop?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/3.jpeg",
+    options: ["in the pool", "in the pond", "in the air"],
+    correct: "in the pond",
+    explanation: "The frog plops in the pond."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Bob jogs.<br>
+Bob got a big frog.<br>
+Bob likes the frog a lot.<br>
+Hop! Hop! went the frog.<br>
+Bob hops on a log.<br>
+Bob hops on rocks.<br>
+The frog sits on a log.<br>
+Bob looks on.<br>
+The frog plops in the pond.<br>
+Bob jogs to the dock.<br>
+Bob sits on the dock.<br>
+The frog pops up.<br>
+Bob and the frog jog home.
+</div><br>
+<span style="color:red;">29. Where does Bob jog?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/3.jpeg",
+    options: ["to the dock", "to the house", "to the hospital"],
+    correct: "to the dock",
+    explanation: "Bob jogs to the dock."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Bob jogs.<br>
+Bob got a big frog.<br>
+Bob likes the frog a lot.<br>
+Hop! Hop! went the frog.<br>
+Bob hops on a log.<br>
+Bob hops on rocks.<br>
+The frog sits on a log.<br>
+Bob looks on.<br>
+The frog plops in the pond.<br>
+Bob jogs to the dock.<br>
+Bob sits on the dock.<br>
+The frog pops up.<br>
+Bob and the frog jog home.
+</div><br>
+<span style="color:red;">30. Where does Bob sit?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/3.jpeg",
+    options: ["Bob sits in the chair", "Bob sits on the dock", "Bob sits on the frog"],
+    correct: "Bob sits on the dock",
+    explanation: "Bob sits on the dock."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Bob jogs.<br>
+Bob got a big frog.<br>
+Bob likes the frog a lot.<br>
+Hop! Hop! went the frog.<br>
+Bob hops on a log.<br>
+Bob hops on rocks.<br>
+The frog sits on a log.<br>
+Bob looks on.<br>
+The frog plops in the pond.<br>
+Bob jogs to the dock.<br>
+Bob sits on the dock.<br>
+The frog pops up.<br>
+Bob and the frog jog home.
+</div><br>
+<span style="color:red;">31. What do Bob and the frog do?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/3.jpeg",
+    options: ["Bob and frog jog to the moon", "Bob and frog jog home", "Bob and frog jog to the lake"],
+    correct: "Bob and frog jog home",
+    explanation: "Bob and the frog jog home."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Bob jogs.<br>
+Bob got a big frog.<br>
+Bob likes the frog a lot.<br>
+Hop! Hop! went the frog.<br>
+Bob hops on a log.<br>
+Bob hops on rocks.<br>
+The frog sits on a log.<br>
+Bob looks on.<br>
+The frog plops in the pond.<br>
+Bob jogs to the dock.<br>
+Bob sits on the dock.<br>
+The frog pops up.<br>
+Bob and the frog jog home.
+</div><br>
+<span style="color:red;">32. How many animals are there in the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/3.jpeg",
+    options: ["one animal", "two animals", "three animals"],
+    correct: "one animal",
+    explanation: "Only the frog is an animal, so one animal."
+  },
+
+  // ===== IMAGE 4 : Rod the dog =====
+  {
+    question: `<div style="text-align:center; color:black;">
+Rod the dog likes to hop.<br>
+Rod hops on a cot.<br>
+Rod hops on a log.<br>
+Rod hops on a box.<br>
+Rod hops on a rock.<br>
+Rod hops on a ball.<br>
+Hop! Hop! Hop!<br>
+Rod does a big hop.<br>
+Oh no!<br>
+The ball pops.<br>
+Pop! Pop!<br>
+Rod stops.<br>
+Rod flops on the cot.
+</div><br>
+<span style="color:red;">33. What does Rod the dog like to do?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/4.jpeg",
+    options: ["Rod the dog likes to cry", "Rod the dog likes to jump", "Rod the dog likes to hop"],
+    correct: "Rod the dog likes to hop",
+    explanation: "Rod the dog likes to hop."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Rod the dog likes to hop.<br>
+Rod hops on a cot.<br>
+Rod hops on a log.<br>
+Rod hops on a box.<br>
+Rod hops on a rock.<br>
+Rod hops on a ball.<br>
+Hop! Hop! Hop!<br>
+Rod does a big hop.<br>
+Oh no!<br>
+The ball pops.<br>
+Pop! Pop!<br>
+Rod stops.<br>
+Rod flops on the cot.
+</div><br>
+<span style="color:red;">34. What did Rod do first?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/4.jpeg",
+    options: ["Rod hops on a cot", "Rod hops on a map", "Rod hops on a car"],
+    correct: "Rod hops on a cot",
+    explanation: "Rod hops on a cot first."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Rod the dog likes to hop.<br>
+Rod hops on a cot.<br>
+Rod hops on a log.<br>
+Rod hops on a box.<br>
+Rod hops on a rock.<br>
+Rod hops on a ball.<br>
+Hop! Hop! Hop!<br>
+Rod does a big hop.<br>
+Oh no!<br>
+The ball pops.<br>
+Pop! Pop!<br>
+Rod stops.<br>
+Rod flops on the cot.
+</div><br>
+<span style="color:red;">35. What did Rod do next?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/4.jpeg",
+    options: ["Rod hops on a cot", "Rod hops on a log", "Rod hops on a car"],
+    correct: "Rod hops on a log",
+    explanation: "After the cot, Rod hops on a log."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Rod the dog likes to hop.<br>
+Rod hops on a cot.<br>
+Rod hops on a log.<br>
+Rod hops on a box.<br>
+Rod hops on a rock.<br>
+Rod hops on a ball.<br>
+Hop! Hop! Hop!<br>
+Rod does a big hop.<br>
+Oh no!<br>
+The ball pops.<br>
+Pop! Pop!<br>
+Rod stops.<br>
+Rod flops on the cot.
+</div><br>
+<span style="color:red;">36. What happens to the ball?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/4.jpeg",
+    options: ["the ball flies", "the ball pops", "the ball jumps"],
+    correct: "the ball pops",
+    explanation: "The ball pops."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Rod the dog likes to hop.<br>
+Rod hops on a cot.<br>
+Rod hops on a log.<br>
+Rod hops on a box.<br>
+Rod hops on a rock.<br>
+Rod hops on a ball.<br>
+Hop! Hop! Hop!<br>
+Rod does a big hop.<br>
+Oh no!<br>
+The ball pops.<br>
+Pop! Pop!<br>
+Rod stops.<br>
+Rod flops on the cot.
+</div><br>
+<span style="color:red;">37. Why did the ball pop?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/4.jpeg",
+    options: ["Rod does a big job", "Rod does a big hop", "Rod does a big jog"],
+    correct: "Rod does a big hop",
+    explanation: "The ball pops because Rod does a big hop on it."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Rod the dog likes to hop.<br>
+Rod hops on a cot.<br>
+Rod hops on a log.<br>
+Rod hops on a box.<br>
+Rod hops on a rock.<br>
+Rod hops on a ball.<br>
+Hop! Hop! Hop!<br>
+Rod does a big hop.<br>
+Oh no!<br>
+The ball pops.<br>
+Pop! Pop!<br>
+Rod stops.<br>
+Rod flops on the cot.
+</div><br>
+<span style="color:red;">38. Where did Rod flop?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/4.jpeg",
+    options: ["Rod flops on the counter", "Rod flops on the cot", "Rod flops on the car"],
+    correct: "Rod flops on the cot",
+    explanation: "Rod flops on the cot."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Rod the dog likes to hop.<br>
+Rod hops on a cot.<br>
+Rod hops on a log.<br>
+Rod hops on a box.<br>
+Rod hops on a rock.<br>
+Rod hops on a ball.<br>
+Hop! Hop! Hop!<br>
+Rod does a big hop.<br>
+Oh no!<br>
+The ball pops.<br>
+Pop! Pop!<br>
+Rod stops.<br>
+Rod flops on the cot.
+</div><br>
+<span style="color:red;">39. What is the name of the dog?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/4.jpeg",
+    options: ["Tom", "Rod", "John"],
+    correct: "Rod",
+    explanation: "The dog's name is Rod."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Rod the dog likes to hop.<br>
+Rod hops on a cot.<br>
+Rod hops on a log.<br>
+Rod hops on a box.<br>
+Rod hops on a rock.<br>
+Rod hops on a ball.<br>
+Hop! Hop! Hop!<br>
+Rod does a big hop.<br>
+Oh no!<br>
+The ball pops.<br>
+Pop! Pop!<br>
+Rod stops.<br>
+Rod flops on the cot.
+</div><br>
+<span style="color:red;">40. What is the past tense of "like"?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/4.jpeg",
+    options: ["like", "liked", "literally"],
+    correct: "liked",
+    explanation: "The past tense of like is liked."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Rod the dog likes to hop.<br>
+Rod hops on a cot.<br>
+Rod hops on a log.<br>
+Rod hops on a box.<br>
+Rod hops on a rock.<br>
+Rod hops on a ball.<br>
+Hop! Hop! Hop!<br>
+Rod does a big hop.<br>
+Oh no!<br>
+The ball pops.<br>
+Pop! Pop!<br>
+Rod stops.<br>
+Rod flops on the cot.
+</div><br>
+<span style="color:red;">41. What is the past of "stop"?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/4.jpeg",
+    options: ["stopping", "stopped", "stop"],
+    correct: "stopped",
+    explanation: "The past tense of stop is stopped."
+  },
+
+  // ===== IMAGE 5 : Tom, Mom and the frog =====
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom jogs.<br>
+Mom jogs.<br>
+Mom and Tom see frog.<br>
+Frog is on a log.<br>
+Frog hops on the moss.<br>
+Frog is hot.<br>
+Frog hops.<br>
+Tom and Mom jog back home.
+</div><br>
+<span style="color:red;">42. Who jogs?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/5.jpeg",
+    options: ["Mom and Tom", "Sandy and Frog", "Tom and Ron"],
+    correct: "Mom and Tom",
+    explanation: "Mom and Tom jog."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom jogs.<br>
+Mom jogs.<br>
+Mom and Tom see frog.<br>
+Frog is on a log.<br>
+Frog hops on the moss.<br>
+Frog is hot.<br>
+Frog hops.<br>
+Tom and Mom jog back home.
+</div><br>
+<span style="color:red;">43. What does Mom and Tom do?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/5.jpeg",
+    options: ["Tom and Mom jog", "Tom and Mom swim", "Tom and Mom job"],
+    correct: "Tom and Mom jog",
+    explanation: "Tom and Mom jog."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom jogs.<br>
+Mom jogs.<br>
+Mom and Tom see frog.<br>
+Frog is on a log.<br>
+Frog hops on the moss.<br>
+Frog is hot.<br>
+Frog hops.<br>
+Tom and Mom jog back home.
+</div><br>
+<span style="color:red;">44. Where is the frog?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/5.jpeg",
+    options: ["frog is on a chair", "frog is on a couch", "frog is on a log"],
+    correct: "frog is on a log",
+    explanation: "The frog is on a log."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom jogs.<br>
+Mom jogs.<br>
+Mom and Tom see frog.<br>
+Frog is on a log.<br>
+Frog hops on the moss.<br>
+Frog is hot.<br>
+Frog hops.<br>
+Tom and Mom jog back home.
+</div><br>
+<span style="color:red;">45. Where does the frog hop?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/5.jpeg",
+    options: ["frog hops on the moss", "frog hops on the ground", "frog hops on the car"],
+    correct: "frog hops on the moss",
+    explanation: "The frog hops on the moss."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom jogs.<br>
+Mom jogs.<br>
+Mom and Tom see frog.<br>
+Frog is on a log.<br>
+Frog hops on the moss.<br>
+Frog is hot.<br>
+Frog hops.<br>
+Tom and Mom jog back home.
+</div><br>
+<span style="color:red;">46. Is the frog hot or cold?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/5.jpeg",
+    options: ["frog is hot", "frog is cold", "frog is sad"],
+    correct: "frog is hot",
+    explanation: "The frog is hot."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom jogs.<br>
+Mom jogs.<br>
+Mom and Tom see frog.<br>
+Frog is on a log.<br>
+Frog hops on the moss.<br>
+Frog is hot.<br>
+Frog hops.<br>
+Tom and Mom jog back home.
+</div><br>
+<span style="color:red;">47. Where do Mom and Tom jog?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/5.jpeg",
+    options: ["Tom and frog jog to the bench", "Tom and frog jog to the beach", "Tom and frog jog back home"],
+    correct: "Tom and frog jog back home",
+    explanation: "Tom and Mom jog back home."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom jogs.<br>
+Mom jogs.<br>
+Mom and Tom see frog.<br>
+Frog is on a log.<br>
+Frog hops on the moss.<br>
+Frog is hot.<br>
+Frog hops.<br>
+Tom and Mom jog back home.
+</div><br>
+<span style="color:red;">48. How many animals are there in the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/5.jpeg",
+    options: ["one animal", "two animals", "no animals"],
+    correct: "one animal",
+    explanation: "Only the frog is an animal, so one animal."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom jogs.<br>
+Mom jogs.<br>
+Mom and Tom see frog.<br>
+Frog is on a log.<br>
+Frog hops on the moss.<br>
+Frog is hot.<br>
+Frog hops.<br>
+Tom and Mom jog back home.
+</div><br>
+<span style="color:red;">49. How many humans are there in the short story?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/5.jpeg",
+    options: ["1 human", "2 humans", "3 humans"],
+    correct: "2 humans",
+    explanation: "Mom and Tom are two humans."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom jogs.<br>
+Mom jogs.<br>
+Mom and Tom see frog.<br>
+Frog is on a log.<br>
+Frog hops on the moss.<br>
+Frog is hot.<br>
+Frog hops.<br>
+Tom and Mom jog back home.
+</div><br>
+<span style="color:red;">50. What is the past tense of "see"?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/5.jpeg",
+    options: ["so", "saw", "some"],
+    correct: "saw",
+    explanation: "The past tense of see is saw."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tom jogs.<br>
+Mom jogs.<br>
+Mom and Tom see frog.<br>
+Frog is on a log.<br>
+Frog hops on the moss.<br>
+Frog is hot.<br>
+Frog hops.<br>
+Tom and Mom jog back home.
+</div><br>
+<span style="color:red;">51. What is the past tense of "is"?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/5.jpeg",
+    options: ["she", "was", "were"],
+    correct: "was",
+    explanation: "The past tense of is is was."
+  },
+
+  // ===== IMAGE 6 : Don, the hog and the frog =====
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a hog.<br>
+Don has a frog.<br>
+The hog hops.<br>
+The frog hops.<br>
+Don put socks in a box.<br>
+The hog puts rocks on the box.<br>
+The frog puts logs in the box.<br>
+The box was on the soft moss.<br>
+The hog did hop on the moss.<br>
+The frog did hop on the moss.<br>
+Don said, "I love my hog and my frog."<br>
+The hog hops to Don.<br>
+The frog hops to Don.<br>
+Don and the hog sat on the moss.<br>
+The frog hops on the box.<br>
+Don said, "I love my hog."
+</div><br>
+<span style="color:red;">52. How many animals are mentioned in the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/6.jpeg",
+    options: ["one animal", "two animals", "three humans"],
+    correct: "two animals",
+    explanation: "The hog and the frog are two animals."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a hog.<br>
+Don has a frog.<br>
+The hog hops.<br>
+The frog hops.<br>
+Don put socks in a box.<br>
+The hog puts rocks on the box.<br>
+The frog puts logs in the box.<br>
+The box was on the soft moss.<br>
+The hog did hop on the moss.<br>
+The frog did hop on the moss.<br>
+Don said, "I love my hog and my frog."<br>
+The hog hops to Don.<br>
+The frog hops to Don.<br>
+Don and the hog sat on the moss.<br>
+The frog hops on the box.<br>
+Don said, "I love my hog."
+</div><br>
+<span style="color:red;">53. What is a hog?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/6.jpeg",
+    options: ["a cat", "a dog", "a pig"],
+    correct: "a pig",
+    explanation: "A hog is a pig."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a hog.<br>
+Don has a frog.<br>
+The hog hops.<br>
+The frog hops.<br>
+Don put socks in a box.<br>
+The hog puts rocks on the box.<br>
+The frog puts logs in the box.<br>
+The box was on the soft moss.<br>
+The hog did hop on the moss.<br>
+The frog did hop on the moss.<br>
+Don said, "I love my hog and my frog."<br>
+The hog hops to Don.<br>
+The frog hops to Don.<br>
+Don and the hog sat on the moss.<br>
+The frog hops on the box.<br>
+Don said, "I love my hog."
+</div><br>
+<span style="color:red;">54. What do both hog and frog do?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/6.jpeg",
+    options: ["both cry", "both sleep", "both hop"],
+    correct: "both hop",
+    explanation: "Both the hog and the frog hop."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a hog.<br>
+Don has a frog.<br>
+The hog hops.<br>
+The frog hops.<br>
+Don put socks in a box.<br>
+The hog puts rocks on the box.<br>
+The frog puts logs in the box.<br>
+The box was on the soft moss.<br>
+The hog did hop on the moss.<br>
+The frog did hop on the moss.<br>
+Don said, "I love my hog and my frog."<br>
+The hog hops to Don.<br>
+The frog hops to Don.<br>
+Don and the hog sat on the moss.<br>
+The frog hops on the box.<br>
+Don said, "I love my hog."
+</div><br>
+<span style="color:red;">55. Where does Don put the socks?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/6.jpeg",
+    options: ["Don put socks in a box", "Don put socks in a bag", "Don put socks on the bed"],
+    correct: "Don put socks in a box",
+    explanation: "Don put the socks in a box."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a hog.<br>
+Don has a frog.<br>
+The hog hops.<br>
+The frog hops.<br>
+Don put socks in a box.<br>
+The hog puts rocks on the box.<br>
+The frog puts logs in the box.<br>
+The box was on the soft moss.<br>
+The hog did hop on the moss.<br>
+The frog did hop on the moss.<br>
+Don said, "I love my hog and my frog."<br>
+The hog hops to Don.<br>
+The frog hops to Don.<br>
+Don and the hog sat on the moss.<br>
+The frog hops on the box.<br>
+Don said, "I love my hog."
+</div><br>
+<span style="color:red;">56. Where does the hog put the rocks?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/6.jpeg",
+    options: ["the hog puts rocks on the box", "the hog puts rocks on the car", "the hog puts rocks on the table"],
+    correct: "the hog puts rocks on the box",
+    explanation: "The hog puts rocks on the box."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a hog.<br>
+Don has a frog.<br>
+The hog hops.<br>
+The frog hops.<br>
+Don put socks in a box.<br>
+The hog puts rocks on the box.<br>
+The frog puts logs in the box.<br>
+The box was on the soft moss.<br>
+The hog did hop on the moss.<br>
+The frog did hop on the moss.<br>
+Don said, "I love my hog and my frog."<br>
+The hog hops to Don.<br>
+The frog hops to Don.<br>
+Don and the hog sat on the moss.<br>
+The frog hops on the box.<br>
+Don said, "I love my hog."
+</div><br>
+<span style="color:red;">57. Where does the frog put the logs?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/6.jpeg",
+    options: ["the frog puts logs in the car", "the frog puts logs in the box", "the frog puts logs in the cage"],
+    correct: "the frog puts logs in the box",
+    explanation: "The frog puts logs in the box."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a hog.<br>
+Don has a frog.<br>
+The hog hops.<br>
+The frog hops.<br>
+Don put socks in a box.<br>
+The hog puts rocks on the box.<br>
+The frog puts logs in the box.<br>
+The box was on the soft moss.<br>
+The hog did hop on the moss.<br>
+The frog did hop on the moss.<br>
+Don said, "I love my hog and my frog."<br>
+The hog hops to Don.<br>
+The frog hops to Don.<br>
+Don and the hog sat on the moss.<br>
+The frog hops on the box.<br>
+Don said, "I love my hog."
+</div><br>
+<span style="color:red;">58. Where was the box?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/6.jpeg",
+    options: ["on the soft surface", "on the soft grass", "on the soft moss"],
+    correct: "on the soft moss",
+    explanation: "The box was on the soft moss."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a hog.<br>
+Don has a frog.<br>
+The hog hops.<br>
+The frog hops.<br>
+Don put socks in a box.<br>
+The hog puts rocks on the box.<br>
+The frog puts logs in the box.<br>
+The box was on the soft moss.<br>
+The hog did hop on the moss.<br>
+The frog did hop on the moss.<br>
+Don said, "I love my hog and my frog."<br>
+The hog hops to Don.<br>
+The frog hops to Don.<br>
+Don and the hog sat on the moss.<br>
+The frog hops on the box.<br>
+Don said, "I love my hog."
+</div><br>
+<span style="color:red;">59. Who hopped on the soft moss?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/6.jpeg",
+    options: ["hog and frog", "cat and cow", "cow and dog"],
+    correct: "hog and frog",
+    explanation: "The hog and the frog hopped on the moss."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a hog.<br>
+Don has a frog.<br>
+The hog hops.<br>
+The frog hops.<br>
+Don put socks in a box.<br>
+The hog puts rocks on the box.<br>
+The frog puts logs in the box.<br>
+The box was on the soft moss.<br>
+The hog did hop on the moss.<br>
+The frog did hop on the moss.<br>
+Don said, "I love my hog and my frog."<br>
+The hog hops to Don.<br>
+The frog hops to Don.<br>
+Don and the hog sat on the moss.<br>
+The frog hops on the box.<br>
+Don said, "I love my hog."
+</div><br>
+<span style="color:red;">60. What did Don say?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/6.jpeg",
+    options: ["I love my mom and dad", "I love my family", "I love my hog and frog"],
+    correct: "I love my hog and frog",
+    explanation: "Don said he loves his hog and frog."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a hog.<br>
+Don has a frog.<br>
+The hog hops.<br>
+The frog hops.<br>
+Don put socks in a box.<br>
+The hog puts rocks on the box.<br>
+The frog puts logs in the box.<br>
+The box was on the soft moss.<br>
+The hog did hop on the moss.<br>
+The frog did hop on the moss.<br>
+Don said, "I love my hog and my frog."<br>
+The hog hops to Don.<br>
+The frog hops to Don.<br>
+Don and the hog sat on the moss.<br>
+The frog hops on the box.<br>
+Don said, "I love my hog."
+</div><br>
+<span style="color:red;">61. What is the present form of "said"?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/6.jpeg",
+    options: ["say", "so", "some"],
+    correct: "say",
+    explanation: "The present form of said is say."
+  },
+
+  // ===== IMAGE 7 : Don and Ron the cops =====
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a job.<br>
+Don is a cop.<br>
+Don spots his pal Ron.<br>
+Ron is a cop, too!<br>
+Don and Ron stop a rob.<br>
+Don and Ron jog to the shop.<br>
+They lock up the shop.<br>
+Don and Ron nod.<br>
+The shop boss says, "Top job!"<br>
+Don and Ron grin a lot.<br>
+Don says, "I love my job!"
+</div><br>
+<span style="color:red;">62. How many police officers are there in the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/7.jpeg",
+    options: ["2 police officers", "1 police officer", "3 police officers"],
+    correct: "2 police officers",
+    explanation: "Don and Ron are both cops, so two police officers."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a job.<br>
+Don is a cop.<br>
+Don spots his pal Ron.<br>
+Ron is a cop, too!<br>
+Don and Ron stop a rob.<br>
+Don and Ron jog to the shop.<br>
+They lock up the shop.<br>
+Don and Ron nod.<br>
+The shop boss says, "Top job!"<br>
+Don and Ron grin a lot.<br>
+Don says, "I love my job!"
+</div><br>
+<span style="color:red;">63. What is another name for a cop?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/7.jpeg",
+    options: ["police officer", "busy man", "business man"],
+    correct: "police officer",
+    explanation: "A cop is a police officer."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a job.<br>
+Don is a cop.<br>
+Don spots his pal Ron.<br>
+Ron is a cop, too!<br>
+Don and Ron stop a rob.<br>
+Don and Ron jog to the shop.<br>
+They lock up the shop.<br>
+Don and Ron nod.<br>
+The shop boss says, "Top job!"<br>
+Don and Ron grin a lot.<br>
+Don says, "I love my job!"
+</div><br>
+<span style="color:red;">64. Who does Don spot?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/7.jpeg",
+    options: ["Don spots his pal Tom", "Don spots his pal John", "Don spots his pal Ron"],
+    correct: "Don spots his pal Ron",
+    explanation: "Don spots his pal Ron."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a job.<br>
+Don is a cop.<br>
+Don spots his pal Ron.<br>
+Ron is a cop, too!<br>
+Don and Ron stop a rob.<br>
+Don and Ron jog to the shop.<br>
+They lock up the shop.<br>
+Don and Ron nod.<br>
+The shop boss says, "Top job!"<br>
+Don and Ron grin a lot.<br>
+Don says, "I love my job!"
+</div><br>
+<span style="color:red;">65. What do Don and Ron stop?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/7.jpeg",
+    options: ["Don and Ron stop a rob", "Don and Ron stop a car", "Don and Ron stop a truck"],
+    correct: "Don and Ron stop a rob",
+    explanation: "Don and Ron stop a rob (robbery)."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a job.<br>
+Don is a cop.<br>
+Don spots his pal Ron.<br>
+Ron is a cop, too!<br>
+Don and Ron stop a rob.<br>
+Don and Ron jog to the shop.<br>
+They lock up the shop.<br>
+Don and Ron nod.<br>
+The shop boss says, "Top job!"<br>
+Don and Ron grin a lot.<br>
+Don says, "I love my job!"
+</div><br>
+<span style="color:red;">66. Where do Don and Ron jog?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/7.jpeg",
+    options: ["Don and Ron jog to the mall", "Don and Ron jog to the shop", "Don and Ron jog to the store"],
+    correct: "Don and Ron jog to the shop",
+    explanation: "Don and Ron jog to the shop."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a job.<br>
+Don is a cop.<br>
+Don spots his pal Ron.<br>
+Ron is a cop, too!<br>
+Don and Ron stop a rob.<br>
+Don and Ron jog to the shop.<br>
+They lock up the shop.<br>
+Don and Ron nod.<br>
+The shop boss says, "Top job!"<br>
+Don and Ron grin a lot.<br>
+Don says, "I love my job!"
+</div><br>
+<span style="color:red;">67. What do Don and Ron lock up?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/7.jpeg",
+    options: ["They lock up the car", "They lock up the box", "They lock up the shop"],
+    correct: "They lock up the shop",
+    explanation: "They lock up the shop."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a job.<br>
+Don is a cop.<br>
+Don spots his pal Ron.<br>
+Ron is a cop, too!<br>
+Don and Ron stop a rob.<br>
+Don and Ron jog to the shop.<br>
+They lock up the shop.<br>
+Don and Ron nod.<br>
+The shop boss says, "Top job!"<br>
+Don and Ron grin a lot.<br>
+Don says, "I love my job!"
+</div><br>
+<span style="color:red;">68. What does the boss say?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/7.jpeg",
+    options: ["great job", "top job", "top work"],
+    correct: "top job",
+    explanation: "The shop boss says \"Top job!\""
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a job.<br>
+Don is a cop.<br>
+Don spots his pal Ron.<br>
+Ron is a cop, too!<br>
+Don and Ron stop a rob.<br>
+Don and Ron jog to the shop.<br>
+They lock up the shop.<br>
+Don and Ron nod.<br>
+The shop boss says, "Top job!"<br>
+Don and Ron grin a lot.<br>
+Don says, "I love my job!"
+</div><br>
+<span style="color:red;">69. What does Don say?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/7.jpeg",
+    options: ["I love my mom", "I love my job", "I love my family"],
+    correct: "I love my job",
+    explanation: "Don says he loves his job."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a job.<br>
+Don is a cop.<br>
+Don spots his pal Ron.<br>
+Ron is a cop, too!<br>
+Don and Ron stop a rob.<br>
+Don and Ron jog to the shop.<br>
+They lock up the shop.<br>
+Don and Ron nod.<br>
+The shop boss says, "Top job!"<br>
+Don and Ron grin a lot.<br>
+Don says, "I love my job!"
+</div><br>
+<span style="color:red;">70. What is the meaning of "grin"?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/7.jpeg",
+    options: ["smile", "cry", "join"],
+    correct: "smile",
+    explanation: "To grin means to smile."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a job.<br>
+Don is a cop.<br>
+Don spots his pal Ron.<br>
+Ron is a cop, too!<br>
+Don and Ron stop a rob.<br>
+Don and Ron jog to the shop.<br>
+They lock up the shop.<br>
+Don and Ron nod.<br>
+The shop boss says, "Top job!"<br>
+Don and Ron grin a lot.<br>
+Don says, "I love my job!"
+</div><br>
+<span style="color:red;">71. What is the opposite of "lock"?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/7.jpeg",
+    options: ["open", "close", "run"],
+    correct: "open",
+    explanation: "The opposite of lock is open."
+  },
+
+  // ===== IMAGE 8 : Don and Ozz the dog =====
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a dog.<br>
+The dog is Ozz.<br>
+Don and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Don puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Don says, "I love Ozz!"
+</div><br>
+<span style="color:red;">72. What does Don have?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/8.jpeg",
+    options: ["Don has a dog", "Don has a horse", "Don has a puppy"],
+    correct: "Don has a dog",
+    explanation: "Don has a dog named Ozz."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a dog.<br>
+The dog is Ozz.<br>
+Don and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Don puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Don says, "I love Ozz!"
+</div><br>
+<span style="color:red;">73. What is the name of the dog?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/8.jpeg",
+    options: ["John", "Joe", "Ozz"],
+    correct: "Ozz",
+    explanation: "The dog's name is Ozz."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a dog.<br>
+The dog is Ozz.<br>
+Don and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Don puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Don says, "I love Ozz!"
+</div><br>
+<span style="color:red;">74. What do Don and Ozz do?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/8.jpeg",
+    options: ["sleep", "jog", "run"],
+    correct: "jog",
+    explanation: "Don and Ozz jog."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a dog.<br>
+The dog is Ozz.<br>
+Don and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Don puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Don says, "I love Ozz!"
+</div><br>
+<span style="color:red;">75. Where do Don and Ozz hop?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/8.jpeg",
+    options: ["they hop on the log", "they hop on the moss", "they hop on the rock"],
+    correct: "they hop on the log",
+    explanation: "Don and Ozz hop on a log."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a dog.<br>
+The dog is Ozz.<br>
+Don and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Don puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Don says, "I love Ozz!"
+</div><br>
+<span style="color:red;">76. What do Don and Ozz spot?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/8.jpeg",
+    options: ["they spot a cow", "they spot the others", "they spot a box"],
+    correct: "they spot a box",
+    explanation: "Don and Ozz spot a box."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a dog.<br>
+The dog is Ozz.<br>
+Don and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Don puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Don says, "I love Ozz!"
+</div><br>
+<span style="color:red;">77. Where does Ozz drop the rocks?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/8.jpeg",
+    options: ["in the bag", "in the box", "in the car"],
+    correct: "in the box",
+    explanation: "Ozz drops the rocks in the box."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a dog.<br>
+The dog is Ozz.<br>
+Don and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Don puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Don says, "I love Ozz!"
+</div><br>
+<span style="color:red;">78. Who puts socks on Ozz?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/8.jpeg",
+    options: ["Don", "Sam", "Sandy"],
+    correct: "Don",
+    explanation: "Don puts socks on Ozz."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a dog.<br>
+The dog is Ozz.<br>
+Don and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Don puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Don says, "I love Ozz!"
+</div><br>
+<span style="color:red;">79. What happens after Ozz gets socks on?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/8.jpeg",
+    options: ["Ozz gets cold", "Ozz gets hot", "Ozz gets warm"],
+    correct: "Ozz gets hot",
+    explanation: "Ozz gets too hot with the socks on."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a dog.<br>
+The dog is Ozz.<br>
+Don and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Don puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Don says, "I love Ozz!"
+</div><br>
+<span style="color:red;">80. What did Don say?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/8.jpeg",
+    options: ["I love Ozz", "I love mom", "I love cow"],
+    correct: "I love Ozz",
+    explanation: "Don says he loves Ozz."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Don has a dog.<br>
+The dog is Ozz.<br>
+Don and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Don puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Don says, "I love Ozz!"
+</div><br>
+<span style="color:red;">81. What is the opposite of "hot"?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/8.jpeg",
+    options: ["cold", "soft", "fast"],
+    correct: "cold",
+    explanation: "The opposite of hot is cold."
+  },
+
+  // ===== IMAGE 9 : Mona and Ozz the octopus =====
+  {
+    question: `<div style="text-align:center; color:black;">
+Mona has an octopus.<br>
+The octopus is Ozz.<br>
+Mona and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Mona puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Mona says, "I love Ozz!"<br>
+Ozz looks and looks.<br>
+Ozz loves Mona.
+</div><br>
+<span style="color:red;">82. What does Mona have?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/9.jpeg",
+    options: ["an ocean", "an octopus", "an apple"],
+    correct: "an octopus",
+    explanation: "Mona has an octopus named Ozz."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mona has an octopus.<br>
+The octopus is Ozz.<br>
+Mona and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Mona puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Mona says, "I love Ozz!"<br>
+Ozz looks and looks.<br>
+Ozz loves Mona.
+</div><br>
+<span style="color:red;">83. What do Mona and Ozz do?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/9.jpeg",
+    options: ["jump", "hop", "jog"],
+    correct: "jog",
+    explanation: "Mona and Ozz jog."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mona has an octopus.<br>
+The octopus is Ozz.<br>
+Mona and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Mona puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Mona says, "I love Ozz!"<br>
+Ozz looks and looks.<br>
+Ozz loves Mona.
+</div><br>
+<span style="color:red;">84. Where do they hop?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/9.jpeg",
+    options: ["they hop on a log", "they hop on a rock", "they hop on a table"],
+    correct: "they hop on a log",
+    explanation: "They hop on a log."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mona has an octopus.<br>
+The octopus is Ozz.<br>
+Mona and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Mona puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Mona says, "I love Ozz!"<br>
+Ozz looks and looks.<br>
+Ozz loves Mona.
+</div><br>
+<span style="color:red;">85. What is the name of the octopus?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/9.jpeg",
+    options: ["John", "Joe", "Ozz"],
+    correct: "Ozz",
+    explanation: "The octopus is named Ozz."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mona has an octopus.<br>
+The octopus is Ozz.<br>
+Mona and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Mona puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Mona says, "I love Ozz!"<br>
+Ozz looks and looks.<br>
+Ozz loves Mona.
+</div><br>
+<span style="color:red;">86. What do Mona and Ozz spot?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/9.jpeg",
+    options: ["they spot a box", "they spot the cow", "they spot the ocean"],
+    correct: "they spot a box",
+    explanation: "Mona and Ozz spot a box."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mona has an octopus.<br>
+The octopus is Ozz.<br>
+Mona and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Mona puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Mona says, "I love Ozz!"<br>
+Ozz looks and looks.<br>
+Ozz loves Mona.
+</div><br>
+<span style="color:red;">87. What does Ozz drop in the box?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/9.jpeg",
+    options: ["socks", "bags", "apples"],
+    correct: "socks",
+    explanation: "Ozz drops things into the box."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mona has an octopus.<br>
+The octopus is Ozz.<br>
+Mona and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Mona puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Mona says, "I love Ozz!"<br>
+Ozz looks and looks.<br>
+Ozz loves Mona.
+</div><br>
+<span style="color:red;">88. What does Mona put on Ozz?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/9.jpeg",
+    options: ["socks", "rocks", "necklace"],
+    correct: "socks",
+    explanation: "Mona puts socks on Ozz."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mona has an octopus.<br>
+The octopus is Ozz.<br>
+Mona and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Mona puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Mona says, "I love Ozz!"<br>
+Ozz looks and looks.<br>
+Ozz loves Mona.
+</div><br>
+<span style="color:red;">89. Does Ozz get hot or cold?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/9.jpeg",
+    options: ["hot", "cold", "chilly"],
+    correct: "hot",
+    explanation: "Ozz gets too hot."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mona has an octopus.<br>
+The octopus is Ozz.<br>
+Mona and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Mona puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Mona says, "I love Ozz!"<br>
+Ozz looks and looks.<br>
+Ozz loves Mona.
+</div><br>
+<span style="color:red;">90. What does Mona say?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/9.jpeg",
+    options: ["I love Ozz", "I love mom", "I love dad"],
+    correct: "I love Ozz",
+    explanation: "Mona says she loves Ozz."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mona has an octopus.<br>
+The octopus is Ozz.<br>
+Mona and Ozz jog.<br>
+They hop on a log.<br>
+They spot a box.<br>
+Ozz drops rocks in the box.<br>
+Mona puts socks on Ozz.<br>
+Ozz gets too hot!<br>
+Ozz pops off the socks.<br>
+Mona says, "I love Ozz!"<br>
+Ozz looks and looks.<br>
+Ozz loves Mona.
+</div><br>
+<span style="color:red;">91. Where do we put socks on?</span>`,
+    image: "../../../image/leve1_eng_vowels_O/9.jpeg",
+    options: ["our feet", "our hands", "our legs"],
+    correct: "our feet",
+    explanation: "We put socks on our feet."
+  }
+];
+    </script>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    initMCQQuiz(questions);
+  });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    …
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+  <div class="question-section">
+    <h3 id="question-text">Loading…</h3>
+    <ul id="options-list" class="options"></ul>
+  </div>
+
+  <div id="feedback" class="hidden"></div>
+  <div id="explanation" class="hidden"></div>
+  <button id="back-btn" class="hidden">Back</button>
+  <button id="next-btn" class="hidden">Next</button>
+</main>
+
+
+    <!-- your question data: only one entry -->
+
+    <script>
+      const questions = [
+  // ── IMAGE 1 ── Story: Ted gets a pen (Q1–Q10)
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted gets a pen.<br>
+The pen is red.<br>
+He draws ten red hens.<br>
+Ted gets a brown pen.<br>
+He draws a shed for the ten hens.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">1. What does Ted get in the beginning of the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/1.png",
+    options: ["a pen", "a cat", "a mat"],
+    correct: "a pen",
+    explanation: "At the start of the story, Ted gets a pen."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted gets a pen.<br>
+The pen is red.<br>
+He draws ten red hens.<br>
+Then, Ted gets a brown pen.<br>
+He draws a shed for the ten hens.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">2. What color was the pen used to draw the hens?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/1.png",
+    options: ["yellow", "red", "black"],
+    correct: "red",
+    explanation: "Ted used the red pen to draw the ten red hens."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted gets a pen.<br>
+The pen is red.<br>
+He draws ten red hens.<br>
+Then, Ted gets a brown pen.<br>
+He draws a shed for the ten hens.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">3. How many hens did Ted draw?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/1.png",
+    options: ["five", "ten", "zero"],
+    correct: "ten",
+    explanation: "The story says Ted drew ten red hens."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted gets a pen.<br>
+The pen is red.<br>
+He draws ten red hens.<br>
+Then, Ted gets a brown pen.<br>
+He draws a shed for the ten hens.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">4. What color was the first pen?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/1.png",
+    options: ["yellow", "red", "black"],
+    correct: "red",
+    explanation: "The first pen Ted got was red: 'The pen is red.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted gets a pen.<br>
+The pen is red.<br>
+He draws ten red hens.<br>
+Then, Ted gets a brown pen.<br>
+He draws a shed for the ten hens.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">5. What does Ted do with the brown pen?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/1.png",
+    options: ["draws a few lines", "draws ashes", "draws a shed"],
+    correct: "draws a shed",
+    explanation: "Ted used the brown pen to draw a shed for the ten hens."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted gets a pen.<br>
+The pen is red.<br>
+He draws ten red hens.<br>
+Then, Ted gets a brown pen.<br>
+He draws a shed for the ten hens.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">6. Where would the ten hens sleep?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/1.png",
+    options: ["in the car", "on the farm", "in the shed"],
+    correct: "in the shed",
+    explanation: "Ted drew a shed for the ten hens, so they would sleep in the shed."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted gets a pen.<br>
+The pen is red.<br>
+He draws ten red hens.<br>
+Then, Ted gets a brown pen.<br>
+He draws a shed for the ten hens.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">7. How did Ted feel at the end of the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/1.png",
+    options: ["sad", "happy", "angry"],
+    correct: "happy",
+    explanation: "The last line of the story says 'Ted is happy.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted gets a pen.<br>
+The pen is red.<br>
+He draws ten red hens.<br>
+Then, Ted gets a brown pen.<br>
+He draws a shed for the ten hens.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">8. What does Ted do after drawing ten hens?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/1.png",
+    options: ["he draws a shed", "he draws a bank", "he draws a farm"],
+    correct: "he draws a shed",
+    explanation: "After drawing the hens, Ted used the brown pen to draw a shed for them."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted gets a pen.<br>
+The pen is red.<br>
+He draws ten red hens.<br>
+Then, Ted gets a brown pen.<br>
+He draws a shed for the ten hens.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">9. What color did Ted use to draw the shed?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/1.png",
+    options: ["yellow pen", "red pen", "brown pen"],
+    correct: "brown pen",
+    explanation: "Ted got a brown pen and used it to draw the shed."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted gets a pen.<br>
+The pen is red.<br>
+He draws ten red hens.<br>
+Then, Ted gets a brown pen.<br>
+He draws a shed for the ten hens.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">10. What is the opposite of happy?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/1.png",
+    options: ["writing", "fighting", "sad"],
+    correct: "sad",
+    explanation: "The opposite of happy is sad."
+  },
+
+  // ── IMAGE 2 ── Story: Ted sees a hen (Q11–Q20)
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a hen.<br>
+Ted has a hen.<br>
+The hen is by the shed.<br>
+The hen pecks and pecks.<br>
+The hen must be fed.<br>
+Ted feeds the hen.<br>
+Hen eats and eats.<br>
+Hen is happy.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">11. What is the name of the boy in the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/2.png",
+    options: ["Sam", "Sandy", "Ted"],
+    correct: "Ted",
+    explanation: "The boy in the story is named Ted."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a hen.<br>
+Ted has a hen.<br>
+The hen is by the shed.<br>
+The hen pecks and pecks.<br>
+The hen must be fed.<br>
+Ted feeds the hen.<br>
+Hen eats and eats.<br>
+Hen is happy.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">12. What does Ted see?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/2.png",
+    options: ["a girl", "a duck", "a hen"],
+    correct: "a hen",
+    explanation: "The story begins with 'Ted sees a hen.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a hen.<br>
+Ted has a hen.<br>
+The hen is by the shed.<br>
+The hen pecks and pecks.<br>
+The hen must be fed.<br>
+Ted feeds the hen.<br>
+Hen eats and eats.<br>
+Hen is happy.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">13. Where is the hen?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/2.png",
+    options: ["The hen is by the car", "The hen is by the jet", "The hen is by the shed"],
+    correct: "The hen is by the shed",
+    explanation: "The story says 'The hen is by the shed.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a hen.<br>
+Ted has a hen.<br>
+The hen is by the shed.<br>
+The hen pecks and pecks.<br>
+The hen must be fed.<br>
+Ted feeds the hen.<br>
+Hen eats and eats.<br>
+Hen is happy.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">14. What does the hen do?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/2.png",
+    options: ["The hen cries and cries", "The hen sleeps and sleeps", "The hen pecks and pecks"],
+    correct: "The hen pecks and pecks",
+    explanation: "The story says 'The hen pecks and pecks.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a hen.<br>
+Ted has a hen.<br>
+The hen is by the shed.<br>
+The hen pecks and pecks.<br>
+The hen must be fed.<br>
+Ted feeds the hen.<br>
+Hen eats and eats.<br>
+Hen is happy.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">15. What must Ted do?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/2.png",
+    options: ["feed the duck", "feed the hen", "feed the horse"],
+    correct: "feed the hen",
+    explanation: "The story says 'The hen must be fed,' so Ted must feed the hen."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a hen.<br>
+Ted has a hen.<br>
+The hen is by the shed.<br>
+The hen pecks and pecks.<br>
+The hen must be fed.<br>
+Ted feeds the hen.<br>
+Hen eats and eats.<br>
+Hen is happy.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">16. How do we know that Ted is responsible?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/2.png",
+    options: ["Ted feeds the hen", "Ted doesn't care", "Ted walks away"],
+    correct: "Ted feeds the hen",
+    explanation: "Ted is responsible because he feeds the hen when it is hungry."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a hen.<br>
+Ted has a hen.<br>
+The hen is by the shed.<br>
+The hen pecks and pecks.<br>
+The hen must be fed.<br>
+Ted feeds the hen.<br>
+Hen eats and eats.<br>
+Hen is happy.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">17. How does the hen feel at the end of the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/2.png",
+    options: ["sad", "unhappy", "happy"],
+    correct: "happy",
+    explanation: "After eating, 'Hen is happy.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a hen.<br>
+Ted has a hen.<br>
+The hen is by the shed.<br>
+The hen pecks and pecks.<br>
+The hen must be fed.<br>
+Ted feeds the hen.<br>
+Hen eats and eats.<br>
+Hen is happy.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">18. How does Ted feel at the end of the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/2.png",
+    options: ["happy", "unhappy", "sappy"],
+    correct: "happy",
+    explanation: "The last line of the story says 'Ted is happy.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a hen.<br>
+Ted has a hen.<br>
+The hen is by the shed.<br>
+The hen pecks and pecks.<br>
+The hen must be fed.<br>
+Ted feeds the hen.<br>
+Hen eats and eats.<br>
+Hen is happy.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">19. What is the past tense of feed?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/2.png",
+    options: ["fed", "had", "see"],
+    correct: "fed",
+    explanation: "The past tense of feed is fed."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a hen.<br>
+Ted has a hen.<br>
+The hen is by the shed.<br>
+The hen pecks and pecks.<br>
+The hen must be fed.<br>
+Ted feeds the hen.<br>
+Hen eats and eats.<br>
+Hen is happy.<br>
+Ted is happy.
+</div><br>
+<span style="color:red;">20. What is the past tense of eat?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/2.png",
+    options: ["atrium", "ate", "ages"],
+    correct: "ate",
+    explanation: "The past tense of eat is ate."
+  },
+
+  // ── IMAGE 3 ── Story: Ed is a vet (Q21–Q30)
+  {
+    question: `<div style="text-align:center; color:black;">
+Ed is a vet.<br>
+He can help pets.<br>
+Ed sees a hen.<br>
+Ed will help the hen.<br>
+The hen is sad.<br>
+The hen is not well.<br>
+Ed will help the hen.<br>
+Now, the hen is well!
+</div><br>
+<span style="color:red;">21. What is the name of the vet in the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/3.png",
+    options: ["Sam", "Tom", "Ed"],
+    correct: "Ed",
+    explanation: "The story begins with 'Ed is a vet.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ed is a vet.<br>
+He can help pets.<br>
+Ed sees a hen.<br>
+Ed will help the hen.<br>
+The hen is sad.<br>
+The hen is not well.<br>
+Ed will help the hen.<br>
+Now, the hen is well!
+</div><br>
+<span style="color:red;">22. What does Ed do?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/3.png",
+    options: ["Ed helps people", "Ed helps the world", "Ed helps pets"],
+    correct: "Ed helps pets",
+    explanation: "The story says 'He can help pets,' so Ed is a vet who helps pets."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ed is a vet.<br>
+He can help pets.<br>
+Ed sees a hen.<br>
+Ed will help the hen.<br>
+The hen is sad.<br>
+The hen is not well.<br>
+Ed will help the hen.<br>
+Now, the hen is well!
+</div><br>
+<span style="color:red;">23. What does Ed see?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/3.png",
+    options: ["Ed sees me", "Ed sees the world", "Ed sees the hen"],
+    correct: "Ed sees the hen",
+    explanation: "The story says 'Ed sees a hen.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ed is a vet.<br>
+He can help pets.<br>
+Ed sees a hen.<br>
+Ed will help the hen.<br>
+The hen is sad.<br>
+The hen is not well.<br>
+Ed will help the hen.<br>
+Now, the hen is well!
+</div><br>
+<span style="color:red;">24. Which animal in the story is sad?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/3.png",
+    options: ["The hen", "The elephant", "The shark"],
+    correct: "The hen",
+    explanation: "The story says 'The hen is sad.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ed is a vet.<br>
+He can help pets.<br>
+Ed sees a hen.<br>
+Ed will help the hen.<br>
+The hen is sad.<br>
+The hen is not well.<br>
+Ed will help the hen.<br>
+Now, the hen is well!
+</div><br>
+<span style="color:red;">25. Which animal in the story is not well?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/3.png",
+    options: ["The monster", "The elephant", "The hen"],
+    correct: "The hen",
+    explanation: "The story says 'The hen is not well.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ed is a vet.<br>
+He can help pets.<br>
+Ed sees a hen.<br>
+Ed will help the hen.<br>
+The hen is sad.<br>
+The hen is not well.<br>
+Ed will help the hen.<br>
+Now, the hen is well!
+</div><br>
+<span style="color:red;">26. What will Ed the vet do?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/3.png",
+    options: ["Ed will help the sad hen", "Ed will help the happy hen", "Ed will help the sad bird"],
+    correct: "Ed will help the sad hen",
+    explanation: "The story says Ed will help the hen, which is sad and unwell."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ed is a vet.<br>
+He can help pets.<br>
+Ed sees a hen.<br>
+Ed will help the hen.<br>
+The hen is sad.<br>
+The hen is not well.<br>
+Ed will help the hen.<br>
+Now, the hen is well!
+</div><br>
+<span style="color:red;">27. How many times was the name Ed mentioned?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/3.png",
+    options: ["3 times", "4 times", "5 times"],
+    correct: "4 times",
+    explanation: "Ed is mentioned 4 times in the story: 'Ed is a vet,' 'Ed sees a hen,' 'Ed will help the hen' (twice)."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ed is a vet.<br>
+He can help pets.<br>
+Ed sees a hen.<br>
+Ed will help the hen.<br>
+The hen is sad.<br>
+The hen is not well.<br>
+Ed will help the hen.<br>
+Now, the hen is well!
+</div><br>
+<span style="color:red;">28. What is the meaning of vet?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/3.png",
+    options: ["an animal doctor", "an animal carpenter", "an animal nurse"],
+    correct: "an animal doctor",
+    explanation: "A vet (veterinarian) is a doctor who treats animals."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ed is a vet.<br>
+He can help pets.<br>
+Ed sees a hen.<br>
+Ed will help the hen.<br>
+The hen is sad.<br>
+The hen is not well.<br>
+Ed will help the hen.<br>
+Now, the hen is well!
+</div><br>
+<span style="color:red;">29. What is the past tense of see?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/3.png",
+    options: ["sees", "saw", "so"],
+    correct: "saw",
+    explanation: "The past tense of see is saw."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ed is a vet.<br>
+He can help pets.<br>
+Ed sees a hen.<br>
+Ed will help the hen.<br>
+The hen is sad.<br>
+The hen is not well.<br>
+Ed will help the hen.<br>
+Now, the hen is well!
+</div><br>
+<span style="color:red;">30. What happened at the end of the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/3.png",
+    options: ["The hen got sicker", "The hen got well", "The hen ran away"],
+    correct: "The hen got well",
+    explanation: "At the end of the story, 'Now, the hen is well!'"
+  },
+
+  // ── IMAGE 4 ── Story: Meg sells eggs (Q31–Q40)
+  {
+    question: `<div style="text-align:center; color:black;">
+Meg sells eggs.<br>
+Ted sees ten eggs.<br>
+Ted says, "Can I get ten eggs?"<br>
+Meg says, "Yes, you bet!"<br>
+Meg gets the ten eggs for Ted.<br>
+Ted says, "Thank you!"<br>
+Meg is happy with her ten cents.<br>
+Ted is happy with the ten eggs.
+</div><br>
+<span style="color:red;">31. What does Meg sell?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/4.png",
+    options: ["she sells chicken", "she sells fish", "she sells eggs"],
+    correct: "she sells eggs",
+    explanation: "The very first line says 'Meg sells eggs.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Meg sells eggs.<br>
+Ted sees ten eggs.<br>
+Ted says, "Can I get ten eggs?"<br>
+Meg says, "Yes, you bet!"<br>
+Meg gets the ten eggs for Ted.<br>
+Ted says, "Thank you!"<br>
+Meg is happy with her ten cents.<br>
+Ted is happy with the ten eggs.
+</div><br>
+<span style="color:red;">32. What does Ted see?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/4.png",
+    options: ["Ted sees ten cats", "Ted sees ten eggs", "Ted sees ten hens"],
+    correct: "Ted sees ten eggs",
+    explanation: "The story says 'Ted sees ten eggs.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Meg sells eggs.<br>
+Ted sees ten eggs.<br>
+Ted says, "Can I get ten eggs?"<br>
+Meg says, "Yes, you bet!"<br>
+Meg gets the ten eggs for Ted.<br>
+Ted says, "Thank you!"<br>
+Meg is happy with her ten cents.<br>
+Ted is happy with the ten eggs.
+</div><br>
+<span style="color:red;">33. What does Meg say?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/4.png",
+    options: ['"Yes, you bet!"', '"Yes, go home"', '"No, leave now"'],
+    correct: '"Yes, you bet!"',
+    explanation: "Meg replies to Ted with 'Yes, you bet!'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Meg sells eggs.<br>
+Ted sees ten eggs.<br>
+Ted says, "Can I get ten eggs?"<br>
+Meg says, "Yes, you bet!"<br>
+Meg gets the ten eggs for Ted.<br>
+Ted says, "Thank you!"<br>
+Meg is happy with her ten cents.<br>
+Ted is happy with the ten eggs.
+</div><br>
+<span style="color:red;">34. How does Meg feel in the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/4.png",
+    options: ["Meg is happy", "Meg is sad", "Meg is hungry"],
+    correct: "Meg is happy",
+    explanation: "The story says 'Meg is happy with her ten cents.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Meg sells eggs.<br>
+Ted sees ten eggs.<br>
+Ted says, "Can I get ten eggs?"<br>
+Meg says, "Yes, you bet!"<br>
+Meg gets the ten eggs for Ted.<br>
+Ted says, "Thank you!"<br>
+Meg is happy with her ten cents.<br>
+Ted is happy with the ten eggs.
+</div><br>
+<span style="color:red;">35. What did Ted want to buy?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/4.png",
+    options: ["ten lollipops", "ten hens", "ten eggs"],
+    correct: "ten eggs",
+    explanation: "Ted asks 'Can I get ten eggs?' showing he wanted to buy ten eggs."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Meg sells eggs.<br>
+Ted sees ten eggs.<br>
+Ted says, "Can I get ten eggs?"<br>
+Meg says, "Yes, you bet!"<br>
+Meg gets the ten eggs for Ted.<br>
+Ted says, "Thank you!"<br>
+Meg is happy with her ten cents.<br>
+Ted is happy with the ten eggs.
+</div><br>
+<span style="color:red;">36. What word do we use when we appreciate someone's efforts?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/4.png",
+    options: ["please", "thank you", "no, thank you"],
+    correct: "thank you",
+    explanation: "Ted says 'Thank you!' to show appreciation, just as we do in real life."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Meg sells eggs.<br>
+Ted sees ten eggs.<br>
+Ted says, "Can I get ten eggs?"<br>
+Meg says, "Yes, you bet!"<br>
+Meg gets the ten eggs for Ted.<br>
+Ted says, "Thank you!"<br>
+Meg is happy with her ten cents.<br>
+Ted is happy with the ten eggs.
+</div><br>
+<span style="color:red;">37. Which animal produces eggs?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/4.png",
+    options: ["cow", "hen", "zebra"],
+    correct: "hen",
+    explanation: "Hens (chickens) lay eggs, which is why Meg sells hen eggs."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Meg sells eggs.<br>
+Ted sees ten eggs.<br>
+Ted says, "Can I get ten eggs?"<br>
+Meg says, "Yes, you bet!"<br>
+Meg gets the ten eggs for Ted.<br>
+Ted says, "Thank you!"<br>
+Meg is happy with her ten cents.<br>
+Ted is happy with the ten eggs.
+</div><br>
+<span style="color:red;">38. How much did the ten eggs cost?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/4.png",
+    options: ["5 cents", "10 cents", "15 cents"],
+    correct: "10 cents",
+    explanation: "Meg is happy with her ten cents, so the ten eggs cost ten cents."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Meg sells eggs.<br>
+Ted sees ten eggs.<br>
+Ted says, "Can I get ten eggs?"<br>
+Meg says, "Yes, you bet!"<br>
+Meg gets the ten eggs for Ted.<br>
+Ted says, "Thank you!"<br>
+Meg is happy with her ten cents.<br>
+Ted is happy with the ten eggs.
+</div><br>
+<span style="color:red;">39. What do we call a small unit of money?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/4.png",
+    options: ["eggs", "cents", "thanks"],
+    correct: "cents",
+    explanation: "A cent is a small unit of money. Meg received ten cents for the eggs."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Meg sells eggs.<br>
+Ted sees ten eggs.<br>
+Ted says, "Can I get ten eggs?"<br>
+Meg says, "Yes, you bet!"<br>
+Meg gets the ten eggs for Ted.<br>
+Ted says, "Thank you!"<br>
+Meg is happy with her ten cents.<br>
+Ted is happy with the ten eggs.
+</div><br>
+<span style="color:red;">40. What is the singular form of eggs?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/4.png",
+    options: ["eggggs", "egg", "eg"],
+    correct: "egg",
+    explanation: "The singular form of eggs is egg."
+  },
+
+  // ── IMAGE 5 ── Story: Ted the spider (Q41–Q50)
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted is my pet.<br>
+Ted has a web.<br>
+His web is his nest bed.<br>
+Ted rests in his web.<br>
+Ted gets ten red bugs in his web.<br>
+He lets them get in, then he gets them.<br>
+Ted will get fed well.<br>
+Ted is a happy pet!
+</div><br>
+<span style="color:red;">41. What does Ted the spider have?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/5.png",
+    options: ["a cat", "a web", "an elephant"],
+    correct: "a web",
+    explanation: "The story says 'Ted has a web.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted is my pet.<br>
+Ted has a web.<br>
+His web is his nest bed.<br>
+Ted rests in his web.<br>
+Ted gets ten red bugs in his web.<br>
+He lets them get in, then he gets them.<br>
+Ted will get fed well.<br>
+Ted is a happy pet!
+</div><br>
+<span style="color:red;">42. Where does Ted the spider rest?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/5.png",
+    options: ["Ted rests in his web", "Ted rests in the car", "Ted rests in his hospital"],
+    correct: "Ted rests in his web",
+    explanation: "The story says 'Ted rests in his web.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted is my pet.<br>
+Ted has a web.<br>
+His web is his nest bed.<br>
+Ted rests in his web.<br>
+Ted gets ten red bugs in his web.<br>
+He lets them get in, then he gets them.<br>
+Ted will get fed well.<br>
+Ted is a happy pet!
+</div><br>
+<span style="color:red;">43. What does Ted see in his web?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/5.png",
+    options: ["five red elephants", "four red cats", "ten red bugs"],
+    correct: "ten red bugs",
+    explanation: "The story says 'Ted gets ten red bugs in his web.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted is my pet.<br>
+Ted has a web.<br>
+His web is his nest bed.<br>
+Ted rests in his web.<br>
+Ted gets ten red bugs in his web.<br>
+He lets them get in, then he gets them.<br>
+Ted will get fed well.<br>
+Ted is a happy pet!
+</div><br>
+<span style="color:red;">44. What does Ted the spider get in his web?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/5.png",
+    options: ["Ted gets ten red elephants", "Ted gets ten red cows", "Ted gets ten red bugs"],
+    correct: "Ted gets ten red bugs",
+    explanation: "The story says 'Ted gets ten red bugs in his web.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted is my pet.<br>
+Ted has a web.<br>
+His web is his nest bed.<br>
+Ted rests in his web.<br>
+Ted gets ten red bugs in his web.<br>
+He lets them get in, then he gets them.<br>
+Ted will get fed well.<br>
+Ted is a happy pet!
+</div><br>
+<span style="color:red;">45. Who does Ted let in his web?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/5.png",
+    options: ["Ten red elephants", "Ted red monkeys", "Ten red bugs"],
+    correct: "Ten red bugs",
+    explanation: "He lets ten red bugs get into his web, and then catches them to eat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted is my pet.<br>
+Ted has a web.<br>
+His web is his nest bed.<br>
+Ted rests in his web.<br>
+Ted gets ten red bugs in his web.<br>
+He lets them get in, then he gets them.<br>
+Ted will get fed well.<br>
+Ted is a happy pet!
+</div><br>
+<span style="color:red;">46. What is another word for fed?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/5.png",
+    options: ["drink", "given food", "sleep"],
+    correct: "given food",
+    explanation: "Fed means given food. Ted will get fed well means he will be well given food."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted is my pet.<br>
+Ted has a web.<br>
+His web is his nest bed.<br>
+Ted rests in his web.<br>
+Ted gets ten red bugs in his web.<br>
+He lets them get in, then he gets them.<br>
+Ted will get fed well.<br>
+Ted is a happy pet!
+</div><br>
+<span style="color:red;">47. What is another name for pet?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/5.png",
+    options: ["animal", "house", "fish"],
+    correct: "animal",
+    explanation: "A pet is a domesticated animal kept at home. Another name for pet is animal."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted is my pet.<br>
+Ted has a web.<br>
+His web is his nest bed.<br>
+Ted rests in his web.<br>
+Ted gets ten red bugs in his web.<br>
+He lets them get in, then he gets them.<br>
+Ted will get fed well.<br>
+Ted is a happy pet!
+</div><br>
+<span style="color:red;">48. What is another name for pet?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/5.png",
+    options: ["animal", "house", "fish"],
+    correct: "animal",
+    explanation: "A pet is a domesticated animal. The word animal is another name for pet."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted is my pet.<br>
+Ted has a web.<br>
+His web is his nest bed.<br>
+Ted rests in his web.<br>
+Ted gets ten red bugs in his web.<br>
+He lets them get in, then he gets them.<br>
+Ted will get fed well.<br>
+Ted is a happy pet!
+</div><br>
+<span style="color:red;">49. What is the present tense of the verb fed?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/5.png",
+    options: ["slept", "feed", "swam"],
+    correct: "feed",
+    explanation: "Fed is the past tense; the present tense is feed."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted is my pet.<br>
+Ted has a web.<br>
+His web is his nest bed.<br>
+Ted rests in his web.<br>
+Ted gets ten red bugs in his web.<br>
+He lets them get in, then he gets them.<br>
+Ted will get fed well.<br>
+Ted is a happy pet!
+</div><br>
+<span style="color:red;">50. What is the plural form of spider?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/5.png",
+    options: ["spider", "spiders", "speed"],
+    correct: "spiders",
+    explanation: "The plural of spider is spiders. We add -s to make it plural."
+  },
+
+  // ── IMAGE 6 ── Story: Eve sees a jet (Q51–Q60)
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve sees a jet.<br>
+The jet is red.<br>
+Eve tells Ben, "See the jet!"<br>
+"Can we get in?" says Ben.<br>
+"I bet we get in," says Eve.<br>
+Eve and Ben get in the jet.<br>
+They sit on a red seat.<br>
+The jet goes up, up, up.<br>
+"Best!" says Eve.
+</div><br>
+<span style="color:red;">51. What does Eve see?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/6.png",
+    options: ["Eve sees a man", "Eve sees a boy", "Eve sees a jet"],
+    correct: "Eve sees a jet",
+    explanation: "The story begins with 'Eve sees a jet.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve sees a jet.<br>
+The jet is red.<br>
+Eve tells Ben, "See the jet!"<br>
+"Can we get in?" says Ben.<br>
+"I bet we get in," says Eve.<br>
+Eve and Ben get in the jet.<br>
+They sit on a red seat.<br>
+The jet goes up, up, up.<br>
+"Best!" says Eve.
+</div><br>
+<span style="color:red;">52. What color is the jet?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/6.png",
+    options: ["The jet is green", "The jet is red", "The jet is blue"],
+    correct: "The jet is red",
+    explanation: "The story says 'The jet is red.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve sees a jet.<br>
+The jet is red.<br>
+Eve tells Ben, "See the jet!"<br>
+"Can we get in?" says Ben.<br>
+"I bet we get in," says Eve.<br>
+Eve and Ben get in the jet.<br>
+They sit on a red seat.<br>
+The jet goes up, up, up.<br>
+"Best!" says Eve.
+</div><br>
+<span style="color:red;">53. What does Eve tell Ben?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/6.png",
+    options: ['"See the cat!"', '"See the tree!"', '"See the jet!"'],
+    correct: '"See the jet!"',
+    explanation: "Eve tells Ben 'See the jet!' when she spots it."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve sees a jet.<br>
+The jet is red.<br>
+Eve tells Ben, "See the jet!"<br>
+"Can we get in?" says Ben.<br>
+"I bet we get in," says Eve.<br>
+Eve and Ben get in the jet.<br>
+They sit on a red seat.<br>
+The jet goes up, up, up.<br>
+"Best!" says Eve.
+</div><br>
+<span style="color:red;">54. What do Eve and Ben do?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/6.png",
+    options: ["They go home", "They watch the show", "They get in the jet"],
+    correct: "They get in the jet",
+    explanation: "The story says 'Eve and Ben get in the jet.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve sees a jet.<br>
+The jet is red.<br>
+Eve tells Ben, "See the jet!"<br>
+"Can we get in?" says Ben.<br>
+"I bet we get in," says Eve.<br>
+Eve and Ben get in the jet.<br>
+They sit on a red seat.<br>
+The jet goes up, up, up.<br>
+"Best!" says Eve.
+</div><br>
+<span style="color:red;">55. What is the plural form of jet?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/6.png",
+    options: ["jets", "jet", "jot"],
+    correct: "jets",
+    explanation: "The plural of jet is jets. We add -s to make it plural."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve sees a jet.<br>
+The jet is red.<br>
+Eve tells Ben, "See the jet!"<br>
+"Can we get in?" says Ben.<br>
+"I bet we get in," says Eve.<br>
+Eve and Ben get in the jet.<br>
+They sit on a red seat.<br>
+The jet goes up, up, up.<br>
+"Best!" says Eve.
+</div><br>
+<span style="color:red;">56. Where do Eve and Ben sit?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/6.png",
+    options: ["they sit on a red seat", "they sit on a red mat", "they sit on a red carpet"],
+    correct: "they sit on a red seat",
+    explanation: "The story says 'They sit on a red seat.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve sees a jet.<br>
+The jet is red.<br>
+Eve tells Ben, "See the jet!"<br>
+"Can we get in?" says Ben.<br>
+"I bet we get in," says Eve.<br>
+Eve and Ben get in the jet.<br>
+They sit on a red seat.<br>
+The jet goes up, up, up.<br>
+"Best!" says Eve.
+</div><br>
+<span style="color:red;">57. Which word did Eve choose to express her happiness?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/6.png",
+    options: ["great", "best", "love"],
+    correct: "best",
+    explanation: "At the end, Eve exclaims 'Best!' to show how happy and excited she is."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve sees a jet.<br>
+The jet is red.<br>
+Eve tells Ben, "See the jet!"<br>
+"Can we get in?" says Ben.<br>
+"I bet we get in," says Eve.<br>
+Eve and Ben get in the jet.<br>
+They sit on a red seat.<br>
+The jet goes up, up, up.<br>
+"Best!" says Eve.
+</div><br>
+<span style="color:red;">58. What is the present tense of got?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/6.png",
+    options: ["go", "good", "got"],
+    correct: "go",
+    explanation: "Got is the past tense of get. The present tense form related here is get/go — the answer the worksheet indicates is go."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve sees a jet.<br>
+The jet is red.<br>
+Eve tells Ben, "See the jet!"<br>
+"Can we get in?" says Ben.<br>
+"I bet we get in," says Eve.<br>
+Eve and Ben get in the jet.<br>
+They sit on a red seat.<br>
+The jet goes up, up, up.<br>
+"Best!" says Eve.
+</div><br>
+<span style="color:red;">59. What is the past tense of tell?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/6.png",
+    options: ["telephone", "told", "telly"],
+    correct: "told",
+    explanation: "The past tense of tell is told."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve sees a jet.<br>
+The jet is red.<br>
+Eve tells Ben, "See the jet!"<br>
+"Can we get in?" says Ben.<br>
+"I bet we get in," says Eve.<br>
+Eve and Ben get in the jet.<br>
+They sit on a red seat.<br>
+The jet goes up, up, up.<br>
+"Best!" says Eve.
+</div><br>
+<span style="color:red;">60. What is the past tense of say?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/6.png",
+    options: ["see", "sorry", "said"],
+    correct: "said",
+    explanation: "The past tense of say is said."
+  },
+
+  // ── IMAGE 7 ── Story: Eve fell (Q61–Q70)
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve fell.<br>
+Eve hit her leg.<br>
+"Let me help," says Ben.<br>
+Ben helps Eve get up.<br>
+Eve feels less well.<br>
+Her leg is red.<br>
+"See the vet," says Ben.<br>
+"Yes, let's see the vet," says Eve.<br>
+Eve and Ben see the vet.<br>
+The vet checks Eve's leg.<br>
+"Rest," says the vet.<br>
+Eve rests. Ben sits with Eve.<br>
+Eve feels better.<br>
+Then, Eve and Ben play.
+</div><br>
+<span style="color:red;">61. Who fell in the story and got hurt?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/7.png",
+    options: ["Ben", "Sam", "Eve"],
+    correct: "Eve",
+    explanation: "The story begins with 'Eve fell. Eve hit her leg.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve fell.<br>
+Eve hit her leg.<br>
+"Let me help," says Ben.<br>
+Ben helps Eve get up.<br>
+Eve feels less well.<br>
+Her leg is red.<br>
+"See the vet," says Ben.<br>
+"Yes, let's see the vet," says Eve.<br>
+Eve and Ben see the vet.<br>
+The vet checks Eve's leg.<br>
+"Rest," says the vet.<br>
+Eve rests. Ben sits with Eve.<br>
+Eve feels better.<br>
+Then, Eve and Ben play.
+</div><br>
+<span style="color:red;">62. What did Eve hit?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/7.png",
+    options: ["Eve hit her head", "Eve hit her heart", "Eve hit her leg"],
+    correct: "Eve hit her leg",
+    explanation: "The story says 'Eve hit her leg.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve fell.<br>
+Eve hit her leg.<br>
+"Let me help," says Ben.<br>
+Ben helps Eve get up.<br>
+Eve feels less well.<br>
+Her leg is red.<br>
+"See the vet," says Ben.<br>
+"Yes, let's see the vet," says Eve.<br>
+Eve and Ben see the vet.<br>
+The vet checks Eve's leg.<br>
+"Rest," says the vet.<br>
+Eve rests. Ben sits with Eve.<br>
+Eve feels better.<br>
+Then, Eve and Ben play.
+</div><br>
+<span style="color:red;">63. Who helps Eve get up?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/7.png",
+    options: ["Sam", "Ben", "Dad"],
+    correct: "Ben",
+    explanation: "The story says 'Ben helps Eve get up.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve fell.<br>
+Eve hit her leg.<br>
+"Let me help," says Ben.<br>
+Ben helps Eve get up.<br>
+Eve feels less well.<br>
+Her leg is red.<br>
+"See the vet," says Ben.<br>
+"Yes, let's see the vet," says Eve.<br>
+Eve and Ben see the vet.<br>
+The vet checks Eve's leg.<br>
+"Rest," says the vet.<br>
+Eve rests. Ben sits with Eve.<br>
+Eve feels better.<br>
+Then, Eve and Ben play.
+</div><br>
+<span style="color:red;">64. What color was Eve's leg?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/7.png",
+    options: ["blue", "black", "red"],
+    correct: "red",
+    explanation: "The story says 'Her leg is red.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve fell.<br>
+Eve hit her leg.<br>
+"Let me help," says Ben.<br>
+Ben helps Eve get up.<br>
+Eve feels less well.<br>
+Her leg is red.<br>
+"See the vet," says Ben.<br>
+"Yes, let's see the vet," says Eve.<br>
+Eve and Ben see the vet.<br>
+The vet checks Eve's leg.<br>
+"Rest," says the vet.<br>
+Eve rests. Ben sits with Eve.<br>
+Eve feels better.<br>
+Then, Eve and Ben play.
+</div><br>
+<span style="color:red;">65. Where did Ben take Eve?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/7.png",
+    options: ["to the supermarket", "to the grocery", "to the vet"],
+    correct: "to the vet",
+    explanation: "Ben says 'See the vet,' and they both go to the vet."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve fell.<br>
+Eve hit her leg.<br>
+"Let me help," says Ben.<br>
+Ben helps Eve get up.<br>
+Eve feels less well.<br>
+Her leg is red.<br>
+"See the vet," says Ben.<br>
+"Yes, let's see the vet," says Eve.<br>
+Eve and Ben see the vet.<br>
+The vet checks Eve's leg.<br>
+"Rest," says the vet.<br>
+Eve rests. Ben sits with Eve.<br>
+Eve feels better.<br>
+Then, Eve and Ben play.
+</div><br>
+<span style="color:red;">66. What does the vet say?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/7.png",
+    options: ["cry", "rest", "sleep"],
+    correct: "rest",
+    explanation: "The vet tells Eve to 'Rest,' so that her leg can heal."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve fell.<br>
+Eve hit her leg.<br>
+"Let me help," says Ben.<br>
+Ben helps Eve get up.<br>
+Eve feels less well.<br>
+Her leg is red.<br>
+"See the vet," says Ben.<br>
+"Yes, let's see the vet," says Eve.<br>
+Eve and Ben see the vet.<br>
+The vet checks Eve's leg.<br>
+"Rest," says the vet.<br>
+Eve rests. Ben sits with Eve.<br>
+Eve feels better.<br>
+Then, Eve and Ben play.
+</div><br>
+<span style="color:red;">67. What does the vet check?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/7.png",
+    options: ["Eve's leg", "Eve's heart", "Eve's eyes"],
+    correct: "Eve's leg",
+    explanation: "The story says 'The vet checks Eve's leg.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve fell.<br>
+Eve hit her leg.<br>
+"Let me help," says Ben.<br>
+Ben helps Eve get up.<br>
+Eve feels less well.<br>
+Her leg is red.<br>
+"See the vet," says Ben.<br>
+"Yes, let's see the vet," says Eve.<br>
+Eve and Ben see the vet.<br>
+The vet checks Eve's leg.<br>
+"Rest," says the vet.<br>
+Eve rests. Ben sits with Eve.<br>
+Eve feels better.<br>
+Then, Eve and Ben play.
+</div><br>
+<span style="color:red;">68. How does Eve feel at the end of the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/7.png",
+    options: ["Eve feels sick", "Eve feels better", "Eve feels more tired"],
+    correct: "Eve feels better",
+    explanation: "After resting, 'Eve feels better' and they go on to play."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve fell.<br>
+Eve hit her leg.<br>
+"Let me help," says Ben.<br>
+Ben helps Eve get up.<br>
+Eve feels less well.<br>
+Her leg is red.<br>
+"See the vet," says Ben.<br>
+"Yes, let's see the vet," says Eve.<br>
+Eve and Ben see the vet.<br>
+The vet checks Eve's leg.<br>
+"Rest," says the vet.<br>
+Eve rests. Ben sits with Eve.<br>
+Eve feels better.<br>
+Then, Eve and Ben play.
+</div><br>
+<span style="color:red;">69. What is the past form of play?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/7.png",
+    options: ["run", "read", "played"],
+    correct: "played",
+    explanation: "The past tense of play is played."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Eve fell.<br>
+Eve hit her leg.<br>
+"Let me help," says Ben.<br>
+Ben helps Eve get up.<br>
+Eve feels less well.<br>
+Her leg is red.<br>
+"See the vet," says Ben.<br>
+"Yes, let's see the vet," says Eve.<br>
+Eve and Ben see the vet.<br>
+The vet checks Eve's leg.<br>
+"Rest," says the vet.<br>
+Eve rests. Ben sits with Eve.<br>
+Eve feels better.<br>
+Then, Eve and Ben play.
+</div><br>
+<span style="color:red;">70. How many times was Eve's name mentioned?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/7.png",
+    options: ["10", "11", "7"],
+    correct: "11",
+    explanation: "Counting all appearances of 'Eve' in the story, her name is mentioned 11 times."
+  },
+
+  // ── IMAGE 8 ── Story: Ted sees Beth (Q71–Q80)
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees Beth.<br>
+Beth sees Ted.<br>
+They go to the sea and see the wet sand.<br>
+Ted and Beth get wet.<br>
+They step in the sea and feel the waves.<br>
+Ted sees a shell.<br>
+Beth gets a shell.<br>
+"I will get ten shells," says Beth.<br>
+"Let me help," says Ted.<br>
+Ted helps Beth collect ten shells.<br>
+Ted sees a red shell.<br>
+Beth gets the red shell.<br>
+"Best!" says Beth.<br>
+Ted and Beth feel well at the sea.<br>
+Ted and Beth collect ten red shells.
+</div><br>
+<span style="color:red;">71. Who sees Beth?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/8.png",
+    options: ["Ted sees Beth", "Ted sees the cat", "Ted sees the teacher"],
+    correct: "Ted sees Beth",
+    explanation: "The story begins with 'Ted sees Beth.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees Beth.<br>
+Beth sees Ted.<br>
+They go to the sea and see the wet sand.<br>
+Ted and Beth get wet.<br>
+They step in the sea and feel the waves.<br>
+Ted sees a shell.<br>
+Beth gets a shell.<br>
+"I will get ten shells," says Beth.<br>
+"Let me help," says Ted.<br>
+Ted helps Beth collect ten shells.<br>
+Ted sees a red shell.<br>
+Beth gets the red shell.<br>
+"Best!" says Beth.<br>
+Ted and Beth feel well at the sea.<br>
+Ted and Beth collect ten red shells.
+</div><br>
+<span style="color:red;">72. Where do Ted and Beth go?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/8.png",
+    options: ["to the sea", "to the city", "to the mountain"],
+    correct: "to the sea",
+    explanation: "The story says 'They go to the sea and see the wet sand.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees Beth.<br>
+Beth sees Ted.<br>
+They go to the sea and see the wet sand.<br>
+Ted and Beth get wet.<br>
+They step in the sea and feel the waves.<br>
+Ted sees a shell.<br>
+Beth gets a shell.<br>
+"I will get ten shells," says Beth.<br>
+"Let me help," says Ted.<br>
+Ted helps Beth collect ten shells.<br>
+Ted sees a red shell.<br>
+Beth gets the red shell.<br>
+"Best!" says Beth.<br>
+Ted and Beth feel well at the sea.<br>
+Ted and Beth collect ten red shells.
+</div><br>
+<span style="color:red;">73. What do Ted and Beth see?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/8.png",
+    options: ["they see the wet sand", "they see the wet cow", "they see the wet floor"],
+    correct: "they see the wet sand",
+    explanation: "The story says 'They go to the sea and see the wet sand.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees Beth.<br>
+Beth sees Ted.<br>
+They go to the sea and see the wet sand.<br>
+Ted and Beth get wet.<br>
+They step in the sea and feel the waves.<br>
+Ted sees a shell.<br>
+Beth gets a shell.<br>
+"I will get ten shells," says Beth.<br>
+"Let me help," says Ted.<br>
+Ted helps Beth collect ten shells.<br>
+Ted sees a red shell.<br>
+Beth gets the red shell.<br>
+"Best!" says Beth.<br>
+Ted and Beth feel well at the sea.<br>
+Ted and Beth collect ten red shells.
+</div><br>
+<span style="color:red;">74. Where do Ted and Beth step into?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/8.png",
+    options: ["they step in the sea", "they step in the van", "they step in the boat"],
+    correct: "they step in the sea",
+    explanation: "The story says 'They step in the sea and feel the waves.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees Beth.<br>
+Beth sees Ted.<br>
+They go to the sea and see the wet sand.<br>
+Ted and Beth get wet.<br>
+They step in the sea and feel the waves.<br>
+Ted sees a shell.<br>
+Beth gets a shell.<br>
+"I will get ten shells," says Beth.<br>
+"Let me help," says Ted.<br>
+Ted helps Beth collect ten shells.<br>
+Ted sees a red shell.<br>
+Beth gets the red shell.<br>
+"Best!" says Beth.<br>
+Ted and Beth feel well at the sea.<br>
+Ted and Beth collect ten red shells.
+</div><br>
+<span style="color:red;">75. What do Ted and Beth feel?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/8.png",
+    options: ["they feel the wind", "they feel the rain", "they feel the waves"],
+    correct: "they feel the waves",
+    explanation: "The story says 'They step in the sea and feel the waves.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees Beth.<br>
+Beth sees Ted.<br>
+They go to the sea and see the wet sand.<br>
+Ted and Beth get wet.<br>
+They step in the sea and feel the waves.<br>
+Ted sees a shell.<br>
+Beth gets a shell.<br>
+"I will get ten shells," says Beth.<br>
+"Let me help," says Ted.<br>
+Ted helps Beth collect ten shells.<br>
+Ted sees a red shell.<br>
+Beth gets the red shell.<br>
+"Best!" says Beth.<br>
+Ted and Beth feel well at the sea.<br>
+Ted and Beth collect ten red shells.
+</div><br>
+<span style="color:red;">76. What does Ted see?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/8.png",
+    options: ["Ted sees girls", "Ted sees a shell", "Ted sees cats"],
+    correct: "Ted sees a shell",
+    explanation: "The story says 'Ted sees a shell.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees Beth.<br>
+Beth sees Ted.<br>
+They go to the sea and see the wet sand.<br>
+Ted and Beth get wet.<br>
+They step in the sea and feel the waves.<br>
+Ted sees a shell.<br>
+Beth gets a shell.<br>
+"I will get ten shells," says Beth.<br>
+"Let me help," says Ted.<br>
+Ted helps Beth collect ten shells.<br>
+Ted sees a red shell.<br>
+Beth gets the red shell.<br>
+"Best!" says Beth.<br>
+Ted and Beth feel well at the sea.<br>
+Ted and Beth collect ten red shells.
+</div><br>
+<span style="color:red;">77. Who gets ten shells?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/8.png",
+    options: ["Ted gets ten shells", "Beth gets ten shells", "Sam gets ten shells"],
+    correct: "Beth gets ten shells",
+    explanation: "Beth says 'I will get ten shells,' and Ted helps her collect them."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees Beth.<br>
+Beth sees Ted.<br>
+They go to the sea and see the wet sand.<br>
+Ted and Beth get wet.<br>
+They step in the sea and feel the waves.<br>
+Ted sees a shell.<br>
+Beth gets a shell.<br>
+"I will get ten shells," says Beth.<br>
+"Let me help," says Ted.<br>
+Ted helps Beth collect ten shells.<br>
+Ted sees a red shell.<br>
+Beth gets the red shell.<br>
+"Best!" says Beth.<br>
+Ted and Beth feel well at the sea.<br>
+Ted and Beth collect ten red shells.
+</div><br>
+<span style="color:red;">78. Who sees a red shell?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/8.png",
+    options: ["Father sees a red shell", "Sam sees a red shell", "Beth sees a red shell"],
+    correct: "Beth sees a red shell",
+    explanation: "Ted sees the red shell, and Beth gets it — so Beth is the one who ends up with the red shell."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees Beth.<br>
+Beth sees Ted.<br>
+They go to the sea and see the wet sand.<br>
+Ted and Beth get wet.<br>
+They step in the sea and feel the waves.<br>
+Ted sees a shell.<br>
+Beth gets a shell.<br>
+"I will get ten shells," says Beth.<br>
+"Let me help," says Ted.<br>
+Ted helps Beth collect ten shells.<br>
+Ted sees a red shell.<br>
+Beth gets the red shell.<br>
+"Best!" says Beth.<br>
+Ted and Beth feel well at the sea.<br>
+Ted and Beth collect ten red shells.
+</div><br>
+<span style="color:red;">79. How do Ted and Beth feel at the sea?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/8.png",
+    options: ["They both feel bad at the sea", "They both feel well at the sea", "They both feel sad at the sea"],
+    correct: "They both feel well at the sea",
+    explanation: "The story says 'Ted and Beth feel well at the sea.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees Beth.<br>
+Beth sees Ted.<br>
+They go to the sea and see the wet sand.<br>
+Ted and Beth get wet.<br>
+They step in the sea and feel the waves.<br>
+Ted sees a shell.<br>
+Beth gets a shell.<br>
+"I will get ten shells," says Beth.<br>
+"Let me help," says Ted.<br>
+Ted helps Beth collect ten shells.<br>
+Ted sees a red shell.<br>
+Beth gets the red shell.<br>
+"Best!" says Beth.<br>
+Ted and Beth feel well at the sea.<br>
+Ted and Beth collect ten red shells.
+</div><br>
+<span style="color:red;">80. What do Ted and Beth collect?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/8.png",
+    options: ["Ted and Beth collect blue shells", "Ted and Beth collect red shells", "Ted and Beth collect black shells"],
+    correct: "Ted and Beth collect red shells",
+    explanation: "The story says 'Ted and Beth collect ten red shells.'"
+  },
+
+  // ── IMAGE 9 ── Story: Ted sees a red bee (Q81–Q90)
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a red bee.<br>
+Ben sees ten red bees.<br>
+Beth sees ten beetles.<br>
+Ted, Ben, and Beth see them feed.<br>
+Ted, Ben, and Beth see them flee.<br>
+Ted sees no more red bees.<br>
+Ben sees no more beetles.<br>
+Beth feels sad.
+</div><br>
+<span style="color:red;">81. What does Ted see?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/9.png",
+    options: ["Ted sees a red bee", "Ted sees a sea", "Ted sees a fish"],
+    correct: "Ted sees a red bee",
+    explanation: "The story begins with 'Ted sees a red bee.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a red bee.<br>
+Ben sees ten red bees.<br>
+Beth sees ten beetles.<br>
+Ted, Ben, and Beth see them feed.<br>
+Ted, Ben, and Beth see them flee.<br>
+Ted sees no more red bees.<br>
+Ben sees no more beetles.<br>
+Beth feels sad.
+</div><br>
+<span style="color:red;">82. What does Ben see?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/9.png",
+    options: ["Ben sees Sandy", "Ben sees ten red fish", "Ben sees ten red bees"],
+    correct: "Ben sees ten red bees",
+    explanation: "The story says 'Ben sees ten red bees.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a red bee.<br>
+Ben sees ten red bees.<br>
+Beth sees ten beetles.<br>
+Ted, Ben, and Beth see them feed.<br>
+Ted, Ben, and Beth see them flee.<br>
+Ted sees no more red bees.<br>
+Ben sees no more beetles.<br>
+Beth feels sad.
+</div><br>
+<span style="color:red;">83. What does Beth see?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/9.png",
+    options: ["Beth sees twenty beetles", "Beth sees two beetles", "Beth sees ten beetles"],
+    correct: "Beth sees ten beetles",
+    explanation: "The story says 'Beth sees ten beetles.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a red bee.<br>
+Ben sees ten red bees.<br>
+Beth sees ten beetles.<br>
+Ted, Ben, and Beth see them feed.<br>
+Ted, Ben, and Beth see them flee.<br>
+Ted sees no more red bees.<br>
+Ben sees no more beetles.<br>
+Beth feels sad.
+</div><br>
+<span style="color:red;">84. What is another word for feed?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/9.png",
+    options: ["drink", "fly", "eat"],
+    correct: "eat",
+    explanation: "Feed means to eat or give food. Another word for feed is eat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a red bee.<br>
+Ben sees ten red bees.<br>
+Beth sees ten beetles.<br>
+Ted, Ben, and Beth see them feed.<br>
+Ted, Ben, and Beth see them flee.<br>
+Ted sees no more red bees.<br>
+Ben sees no more beetles.<br>
+Beth feels sad.
+</div><br>
+<span style="color:red;">85. What is another word for flee?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/9.png",
+    options: ["stay here", "go away", "forget it"],
+    correct: "go away",
+    explanation: "Flee means to run away or escape. Another word for flee is go away."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a red bee.<br>
+Ben sees ten red bees.<br>
+Beth sees ten beetles.<br>
+Ted, Ben, and Beth see them feed.<br>
+Ted, Ben, and Beth see them flee.<br>
+Ted sees no more red bees.<br>
+Ben sees no more beetles.<br>
+Beth feels sad.
+</div><br>
+<span style="color:red;">86. Which character feels sad?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/9.png",
+    options: ["Ted", "Ben", "Beth"],
+    correct: "Beth",
+    explanation: "At the end of the story, 'Beth feels sad' because the beetles are gone."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a red bee.<br>
+Ben sees ten red bees.<br>
+Beth sees ten beetles.<br>
+Ted, Ben, and Beth see them feed.<br>
+Ted, Ben, and Beth see them flee.<br>
+Ted sees no more red bees.<br>
+Ben sees no more beetles.<br>
+Beth feels sad.
+</div><br>
+<span style="color:red;">87. How many human characters are there in the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/9.png",
+    options: ["3 characters", "5 characters", "no characters"],
+    correct: "3 characters",
+    explanation: "There are three human characters: Ted, Ben, and Beth."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a red bee.<br>
+Ben sees ten red bees.<br>
+Beth sees ten beetles.<br>
+Ted, Ben, and Beth see them feed.<br>
+Ted, Ben, and Beth see them flee.<br>
+Ted sees no more red bees.<br>
+Ben sees no more beetles.<br>
+Beth feels sad.
+</div><br>
+<span style="color:red;">88. In the story, what color is the bee?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/9.png",
+    options: ["yellow", "red", "blue"],
+    correct: "red",
+    explanation: "The story says 'Ted sees a red bee' and 'Ben sees ten red bees.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a red bee.<br>
+Ben sees ten red bees.<br>
+Beth sees ten beetles.<br>
+Ted, Ben, and Beth see them feed.<br>
+Ted, Ben, and Beth see them flee.<br>
+Ted sees no more red bees.<br>
+Ben sees no more beetles.<br>
+Beth feels sad.
+</div><br>
+<span style="color:red;">89. What is the past form of feed?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/9.png",
+    options: ["fed", "food", "first"],
+    correct: "fed",
+    explanation: "The past tense of feed is fed."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Ted sees a red bee.<br>
+Ben sees ten red bees.<br>
+Beth sees ten beetles.<br>
+Ted, Ben, and Beth see them feed.<br>
+Ted, Ben, and Beth see them flee.<br>
+Ted sees no more red bees.<br>
+Ben sees no more beetles.<br>
+Beth feels sad.
+</div><br>
+<span style="color:red;">90. What is the past form of see?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/9.png",
+    options: ["so", "saw", "sees"],
+    correct: "saw",
+    explanation: "The past tense of see is saw."
+  },
+
+  // ── IMAGE 10 ── Story: Jen is a red hen (Q91–Q100)
+  {
+    question: `<div style="text-align:center; color:black;">
+Jen is a red hen.<br>
+Jen sees Ted.<br>
+Ted has a red bed.<br>
+Jen sees the bed.<br>
+Jen has ten eggs.<br>
+Jen lets the ten eggs rest in the bed.<br>
+Then, Jen sits on the ten eggs.<br>
+Ted pets Jen.<br>
+Jen and Ted rest next to the bed.
+</div><br>
+<span style="color:red;">91. Who is Jen?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/10.png",
+    options: ["Jen is a cat", "Jen is a fish", "Jen is a hen"],
+    correct: "Jen is a hen",
+    explanation: "The story begins with 'Jen is a red hen.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jen is a red hen.<br>
+Jen sees Ted.<br>
+Ted has a red bed.<br>
+Jen sees the bed.<br>
+Jen has ten eggs.<br>
+Jen lets the ten eggs rest in the bed.<br>
+Then, Jen sits on the ten eggs.<br>
+Ted pets Jen.<br>
+Jen and Ted rest next to the bed.
+</div><br>
+<span style="color:red;">92. Who does Jen see?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/10.png",
+    options: ["Jen sees Dean", "Jen sees Ted", "Jen sees Sam"],
+    correct: "Jen sees Ted",
+    explanation: "The story says 'Jen sees Ted.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jen is a red hen.<br>
+Jen sees Ted.<br>
+Ted has a red bed.<br>
+Jen sees the bed.<br>
+Jen has ten eggs.<br>
+Jen lets the ten eggs rest in the bed.<br>
+Then, Jen sits on the ten eggs.<br>
+Ted pets Jen.<br>
+Jen and Ted rest next to the bed.
+</div><br>
+<span style="color:red;">93. What does Ted have?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/10.png",
+    options: ["Ted has a red building", "Ted has a red car", "Ted has a red bed"],
+    correct: "Ted has a red bed",
+    explanation: "The story says 'Ted has a red bed.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jen is a red hen.<br>
+Jen sees Ted.<br>
+Ted has a red bed.<br>
+Jen sees the bed.<br>
+Jen has ten eggs.<br>
+Jen lets the ten eggs rest in the bed.<br>
+Then, Jen sits on the ten eggs.<br>
+Ted pets Jen.<br>
+Jen and Ted rest next to the bed.
+</div><br>
+<span style="color:red;">94. What does Jen have?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/10.png",
+    options: ["Jen has ten minutes", "Jen has ten eggs", "Jen has ten seconds"],
+    correct: "Jen has ten eggs",
+    explanation: "The story says 'Jen has ten eggs.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jen is a red hen.<br>
+Jen sees Ted.<br>
+Ted has a red bed.<br>
+Jen sees the bed.<br>
+Jen has ten eggs.<br>
+Jen lets the ten eggs rest in the bed.<br>
+Then, Jen sits on the ten eggs.<br>
+Ted pets Jen.<br>
+Jen and Ted rest next to the bed.
+</div><br>
+<span style="color:red;">95. What does Jen do?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/10.png",
+    options: ["Jen sits on ten eggs", "Jen eats five eggs", "Ted sits on twenty eggs"],
+    correct: "Jen sits on ten eggs",
+    explanation: "The story says 'Then, Jen sits on the ten eggs.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jen is a red hen.<br>
+Jen sees Ted.<br>
+Ted has a red bed.<br>
+Jen sees the bed.<br>
+Jen has ten eggs.<br>
+Jen lets the ten eggs rest in the bed.<br>
+Then, Jen sits on the ten eggs.<br>
+Ted pets Jen.<br>
+Jen and Ted rest next to the bed.
+</div><br>
+<span style="color:red;">96. Where do Jen and Ted rest?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/10.png",
+    options: ["next to mom", "next to the bed", "next to the house"],
+    correct: "next to the bed",
+    explanation: "The story says 'Jen and Ted rest next to the bed.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jen is a red hen.<br>
+Jen sees Ted.<br>
+Ted has a red bed.<br>
+Jen sees the bed.<br>
+Jen has ten eggs.<br>
+Jen lets the ten eggs rest in the bed.<br>
+Then, Jen sits on the ten eggs.<br>
+Ted pets Jen.<br>
+Jen and Ted rest next to the bed.
+</div><br>
+<span style="color:red;">97. Where do Jen and Ted rest?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/10.png",
+    options: ["next to mom", "next to the bed", "next to the house"],
+    correct: "next to the bed",
+    explanation: "The story says 'Jen and Ted rest next to the bed.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jen is a red hen.<br>
+Jen sees Ted.<br>
+Ted has a red bed.<br>
+Jen sees the bed.<br>
+Jen has ten eggs.<br>
+Jen lets the ten eggs rest in the bed.<br>
+Then, Jen sits on the ten eggs.<br>
+Ted pets Jen.<br>
+Jen and Ted rest next to the bed.
+</div><br>
+<span style="color:red;">98. What is the color of the hen?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/10.png",
+    options: ["blue", "red", "white"],
+    correct: "red",
+    explanation: "The story says 'Jen is a red hen.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jen is a red hen.<br>
+Jen sees Ted.<br>
+Ted has a red bed.<br>
+Jen sees the bed.<br>
+Jen has ten eggs.<br>
+Jen lets the ten eggs rest in the bed.<br>
+Then, Jen sits on the ten eggs.<br>
+Ted pets Jen.<br>
+Jen and Ted rest next to the bed.
+</div><br>
+<span style="color:red;">99. What is the past form of have?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/10.png",
+    options: ["has", "had", "hid"],
+    correct: "had",
+    explanation: "The past tense of have is had."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jen is a red hen.<br>
+Jen sees Ted.<br>
+Ted has a red bed.<br>
+Jen sees the bed.<br>
+Jen has ten eggs.<br>
+Jen lets the ten eggs rest in the bed.<br>
+Then, Jen sits on the ten eggs.<br>
+Ted pets Jen.<br>
+Jen and Ted rest next to the bed.
+</div><br>
+<span style="color:red;">100. What comes before ten?</span>`,
+    image: "../../../image/leve1_eng_vowels_E/10.png",
+    options: ["nine", "no", "four"],
+    correct: "nine",
+    explanation: "Nine comes before ten when counting numbers."
+  }
+];
+    </script>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    initMCQQuiz(questions);
+  });
+    </script>
+  </body>
+</html>

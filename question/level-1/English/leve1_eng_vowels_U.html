@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    …
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+  <div class="question-section">
+    <h3 id="question-text">Loading…</h3>
+    <ul id="options-list" class="options"></ul>
+  </div>
+
+  <div id="feedback" class="hidden"></div>
+  <div id="explanation" class="hidden"></div>
+  <button id="back-btn" class="hidden">Back</button>
+  <button id="next-btn" class="hidden">Next</button>
+</main>
+
+
+    <!-- your question data: only one entry -->
+
+    <script>
+      const questions = [
+  // ── Story 1: Buck and Russ (Q1–Q10) ── Image 1
+  {
+    question: `<div style="text-align:center; color:black;">
+Buck and Russ are buds.<br>
+Buck runs.<br>
+Russ runs.<br>
+Buck and Russ look for bugs.<br>
+Buck found ten bugs.<br>
+Russ found hundred of bugs.<br>
+Buck gets a bug.<br>
+Russ gets a jug.<br>
+Now the bugs are in the jug.
+</div><br>
+<span style="color:red;">1. What are Buck and Ross?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/1.png",
+    options: ["good friends", "bad friends", "don't know each other"],
+    correct: "good friends",
+    explanation: "Buck and Russ are buds — 'buds' means good friends."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Buck and Russ are buds.<br>
+Buck runs.<br>
+Russ runs.<br>
+Buck and Russ look for bugs.<br>
+Buck found ten bugs.<br>
+Russ found hundred of bugs.<br>
+Buck gets a bug.<br>
+Russ gets a jug.<br>
+Now the bugs are in the jug.
+</div><br>
+<span style="color:red;">2. What did Buck and Ross do?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/1.png",
+    options: ["run", "hop", "write"],
+    correct: "run",
+    explanation: "The story says 'Buck runs. Russ runs.' — they ran."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Buck and Russ are buds.<br>
+Buck runs.<br>
+Russ runs.<br>
+Buck and Russ look for bugs.<br>
+Buck found ten bugs.<br>
+Russ found hundred of bugs.<br>
+Buck gets a bug.<br>
+Russ gets a jug.<br>
+Now the bugs are in the jug.
+</div><br>
+<span style="color:red;">3. What did Buck and Ross look for?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/1.png",
+    options: ["cats", "bugs", "cows"],
+    correct: "bugs",
+    explanation: "The story says 'Buck and Russ look for bugs.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Buck and Russ are buds.<br>
+Buck runs.<br>
+Russ runs.<br>
+Buck and Russ look for bugs.<br>
+Buck found ten bugs.<br>
+Russ found hundred of bugs.<br>
+Buck gets a bug.<br>
+Russ gets a jug.<br>
+Now the bugs are in the jug.
+</div><br>
+<span style="color:red;">4. How many bugs did Buck find?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/1.png",
+    options: ["five bugs", "ten bugs", "three bugs"],
+    correct: "ten bugs",
+    explanation: "The story says 'Buck found ten bugs.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Buck and Russ are buds.<br>
+Buck runs.<br>
+Russ runs.<br>
+Buck and Russ look for bugs.<br>
+Buck found ten bugs.<br>
+Russ found hundred of bugs.<br>
+Buck gets a bug.<br>
+Russ gets a jug.<br>
+Now the bugs are in the jug.
+</div><br>
+<span style="color:red;">5. What did Russ find?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/1.png",
+    options: ["Russ found hundred of bugs", "Russ found ten bugs", "Buck found hundred of bugs"],
+    correct: "Russ found hundred of bugs",
+    explanation: "The story says 'Russ found hundred of bugs.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Buck and Russ are buds.<br>
+Buck runs.<br>
+Russ runs.<br>
+Buck and Russ look for bugs.<br>
+Buck found ten bugs.<br>
+Russ found hundred of bugs.<br>
+Buck gets a bug.<br>
+Russ gets a jug.<br>
+Now the bugs are in the jug.
+</div><br>
+<span style="color:red;">6. What did Buck get?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/1.png",
+    options: ["a bug", "a cat", "a dog"],
+    correct: "a bug",
+    explanation: "The story says 'Buck gets a bug.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Buck and Russ are buds.<br>
+Buck runs.<br>
+Russ runs.<br>
+Buck and Russ look for bugs.<br>
+Buck found ten bugs.<br>
+Russ found hundred of bugs.<br>
+Buck gets a bug.<br>
+Russ gets a jug.<br>
+Now the bugs are in the jug.
+</div><br>
+<span style="color:red;">7. What does Russ get?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/1.png",
+    options: ["Russ gets a jug", "Russ gets a drink", "Russ gets a cup"],
+    correct: "Russ gets a jug",
+    explanation: "The story says 'Russ gets a jug.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Buck and Russ are buds.<br>
+Buck runs.<br>
+Russ runs.<br>
+Buck and Russ look for bugs.<br>
+Buck found ten bugs.<br>
+Russ found hundred of bugs.<br>
+Buck gets a bug.<br>
+Russ gets a jug.<br>
+Now the bugs are in the jug.
+</div><br>
+<span style="color:red;">8. Where did they put the bugs?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/1.png",
+    options: ["in the jug", "in the freezer", "in the refrigerator"],
+    correct: "in the jug",
+    explanation: "The story says 'Now the bugs are in the jug.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Buck and Russ are buds.<br>
+Buck runs.<br>
+Russ runs.<br>
+Buck and Russ look for bugs.<br>
+Buck found ten bugs.<br>
+Russ found hundred of bugs.<br>
+Buck gets a bug.<br>
+Russ gets a jug.<br>
+Now the bugs are in the jug.
+</div><br>
+<span style="color:red;">9. Who found hundred of bugs?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/1.png",
+    options: ["Russ", "Buck", "Moka"],
+    correct: "Russ",
+    explanation: "The story says 'Russ found hundred of bugs.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Buck and Russ are buds.<br>
+Buck runs.<br>
+Russ runs.<br>
+Buck and Russ look for bugs.<br>
+Buck found ten bugs.<br>
+Russ found hundred of bugs.<br>
+Buck gets a bug.<br>
+Russ gets a jug.<br>
+Now the bugs are in the jug.
+</div><br>
+<span style="color:red;">10. Which character found ten bugs?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/1.png",
+    options: ["Buck", "Russ", "Sandy"],
+    correct: "Buck",
+    explanation: "The story says 'Buck found ten bugs.'"
+  },
+
+  // ── Story 2: Gus dug in the mud (Q11–Q20) ── Image 2
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus dug in the mud by the hut.<br>
+A nut was stuck in the mud!<br>
+Gus gave a tug and a tug.<br>
+The nut did not budge.<br>
+Gus dug and dug.<br>
+He gave one big tug.<br>
+Up came the nut with a thud!<br>
+Gus sat on a rug.<br>
+He ate the nut.<br>
+"Yum!" said Gus.
+</div><br>
+<span style="color:red;">11. Who dug in the mud?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/2.png",
+    options: ["Sandy", "Gus", "Mona"],
+    correct: "Gus",
+    explanation: "The story begins: 'Gus dug in the mud by the hut.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus dug in the mud by the hut.<br>
+A nut was stuck in the mud!<br>
+Gus gave a tug and a tug.<br>
+The nut did not budge.<br>
+Gus dug and dug.<br>
+He gave one big tug.<br>
+Up came the nut with a thud!<br>
+Gus sat on a rug.<br>
+He ate the nut.<br>
+"Yum!" said Gus.
+</div><br>
+<span style="color:red;">12. Why did Gus dig by the hut?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/2.png",
+    options: ["A nut was stuck in the garden", "A nut was stuck in the mud", "A nut was stuck in the soil"],
+    correct: "A nut was stuck in the mud",
+    explanation: "The story says 'A nut was stuck in the mud!' — that is why Gus dug."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus dug in the mud by the hut.<br>
+A nut was stuck in the mud!<br>
+Gus gave a tug and a tug.<br>
+The nut did not budge.<br>
+Gus dug and dug.<br>
+He gave one big tug.<br>
+Up came the nut with a thud!<br>
+Gus sat on a rug.<br>
+He ate the nut.<br>
+"Yum!" said Gus.
+</div><br>
+<span style="color:red;">13. What did Gus try to do?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/2.png",
+    options: ["tug and tug", "dig and dig", "cry and cry"],
+    correct: "tug and tug",
+    explanation: "The story says 'Gus gave a tug and a tug' to pull the nut out."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus dug in the mud by the hut.<br>
+A nut was stuck in the mud!<br>
+Gus gave a tug and a tug.<br>
+The nut did not budge.<br>
+Gus dug and dug.<br>
+He gave one big tug.<br>
+Up came the nut with a thud!<br>
+Gus sat on a rug.<br>
+He ate the nut.<br>
+"Yum!" said Gus.
+</div><br>
+<span style="color:red;">14. Did the nut budge out?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/2.png",
+    options: ["the nut didn't bake", "the nut didn't budge", "the nut didn't ripe"],
+    correct: "the nut didn't budge",
+    explanation: "The story says 'The nut did not budge' when Gus first tugged."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus dug in the mud by the hut.<br>
+A nut was stuck in the mud!<br>
+Gus gave a tug and a tug.<br>
+The nut did not budge.<br>
+Gus dug and dug.<br>
+He gave one big tug.<br>
+Up came the nut with a thud!<br>
+Gus sat on a rug.<br>
+He ate the nut.<br>
+"Yum!" said Gus.
+</div><br>
+<span style="color:red;">15. Did the nut come out?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/2.png",
+    options: ["Yes, the nut came up", "No, the nut never came up", "Maybe the nut came up"],
+    correct: "Yes, the nut came up",
+    explanation: "The story says 'Up came the nut with a thud!' — the nut finally came out."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus dug in the mud by the hut.<br>
+A nut was stuck in the mud!<br>
+Gus gave a tug and a tug.<br>
+The nut did not budge.<br>
+Gus dug and dug.<br>
+He gave one big tug.<br>
+Up came the nut with a thud!<br>
+Gus sat on a rug.<br>
+He ate the nut.<br>
+"Yum!" said Gus.
+</div><br>
+<span style="color:red;">16. Where did Gus sit?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/2.png",
+    options: ["on the car", "on the rug", "on the road"],
+    correct: "on the rug",
+    explanation: "The story says 'Gus sat on a rug.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus dug in the mud by the hut.<br>
+A nut was stuck in the mud!<br>
+Gus gave a tug and a tug.<br>
+The nut did not budge.<br>
+Gus dug and dug.<br>
+He gave one big tug.<br>
+Up came the nut with a thud!<br>
+Gus sat on a rug.<br>
+He ate the nut.<br>
+"Yum!" said Gus.
+</div><br>
+<span style="color:red;">17. Who ate the nut?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/2.png",
+    options: ["Sandy", "Sam", "Gus"],
+    correct: "Gus",
+    explanation: "The story says 'He ate the nut. Yum! said Gus.' — Gus ate the nut."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus dug in the mud by the hut.<br>
+A nut was stuck in the mud!<br>
+Gus gave a tug and a tug.<br>
+The nut did not budge.<br>
+Gus dug and dug.<br>
+He gave one big tug.<br>
+Up came the nut with a thud!<br>
+Gus sat on a rug.<br>
+He ate the nut.<br>
+"Yum!" said Gus.
+</div><br>
+<span style="color:red;">18. What did Gus say as he ate the nut?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/2.png",
+    options: ["wow", "yum", "yuck"],
+    correct: "yum",
+    explanation: "The story says '\"Yum!\" said Gus' — he liked the nut."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus dug in the mud by the hut.<br>
+A nut was stuck in the mud!<br>
+Gus gave a tug and a tug.<br>
+The nut did not budge.<br>
+Gus dug and dug.<br>
+He gave one big tug.<br>
+Up came the nut with a thud!<br>
+Gus sat on a rug.<br>
+He ate the nut.<br>
+"Yum!" said Gus.
+</div><br>
+<span style="color:red;">19. What is the present tense of ate?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/2.png",
+    options: ["eat", "eel", "eating"],
+    correct: "eat",
+    explanation: "'Ate' is the past tense of 'eat.' The present tense is 'eat.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus dug in the mud by the hut.<br>
+A nut was stuck in the mud!<br>
+Gus gave a tug and a tug.<br>
+The nut did not budge.<br>
+Gus dug and dug.<br>
+He gave one big tug.<br>
+Up came the nut with a thud!<br>
+Gus sat on a rug.<br>
+He ate the nut.<br>
+"Yum!" said Gus.
+</div><br>
+<span style="color:red;">20. What is the present tense of came?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/2.png",
+    options: ["come", "calm", "coming"],
+    correct: "come",
+    explanation: "'Came' is the past tense of 'come.' The present tense is 'come.'"
+  },
+
+  // ── Story 3: Buggy Bud (Q21–Q30) ── Image 3
+  {
+    question: `<div style="text-align:center; color:black;">
+The sun is up.<br>
+The sun is out.<br>
+So is Bud the bug.<br>
+Buggy Bud is so cute and beautiful.<br>
+Buggy Bud will get a big bun.<br>
+Buggy Bud will eat a bit of the bun.<br>
+Yum! Buggy Bud hugs the bun.<br>
+Buggy Bud hugs her mummy.
+</div><br>
+<span style="color:red;">21. What is up in the sky?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/3.png",
+    options: ["sun", "son", "clouds"],
+    correct: "sun",
+    explanation: "The story says 'The sun is up. The sun is out.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The sun is up.<br>
+The sun is out.<br>
+So is Bud the bug.<br>
+Buggy Bud is so cute and beautiful.<br>
+Buggy Bud will get a big bun.<br>
+Buggy Bud will eat a bit of the bun.<br>
+Yum! Buggy Bud hugs the bun.<br>
+Buggy Bud hugs her mummy.
+</div><br>
+<span style="color:red;">22. Who is out and about?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/3.png",
+    options: ["Sandy", "Buggy Bud", "Sam"],
+    correct: "Buggy Bud",
+    explanation: "The story says 'So is Bud the bug' — Buggy Bud is out when the sun is out."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The sun is up.<br>
+The sun is out.<br>
+So is Bud the bug.<br>
+Buggy Bud is so cute and beautiful.<br>
+Buggy Bud will get a big bun.<br>
+Buggy Bud will eat a bit of the bun.<br>
+Yum! Buggy Bud hugs the bun.<br>
+Buggy Bud hugs her mummy.
+</div><br>
+<span style="color:red;">23. How was Buggy Bud the bug characterized?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/3.png",
+    options: ["fat and ugly", "beautiful and cute", "smart and fast"],
+    correct: "beautiful and cute",
+    explanation: "The story says 'Buggy Bud is so cute and beautiful.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The sun is up.<br>
+The sun is out.<br>
+So is Bud the bug.<br>
+Buggy Bud is so cute and beautiful.<br>
+Buggy Bud will get a big bun.<br>
+Buggy Bud will eat a bit of the bun.<br>
+Yum! Buggy Bud hugs the bun.<br>
+Buggy Bud hugs her mummy.
+</div><br>
+<span style="color:red;">24. What will Buggy Bud get?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/3.png",
+    options: ["a big leaf", "a big bud", "a big bun"],
+    correct: "a big bun",
+    explanation: "The story says 'Buggy Bud will get a big bun.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The sun is up.<br>
+The sun is out.<br>
+So is Bud the bug.<br>
+Buggy Bud is so cute and beautiful.<br>
+Buggy Bud will get a big bun.<br>
+Buggy Bud will eat a bit of the bun.<br>
+Yum! Buggy Bud hugs the bun.<br>
+Buggy Bud hugs her mummy.
+</div><br>
+<span style="color:red;">25. What will Buggy Bud do?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/3.png",
+    options: ["she will eat a hot dog", "she will eat a bun", "she will eat a burger"],
+    correct: "she will eat a bun",
+    explanation: "The story says 'Buggy Bud will eat a bit of the bun.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The sun is up.<br>
+The sun is out.<br>
+So is Bud the bug.<br>
+Buggy Bud is so cute and beautiful.<br>
+Buggy Bud will get a big bun.<br>
+Buggy Bud will eat a bit of the bun.<br>
+Yum! Buggy Bud hugs the bun.<br>
+Buggy Bud hugs her mummy.
+</div><br>
+<span style="color:red;">26. What does Buggy Bud the bug do?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/3.png",
+    options: ["hug the cow", "hug the mug", "hug the bun"],
+    correct: "hug the bun",
+    explanation: "The story says 'Yum! Buggy Bud hugs the bun.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The sun is up.<br>
+The sun is out.<br>
+So is Bud the bug.<br>
+Buggy Bud is so cute and beautiful.<br>
+Buggy Bud will get a big bun.<br>
+Buggy Bud will eat a bit of the bun.<br>
+Yum! Buggy Bud hugs the bun.<br>
+Buggy Bud hugs her mummy.
+</div><br>
+<span style="color:red;">27. What did Buggy Bud do to her mummy?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/3.png",
+    options: ["Buggy Bud hugs her gummy", "Buggy Bud hugs her mummy", "Buggy Bud hugs her bunny"],
+    correct: "Buggy Bud hugs her mummy",
+    explanation: "The story says 'Buggy Bud hugs her mummy.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The sun is up.<br>
+The sun is out.<br>
+So is Bud the bug.<br>
+Buggy Bud is so cute and beautiful.<br>
+Buggy Bud will get a big bun.<br>
+Buggy Bud will eat a bit of the bun.<br>
+Yum! Buggy Bud hugs the bun.<br>
+Buggy Bud hugs her mummy.
+</div><br>
+<span style="color:red;">28. What is the past tense of get?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/3.png",
+    options: ["got", "mop", "getting"],
+    correct: "got",
+    explanation: "'Get' becomes 'got' in the past tense. It is an irregular verb."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The sun is up.<br>
+The sun is out.<br>
+So is Bud the bug.<br>
+Buggy Bud is so cute and beautiful.<br>
+Buggy Bud will get a big bun.<br>
+Buggy Bud will eat a bit of the bun.<br>
+Yum! Buggy Bud hugs the bun.<br>
+Buggy Bud hugs her mummy.
+</div><br>
+<span style="color:red;">29. What is the past tense of eat?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/3.png",
+    options: ["ate", "eel", "eating"],
+    correct: "ate",
+    explanation: "'Eat' becomes 'ate' in the past tense. It is an irregular verb."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The sun is up.<br>
+The sun is out.<br>
+So is Bud the bug.<br>
+Buggy Bud is so cute and beautiful.<br>
+Buggy Bud will get a big bun.<br>
+Buggy Bud will eat a bit of the bun.<br>
+Yum! Buggy Bud hugs the bun.<br>
+Buggy Bud hugs her mummy.
+</div><br>
+<span style="color:red;">30. What is the past tense of is?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/3.png",
+    options: ["ate", "was", "were"],
+    correct: "was",
+    explanation: "'Is' (singular) becomes 'was' in the past tense."
+  },
+
+  // ── Story 4: Mummy has a cub (Q31–Q40) ── Image 4
+  {
+    question: `<div style="text-align:center; color:black;">
+Mummy has a cub.<br>
+The cub goes on the bus.<br>
+The bus goes up and up.<br>
+The cub hums and hums.<br>
+The cub is in the mud.<br>
+Mummy will get the tub.<br>
+The cub rubs and rubs.<br>
+Oh no! The cub is out of the tub.<br>
+The cub is back in the mud!<br>
+The bus is gone up and up.
+</div><br>
+<span style="color:red;">31. What does Mummy have?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/4.png",
+    options: ["a cat", "a car", "a cub"],
+    correct: "a cub",
+    explanation: "The story begins 'Mummy has a cub.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mummy has a cub.<br>
+The cub goes on the bus.<br>
+The bus goes up and up.<br>
+The cub hums and hums.<br>
+The cub is in the mud.<br>
+Mummy will get the tub.<br>
+The cub rubs and rubs.<br>
+Oh no! The cub is out of the tub.<br>
+The cub is back in the mud!<br>
+The bus is gone up and up.
+</div><br>
+<span style="color:red;">32. Where does the cub get on?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/4.png",
+    options: ["on the bus", "on the table", "on the airplane"],
+    correct: "on the bus",
+    explanation: "The story says 'The cub goes on the bus.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mummy has a cub.<br>
+The cub goes on the bus.<br>
+The bus goes up and up.<br>
+The cub hums and hums.<br>
+The cub is in the mud.<br>
+Mummy will get the tub.<br>
+The cub rubs and rubs.<br>
+Oh no! The cub is out of the tub.<br>
+The cub is back in the mud!<br>
+The bus is gone up and up.
+</div><br>
+<span style="color:red;">33. How does the bus move?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/4.png",
+    options: ["down and down", "up and up", "right and left"],
+    correct: "up and up",
+    explanation: "The story says 'The bus goes up and up.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mummy has a cub.<br>
+The cub goes on the bus.<br>
+The bus goes up and up.<br>
+The cub hums and hums.<br>
+The cub is in the mud.<br>
+Mummy will get the tub.<br>
+The cub rubs and rubs.<br>
+Oh no! The cub is out of the tub.<br>
+The cub is back in the mud!<br>
+The bus is gone up and up.
+</div><br>
+<span style="color:red;">34. As the bus moves, what does the cub do?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/4.png",
+    options: ["talks and talks", "sings and sings", "hums and hums"],
+    correct: "hums and hums",
+    explanation: "The story says 'The cub hums and hums' as the bus moves."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mummy has a cub.<br>
+The cub goes on the bus.<br>
+The bus goes up and up.<br>
+The cub hums and hums.<br>
+The cub is in the mud.<br>
+Mummy will get the tub.<br>
+The cub rubs and rubs.<br>
+Oh no! The cub is out of the tub.<br>
+The cub is back in the mud!<br>
+The bus is gone up and up.
+</div><br>
+<span style="color:red;">35. Why did mummy get a tub?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/4.png",
+    options: ["the cub was in the mud", "the cub was very hot", "the cub was stinky"],
+    correct: "the cub was in the mud",
+    explanation: "The story says 'The cub is in the mud. Mummy will get the tub' — to clean the muddy cub."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mummy has a cub.<br>
+The cub goes on the bus.<br>
+The bus goes up and up.<br>
+The cub hums and hums.<br>
+The cub is in the mud.<br>
+Mummy will get the tub.<br>
+The cub rubs and rubs.<br>
+Oh no! The cub is out of the tub.<br>
+The cub is back in the mud!<br>
+The bus is gone up and up.
+</div><br>
+<span style="color:red;">36. What does the cub do in the tub?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/4.png",
+    options: ["rub and rub", "sleep and sleep", "play and play"],
+    correct: "rub and rub",
+    explanation: "The story says 'The cub rubs and rubs' in the tub."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mummy has a cub.<br>
+The cub goes on the bus.<br>
+The bus goes up and up.<br>
+The cub hums and hums.<br>
+The cub is in the mud.<br>
+Mummy will get the tub.<br>
+The cub rubs and rubs.<br>
+Oh no! The cub is out of the tub.<br>
+The cub is back in the mud!<br>
+The bus is gone up and up.
+</div><br>
+<span style="color:red;">37. Why did mummy say "Oh No?"</span>`,
+    image: "../../../image/leve1_eng_vowels_U/4.png",
+    options: ["the cub is out of the kitchen", "the cub is out of the swimming pool", "the cub is out of the tub"],
+    correct: "the cub is out of the tub",
+    explanation: "The story says 'Oh no! The cub is out of the tub.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mummy has a cub.<br>
+The cub goes on the bus.<br>
+The bus goes up and up.<br>
+The cub hums and hums.<br>
+The cub is in the mud.<br>
+Mummy will get the tub.<br>
+The cub rubs and rubs.<br>
+Oh no! The cub is out of the tub.<br>
+The cub is back in the mud!<br>
+The bus is gone up and up.
+</div><br>
+<span style="color:red;">38. Where did the cub go back in?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/4.png",
+    options: ["the mud", "the water", "the river"],
+    correct: "the mud",
+    explanation: "The story says 'The cub is back in the mud!'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mummy has a cub.<br>
+The cub goes on the bus.<br>
+The bus goes up and up.<br>
+The cub hums and hums.<br>
+The cub is in the mud.<br>
+Mummy will get the tub.<br>
+The cub rubs and rubs.<br>
+Oh no! The cub is out of the tub.<br>
+The cub is back in the mud!<br>
+The bus is gone up and up.
+</div><br>
+<span style="color:red;">39. What is the past tense of is?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/4.png",
+    options: ["were", "won", "was"],
+    correct: "was",
+    explanation: "'Is' (singular) becomes 'was' in the past tense."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mummy has a cub.<br>
+The cub goes on the bus.<br>
+The bus goes up and up.<br>
+The cub hums and hums.<br>
+The cub is in the mud.<br>
+Mummy will get the tub.<br>
+The cub rubs and rubs.<br>
+Oh no! The cub is out of the tub.<br>
+The cub is back in the mud!<br>
+The bus is gone up and up.
+</div><br>
+<span style="color:red;">40. What is the present tense of was?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/4.png",
+    options: ["in", "is", "were"],
+    correct: "is",
+    explanation: "'Was' is the past tense of 'is.' The present tense is 'is.'"
+  },
+
+  // ── Story 5: Gus and Puck (Q41–Q50) ── Image 5
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus and Puck.<br>
+Gus has a pet duck.<br>
+The duck is Puck.<br>
+Puck is in a rush.<br>
+Puck runs in the mud.<br>
+Splash! Puck slips with a thud.<br>
+"Oh no!" says Gus.<br>
+Puck got a little cut.<br>
+"What bad luck!" says Gus.<br>
+Gus gets a cup and a rug.<br>
+Gus helps Puck feel snug.
+</div><br>
+<span style="color:red;">41. What pet does Gus have?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/5.png",
+    options: ["a pet duck", "a pet cat", "a pet dog"],
+    correct: "a pet duck",
+    explanation: "The story says 'Gus has a pet duck.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus and Puck.<br>
+Gus has a pet duck.<br>
+The duck is Puck.<br>
+Puck is in a rush.<br>
+Puck runs in the mud.<br>
+Splash! Puck slips with a thud.<br>
+"Oh no!" says Gus.<br>
+Puck got a little cut.<br>
+"What bad luck!" says Gus.<br>
+Gus gets a cup and a rug.<br>
+Gus helps Puck feel snug.
+</div><br>
+<span style="color:red;">42. What is the name of the duck?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/5.png",
+    options: ["Sam", "Piky", "Puck"],
+    correct: "Puck",
+    explanation: "The story says 'The duck is Puck.' The duck's name is Puck."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus and Puck.<br>
+Gus has a pet duck.<br>
+The duck is Puck.<br>
+Puck is in a rush.<br>
+Puck runs in the mud.<br>
+Splash! Puck slips with a thud.<br>
+"Oh no!" says Gus.<br>
+Puck got a little cut.<br>
+"What bad luck!" says Gus.<br>
+Gus gets a cup and a rug.<br>
+Gus helps Puck feel snug.
+</div><br>
+<span style="color:red;">43. Where does the duck Puck run to?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/5.png",
+    options: ["the mud", "the cinema", "the mall"],
+    correct: "the mud",
+    explanation: "The story says 'Puck runs in the mud.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus and Puck.<br>
+Gus has a pet duck.<br>
+The duck is Puck.<br>
+Puck is in a rush.<br>
+Puck runs in the mud.<br>
+Splash! Puck slips with a thud.<br>
+"Oh no!" says Gus.<br>
+Puck got a little cut.<br>
+"What bad luck!" says Gus.<br>
+Gus gets a cup and a rug.<br>
+Gus helps Puck feel snug.
+</div><br>
+<span style="color:red;">44. Where does the duck Puck slip?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/5.png",
+    options: ["in the garden", "in the garage", "in the mud"],
+    correct: "in the mud",
+    explanation: "The story says 'Puck runs in the mud. Splash! Puck slips with a thud.' — Puck slipped in the mud."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus and Puck.<br>
+Gus has a pet duck.<br>
+The duck is Puck.<br>
+Puck is in a rush.<br>
+Puck runs in the mud.<br>
+Splash! Puck slips with a thud.<br>
+"Oh no!" says Gus.<br>
+Puck got a little cut.<br>
+"What bad luck!" says Gus.<br>
+Gus gets a cup and a rug.<br>
+Gus helps Puck feel snug.
+</div><br>
+<span style="color:red;">45. How does the duck Puck slip?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/5.png",
+    options: ["with a thud", "with love", "with a fall"],
+    correct: "with a thud",
+    explanation: "The story says 'Puck slips with a thud.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus and Puck.<br>
+Gus has a pet duck.<br>
+The duck is Puck.<br>
+Puck is in a rush.<br>
+Puck runs in the mud.<br>
+Splash! Puck slips with a thud.<br>
+"Oh no!" says Gus.<br>
+Puck got a little cut.<br>
+"What bad luck!" says Gus.<br>
+Gus gets a cup and a rug.<br>
+Gus helps Puck feel snug.
+</div><br>
+<span style="color:red;">46. What happened to Puck?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/5.png",
+    options: ["Puck got a big cut", "Puck got a middle cut", "Puck got a little cut"],
+    correct: "Puck got a little cut",
+    explanation: "The story says 'Puck got a little cut.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus and Puck.<br>
+Gus has a pet duck.<br>
+The duck is Puck.<br>
+Puck is in a rush.<br>
+Puck runs in the mud.<br>
+Splash! Puck slips with a thud.<br>
+"Oh no!" says Gus.<br>
+Puck got a little cut.<br>
+"What bad luck!" says Gus.<br>
+Gus gets a cup and a rug.<br>
+Gus helps Puck feel snug.
+</div><br>
+<span style="color:red;">47. What did Gus say as he saw Puck?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/5.png",
+    options: ["what great luck", "what a bad game", "what bad luck"],
+    correct: "what bad luck",
+    explanation: "The story says '\"What bad luck!\" says Gus.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus and Puck.<br>
+Gus has a pet duck.<br>
+The duck is Puck.<br>
+Puck is in a rush.<br>
+Puck runs in the mud.<br>
+Splash! Puck slips with a thud.<br>
+"Oh no!" says Gus.<br>
+Puck got a little cut.<br>
+"What bad luck!" says Gus.<br>
+Gus gets a cup and a rug.<br>
+Gus helps Puck feel snug.
+</div><br>
+<span style="color:red;">48. What does Gus get for Puck?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/5.png",
+    options: ["a spoon and fork", "a cup and a thermometer", "a cup and rug"],
+    correct: "a cup and rug",
+    explanation: "The story says 'Gus gets a cup and a rug' to help Puck."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus and Puck.<br>
+Gus has a pet duck.<br>
+The duck is Puck.<br>
+Puck is in a rush.<br>
+Puck runs in the mud.<br>
+Splash! Puck slips with a thud.<br>
+"Oh no!" says Gus.<br>
+Puck got a little cut.<br>
+"What bad luck!" says Gus.<br>
+Gus gets a cup and a rug.<br>
+Gus helps Puck feel snug.
+</div><br>
+<span style="color:red;">49. How does Gus help Puck?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/5.png",
+    options: ["Gus helps Puck feel comfortable", "Gus helps Puck feel happy", "Gus helps Puck feel snug"],
+    correct: "Gus helps Puck feel snug",
+    explanation: "The story says 'Gus helps Puck feel snug' — snug means warm and comfortable."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus and Puck.<br>
+Gus has a pet duck.<br>
+The duck is Puck.<br>
+Puck is in a rush.<br>
+Puck runs in the mud.<br>
+Splash! Puck slips with a thud.<br>
+"Oh no!" says Gus.<br>
+Puck got a little cut.<br>
+"What bad luck!" says Gus.<br>
+Gus gets a cup and a rug.<br>
+Gus helps Puck feel snug.
+</div><br>
+<span style="color:red;">50. What is the past tense of feel?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/5.png",
+    options: ["feed", "felt", "feels"],
+    correct: "felt",
+    explanation: "'Feel' becomes 'felt' in the past tense. It is an irregular verb."
+  },
+
+  // ── Story 6: Vowel U Part 2 – Gus and the bug (Q51–Q65) ── Image 6
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus sits under the hut.<br>
+The sun is out.<br>
+Gus sees a bug.<br>
+The bug is cute.<br>
+The bug jumps in the mud.<br>
+The bug plays in the mud.<br>
+Gus has fun.<br>
+The bug jumps and jumps.<br>
+Gus laughs and bug laughs.<br>
+Gus and bug go on the bus.
+</div><br>
+<span style="color:red;">51. Where does Gus sit?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/6.png",
+    options: ["under the hut", "above the hut", "by the mud"],
+    correct: "under the hut",
+    explanation: "The story says 'Gus sits under the hut.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus sits under the hut.<br>
+The sun is out.<br>
+Gus sees a bug.<br>
+The bug is cute.<br>
+The bug jumps in the mud.<br>
+The bug plays in the mud.<br>
+Gus has fun.<br>
+The bug jumps and jumps.<br>
+Gus laughs and bug laughs.<br>
+Gus and bug go on the bus.
+</div><br>
+<span style="color:red;">52. How was the sun?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/6.png",
+    options: ["the sun was out", "the sun was gone", "the sun was behind the clouds"],
+    correct: "the sun was out",
+    explanation: "The story says 'The sun is out.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus sits under the hut.<br>
+The sun is out.<br>
+Gus sees a bug.<br>
+The bug is cute.<br>
+The bug jumps in the mud.<br>
+The bug plays in the mud.<br>
+Gus has fun.<br>
+The bug jumps and jumps.<br>
+Gus laughs and bug laughs.<br>
+Gus and bug go on the bus.
+</div><br>
+<span style="color:red;">53. What does Gus see?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/6.png",
+    options: ["a cat", "a hat", "a bug"],
+    correct: "a bug",
+    explanation: "The story says 'Gus sees a bug.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus sits under the hut.<br>
+The sun is out.<br>
+Gus sees a bug.<br>
+The bug is cute.<br>
+The bug jumps in the mud.<br>
+The bug plays in the mud.<br>
+Gus has fun.<br>
+The bug jumps and jumps.<br>
+Gus laughs and bug laughs.<br>
+Gus and bug go on the bus.
+</div><br>
+<span style="color:red;">54. How was the bug?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/6.png",
+    options: ["the bug was fat", "the bug was cute", "the bug was sick"],
+    correct: "the bug was cute",
+    explanation: "The story says 'The bug is cute.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus sits under the hut.<br>
+The sun is out.<br>
+Gus sees a bug.<br>
+The bug is cute.<br>
+The bug jumps in the mud.<br>
+The bug plays in the mud.<br>
+Gus has fun.<br>
+The bug jumps and jumps.<br>
+Gus laughs and bug laughs.<br>
+Gus and bug go on the bus.
+</div><br>
+<span style="color:red;">55. Where does the bug jump?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/6.png",
+    options: ["in the pool", "in the pond", "in the mud"],
+    correct: "in the mud",
+    explanation: "The story says 'The bug jumps in the mud.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus sits under the hut.<br>
+The sun is out.<br>
+Gus sees a bug.<br>
+The bug is cute.<br>
+The bug jumps in the mud.<br>
+The bug plays in the mud.<br>
+Gus has fun.<br>
+The bug jumps and jumps.<br>
+Gus laughs and bug laughs.<br>
+Gus and bug go on the bus.
+</div><br>
+<span style="color:red;">56. Where does the bug play?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/6.png",
+    options: ["in the bed", "in the pool", "in the mud"],
+    correct: "in the mud",
+    explanation: "The story says 'The bug plays in the mud.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus sits under the hut.<br>
+The sun is out.<br>
+Gus sees a bug.<br>
+The bug is cute.<br>
+The bug jumps in the mud.<br>
+The bug plays in the mud.<br>
+Gus has fun.<br>
+The bug jumps and jumps.<br>
+Gus laughs and bug laughs.<br>
+Gus and bug go on the bus.
+</div><br>
+<span style="color:red;">57. What does Gus and the bug show?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/6.png",
+    options: ["happiness", "sadness", "sickness"],
+    correct: "happiness",
+    explanation: "The story says 'Gus laughs and bug laughs. Gus has fun.' — both are happy."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus sits under the hut.<br>
+The sun is out.<br>
+Gus sees a bug.<br>
+The bug is cute.<br>
+The bug jumps in the mud.<br>
+The bug plays in the mud.<br>
+Gus has fun.<br>
+The bug jumps and jumps.<br>
+Gus laughs and bug laughs.<br>
+Gus and bug go on the bus.
+</div><br>
+<span style="color:red;">58. Where does Gus and bug go on?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/6.png",
+    options: ["the car", "the bus", "the train"],
+    correct: "the bus",
+    explanation: "The story says 'Gus and bug go on the bus.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus sits under the hut.<br>
+The sun is out.<br>
+Gus sees a bug.<br>
+The bug is cute.<br>
+The bug jumps in the mud.<br>
+The bug plays in the mud.<br>
+Gus has fun.<br>
+The bug jumps and jumps.<br>
+Gus laughs and bug laughs.<br>
+Gus and bug go on the bus.
+</div><br>
+<span style="color:red;">59. What color are the eyes of the bug?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/6.png",
+    options: ["black", "blue", "brown"],
+    correct: "black",
+    explanation: "Looking at the picture, the cute bug has big black eyes."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus sits under the hut.<br>
+The sun is out.<br>
+Gus sees a bug.<br>
+The bug is cute.<br>
+The bug jumps in the mud.<br>
+The bug plays in the mud.<br>
+Gus has fun.<br>
+The bug jumps and jumps.<br>
+Gus laughs and bug laughs.<br>
+Gus and bug go on the bus.
+</div><br>
+<span style="color:red;">60. What is the opposite of laugh?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/6.png",
+    options: ["jump", "hop", "cry"],
+    correct: "cry",
+    explanation: "The opposite of 'laugh' (being happy) is 'cry' (being sad)."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus sits under the hut.<br>
+The sun is out.<br>
+Gus sees a bug.<br>
+The bug is cute.<br>
+The bug jumps in the mud.<br>
+The bug plays in the mud.<br>
+Gus has fun.<br>
+The bug jumps and jumps.<br>
+Gus laughs and bug laughs.<br>
+Gus and bug go on the bus.
+</div><br>
+<span style="color:red;">61. What color are the shoes of Gus?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/6.png",
+    options: ["red", "blue", "black"],
+    correct: "red",
+    explanation: "Looking at the picture, Gus is wearing red shoes."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus sits under the hut.<br>
+The sun is out.<br>
+Gus sees a bug.<br>
+The bug is cute.<br>
+The bug jumps in the mud.<br>
+The bug plays in the mud.<br>
+Gus has fun.<br>
+The bug jumps and jumps.<br>
+Gus laughs and bug laughs.<br>
+Gus and bug go on the bus.
+</div><br>
+<span style="color:red;">62. What is the past tense of has?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/6.png",
+    options: ["have", "has", "had"],
+    correct: "had",
+    explanation: "'Has' becomes 'had' in the past tense. Example: 'Gus has fun' → 'Gus had fun.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus sits under the hut.<br>
+The sun is out.<br>
+Gus sees a bug.<br>
+The bug is cute.<br>
+The bug jumps in the mud.<br>
+The bug plays in the mud.<br>
+Gus has fun.<br>
+The bug jumps and jumps.<br>
+Gus laughs and bug laughs.<br>
+Gus and bug go on the bus.
+</div><br>
+<span style="color:red;">63. What is the past tense of see?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/6.png",
+    options: ["so", "saw", "sea"],
+    correct: "saw",
+    explanation: "'See' becomes 'saw' in the past tense. It is an irregular verb."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus sits under the hut.<br>
+The sun is out.<br>
+Gus sees a bug.<br>
+The bug is cute.<br>
+The bug jumps in the mud.<br>
+The bug plays in the mud.<br>
+Gus has fun.<br>
+The bug jumps and jumps.<br>
+Gus laughs and bug laughs.<br>
+Gus and bug go on the bus.
+</div><br>
+<span style="color:red;">64. How many flowers do you see in the picture?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/6.png",
+    options: ["three", "two", "none"],
+    correct: "two",
+    explanation: "Looking at the picture, there are two flowers visible in the scene."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus sits under the hut.<br>
+The sun is out.<br>
+Gus sees a bug.<br>
+The bug is cute.<br>
+The bug jumps in the mud.<br>
+The bug plays in the mud.<br>
+Gus has fun.<br>
+The bug jumps and jumps.<br>
+Gus laughs and bug laughs.<br>
+Gus and bug go on the bus.
+</div><br>
+<span style="color:red;">65. What is the past tense of jump?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/6.png",
+    options: ["jumping", "jumped", "jump"],
+    correct: "jumped",
+    explanation: "'Jump' becomes 'jumped' in the past tense by adding -ed."
+  },
+
+  // ── Story 7: Red bug and purple bug on bus (Q66–Q75) ── Image 7
+  {
+    question: `<div style="text-align:center; color:black;">
+The red bug goes on the bus.<br>
+The purple bug goes on the bus.<br>
+The red bug and the purple bug jump on the bus.<br>
+Gus is upset.<br>
+Gus says, "No jumping on the bus!"<br>
+The bus goes up and up.<br>
+The red bug and the purple bug go up and up.<br>
+Finally, the bus goes down and down.
+</div><br>
+<span style="color:red;">66. Who gets on the bus?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/7.png",
+    options: ["red bug and yellow bug", "red bug and white bug", "red bug and purple bug"],
+    correct: "red bug and purple bug",
+    explanation: "The story says 'The red bug goes on the bus. The purple bug goes on the bus.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The red bug goes on the bus.<br>
+The purple bug goes on the bus.<br>
+The red bug and the purple bug jump on the bus.<br>
+Gus is upset.<br>
+Gus says, "No jumping on the bus!"<br>
+The bus goes up and up.<br>
+The red bug and the purple bug go up and up.<br>
+Finally, the bus goes down and down.
+</div><br>
+<span style="color:red;">67. What do the bugs do on the bus?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/7.png",
+    options: ["shout on the bus", "cry on the bus", "jump on the bus"],
+    correct: "jump on the bus",
+    explanation: "The story says 'The red bug and the purple bug jump on the bus.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The red bug goes on the bus.<br>
+The purple bug goes on the bus.<br>
+The red bug and the purple bug jump on the bus.<br>
+Gus is upset.<br>
+Gus says, "No jumping on the bus!"<br>
+The bus goes up and up.<br>
+The red bug and the purple bug go up and up.<br>
+Finally, the bus goes down and down.
+</div><br>
+<span style="color:red;">68. What emotions does Gus express?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/7.png",
+    options: ["he is happy", "he is upset", "he is crying"],
+    correct: "he is upset",
+    explanation: "The story says 'Gus is upset' when the bugs jump on the bus."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The red bug goes on the bus.<br>
+The purple bug goes on the bus.<br>
+The red bug and the purple bug jump on the bus.<br>
+Gus is upset.<br>
+Gus says, "No jumping on the bus!"<br>
+The bus goes up and up.<br>
+The red bug and the purple bug go up and up.<br>
+Finally, the bus goes down and down.
+</div><br>
+<span style="color:red;">69. What did Gus tell the bugs?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/7.png",
+    options: ["no crying on the bus", "no eating on the bus", "no jumping on the bus"],
+    correct: "no jumping on the bus",
+    explanation: "The story says 'Gus says, \"No jumping on the bus!\"'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The red bug goes on the bus.<br>
+The purple bug goes on the bus.<br>
+The red bug and the purple bug jump on the bus.<br>
+Gus is upset.<br>
+Gus says, "No jumping on the bus!"<br>
+The bus goes up and up.<br>
+The red bug and the purple bug go up and up.<br>
+Finally, the bus goes down and down.
+</div><br>
+<span style="color:red;">70. How does the bus move?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/7.png",
+    options: ["up and up", "right and left", "left and right"],
+    correct: "up and up",
+    explanation: "The story says 'The bus goes up and up.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The red bug goes on the bus.<br>
+The purple bug goes on the bus.<br>
+The red bug and the purple bug jump on the bus.<br>
+Gus is upset.<br>
+Gus says, "No jumping on the bus!"<br>
+The bus goes up and up.<br>
+The red bug and the purple bug go up and up.<br>
+Finally, the bus goes down and down.
+</div><br>
+<span style="color:red;">71. What happens at the end of the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/7.png",
+    options: ["bus goes left and middle", "bus goes up and left", "bus goes down and down"],
+    correct: "bus goes down and down",
+    explanation: "The story says 'Finally, the bus goes down and down.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The red bug goes on the bus.<br>
+The purple bug goes on the bus.<br>
+The red bug and the purple bug jump on the bus.<br>
+Gus is upset.<br>
+Gus says, "No jumping on the bus!"<br>
+The bus goes up and up.<br>
+The red bug and the purple bug go up and up.<br>
+Finally, the bus goes down and down.
+</div><br>
+<span style="color:red;">72. What color is Gus's T-shirt?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/7.png",
+    options: ["red", "purple", "orange"],
+    correct: "orange",
+    explanation: "Looking at the picture, Gus is wearing an orange T-shirt."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The red bug goes on the bus.<br>
+The purple bug goes on the bus.<br>
+The red bug and the purple bug jump on the bus.<br>
+Gus is upset.<br>
+Gus says, "No jumping on the bus!"<br>
+The bus goes up and up.<br>
+The red bug and the purple bug go up and up.<br>
+Finally, the bus goes down and down.
+</div><br>
+<span style="color:red;">73. What is written on Gus's T-shirt?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/7.png",
+    options: ["Bug", "Mama", "Gus"],
+    correct: "Gus",
+    explanation: "Looking at the picture, the word 'GUS' is written on his T-shirt."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The red bug goes on the bus.<br>
+The purple bug goes on the bus.<br>
+The red bug and the purple bug jump on the bus.<br>
+Gus is upset.<br>
+Gus says, "No jumping on the bus!"<br>
+The bus goes up and up.<br>
+The red bug and the purple bug go up and up.<br>
+Finally, the bus goes down and down.
+</div><br>
+<span style="color:red;">74. How many dots are present on the bugs?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/7.png",
+    options: ["total of 10", "total of 7", "total of 6"],
+    correct: "total of 7",
+    explanation: "Looking at the picture carefully, the red bug and purple bug together have a total of 7 dots."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+The red bug goes on the bus.<br>
+The purple bug goes on the bus.<br>
+The red bug and the purple bug jump on the bus.<br>
+Gus is upset.<br>
+Gus says, "No jumping on the bus!"<br>
+The bus goes up and up.<br>
+The red bug and the purple bug go up and up.<br>
+Finally, the bus goes down and down.
+</div><br>
+<span style="color:red;">75. What is the opposite of upset?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/7.png",
+    options: ["happy", "sad", "beautiful"],
+    correct: "happy",
+    explanation: "The opposite of 'upset' (unhappy/troubled) is 'happy.'"
+  },
+
+  // ── Story 8: Gus hugs mummy (Q76–Q85) ── Image 8
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus hugs his mummy.<br>
+Gus hugs his cub.<br>
+The bug hugs the cub.<br>
+The bug and the cub want to jump and jump.<br>
+But Gus is in a rush.<br>
+Gus runs for the bus.<br>
+The bug and the cub jump and jump to the bus.
+</div><br>
+<span style="color:red;">76. Who does Gus hug?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/8.png",
+    options: ["Gus hugs his mummy", "Gus hugs his dad", "Gus hugs Grandma"],
+    correct: "Gus hugs his mummy",
+    explanation: "The story says 'Gus hugs his mummy' — the first person he hugs is his mummy."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus hugs his mummy.<br>
+Gus hugs his cub.<br>
+The bug hugs the cub.<br>
+The bug and the cub want to jump and jump.<br>
+But Gus is in a rush.<br>
+Gus runs for the bus.<br>
+The bug and the cub jump and jump to the bus.
+</div><br>
+<span style="color:red;">77. Who does the bug hug?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/8.png",
+    options: ["bug hugs dad", "bug hugs mummy", "bug hugs cub"],
+    correct: "bug hugs cub",
+    explanation: "The story says 'The bug hugs the cub.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus hugs his mummy.<br>
+Gus hugs his cub.<br>
+The bug hugs the cub.<br>
+The bug and the cub want to jump and jump.<br>
+But Gus is in a rush.<br>
+Gus runs for the bus.<br>
+The bug and the cub jump and jump to the bus.
+</div><br>
+<span style="color:red;">78. What do the bug and cub want to do?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/8.png",
+    options: ["Play and play", "write and write", "jump and jump"],
+    correct: "jump and jump",
+    explanation: "The story says 'The bug and the cub want to jump and jump.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus hugs his mummy.<br>
+Gus hugs his cub.<br>
+The bug hugs the cub.<br>
+The bug and the cub want to jump and jump.<br>
+But Gus is in a rush.<br>
+Gus runs for the bus.<br>
+The bug and the cub jump and jump to the bus.
+</div><br>
+<span style="color:red;">79. Where does Gus run?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/8.png",
+    options: ["Gus runs for the bus", "Gus runs for the train", "Gus runs for the city"],
+    correct: "Gus runs for the bus",
+    explanation: "The story says 'Gus runs for the bus.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus hugs his mummy.<br>
+Gus hugs his cub.<br>
+The bug hugs the cub.<br>
+The bug and the cub want to jump and jump.<br>
+But Gus is in a rush.<br>
+Gus runs for the bus.<br>
+The bug and the cub jump and jump to the bus.
+</div><br>
+<span style="color:red;">80. Where do the bug and cub jump to?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/8.png",
+    options: ["they jump for the train", "they jump for the bus", "they jump for the car"],
+    correct: "they jump for the bus",
+    explanation: "The story says 'The bug and the cub jump and jump to the bus.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus hugs his mummy.<br>
+Gus hugs his cub.<br>
+The bug hugs the cub.<br>
+The bug and the cub want to jump and jump.<br>
+But Gus is in a rush.<br>
+Gus runs for the bus.<br>
+The bug and the cub jump and jump to the bus.
+</div><br>
+<span style="color:red;">81. Was Gus in a rush?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/8.png",
+    options: ["no, Gus was not in a rush", "yes, Gus was in a rush", "I am not sure"],
+    correct: "yes, Gus was in a rush",
+    explanation: "The story says 'But Gus is in a rush' — he was hurrying."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus hugs his mummy.<br>
+Gus hugs his cub.<br>
+The bug hugs the cub.<br>
+The bug and the cub want to jump and jump.<br>
+But Gus is in a rush.<br>
+Gus runs for the bus.<br>
+The bug and the cub jump and jump to the bus.
+</div><br>
+<span style="color:red;">82. Why was Gus in a rush?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/8.png",
+    options: ["to catch the bus", "to catch the plane", "to catch the flight"],
+    correct: "to catch the bus",
+    explanation: "The story says 'Gus is in a rush. Gus runs for the bus.' — he was rushing to catch the bus."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus hugs his mummy.<br>
+Gus hugs his cub.<br>
+The bug hugs the cub.<br>
+The bug and the cub want to jump and jump.<br>
+But Gus is in a rush.<br>
+Gus runs for the bus.<br>
+The bug and the cub jump and jump to the bus.
+</div><br>
+<span style="color:red;">83. Which line contains only verbs?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/8.png",
+    options: ["and, his, and in", "hug, jump, and run", "Gus, bug, and bus"],
+    correct: "hug, jump, and run",
+    explanation: "'Hug,' 'jump,' and 'run' are all action words (verbs). 'And/his/in' are not verbs. 'Gus/bug/bus' are nouns."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus hugs his mummy.<br>
+Gus hugs his cub.<br>
+The bug hugs the cub.<br>
+The bug and the cub want to jump and jump.<br>
+But Gus is in a rush.<br>
+Gus runs for the bus.<br>
+The bug and the cub jump and jump to the bus.
+</div><br>
+<span style="color:red;">84. Which line contains only verbs?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/8.png",
+    options: ["bus, bug, cub", "in, is, the", "jump, want, run"],
+    correct: "jump, want, run",
+    explanation: "'Jump,' 'want,' and 'run' are all action/doing words (verbs). The others are nouns or prepositions."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus hugs his mummy.<br>
+Gus hugs his cub.<br>
+The bug hugs the cub.<br>
+The bug and the cub want to jump and jump.<br>
+But Gus is in a rush.<br>
+Gus runs for the bus.<br>
+The bug and the cub jump and jump to the bus.
+</div><br>
+<span style="color:red;">85. Does Gus hug the bug or the cub?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/8.png",
+    options: ["Gus hugs both", "Gus hugs the cub", "Gus hugs mummy"],
+    correct: "Gus hugs the cub",
+    explanation: "The story says 'Gus hugs his mummy. Gus hugs his cub.' — specifically, when choosing between bug or cub, the story shows Gus hugs the cub (not the bug)."
+  },
+
+  // ── Story 9: Rufus the pup (Q86–Q94) ── Image 9
+  {
+    question: `<div style="text-align:center; color:black;">
+Rufus is my cute pup.<br>
+Rufus and I jump and run.<br>
+We play together under the sun.<br>
+My pup likes to tug on his rug.<br>
+Sometimes we splash and jump in the mud.<br>
+I hug my fuzzy little pup every day.<br>
+Rufus runs fast and has lots of fun.<br>
+He loves to sniff, jump, and spin around.<br>
+When the day is done, he curls up beside me.<br>
+I love my sweet pup Rufus so much!
+</div><br>
+<span style="color:red;">86. Who is Rufus?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/9.png",
+    options: ["a cute cat", "a cute cub", "a cute pup"],
+    correct: "a cute pup",
+    explanation: "The story says 'Rufus is my cute pup.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Rufus is my cute pup.<br>
+Rufus and I jump and run.<br>
+We play together under the sun.<br>
+My pup likes to tug on his rug.<br>
+Sometimes we splash and jump in the mud.<br>
+I hug my fuzzy little pup every day.<br>
+Rufus runs fast and has lots of fun.<br>
+He loves to sniff, jump, and spin around.<br>
+When the day is done, he curls up beside me.<br>
+I love my sweet pup Rufus so much!
+</div><br>
+<span style="color:red;">87. What does Rufus like to do?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/9.png",
+    options: ["tug on his face", "tug on rug", "tug on the couch"],
+    correct: "tug on rug",
+    explanation: "The story says 'My pup likes to tug on his rug.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Rufus is my cute pup.<br>
+Rufus and I jump and run.<br>
+We play together under the sun.<br>
+My pup likes to tug on his rug.<br>
+Sometimes we splash and jump in the mud.<br>
+I hug my fuzzy little pup every day.<br>
+Rufus runs fast and has lots of fun.<br>
+He loves to sniff, jump, and spin around.<br>
+When the day is done, he curls up beside me.<br>
+I love my sweet pup Rufus so much!
+</div><br>
+<span style="color:red;">88. Where does pup play?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/9.png",
+    options: ["under the moon", "under the stars", "under the sun"],
+    correct: "under the sun",
+    explanation: "The story says 'We play together under the sun.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Rufus is my cute pup.<br>
+Rufus and I jump and run.<br>
+We play together under the sun.<br>
+My pup likes to tug on his rug.<br>
+Sometimes we splash and jump in the mud.<br>
+I hug my fuzzy little pup every day.<br>
+Rufus runs fast and has lots of fun.<br>
+He loves to sniff, jump, and spin around.<br>
+When the day is done, he curls up beside me.<br>
+I love my sweet pup Rufus so much!
+</div><br>
+<span style="color:red;">89. Where does pup like to splash?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/9.png",
+    options: ["splash and jump in the water", "splash and jump in the mud", "splash and jump in the river"],
+    correct: "splash and jump in the mud",
+    explanation: "The story says 'Sometimes we splash and jump in the mud.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Rufus is my cute pup.<br>
+Rufus and I jump and run.<br>
+We play together under the sun.<br>
+My pup likes to tug on his rug.<br>
+Sometimes we splash and jump in the mud.<br>
+I hug my fuzzy little pup every day.<br>
+Rufus runs fast and has lots of fun.<br>
+He loves to sniff, jump, and spin around.<br>
+When the day is done, he curls up beside me.<br>
+I love my sweet pup Rufus so much!
+</div><br>
+<span style="color:red;">90. How does Rufus run?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/9.png",
+    options: ["Rufus runs fast", "Rufus runs slow", "Rufus runs last"],
+    correct: "Rufus runs fast",
+    explanation: "The story says 'Rufus runs fast and has lots of fun.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Rufus is my cute pup.<br>
+Rufus and I jump and run.<br>
+We play together under the sun.<br>
+My pup likes to tug on his rug.<br>
+Sometimes we splash and jump in the mud.<br>
+I hug my fuzzy little pup every day.<br>
+Rufus runs fast and has lots of fun.<br>
+He loves to sniff, jump, and spin around.<br>
+When the day is done, he curls up beside me.<br>
+I love my sweet pup Rufus so much!
+</div><br>
+<span style="color:red;">91. What are the things Rufus loves to do?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/9.png",
+    options: ["swim, hide, and run around", "write, sleep, and spin around", "sniff, jump, and spin around"],
+    correct: "sniff, jump, and spin around",
+    explanation: "The story says 'He loves to sniff, jump, and spin around.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Rufus is my cute pup.<br>
+Rufus and I jump and run.<br>
+We play together under the sun.<br>
+My pup likes to tug on his rug.<br>
+Sometimes we splash and jump in the mud.<br>
+I hug my fuzzy little pup every day.<br>
+Rufus runs fast and has lots of fun.<br>
+He loves to sniff, jump, and spin around.<br>
+When the day is done, he curls up beside me.<br>
+I love my sweet pup Rufus so much!
+</div><br>
+<span style="color:red;">92. What happens at the end of the day?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/9.png",
+    options: ["Rufus curls up beside me", "Rufus sleeps up beside me", "Rufus jumps up beside me"],
+    correct: "Rufus curls up beside me",
+    explanation: "The story says 'When the day is done, he curls up beside me.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Rufus is my cute pup.<br>
+Rufus and I jump and run.<br>
+We play together under the sun.<br>
+My pup likes to tug on his rug.<br>
+Sometimes we splash and jump in the mud.<br>
+I hug my fuzzy little pup every day.<br>
+Rufus runs fast and has lots of fun.<br>
+He loves to sniff, jump, and spin around.<br>
+When the day is done, he curls up beside me.<br>
+I love my sweet pup Rufus so much!
+</div><br>
+<span style="color:red;">93. Which line contains only verbs?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/9.png",
+    options: ["jump, run, and love", "up, down, and me", "I, my, and we"],
+    correct: "jump, run, and love",
+    explanation: "'Jump,' 'run,' and 'love' are all action/doing words (verbs). 'Up/down/me' are not verbs, and 'I/my/we' are pronouns."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Rufus is my cute pup.<br>
+Rufus and I jump and run.<br>
+We play together under the sun.<br>
+My pup likes to tug on his rug.<br>
+Sometimes we splash and jump in the mud.<br>
+I hug my fuzzy little pup every day.<br>
+Rufus runs fast and has lots of fun.<br>
+He loves to sniff, jump, and spin around.<br>
+When the day is done, he curls up beside me.<br>
+I love my sweet pup Rufus so much!
+</div><br>
+<span style="color:red;">94. Which line contains only verbs?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/9.png",
+    options: ["Rufus, Sandy, and Tom", "love, run, and splash", "in, is, and to"],
+    correct: "love, run, and splash",
+    explanation: "'Love,' 'run,' and 'splash' are all action words (verbs). The others are a list of names or prepositions."
+  },
+
+  // ── Story 10: Gus and pup in the tub (Q95–Q100) ── Image 10
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus has a pup.<br>
+The pup jumps in the tub.<br>
+Now Gus jumps in the tub too.<br>
+They splash and scrub in the tub.<br>
+The pup likes to tug the rubber duck.<br>
+Gus hums and laughs with his pup.<br>
+It is such fun in the bubbly tub!
+</div><br>
+<span style="color:red;">95. What does Gus own?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/10.png",
+    options: ["Gus has a mug", "Gus has a pump", "Gus has a pup"],
+    correct: "Gus has a pup",
+    explanation: "The story says 'Gus has a pup.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus has a pup.<br>
+The pup jumps in the tub.<br>
+Now Gus jumps in the tub too.<br>
+They splash and scrub in the tub.<br>
+The pup likes to tug the rubber duck.<br>
+Gus hums and laughs with his pup.<br>
+It is such fun in the bubbly tub!
+</div><br>
+<span style="color:red;">96. Where does the pup jump in?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/10.png",
+    options: ["the car", "the bottle", "the tub"],
+    correct: "the tub",
+    explanation: "The story says 'The pup jumps in the tub.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus has a pup.<br>
+The pup jumps in the tub.<br>
+Now Gus jumps in the tub too.<br>
+They splash and scrub in the tub.<br>
+The pup likes to tug the rubber duck.<br>
+Gus hums and laughs with his pup.<br>
+It is such fun in the bubbly tub!
+</div><br>
+<span style="color:red;">97. Who jumps with pup in the tub?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/10.png",
+    options: ["Gus", "Tom", "George"],
+    correct: "Gus",
+    explanation: "The story says 'Now Gus jumps in the tub too.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus has a pup.<br>
+The pup jumps in the tub.<br>
+Now Gus jumps in the tub too.<br>
+They splash and scrub in the tub.<br>
+The pup likes to tug the rubber duck.<br>
+Gus hums and laughs with his pup.<br>
+It is such fun in the bubbly tub!
+</div><br>
+<span style="color:red;">98. What do Gus and pup do?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/10.png",
+    options: ["They splash and fight in the tub", "They splash and scream in the tub", "They splash and scrub in the tub"],
+    correct: "They splash and scrub in the tub",
+    explanation: "The story says 'They splash and scrub in the tub.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus has a pup.<br>
+The pup jumps in the tub.<br>
+Now Gus jumps in the tub too.<br>
+They splash and scrub in the tub.<br>
+The pup likes to tug the rubber duck.<br>
+Gus hums and laughs with his pup.<br>
+It is such fun in the bubbly tub!
+</div><br>
+<span style="color:red;">99. What does pup like to tug on?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/10.png",
+    options: ["on the rubber duck", "on the rubber cat", "on the rubber dog"],
+    correct: "on the rubber duck",
+    explanation: "The story says 'The pup likes to tug the rubber duck.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Gus has a pup.<br>
+The pup jumps in the tub.<br>
+Now Gus jumps in the tub too.<br>
+They splash and scrub in the tub.<br>
+The pup likes to tug the rubber duck.<br>
+Gus hums and laughs with his pup.<br>
+It is such fun in the bubbly tub!
+</div><br>
+<span style="color:red;">100. Where did Gus and pup have most fun?</span>`,
+    image: "../../../image/leve1_eng_vowels_U/10.png",
+    options: ["in the mud", "in the building", "in the bubbly tub"],
+    correct: "in the bubbly tub",
+    explanation: "The story says 'It is such fun in the bubbly tub!' — they had the most fun there."
+  }
+];
+    </script>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    initMCQQuiz(questions);
+  });
+    </script>
+  </body>
+</html>

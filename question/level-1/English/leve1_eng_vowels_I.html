@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    …
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+  <div class="question-section">
+    <h3 id="question-text">Loading…</h3>
+    <ul id="options-list" class="options"></ul>
+  </div>
+
+  <div id="feedback" class="hidden"></div>
+  <div id="explanation" class="hidden"></div>
+  <button id="back-btn" class="hidden">Back</button>
+  <button id="next-btn" class="hidden">Next</button>
+</main>
+
+
+    <!-- your question data: only one entry -->
+
+    <script>
+      const questions = [
+  // ── IMAGE 1 ── Story: This is Sid – fish picking (Q1–Q10)
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+Sid is a girl.<br>
+Sid will pick a fish.<br>
+"Which fish will I pick?"<br>
+This fish is pink and silver.<br>
+This fish zips and flips.<br>
+This fish dips and spins.<br>
+This little fish is quick!<br>
+It swims with a big flick.<br>
+"I like this swift fish!"<br>
+"I will pick the quick fish!"
+</div><br>
+<span style="color:red;">1. What is the name of the main character of the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/1.jpeg",
+    options: ["Sandy", "Sid", "George"],
+    correct: "Sid",
+    explanation: "The story begins with 'This is Sid,' making Sid the main character."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+Sid is a girl.<br>
+Sid will pick a fish.<br>
+"Which fish will I pick?"<br>
+This fish is pink and silver.<br>
+This fish zips and flips.<br>
+This fish dips and spins.<br>
+This little fish is quick!<br>
+It swims with a big flick.<br>
+"I like this swift fish!"<br>
+"I will pick the quick fish!"
+</div><br>
+<span style="color:red;">2. Who is Sid?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/1.jpeg",
+    options: ["Sid is a boy", "Sid is a girl", "Sid is a fish"],
+    correct: "Sid is a girl",
+    explanation: "The story says 'Sid is a girl.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+Sid is a girl.<br>
+Sid will pick a fish.<br>
+"Which fish will I pick?"<br>
+This fish is pink and silver.<br>
+This fish zips and flips.<br>
+This fish dips and spins.<br>
+This little fish is quick!<br>
+It swims with a big flick.<br>
+"I like this swift fish!"<br>
+"I will pick the quick fish!"
+</div><br>
+<span style="color:red;">3. What will Sid pick?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/1.jpeg",
+    options: ["Sid will pick a jacket", "Sid will pick a fish", "Sid will pick a boat"],
+    correct: "Sid will pick a fish",
+    explanation: "The story says 'Sid will pick a fish.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+Sid is a girl.<br>
+Sid will pick a fish.<br>
+"Which fish will I pick?"<br>
+This fish is pink and silver.<br>
+This fish zips and flips.<br>
+This fish dips and spins.<br>
+This little fish is quick!<br>
+It swims with a big flick.<br>
+"I like this swift fish!"<br>
+"I will pick the quick fish!"
+</div><br>
+<span style="color:red;">4. What color was the fish Sid liked?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/1.jpeg",
+    options: ["pink and red", "pink and silver", "pink and blue"],
+    correct: "pink and silver",
+    explanation: "The story says 'This fish is pink and silver.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+Sid is a girl.<br>
+Sid will pick a fish.<br>
+"Which fish will I pick?"<br>
+This fish is pink and silver.<br>
+This fish zips and flips.<br>
+This fish dips and spins.<br>
+This little fish is quick!<br>
+It swims with a big flick.<br>
+"I like this swift fish!"<br>
+"I will pick the quick fish!"
+</div><br>
+<span style="color:red;">5. What will Sid do?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/1.jpeg",
+    options: ["Sid will pick a donkey", "Sid will pick a cat", "Sid will pick a fish"],
+    correct: "Sid will pick a fish",
+    explanation: "Throughout the story, Sid is choosing a fish to pick."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+Sid is a girl.<br>
+Sid will pick a fish.<br>
+"Which fish will I pick?"<br>
+This fish is pink and silver.<br>
+This fish zips and flips.<br>
+This fish dips and spins.<br>
+This little fish is quick!<br>
+It swims with a big flick.<br>
+"I like this swift fish!"<br>
+"I will pick the quick fish!"
+</div><br>
+<span style="color:red;">6. What can the fish do?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/1.jpeg",
+    options: ["sleep and drink", "zips and flips", "dips and spins"],
+    correct: "zips and flips",
+    explanation: "The story says 'This fish zips and flips.' Both are actions the fish can do."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+Sid is a girl.<br>
+Sid will pick a fish.<br>
+"Which fish will I pick?"<br>
+This fish is pink and silver.<br>
+This fish zips and flips.<br>
+This fish dips and spins.<br>
+This little fish is quick!<br>
+It swims with a big flick.<br>
+"I like this swift fish!"<br>
+"I will pick the quick fish!"
+</div><br>
+<span style="color:red;">7. How does the fish swim?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/1.jpeg",
+    options: ["the fish swims with a big flick", "the fish swims with a small flick", "the fish swims with a big jump"],
+    correct: "the fish swims with a big flick",
+    explanation: "The story says 'It swims with a big flick.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+Sid is a girl.<br>
+Sid will pick a fish.<br>
+"Which fish will I pick?"<br>
+This fish is pink and silver.<br>
+This fish zips and flips.<br>
+This fish dips and spins.<br>
+This little fish is quick!<br>
+It swims with a big flick.<br>
+"I like this swift fish!"<br>
+"I will pick the quick fish!"
+</div><br>
+<span style="color:red;">8. What can the fish do?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/1.jpeg",
+    options: ["the fish smiles and spins", "the fish dips and jumps", "the fish dips and spins"],
+    correct: "the fish dips and spins",
+    explanation: "The story says 'This fish dips and spins.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+Sid is a girl.<br>
+Sid will pick a fish.<br>
+"Which fish will I pick?"<br>
+This fish is pink and silver.<br>
+This fish zips and flips.<br>
+This fish dips and spins.<br>
+This little fish is quick!<br>
+It swims with a big flick.<br>
+"I like this swift fish!"<br>
+"I will pick the quick fish!"
+</div><br>
+<span style="color:red;">9. What does Sid like?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/1.jpeg",
+    options: ["Sid likes the swing fish", "Sid likes the shift fish", "Sid likes the swift fish"],
+    correct: "Sid likes the swift fish",
+    explanation: "Sid says 'I like this swift fish!' showing she likes the swift fish."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+Sid is a girl.<br>
+Sid will pick a fish.<br>
+"Which fish will I pick?"<br>
+This fish is pink and silver.<br>
+This fish zips and flips.<br>
+This fish dips and spins.<br>
+This little fish is quick!<br>
+It swims with a big flick.<br>
+"I like this swift fish!"<br>
+"I will pick the quick fish!"
+</div><br>
+<span style="color:red;">10. What will Sid pick?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/1.jpeg",
+    options: ["Sid will pick the quick car", "Sid will pick the quick fish", "Sid will pick the quick bike"],
+    correct: "Sid will pick the quick fish",
+    explanation: "Sid declares 'I will pick the quick fish!' at the end of the story."
+  },
+
+  // ── IMAGE 2 ── Story: Tim sees a big pig (Q11–Q20)
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim sees a big pig.<br>
+The pig will dig in the pit.<br>
+The pig digs and digs in the pit.<br>
+Then, the pig will sit in the pit.<br>
+Tim grins.<br>
+"Will the pig fit?" says Kim.<br>
+The pig sits in the pit.<br>
+The pig's big hips stick up!<br>
+Tim and Kim giggle.<br>
+"The pig is too big!" says Tim.
+</div><br>
+<span style="color:red;">11. What does Tim see?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/2.jpeg",
+    options: ["Tim sees a big horse", "Tim sees a big dog", "Tim sees a big pig"],
+    correct: "Tim sees a big pig",
+    explanation: "The story begins with 'Tim sees a big pig.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim sees a big pig.<br>
+The pig will dig in the pit.<br>
+The pig digs and digs in the pit.<br>
+Then, the pig will sit in the pit.<br>
+Tim grins.<br>
+"Will the pig fit?" says Kim.<br>
+The pig sits in the pit.<br>
+The pig's big hips stick up!<br>
+Tim and Kim giggle.<br>
+"The pig is too big!" says Tim.
+</div><br>
+<span style="color:red;">12. Where will the pig dig?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/2.jpeg",
+    options: ["the pig will dig in the garden", "the pig will dig in the ocean", "the pig will dig in the pit"],
+    correct: "the pig will dig in the pit",
+    explanation: "The story says 'The pig will dig in the pit.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim sees a big pig.<br>
+The pig will dig in the pit.<br>
+The pig digs and digs in the pit.<br>
+Then, the pig will sit in the pit.<br>
+Tim grins.<br>
+"Will the pig fit?" says Kim.<br>
+The pig sits in the pit.<br>
+The pig's big hips stick up!<br>
+Tim and Kim giggle.<br>
+"The pig is too big!" says Tim.
+</div><br>
+<span style="color:red;">13. What does the pig do?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/2.jpeg",
+    options: ["the pig digs and digs", "the cat digs and digs", "the pig sleeps and sleeps"],
+    correct: "the pig digs and digs",
+    explanation: "The story says 'The pig digs and digs in the pit.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim sees a big pig.<br>
+The pig will dig in the pit.<br>
+The pig digs and digs in the pit.<br>
+Then, the pig will sit in the pit.<br>
+Tim grins.<br>
+"Will the pig fit?" says Kim.<br>
+The pig sits in the pit.<br>
+The pig's big hips stick up!<br>
+Tim and Kim giggle.<br>
+"The pig is too big!" says Tim.
+</div><br>
+<span style="color:red;">14. Where does the pig sit?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/2.jpeg",
+    options: ["the pig sits in the pit", "the pig sits in the ground", "the pig sits in the chair"],
+    correct: "the pig sits in the pit",
+    explanation: "The story says 'The pig sits in the pit.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim sees a big pig.<br>
+The pig will dig in the pit.<br>
+The pig digs and digs in the pit.<br>
+Then, the pig will sit in the pit.<br>
+Tim grins.<br>
+"Will the pig fit?" says Kim.<br>
+The pig sits in the pit.<br>
+The pig's big hips stick up!<br>
+Tim and Kim giggle.<br>
+"The pig is too big!" says Tim.
+</div><br>
+<span style="color:red;">15. What does Kim say?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/2.jpeg",
+    options: ['"Will the pig fit?"', '"Will the pig sleep?"', '"Will the cat fit?"'],
+    correct: '"Will the pig fit?"',
+    explanation: "Kim asks 'Will the pig fit?' wondering if the pig will fit in the pit."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim sees a big pig.<br>
+The pig will dig in the pit.<br>
+The pig digs and digs in the pit.<br>
+Then, the pig will sit in the pit.<br>
+Tim grins.<br>
+"Will the pig fit?" says Kim.<br>
+The pig sits in the pit.<br>
+The pig's big hips stick up!<br>
+Tim and Kim giggle.<br>
+"The pig is too big!" says Tim.
+</div><br>
+<span style="color:red;">16. Why do Tim and Kim giggle?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/2.jpeg",
+    options: ["The pig's big nose sticks up!", "The pig's big mouth sticks up!", "The pig's big hips stick up!"],
+    correct: "The pig's big hips stick up!",
+    explanation: "The story says 'The pig's big hips stick up!' which makes Tim and Kim giggle."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim sees a big pig.<br>
+The pig will dig in the pit.<br>
+The pig digs and digs in the pit.<br>
+Then, the pig will sit in the pit.<br>
+Tim grins.<br>
+"Will the pig fit?" says Kim.<br>
+The pig sits in the pit.<br>
+The pig's big hips stick up!<br>
+Tim and Kim giggle.<br>
+"The pig is too big!" says Tim.
+</div><br>
+<span style="color:red;">17. What conclusion does Tim come to?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/2.jpeg",
+    options: ['"The pig is too big!" says Tim.', '"The pig is too fluffy!" says Tim.', '"The pig is too small!" says Tim.'],
+    correct: '"The pig is too big!" says Tim.',
+    explanation: "Tim concludes 'The pig is too big!' after seeing the pig's hips sticking out of the pit."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim sees a big pig.<br>
+The pig will dig in the pit.<br>
+The pig digs and digs in the pit.<br>
+Then, the pig will sit in the pit.<br>
+Tim grins.<br>
+"Will the pig fit?" says Kim.<br>
+The pig sits in the pit.<br>
+The pig's big hips stick up!<br>
+Tim and Kim giggle.<br>
+"The pig is too big!" says Tim.
+</div><br>
+<span style="color:red;">18. What is another word for giggle?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/2.jpeg",
+    options: ["laugh", "cry", "jump"],
+    correct: "laugh",
+    explanation: "To giggle means to laugh in a silly or light way."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim sees a big pig.<br>
+The pig will dig in the pit.<br>
+The pig digs and digs in the pit.<br>
+Then, the pig will sit in the pit.<br>
+Tim grins.<br>
+"Will the pig fit?" says Kim.<br>
+The pig sits in the pit.<br>
+The pig's big hips stick up!<br>
+Tim and Kim giggle.<br>
+"The pig is too big!" says Tim.
+</div><br>
+<span style="color:red;">19. What is the plural form of pig?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/2.jpeg",
+    options: ["piggy", "pigskin", "pigs"],
+    correct: "pigs",
+    explanation: "The plural of pig is pigs. We add -s to make it plural."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim sees a big pig.<br>
+The pig will dig in the pit.<br>
+The pig digs and digs in the pit.<br>
+Then, the pig will sit in the pit.<br>
+Tim grins.<br>
+"Will the pig fit?" says Kim.<br>
+The pig sits in the pit.<br>
+The pig's big hips stick up!<br>
+Tim and Kim giggle.<br>
+"The pig is too big!" says Tim.
+</div><br>
+<span style="color:red;">20. How many humans are there in the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/2.jpeg",
+    options: ["2 humans", "3 humans", "No humans"],
+    correct: "2 humans",
+    explanation: "There are two humans in the story: Tim and Kim."
+  },
+
+  // ── IMAGE 3 ── Story: Tim and Nick kick (Q21–Q30)
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim and Nick kick.<br>
+Tim kicks the big ball.<br>
+Nick kicks to Tim.<br>
+Tim kicks to Nick.<br>
+Tim will spin.<br>
+Nick will grin.<br>
+Nick kicks it in.<br>
+The kids win.<br>
+Tim and Nick sing.<br>
+"I like this win!" says Tim.
+</div><br>
+<span style="color:red;">21. Who kicks the ball with Tim?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/3.jpeg",
+    options: ["Kim", "Nick", "Sid"],
+    correct: "Nick",
+    explanation: "The story begins with 'Tim and Nick kick,' showing Nick plays with Tim."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim and Nick kick.<br>
+Tim kicks the big ball.<br>
+Nick kicks to Tim.<br>
+Tim kicks to Nick.<br>
+Tim will spin.<br>
+Nick will grin.<br>
+Nick kicks it in.<br>
+The kids win.<br>
+Tim and Nick sing.<br>
+"I like this win!" says Tim.
+</div><br>
+<span style="color:red;">22. What do Tim and Nick kick?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/3.jpeg",
+    options: ["a ball", "a fish", "a pig"],
+    correct: "a ball",
+    explanation: "The story says 'Tim kicks the big ball.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim and Nick kick.<br>
+Tim kicks the big ball.<br>
+Nick kicks to Tim.<br>
+Tim kicks to Nick.<br>
+Tim will spin.<br>
+Nick will grin.<br>
+Nick kicks it in.<br>
+The kids win.<br>
+Tim and Nick sing.<br>
+"I like this win!" says Tim.
+</div><br>
+<span style="color:red;">23. Who will kick to Tim?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/3.jpeg",
+    options: ["Tim", "Nick", "Kim"],
+    correct: "Nick",
+    explanation: "The story says 'Nick kicks to Tim.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim and Nick kick.<br>
+Tim kicks the big ball.<br>
+Nick kicks to Tim.<br>
+Tim kicks to Nick.<br>
+Tim will spin.<br>
+Nick will grin.<br>
+Nick kicks it in.<br>
+The kids win.<br>
+Tim and Nick sing.<br>
+"I like this win!" says Tim.
+</div><br>
+<span style="color:red;">24. Who will pass the ball to Nick?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/3.jpeg",
+    options: ["Tim", "Nick", "Sid"],
+    correct: "Tim",
+    explanation: "The story says 'Tim kicks to Nick,' so Tim passes to Nick."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim and Nick kick.<br>
+Tim kicks the big ball.<br>
+Nick kicks to Tim.<br>
+Tim kicks to Nick.<br>
+Tim will spin.<br>
+Nick will grin.<br>
+Nick kicks it in.<br>
+The kids win.<br>
+Tim and Nick sing.<br>
+"I like this win!" says Tim.
+</div><br>
+<span style="color:red;">25. What will Nick kick in?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/3.jpeg",
+    options: ["the pit", "the fish", "the ball"],
+    correct: "the ball",
+    explanation: "The story says 'Nick kicks it in,' meaning Nick kicks the ball into the goal."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim and Nick kick.<br>
+Tim kicks the big ball.<br>
+Nick kicks to Tim.<br>
+Tim kicks to Nick.<br>
+Tim will spin.<br>
+Nick will grin.<br>
+Nick kicks it in.<br>
+The kids win.<br>
+Tim and Nick sing.<br>
+"I like this win!" says Tim.
+</div><br>
+<span style="color:red;">26. What game are Tim and Nick playing?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/3.jpeg",
+    options: ["soccer", "fishing", "swimming"],
+    correct: "soccer",
+    explanation: "Tim and Nick kick a ball and score a goal, which describes the game of soccer."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim and Nick kick.<br>
+Tim kicks the big ball.<br>
+Nick kicks to Tim.<br>
+Tim kicks to Nick.<br>
+Tim will spin.<br>
+Nick will grin.<br>
+Nick kicks it in.<br>
+The kids win.<br>
+Tim and Nick sing.<br>
+"I like this win!" says Tim.
+</div><br>
+<span style="color:red;">27. How many boys are playing?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/3.jpeg",
+    options: ["one", "two", "three"],
+    correct: "two",
+    explanation: "There are two boys playing: Tim and Nick."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim and Nick kick.<br>
+Tim kicks the big ball.<br>
+Nick kicks to Tim.<br>
+Tim kicks to Nick.<br>
+Tim will spin.<br>
+Nick will grin.<br>
+Nick kicks it in.<br>
+The kids win.<br>
+Tim and Nick sing.<br>
+"I like this win!" says Tim.
+</div><br>
+<span style="color:red;">28. Who will win?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/3.jpeg",
+    options: ["Tim and Nick", "Sandy and Kim", "Nick and Sid"],
+    correct: "Tim and Nick",
+    explanation: "The story says 'The kids win,' and the kids in the story are Tim and Nick."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim and Nick kick.<br>
+Tim kicks the big ball.<br>
+Nick kicks to Tim.<br>
+Tim kicks to Nick.<br>
+Tim will spin.<br>
+Nick will grin.<br>
+Nick kicks it in.<br>
+The kids win.<br>
+Tim and Nick sing.<br>
+"I like this win!" says Tim.
+</div><br>
+<span style="color:red;">29. Who gets the ball from Nick?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/3.jpeg",
+    options: ["Kim", "Sid", "Tim"],
+    correct: "Tim",
+    explanation: "The story says 'Nick kicks to Tim,' so Tim receives the ball from Nick."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim and Nick kick.<br>
+Tim kicks the big ball.<br>
+Nick kicks to Tim.<br>
+Tim kicks to Nick.<br>
+Tim will spin.<br>
+Nick will grin.<br>
+Nick kicks it in.<br>
+The kids win.<br>
+Tim and Nick sing.<br>
+"I like this win!" says Tim.
+</div><br>
+<span style="color:red;">30. What happens at the end?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/3.jpeg",
+    options: ["Tim and Nick get wet", "Tim and Nick win", "Tim and Nick go to school"],
+    correct: "Tim and Nick win",
+    explanation: "At the end, 'The kids win' and they sing to celebrate."
+  },
+
+  // ── IMAGE 4 ── Story: Sid hid in the big bin (Q31–Q40)
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+This is Kim.<br>
+Sid and Kim are friends.<br>
+Sid hid.<br>
+Kim will find Sid.<br>
+"Is Sid in the big bin?" asks Kim.<br>
+Kim will lift the lid.<br>
+"Yes!" says Kim.<br>
+Sid is in the big bin!
+</div><br>
+<span style="color:red;">31. What are Sid and Kim?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/4.jpeg",
+    options: ["they are siblings", "they are friends", "they are Parents"],
+    correct: "they are friends",
+    explanation: "The story says 'Sid and Kim are friends.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+This is Kim.<br>
+Sid and Kim are friends.<br>
+Sid hid.<br>
+Kim will find Sid.<br>
+"Is Sid in the big bin?" asks Kim.<br>
+Kim will lift the lid.<br>
+"Yes!" says Kim.<br>
+Sid is in the big bin!
+</div><br>
+<span style="color:red;">32. Who hid?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/4.jpeg",
+    options: ["Sid hid", "Sandy hid", "mother hid"],
+    correct: "Sid hid",
+    explanation: "The story says 'Sid hid,' meaning Sid is the one hiding."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+This is Kim.<br>
+Sid and Kim are friends.<br>
+Sid hid.<br>
+Kim will find Sid.<br>
+"Is Sid in the big bin?" asks Kim.<br>
+Kim will lift the lid.<br>
+"Yes!" says Kim.<br>
+Sid is in the big bin!
+</div><br>
+<span style="color:red;">33. Who will find Sid?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/4.jpeg",
+    options: ["Kim will find Sandy", "Kim will find Sid", "Sid will be lost"],
+    correct: "Kim will find Sid",
+    explanation: "The story says 'Kim will find Sid.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+This is Kim.<br>
+Sid and Kim are friends.<br>
+Sid hid.<br>
+Kim will find Sid.<br>
+"Is Sid in the big bin?" asks Kim.<br>
+Kim will lift the lid.<br>
+"Yes!" says Kim.<br>
+Sid is in the big bin!
+</div><br>
+<span style="color:red;">34. Where was Sid hiding?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/4.jpeg",
+    options: ["in the big bin", "in the big box", "in the big room"],
+    correct: "in the big bin",
+    explanation: "The story says 'Sid is in the big bin!'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+This is Kim.<br>
+Sid and Kim are friends.<br>
+Sid hid.<br>
+Kim will find Sid.<br>
+"Is Sid in the big bin?" asks Kim.<br>
+Kim will lift the lid.<br>
+"Yes!" says Kim.<br>
+Sid is in the big bin!
+</div><br>
+<span style="color:red;">35. Who will lift the lid?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/4.jpeg",
+    options: ["Kim will lift the lid", "Sandy will lift the lid", "Sam will lift the car"],
+    correct: "Kim will lift the lid",
+    explanation: "The story says 'Kim will lift the lid' to look inside the bin for Sid."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+This is Kim.<br>
+Sid and Kim are friends.<br>
+Sid hid.<br>
+Kim will find Sid.<br>
+"Is Sid in the big bin?" asks Kim.<br>
+Kim will lift the lid.<br>
+"Yes!" says Kim.<br>
+Sid is in the big bin!
+</div><br>
+<span style="color:red;">36. What is the singular form of friends?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/4.jpeg",
+    options: ["friend", "person", "people"],
+    correct: "friend",
+    explanation: "The singular form of friends is friend."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+This is Kim.<br>
+Sid and Kim are friends.<br>
+Sid hid.<br>
+Kim will find Sid.<br>
+"Is Sid in the big bin?" asks Kim.<br>
+Kim will lift the lid.<br>
+"Yes!" says Kim.<br>
+Sid is in the big bin!
+</div><br>
+<span style="color:red;">37. What is another word for bin?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/4.jpeg",
+    options: ["trash", "box", "bag"],
+    correct: "trash",
+    explanation: "A bin is commonly used as a container for trash or waste."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+This is Kim.<br>
+Sid and Kim are friends.<br>
+Sid hid.<br>
+Kim will find Sid.<br>
+"Is Sid in the big bin?" asks Kim.<br>
+Kim will lift the lid.<br>
+"Yes!" says Kim.<br>
+Sid is in the big bin!
+</div><br>
+<span style="color:red;">38. What is the present form of hid?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/4.jpeg",
+    options: ["hide", "his", "how"],
+    correct: "hide",
+    explanation: "Hid is the past tense; the present form is hide."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+This is Kim.<br>
+Sid and Kim are friends.<br>
+Sid hid.<br>
+Kim will find Sid.<br>
+"Is Sid in the big bin?" asks Kim.<br>
+Kim will lift the lid.<br>
+"Yes!" says Kim.<br>
+Sid is in the big bin!
+</div><br>
+<span style="color:red;">39. How many characters are in the short story?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/4.jpeg",
+    options: ["2 characters", "3 characters", "1 character"],
+    correct: "2 characters",
+    explanation: "There are two characters in the story: Sid and Kim."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Sid.<br>
+This is Kim.<br>
+Sid and Kim are friends.<br>
+Sid hid.<br>
+Kim will find Sid.<br>
+"Is Sid in the big bin?" asks Kim.<br>
+Kim will lift the lid.<br>
+"Yes!" says Kim.<br>
+Sid is in the big bin!
+</div><br>
+<span style="color:red;">40. What does Kim say?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/4.jpeg",
+    options: ["no", "yes", "why"],
+    correct: "yes",
+    explanation: "When Kim lifts the lid and finds Sid, she exclaims 'Yes!'"
+  },
+
+  // ── IMAGE 5 ── Story: Mit and Kit are cats (Q41–Q50)
+  {
+    question: `<div style="text-align:center; color:black;">
+Mit is a cat.<br>
+Kit is a cat.<br>
+Mit and Kit are friends.<br>
+Mit likes Kit.<br>
+Kit likes Mit.<br>
+They sit on a hill.<br>
+They sit on a sill.<br>
+They sit in a pit.<br>
+They hiss and sit.<br>
+They sniff in the pit.<br>
+Mit finds a big fish in the pit.<br>
+Kit finds the fish, too.<br>
+Mit and Kit fight and fight.<br>
+They swish and kick.<br>
+Finally, Mit and Kit split the fish.<br>
+They both win.<br>
+Then, Mit and Kit sit still and eat the fish together.
+</div><br>
+<span style="color:red;">41. What is Mit?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/5.jpeg",
+    options: ["Mit is a girl", "Mit is a boy", "Mit is a cat"],
+    correct: "Mit is a cat",
+    explanation: "The story begins with 'Mit is a cat.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mit is a cat.<br>
+Kit is a cat.<br>
+Mit and Kit are friends.<br>
+Mit likes Kit.<br>
+Kit likes Mit.<br>
+They sit on a hill.<br>
+They sit on a sill.<br>
+They sit in a pit.<br>
+They hiss and sit.<br>
+They sniff in the pit.<br>
+Mit finds a big fish in the pit.<br>
+Kit finds the fish, too.<br>
+Mit and Kit fight and fight.<br>
+They swish and kick.<br>
+Finally, Mit and Kit split the fish.<br>
+They both win.<br>
+Then, Mit and Kit sit still and eat the fish together.
+</div><br>
+<span style="color:red;">42. What is Kit?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/5.jpeg",
+    options: ["Kit is a cat", "Kit is a pet", "Kit is a dog"],
+    correct: "Kit is a cat",
+    explanation: "The story says 'Kit is a cat.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mit is a cat.<br>
+Kit is a cat.<br>
+Mit and Kit are friends.<br>
+Mit likes Kit.<br>
+Kit likes Mit.<br>
+They sit on a hill.<br>
+They sit on a sill.<br>
+They sit in a pit.<br>
+They hiss and sit.<br>
+They sniff in the pit.<br>
+Mit finds a big fish in the pit.<br>
+Kit finds the fish, too.<br>
+Mit and Kit fight and fight.<br>
+They swish and kick.<br>
+Finally, Mit and Kit split the fish.<br>
+They both win.<br>
+Then, Mit and Kit sit still and eat the fish together.
+</div><br>
+<span style="color:red;">43. What are Mit and Kit?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/5.jpeg",
+    options: ["they are both cats", "they are both dogs", "they are both girls"],
+    correct: "they are both cats",
+    explanation: "Both Mit and Kit are described as cats in the story."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mit is a cat.<br>
+Kit is a cat.<br>
+Mit and Kit are friends.<br>
+Mit likes Kit.<br>
+Kit likes Mit.<br>
+They sit on a hill.<br>
+They sit on a sill.<br>
+They sit in a pit.<br>
+They hiss and sit.<br>
+They sniff in the pit.<br>
+Mit finds a big fish in the pit.<br>
+Kit finds the fish, too.<br>
+Mit and Kit fight and fight.<br>
+They swish and kick.<br>
+Finally, Mit and Kit split the fish.<br>
+They both win.<br>
+Then, Mit and Kit sit still and eat the fish together.
+</div><br>
+<span style="color:red;">44. Who does Kit like?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/5.jpeg",
+    options: ["Kit likes Sandy", "Kit likes dogs", "Kit likes Mit"],
+    correct: "Kit likes Mit",
+    explanation: "The story says 'Kit likes Mit.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mit is a cat.<br>
+Kit is a cat.<br>
+Mit and Kit are friends.<br>
+Mit likes Kit.<br>
+Kit likes Mit.<br>
+They sit on a hill.<br>
+They sit on a sill.<br>
+They sit in a pit.<br>
+They hiss and sit.<br>
+They sniff in the pit.<br>
+Mit finds a big fish in the pit.<br>
+Kit finds the fish, too.<br>
+Mit and Kit fight and fight.<br>
+They swish and kick.<br>
+Finally, Mit and Kit split the fish.<br>
+They both win.<br>
+Then, Mit and Kit sit still and eat the fish together.
+</div><br>
+<span style="color:red;">45. Where do Mit and Kit sit?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/5.jpeg",
+    options: ["they sit on the sill", "they sit on the table", "they sit on the couch"],
+    correct: "they sit on the sill",
+    explanation: "The story says 'They sit on a sill' among other places."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mit is a cat.<br>
+Kit is a cat.<br>
+Mit and Kit are friends.<br>
+Mit likes Kit.<br>
+Kit likes Mit.<br>
+They sit on a hill.<br>
+They sit on a sill.<br>
+They sit in a pit.<br>
+They hiss and sit.<br>
+They sniff in the pit.<br>
+Mit finds a big fish in the pit.<br>
+Kit finds the fish, too.<br>
+Mit and Kit fight and fight.<br>
+They swish and kick.<br>
+Finally, Mit and Kit split the fish.<br>
+They both win.<br>
+Then, Mit and Kit sit still and eat the fish together.
+</div><br>
+<span style="color:red;">46. Where do Mit and Kit sniff?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/5.jpeg",
+    options: ["Mit and Kit sniff in the kitchen", "Mit and Kit sniff in the restaurant", "Mit and Kit sniff in the pit"],
+    correct: "Mit and Kit sniff in the pit",
+    explanation: "The story says 'They sniff in the pit.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mit is a cat.<br>
+Kit is a cat.<br>
+Mit and Kit are friends.<br>
+Mit likes Kit.<br>
+Kit likes Mit.<br>
+They sit on a hill.<br>
+They sit on a sill.<br>
+They sit in a pit.<br>
+They hiss and sit.<br>
+They sniff in the pit.<br>
+Mit finds a big fish in the pit.<br>
+Kit finds the fish, too.<br>
+Mit and Kit fight and fight.<br>
+They swish and kick.<br>
+Finally, Mit and Kit split the fish.<br>
+They both win.<br>
+Then, Mit and Kit sit still and eat the fish together.
+</div><br>
+<span style="color:red;">47. What do Mit and Kit find?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/5.jpeg",
+    options: ["a cow", "a fish", "a chicken"],
+    correct: "a fish",
+    explanation: "The story says 'Mit finds a big fish in the pit. Kit finds the fish, too.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mit is a cat.<br>
+Kit is a cat.<br>
+Mit and Kit are friends.<br>
+Mit likes Kit.<br>
+Kit likes Mit.<br>
+They sit on a hill.<br>
+They sit on a sill.<br>
+They sit in a pit.<br>
+They hiss and sit.<br>
+They sniff in the pit.<br>
+Mit finds a big fish in the pit.<br>
+Kit finds the fish, too.<br>
+Mit and Kit fight and fight.<br>
+They swish and kick.<br>
+Finally, Mit and Kit split the fish.<br>
+They both win.<br>
+Then, Mit and Kit sit still and eat the fish together.
+</div><br>
+<span style="color:red;">48. What happens between Mit and Kit?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/5.jpeg",
+    options: ["they fight and swim", "they fight and fly", "they fight and fight"],
+    correct: "they fight and fight",
+    explanation: "The story says 'Mit and Kit fight and fight' over the fish they found."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mit is a cat.<br>
+Kit is a cat.<br>
+Mit and Kit are friends.<br>
+Mit likes Kit.<br>
+Kit likes Mit.<br>
+They sit on a hill.<br>
+They sit on a sill.<br>
+They sit in a pit.<br>
+They hiss and sit.<br>
+They sniff in the pit.<br>
+Mit finds a big fish in the pit.<br>
+Kit finds the fish, too.<br>
+Mit and Kit fight and fight.<br>
+They swish and kick.<br>
+Finally, Mit and Kit split the fish.<br>
+They both win.<br>
+Then, Mit and Kit sit still and eat the fish together.
+</div><br>
+<span style="color:red;">49. What happened finally between Mit and Kit?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/5.jpeg",
+    options: ["Mit and Kit split the wish", "Mit and Kit split the cow", "Mit and Kit split the fish"],
+    correct: "Mit and Kit split the fish",
+    explanation: "Finally, Mit and Kit split the fish and both win."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Mit is a cat.<br>
+Kit is a cat.<br>
+Mit and Kit are friends.<br>
+Mit likes Kit.<br>
+Kit likes Mit.<br>
+They sit on a hill.<br>
+They sit on a sill.<br>
+They sit in a pit.<br>
+They hiss and sit.<br>
+They sniff in the pit.<br>
+Mit finds a big fish in the pit.<br>
+Kit finds the fish, too.<br>
+Mit and Kit fight and fight.<br>
+They swish and kick.<br>
+Finally, Mit and Kit split the fish.<br>
+They both win.<br>
+Then, Mit and Kit sit still and eat the fish together.
+</div><br>
+<span style="color:red;">50. Who wins the fight?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/5.jpeg",
+    options: ["they both lose", "they both eat", "they both win"],
+    correct: "they both win",
+    explanation: "The story says 'They both win' after splitting the fish equally."
+  },
+
+  // ── IMAGE 6 ── Story: This is Liz (Q51–Q60)
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Liz.<br>
+Liz is a pig.<br>
+Liz will pick a wig.<br>
+Liz picks the blue wig.<br>
+The blue wig is big.<br>
+It slips and dips.<br>
+Liz picks the green wig.<br>
+The green wig is trim.<br>
+The wig fits.<br>
+Liz grins.
+</div><br>
+<span style="color:red;">51. Who is Liz?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/6.jpeg",
+    options: ["pig", "mud", "wig"],
+    correct: "pig",
+    explanation: "The story says 'Liz is a pig.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Liz.<br>
+Liz is a pig.<br>
+Liz will pick a wig.<br>
+Liz picks the blue wig.<br>
+The blue wig is big.<br>
+It slips and dips.<br>
+Liz picks the green wig.<br>
+The green wig is trim.<br>
+The wig fits.<br>
+Liz grins.
+</div><br>
+<span style="color:red;">52. What will Liz pick?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/6.jpeg",
+    options: ["wig", "cat", "shoes"],
+    correct: "wig",
+    explanation: "The story says 'Liz will pick a wig.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Liz.<br>
+Liz is a pig.<br>
+Liz will pick a wig.<br>
+Liz picks the blue wig.<br>
+The blue wig is big.<br>
+It slips and dips.<br>
+Liz picks the green wig.<br>
+The green wig is trim.<br>
+The wig fits.<br>
+Liz grins.
+</div><br>
+<span style="color:red;">53. What wig color does Liz pick first?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/6.jpeg",
+    options: ["red wig", "blue wig", "green wig"],
+    correct: "blue wig",
+    explanation: "The story says 'Liz picks the blue wig' first, before trying the green one."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Liz.<br>
+Liz is a pig.<br>
+Liz will pick a wig.<br>
+Liz picks the blue wig.<br>
+The blue wig is big.<br>
+It slips and dips.<br>
+Liz picks the green wig.<br>
+The green wig is trim.<br>
+The wig fits.<br>
+Liz grins.
+</div><br>
+<span style="color:red;">54. What size is the blue wig?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/6.jpeg",
+    options: ["the blue wig is tiny", "the blue wig is small", "the blue wig is big"],
+    correct: "the blue wig is big",
+    explanation: "The story says 'The blue wig is big,' which is why it slips and dips."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Liz.<br>
+Liz is a pig.<br>
+Liz will pick a wig.<br>
+Liz picks the blue wig.<br>
+The blue wig is big.<br>
+It slips and dips.<br>
+Liz picks the green wig.<br>
+The green wig is trim.<br>
+The wig fits.<br>
+Liz grins.
+</div><br>
+<span style="color:red;">55. What color is the second wig?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/6.jpeg",
+    options: ["green", "purple", "blue"],
+    correct: "green",
+    explanation: "The second wig Liz picks is the green wig."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Liz.<br>
+Liz is a pig.<br>
+Liz will pick a wig.<br>
+Liz picks the blue wig.<br>
+The blue wig is big.<br>
+It slips and dips.<br>
+Liz picks the green wig.<br>
+The green wig is trim.<br>
+The wig fits.<br>
+Liz grins.
+</div><br>
+<span style="color:red;">56. Which wig fits Liz?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/6.jpeg",
+    options: ["the green hat", "the blue wig", "the green wig"],
+    correct: "the green wig",
+    explanation: "The story says 'The wig fits' after Liz picks the green wig."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Liz.<br>
+Liz is a pig.<br>
+Liz will pick a wig.<br>
+Liz picks the blue wig.<br>
+The blue wig is big.<br>
+It slips and dips.<br>
+Liz picks the green wig.<br>
+The green wig is trim.<br>
+The wig fits.<br>
+Liz grins.
+</div><br>
+<span style="color:red;">57. Which wig slips and dips?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/6.jpeg",
+    options: ["the blue wig", "the green wig", "the purple wig"],
+    correct: "the blue wig",
+    explanation: "The story says the blue wig is big and 'It slips and dips.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Liz.<br>
+Liz is a pig.<br>
+Liz will pick a wig.<br>
+Liz picks the blue wig.<br>
+The blue wig is big.<br>
+It slips and dips.<br>
+Liz picks the green wig.<br>
+The green wig is trim.<br>
+The wig fits.<br>
+Liz grins.
+</div><br>
+<span style="color:red;">58. Which wig is trim?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/6.jpeg",
+    options: ["the pink wig", "the green wig", "the blue wig"],
+    correct: "the green wig",
+    explanation: "The story says 'The green wig is trim,' meaning it fits neatly."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Liz.<br>
+Liz is a pig.<br>
+Liz will pick a wig.<br>
+Liz picks the blue wig.<br>
+The blue wig is big.<br>
+It slips and dips.<br>
+Liz picks the green wig.<br>
+The green wig is trim.<br>
+The wig fits.<br>
+Liz grins.
+</div><br>
+<span style="color:red;">59. What is another word for grin?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/6.jpeg",
+    options: ["smile", "cry", "pray"],
+    correct: "smile",
+    explanation: "Grin means to smile broadly. Another word for grin is smile."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+This is Liz.<br>
+Liz is a pig.<br>
+Liz will pick a wig.<br>
+Liz picks the blue wig.<br>
+The blue wig is big.<br>
+It slips and dips.<br>
+Liz picks the green wig.<br>
+The green wig is trim.<br>
+The wig fits.<br>
+Liz grins.
+</div><br>
+<span style="color:red;">60. How many animals are there in the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/6.jpeg",
+    options: ["1 animal", "2 animals", "3 animals"],
+    correct: "1 animal",
+    explanation: "There is only one animal in the story: Liz the pig."
+  },
+
+  // ── IMAGE 7 ── Story: Tim on a big ship (Q61–Q70)
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is on a big ship with his mom.<br>
+Tim and his mom sit on the big ship.<br>
+Tim and mom look for fish.<br>
+Tim dips his chin and grins.<br>
+"I think I will find a big fish!" says Tim.<br>
+Tim points and yells, "I see a big fish!"<br>
+Mom squints and says, "Yes, I see the big fin!"<br>
+The big fish swims in zigzags by the ship.<br>
+Tim is thrilled to find such a big fish.<br>
+"What a big, big fish!" says Tim.
+</div><br>
+<span style="color:red;">61. Where is Tim?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/7.jpeg",
+    options: ["Tim is on a big ship", "Tim is on a big chair", "Tim is on a big boat"],
+    correct: "Tim is on a big ship",
+    explanation: "The story begins with 'Tim is on a big ship with his mom.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is on a big ship with his mom.<br>
+Tim and his mom sit on the big ship.<br>
+Tim and mom look for fish.<br>
+Tim dips his chin and grins.<br>
+"I think I will find a big fish!" says Tim.<br>
+Tim points and yells, "I see a big fish!"<br>
+Mom squints and says, "Yes, I see the big fin!"<br>
+The big fish swims in zigzags by the ship.<br>
+Tim is thrilled to find such a big fish.<br>
+"What a big, big fish!" says Tim.
+</div><br>
+<span style="color:red;">62. Where do Tim and his mom sit?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/7.jpeg",
+    options: ["Tim and his mom sit on the couch", "Tim and his mom sit on the big ship", "Tim and his mom sit on the small ship"],
+    correct: "Tim and his mom sit on the big ship",
+    explanation: "The story says 'Tim and his mom sit on the big ship.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is on a big ship with his mom.<br>
+Tim and his mom sit on the big ship.<br>
+Tim and mom look for fish.<br>
+Tim dips his chin and grins.<br>
+"I think I will find a big fish!" says Tim.<br>
+Tim points and yells, "I see a big fish!"<br>
+Mom squints and says, "Yes, I see the big fin!"<br>
+The big fish swims in zigzags by the ship.<br>
+Tim is thrilled to find such a big fish.<br>
+"What a big, big fish!" says Tim.
+</div><br>
+<span style="color:red;">63. What do mom and Tim look for?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/7.jpeg",
+    options: ["Tim and mom look for dinosaurs", "Tim and mom look for fish", "Tim and mom look for cows"],
+    correct: "Tim and mom look for fish",
+    explanation: "The story says 'Tim and mom look for fish.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is on a big ship with his mom.<br>
+Tim and his mom sit on the big ship.<br>
+Tim and mom look for fish.<br>
+Tim dips his chin and grins.<br>
+"I think I will find a big fish!" says Tim.<br>
+Tim points and yells, "I see a big fish!"<br>
+Mom squints and says, "Yes, I see the big fin!"<br>
+The big fish swims in zigzags by the ship.<br>
+Tim is thrilled to find such a big fish.<br>
+"What a big, big fish!" says Tim.
+</div><br>
+<span style="color:red;">64. What does Tim do as he dips his chin?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/7.jpeg",
+    options: ["Tim grins", "Tim smiles", "Tim swims"],
+    correct: "Tim grins",
+    explanation: "The story says 'Tim dips his chin and grins.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is on a big ship with his mom.<br>
+Tim and his mom sit on the big ship.<br>
+Tim and mom look for fish.<br>
+Tim dips his chin and grins.<br>
+"I think I will find a big fish!" says Tim.<br>
+Tim points and yells, "I see a big fish!"<br>
+Mom squints and says, "Yes, I see the big fin!"<br>
+The big fish swims in zigzags by the ship.<br>
+Tim is thrilled to find such a big fish.<br>
+"What a big, big fish!" says Tim.
+</div><br>
+<span style="color:red;">65. What did Tim think?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/7.jpeg",
+    options: ["He thinks he will find a better place", "He thinks he will find a small whale", "He thinks he will find a big fish"],
+    correct: "He thinks he will find a big fish",
+    explanation: "Tim says 'I think I will find a big fish!'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is on a big ship with his mom.<br>
+Tim and his mom sit on the big ship.<br>
+Tim and mom look for fish.<br>
+Tim dips his chin and grins.<br>
+"I think I will find a big fish!" says Tim.<br>
+Tim points and yells, "I see a big fish!"<br>
+Mom squints and says, "Yes, I see the big fin!"<br>
+The big fish swims in zigzags by the ship.<br>
+Tim is thrilled to find such a big fish.<br>
+"What a big, big fish!" says Tim.
+</div><br>
+<span style="color:red;">66. What does mom say as she looks at the water surface?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/7.jpeg",
+    options: ["I see the big fin", "I see the big helicopter", "I see the big shoe"],
+    correct: "I see the big fin",
+    explanation: "Mom squints and says 'Yes, I see the big fin!' spotting the fish's fin in the water."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is on a big ship with his mom.<br>
+Tim and his mom sit on the big ship.<br>
+Tim and mom look for fish.<br>
+Tim dips his chin and grins.<br>
+"I think I will find a big fish!" says Tim.<br>
+Tim points and yells, "I see a big fish!"<br>
+Mom squints and says, "Yes, I see the big fin!"<br>
+The big fish swims in zigzags by the ship.<br>
+Tim is thrilled to find such a big fish.<br>
+"What a big, big fish!" says Tim.
+</div><br>
+<span style="color:red;">67. How does the big fish swim?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/7.jpeg",
+    options: ["in straight lines by the ship", "in circles by the ship", "in zigzags by the ship"],
+    correct: "in zigzags by the ship",
+    explanation: "The story says 'The big fish swims in zigzags by the ship.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is on a big ship with his mom.<br>
+Tim and his mom sit on the big ship.<br>
+Tim and mom look for fish.<br>
+Tim dips his chin and grins.<br>
+"I think I will find a big fish!" says Tim.<br>
+Tim points and yells, "I see a big fish!"<br>
+Mom squints and says, "Yes, I see the big fin!"<br>
+The big fish swims in zigzags by the ship.<br>
+Tim is thrilled to find such a big fish.<br>
+"What a big, big fish!" says Tim.
+</div><br>
+<span style="color:red;">68. How were Tim's emotions as he found the fish?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/7.jpeg",
+    options: ["Tim was thrilled to find such a big fish", "Tim was sad to find such a big fish", "Tim was happy to find such a big fish"],
+    correct: "Tim was thrilled to find such a big fish",
+    explanation: "The story says 'Tim is thrilled to find such a big fish.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is on a big ship with his mom.<br>
+Tim and his mom sit on the big ship.<br>
+Tim and mom look for fish.<br>
+Tim dips his chin and grins.<br>
+"I think I will find a big fish!" says Tim.<br>
+Tim points and yells, "I see a big fish!"<br>
+Mom squints and says, "Yes, I see the big fin!"<br>
+The big fish swims in zigzags by the ship.<br>
+Tim is thrilled to find such a big fish.<br>
+"What a big, big fish!" says Tim.
+</div><br>
+<span style="color:red;">69. What is another meaning for squint?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/7.jpeg",
+    options: ["looking with narrowed eyes", "looking very happy", "looking in the wrong direction"],
+    correct: "looking with narrowed eyes",
+    explanation: "To squint means to look with partially closed or narrowed eyes, often to see better."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is on a big ship with his mom.<br>
+Tim and his mom sit on the big ship.<br>
+Tim and mom look for fish.<br>
+Tim dips his chin and grins.<br>
+"I think I will find a big fish!" says Tim.<br>
+Tim points and yells, "I see a big fish!"<br>
+Mom squints and says, "Yes, I see the big fin!"<br>
+The big fish swims in zigzags by the ship.<br>
+Tim is thrilled to find such a big fish.<br>
+"What a big, big fish!" says Tim.
+</div><br>
+<span style="color:red;">70. What is the past tense of say?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/7.jpeg",
+    options: ["same", "see", "said"],
+    correct: "said",
+    explanation: "The past tense of say is said."
+  },
+
+  // ── IMAGE 8 ── Story: Jill is sick (Q71–Q80)
+  {
+    question: `<div style="text-align:center; color:black;">
+Jill is sick.<br>
+Jill is in bed.<br>
+She will not play.<br>
+Nan is with Jill.<br>
+Nan will sing.<br>
+Jill will sip milk.<br>
+Jill will grin.<br>
+"You will be well in a bit," says Nan.<br>
+Jill will rest.<br>
+Jill will be fit.
+</div><br>
+<span style="color:red;">71. In the short story, who is sick?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/8.jpeg",
+    options: ["the boy is sick", "Jill is sick", "Ann is sick"],
+    correct: "Jill is sick",
+    explanation: "The story begins with 'Jill is sick.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jill is sick.<br>
+Jill is in bed.<br>
+She will not play.<br>
+Nan is with Jill.<br>
+Nan will sing.<br>
+Jill will sip milk.<br>
+Jill will grin.<br>
+"You will be well in a bit," says Nan.<br>
+Jill will rest.<br>
+Jill will be fit.
+</div><br>
+<span style="color:red;">72. Where is Jill?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/8.jpeg",
+    options: ["Jill is at school", "Jill is at the hospital", "Jill is in bed"],
+    correct: "Jill is in bed",
+    explanation: "The story says 'Jill is in bed' because she is sick."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jill is sick.<br>
+Jill is in bed.<br>
+She will not play.<br>
+Nan is with Jill.<br>
+Nan will sing.<br>
+Jill will sip milk.<br>
+Jill will grin.<br>
+"You will be well in a bit," says Nan.<br>
+Jill will rest.<br>
+Jill will be fit.
+</div><br>
+<span style="color:red;">73. Who is with Jill?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/8.jpeg",
+    options: ["Nan is with Jill", "Nan is with mom", "Nan is with dad"],
+    correct: "Nan is with Jill",
+    explanation: "The story says 'Nan is with Jill.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jill is sick.<br>
+Jill is in bed.<br>
+She will not play.<br>
+Nan is with Jill.<br>
+Nan will sing.<br>
+Jill will sip milk.<br>
+Jill will grin.<br>
+"You will be well in a bit," says Nan.<br>
+Jill will rest.<br>
+Jill will be fit.
+</div><br>
+<span style="color:red;">74. What will Nan do for Jill so she feels a little better?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/8.jpeg",
+    options: ["Nan will jump", "Nan will sing", "Nan will draw"],
+    correct: "Nan will sing",
+    explanation: "The story says 'Nan will sing' to comfort Jill."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jill is sick.<br>
+Jill is in bed.<br>
+She will not play.<br>
+Nan is with Jill.<br>
+Nan will sing.<br>
+Jill will sip milk.<br>
+Jill will grin.<br>
+"You will be well in a bit," says Nan.<br>
+Jill will rest.<br>
+Jill will be fit.
+</div><br>
+<span style="color:red;">75. Will Jill sip milk or coffee?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/8.jpeg",
+    options: ["Jill will sip coffee", "Jill will sip tea", "Jill will sip milk"],
+    correct: "Jill will sip milk",
+    explanation: "The story says 'Jill will sip milk.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jill is sick.<br>
+Jill is in bed.<br>
+She will not play.<br>
+Nan is with Jill.<br>
+Nan will sing.<br>
+Jill will sip milk.<br>
+Jill will grin.<br>
+"You will be well in a bit," says Nan.<br>
+Jill will rest.<br>
+Jill will be fit.
+</div><br>
+<span style="color:red;">76. What must Jill do to become better?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/8.jpeg",
+    options: ["Jill must fly", "Jill must go to jail", "Jill must rest"],
+    correct: "Jill must rest",
+    explanation: "The story says 'Jill will rest' so she can recover and be fit again."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jill is sick.<br>
+Jill is in bed.<br>
+She will not play.<br>
+Nan is with Jill.<br>
+Nan will sing.<br>
+Jill will sip milk.<br>
+Jill will grin.<br>
+"You will be well in a bit," says Nan.<br>
+Jill will rest.<br>
+Jill will be fit.
+</div><br>
+<span style="color:red;">77. What will happen when Jill rests?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/8.jpeg",
+    options: ["Jill will be fit", "Jill will be fine", "Jill will die"],
+    correct: "Jill will be fit",
+    explanation: "The story says 'Jill will be fit' after she rests."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jill is sick.<br>
+Jill is in bed.<br>
+She will not play.<br>
+Nan is with Jill.<br>
+Nan will sing.<br>
+Jill will sip milk.<br>
+Jill will grin.<br>
+"You will be well in a bit," says Nan.<br>
+Jill will rest.<br>
+Jill will be fit.
+</div><br>
+<span style="color:red;">78. What is the past tense of sing?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/8.jpeg",
+    options: ["sang", "sorry", "song"],
+    correct: "sang",
+    explanation: "The past tense of sing is sang."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jill is sick.<br>
+Jill is in bed.<br>
+She will not play.<br>
+Nan is with Jill.<br>
+Nan will sing.<br>
+Jill will sip milk.<br>
+Jill will grin.<br>
+"You will be well in a bit," says Nan.<br>
+Jill will rest.<br>
+Jill will be fit.
+</div><br>
+<span style="color:red;">79. Which is the correct spelling in the following sentence?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/8.jpeg",
+    options: ["You well be will in a bit", "You will be well in a bit", "You will be weel in a bit"],
+    correct: "You will be well in a bit",
+    explanation: "The correct sentence is 'You will be well in a bit,' as Nan says to Jill."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Jill is sick.<br>
+Jill is in bed.<br>
+She will not play.<br>
+Nan is with Jill.<br>
+Nan will sing.<br>
+Jill will sip milk.<br>
+Jill will grin.<br>
+"You will be well in a bit," says Nan.<br>
+Jill will rest.<br>
+Jill will be fit.
+</div><br>
+<span style="color:red;">80. What is another word for grin?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/8.jpeg",
+    options: ["scared", "smile", "cry"],
+    correct: "smile",
+    explanation: "Grin means to smile broadly. Another word for grin is smile."
+  },
+
+  // ── IMAGE 9 ── Story: Tim is sad / Tim hit his chin (Q81–Q90)
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is sad.<br>
+Tim hit his chin.<br>
+Tim sits and sniffs.<br>
+Dad will pick up Tim.<br>
+Dad will hug Tim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Tim nods.<br>
+Dad will sit with Tim.<br>
+Tim will sip from his cup.<br>
+Dad will sing to Tim.<br>
+Tim will grin.<br>
+"I am all right," says Tim.<br>
+Tim will skip and play again.
+</div><br>
+<span style="color:red;">81. What happened to Tim?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/9.jpeg",
+    options: ["Tim went to the mall", "Tim hit his leg", "Tim hit his chain"],
+    correct: "Tim hit his chain",
+    explanation: "According to the worksheet, Tim hit his chin (written as 'chain' in the options)."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is sad.<br>
+Tim hit his chin.<br>
+Tim sits and sniffs.<br>
+Dad will pick up Tim.<br>
+Dad will hug Tim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Tim nods.<br>
+Dad will sit with Tim.<br>
+Tim will sip from his cup.<br>
+Dad will sing to Tim.<br>
+Tim will grin.<br>
+"I am all right," says Tim.<br>
+Tim will skip and play again.
+</div><br>
+<span style="color:red;">82. What will dad do as Tim sits and sniffs?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/9.jpeg",
+    options: ["dad will shout", "dad will hug Tim", "dad will hit Tim"],
+    correct: "dad will hug Tim",
+    explanation: "The story says 'Dad will hug Tim' to comfort him."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is sad.<br>
+Tim hit his chin.<br>
+Tim sits and sniffs.<br>
+Dad will pick up Tim.<br>
+Dad will hug Tim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Tim nods.<br>
+Dad will sit with Tim.<br>
+Tim will sip from his cup.<br>
+Dad will sing to Tim.<br>
+Tim will grin.<br>
+"I am all right," says Tim.<br>
+Tim will skip and play again.
+</div><br>
+<span style="color:red;">83. What did dad ask?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/9.jpeg",
+    options: ["did you go to the doctor", "did you hit your chin", "did you fly to China"],
+    correct: "did you hit your chin",
+    explanation: "Dad asks 'Did you hit your chin?' to check on Tim."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is sad.<br>
+Tim hit his chin.<br>
+Tim sits and sniffs.<br>
+Dad will pick up Tim.<br>
+Dad will hug Tim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Tim nods.<br>
+Dad will sit with Tim.<br>
+Tim will sip from his cup.<br>
+Dad will sing to Tim.<br>
+Tim will grin.<br>
+"I am all right," says Tim.<br>
+Tim will skip and play again.
+</div><br>
+<span style="color:red;">84. What will dad do to make Tim feel better?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/9.jpeg",
+    options: ["dad will cry", "dad will sing", "dad will laugh"],
+    correct: "dad will sing",
+    explanation: "The story says 'Dad will sing to Tim' to help him feel better."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is sad.<br>
+Tim hit his chin.<br>
+Tim sits and sniffs.<br>
+Dad will pick up Tim.<br>
+Dad will hug Tim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Tim nods.<br>
+Dad will sit with Tim.<br>
+Tim will sip from his cup.<br>
+Dad will sing to Tim.<br>
+Tim will grin.<br>
+"I am all right," says Tim.<br>
+Tim will skip and play again.
+</div><br>
+<span style="color:red;">85. What did Tim tell his dad?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/9.jpeg",
+    options: ["I am not well", "I am well", "I am all right"],
+    correct: "I am all right",
+    explanation: "Tim says 'I am all right' to let his dad know he feels better."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is sad.<br>
+Tim hit his chin.<br>
+Tim sits and sniffs.<br>
+Dad will pick up Tim.<br>
+Dad will hug Tim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Tim nods.<br>
+Dad will sit with Tim.<br>
+Tim will sip from his cup.<br>
+Dad will sing to Tim.<br>
+Tim will grin.<br>
+"I am all right," says Tim.<br>
+Tim will skip and play again.
+</div><br>
+<span style="color:red;">86. What was the name of the boy in the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/9.jpeg",
+    options: ["Tom", "Tim", "Time"],
+    correct: "Tim",
+    explanation: "The boy in the story is named Tim."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is sad.<br>
+Tim hit his chin.<br>
+Tim sits and sniffs.<br>
+Dad will pick up Tim.<br>
+Dad will hug Tim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Tim nods.<br>
+Dad will sit with Tim.<br>
+Tim will sip from his cup.<br>
+Dad will sing to Tim.<br>
+Tim will grin.<br>
+"I am all right," says Tim.<br>
+Tim will skip and play again.
+</div><br>
+<span style="color:red;">87. What is the past tense of ask?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/9.jpeg",
+    options: ["asks", "asked", "asking"],
+    correct: "asked",
+    explanation: "The past tense of ask is asked."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is sad.<br>
+Tim hit his chin.<br>
+Tim sits and sniffs.<br>
+Dad will pick up Tim.<br>
+Dad will hug Tim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Tim nods.<br>
+Dad will sit with Tim.<br>
+Tim will sip from his cup.<br>
+Dad will sing to Tim.<br>
+Tim will grin.<br>
+"I am all right," says Tim.<br>
+Tim will skip and play again.
+</div><br>
+<span style="color:red;">88. What is the past tense of sit?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/9.jpeg",
+    options: ["so", "sat", "sitting"],
+    correct: "sat",
+    explanation: "The past tense of sit is sat."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is sad.<br>
+Tim hit his chin.<br>
+Tim sits and sniffs.<br>
+Dad will pick up Tim.<br>
+Dad will hug Tim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Tim nods.<br>
+Dad will sit with Tim.<br>
+Tim will sip from his cup.<br>
+Dad will sing to Tim.<br>
+Tim will grin.<br>
+"I am all right," says Tim.<br>
+Tim will skip and play again.
+</div><br>
+<span style="color:red;">89. What might Tim do after he is well again?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/9.jpeg",
+    options: ["swim and slide", "slide and write", "skip and play"],
+    correct: "skip and play",
+    explanation: "The story says 'Tim will skip and play again' when he is better."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Tim is sad.<br>
+Tim hit his chin.<br>
+Tim sits and sniffs.<br>
+Dad will pick up Tim.<br>
+Dad will hug Tim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Tim nods.<br>
+Dad will sit with Tim.<br>
+Tim will sip from his cup.<br>
+Dad will sing to Tim.<br>
+Tim will grin.<br>
+"I am all right," says Tim.<br>
+Tim will skip and play again.
+</div><br>
+<span style="color:red;">90. What is another word for nod?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/9.jpeg",
+    options: ["yes", "no", "not agree"],
+    correct: "yes",
+    explanation: "To nod means to move your head up and down, which signals agreement or 'yes.'"
+  },
+
+  // ── IMAGE 10 ── Story: Kim is sad / Kim hit her chin (Q91–Q100)
+  {
+    question: `<div style="text-align:center; color:black;">
+Kim is sad.<br>
+Kim hit her chin.<br>
+Kim sits and sniffs.<br>
+Dad will pick up Kim.<br>
+Dad will hug Kim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Kim says, "Yes."<br>
+Dad will sit with Kim.<br>
+Kim will sip from her cup.<br>
+Dad will sing to Kim.<br>
+Kim will grin.<br>
+"I am all right," says Kim.<br>
+Kim will skip and play again.
+</div><br>
+<span style="color:red;">91. In the short story, who is sad?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/10.jpeg",
+    options: ["Sandy", "Kim", "Tim"],
+    correct: "Kim",
+    explanation: "The story begins with 'Kim is sad.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Kim is sad.<br>
+Kim hit her chin.<br>
+Kim sits and sniffs.<br>
+Dad will pick up Kim.<br>
+Dad will hug Kim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Kim says, "Yes."<br>
+Dad will sit with Kim.<br>
+Kim will sip from her cup.<br>
+Dad will sing to Kim.<br>
+Kim will grin.<br>
+"I am all right," says Kim.<br>
+Kim will skip and play again.
+</div><br>
+<span style="color:red;">92. What happened to Kim?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/10.jpeg",
+    options: ["Kim went to the mall", "Kim hit her leg", "Kim hit her chain"],
+    correct: "Kim hit her chain",
+    explanation: "According to the worksheet, Kim hit her chin (written as 'chain' in the options)."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Kim is sad.<br>
+Kim hit her chin.<br>
+Kim sits and sniffs.<br>
+Dad will pick up Kim.<br>
+Dad will hug Kim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Kim says, "Yes."<br>
+Dad will sit with Kim.<br>
+Kim will sip from her cup.<br>
+Dad will sing to Kim.<br>
+Kim will grin.<br>
+"I am all right," says Kim.<br>
+Kim will skip and play again.
+</div><br>
+<span style="color:red;">93. Where did Kim get hurt?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/10.jpeg",
+    options: ["chin", "hand", "leg"],
+    correct: "chin",
+    explanation: "The story says 'Kim hit her chin,' so she was hurt on her chin."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Kim is sad.<br>
+Kim hit her chin.<br>
+Kim sits and sniffs.<br>
+Dad will pick up Kim.<br>
+Dad will hug Kim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Kim says, "Yes."<br>
+Dad will sit with Kim.<br>
+Kim will sip from her cup.<br>
+Dad will sing to Kim.<br>
+Kim will grin.<br>
+"I am all right," says Kim.<br>
+Kim will skip and play again.
+</div><br>
+<span style="color:red;">94. How does Kim feel at the beginning of the story?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/10.jpeg",
+    options: ["glad", "sad", "big"],
+    correct: "sad",
+    explanation: "The story begins with 'Kim is sad.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Kim is sad.<br>
+Kim hit her chin.<br>
+Kim sits and sniffs.<br>
+Dad will pick up Kim.<br>
+Dad will hug Kim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Kim says, "Yes."<br>
+Dad will sit with Kim.<br>
+Kim will sip from her cup.<br>
+Dad will sing to Kim.<br>
+Kim will grin.<br>
+"I am all right," says Kim.<br>
+Kim will skip and play again.
+</div><br>
+<span style="color:red;">95. What does Kim sip from?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/10.jpeg",
+    options: ["a cup", "a bag", "a dish"],
+    correct: "a cup",
+    explanation: "The story says 'Kim will sip from her cup.'"
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Kim is sad.<br>
+Kim hit her chin.<br>
+Kim sits and sniffs.<br>
+Dad will pick up Kim.<br>
+Dad will hug Kim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Kim says, "Yes."<br>
+Dad will sit with Kim.<br>
+Kim will sip from her cup.<br>
+Dad will sing to Kim.<br>
+Kim will grin.<br>
+"I am all right," says Kim.<br>
+Kim will skip and play again.
+</div><br>
+<span style="color:red;">96. What will dad do to make Kim feel better?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/10.jpeg",
+    options: ["dad will cry", "dad will sing", "dad will laugh"],
+    correct: "dad will sing",
+    explanation: "The story says 'Dad will sing to Kim' to help her feel better."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Kim is sad.<br>
+Kim hit her chin.<br>
+Kim sits and sniffs.<br>
+Dad will pick up Kim.<br>
+Dad will hug Kim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Kim says, "Yes."<br>
+Dad will sit with Kim.<br>
+Kim will sip from her cup.<br>
+Dad will sing to Kim.<br>
+Kim will grin.<br>
+"I am all right," says Kim.<br>
+Kim will skip and play again.
+</div><br>
+<span style="color:red;">97. What is the past tense of skip?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/10.jpeg",
+    options: ["skipping", "skip", "skipped"],
+    correct: "skipped",
+    explanation: "The past tense of skip is skipped."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Kim is sad.<br>
+Kim hit her chin.<br>
+Kim sits and sniffs.<br>
+Dad will pick up Kim.<br>
+Dad will hug Kim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Kim says, "Yes."<br>
+Dad will sit with Kim.<br>
+Kim will sip from her cup.<br>
+Dad will sing to Kim.<br>
+Kim will grin.<br>
+"I am all right," says Kim.<br>
+Kim will skip and play again.
+</div><br>
+<span style="color:red;">98. What is the meaning of grin?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/10.jpeg",
+    options: ["grin means to cry", "grin means to smile", "grin means to fly"],
+    correct: "grin means to smile",
+    explanation: "To grin means to smile broadly or widely."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Kim is sad.<br>
+Kim hit her chin.<br>
+Kim sits and sniffs.<br>
+Dad will pick up Kim.<br>
+Dad will hug Kim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Kim says, "Yes."<br>
+Dad will sit with Kim.<br>
+Kim will sip from her cup.<br>
+Dad will sing to Kim.<br>
+Kim will grin.<br>
+"I am all right," says Kim.<br>
+Kim will skip and play again.
+</div><br>
+<span style="color:red;">99. What is the meaning of skip?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/10.jpeg",
+    options: ["jump lightly while moving", "sleep lightly while moving", "drink lightly while moving"],
+    correct: "jump lightly while moving",
+    explanation: "To skip means to move forward with light, bouncy jumps."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+Kim is sad.<br>
+Kim hit her chin.<br>
+Kim sits and sniffs.<br>
+Dad will pick up Kim.<br>
+Dad will hug Kim.<br>
+"Did you hit your chin?" asks Dad.<br>
+Kim says, "Yes."<br>
+Dad will sit with Kim.<br>
+Kim will sip from her cup.<br>
+Dad will sing to Kim.<br>
+Kim will grin.<br>
+"I am all right," says Kim.<br>
+Kim will skip and play again.
+</div><br>
+<span style="color:red;">100. What is the meaning of again?</span>`,
+    image: "../../../image/leve1_eng_vowels_I/10.jpeg",
+    options: ["two more times", "five more times or another time", "one more time or another time"],
+    correct: "one more time or another time",
+    explanation: "Again means one more time or another time."
+  }
+];
+    </script>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    initMCQQuiz(questions);
+  });
+    </script>
+  </body>
+</html>
