@@ -3,631 +3,630 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Verb To Be - Past Tense</title>
+    <title>Verb to be - present tense</title>
     <link rel="stylesheet" href="../../../css/question.css" />
   </head>
   <body>
 
-    <div id="site-header-placeholder"></div>
+   <div id="site-header-placeholder"></div>
 
     <main class="quiz-container">
       <div class="question-section">
         <h3 id="question-text">Loading...</h3>
-        <ul class="options" id="options-list"></ul>
+        <ul class="options" id="options-list">
+          </ul>
       </div>
       <div id="feedback" class="hidden"></div>
       <div id="explanation" class="hidden"></div>
       <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
       <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
     </main>
-
-    <script>
-      const questions = [
-        {
-          question: "Use the correct past tense to finish the sentence: The brown hen ....... lost.",
-          options: ["was", "were"],
-          correct: "was",
-          explanation: "'was' is used because 'The brown hen' is a singular subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The brown bear ............ large.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used because 'The brown bear' is a singular subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The whales ............ swimming.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'The whales' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The fisherman ............ sick.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used because 'The fisherman' is a singular subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The birds ............ far away.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'The birds' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: They ............ new to our town.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used with the plural subject 'They'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The ducks........... very loud.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'The ducks' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The dogs ............ all gone.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'The dogs' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The children ............ on vacation.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'The children' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The children ............ in the pool all day.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'The children' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Mr. and Mrs. Smith ............ very upset.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'Mr. and Mrs. Smith' forms a compound plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Mr and Mrs. Smith ............ very nice people.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because Mr and Mrs. Smith is a compound plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Those women ............ really very kind.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'Those women' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Sandy and Hayfa ............ friends for many years.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'Sandy and Hayfa' forms a compound plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Alexandra and Tom ..... students.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'Alexandra and Tom' forms a compound plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Sandy's dress ............ on the bed.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used because 'Sandy's dress' is a singular subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: They ............ very happy.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used with the plural subject 'They'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: We ............ happy to go to the Cinema.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used with the plural subject 'We'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: It ............ very difficult to move.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used with the singular subject 'It'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: I ............ on the phone all day.",
-          options: ["was", "were"],
-          correct: "was",
-          explanation: "'was' is used with the subject 'I'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: He ............ very happy with his performance.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used with singular subjects like 'He'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Sam's cookies ............ yummy.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'Sam's cookies' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Sama ............ Sam's best friend.",
-          options: ["was", "were"],
-          correct: "was",
-          explanation: "'was' is used with singular proper names like 'Sama'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: It ............ difficult to find my bag.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used with the singular subject 'It'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: It ............ a different situation.",
-          options: ["was", "were"],
-          correct: "was",
-          explanation: "'was' is used with the singular subject 'It'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: They ............ crying.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used with the plural subject 'They'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: We ............ gone for the night.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used with the plural subject 'We'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: He ............ at the hospital.",
-          options: ["was", "were"],
-          correct: "was",
-          explanation: "'was' is used with singular subjects like 'He'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: She.......... at the school.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used with singular subjects like 'She'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: You............ not friendly.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is always used with the subject 'You' in the past tense."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: You.............. very beautiful.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is always used with the subject 'You' in the past tense."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: You ............ very sad.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is always used with the subject 'You' in the past tense."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Some toys and teddies ............ in the box.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'Some toys and teddies' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Some toys and teddies ............ in the cabinet.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'Some toys and teddies' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: She............... nice to our family.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used with singular subjects like 'She'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: They ............ nice to our family.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used with the plural subject 'They'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: He ............ nice to my family.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used with singular subjects like 'He'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The drums ............ very loud.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'The drums' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The drums ............ very different.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'The drums' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The music ............ so loud.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used because 'The music' is an uncountable/singular noun."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The rats ............ small and stinky.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'The rats' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The rats ............ big and ugly.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'The rats' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The cats ............ small and cute.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'The cats' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: She ............ faster than Sandy.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used with singular subjects like 'She'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: He ............ upset because he lost his key.",
-          options: ["was", "were"],
-          correct: "was",
-          explanation: "'was' is used with singular subjects like 'He'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: She ............ the best friend of the family.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used with singular subjects like 'She'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: They......... going on a long journey.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used with the plural subject 'They'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: We ............ flying to Germany.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used with the plural subject 'We'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: You.............. going to Italy.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is always used with the subject 'You' in the past tense."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: I ............ just thinking.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used with the subject 'I'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: He ............ a great player.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used with singular subjects like 'He'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: He ............ great writer.",
-          options: ["was", "were"],
-          correct: "was",
-          explanation: "'was' is used with singular subjects like 'He'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: We ............ friends.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used with the plural subject 'We'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The clothes ............ dirty.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'The clothes' functions as a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The shoes ............ big.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'The shoes' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The houses ............ all painted white.",
-          options: ["all", "were"],
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'The houses' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The papers ............ on the floor.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'The papers' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The books ............ on the table.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'The books' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The cats ............ jumping to catch the fish.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'The cats' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Sandy's ball ............ missing.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used because 'Sandy's ball' is a singular subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Sandy's birthday party ....... amazing.",
-          options: ["was", "were"],
-          correct: "was",
-          explanation: "'was' is used because 'Sandy's birthday party' is a singular subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Sam's birthday party ............ cancelled.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used because 'Sam's birthday party' is a singular subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: They ............ scared as they watched the movie.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used with the plural subject 'They'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: She ............ so cute.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used with singular subjects like 'She'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: We ............ flying to America.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used with the plural subject 'We'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: She ............ alone all day.",
-          options: ["was", "were"],
-          correct: "was",
-          explanation: "'was' is used with singular subjects like 'She'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The road ............ full of nails.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used because 'The road' is a singular subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The road ............ full of cars.",
-          options: ["was", "were"],
-          correct: "was",
-          explanation: "'was' is used because 'The road' is a singular subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: All of the doors ............ open.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'All of the doors' is a plural subject concept."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The candy and cookies ............ a surprise.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'The candy and cookies' forms a compound plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Some changes ............ going to happen.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'Some changes' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: I ............ lucky.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used with the subject 'I'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: I ............ very sorry.",
-          options: ["was", "were"],
-          correct: "was",
-          explanation: "'was' is used with the subject 'I'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Those ............ in the restaurant.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' matches the plural plural demonstrative pronoun 'Those'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Many people... happy to see him.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'Many people' functions as a plural collective subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The big fan ............ on all day.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used because 'The big fan' is a singular subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The small fan ............ broken.",
-          options: ["was", "were"],
-          correct: "was",
-          explanation: "'was' is used because 'The small fan' is a singular subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The dogs ............ behind us.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'The dogs' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The cats ............ behind us.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'The cats' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: We ............ on the phone.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used with the plural subject 'We'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: They ............ Safe and sound.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used with the plural subject 'They'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: It ............ broken.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used with the singular subject 'It'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: It ............ ok to go out.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used with the singular subject 'It'."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: You ............ right!",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is always used with the subject 'You' in the past tense."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The dog ............ old.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used because 'The dog' is a singular subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The cat and dog ............ both sick.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'The cat and dog' forms a compound plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The rabbits ............ so fluffy.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'The rabbits' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The cats ............ so scared.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'The cats' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The birds ............ flying very high.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'The birds' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Some papers and pens ............ on the table.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'Some papers and pens' forms a compound plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The white bear ............ so big.",
-          options: ["was", "were"],
-          correct: "was",
-          explanation: "'was' is used because 'The white bear' is a singular subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The flowers ............ so beautiful.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is used because 'The flowers' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The bags ............ so expensive.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'The bags' is a plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: You ............ here first.",
-          options: ["was", "were"],
-          correct: "were",
-          explanation: "'were' is always used with the subject 'You' in the past tense."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Some pots and pans ............ expensive.",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' is used because 'Some pots and pans' forms a compound plural subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The fire ............ in the house.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used because 'The fire' is a singular subject/concept."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: The big brown eagle ............ so fast.",
-          options: ["was", "were"],
-          correct: "was",
-          explanation: "'was' is used because 'The big brown eagle' is a singular subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Sam's cat ............ under the table.",
-          options: ["was", "were"],
-          correct: "was",
-          explanation: "'was' is used because 'Sam's cat' is a singular subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: Sam's dog ....... very funny.",
-          options: ["were", "was"],
-          correct: "was",
-          explanation: "'was' is used because 'Sam's dog' is a singular subject."
-        },
-        {
-          question: "Use the correct past tense to finish the sentence: We finally finished ............ .",
-          options: ["were", "was"],
-          correct: "were",
-          explanation: "'were' matches the preceding plural subject 'We'."
-        }
-      ];
-    </script>
-
-    <div id="site-footer-placeholder"></div>
+    
+   <script>
+  const questions = [
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ a big garden.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used with the first-person singular pronoun 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ a big house.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is used with the first-person plural pronoun 'We'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ a big problem.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' fits plural subjects such as 'We'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ new shoes.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' matches the first-person pronoun 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>He _______ a big heart.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is the singular form used with third-person pronouns like 'He'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>She _______ new clothes.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is correct for the third-person singular pronoun 'She'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>This book _______ beautiful details.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is used with third-person singular nouns like 'This book'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Sam and Sama _______ beautiful pants.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used for compound or plural subjects like 'Sam and Sama'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>All ducks _______ flat feet.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is the correct form for plural nouns like 'All ducks'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>My town _______ many restaurants.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is used with singular nouns like 'My town'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>My father _______ a beautiful house.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is used with third-person singular subjects like 'My father'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ a new puppy.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is used for the subject pronoun 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ hamburgers.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' matches the plural subject 'We'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>They _______ three children.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is used with the third-person plural pronoun 'They'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>It _______ a big garden.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' matches the third-person singular pronoun 'It'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>You _______ good manners.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is always paired with the pronoun 'You' in the present tense."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Sandy _______ many chickens.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' matches a third-person singular proper noun like 'Sandy'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Sandy _______ many cats.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is the singular present form matching 'Sandy'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The puppy _______ brown spots.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' matches singular nouns like 'The puppy'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Our garden _______ many flowers.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is used with the singular subject 'Our garden'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The spider _______ eight legs.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is right for a third-person singular noun like 'The spider'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Ants _______ six legs.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' accompanies plural noun subjects like 'Ants'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The office _______ many computers.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is used for singular subjects like 'The office'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The text _______ clear characters.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' coordinates with a third-person singular noun like 'The text'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The girl _______ a tall building.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is correct for third-person singular subjects like 'The girl'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The mountain _______ a tall peak.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' accompanies a singular grammatical subject like 'The mountain'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The room _______ a clean carpet.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' goes with singular entities like 'The room'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>My car _______ a dirty window.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' matches third-person singular items like 'My car'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The pencil _______ a sharp point.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' matches the singular noun 'The pencil'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The weather _______ a warm sun.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is the appropriate form for singular non-count nouns like 'The weather'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The baby _______ a cute smile.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is standard for singular nouns like 'The baby'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The tree _______ red apples.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' applies to a third-person singular subject like 'The tree'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The bell _______ a loud voice.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' matches a third-person singular item like 'The bell'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The diamond _______ a bright shine.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is used for singular inanimate nouns like 'The diamond'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The sun _______ a bright light.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is paired with singular cosmic bodies like 'The sun'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The clouds _______ a white color.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is correct for a plural subject noun like 'The clouds'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The moon _______ a round shape.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' modifies third-person singular nouns like 'The moon'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The sky _______ a blue color.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is correct for a singular third-person subject like 'The sky'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The light _______ a red color.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' fits a singular subject noun like 'The light'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Dad _______ black pants.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' belongs with singular familial names like 'Dad'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Mama _______ blond hair.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' modifies third-person singular subjects like 'Mama'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Grandfather _______ an old car.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' works with third-person singular human subjects like 'Grandfather'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The lemonade _______ a sour taste.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' coordinates with singular mass nouns like 'The lemonade'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The whale _______ a blue color.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is utilized for singular animal classifications like 'The whale'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The flamingo _______ a pink color.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is appropriate for individual bird subjects like 'The flamingo'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The elephant _______ a gray color.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' complements a singular animal noun like 'The elephant'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The grapes _______ a green color.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' agrees with a plural count noun like 'The grapes'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The candy _______ a sweet taste.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' follows third-person singular subjects like 'The candy'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The monkey _______ a funny face.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' belongs with singular third-person targets like 'The monkey'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The duck _______ a yellow color.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is proper for singular concrete nouns like 'The duck'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The mouse _______ a gray color.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' works with third-person singular animals like 'The mouse'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The horse _______ a black color.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' supports singular nouns such as 'The horse'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The cow _______ a big body.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' tracks with a singular mammal subject like 'The cow'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The cat _______ a small body.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' pairs with individual third-person items like 'The cat'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The dog _______ a brown color.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is standard for single pets like 'The dog'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ a sharp knife.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used with the first-person singular pronoun 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ five pots.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' aligns with the first-person plural pronoun 'We'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>They _______ eight bags.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' goes with plural third-person pronouns like 'They'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>He _______ a new job.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' fits the masculine singular third-person pronoun 'He'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>She _______ a small apartment.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' fits the feminine singular third-person pronoun 'She'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>You _______ a clean room.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is paired with the pronoun 'You'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>All cows _______ milk.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is matching for plural groupings like 'All cows'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>All oranges _______ a round shape.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' coordinates with plural subject units like 'All oranges'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ eleven cars.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' matches the first-person plural subject pronoun 'We'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>They _______ four hamburgers.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' pairs with the plural third-person pronoun 'They'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>She _______ two tigers.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' correlates to the third-person singular pronoun 'She'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>He _______ five lions.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' matches with the singular pronoun 'He'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ ten bears.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' fits standard first-person indexical subjects like 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ three dinosaurs.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used alongside the subject pronoun 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Sabrine _______ a good friend.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' fits unique human specific names like 'Sabrine' in possessive context patterns."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The rabbit _______ a fluffy fur.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' applies to a singular animal unit like 'The rabbit'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ all the sandwiches.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' aligns with the plural speaker pronoun 'We'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>She _______ a clear text.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' matches third-person singular pronouns like 'She'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>He _______ a clear water.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' tracks with third-person singular pronouns like 'He'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ a clear water.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' pairs with first-person singular pronouns like 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The chair _______ a soft seat.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' maps to a structural singular artifact like 'The chair'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ a dirty carpet.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' operates with first-person targets like 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ a clean car.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' links directly to the pronoun 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ a clean room.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is matching for the pronoun 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ a sharp pencil.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' works with the first-person reference singular pronoun 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Ten people _______ a party ticket.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' agrees with plural collective grouping sets like 'Ten people'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Six people _______ a school map.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' fits count plural expressions like 'Six people'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The grass _______ a green color.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' tracks with mass singular nouns like 'The grass'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The sky _______ blue clouds.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' matches the singular subject 'The sky'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Mama _______ a new job.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' goes with singular names like 'Mama'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>He _______ a new job.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' represents the present singular state for 'He'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ new shoes.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' complements first-person pronouns like 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ old shoes.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' matches with the pronoun 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ new gloves.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' coordinates with the singular subject pronoun 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The baby _______ some toys.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is standard syntax for third-person singular nouns like 'The baby'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Sam _______ a new car.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' pairs with single specific third-person names like 'Sam'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Mom _______ a white car.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is regular singular subject agreement for 'Mom'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Grandfather _______ an old car.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' matches the third-person individual human identifier 'Grandfather'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The chocolate _______ a brown color.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' tracks along with singular third-person items like 'The chocolate'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The orange _______ a juicy taste.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' links directly to singular food noun elements like 'The orange'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ five apples.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' supports first-person reference declarations beginning with 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ three birds.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' follows the standard singular subject format for 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ two dogs.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is deployed alongside first-person markers like 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ four cats.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' joins correctly to the subject pronoun 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The bread _______ a fresh smell.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' agrees with singular inanimate non-count elements like 'The bread'."
+    }
+  ];
+</script>
+  <div id="site-footer-placeholder"></div>
     <script src="../../../js/script.js"></script>
     <script src="../../../js/partials.js"></script>
     <script>
