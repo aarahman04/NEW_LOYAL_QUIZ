@@ -24,154 +24,604 @@
     <script>
       const questions = [
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Full of light</span>",
+          question: "What word best defines the phrase:<br><span style='color:black;'>full of light</span>",
           options: ["bright", "do not have light"],
           correct: "bright",
-          explanation: "“bright” means full of light."
+          explanation: "'Bright' means radiating or filled with light."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Having a low temperature</span>",
+          question: "What word best defines the phrase:<br><span style='color:black;'>having a low temperature</span>",
           options: ["warm", "cold"],
           correct: "cold",
-          explanation: "“cold” means having a low temperature."
+          explanation: "'Cold' refers to an uncomfortably low temperature or a lack of heat."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Feeling joy or pleasure</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>feeling joy or pleasure</span>",
           options: ["happy", "fine with the world"],
           correct: "happy",
-          explanation: "“happy” directly expresses joy or pleasure."
+          explanation: "'Happy' is the standard term that means feeling or showing pleasure and contentment."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Feeling unhappy</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>feeling unhappy</span>",
           options: ["sad", "not very sad"],
           correct: "sad",
-          explanation: "“sad” means feeling unhappy."
+          explanation: "'Sad' is defined as feeling or showing sorrow or unhappiness."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Moving quickly</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>moving quickly</span>",
           options: ["slow", "fast"],
           correct: "fast",
-          explanation: "“fast” means moving quickly."
+          explanation: "'Fast' means moving or capable of moving at high speed."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Moving with little speed</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>moving with little speed</span>",
           options: ["slow", "turtle steps"],
           correct: "slow",
-          explanation: "“slow” means moving with little speed."
+          explanation: "'Slow' means operating, moving, or happening at a low speed."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Large in size</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>large in size</span>",
           options: ["big", "maybe big"],
           correct: "big",
-          explanation: "“big” directly means large in size."
+          explanation: "'Big' describes something of considerable size, weight, or extent."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Little in size</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>little in size</span>",
           options: ["big", "small"],
           correct: "small",
-          explanation: "“small” means little in size."
+          explanation: "'Small' means less than normal or usual size."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Having a high temperature</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>having a high temperature</span>",
           options: ["hot", "hit"],
           correct: "hot",
-          explanation: "“hot” means having a high temperature."
+          explanation: "'Hot' means having a high temperature."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Not difficult</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>not difficult</span>",
           options: ["easy", "thinking skills"],
           correct: "easy",
-          explanation: "“easy” is the opposite of difficult."
+          explanation: "'Easy' means achieved without great effort or difficulty."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Not easy</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>not easy</span>",
           options: ["talking about it", "difficult"],
           correct: "difficult",
-          explanation: "“difficult” means not easy."
+          explanation: "'Difficult' means needing much effort or skill to accomplish or understand."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Caring and helpful</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>caring and helpful</span>",
           options: ["love you", "kind"],
           correct: "kind",
-          explanation: "“kind” means caring and helpful."
+          explanation: "'Kind' means having or showing a friendly, generous, and considerate nature."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Feeling mad & upset</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>feeling mad & upset</span>",
           options: ["angry", "sleeping"],
           correct: "angry",
-          explanation: "“angry” means mad or upset."
+          explanation: "'Angry' describes feeling or showing strong annoyance, displeasure, or hostility."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Free from dirt</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>free from dirt</span>",
           options: ["clean", "dirty"],
           correct: "clean",
-          explanation: "“clean” means free from dirt."
+          explanation: "'Clean' means free from dirt, marks, or unwanted substances."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Not clean & covered in dirt</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>not clean & covered in dirt</span>",
           options: ["clean", "dirty"],
           correct: "dirty",
-          explanation: "“dirty” is the opposite of clean."
+          explanation: "'Dirty' means covered or marked with an unclean substance."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Having lived for many years</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>having lived for many years</span>",
           options: ["young", "old"],
           correct: "old",
-          explanation: "“old” describes having lived for many years."
+          explanation: "'Old' describes an individual or thing that has lived or existed for a long time."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Not old</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>not old</span>",
           options: ["young", "people"],
           correct: "young",
-          explanation: "“young” is the opposite of old."
+          explanation: "'Young' means having lived or existed for only a short time."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Having power or force</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>having power or force</span>",
           options: ["training", "strong"],
           correct: "strong",
-          explanation: "“strong” means having power or force."
+          explanation: "'Strong' means possessing physical power or power of execution."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Not strong</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>not strong</span>",
           options: ["strong", "weak"],
           correct: "weak",
-          explanation: "“weak” is the opposite of strong."
+          explanation: "'Weak' describes lacking the power to perform physically demanding tasks."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Having great height</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>having great height</span>",
           options: ["tall", "short"],
           correct: "tall",
-          explanation: "“tall” means of great height."
+          explanation: "'Tall' means of great or more than average height."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Not tall in height</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>not tall in height</span>",
           options: ["tall", "short"],
           correct: "short",
-          explanation: "“short” is the opposite of tall."
+          explanation: "'Short' means measuring a small distance from end to end, or bottom to top."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Having a lot of money</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>having a lot of money</span>",
           options: ["poor", "rich"],
           correct: "rich",
-          explanation: "“rich” means having a lot of money."
+          explanation: "'Rich' means having a great deal of money or assets."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Not having much money</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>not having much money</span>",
           options: ["rich", "poor"],
           correct: "poor",
-          explanation: "“poor” means not having much money."
+          explanation: "'Poor' means lacking sufficient money to live at a comfortable standard."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Making you laugh</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>making you laugh</span>",
           options: ["happy", "funny"],
           correct: "funny",
-          explanation: "“funny” means causing laughter."
+          explanation: "'Funny' means causing laughter or amusement."
         },
         {
-          question: "What word defines the phrase:<br><span style='color:black;'>Very nice to look at</span>",
+          question: "What word defines the phrase:<br><span style='color:black;'>very nice to look at</span>",
           options: ["ugly", "beautiful"],
           correct: "beautiful",
-          explanation: "“beautiful” means very nice to look at."
+          explanation: "'Beautiful' means pleasing the senses or mind aesthetically."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>not beautiful</span>",
+          options: ["nice", "ugly"],
+          correct: "ugly",
+          explanation: "'Ugly' means unpleasant or repulsive in appearance."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>making a lot of sound</span>",
+          options: ["noisy", "quiet"],
+          correct: "noisy",
+          explanation: "'Noisy' means making or given to making a lot of loud or unpleasant noise."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>making little or no noise</span>",
+          options: ["funny", "quiet"],
+          correct: "quiet",
+          explanation: "'Quiet' means making very little or no noise."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>having a sugar taste</span>",
+          options: ["sweet", "sour"],
+          correct: "sweet",
+          explanation: "'Sweet' means having the pleasant taste characteristic of sugar or honey."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>full of heat</span>",
+          options: ["warm", "hot"],
+          correct: "hot",
+          explanation: "'Hot' implies a high degree of heat, whereas warm is moderate heat."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>a little cold</span>",
+          options: ["cool", "warm"],
+          correct: "cool",
+          explanation: "'Cool' means fairly cold, or comfortably low in temperature."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>having nothing inside</span>",
+          options: ["empty", "employment"],
+          correct: "empty",
+          explanation: "'Empty' means containing nothing; not filled or occupied."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>having no space left</span>",
+          options: ["full", "empty"],
+          correct: "full",
+          explanation: "'Full' means containing or holding as much or as many as possible."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>needing rest or sleep</span>",
+          options: ["emoji", "tired"],
+          correct: "tired",
+          explanation: "'Tired' means in need of sleep or rest; weary."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>showing courage</span>",
+          options: ["emoji", "brave"],
+          correct: "brave",
+          explanation: "'Brave' means ready to face and endure danger or pain; showing courage."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>not afraid</span>",
+          options: ["brave", "scary"],
+          correct: "brave",
+          explanation: "Being 'brave' means you exhibit strength and are not easily afraid."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>not wanting to work</span>",
+          options: ["lazy", "low in carbs"],
+          correct: "lazy",
+          explanation: "'Lazy' means unwilling to work or use energy."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>having many things to do</span>",
+          options: ["flying", "busy"],
+          correct: "busy",
+          explanation: "'Busy' means actively or fully engaged in work or an activity."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>having good fortune</span>",
+          options: ["kind", "lucky"],
+          correct: "lucky",
+          explanation: "'Lucky' means having, bringing, or resulting from good luck or fortune."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>having bad fortune</span>",
+          options: ["lazy", "unlucky"],
+          correct: "unlucky",
+          explanation: "'Unlucky' means marked by or suffering from bad luck."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>not polite</span>",
+          options: ["loved", "rude"],
+          correct: "rude",
+          explanation: "'Rude' means offensively impolite or bad-mannered."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>telling the truth</span>",
+          options: ["loved", "honest"],
+          correct: "honest",
+          explanation: "'Honest' means free of deceit; truthful and sincere."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to start something</span>",
+          options: ["gone", "begin"],
+          correct: "begin",
+          explanation: "'Begin' means to perform the first part of an action or activity."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to finish something</span>",
+          options: ["end", "quiet"],
+          correct: "end",
+          explanation: "'End' means to come to a finish, or bring to a final close."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to shut something</span>",
+          options: ["open", "close"],
+          correct: "close",
+          explanation: "'Close' means to move something so that it covers an opening."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to take food into the mouth</span>",
+          options: ["sleep", "eat"],
+          correct: "eat",
+          explanation: "'Eat' means to consume solid food through the mouth."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to take liquid into the mouth</span>",
+          options: ["drink", "eat"],
+          correct: "drink",
+          explanation: "'Drink' means to swallow or take in a liquid substance."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to rest your body and mind</span>",
+          options: ["sleep", "leave"],
+          correct: "sleep",
+          explanation: "'Sleep' is a natural state of rest where the body and mind rest deeply."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to form words with a pen or pencil</span>",
+          options: ["write", "draw"],
+          correct: "write",
+          explanation: "'Write' means to mark letters or words on a surface with an instrument."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to move through water using arms and legs</span>",
+          options: ["swim", "sail"],
+          correct: "swim",
+          explanation: "'Swim' is the activity of moving through water using bodily limbs."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to push yourself off the ground into the air</span>",
+          options: ["jump", "fly"],
+          correct: "jump",
+          explanation: "'Jump' means to push oneself suddenly off the ground using foot muscles."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to shed tears because of sadness or pain</span>",
+          options: ["cry", "scream"],
+          correct: "cry",
+          explanation: "'Cry' means to shed tears in response to an emotional state or physical pain."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>rest on the chair</span>",
+          options: ["sit", "count"],
+          correct: "sit",
+          explanation: "'Sit' means to adopt or be in a position in which one's weight is supported by one's buttocks rather than one's feet."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to receive or grab something</span>",
+          options: ["take", "sit"],
+          correct: "take",
+          explanation: "'Take' means to reach out for and lay hold of something; to grab."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to be on your feet</span>",
+          options: ["statement", "stand"],
+          correct: "stand",
+          explanation: "'Stand' means to maintain an upright position on one's feet."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to move your body to music</span>",
+          options: ["believe", "dance"],
+          correct: "dance",
+          explanation: "'Dance' means to move rhythmically to music, typically following a set sequence of steps."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to speak to someone</span>",
+          options: ["talk", "sing"],
+          correct: "talk",
+          explanation: "'Talk' means to speak in order to give information or express ideas."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to use your ears to hear</span>",
+          options: ["lost", "listen"],
+          correct: "listen",
+          explanation: "'Listen' means to give attention to sound with your ears."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to take part in a game or an active activity</span>",
+          options: ["play", "sit"],
+          correct: "play",
+          explanation: "'Play' means to engage in activity for enjoyment and recreation rather than a serious purpose."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to do a job or a task</span>",
+          options: ["work", "trying"],
+          correct: "work",
+          explanation: "'Work' means to engage in physical or mental activity in order to achieve a purpose or result."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to learn about something</span>",
+          options: ["read", "study"],
+          correct: "study",
+          explanation: "'Study' means to devote time and attention to acquiring knowledge on an academic subject."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to help others learn</span>",
+          options: ["play", "teach"],
+          correct: "teach",
+          explanation: "'Teach' means to impart knowledge or instruct someone on how to do something."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to get knowledge or skill</span>",
+          options: ["learn", "think"],
+          correct: "learn",
+          explanation: "'Learn' means to gain or acquire knowledge or skill in something by study or experience."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to make a picture with lines</span>",
+          options: ["learn", "draw"],
+          correct: "draw",
+          explanation: "'Draw' means to produce a picture or diagram by making lines and marks on paper."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to make art with colors</span>",
+          options: ["think", "paint"],
+          correct: "paint",
+          explanation: "'Paint' means to apply liquid color medium to a surface to generate artwork."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to get something by paying for it</span>",
+          options: ["buy", "present"],
+          correct: "buy",
+          explanation: "'Buy' means to obtain something in exchange for payment."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to give something for money</span>",
+          options: ["buy", "sell"],
+          correct: "sell",
+          explanation: "'Sell' means to hand over a product or service in exchange for financial currency."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to feel strong affection for someone</span>",
+          options: ["care", "love"],
+          correct: "love",
+          explanation: "'Love' describes an intense feeling of deep affection and emotional connection."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to dislike very much</span>",
+          options: ["like", "hate"],
+          correct: "hate",
+          explanation: "'Hate' means to feel intense dislike or aversion toward something or someone."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to make it easier for someone</span>",
+          options: ["love", "help"],
+          correct: "help",
+          explanation: "'Help' means to make it easier for someone to do a job or solve a problem."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to discover something</span>",
+          options: ["find", "help"],
+          correct: "find",
+          explanation: "'Find' means to discover or perceive unexpectedly or by searching."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to not be able to find something</span>",
+          options: ["lose", "find"],
+          correct: "lose",
+          explanation: "'Lose' means to be deprived of or cease to have or be able to locate something."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to hand something to someone</span>",
+          options: ["find", "give"],
+          correct: "give",
+          explanation: "'Give' means to freely transfer the possession of something to someone."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to create or produce something</span>",
+          options: ["sleep", "make"],
+          correct: "make",
+          explanation: "'Make' means to form an object or produce something by putting parts together or combining substances."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to build something up</span>",
+          options: ["build", "tear down"],
+          correct: "build",
+          explanation: "'Build' means to construct an object by putting structural materials together."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to be on your feet</span>",
+          options: ["jump", "stand"],
+          correct: "stand",
+          explanation: "'Stand' means to maintain an upright posture supported by the feet."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to no longer move or do something</span>",
+          options: ["stop", "think"],
+          correct: "stop",
+          explanation: "'Stop' means to come to an end, cease a movement, or halt an action."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to begin to do something</span>",
+          options: ["stop", "start"],
+          correct: "start",
+          explanation: "'Start' means to embark upon or set going an action, journey, or motion."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to stay until something happens</span>",
+          options: ["wait", "stop"],
+          correct: "wait",
+          explanation: "'Wait' means to stay where one is or delay action until a particular time or event occurs."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to look at something carefully</span>",
+          options: ["watch", "listen"],
+          correct: "watch",
+          explanation: "'Watch' means to look at or observe attentively over a period of time."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to use something sharp to divide</span>",
+          options: ["burn", "cut"],
+          correct: "cut",
+          explanation: "'Cut' means to open, penetrate, or divide something with a sharp-edged tool."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to make something by putting something together</span>",
+          options: ["build", "write"],
+          correct: "build",
+          explanation: "'Build' means to construct a physical structure by assembling parts or components."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to separate into pieces</span>",
+          options: ["rub", "break"],
+          correct: "break",
+          explanation: "'Break' means to separate into pieces as a result of a blow, shock, or strain."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to show happiness on your face</span>",
+          options: ["rub", "smile"],
+          correct: "smile",
+          explanation: "'Smile' means to form one's features into a pleased, kind, or amused expression."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to have the same opinion</span>",
+          options: ["not to say yes", "agree"],
+          correct: "agree",
+          explanation: "'Agree' means to hold the same opinion or reach a consensus on an idea."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to come to a place</span>",
+          options: ["go", "arrive"],
+          correct: "arrive",
+          explanation: "'Arrive' means to reach a destination at the end of a journey."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to cook in an oven</span>",
+          options: ["cook", "bake"],
+          correct: "bake",
+          explanation: "'Bake' means to cook food using dry heat without direct exposure to a flame, typically in an oven."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to take something and return it later</span>",
+          options: ["lost", "borrow"],
+          correct: "borrow",
+          explanation: "'Borrow' means to take and use something belonging to someone else with the intention of returning it."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to make or construct something</span>",
+          options: ["cook", "build"],
+          correct: "build",
+          explanation: "'Build' involves putting structural materials together to form an entity."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to take hold of something moving</span>",
+          options: ["concept", "catch"],
+          correct: "catch",
+          explanation: "'Catch' means to intercept and hold something that has been thrown, dropped, or is in motion."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to remove dirt</span>",
+          options: ["go", "clean"],
+          correct: "clean",
+          explanation: "'Clean' means to make free of dirt, marks, or pollution by washing, brushing, or wiping."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to prepare food</span>",
+          options: ["cook", "write"],
+          correct: "cook",
+          explanation: "'Cook' means to prepare food, a dish, or a meal by combining and heating ingredients."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to produce tears when sad</span>",
+          options: ["laugh", "cry"],
+          correct: "cry",
+          explanation: "'Cry' means to produce tears as an expression of pain, distress, or sadness."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to move to music</span>",
+          options: ["drive", "dance"],
+          correct: "dance",
+          explanation: "'Dance' means to perform a rhythmic series of steps and movements to musical sound."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to control a car</span>",
+          options: ["drive", "draw"],
+          correct: "drive",
+          explanation: "'Drive' means to operate and control the direction and speed of a motor vehicle."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to like something</span>",
+          options: ["dance", "enjoy"],
+          correct: "enjoy",
+          explanation: "'Enjoy' means to take pleasure or satisfaction in an activity or thing."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to go down suddenly</span>",
+          options: ["climb", "fall"],
+          correct: "fall",
+          explanation: "'Fall' means to drop down uncontrollably from a higher to a lower position under gravity force."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to discover something</span>",
+          options: ["congratulations", "find"],
+          correct: "find",
+          explanation: "'Find' means to unexpectedly encounter or locate a missing item."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to repair something</span>",
+          options: ["found", "fix"],
+          correct: "fix",
+          explanation: "'Fix' means to repair or mend something that is broken or damaged."
+        },
+        {
+          question: "What word defines the phrase:<br><span style='color:black;'>to make sound when something is very funny</span>",
+          options: ["smile", "laugh"],
+          correct: "laugh",
+          explanation: "'Laugh' means to make spontaneous sounds and movements of the face and body that express amusement."
         }
       ];
     </script>
