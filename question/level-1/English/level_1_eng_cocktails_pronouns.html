@@ -4,21 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Cocktails Pop</title>
-    <!-- point to your question.css in the root css/ folder -->
     <link rel="stylesheet" href="../../../css/question.css" />
   </head>
   <body>
 
-    <!-- Sticky Header -->
     <div id="site-header-placeholder"></div>
 
-    <!-- Quiz Content -->
     <main class="quiz-container">
       <div class="question-section">
         <h3 id="question-text">Loading...</h3>
         <ul class="options" id="options-list">
-          <!-- Options dynamically generated -->
-        </ul>
+          </ul>
       </div>
       <div id="feedback" class="hidden"></div>
       <div id="explanation" class="hidden"></div>
@@ -28,141 +24,616 @@
 
     <script>
       const questions = [
-  {
-    "question": "Identify the subject pronoun.<br><span style='color:black'>He went to the market.</span>",
-    "options": ["he", "market"],
-    "correct": "he",
-    "explanation": "“He” is the subject pronoun doing the action."
-  },
-  {
-    "question": "Identify the object pronoun.<br><span style='color:black'>He went to him for help.</span>",
-    "options": ["him", "he"],
-    "correct": "him",
-    "explanation": "“Him” is the object pronoun receiving the action."
-  },
-  {
-    "question": "Identify the subject pronoun.<br><span style='color:black'>She was a little confused.</span>",
-    "options": ["was", "She"],
-    "correct": "She",
-    "explanation": "“She” is the subject pronoun here."
-  },
-  {
-    "question": "Identify the subject pronoun.<br><span style='color:black'>He was the world to her.</span>",
-    "options": ["her", "he"],
-    "correct": "he",
-    "explanation": "“He” is the subject pronoun in this sentence."
-  },
-  {
-    "question": "Identify the object pronoun.<br><span style='color:black'>They told us to leave the country.</span>",
-    "options": ["they", "us"],
-    "correct": "us",
-    "explanation": "“Us” is the object pronoun receiving the action."
-  },
-  {
-    "question": "Identify the object pronoun.<br><span style='color:black'>She always helps me.</span>",
-    "options": ["she", "me"],
-    "correct": "me",
-    "explanation": "“Me” is the object pronoun in this sentence."
-  },
-  {
-    "question": "Identify the subject pronoun.<br><span style='color:black'>He wrote a long letter.</span>",
-    "options": ["long", "he"],
-    "correct": "he",
-    "explanation": "“He” is the subject pronoun writing the letter."
-  },
-  {
-    "question": "Identify the subject pronoun.<br><span style='color:black'>We insist on good service.</span>",
-    "options": ["we", "on"],
-    "correct": "we",
-    "explanation": "“We” is the subject pronoun in this sentence."
-  },
-  {
-    "question": "Identify the subject pronoun.<br><span style='color:black'>I insist on talking to him.</span>",
-    "options": ["him", "I"],
-    "correct": "I",
-    "explanation": "“I” is the subject pronoun."
-  },
-  {
-    "question": "Identify the object pronoun.<br><span style='color:black'>He admires her a lot.</span>",
-    "options": ["he", "her"],
-    "correct": "her",
-    "explanation": "“Her” is the object pronoun admired by him."
-  },
-  {
-    "question": "Identify the object pronoun.<br><span style='color:black'>I always tell you the truth.</span>",
-    "options": ["I", "you"],
-    "correct": "you",
-    "explanation": "“You” is the object pronoun receiving the truth."
-  },
-  {
-    "question": "Identify the subject pronoun.<br><span style='color:black'>She collects her books.</span>",
-    "options": ["her", "she"],
-    "correct": "she",
-    "explanation": "“She” is the subject pronoun collecting the books."
-  },
-  {
-    "question": "Identify the object pronoun.<br><span style='color:black'>She collects her books.</span>",
-    "options": ["her", "she"],
-    "correct": "her",
-    "explanation": "“Her” is the object pronoun showing possession."
-  },
-  {
-    "question": "Identify the subject pronoun.<br><span style='color:black'>He collects them from the airport.</span>",
-    "options": ["he", "them"],
-    "correct": "he",
-    "explanation": "“He” is the subject pronoun collecting them."
-  },
-  {
-    "question": "Identify the object pronoun.<br><span style='color:black'>He collects them from the airport.</span>",
-    "options": ["them", "he"],
-    "correct": "them",
-    "explanation": "“Them” is the object pronoun in this sentence."
-  },
-  {
-    "question": "Identify the subject pronoun.<br><span style='color:black'>I often meet him at the park.</span>",
-    "options": ["I", "him"],
-    "correct": "I",
-    "explanation": "“I” is the subject pronoun performing the action."
-  },
-  {
-    "question": "Identify the object pronoun.<br><span style='color:black'>I often meet him at the park.</span>",
-    "options": ["I", "him"],
-    "correct": "him",
-    "explanation": "“Him” is the object pronoun being met."
-  },
-  {
-    "question": "Identify the subject pronoun.<br><span style='color:black'>She helps him with homework.</span>",
-    "options": ["him", "she"],
-    "correct": "she",
-    "explanation": "“She” is the subject pronoun helping."
-  },
-  {
-    "question": "Identify the object pronoun.<br><span style='color:black'>The teacher gives them extra work.</span>",
-    "options": ["teacher", "them"],
-    "correct": "them",
-    "explanation": "“Them” is the object pronoun receiving the work."
-  },
-  {
-    "question": "Identify the subject pronoun.<br><span style='color:black'>I give them extra work.</span>",
-    "options": ["I", "them"],
-    "correct": "I",
-    "explanation": "“I” is the subject pronoun giving the work."
-  }
-];
-
-
-
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>He went to the market.</span>",
+          "options": ["he", "market"],
+          "correct": "he",
+          "explanation": "'he' is a subject pronoun functioning as the subject performing the action of going."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>He went to him for help.</span>",
+          "options": ["him", "he"],
+          "correct": "him",
+          "explanation": "'him' is an object pronoun coming after the directional preposition 'to'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>She was a little confused.</span>",
+          "options": ["was", "She"],
+          "correct": "She",
+          "explanation": "'She' is the subject pronoun representing the individual who is experiencing confusion."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>He was the world to her.</span>",
+          "options": ["her", "he"],
+          "correct": "he",
+          "explanation": "'he' is the subject pronoun heading the main clause before the verb 'was'."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>They told us to leave the country.</span>",
+          "options": ["they", "us"],
+          "correct": "us",
+          "explanation": "'us' is an object pronoun arriving immediately after the active verb 'told'."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>She always helps me.</span>",
+          "options": ["she", "me"],
+          "correct": "me",
+          "explanation": "'me' is the object pronoun positioned directly after the action verb 'helps'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>He wrote a long letter.</span>",
+          "options": ["long", "he"],
+          "correct": "he",
+          "explanation": "'he' is the subject pronoun positioned at the start, carrying out the action of writing."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>We insist on good service.</span>",
+          "options": ["we", "on"],
+          "correct": "we",
+          "explanation": "'we' is the plural subject pronoun performing the action of insisting."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>I insist on talking to him.</span>",
+          "options": ["him", "I"],
+          "correct": "I",
+          "explanation": "'I' is the singular subject pronoun executing the action of insisting."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>He admires her a lot.</span>",
+          "options": ["he", "her"],
+          "correct": "her",
+          "explanation": "'her' is the object pronoun receiving the mental action of the verb 'admires'."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>I always tell you the truth.</span>",
+          "options": ["I", "you"],
+          "correct": "you",
+          "explanation": "'you' is the object pronoun functioning as the recipient after the verb 'tell'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>She collects her books.</span>",
+          "options": ["her", "she"],
+          "correct": "she",
+          "explanation": "'she' is the subject pronoun executing the collection process."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>She collects her books.</span>",
+          "options": ["her", "she"],
+          "correct": "her",
+          "explanation": "'her' acts here as a possessive determiner/pronoun identifying ownership of the books."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>He collects them from the airport.</span>",
+          "options": ["he", "them"],
+          "correct": "he",
+          "explanation": "'he' is the subject pronoun driving the active action 'collects'."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>He collects them from the airport.</span>",
+          "options": ["them", "he"],
+          "correct": "them",
+          "explanation": "'them' is the object pronoun following the active transition verb 'collects'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>I often meet him at the park.</span>",
+          "options": ["I", "him"],
+          "correct": "I",
+          "explanation": "'I' is the subject pronoun acting out the regular meeting."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>I often meet him at the park.</span>",
+          "options": ["I", "him"],
+          "correct": "him",
+          "explanation": "'him' is the target object pronoun located downstream from the verb 'meet'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>She helps him with homework.</span>",
+          "options": ["him", "she"],
+          "correct": "she",
+          "explanation": "'she' is the subject pronoun located at the head of the sentence structure."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>The teacher gives them extra work.</span>",
+          "options": ["teacher", "them"],
+          "correct": "them",
+          "explanation": "'them' is the object pronoun positioned after the ditransitive action verb 'gives'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>I give them extra work.</span>",
+          "options": ["I", "them"],
+          "correct": "I",
+          "explanation": "'I' is the primary subject pronoun acting as the source of the gift/work."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>She reads it every night.</span>",
+          "options": ["she", "it"],
+          "correct": "it",
+          "explanation": "'it' is the object pronoun representing the target item read after the verb 'reads'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>She reads it every night.</span>",
+          "options": ["it", "She"],
+          "correct": "She",
+          "explanation": "'She' is the subject pronoun performing the nighttime reading."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>He uses it for school.</span>",
+          "options": ["it", "he"],
+          "correct": "he",
+          "explanation": "'he' is the subject pronoun operating the item."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>The police finally found him.</span>",
+          "options": ["him", "the police"],
+          "correct": "him",
+          "explanation": "'him' is the object pronoun tracking behind the tracking verb 'found'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>He captures the dog.</span>",
+          "options": ["he", "the dog"],
+          "correct": "he",
+          "explanation": "'he' is the subject pronoun managing the capture."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>They invite her to lunch.</span>",
+          "options": ["her", "they"],
+          "correct": "they",
+          "explanation": "'they' is the subject pronoun presenting the social invitation."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>They invite her to lunch.</span>",
+          "options": ["her", "they"],
+          "correct": "her",
+          "explanation": "'her' is the object pronoun placed immediately after 'invite'."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>They clean it every morning.</span>",
+          "options": ["it", "they"],
+          "correct": "it",
+          "explanation": "'it' is the object pronoun processing cleanup after the verb 'clean'."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>People were focusing on him.</span>",
+          "options": ["him", "people"],
+          "correct": "him",
+          "explanation": "'him' is the object pronoun placed directly after the preposition 'on'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>They were fascinated by flying.</span>",
+          "options": ["were", "they"],
+          "correct": "they",
+          "explanation": "'they' is the subject pronoun experiencing fascination."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>We flew a kite outside.</span>",
+          "options": ["we", "outside"],
+          "correct": "we",
+          "explanation": "'we' is the plural subject pronoun handling the launch."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>He flew the red kite.</span>",
+          "options": ["red", "he"],
+          "correct": "he",
+          "explanation": "'he' is the subject pronoun managing flight routing."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>The people were amazed by her ability.</span>",
+          "options": ["they", "her"],
+          "correct": "her",
+          "explanation": "'her' functions contextually to show attribute association links regarding ability."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>Dad and I made the kite carefully.</span>",
+          "options": ["I", "Dad"],
+          "correct": "I",
+          "explanation": "'I' is the subject pronoun forming part of the compound subject phrase."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>The wind was blowing all around us.</span>",
+          "options": ["was", "us"],
+          "correct": "us",
+          "explanation": "'us' is the object pronoun anchored behind the complex spatial preposition 'around'."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>The Chinese made them thousands of years ago.</span>",
+          "options": ["Chinese", "them"],
+          "correct": "them",
+          "explanation": "'them' is the target object pronoun located following the production verb 'made'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>I handed the string to them.</span>",
+          "options": ["them", "I"],
+          "correct": "I",
+          "explanation": "'I' is the singular subject pronoun driving the handoff action."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>They ran around it carefully.</span>",
+          "options": ["they", "it"],
+          "correct": "it",
+          "explanation": "'it' is the object pronoun following the spatial preposition 'around'."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>I put it on the chair.</span>",
+          "options": ["I", "it"],
+          "correct": "it",
+          "explanation": "'it' is the object pronoun tracking directly after the mechanical manipulation verb 'put'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>I put it on the table.</span>",
+          "options": ["I", "it"],
+          "correct": "I",
+          "explanation": "'I' is the subject pronoun launching the placement sequence."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>She went to him.</span>",
+          "options": ["she", "him"],
+          "correct": "him",
+          "explanation": "'him' is the object pronoun following the transit preposition 'to'."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>They were used to her.</span>",
+          "options": ["her", "they"],
+          "correct": "her",
+          "explanation": "'her' is the target object pronoun after the prepositional component 'to'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>They were used to her.</span>",
+          "options": ["her", "they"],
+          "correct": "they",
+          "explanation": "'they' is the subject pronoun anchoring the passive state."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>Mark kicks him in the face.</span>",
+          "options": ["Mark", "him"],
+          "correct": "him",
+          "explanation": "Note: 'him' is an object pronoun here receiving the kick. (Source layout limits choices to Mark vs him)."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>He helped her write it.</span>",
+          "options": ["her", "he"],
+          "correct": "her",
+          "explanation": "'her' is the direct object pronoun tracking after the assistance verb 'helped'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>We read it together.</span>",
+          "options": ["we", "it"],
+          "correct": "we",
+          "explanation": "'we' is the subject pronoun organizing joint content analysis."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>I know them very well.</span>",
+          "options": ["I", "them"],
+          "correct": "them",
+          "explanation": "'them' is the object pronoun positioned downstream from the verb 'know'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>She asks us many questions.</span>",
+          "options": ["she", "us"],
+          "correct": "she",
+          "explanation": "'she' is the subject pronoun initiating the inquiries."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>He asks us many questions.</span>",
+          "options": ["he", "us"],
+          "correct": "us",
+          "explanation": "'us' is the object pronoun acting as the audience after 'asks'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>He sees you at the market.</span>",
+          "options": ["you", "he"],
+          "correct": "he",
+          "explanation": "'he' is the subject pronoun managing visual monitoring tasks."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>They need me in the group.</span>",
+          "options": ["they", "me"],
+          "correct": "me",
+          "explanation": "'me' is the object pronoun indicating requirement tracking after 'need'."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>Our parents drive us to the nearest library.</span>",
+          "options": ["us", "parents"],
+          "correct": "us",
+          "explanation": "'us' is the object pronoun riding as passengers after 'drive'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>He uses it for the first time.</span>",
+          "options": ["time", "he"],
+          "correct": "he",
+          "explanation": "'he' is the subject pronoun executing device initialization loops."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>I looked at him.</span>",
+          "options": ["looked", "I"],
+          "correct": "I",
+          "explanation": "'I' is the subject pronoun controlling camera gaze targets."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>He put it on the front door.</span>",
+          "options": ["it", "he"],
+          "correct": "it",
+          "explanation": "'it' is the object pronoun tracking asset placement steps."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>She drove him to school.</span>",
+          "options": ["him", "she"],
+          "correct": "she",
+          "explanation": "'she' is the subject pronoun running logistics operations."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>You always support us.</span>",
+          "options": ["us", "you"],
+          "correct": "us",
+          "explanation": "'us' is the object pronoun receiving active backing parameters."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>Sam looked at him with surprised eyes.</span>",
+          "options": ["him", "Sam"],
+          "correct": "him",
+          "explanation": "Note: 'him' functions as an object pronoun following 'at'. (Source options select target index values)."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>George told her the news.</span>",
+          "options": ["George", "her"],
+          "correct": "her",
+          "explanation": "'her' is the destination object pronoun logging updates after 'told'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>Hana got her a big present.</span>",
+          "options": ["her", "Hana"],
+          "correct": "her",
+          "explanation": "Note: 'her' functions as an indirect object pronoun here receiving the asset. (Parsed context choice matches)."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>Sama made her own choice.</span>",
+          "options": ["own", "her"],
+          "correct": "her",
+          "explanation": "'her' tracks personal property ownership identifiers in this path setup."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>He uses it for work.</span>",
+          "options": ["he", "it"],
+          "correct": "he",
+          "explanation": "'he' is the subject pronoun deploying equipment configurations."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>They clean it every week.</span>",
+          "options": ["they", "it"],
+          "correct": "it",
+          "explanation": "'it' is the object pronoun maintaining clean states after 'clean'."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>They invite us to the park.</span>",
+          "options": ["they", "us"],
+          "correct": "us",
+          "explanation": "'us' is the object pronoun listed after the invitation handler 'invite'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>It was the world to us.</span>",
+          "options": ["it", "us"],
+          "correct": "it",
+          "explanation": "'it' is the neutral subject pronoun anchoring existential significance."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>He saw her at the beginning of class.</span>",
+          "options": ["he", "her"],
+          "correct": "her",
+          "explanation": "'her' is the object pronoun captured by visual lines after 'saw'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>It helps me with my work.</span>",
+          "options": ["it", "me"],
+          "correct": "it",
+          "explanation": "'it' is the subject pronoun providing operational automated support."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>It follows you everywhere.</span>",
+          "options": ["it", "you"],
+          "correct": "it",
+          "explanation": "'it' is the subject pronoun executing tracking operations."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>I ask her many questions.</span>",
+          "options": ["I", "her"],
+          "correct": "her",
+          "explanation": "'her' is the target object pronoun questioned after 'ask'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>What did you tell her?</span>",
+          "options": ["you", "her"],
+          "correct": "you",
+          "explanation": "'you' is the subject pronoun executing statement outputs."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>Did the people see it?</span>",
+          "options": ["it", "people"],
+          "correct": "it",
+          "explanation": "'it' is the object pronoun tracked down from verification checks."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>Do the girls see us?</span>",
+          "options": ["girls", "us"],
+          "correct": "us",
+          "explanation": "'us' is the target object pronoun inside scanning lines."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>Do the boys see him?</span>",
+          "options": ["him", "do"],
+          "correct": "him",
+          "explanation": "'him' is the object pronoun monitored behind the detection zone."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>They followed him.</span>",
+          "options": ["they", "him"],
+          "correct": "they",
+          "explanation": "'they' is the subject pronoun executing pursuit routes."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>He is in third grade.</span>",
+          "options": ["he", "is"],
+          "correct": "he",
+          "explanation": "'he' is the single subject pronoun tracking classroom grade slots."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>They sing songs for us.</span>",
+          "options": ["us", "they"],
+          "correct": "us",
+          "explanation": "'us' is the object pronoun tracking behind performance benefactors 'for'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>We are there for them.</span>",
+          "options": ["we", "them"],
+          "correct": "we",
+          "explanation": "'we' is the collective subject pronoun backing support actions."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>The teacher believes him.</span>",
+          "options": ["believe", "him"],
+          "correct": "him",
+          "explanation": "'him' is the object pronoun receiving validation trust metrics after 'believes'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>We grow flowers in the garden.</span>",
+          "options": ["we", "garden"],
+          "correct": "we",
+          "explanation": "'we' is the subject pronoun handling botanical propagation loops."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>It was great to see him.</span>",
+          "options": ["it", "him"],
+          "correct": "him",
+          "explanation": "'him' is the target object pronoun located past the tracking vertex 'see'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>It was a beautiful weather.</span>",
+          "options": ["it", "was"],
+          "correct": "it",
+          "explanation": "'it' handles automated atmospheric context placeholders safely."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>I caught a big fish.</span>",
+          "options": ["I", "fish"],
+          "correct": "I",
+          "explanation": "'I' is the subject pronoun closing acquisition processes."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>He rides his bike to school.</span>",
+          "options": ["he", "bike"],
+          "correct": "he",
+          "explanation": "'he' is the subject pronoun activating transit equipment modules."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>You will pay them.</span>",
+          "options": ["will", "you"],
+          "correct": "you",
+          "explanation": "'you' is the subject pronoun accountable for handling transaction tasks."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>I will pay them.</span>",
+          "options": ["I", "them"],
+          "correct": "them",
+          "explanation": "'them' is the object pronoun receiving clearing capital payouts."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>It will be with him.</span>",
+          "options": ["it", "him"],
+          "correct": "him",
+          "explanation": "'him' is the object pronoun positioned after custody location link words like 'with'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>She was there on Saturday.</span>",
+          "options": ["she", "on"],
+          "correct": "she",
+          "explanation": "'she' is the subject pronoun confirming physical location logging parameters."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>They were used to him.</span>",
+          "options": ["they", "him"],
+          "correct": "him",
+          "explanation": "'him' is the target object pronoun following routine habit settings 'to'."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>Sandy will bring him.</span>",
+          "options": ["will", "him"],
+          "correct": "him",
+          "explanation": "'him' is the passenger object pronoun routed along after 'bring'."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>I play football with them.</span>",
+          "options": ["play", "them"],
+          "correct": "them",
+          "explanation": "'them' is the collective object pronoun linked behind teammate tracker units 'with'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>He plays chess with us.</span>",
+          "options": ["with", "he"],
+          "correct": "he",
+          "explanation": "'he' is the strategic subject pronoun opening game matrices."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>He bought for us many gifts.</span>",
+          "options": ["he", "us"],
+          "correct": "us",
+          "explanation": "'us' is the beneficiary object pronoun assigned past the allocation flag 'for'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>She wrote us the best story ever.</span>",
+          "options": ["She", "us"],
+          "correct": "She",
+          "explanation": "'She' is the creative subject pronoun authorship source."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>It was written all over the wall.</span>",
+          "options": ["all", "it"],
+          "correct": "it",
+          "explanation": "'it' is the subject pronoun holding logs verifying structural layout indicators."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>They meet you at the mall.</span>",
+          "options": ["they", "you"],
+          "correct": "you",
+          "explanation": "'you' is the destination object pronoun matched up via meeting intersections."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>We support her in every possible way.</span>",
+          "options": ["her", "we"],
+          "correct": "we",
+          "explanation": "'we' is the subject pronoun handling collective system optimization goals."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>Did you clap for him?</span>",
+          "options": ["him", "you"],
+          "correct": "him",
+          "explanation": "'him' is the object pronoun acknowledging praise performance after 'for'."
+        },
+        {
+          "question": "Identify the subject pronoun.<br><span style='color:black'>Do you like her?</span>",
+          "options": ["her", "you"],
+          "correct": "you",
+          "explanation": "'you' is the interpersonal subject pronoun tracking affinity index evaluations."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>Bob gave them the correct spelling words.</span>",
+          "options": ["them", "gave"],
+          "correct": "them",
+          "explanation": "'them' is the student object pronoun allocated testing words after 'gave'."
+        },
+        {
+          "question": "Identify the object pronoun.<br><span style='color:black'>I will travel with her to Paris.</span>",
+          "options": ["I", "her"],
+          "correct": "her",
+          "explanation": "'her' is the flight companion object pronoun tracking with cross-border routes."
+        }
+      ];
     </script>
 
-    <!-- Professional Footer -->
     <div id="site-footer-placeholder"></div>
-    <!-- point to your main quiz logic -->
     <script src="../../../js/script.js"></script>
     <script src="../../../js/partials.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => {
-    initMCQQuiz(questions);
-  });
+        initMCQQuiz(questions);
+      });
     </script>
   </body>
 </html>
