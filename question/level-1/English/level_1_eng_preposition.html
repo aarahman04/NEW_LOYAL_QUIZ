@@ -1,1 +1,638 @@
-m
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Preposition</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {
+          question: "There are so many insects _____ our house.",
+          options: ["in", "our"],
+          correct: "in",
+          explanation: "The preposition 'in' indicates being inside an enclosed space or structure like a house."
+        },
+        {
+          question: "There are so many ants _____ the table.",
+          options: ["in", "on"],
+          correct: "on",
+          explanation: "The preposition 'on' denotes a position on top of and in contact with a surface."
+        },
+        {
+          question: "The dog naps _____ the mat.",
+          options: ["on", "in"],
+          correct: "on",
+          explanation: "We use 'on' because the dog is resting on top of the surface of the mat."
+        },
+        {
+          question: "The cats eat _____ the plate.",
+          options: ["in", "from"],
+          correct: "from",
+          explanation: "The preposition 'from' indicates the source or starting point of where the cats are taking their food."
+        },
+        {
+          question: "The boy sits _____ the tree.",
+          options: ["from", "under"],
+          correct: "under",
+          explanation: "'Under' is used here to show that the boy is sitting directly beneath the branches and shade of the tree."
+        },
+        {
+          question: "Four people can fit _____ that car.",
+          options: ["inside", "down"],
+          correct: "inside",
+          explanation: "'Inside' means within the inner container or interior space of an object like a car."
+        },
+        {
+          question: "Five people are _____ that group.",
+          options: ["in", "out"],
+          correct: "in",
+          explanation: "We use 'in' to indicate belonging to or being a member of a collective group."
+        },
+        {
+          question: "You should not walk _____ me.",
+          options: ["behind", "by"],
+          correct: "behind",
+          explanation: "'Behind' means at the back of someone or following after them."
+        },
+        {
+          question: "We walk _____ the park every morning.",
+          options: ["in", "by"],
+          correct: "in",
+          explanation: "Walking 'in' the park implies that your movement takes place inside the physical boundaries of the park."
+        },
+        {
+          question: "Sam sat _____ his mom and dad.",
+          options: ["between", "because"],
+          correct: "between",
+          explanation: "'Between' is used when referencing a position bounded by two distinct entities or persons."
+        },
+        {
+          question: "Sama went _____ the hill.",
+          options: ["on", "up"],
+          correct: "up",
+          explanation: "'Up' signifies movement from a lower point towards a higher position on the hill."
+        },
+        {
+          question: "The bird sang _____ the tree top.",
+          options: ["in", "on"],
+          correct: "on",
+          explanation: "'On' is correct because the bird is perched right on top of the uppermost surface/peak of the tree."
+        },
+        {
+          question: "I was playing _____.",
+          options: ["outside", "between"],
+          correct: "outside",
+          explanation: "'Outside' serves as a prepositional adverb indicating an open-air area away from the interior of a building."
+        },
+        {
+          question: "The tiger hides _____ the rock.",
+          options: ["behind", "between"],
+          correct: "behind",
+          explanation: "'Behind' indicates being hidden at the back of an object to conceal oneself."
+        },
+        {
+          question: "Fish live _____ water.",
+          options: ["in", "outside"],
+          correct: "in",
+          explanation: "Fish are completely surrounded by water, which requires the preposition 'in'."
+        },
+        {
+          question: "We ate breakfast _____ the pool.",
+          options: ["by", "on"],
+          correct: "by",
+          explanation: "'By' means near, next to, or at the side of a location like a swimming pool."
+        },
+        {
+          question: "He ate pizza _____ his friends.",
+          options: ["with", "the"],
+          correct: "with",
+          explanation: "The preposition 'with' is used to denote company, association, or being together with people."
+        },
+        {
+          question: "We walked _____ the park.",
+          options: ["with", "through"],
+          correct: "through",
+          explanation: "'Through' indicates moving in at one side and out at the other side of a 3D space like a park."
+        },
+        {
+          question: "We had lunch _____ noon.",
+          options: ["through", "at"],
+          correct: "at",
+          explanation: "We use 'at' to specify a precise and exact point in time (e.g., at noon)."
+        },
+        {
+          question: "She walked _____ the door.",
+          options: ["toward", "with"],
+          correct: "toward",
+          explanation: "'Toward' indicates moving in the specific direction of a destination or object."
+        },
+        {
+          question: "The ball rolled _____ the couch.",
+          options: ["in", "under"],
+          correct: "under",
+          explanation: "The ball moved underneath the bottom surface of the couch, making 'under' the correct choice."
+        },
+        {
+          question: "The cat crawled _____ the couch.",
+          options: ["in", "under"],
+          correct: "under",
+          explanation: "Like the ball, the cat moved directly beneath the structure of the couch."
+        },
+        {
+          question: "The plane flew _____ the mountains.",
+          options: ["in", "over"],
+          correct: "over",
+          explanation: "'Over' means at a higher level above something without physically touching it."
+        },
+        {
+          question: "They sat _____ the couch.",
+          options: ["in", "around"],
+          correct: "around",
+          explanation: "'Around' indicates sitting in a circular pattern or nearby perimeter surrounding the item."
+        },
+        {
+          question: "The color _____ the sky is blue.",
+          options: ["of", "with"],
+          correct: "of",
+          explanation: "The preposition 'of' is used to express belonging, assignment, or a descriptive property of an item."
+        },
+        {
+          question: "The letter was written _____ him.",
+          options: ["with", "by"],
+          correct: "by",
+          explanation: "In passive voice sentences, 'by' is used to introduce the agent or person performing the action."
+        },
+        {
+          question: "Choose _____ these two options.",
+          options: ["with", "between"],
+          correct: "between",
+          explanation: "'Between' is the standard preposition when making a choice or distinction involving exactly two elements."
+        },
+        {
+          question: "The clouds are _____ the mountains.",
+          options: ["above", "because"],
+          correct: "above",
+          explanation: "'Above' denotes being directly higher than or overhead relative to the mountains."
+        },
+        {
+          question: "The temperature is _____ freezing.",
+          options: ["below", "in"],
+          correct: "below",
+          explanation: "'Below' indicates a position lower than a specific baseline scale or measurement point."
+        },
+        {
+          question: "Finish your homework _____ dinner.",
+          options: ["because", "before"],
+          correct: "before",
+          explanation: "'Before' is a time preposition meaning earlier than or preceding a specific event."
+        },
+        {
+          question: "Finish your paragraph _____ lunchtime.",
+          options: ["because", "before"],
+          correct: "before",
+          explanation: "The task needs to be completed prior to the arrival of lunchtime."
+        },
+        {
+          question: "Finish washing the clothes _____ water.",
+          options: ["by", "with"],
+          correct: "with",
+          explanation: "We use 'with' to specify the tool, instrument, or material used to execute an action."
+        },
+        {
+          question: "Helicopters fly _____ us.",
+          options: ["in", "above"],
+          correct: "above",
+          explanation: "'Above' implies an elevated overhead flight path relative to our ground position."
+        },
+        {
+          question: "I feel something _____ my pocket.",
+          options: ["above", "inside"],
+          correct: "inside",
+          explanation: "'Inside' accurately describes an object enclosed entirely within the walls of a container or pocket."
+        },
+        {
+          question: "He feels something _____ his shoes.",
+          options: ["inside", "outside"],
+          correct: "inside",
+          explanation: "Something is down in the interior cavity of his shoes."
+        },
+        {
+          question: "She sits _____ the bench.",
+          options: ["in", "on"],
+          correct: "on",
+          explanation: "You sit directly on top of the hard horizontal surface of a bench."
+        },
+        {
+          question: "I sleep _____ my baby.",
+          options: ["beside", "on"],
+          correct: "beside",
+          explanation: "'Beside' means next to, at the side of, or alongside someone."
+        },
+        {
+          question: "They are eating _____ the classroom.",
+          options: ["outside", "by"],
+          correct: "outside",
+          explanation: "They are having their food out in the open, away from the interior of the classroom."
+        },
+        {
+          question: "Which man is standing _____ the bus?",
+          options: ["by", "out"],
+          correct: "by",
+          explanation: "'By' here means standing right next to or adjacent to the outer side of the vehicle."
+        },
+        {
+          question: "They walked _____ the road.",
+          options: ["along", "in"],
+          correct: "along",
+          explanation: "'Along' indicates parallel movement following the direction, line, or length of the path."
+        },
+        {
+          question: "Don't shout _____ her!",
+          options: ["at", "in"],
+          correct: "at",
+          explanation: "The preposition 'at' indicates the target or direction of an aggressive verbal action."
+        },
+        {
+          question: "_____ that shop are beautiful dresses.",
+          options: ["outside", "inside"],
+          correct: "inside",
+          explanation: "The dresses are displayed within the physical walls of the shop."
+        },
+        {
+          question: "Please, stand _____ me.",
+          options: ["on", "behind"],
+          correct: "behind",
+          explanation: "This asks the person to take a position at your rear or back side."
+        },
+        {
+          question: "I am going _____ school to the party.",
+          options: ["in", "from"],
+          correct: "from",
+          explanation: "'From' specifies the initial point or origin of departure for your journey."
+        },
+        {
+          question: "He put the picture _____ eye level.",
+          options: ["on", "below"],
+          correct: "below",
+          explanation: "'Below' means lower down than a specific point of reference, which here is the eye line."
+        },
+        {
+          question: "It was all _____ him.",
+          options: ["about", "him"],
+          correct: "about",
+          explanation: "'About' means on the subject of, or concerning a specific person."
+        },
+        {
+          question: "I will take a picture _____ you.",
+          options: ["at", "of"],
+          correct: "of",
+          explanation: "We use 'of' to clarify the subject or content depicted inside a photograph."
+        },
+        {
+          question: "She took a picture _____ me.",
+          options: ["of", "because"],
+          correct: "of",
+          explanation: "'Of' specifies who the photographic portrait represents."
+        },
+        {
+          question: "He sat _____ his wife.",
+          options: ["beside", "along"],
+          correct: "beside",
+          explanation: "He positioned himself immediately next to or alongside his wife."
+        },
+        {
+          question: "The bear climbed _____ the tree.",
+          options: ["up", "with"],
+          correct: "up",
+          explanation: "'Up' tracks vertical climbing progression from a low point to a higher point on the tree trunk."
+        },
+        {
+          question: "The mouse ran _____ the wall.",
+          options: ["down", "beside"],
+          correct: "down",
+          explanation: "'Down' denotes moving downward toward the base floor along the face of the vertical wall."
+        },
+        {
+          question: "The mouse ran _____ the clock.",
+          options: ["with", "up"],
+          correct: "up",
+          explanation: "Based on the traditional nursery rhyme, the mouse scurried 'up' the vertical height of the clock."
+        },
+        {
+          question: "It was _____ the corner.",
+          options: ["up", "around"],
+          correct: "around",
+          explanation: "'Around the corner' is an idiom indicating a location just past the turn or intersection."
+        },
+        {
+          question: "He left school _____ the math class.",
+          options: ["during", "over"],
+          correct: "during",
+          explanation: "'During' is used to show that an event took place within the time duration of an ongoing class."
+        },
+        {
+          question: "Did you read the story _____ the vampire?",
+          options: ["along", "about"],
+          correct: "about",
+          explanation: "'About' introduces the central thematic character or subject matter of the text."
+        },
+        {
+          question: "Sam will leave _____ dinner.",
+          options: ["after", "along"],
+          correct: "after",
+          explanation: "'After' is a time designation indicating that departure occurs later than the meal conclusion."
+        },
+        {
+          question: "Sama will leave _____ midnight.",
+          options: ["before", "in"],
+          correct: "before",
+          explanation: "'Before midnight' means her departure is scheduled ahead of $12:00\text{ AM}$."
+        },
+        {
+          question: "The mouse was _____ the garbage truck.",
+          options: ["near", "up"],
+          correct: "near",
+          explanation: "'Near' implies close proximity or short distance separating the mouse from the vehicle."
+        },
+        {
+          question: "Can you get _____ that door?",
+          options: ["through", "along"],
+          correct: "through",
+          explanation: "'Through' means entering one side of an opening or doorway and emerging out the other side."
+        },
+        {
+          question: "Can you let me _____?",
+          options: ["up", "through"],
+          correct: "through",
+          explanation: "This is a request to allow passage through a barrier, crowd, or open gateway."
+        },
+        {
+          question: "We flew _____ the clouds.",
+          options: ["through", "out"],
+          correct: "through",
+          explanation: "Flying 'through' means cutting directly right across the internal volume of the cloud formations."
+        },
+        {
+          question: "They worked _____ the lunch hour.",
+          options: ["up", "through"],
+          correct: "through",
+          explanation: "Working 'through' an interval means continuing to labor non-stop from the start to the end of that period."
+        },
+        {
+          question: "The book fell _____ the table.",
+          options: ["in", "off"],
+          correct: "off",
+          explanation: "'Off' indicates separation and downward detachment away from a resting surface like a table."
+        },
+        {
+          question: "The doll fell _____ the shelf.",
+          options: ["in", "off"],
+          correct: "off",
+          explanation: "The doll slipped away from its resting place on the ledge of the shelf."
+        },
+        {
+          question: "Sam talked _____ the boys.",
+          options: ["with", "the"],
+          correct: "with",
+          explanation: "'With' indicates interactive communication or conversation held among a group of people."
+        },
+        {
+          question: "He worked _____ a software engineer.",
+          options: ["as", "the"],
+          correct: "as",
+          explanation: "'As' acts here to define the role, capacity, function, or professional title of an individual."
+        },
+        {
+          question: "I live _____ the school.",
+          options: ["around", "near"],
+          correct: "near",
+          explanation: "'Near' highlights close residential geographic proximity to the school campus."
+        },
+        {
+          question: "Let's go _____ lunch.",
+          options: ["near", "after"],
+          correct: "after",
+          explanation: "'After' is the logical choice, pointing out an outing to occur following the end of work or class intervals."
+        },
+        {
+          question: "Sama walked _____ the road.",
+          options: ["across", "after"],
+          correct: "across",
+          explanation: "'Across' signifies moving from one side of a linear structure like a street over to the opposite side."
+        },
+        {
+          question: "The cat hid _____ the bed.",
+          options: ["behind", "before"],
+          correct: "behind",
+          explanation: "The cat tucked itself out of sight behind or underneath the structural frame of the bed."
+        },
+        {
+          question: "The boys were quite _____ the exam.",
+          options: ["during", "in"],
+          correct: "during",
+          explanation: "They preserved silence over the exact runtime duration of the exam."
+        },
+        {
+          question: "The girls stayed quiet _____ the quiz.",
+          options: ["on", "during"],
+          correct: "during",
+          explanation: "'During' shows that the behavior was maintained throughout the active timeline of the quiz."
+        },
+        {
+          question: "The snack is _____ the rock.",
+          options: ["in", "below"],
+          correct: "below",
+          explanation: "'Below' implies the food object is situated directly underneath or lower than the rock formation."
+        },
+        {
+          question: "The cave is _____ the mountain.",
+          options: ["in", "under"],
+          correct: "under",
+          explanation: "'Under' indicates being subterranean or underneath the heavy surface mass of the mountain overhead."
+        },
+        {
+          question: "The letter is _____ Sam.",
+          options: ["from", "under"],
+          correct: "from",
+          explanation: "'From' identifies the original sender, author, or starting point of the correspondence."
+        },
+        {
+          question: "The pen is _____ my mom.",
+          options: ["to", "from"],
+          correct: "from",
+          explanation: "The pen originated as a possession of, or a gift given out by, the mother."
+        },
+        {
+          question: "Mom got me a beautiful gift _____ that shop.",
+          options: ["in", "from"],
+          correct: "from",
+          explanation: "'From' details the retail shop location where the gift items were sourced or purchased."
+        },
+        {
+          question: "You can swim _____ that river.",
+          options: ["across", "on"],
+          correct: "across",
+          explanation: "Swimming 'across' means traversing through the water from one riverbank all the way to the other."
+        },
+        {
+          question: "You can walk _____ that bridge.",
+          options: ["in", "over"],
+          correct: "over",
+          explanation: "'Over' implies moving across an elevated path that spans across an obstacle below."
+        },
+        {
+          question: "Just wait _____ Monday.",
+          options: ["until", "in"],
+          correct: "until",
+          explanation: "'Until' implies continuing an action of waiting right up up to the arrival of a specified endpoint or day."
+        },
+        {
+          question: "Just wait _____ Wednesday.",
+          options: ["until", "in"],
+          correct: "until",
+          explanation: "The waiting condition must remain constant until Wednesday arrives."
+        },
+        {
+          question: "Just wait _____ Friday.",
+          options: ["until", "in"],
+          correct: "until",
+          explanation: "The deadline parameter specifies holding off actions up to Friday."
+        },
+        {
+          question: "Sam left _____ his jacket.",
+          options: ["will", "without"],
+          correct: "without",
+          explanation: "'Without' is a preposition meaning not accompanied by or lacking an item."
+        },
+        {
+          question: "Drive _____ the road!",
+          options: ["down", "with"],
+          correct: "down",
+          explanation: "Driving 'down' a street means moving along its path or heading along its established course."
+        },
+        {
+          question: "Sama drove _____ the tunnel.",
+          options: ["through", "in"],
+          correct: "through",
+          explanation: "Driving 'through' refers to entering an enclosed subterranean passageway at one opening and exiting the far end."
+        },
+        {
+          question: "Sam went _____ the tent.",
+          options: ["into", "on"],
+          correct: "into",
+          explanation: "'Into' is a preposition of motion indicating movement towards the interior space of an enclosure."
+        },
+        {
+          question: "It was _____ his rules.",
+          options: ["against", "under"],
+          correct: "against",
+          explanation: "'Against' means in direct opposition, defiance, or violation of a system of rules."
+        },
+        {
+          question: "We are hungry _____ the fridge is empty.",
+          options: ["in", "but"],
+          correct: "but",
+          explanation: "Though 'but' functions as a conjunction here rather than a typical preposition, it fits grammatically to show contrast between being hungry and having no food."
+        },
+        {
+          question: "Your grade is _____ average.",
+          options: ["in", "below"],
+          correct: "below",
+          explanation: "'Below' charts performance sitting beneath a designated mathematical mean or baseline marker."
+        },
+        {
+          question: "Your grade is _____ average.",
+          options: ["in", "above"],
+          correct: "above",
+          explanation: "'Above' charts performance sitting higher up than the designated average score line."
+        },
+        {
+          question: "Please lock the door _____ you.",
+          options: ["behind", "around"],
+          correct: "behind",
+          explanation: "Locking a door 'behind' you means locking it after you pass through it, leaving it secure at your rear."
+        },
+        {
+          question: "Sam kindly open the door _____ him.",
+          options: ["for", "from"],
+          correct: "for",
+          explanation: "'For' identifies the intended beneficiary who receives the helpful assistance of an action."
+        },
+        {
+          question: "Did he take picture _____ you?",
+          options: ["of", "in"],
+          correct: "of",
+          explanation: "We use 'of' to clarify the target subject captured within the photography frame."
+        },
+        {
+          question: "Sama was _____ time.",
+          options: ["in", "on"],
+          correct: "on",
+          explanation: "The idiom 'on time' implies arriving exactly at the planned, punctual, or scheduled hour."
+        },
+        {
+          question: "Is the gift _____ me?",
+          options: ["around", "for"],
+          correct: "for",
+          explanation: "'For' designates the intended recipient or destination of an object."
+        },
+        {
+          question: "Sama is washing her hands _____ water.",
+          options: ["during", "under"],
+          correct: "under",
+          explanation: "'Under' fits best when hands are held beneath a flowing stream of tap water."
+        },
+        {
+          question: "Please go stand _____ her.",
+          options: ["by", "around"],
+          correct: "by",
+          explanation: "Standing 'by' someone tells you to station yourself closely next to their side."
+        },
+        {
+          question: "I will see George _____ school.",
+          options: ["after", "around"],
+          correct: "after",
+          explanation: "'After' states that the meeting will transpire following the close of the academic day."
+        },
+        {
+          question: "I received a card _____ her.",
+          options: ["around", "from"],
+          correct: "from",
+          explanation: "'From' traces the origin or person who sent the card."
+        },
+        {
+          question: "Sandy will travel _____ Germany.",
+          options: ["to", "as"],
+          correct: "to",
+          explanation: "The preposition 'to' indicates destination, direction, or movement toward a geographic country."
+        }
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
