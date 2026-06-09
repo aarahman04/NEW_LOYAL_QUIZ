@@ -4,21 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Subject Pronoun</title>
-    <!-- point to your question.css in the root css/ folder -->
     <link rel="stylesheet" href="../../../css/question.css" />
   </head>
   <body>
 
-    <!-- Sticky Header -->
     <div id="site-header-placeholder"></div>
 
-    <!-- Quiz Content -->
     <main class="quiz-container">
       <div class="question-section">
         <h3 id="question-text">Loading...</h3>
         <ul class="options" id="options-list">
-          <!-- Options dynamically generated -->
-        </ul>
+          </ul>
       </div>
       <div id="feedback" class="hidden"></div>
       <div id="explanation" class="hidden"></div>
@@ -28,140 +24,628 @@
 
     <script>
       const questions = [
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>I went to the market.</span>",
-    "options": ["I", "To"],
-    "correct": "I",
-    "explanation": "“I” is the subject pronoun doing the action."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>He was crying all day.</span>",
-    "options": ["was", "he"],
-    "correct": "he",
-    "explanation": "“He” is the subject pronoun performing the action."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>They were carrying out the task.</span>",
-    "options": ["they", "out"],
-    "correct": "they",
-    "explanation": "“They” is the subject pronoun carrying out the task."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>She was not allowed in the classroom.</span>",
-    "options": ["she", "allowed"],
-    "correct": "she",
-    "explanation": "“She” is the subject pronoun here."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>We should move forward.</span>",
-    "options": ["should", "we"],
-    "correct": "we",
-    "explanation": "“We” is the subject pronoun moving forward."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>You should move forward.</span>",
-    "options": ["move", "you"],
-    "correct": "you",
-    "explanation": "“You” is the subject pronoun in this sentence."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>It was raining.</span>",
-    "options": ["raining", "it"],
-    "correct": "it",
-    "explanation": "“It” is the subject pronoun."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>It was snowing.</span>",
-    "options": ["it", "snowing"],
-    "correct": "it",
-    "explanation": "“It” is the subject pronoun."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>I looked carefully for the book.</span>",
-    "options": ["the", "I"],
-    "correct": "I",
-    "explanation": "“I” is the subject pronoun doing the action."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>They went to the right place.</span>",
-    "options": ["to", "they"],
-    "correct": "they",
-    "explanation": "“They” is the subject pronoun here."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>He must go to the bathroom.</span>",
-    "options": ["go", "he"],
-    "correct": "he",
-    "explanation": "“He” is the subject pronoun going to the bathroom."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>It was able to fly.</span>",
-    "options": ["fly", "it"],
-    "correct": "it",
-    "explanation": "“It” is the subject pronoun."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>We wrote our own rules.</span>",
-    "options": ["we", "rules"],
-    "correct": "we",
-    "explanation": "“We” is the subject pronoun writing the rules."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>I believe that!</span>",
-    "options": ["are", "I"],
-    "correct": "I",
-    "explanation": "“I” is the subject pronoun believing."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>I have nothing more to say.</span>",
-    "options": ["I", "say"],
-    "correct": "I",
-    "explanation": "“I” is the subject pronoun in this sentence."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>You were amazing!</span>",
-    "options": ["You", "were"],
-    "correct": "You",
-    "explanation": "“You” is the subject pronoun."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>They were not coming.</span>",
-    "options": ["not", "they"],
-    "correct": "they",
-    "explanation": "“They” is the subject pronoun not coming."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>You can choose between the two cakes.</span>",
-    "options": ["you", "can"],
-    "correct": "you",
-    "explanation": "“You” is the subject pronoun."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>He drove the car.</span>",
-    "options": ["drove", "he"],
-    "correct": "he",
-    "explanation": "“He” is the subject pronoun driving the car."
-  },
-  {
-    "question": "Choose the correct subject pronoun?<br><span style='color:black'>She is swimming in the pond.</span>",
-    "options": ["she", "is"],
-    "correct": "she",
-    "explanation": "“She” is the subject pronoun here."
-  }
-];
-
-
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I went to the market.</span>",
+          "options": ["I", "To"],
+          "correct": "I",
+          "explanation": "'I' is the singular subject pronoun acting as the subject doing the action of going."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He was crying all day.</span>",
+          "options": ["was", "he"],
+          "correct": "he",
+          "explanation": "'he' is the masculine subject pronoun representing the individual performing the action."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>They were carrying out the task.</span>",
+          "options": ["they", "out"],
+          "correct": "they",
+          "explanation": "'they' is the plural subject pronoun executing the task workflow sequence."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>She was not allowed in the classroom.</span>",
+          "options": ["she", "allowed"],
+          "correct": "she",
+          "explanation": "'she' is the feminine subject pronoun acting as the subject of the clause."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We should move forward.</span>",
+          "options": ["should", "we"],
+          "correct": "we",
+          "explanation": "'we' is the first-person plural subject pronoun heading the movement clause."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>You should move forward.</span>",
+          "options": ["move", "you"],
+          "correct": "you",
+          "explanation": "'you' is the second-person subject pronoun commanding or directing the statement."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>It was raining.</span>",
+          "options": ["raining", "it"],
+          "correct": "it",
+          "explanation": "'it' is the neutral third-person subject pronoun serving as the dummy subject for atmospheric conditions."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>It was snowing.</span>",
+          "options": ["it", "snowing"],
+          "correct": "it",
+          "explanation": "'it' functions as the subject pronoun managing environmental state changes."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I looked carefully for the book.</span>",
+          "options": ["the", "I"],
+          "correct": "I",
+          "explanation": "'I' is the singular subject pronoun directing the visual search process."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>They went to the right place.</span>",
+          "options": ["to", "they"],
+          "correct": "they",
+          "explanation": "'they' is the third-person plural subject pronoun routing toward the target hub."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He must go to the bathroom.</span>",
+          "options": ["go", "he"],
+          "correct": "he",
+          "explanation": "'he' is the active subject pronoun carrying out the movement requirement."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>It was able to fly.</span>",
+          "options": ["fly", "it"],
+          "correct": "it",
+          "explanation": "'it' is the neutral subject pronoun evaluating flight tracking capability parameters."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We wrote our own rules.</span>",
+          "options": ["we", "rules"],
+          "correct": "we",
+          "explanation": "'we' is the plural subject pronoun executing regulatory policy formulation loops."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I believe that!</span>",
+          "options": ["are", "I"],
+          "correct": "I",
+          "explanation": "'I' is the subject pronoun anchoring mental validation parameters."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I have nothing more to say.</span>",
+          "options": ["I", "say"],
+          "correct": "I",
+          "explanation": "'I' is the main clause subject pronoun closing conversational output states."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>You were amazing!</span>",
+          "options": ["You", "were"],
+          "correct": "You",
+          "explanation": "'You' is the second-person subject pronoun assigned to the performance tracking index."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>They were not coming.</span>",
+          "options": ["not", "they"],
+          "correct": "they",
+          "explanation": "'they' is the plural subject pronoun managing arrival cancellations."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>You can choose between the two cakes.</span>",
+          "options": ["you", "can"],
+          "correct": "you",
+          "explanation": "'you' is the target subject pronoun executing item selection parameters."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He drove the car.</span>",
+          "options": ["drove", "he"],
+          "correct": "he",
+          "explanation": "'he' is the subject pronoun handling asset operation vectors."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>She is swimming in the pond.</span>",
+          "options": ["she", "is"],
+          "correct": "she",
+          "explanation": "'she' is the third-person feminine subject pronoun handling athletic movement tracking."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>They went to the same school.</span>",
+          "options": ["they", "went"],
+          "correct": "they",
+          "explanation": "'they' is the collective subject pronoun indicating shared institutional attendance records."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We went to the same school.</span>",
+          "options": ["went", "we"],
+          "correct": "we",
+          "explanation": "'we' is the collective plural subject pronoun tracking matching education hub history."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>You are entitled for the project.</span>",
+          "options": ["for", "you"],
+          "correct": "you",
+          "explanation": "'you' is the subject pronoun tracking authorization assignment profiles."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>They were looking at the stars.</span>",
+          "options": ["they", "the"],
+          "correct": "they",
+          "explanation": "'they' is the subject pronoun setting gaze coordinates toward astronomy components."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>You are taking your time.</span>",
+          "options": ["you", "time"],
+          "correct": "you",
+          "explanation": "'you' is the subject pronoun governing process duration usage."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I can certainly understand.</span>",
+          "options": ["I", "can"],
+          "correct": "I",
+          "explanation": "'I' is the primary subject pronoun confirming comprehensive logic mastery metrics."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We can only assume that.</span>",
+          "options": ["can", "we"],
+          "correct": "we",
+          "explanation": "'we' is the subject pronoun handling collective conditional inferences."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He watched the movie.</span>",
+          "options": ["he", "the"],
+          "correct": "he",
+          "explanation": "'he' is the singular masculine subject pronoun completing media ingestion cycles."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>She talked to the teacher.</span>",
+          "options": ["to", "she"],
+          "correct": "she",
+          "explanation": "'she' is the subject pronoun controlling conversational pathway updates."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>It was full of dirt.</span>",
+          "options": ["it", "of"],
+          "correct": "it",
+          "explanation": "'it' is the neutral subject pronoun identifying container asset properties."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I looked at the map.</span>",
+          "options": ["map", "I"],
+          "correct": "I",
+          "explanation": "'I' is the subject pronoun executing path exploration tasks."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>It was so sad!</span>",
+          "options": ["so", "it"],
+          "correct": "it",
+          "explanation": "'it' acts as the structural dummy subject pronoun defining emotional context weights."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>It was funny!</span>",
+          "options": ["funny", "it"],
+          "correct": "it",
+          "explanation": "'it' is the situational subject pronoun tracking humor index markers."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>It had a great ending.</span>",
+          "options": ["great", "it"],
+          "correct": "it",
+          "explanation": "'it' is the subject pronoun referencing narrative structure segments."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>It had a beautiful engine.</span>",
+          "options": ["a", "it"],
+          "correct": "it",
+          "explanation": "'it' is the object/vehicle indicator subject pronoun confirming mechanical configuration beauty."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We should have some cake.</span>",
+          "options": ["should", "we"],
+          "correct": "we",
+          "explanation": "'we' is the plural subject pronoun handling group dietary request schedules."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>They are on the train.</span>",
+          "options": ["are", "they"],
+          "correct": "they",
+          "explanation": "'they' is the target subject pronoun logged on transit manifests."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>She is going on a boat ride.</span>",
+          "options": ["is", "she"],
+          "correct": "she",
+          "explanation": "'she' is the primary subject pronoun heading maritime transit excursions."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He was not allowed out.</span>",
+          "options": ["he", "was"],
+          "correct": "he",
+          "explanation": "'he' is the subject pronoun restricted within facility boundaries."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We are talking about the accident.</span>",
+          "options": ["are", "we"],
+          "correct": "we",
+          "explanation": "'we' is the first-person plural subject pronoun analyzing incident causality histories."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>They are playing football.</span>",
+          "options": ["they", "are"],
+          "correct": "they",
+          "explanation": "'they' is the subject pronoun tracking active athletic field coordinates."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We are passing through the tunnel.</span>",
+          "options": ["are", "we"],
+          "correct": "we",
+          "explanation": "'we' is the structural subject pronoun executing deep transit path operations."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He had beautiful news.</span>",
+          "options": ["he", "had"],
+          "correct": "he",
+          "explanation": "'he' is the subject pronoun acting as the bearer of narrative update fields."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>She was the world to him.</span>",
+          "options": ["she", "to"],
+          "correct": "she",
+          "explanation": "'she' is the subject pronoun holding ultimate importance metrics in the statement."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He went out with his dog.</span>",
+          "options": ["went", "he"],
+          "correct": "he",
+          "explanation": "'he' is the subject pronoun launching cross-border pet walking routines."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We are happy.</span>",
+          "options": ["we", "are"],
+          "correct": "we",
+          "explanation": "'we' is the emotional status subject pronoun verifying positive optimization goals."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I am planning my vacation.</span>",
+          "options": ["vacation", "I"],
+          "correct": "I",
+          "explanation": "'I' is the singular subject pronoun designing personal holiday schedule timelines."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He is planning his speech.</span>",
+          "options": ["is", "he"],
+          "correct": "he",
+          "explanation": "'he' is the speaker subject pronoun managing audio data preparation outlines."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>It was more common.</span>",
+          "options": ["it", "more"],
+          "correct": "it",
+          "explanation": "'it' is the subject pronoun marking standardized statistical distribution attributes."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>She was a pretty young girl.</span>",
+          "options": ["she", "was"],
+          "correct": "she",
+          "explanation": "'she' is the feminine subject pronoun tracking demographic feature profiles. (Note: cleaned up duplicate preceding word)."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He expressed his desire.</span>",
+          "options": ["desire", "he"],
+          "correct": "he",
+          "explanation": "'he' is the active subject pronoun exporting target initialization goals."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I draw every day.</span>",
+          "options": ["draw", "I"],
+          "correct": "I",
+          "explanation": "'I' is the graphic artist subject pronoun maintaining daily production loops."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He claims to be innocent.</span>",
+          "options": ["claims", "he"],
+          "correct": "he",
+          "explanation": "'he' is the legal subject pronoun providing safety confirmation statement indicators."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>They are running around the house.</span>",
+          "options": ["are", "they"],
+          "correct": "they",
+          "explanation": "'they' is the collective plural subject pronoun tracing perimeter loops around properties."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We should be going.</span>",
+          "options": ["we", "be"],
+          "correct": "we",
+          "explanation": "'we' is the target subject pronoun signaling immediate exit transition states."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He will explain the difference.</span>",
+          "options": ["explain", "he"],
+          "correct": "he",
+          "explanation": "'he' is the analytical subject pronoun separating diverse metadata structures."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>She will sing every week.</span>",
+          "options": ["will", "she"],
+          "correct": "she",
+          "explanation": "'she' is the vocal subject pronoun scheduling recurrent musical performances."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>They are going to Italy.</span>",
+          "options": ["they", "are"],
+          "correct": "they",
+          "explanation": "'they' is the cross-border logistics flight subject pronoun heading to Europe vectors."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We are dancing with everyone.</span>",
+          "options": ["with", "we"],
+          "correct": "we",
+          "explanation": "'we' is the social interaction subject pronoun linking rhythmic parameters."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>You are writing a beautiful poem.</span>",
+          "options": ["writing", "you"],
+          "correct": "you",
+          "explanation": "'you' is the creative author subject pronoun exporting text matrices."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I am almost finished.</span>",
+          "options": ["I", "almost"],
+          "correct": "I",
+          "explanation": "'I' is the operational subject pronoun nearing task completion flags."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I work in an office.</span>",
+          "options": ["in", "I"],
+          "correct": "I",
+          "explanation": "'I' is the workforce subject pronoun reporting layout assignments inside cubicles."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He works in the big company.</span>",
+          "options": ["big", "he"],
+          "correct": "he",
+          "explanation": "'he' is the corporate worker subject pronoun tracking enterprise scale indicators."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>It has a soft tail.</span>",
+          "options": ["a", "it"],
+          "correct": "it",
+          "explanation": "'it' is the biological animal tracker subject pronoun defining tail properties."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He is a funny boy!</span>",
+          "options": ["he", "is"],
+          "correct": "he",
+          "explanation": "'he' is the singular character tracking subject pronoun managing humor indices."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I see the big fish.</span>",
+          "options": ["I", "see"],
+          "correct": "I",
+          "explanation": "'I' is the primary optics observer subject pronoun registering target acquisitions."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He sees a beautiful picture.</span>",
+          "options": ["he", "Picture"],
+          "correct": "he",
+          "explanation": "'he' is the aesthetic inspection monitoring subject pronoun."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>She plays with Piano.</span>",
+          "options": ["she", "with"],
+          "correct": "she",
+          "explanation": "'she' is the acoustic performance musician subject pronoun."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>She has two daughters.</span>",
+          "options": ["two", "she"],
+          "correct": "she",
+          "explanation": "'she' is the family node subject pronoun registering lineage dependencies."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He has three sons.</span>",
+          "options": ["he", "three"],
+          "correct": "he",
+          "explanation": "'he' is the lineage track root subject pronoun tracking family data sheets."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We speak French.</span>",
+          "options": ["speak", "we"],
+          "correct": "we",
+          "explanation": "'we' is the language encoder subject pronoun parsing international text formats."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We speak Arabic.</span>",
+          "options": ["Speak", "we"],
+          "correct": "we",
+          "explanation": "'we' is the native conversation subject pronoun configuring verbal dictionary selections."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I love my mom!</span>",
+          "options": ["mom", "I"],
+          "correct": "I",
+          "explanation": "'I' is the core emotional operator subject pronoun identifying family ties."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He was a super popular singer.</span>",
+          "options": ["he", "was"],
+          "correct": "he",
+          "explanation": "'he' is the media profile superstar subject pronoun tracking celebrity metrics."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>You are often late.</span>",
+          "options": ["are", "you"],
+          "correct": "you",
+          "explanation": "'you' is the schedule compliance tracking subject pronoun auditing tardiness."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I like Juna.</span>",
+          "options": ["like", "I"],
+          "correct": "I",
+          "explanation": "'I' is the interpersonal affinity tracking subject pronoun logging friends."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We loved to swim.</span>",
+          "options": ["we", "to"],
+          "correct": "we",
+          "explanation": "'we' is the aquatic transit team subject pronoun tracking activity history."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We eat rice and beans.</span>",
+          "options": ["we", "rice"],
+          "correct": "we",
+          "explanation": "'we' is the dietary input processing subject pronoun mapping meal records."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I caught a big fish!</span>",
+          "options": ["I", "fish"],
+          "correct": "I",
+          "explanation": "'I' is the acquisition execution subject pronoun logging fish trophies."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He ran to the front door.</span>",
+          "options": ["he", "ran"],
+          "correct": "he",
+          "explanation": "'he' is the rapid navigation subject pronoun targeted on entry pathways."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We pay together!</span>",
+          "options": ["pay", "we"],
+          "correct": "we",
+          "explanation": "'we' is the financial transaction account holder subject pronoun clearing balances."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>She was not allowed in this class.</span>",
+          "options": ["she", "not"],
+          "correct": "she",
+          "explanation": "'she' is the student entry tracking subject pronoun experiencing restriction loops."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He was running fast.</span>",
+          "options": ["he", "fast"],
+          "correct": "he",
+          "explanation": "'he' is the acceleration mobility vector subject pronoun checking performance metrics."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>She was the best in her class.</span>",
+          "options": ["the", "she"],
+          "correct": "she",
+          "explanation": "'she' is the top rank optimization subject pronoun managing high marks grades."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I believes Sam.</span>",
+          "options": ["I", "Sam"],
+          "correct": "I",
+          "explanation": "'I' is the trust metric evaluation subject pronoun validating incoming statements."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I have two of them.</span>",
+          "options": ["I", "have"],
+          "correct": "I",
+          "explanation": "'I' is the inventory tracking catalog manager subject pronoun holding asset quantities."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We will fix the car.</span>",
+          "options": ["will", "we"],
+          "correct": "we",
+          "explanation": "'we' is the mechanical repair maintenance technician subject pronoun optimizing performance."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>You will fix that computer!</span>",
+          "options": ["will", "you"],
+          "correct": "you",
+          "explanation": "'you' is the assigned technical support engineer subject pronoun executing device fixes."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>You forgot the password.</span>",
+          "options": ["you", "the"],
+          "correct": "you",
+          "explanation": "'you' is the client identity profile subject pronoun failing authentication key checks."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>They came from London.</span>",
+          "options": ["London", "they"],
+          "correct": "they",
+          "explanation": "'they' is the cross-border flight transit subject pronoun anchoring origin lines back to Europe maps."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>You are late!</span>",
+          "options": ["are", "you"],
+          "correct": "you",
+          "explanation": "'you' is the deadline monitor subject pronoun catching schedule delays."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We are not late!</span>",
+          "options": ["not", "we"],
+          "correct": "we",
+          "explanation": "'we' is the arrival compliance validation subject pronoun confirming exact timely tracking values."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He is my friend.</span>",
+          "options": ["he", "is"],
+          "correct": "he",
+          "explanation": "'he' is the companion link record subject pronoun verified on social friendship rosters."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I am on holiday.</span>",
+          "options": ["on", "I"],
+          "correct": "I",
+          "explanation": "'I' is the out-of-office automated status subject pronoun confirming vacation holds."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I like the dress.</span>",
+          "options": ["I", "the"],
+          "correct": "I",
+          "explanation": "'I' is the consumer fashion evaluation subject pronoun matching item index preferences."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>They come from Italy.</span>",
+          "options": ["come", "they"],
+          "correct": "they",
+          "explanation": "'they' is the inbound travel passport validation subject pronoun sourcing origin routing zones."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>I can see you!</span>",
+          "options": ["I", "see"],
+          "correct": "I",
+          "explanation": "'I' is the active scanning optical lens subject pronoun matching line-of-sight tracking parameters."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We are on holiday!</span>",
+          "options": ["are", "we"],
+          "correct": "we",
+          "explanation": "'we' is the team deployment status subject pronoun logging vacation relaxation intervals."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>He was a friend of the family.</span>",
+          "options": ["he", "of"],
+          "correct": "he",
+          "explanation": "'he' is the trusted social metadata tracker subject pronoun matching lineage nodes safely."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>She goes to the library regularly.</span>",
+          "options": ["she", "regularly"],
+          "correct": "she",
+          "explanation": "'she' is the researcher subject pronoun running regular database/book repository queries."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>We haven't met before.</span>",
+          "options": ["met", "we"],
+          "correct": "we",
+          "explanation": "'we' is the conversational introduction verification subject pronoun checking history keys."
+        },
+        {
+          "question": "Choose the correct subject pronoun?<br><span style='color:black'>They have met before.</span>",
+          "options": ["they", "met"],
+          "correct": "they",
+          "explanation": "'they' is the relationship link tracker subject pronoun confirming historical handshake logs."
+        }
+      ];
     </script>
 
-    <!-- Professional Footer -->
     <div id="site-footer-placeholder"></div>
-    <!-- point to your main quiz logic -->
     <script src="../../../js/script.js"></script>
     <script src="../../../js/partials.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => {
-    initMCQQuiz(questions);
-  });
+        initMCQQuiz(questions);
+      });
     </script>
   </body>
 </html>
