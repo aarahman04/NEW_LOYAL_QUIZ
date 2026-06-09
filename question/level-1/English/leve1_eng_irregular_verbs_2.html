@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Irregular Verbs 2</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {
+          question: "Which sentence tells about the past?",
+          options: ["Mia drinks milk every day", "Mia drank milk yesterday", "Mia is drinking milk now"],
+          correct: "Mia drank milk yesterday",
+          explanation: "'drank' is the past tense form of 'drink'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["Tom writes letters daily", "Tom wrote a letter last night", "Tom is writing a letter"],
+          correct: "Tom wrote a letter last night",
+          explanation: "'wrote' is the past tense form of 'write'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["the dog runs fast", "the dog is running outside", "the dog ran across the yard"],
+          correct: "the dog ran across the yard",
+          explanation: "'ran' is the past tense form of 'run'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["Sara ate dinner early", "Sara eats dinner at six", "Sara is eating dinner"],
+          correct: "Sara ate dinner early",
+          explanation: "'ate' is the past tense form of 'eat'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they go to school daily", "they went to school late", "they are going to school"],
+          correct: "they went to school late",
+          explanation: "'went' is the past tense form of 'go'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["Dad drives carefully", "Dad drove to work yesterday", "Dad is driving now"],
+          correct: "Dad drove to work yesterday",
+          explanation: "'drove' is the past tense form of 'drive'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["we see the stars at night", "we are seeing the movie", "we saw a rainbow yesterday"],
+          correct: "we saw a rainbow yesterday",
+          explanation: "'saw' is the past tense form of 'see'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["Sandy sings beautifully", "Sandy sang at the concert", "Sandy is singing now"],
+          correct: "Sandy sang at the concert",
+          explanation: "'sang' is the past tense form of 'sing'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["jack takes the bus daily", "jack is taking the bus", "jack took the bus yesterday"],
+          correct: "jack took the bus yesterday",
+          explanation: "'took' is the past tense form of 'take'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["the baby sleeps quietly", "the baby slept all night", "the baby is sleeping now"],
+          correct: "the baby slept all night",
+          explanation: "'slept' is the past tense form of 'sleep'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["we swim every summer", "we swam in the lake yesterday", "we are swimming now"],
+          correct: "we swam in the lake yesterday",
+          explanation: "'swam' is the past tense form of 'swim'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he breaks the toy often", "he is breaking the stick", "he broke the window yesterday"],
+          correct: "he broke the window yesterday",
+          explanation: "'broke' is the past tense form of 'break'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they bring snacks to class", "they brought pizza yesterday", "they are bringing food now"],
+          correct: "they brought pizza yesterday",
+          explanation: "'brought' is the past tense form of 'bring'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["lily buys flowers weekly", "lily bought flowers yesterday", "lily is buying flowers now"],
+          correct: "lily bought flowers yesterday",
+          explanation: "'bought' is the past tense form of 'buy'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["mom catches the ball", "mom is catching the puppy", "mom caught the ball earlier"],
+          correct: "mom caught the ball earlier",
+          explanation: "'caught' is the past tense form of 'catch'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he chooses a book daily", "he chose a comic yesterday", "he is choosing a pen"],
+          correct: "he chose a comic yesterday",
+          explanation: "'chose' is the past tense form of 'choose'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they come home at five", "they came home late", "they are coming now"],
+          correct: "they came home late",
+          explanation: "'came' is the past tense form of 'come'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["i do my homework daily", "i am doing my homework", "i did my homework last night"],
+          correct: "i did my homework last night",
+          explanation: "'did' is the past tense form of 'do'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she draws animals well", "she drew a tiger yesterday", "she is drawing now"],
+          correct: "she drew a tiger yesterday",
+          explanation: "'drew' is the past tense form of 'draw'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["we drink juice every day", "we are drinking soda now", "we drank lemonade yesterday"],
+          correct: "we drank lemonade yesterday",
+          explanation: "'drank' is the past tense form of 'drink'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he falls asleep quickly", "he fell asleep on the sofa", "he is falling down"],
+          correct: "he fell asleep on the sofa",
+          explanation: "'fell' is the past tense form of 'fall'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they feed the cat daily", "they are feeding the birds", "they fed the dog earlier"],
+          correct: "they fed the dog earlier",
+          explanation: "'fed' is the past tense form of 'feed'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she feels happy today", "she felt sick yesterday", "she is feeling cold now"],
+          correct: "she felt sick yesterday",
+          explanation: "'felt' is the past tense form of 'feel'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["I fight with my brother", "I fought with my brother yesterday", "I am fighting now"],
+          correct: "I fought with my brother yesterday",
+          explanation: "'fought' is the past tense form of 'fight'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["we find coins sometimes", "we are finding shells now", "we found money on the road"],
+          correct: "we found money on the road",
+          explanation: "'found' is the past tense form of 'find'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he flies to Paris often", "he flew to Dubai last week", "he is flying now"],
+          correct: "he flew to Dubai last week",
+          explanation: "'flew' is the past tense form of 'fly'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they forget names easily", "they forgot the keys yesterday", "they are forgetting the rules"],
+          correct: "they forgot the keys yesterday",
+          explanation: "'forgot' is the past tense form of 'forget'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she gets up early", "she got up late yesterday", "she is getting ready now"],
+          correct: "she got up late yesterday",
+          explanation: "'got' is the past tense form of 'get'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["I give gifts on birthdays", "I am giving him a pen", "I gave her flowers yesterday"],
+          correct: "I gave her flowers yesterday",
+          explanation: "'gave' is the past tense form of 'give'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["we grow tomatoes yearly", "we grew carrots last summer", "we are growing plants now"],
+          correct: "we grew carrots last summer",
+          explanation: "'grew' is the past tense form of 'grow'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he hides behind the chair", "he hid behind the chair yesterday", "he is hiding behind the chair"],
+          correct: "he hid behind the chair yesterday",
+          explanation: "'hid' is the past tense form of 'hide'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they keep their toys tidy", "they kept their toys clean yesterday", "they keep their toys clean"],
+          correct: "they kept their toys clean yesterday",
+          explanation: "'kept' is the past tense form of 'keep'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she knows the answer", "she knows french", "she knew the answer"],
+          correct: "she knew the answer",
+          explanation: "'knew' is the past tense form of 'know'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["we leave the house at eight", "we are leaving the house", "we left the house early yesterday"],
+          correct: "we left the house early yesterday",
+          explanation: "'left' is the past tense form of 'leave'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he loses his keys often", "he lost his keys yesterday", "he is losing his keys now"],
+          correct: "he lost his keys yesterday",
+          explanation: "'lost' is the past tense form of 'lose'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["mom makes cookies every friday", "mom makes cookies", "mom made cookies yesterday"],
+          correct: "mom made cookies yesterday",
+          explanation: "'made' is the past tense form of 'make'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they meet at the park daily", "they met at the park yesterday", "they are meeting at the park now"],
+          correct: "they met at the park yesterday",
+          explanation: "'met' is the past tense form of 'meet'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she paid the bills yesterday", "she is paying the bills", "she is doing the bills now"],
+          correct: "she paid the bills yesterday",
+          explanation: "'paid' is the past tense form of 'pay'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he puts the books away", "he put the books away yesterday", "he is putting the books away"],
+          correct: "he put the books away yesterday",
+          explanation: "'put' is the past tense form of 'put'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they read every night", "they read a story yesterday", "they are reading a story now"],
+          correct: "they read a story yesterday",
+          explanation: "'read' (pronounced red) here indicates past context due to 'yesterday'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she rode her bike yesterday", "she rides her bike", "she is riding her bike now"],
+          correct: "she rode her bike yesterday",
+          explanation: "'rode' is the past tense form of 'ride'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["we ring the bell every morning", "we are ringing the bell", "we rang the bell yesterday"],
+          correct: "we rang the bell yesterday",
+          explanation: "'rang' is the past tense form of 'ring'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he says hello politely", "he said hello yesterday", "he is saying hello now"],
+          correct: "he said hello yesterday",
+          explanation: "'said' is the past tense form of 'say'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they sell fruit every weekend", "they are selling fruit", "they sold fruit yesterday"],
+          correct: "they sold fruit yesterday",
+          explanation: "'sold' is the past tense form of 'sell'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she sends messages daily", "she sent a message", "she is sending a message now"],
+          correct: "she sent a message",
+          explanation: "'sent' is the past tense form of 'send'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he shakes the bottle before drinking", "he shook the bottle yesterday", "he is shaking the bottle now"],
+          correct: "he shook the bottle yesterday",
+          explanation: "'shook' is the past tense form of 'shake'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they shine their shoes weekly", "they shone their shoes", "they are shining their shoes now"],
+          correct: "they shone their shoes",
+          explanation: "'shone' is the past tense form of 'shine'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she shoots the ball well", "she shot the ball yesterday", "she is shooting the ball now"],
+          correct: "she shot the ball yesterday",
+          explanation: "'shot' is the past tense form of 'shoot'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he shut the window yesterday", "he shuts the window", "he is shutting the window now"],
+          correct: "he shut the window yesterday",
+          explanation: "'shut' is the past tense form of 'shut'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they sing loudly in class", "they are singing loudly", "they sang loudly"],
+          correct: "they sang loudly",
+          explanation: "'sang' is the past tense form of 'sing'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she sits near the door", "she sat near the door yesterday", "she is sitting near the door now"],
+          correct: "she sat near the door yesterday",
+          explanation: "'sat' is the past tense form of 'sit'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he speaks english well", "he spoke english yesterday", "he is speaking english now"],
+          correct: "he spoke english yesterday",
+          explanation: "'spoke' is the past tense form of 'speak'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["I blow bubbles", "I am blowing bubbles", "I blew bubbles yesterday"],
+          correct: "I blew bubbles yesterday",
+          explanation: "'blew' is the past tense form of 'blow'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she dug in the sand yesterday", "she digs in the sand", "she is digging in the sand"],
+          correct: "she dug in the sand yesterday",
+          explanation: "'dug' is the past tense form of 'dig'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they are drawing stars", "they drew stars yesterday", "they draw stars"],
+          correct: "they drew stars yesterday",
+          explanation: "'drew' is the past tense form of 'draw'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he drank water yesterday", "he is drinking water", "he drinks water"],
+          correct: "he drank water yesterday",
+          explanation: "'drank' is the past tense form of 'drink'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["we are driving to school", "we drive to school", "we drove to school"],
+          correct: "we drove to school",
+          explanation: "'drove' is the past tense form of 'drive'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she ate rice", "she is eating rice", "she eats rice"],
+          correct: "she ate rice",
+          explanation: "'ate' is the past tense form of 'eat'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they fall on the grass", "they are falling on the grass", "they fell on the grass"],
+          correct: "they fell on the grass",
+          explanation: "'fell' is the past tense form of 'fall'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he felt cold", "he feels cold", "he is feeling cold"],
+          correct: "he felt cold",
+          explanation: "'felt' is the past tense form of 'feel'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["I fought with my brother yesterday", "I am fighting with my brother", "I fight with my brother"],
+          correct: "I fought with my brother yesterday",
+          explanation: "'fought' is the past tense form of 'fight'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she finds a coin", "she found a coin yesterday", "she is finding a coin"],
+          correct: "she found a coin yesterday",
+          explanation: "'found' is the past tense form of 'find'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they are flying a kite", "they flew a kite yesterday", "they fly a kite"],
+          correct: "they flew a kite yesterday",
+          explanation: "'flew' is the past tense form of 'fly'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he forgot his telephone", "he forgets his telephone", "he is forgetting his telephone"],
+          correct: "he forgot his telephone",
+          explanation: "'forgot' is the past tense form of 'forget'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["we froze water yesterday", "we are freezing water", "we freeze water"],
+          correct: "we froze water yesterday",
+          explanation: "'froze' is the past tense form of 'freeze'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they spend money carefully", "they spent money", "they are spending money now"],
+          correct: "they spent money",
+          explanation: "'spent' is the past tense form of 'spend'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she stands near the tree", "she is standing near the tree", "she stood near the tree last week"],
+          correct: "she stood near the tree last week",
+          explanation: "'stood' is the past tense form of 'stand'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he is stealing cookies now", "he steals cookies", "he stole cookies last year"],
+          correct: "he stole cookies last year",
+          explanation: "'stole' is the past tense form of 'steal'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they stick papers on the wall", "they stuck papers on the wall yesterday", "they are sticking papers on the wall now"],
+          correct: "they stuck papers on the wall yesterday",
+          explanation: "'stuck' is the past tense form of 'stick'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she strikes the drum loudly", "she is striking the drum", "she struck the drum yesterday"],
+          correct: "she struck the drum yesterday",
+          explanation: "'struck' is the past tense form of 'strike'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he sweeps the floor daily", "he swept the floor last night", "he is sweeping the floor now"],
+          correct: "he swept the floor last night",
+          explanation: "'swept' is the past tense form of 'sweep'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they swim in the river every summer", "they are swimming in the river", "they swam in the river last week"],
+          correct: "they swam in the river last week",
+          explanation: "'swam' is the past tense form of 'swim'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she tears old papers often", "she is tiring the paper", "she tore the paper last night"],
+          correct: "she tore the paper last night",
+          explanation: "'tore' is the past tense form of 'tear'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he tells funny stories", "he told a funny story", "he is telling a story now"],
+          correct: "he told a funny story",
+          explanation: "'told' is the past tense form of 'tell'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they thought about school last night", "they think about school", "they are thinking about school now"],
+          correct: "they thought about school last night",
+          explanation: "'thought' is the past tense form of 'think'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she throws the ball far", "she is throwing the ball", "she threw the ball last Monday"],
+          correct: "she threw the ball last Monday",
+          explanation: "'threw' is the past tense form of 'throw'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he understands the lesson well", "he understood the lesson", "he is understanding the lesson now"],
+          correct: "he understood the lesson",
+          explanation: "'understood' is the past tense form of 'understand'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they woke up early yesterday", "they wake up early", "they are waking up now"],
+          correct: "they woke up early yesterday",
+          explanation: "'woke' is the past tense form of 'wake'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she wears a blue dress often", "she wore a blue dress last summer", "she is wearing a blue dress now"],
+          correct: "she wore a blue dress last summer",
+          explanation: "'wore' is the past tense form of 'wear'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he wins every game", "he won the game last season", "he is winning the game now"],
+          correct: "he won the game last season",
+          explanation: "'won' is the past tense form of 'win'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they wrote poems last year", "they write poems", "they are writing poems now"],
+          correct: "they wrote poems last year",
+          explanation: "'wrote' is the past tense form of 'write'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she leads the team carefully", "she led the team", "she is leading the team now"],
+          correct: "she led the team",
+          explanation: "'led' is the past tense form of 'lead'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he bites his sandwich slowly", "he is biting his sandwich slowly", "he bit his sandwich"],
+          correct: "he bit his sandwich",
+          explanation: "'bit' is the past tense form of 'bite'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["I choose a toy", "I chose a toy", "I am choosing a toy"],
+          correct: "I chose a toy",
+          explanation: "'chose' is the past tense form of 'choose'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she cut the paper", "she cuts the paper", "she is cutting the paper"],
+          correct: "she cut the paper",
+          explanation: "'cut' functions as the past tense form here."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they become friends", "they are becoming friends", "they became friends"],
+          correct: "they became friends",
+          explanation: "'became' is the past tense form of 'become'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he brings a ball", "he brought a ball", "he is bringing a ball"],
+          correct: "he brought a ball",
+          explanation: "'brought' is the past tense form of 'bring'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["I caught the fish", "I catch the fish", "I am catching the fish"],
+          correct: "I caught the fish",
+          explanation: "'caught' is the past tense form of 'catch'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they come home", "they are coming home", "they came home"],
+          correct: "they came home",
+          explanation: "'came' is the past tense form of 'come'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he did his work", "he does his work", "he is doing his work"],
+          correct: "he did his work",
+          explanation: "'did' is the past tense form of 'do'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she is drawing a star", "she drew a star", "she draws a star"],
+          correct: "she drew a star",
+          explanation: "'drew' is the past tense form of 'draw'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["we drank water", "we are drinking water", "we drink water"],
+          correct: "we drank water",
+          explanation: "'drank' is the past tense form of 'drink'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he fell down", "he falls down", "he is falling down"],
+          correct: "he fell down",
+          explanation: "'fell' is the past tense form of 'fall'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they are feeding the cat", "they fed the cat", "they feed the cat"],
+          correct: "they fed the cat",
+          explanation: "'fed' is the past tense form of 'feed'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she felt sick", "she feels sick", "she is feeling sick"],
+          correct: "she felt sick",
+          explanation: "'felt' is the past tense form of 'feel'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["I found my cat", "I am finding my cat", "I will find my cat"],
+          correct: "I found my cat",
+          explanation: "'found' is the past tense form of 'find'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["he flies a kite", "he flew a kite", "he is flying a kite"],
+          correct: "he flew a kite",
+          explanation: "'flew' is the past tense form of 'fly'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["they forgot the bike", "they will forget the bike", "they are forgetting the book"],
+          correct: "they forgot the bike",
+          explanation: "'forgot' is the past tense form of 'forget'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["she is getting a gift", "she gets a gift", "she got a gift"],
+          correct: "she got a gift",
+          explanation: "'got' is the past tense form of 'get'."
+        },
+        {
+          question: "Which sentence tells about the past?",
+          options: ["we are giving candy", "we gave candy", "we give candy"],
+          correct: "we gave candy",
+          explanation: "'gave' is the past tense form of 'give'."
+        }
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
