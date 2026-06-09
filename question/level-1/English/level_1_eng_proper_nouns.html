@@ -4,21 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Proper Nouns</title>
-    <!-- point to your question.css in the root css/ folder -->
     <link rel="stylesheet" href="../../../css/question.css" />
   </head>
   <body>
 
-    <!-- Sticky Header -->
     <div id="site-header-placeholder"></div>
 
-    <!-- Quiz Content -->
     <main class="quiz-container">
       <div class="question-section">
         <h3 id="question-text">Loading...</h3>
         <ul class="options" id="options-list">
-          <!-- Options dynamically generated -->
-        </ul>
+          </ul>
       </div>
       <div id="feedback" class="hidden"></div>
       <div id="explanation" class="hidden"></div>
@@ -30,136 +26,614 @@
       const questions = [
         {
           question: "Which of the following is a proper noun?",
-          options: ["city", "Washington"],
-          correct: "Washington",
-          explanation: "'Washington' is the name of a specific place, so it’s a proper noun."
+          options: ["Girl", "Sandy"],
+          correct: "Sandy",
+          explanation: "'Sandy' is a proper noun because it is the specific name of an individual person and begins with a capital letter."
         },
         {
           question: "Which of the following is a proper noun?",
-          options: ["Jeddah", "city"],
-          correct: "Jeddah",
-          explanation: "'Jeddah' is the name of a specific city, making it a proper noun."
+          options: ["Sam", "Boy"],
+          correct: "Sam",
+          explanation: "'Sam' names a specific individual, making it a proper noun."
         },
         {
           question: "Which of the following is a proper noun?",
-          options: ["The West Bank", "region"],
-          correct: "The West Bank",
-          explanation: "'The West Bank' names a specific region, so it’s a proper noun."
+          options: ["London", "City"],
+          correct: "London",
+          explanation: "'London' is the specific name of a capital city, which functions as a proper noun."
         },
         {
           question: "Which of the following is a proper noun?",
-          options: ["writer", "Charles Dickens"],
-          correct: "Charles Dickens",
-          explanation: "'Charles Dickens' refers to a specific person, making it a proper noun."
-        },
-        {
-          question: "Which of the following is a proper noun?",
-          options: ["Fido", "dog"],
-          correct: "Fido",
-          explanation: "'Fido' is a specific pet’s name, so it’s a proper noun."
-        },
-        {
-          question: "Which of the following is a proper noun?",
-          options: ["tech company", "Google"],
-          correct: "Google",
-          explanation: "'Google' is the name of a specific company, making it a proper noun."
-        },
-        {
-          question: "Which of the following is a proper noun?",
-          options: ["France", "state"],
-          correct: "France",
-          explanation: "'France' is the name of a specific country, so it’s a proper noun."
-        },
-        {
-          question: "Which of the following is a proper noun?",
-          options: ["country", "Italy"],
-          correct: "Italy",
-          explanation: "'Italy' names a specific country, making it a proper noun."
-        },
-        {
-          question: "Which of the following is a proper noun?",
-          options: ["India", "nation"],
-          correct: "India",
-          explanation: "'India' is a specific nation, so it’s a proper noun."
-        },
-        {
-          question: "Which of the following is a proper noun?",
-          options: ["river", "The Nile"],
-          correct: "The Nile",
-          explanation: "'The Nile' refers to a specific river, making it a proper noun."
-        },
-        {
-          question: "Which of the following is a proper noun?",
-          options: ["Harry Potter", "book"],
-          correct: "Harry Potter",
-          explanation: "'Harry Potter' is the title of a specific work, so it’s a proper noun."
-        },
-        {
-          question: "Which of the following is a proper noun?",
-          options: ["city", "New York"],
-          correct: "New York",
-          explanation: "'New York' names a specific city, making it a proper noun."
-        },
-        {
-          question: "Which of the following is a proper noun?",
-          options: ["Berlin", "capital"],
-          correct: "Berlin",
-          explanation: "'Berlin' is the name of a specific capital city, so it’s a proper noun."
-        },
-        {
-          question: "Which of the following is a proper noun?",
-          options: ["harbor", "Hamburg"],
-          correct: "Hamburg",
-          explanation: "'Hamburg' names a specific port city, making it a proper noun."
-        },
-        {
-          question: "Which of the following is a proper noun?",
-          options: ["Paris", "metro"],
+          options: ["City", "Paris"],
           correct: "Paris",
-          explanation: "'Paris' is the name of a specific city, so it’s a proper noun."
+          explanation: "'Paris' is the specific name of a unique city, making it a proper noun."
         },
         {
           question: "Which of the following is a proper noun?",
-          options: ["village", "Rome"],
-          correct: "Rome",
-          explanation: "'Rome' refers to a specific capital, making it a proper noun."
+          options: ["Max", "Dog"],
+          correct: "Max",
+          explanation: "'Max' is a proper noun because it is the specific given name of a pet."
         },
         {
           question: "Which of the following is a proper noun?",
-          options: ["White House", "palace"],
-          correct: "White House",
-          explanation: "'White House' is the name of a specific building, so it’s a proper noun."
+          options: ["River", "Nile River"],
+          correct: "Nile River",
+          explanation: "'Nile River' is a proper noun as it refers to a specific, unique river geographic feature."
         },
         {
           question: "Which of the following is a proper noun?",
-          options: ["country", "United States"],
-          correct: "United States",
-          explanation: "'United States' refers to a specific nation, so it’s a proper noun."
-        },
-        {
-          question: "Which of the following is a proper noun?",
-          options: ["Harvard University", "school"],
-          correct: "Harvard University",
-          explanation: "'Harvard University' is the name of a specific institution, making it a proper noun."
-        },
-        {
-          question: "Which of the following is a proper noun?",
-          options: ["mountain", "Mount Everest"],
+          options: ["Mount Everest", "Mountain"],
           correct: "Mount Everest",
-          explanation: "'Mount Everest' is the name of a specific mountain, so it’s a proper noun."
+          explanation: "'Mount Everest' is the distinct name of a specific mountain, making it a proper noun."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Toyota", "Car Company"],
+          correct: "Toyota",
+          explanation: "'Toyota' is the specific name of a brand and manufacturer, classifying it as a proper noun."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Tech Company", "Microsoft"],
+          correct: "Microsoft",
+          explanation: "'Microsoft' is the specific proprietary name of a technology company."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Christmas", "Holiday"],
+          correct: "Christmas",
+          explanation: "'Christmas' is a proper noun because it marks a specific calendar holiday."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Day of the Week", "Monday"],
+          correct: "Monday",
+          explanation: "Specific names of days of the week, like 'Monday', are proper nouns and must be capitalized."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["October", "Month"],
+          correct: "October",
+          explanation: "Specific names of months, like 'October', are proper nouns."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Doctor", "Dr. Smith"],
+          correct: "Dr. Smith",
+          explanation: "'Dr. Smith' is a proper noun phrase because it specifies a precise person with their formal title."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Professor Jones", "Professor"],
+          correct: "Professor Jones",
+          explanation: "'Professor Jones' addresses a specific individual combining a professional title and surname."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Planet", "Earth"],
+          correct: "Earth",
+          explanation: "'Earth' is a proper noun because it is the specific scientific name of our planet."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Jupiter", "Planet"],
+          correct: "Jupiter",
+          explanation: "'Jupiter' refers explicitly to a specific unique planet, making it a proper noun."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Monument", "Eiffel Tower"],
+          correct: "Eiffel Tower",
+          explanation: "'Eiffel Tower' is the specific identity of a famous historical landmark monument."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Statue of Liberty", "Statue"],
+          correct: "Statue of Liberty",
+          explanation: "'Statue of Liberty' names a specific, unique monument sculpture structure."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Man", "John"],
+          correct: "John",
+          explanation: "'John' is a proper noun because it designates a specific person's given name."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Mary", "Woman"],
+          correct: "Mary",
+          explanation: "'Mary' is the specific given name of an individual, making it a proper noun."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Continent", "Asia"],
+          correct: "Asia",
+          explanation: "Names of specific geographical landmasses or continents like 'Asia' are proper nouns."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Africa", "Continent"],
+          correct: "Africa",
+          explanation: "'Africa' is the specific name of a continent, making it a proper noun."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Ocean", "Pacific Ocean"],
+          correct: "Pacific Ocean",
+          explanation: "'Pacific Ocean' is the specific name given to a major salt water body entity."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Amazon Rainforest", "Rainforest"],
+          correct: "Amazon Rainforest",
+          explanation: "'Amazon Rainforest' identifies a specific unique geographical jungle basin ecosystem."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Brand", "Nike"],
+          correct: "Nike",
+          explanation: "'Nike' is a proprietary trade name of a specific corporation, qualifying as a proper noun."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Apple", "Company"],
+          correct: "Apple",
+          explanation: "When referencing the specific technology firm, 'Apple' functions as a corporate proper noun."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Language", "English"],
+          correct: "English",
+          explanation: "Specific languages like 'English' are proper nouns and always require a capital letter."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Spanish", "Language"],
+          correct: "Spanish",
+          explanation: "'Spanish' is the specific proper noun identifier for a particular language."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Titanic", "Ship"],
+          correct: "Titanic",
+          explanation: "'Titanic' is a proper noun because it is the unique given name of a specific ocean liner."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Boeing 747", "Airplane"],
+          correct: "Boeing 747",
+          explanation: "'Boeing 747' specifies a distinct commercial aircraft manufacturing series model name."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Street", "Main Street"],
+          correct: "Main Street",
+          explanation: "'Main Street' is a proper noun phrase because it defines a specific public avenue."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Broadway", "Street"],
+          correct: "Broadway",
+          explanation: "'Broadway' is a proper noun designating a famous individual thoroughfare street."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Queen Elizabeth", "Queen"],
+          correct: "Queen Elizabeth",
+          explanation: "'Queen Elizabeth' targets a specific historical sovereign monarch individual."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["President", "President Lincoln"],
+          correct: "President Lincoln",
+          explanation: "'President Lincoln' groups a formal head of state title directly with an individual surname."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Harvard University", "University"],
+          correct: "Harvard University",
+          explanation: "'Harvard University' is a specific institutional corporate identity name, making it a proper noun."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Lincoln High School", "High School"],
+          correct: "Lincoln High School",
+          explanation: "'Lincoln High School' is the proprietary assigned name of a specific educational building asset."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Desert", "Sahara Desert"],
+          correct: "Sahara Desert",
+          explanation: "'Sahara Desert' refers to a specific geographic desert region expanse."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Grand Canyon", "Canyon"],
+          correct: "Grand Canyon",
+          explanation: "'Grand Canyon' is the assigned geographical proper name for a unique natural river gorge landmark."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Electronics Company", "Sony"],
+          correct: "Sony",
+          explanation: "'Sony' is the assigned unique trademark corporate business title of an enterprise."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Nintendo", "Video Game Company"],
+          correct: "Nintendo",
+          explanation: "'Nintendo' is a proper noun referencing a specific gaming entertainment firm."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Thanksgiving", "Holiday"],
+          correct: "Thanksgiving",
+          explanation: "'Thanksgiving' is a specific legal and cultural holiday name."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Halloween", "Holiday"],
+          correct: "Halloween",
+          explanation: "'Halloween' is the proper noun assigned to a specific autumn calendar holiday."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Day", "Friday"],
+          correct: "Friday",
+          explanation: "'Friday' is a proper noun because it tracks an explicit specific day unit of the weekly cycle."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Sunday", "Day"],
+          correct: "Sunday",
+          explanation: "'Sunday' represents the unique proper noun title tracking a specific weekend day."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Month", "January"],
+          correct: "January",
+          explanation: "'January' explicitly names the first month block of the yearly calendar tracking cycle."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["August", "Month"],
+          correct: "August",
+          explanation: "'August' is a proper noun specifying a unique month segment."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Doctor", "Dr. Jones"],
+          correct: "Dr. Jones",
+          explanation: "'Dr. Jones' addresses a distinct human medical practitioner via their formal title and family surname."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Officer Smith", "Officer"],
+          correct: "Officer Smith",
+          explanation: "'Officer Smith' functions as a proper noun structure specifying an individual law enforcement authority member."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Planet", "Mars"],
+          correct: "Mars",
+          explanation: "'Mars' is the exact proper noun classification name tracking an explicit planet entity."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Saturn", "Planet"],
+          correct: "Saturn",
+          explanation: "'Saturn' specifies a unique planetary orb body within astronomy."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Ancient Monument", "Colosseum"],
+          correct: "Colosseum",
+          explanation: "'Colosseum' is the localized custom name tracking an explicit architectural amphitheater monument landmark."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Great Wall", "Wall"],
+          correct: "Great Wall",
+          explanation: "'Great Wall' is a multi-word proper noun grouping specifying a unique historical architecture monument line."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Man", "David"],
+          correct: "David",
+          explanation: "'David' represents a unique personal human given identification name."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Sarah", "Woman"],
+          correct: "Sarah",
+          explanation: "'Sarah' is a custom proper noun designation applied to identify an individual woman."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Continent", "Europe"],
+          correct: "Europe",
+          explanation: "'Europe' is the standardized geographical name for a specific continental landmass."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Australia", "Country"],
+          correct: "Australia",
+          explanation: "'Australia' tracks an explicit unique sovereign country land territory, acting as a proper noun."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Ocean", "Atlantic Ocean"],
+          correct: "Atlantic Ocean",
+          explanation: "'Atlantic Ocean' is a geographical proper noun tracking a distinct marine body region."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Indian Ocean", "Ocean"],
+          correct: "Indian Ocean",
+          explanation: "'Indian Ocean' is the targeted proper name assigned to map out a precise maritime territory."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Sportswear Company", "Adidas"],
+          correct: "Adidas",
+          explanation: "'Adidas' is a proper noun describing a distinct commercial brand and corporate apparel organization."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Google", "Search Engine"],
+          correct: "Google",
+          explanation: "'Google' names a specific technology enterprise firm and web tool, serving as a proper noun."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Language", "French"],
+          correct: "French",
+          explanation: "'French' maps out a precise cultural ethnic speech language entity, classifying it as a proper noun."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["German", "Language"],
+          correct: "German",
+          explanation: "'German' functions as a proper noun tracking a specific dialect system identity."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Mayflower", "Historic Ship"],
+          correct: "Mayflower",
+          explanation: "'Mayflower' is a proper noun because it designates a unique, specific historic sailing vessel."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Concorde", "Jet"],
+          correct: "Concorde",
+          explanation: "'Concorde' provides the unique proprietary tracking label for a special aviation jet class group."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Street", "Fifth Avenue"],
+          correct: "Fifth Avenue",
+          explanation: "'Fifth Avenue' is a proper noun phrase locating a specific mapped urban public street lane."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Sunset Boulevard", "Boulevard"],
+          correct: "Sunset Boulevard",
+          explanation: "'Sunset Boulevard' maps a specific, uniquely titled avenue roadway."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["King Arthur", "King"],
+          correct: "King Arthur",
+          explanation: "'King Arthur' is a proper noun phrase pointing out a legendary historic royalty individual character."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Governor", "Governor Green"],
+          correct: "Governor Green",
+          explanation: "'Governor Green' addresses a specific state leader individual combining their office title and surname."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Stanford University", "University"],
+          correct: "Stanford University",
+          explanation: "'Stanford University' defines a specific institutional academic research corporation center."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Washington Elementary School", "School"],
+          correct: "Washington Elementary School",
+          explanation: "'Washington Elementary School' functions as a distinct institutional proper name block for a campus site."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Gobi Desert", "Desert"],
+          correct: "Gobi Desert",
+          explanation: "'Gobi Desert' maps a specific named arid terrain zone within physical geography."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Niagara Falls", "Waterfall"],
+          correct: "Niagara Falls",
+          explanation: "'Niagara Falls' targets a highly precise, globally named natural river waterfall landmark cascade."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Samsung", "Company"],
+          correct: "Samsung",
+          explanation: "'Samsung' is the proprietary structural trade name of an industrial corporate group enterprise."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Intel", "Corporation"],
+          correct: "Intel",
+          explanation: "'Intel' serves as a distinct proprietary business corporate enterprise designation name."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Easter", "Holiday"],
+          correct: "Easter",
+          explanation: "'Easter' is a proper noun indicating a precise theological holiday festive event."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["New Year's Day", "Holiday"],
+          correct: "New Year's Day",
+          explanation: "'New Year's Day' maps a specific annual holiday event block marking calendar transitions."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Tuesday", "Day"],
+          correct: "Tuesday",
+          explanation: "'Tuesday' is a proper noun tracking a precise distinct indexical weekday slot."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Thursday", "Day"],
+          correct: "Thursday",
+          explanation: "'Thursday' names a specific distinct indexical day of the standard weekly sequence."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Month", "February"],
+          correct: "February",
+          explanation: "'February' tracks the designated short month of the year calendar tracking system."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["September", "Month"],
+          correct: "September",
+          explanation: "'September' identifies a specific, individual month block, acting as a proper noun."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Nurse Kelly", "Nurse"],
+          correct: "Nurse Kelly",
+          explanation: "'Nurse Kelly' specifies an individual human clinical staff worker using an explicit title and surname combo."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Coach Evans", "Coach"],
+          correct: "Coach Evans",
+          explanation: "'Coach Evans' links a functional operational role title with a specific individual family name."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Neptune", "Planet"],
+          correct: "Neptune",
+          explanation: "'Neptune' serves as the distinct proper name designating a specific gas giant planet world."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Mercury", "Planet"],
+          correct: "Mercury",
+          explanation: "'Mercury' is the standardized astronomical label for a specific internal planet element near the sun."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Parthenon", "Temple"],
+          correct: "Parthenon",
+          explanation: "'Parthenon' isolates a specific structural historical ruin temple site asset landmark."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Taj Mahal", "Mausoleum"],
+          correct: "Taj Mahal",
+          explanation: "'Taj Mahal' isolates a uniquely named structural historical tomb monument architecture building."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Robert", "Engineer"],
+          correct: "Robert",
+          explanation: "'Robert' is a proper noun identifying an explicit personal given identity name."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Artist", "Jessica"],
+          correct: "Jessica",
+          explanation: "'Jessica' is the customized personalized human given name classification block."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Antarctica", "Continent"],
+          correct: "Antarctica",
+          explanation: "'Antarctica' targets the distinct designated southern icy polar landmass continent region."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["South America", "Continent"],
+          correct: "South America",
+          explanation: "'South America' marks a specific unique multi-country geographic continent expanse name."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Arctic Ocean", "Ocean"],
+          correct: "Arctic Ocean",
+          explanation: "'Arctic Ocean' addresses a specific distinct geographic marine ocean system."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Mediterranean Sea", "Sea"],
+          correct: "Mediterranean Sea",
+          explanation: "'Mediterranean Sea' outlines a specific named geographic inner maritime basin sea."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Puma", "Brand"],
+          correct: "Puma",
+          explanation: "'Puma' coordinates as the distinct proper trademark corporate title of a firm."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Amazon", "Conglomerate"],
+          correct: "Amazon",
+          explanation: "In business context alignments, 'Amazon' works as a corporate proper noun targeting a logistics firm."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Japanese", "Nationality"],
+          correct: "Japanese",
+          explanation: "'Japanese' addresses a specific distinct national sovereign group or culture identity classification, functioning as a proper noun."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Italian", "Culture"],
+          correct: "Italian",
+          explanation: "'Italian' specifies a unique regional ethnic linguistic classification structure proper identifier."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Santa Maria", "Vessel"],
+          correct: "Santa Maria",
+          explanation: "'Santa Maria' isolates an explicitly named maritime ship asset vessel."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Spirit of St. Louis", "Airplane"],
+          correct: "Spirit of St. Louis",
+          explanation: "'Spirit of St. Louis' tracks the precise assigned historical name group of a unique aircraft."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Abbey Road", "Street"],
+          correct: "Abbey Road",
+          explanation: "'Abbey Road' constitutes the precise distinctive urban highway location identifier name."
+        },
+        {
+          question: "Which of the following is a proper noun?",
+          options: ["Wall Street", "Financial Hub"],
+          correct: "Wall Street",
+          explanation: "'Wall Street' targets a distinct named urban street district functioning as a global fiscal market hub."
         }
       ];
     </script>
 
-    <!-- Professional Footer -->
     <div id="site-footer-placeholder"></div>
-    <!-- point to your main quiz logic -->
     <script src="../../../js/script.js"></script>
     <script src="../../../js/partials.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => {
-    initMCQQuiz(questions);
-  });
+        initMCQQuiz(questions);
+      });
     </script>
   </body>
 </html>
