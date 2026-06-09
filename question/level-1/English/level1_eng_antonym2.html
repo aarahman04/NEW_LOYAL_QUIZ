@@ -1,1 +1,626 @@
-z
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Antonyms 2</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {
+          question: "Which word is an antonym for big?",
+          options: ["huge", "tiny", "giant"],
+          correct: "tiny",
+          explanation: "'tiny' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for happy?",
+          options: ["glad", "joyful", "sad"],
+          correct: "sad",
+          explanation: "'sad' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for fast?",
+          options: ["quick", "slow", "rapid"],
+          correct: "slow",
+          explanation: "'slow' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for hot?",
+          options: ["warm", "cold", "sunny"],
+          correct: "cold",
+          explanation: "'cold' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for up?",
+          options: ["above", "over", "down"],
+          correct: "down",
+          explanation: "'down' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for clean?",
+          options: ["tidy", "dirty", "neat"],
+          correct: "dirty",
+          explanation: "'dirty' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for day?",
+          options: ["noon", "morning", "night"],
+          correct: "night",
+          explanation: "'night' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for open?",
+          options: ["close", "unlock", "begin"],
+          correct: "close",
+          explanation: "'close' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for soft?",
+          options: ["fluffy", "smooth", "hard"],
+          correct: "hard",
+          explanation: "'hard' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for wet?",
+          options: ["soaked", "dry", "damp"],
+          correct: "dry",
+          explanation: "'dry' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for old?",
+          options: ["ancient", "young", "aged"],
+          correct: "young",
+          explanation: "'young' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for full?",
+          options: ["packed", "filled", "empty"],
+          correct: "empty",
+          explanation: "'empty' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for good?",
+          options: ["kind", "nice", "bad"],
+          correct: "bad",
+          explanation: "'bad' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for laugh?",
+          options: ["smile", "cry", "grin"],
+          correct: "cry",
+          explanation: "'cry' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for light?",
+          options: ["bright", "dark", "shiny"],
+          correct: "dark",
+          explanation: "'dark' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for short?",
+          options: ["little", "long", "tiny"],
+          correct: "long",
+          explanation: "'long' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for strong?",
+          options: ["weak", "tough", "brave"],
+          correct: "weak",
+          explanation: "'weak' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for early?",
+          options: ["late", "soon", "quick"],
+          correct: "late",
+          explanation: "'late' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for rich?",
+          options: ["wealthy", "poor", "fancy"],
+          correct: "poor",
+          explanation: "'poor' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for inside?",
+          options: ["indoors", "within", "outside"],
+          correct: "outside",
+          explanation: "'outside' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for true?",
+          options: ["correct", "false", "right"],
+          correct: "false",
+          explanation: "'false' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for sit?",
+          options: ["stand", "rest", "lean"],
+          correct: "stand",
+          explanation: "'stand' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for begin?",
+          options: ["open", "end", "start"],
+          correct: "end",
+          explanation: "'end' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for high?",
+          options: ["tall", "low", "huge"],
+          correct: "low",
+          explanation: "'low' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for safe?",
+          options: ["dangerous", "careful", "secure"],
+          correct: "dangerous",
+          explanation: "'dangerous' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for near?",
+          options: ["beside", "close", "far"],
+          correct: "far",
+          explanation: "'far' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for friend?",
+          options: ["buddy", "enemy", "pal"],
+          correct: "enemy",
+          explanation: "'enemy' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for thin?",
+          options: ["skinny", "thick", "slim"],
+          correct: "thick",
+          explanation: "'thick' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for empty?",
+          options: ["full", "blank", "hollow"],
+          correct: "full",
+          explanation: "'full' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for cold?",
+          options: ["freezing", "cool", "hot"],
+          correct: "hot",
+          explanation: "'hot' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for push?",
+          options: ["shove", "pull", "move"],
+          correct: "pull",
+          explanation: "'pull' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for happy?",
+          options: ["cheerful", "excited", "upset"],
+          correct: "upset",
+          explanation: "'upset' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for small?",
+          options: ["little", "tiny", "large"],
+          correct: "large",
+          explanation: "'large' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for laugh?",
+          options: ["giggle", "sob", "smile"],
+          correct: "sob",
+          explanation: "'sob' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for young?",
+          options: ["new", "fresh", "old"],
+          correct: "old",
+          explanation: "'old' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for top?",
+          options: ["upper", "bottom", "peak"],
+          correct: "bottom",
+          explanation: "'bottom' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for slow?",
+          options: ["lazy", "fast", "tired"],
+          correct: "fast",
+          explanation: "'fast' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for beautiful?",
+          options: ["pretty", "lovely", "ugly"],
+          correct: "ugly",
+          explanation: "'ugly' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for heavy?",
+          options: ["light", "thick", "huge"],
+          correct: "light",
+          explanation: "'light' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for right?",
+          options: ["correct", "wrong", "true"],
+          correct: "wrong",
+          explanation: "'wrong' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for hard?",
+          options: ["rough", "soft", "solid"],
+          correct: "soft",
+          explanation: "'soft' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for boy?",
+          options: ["child", "cat", "girl"],
+          correct: "girl",
+          explanation: "'girl' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for happy?",
+          options: ["sad", "Smile", "joyful"],
+          correct: "sad",
+          explanation: "'sad' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for give?",
+          options: ["take", "share"],
+          correct: "take",
+          explanation: "'take' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for left?",
+          options: ["west", "middle", "right"],
+          correct: "right",
+          explanation: "'right' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for biggest?",
+          options: ["tallest", "smallest", "widest"],
+          correct: "smallest",
+          explanation: "'smallest' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for bright?",
+          options: ["shiny", "glowing", "dull"],
+          correct: "dull",
+          explanation: "'dull' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for in?",
+          options: ["over", "out", "inside"],
+          correct: "out",
+          explanation: "'out' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for noisy?",
+          options: ["loud", "sorry", "silent"],
+          correct: "silent",
+          explanation: "'silent' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for win?",
+          options: ["lose", "gain", "score"],
+          correct: "lose",
+          explanation: "'lose' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for open?",
+          options: ["shut", "unblock"],
+          correct: "shut",
+          explanation: "'shut' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for strong?",
+          options: ["weak", "mighty", "solid"],
+          correct: "weak",
+          explanation: "'weak' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for sharp?",
+          options: ["pointy", "dull", "smooth"],
+          correct: "dull",
+          explanation: "'dull' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for sweet?",
+          options: ["sour", "sound", "tasty"],
+          correct: "sour",
+          explanation: "'sour' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for before?",
+          options: ["after", "earlier", "first"],
+          correct: "after",
+          explanation: "'after' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for thick?",
+          options: ["wide", "thin", "deep"],
+          correct: "thin",
+          explanation: "'thin' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for alive?",
+          options: ["living", "awake", "dead"],
+          correct: "dead",
+          explanation: "'dead' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for clean?",
+          options: ["neat", "fresh", "messy"],
+          correct: "messy",
+          explanation: "'messy' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for happy?",
+          options: ["sad", "excited", "cheerful"],
+          correct: "sad",
+          explanation: "'sad' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for tall?",
+          options: ["short", "huge", "giant"],
+          correct: "short",
+          explanation: "'short' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for start?",
+          options: ["begin", "stop", "open"],
+          correct: "stop",
+          explanation: "'stop' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for over?",
+          options: ["above", "under", "across"],
+          correct: "under",
+          explanation: "'under' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for kind?",
+          options: ["mean", "gentle", "caring"],
+          correct: "mean",
+          explanation: "'mean' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for first?",
+          options: ["next", "middle", "last"],
+          correct: "last",
+          explanation: "'last' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for dry?",
+          options: ["wet", "dusty", "rough"],
+          correct: "wet",
+          explanation: "'wet' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for same?",
+          options: ["alike", "equal", "different"],
+          correct: "different",
+          explanation: "'different' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for busy?",
+          options: ["active", "lazy", "working"],
+          correct: "lazy",
+          explanation: "'lazy' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for dark?",
+          options: ["black", "dim", "bright"],
+          correct: "bright",
+          explanation: "'bright' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for under?",
+          options: ["below", "over", "down"],
+          correct: "over",
+          explanation: "'over' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for laugh?",
+          options: ["smile", "dry", "sob"],
+          correct: "sob",
+          explanation: "'sob' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for better?",
+          options: ["worse", "best", "great"],
+          correct: "worse",
+          explanation: "'worse' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for front?",
+          options: ["side", "back", "middle"],
+          correct: "back",
+          explanation: "'back' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for cool?",
+          options: ["cold", "warm", "freezing"],
+          correct: "warm",
+          explanation: "'warm' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for pull?",
+          options: ["drag", "push", "lift"],
+          correct: "push",
+          explanation: "'push' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for big?",
+          options: ["giant", "large", "little"],
+          correct: "little",
+          explanation: "'little' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for upstairs?",
+          options: ["above", "downstairs", "top"],
+          correct: "downstairs",
+          explanation: "'downstairs' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for happy?",
+          options: ["sad", "excited", "smiling"],
+          correct: "sad",
+          explanation: "'sad' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for new?",
+          options: ["fresh", "old", "modern"],
+          correct: "old",
+          explanation: "'old' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for full?",
+          options: ["packed", "stuffed", "empty"],
+          correct: "empty",
+          explanation: "'empty' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for borrow?",
+          options: ["lend", "keep", "hold"],
+          correct: "lend",
+          explanation: "'lend' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for left?",
+          options: ["turn", "right", "west"],
+          correct: "right",
+          explanation: "'right' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for happy?",
+          options: ["joyful", "cheerful", "miserable"],
+          correct: "miserable",
+          explanation: "'miserable' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for stop?",
+          options: ["go", "say", "went"],
+          correct: "go",
+          explanation: "'go' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for sit?",
+          options: ["sitting", "went", "stand"],
+          correct: "stand",
+          explanation: "'stand' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for white?",
+          options: ["black", "pink", "purple"],
+          correct: "black",
+          explanation: "'black' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for hurt?",
+          options: ["big", "help", "car"],
+          correct: "help",
+          explanation: "'help' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for help?",
+          options: ["cat", "car", "hurt"],
+          correct: "hurt",
+          explanation: "'hurt' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for lost?",
+          options: ["found", "give", "look"],
+          correct: "found",
+          explanation: "'found' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for give?",
+          options: ["lost", "take", "looking"],
+          correct: "take",
+          explanation: "'take' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for take?",
+          options: ["lost", "make", "give"],
+          correct: "give",
+          explanation: "'give' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for this?",
+          options: ["lost", "that", "looking"],
+          correct: "that",
+          explanation: "'that' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for something?",
+          options: ["lost", "that", "nothing"],
+          correct: "nothing",
+          explanation: "'nothing' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for stay?",
+          options: ["back", "that", "go"],
+          correct: "go",
+          explanation: "'go' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for front?",
+          options: ["back", "that", "looking"],
+          correct: "back",
+          explanation: "'back' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for that?",
+          options: ["back", "what", "this"],
+          correct: "this",
+          explanation: "'this' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for this?",
+          options: ["back", "what", "that"],
+          correct: "that",
+          explanation: "'that' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for hello?",
+          options: ["pack", "goodbye", "his"],
+          correct: "goodbye",
+          explanation: "'goodbye' is an antonym for the target word in the question."
+        },
+        {
+          question: "Which word is an antonym for day?",
+          options: ["night", "goodbye", "was"],
+          correct: "night",
+          explanation: "'night' is an antonym for the target word in the question."
+        }
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
