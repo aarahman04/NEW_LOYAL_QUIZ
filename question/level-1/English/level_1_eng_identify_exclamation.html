@@ -27,121 +27,589 @@ const questions = [
     question: "Which of the following is an exclamation?",
     options: ["What a beautiful woman!", "How are you?"],
     correct: "What a beautiful woman!",
-    explanation: "It shows strong feeling and ends with an exclamation mark."
+    explanation: "It expresses strong feeling or admiration and ends with an exclamation point."
   },
   {
     question: "Which of the following is an exclamation?",
-    options: ["That song was really a hit!", "What is your name?"],
+    options: ["What is your name?", "That song was really a hit!"],
     correct: "That song was really a hit!",
-    explanation: "It expresses excitement."
+    explanation: "It expresses excitement or strong emphasis instead of asking a question."
   },
   {
     question: "Which of the following is an exclamation?",
-    options: ["Wow, I loved that color!", "The girl is beautiful."],
+    options: ["What is your mother's name?", "Wow, the ocean was calm!"],
+    correct: "Wow, the ocean was calm!",
+    explanation: "It starts with an interjection ('Wow') and expresses strong emotion or wonder."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What is your favorite book?", "Yummy, this was lovely ice cream!"],
+    correct: "Yummy, this was lovely ice cream!",
+    explanation: "It uses descriptive expressive language ('Yummy') to showcase strong appreciation."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["The girl is beautiful.", "Wow, I loved that color!"],
     correct: "Wow, I loved that color!",
-    explanation: "It shows strong admiration."
+    explanation: "It shows excitement and enthusiastic approval instead of a plain statement."
   },
   {
     question: "Which of the following is an exclamation?",
-    options: ["Sam helped me so much!", "What is your father’s name?"],
+    options: ["Sam helped me so much!", "What is your father's name?"],
     correct: "Sam helped me so much!",
-    explanation: "It expresses gratitude and excitement."
+    explanation: "It shows deep gratitude and emphasis, marked with an exclamation point."
   },
   {
     question: "Which of the following is an exclamation?",
-    options: ["Wow, it was a great idea!", "What is your opinion?"],
+    options: ["Tom got an A+ on his last exam.", "How are they doing?"],
+    correct: "Tom got an A+ on his last exam.",
+    explanation: "Note: While the PDF lacks a trailing mark here, this selection functions as an emphatic declaration of a major accomplishment."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What is your opinion?", "Wow, it was a great idea!"],
     correct: "Wow, it was a great idea!",
-    explanation: "It shows strong approval."
+    explanation: "It uses 'Wow' to signify enthusiastic praise or strong agreement."
   },
   {
     question: "Which of the following is an exclamation?",
-    options: ["Our dog had five puppies!", "Where is your school?"],
+    options: ["Where is your school?", "Our dog had five puppies!"],
     correct: "Our dog had five puppies!",
-    explanation: "It expresses surprise."
+    explanation: "It highlights surprise or excitement regarding an event."
   },
   {
     question: "Which of the following is an exclamation?",
-    options: ["Yikes, that’s a big spider!", "The road was closed."],
-    correct: "Yikes, that’s a big spider!",
-    explanation: "It shows fear and surprise."
+    options: ["The bank was full of people.", "Hooray, the weekend is here!"],
+    correct: "Hooray, the weekend is here!",
+    explanation: "It displays celebration using the expressive word 'Hooray'."
   },
   {
     question: "Which of the following is an exclamation?",
-    options: ["Oops, I dropped my phone!", "The cat was fluffy."],
+    options: ["The road was closed.", "Yikes, that's a big spider!"],
+    correct: "Yikes, that's a big spider!",
+    explanation: "It conveys a sudden feeling of shock, alarm, or fear."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Yikes, that's a big ant!", "What was the quiz about?"],
+    correct: "Yikes, that's a big ant!",
+    explanation: "It signals shock or disgust towards an insect encounter."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["The cat was fluffy.", "Oops, I dropped my phone!"],
     correct: "Oops, I dropped my phone!",
-    explanation: "It expresses sudden realization."
+    explanation: "It expresses an abrupt reaction to a sudden mishap or accident."
   },
   {
     question: "Which of the following is an exclamation?",
-    options: ["I can’t believe it, wow!", "Some people are just very scary."],
-    correct: "I can’t believe it, wow!",
-    explanation: "It shows disbelief and amazement."
+    options: ["What was your first impression?", "Oops, I dropped my cup!"],
+    correct: "Oops, I dropped my cup!",
+    explanation: "It notes a sudden accident with an immediate emotional reaction."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Do you like Ms Sandy?", "That was close, phew!"],
+    correct: "That was close, phew!",
+    explanation: "It includes 'phew' to convey a strong sense of relief after danger."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Some people are just very sensitive.", "That was a big problem, ugh!"],
+    correct: "That was a big problem, ugh!",
+    explanation: "It showcases a clear feeling of annoyance or frustration using 'ugh'."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Some people are just very scary.", "I can't believe it, wow!"],
+    correct: "I can't believe it, wow!",
+    explanation: "It communicates profound surprise or sudden shock."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["You scared me!", "Some people are scared of spiders."],
+    correct: "You scared me!",
+    explanation: "It records a sudden reaction to an unexpected fright."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Do you like swimming?", "It slipped out of my hand, ouch!"],
+    correct: "It slipped out of my hand, ouch!",
+    explanation: "It features an outcry of discomfort or sudden physical distress ('ouch')."
   },
   {
     question: "Which of the following is an exclamation?",
     options: ["That really hurt, ouch!", "I went to the market."],
     correct: "That really hurt, ouch!",
-    explanation: "It shows pain."
+    explanation: "It strongly captures physical pain with an exclamation point."
   },
   {
     question: "Which of the following is an exclamation?",
-    options: ["The cake is amazing!", "What are you typing?"],
+    options: ["We finally made it!", "The cat was not allowed in the house."],
+    correct: "We finally made it!",
+    explanation: "It voices relief, joy, or satisfaction over achieving a goal."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Was the dog allowed in the house?", "She solved it all by herself!"],
+    correct: "She solved it all by herself!",
+    explanation: "It shares a strong feeling of pride or amazement over an accomplishment."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What are you typing?", "The cake is amazing!"] ,
     correct: "The cake is amazing!",
-    explanation: "It shows delight."
+    explanation: "It highlights enthusiasm and delight regarding the food."
   },
   {
     question: "Which of the following is an exclamation?",
-    options: ["That’s fantastic news!", "Why are you crying?"],
-    correct: "That’s fantastic news!",
-    explanation: "It expresses happiness."
+    options: ["That's fantastic news!", "Why are you crying?"],
+    correct: "That's fantastic news!",
+    explanation: "It represents a celebratory reaction to an exciting update."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["That's great news!", "What time is it?"],
+    correct: "That's great news!",
+    explanation: "It reveals delight or strong happiness about favorable updates."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["He just vanished!", "The hen sat on the bench."],
+    correct: "He just vanished!",
+    explanation: "It signals shock or utter bewilderment regarding a sudden disappearance."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["The school bell rang.", "I passed the quiz!"],
+    correct: "I passed the quiz!",
+    explanation: "It marks personal success or happiness at finishing an evaluation."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["I am so happy for you!", "The school bell rang very loud."],
+    correct: "I am so happy for you!",
+    explanation: "It emphasizes an intense sentiment of empathy and validation for another person."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Is Sam your friend?", "Carful with that glass!"],
+    correct: "Carful with that glass!",
+    explanation: "It serves as an urgent, emphatic warning layout."
   },
   {
     question: "Which of the following is an exclamation?",
     options: ["Oh my goodness!", "The mouse ran away."],
     correct: "Oh my goodness!",
-    explanation: "It expresses surprise."
+    explanation: "It displays sudden awe, surprise, or minor concern."
   },
   {
     question: "Which of the following is an exclamation?",
-    options: ["Your dog bit my leg!", "Sandy walked down the hill."],
+    options: ["I love what I see!", "Did you see that tiger?"],
+    correct: "I love what I see!",
+    explanation: "It delivers strong passion and sensory excitement."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What was that on the table?", "My baby was crying all night!"],
+    correct: "My baby was crying all night!",
+    explanation: "It reveals deep exhaustion, stress, or high concern."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What are you saying?", "Your cat bit my finger!"],
+    correct: "Your cat bit my finger!",
+    explanation: "It notes distress, pain, and surprise over a sudden injury."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Sandy walked down the hill.", "Your dog bit my leg!"],
     correct: "Your dog bit my leg!",
-    explanation: "It expresses shock."
+    explanation: "It acts as a distressed, alarmed statement concerning a sudden strike."
   },
   {
     question: "Which of the following is an exclamation?",
-    options: ["Ouch, that hurt me!", "I live in Japan."],
+    options: ["What is he buying?", "Your cat bit your father's hand!"],
+    correct: "Your cat bit your father's hand!",
+    explanation: "It shows immediate alarm or intense shock over a painful event."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Are you lost?", "There is a big tiger over there!"],
+    correct: "There is a big tiger over there!",
+    explanation: "It indicates terror or vital alertness upon discovering a dangerous predator."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Dad leaves to work early.", "Sama guessed very fast!"],
+    correct: "Sama guessed very fast!",
+    explanation: "It carries enthusiasm or admiration over speed and mental quickness."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["This restaurant is great!", "He walks every single day."],
+    correct: "This restaurant is great!",
+    explanation: "It emphasizes exceptional praise for an establishment."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["She walks every single day.", "I don't want to go!"],
+    correct: "I don't want to go!",
+    explanation: "It tracks intense opposition, defiance, or personal protest."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What is she doing?", "Please leave me!"],
+    correct: "Please leave me!",
+    explanation: "It registers intense panic, emotional pleading, or distress."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["They studied yesterday.", "Sandy is going to win this time!"],
+    correct: "Sandy is going to win this time!",
+    explanation: "It represents highly passionate cheering, support, or firm confidence."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["My cat smells really bad!", "Where do bears live?"],
+    correct: "My cat smells really bad!",
+    explanation: "It states a strong sense of disgust or physical aversion."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["I live in Japan.", "Ouch, that hurt me!"],
     correct: "Ouch, that hurt me!",
-    explanation: "It shows pain."
+    explanation: "It delivers an explicit physical dynamic of discomfort or injury."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["I live in London.", "You scared me!"],
+    correct: "You scared me!",
+    explanation: "It logs an intense reaction to an unexpected surprise or fright."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Where is my passport?", "I am so happy to see you!"],
+    correct: "I am so happy to see you!",
+    explanation: "It delivers a joyful, enthusiastic reception for someone."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Sandy likes to work in her garden.", "I am so happy to hear from you!"],
+    correct: "I am so happy to hear from you!",
+    explanation: "It displays a passionate feeling of connection or warmth."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["The plan worked perfectly!", "The phone is in my purse."],
+    correct: "The plan worked perfectly!",
+    explanation: "It highlights excitement and total validation over an outcome."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["His plan really worked amazingly!", "Where is my wallet?"],
+    correct: "His plan really worked amazingly!",
+    explanation: "It outlines intense marvel and delight regarding a dynamic result."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Where is my money?", "The cat ate the flowers on the table!"],
+    correct: "The cat ate the flowers on the table!",
+    explanation: "It communicates frustration or direct shock at a pet's actions."
   },
   {
     question: "Which of the following is an exclamation?",
     options: ["You are kidding me!", "Where is the police department?"],
     correct: "You are kidding me!",
-    explanation: "It expresses disbelief."
+    explanation: "It registers absolute disbelief, astonishment, or surprise."
   },
   {
     question: "Which of the following is an exclamation?",
-    options: ["How beautiful!", "What is the name of his new baby?"],
+    options: ["What is the name of his new baby?", "How beautiful!"],
     correct: "How beautiful!",
-    explanation: "It expresses admiration."
+    explanation: "It acts as a concise phrase expressing intense delight or aesthetic admiration."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["The sun is yellow.", "Aha, I figured it out!"],
+    correct: "Aha, I figured it out!",
+    explanation: "It documents a sudden moment of clarity or discovery using 'Aha'."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["I have a red pen.", "Dear me!"],
+    correct: "Dear me!",
+    explanation: "An idiomatic exclamation signaling distress, shock, or surprise."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What a great color!", "I have a red car."],
+    correct: "What a great color!",
+    explanation: "It emphasizes high satisfaction or visual delight with an asset or color."
   },
   {
     question: "Which of the following is an exclamation?",
     options: ["Bang, it broke!", "I have a red card."],
     correct: "Bang, it broke!",
-    explanation: "It imitates a loud sound."
+    explanation: "It highlights surprise or an abrupt event using the descriptive word 'Bang'."
   },
   {
     question: "Which of the following is an exclamation?",
-    options: ["That is hilarious!", "Is the train coming?"],
+    options: ["I have one cat.", "I am glad it is over!"],
+    correct: "I am glad it is over!",
+    explanation: "It highlights a profound sense of relief regarding a difficult task ending."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["It is snowing again!", "I have two cats."],
+    correct: "It is snowing again!",
+    explanation: "It notes surprise or strong emotion concerning a weather development."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Do you have a bigger picture?", "How could I have forgotten!"],
+    correct: "How could I have forgotten!",
+    explanation: "It logs profound self-reproach, oversight, or absolute shock at a mistake."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["My bird is colorful.", "How authentic!"],
+    correct: "How authentic!",
+    explanation: "An assertive expression showing high praise or validation."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["I like Tennis.", "That was sudden!"],
+    correct: "That was sudden!",
+    explanation: "It details immediate shock or surprise regarding a quick occurrence."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["That is my seat!", "I like to fly kites."],
+    correct: "That is my seat!",
+    explanation: "It serves as an urgent, highly assertive claim over an item."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Is the train coming?", "That is hilarious!"],
     correct: "That is hilarious!",
-    explanation: "It expresses amusement."
+    explanation: "It records extreme amusement or deep laughter."
   },
   {
     question: "Which of the following is an exclamation?",
-    options: ["What a mess!", "He drinks coffee."],
+    options: ["Do you think he is my friend?", "This is so hilarious!"],
+    correct: "This is so hilarious!",
+    explanation: "It accentuates intense amusement and entertainment."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["We are in the restaurant.", "That my place!"],
+    correct: "That my place!",
+    explanation: "An abrupt, intense expression claiming a particular spot."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["It is raining.", "Oh, rats!"],
+    correct: "Oh, rats!",
+    explanation: "An expression conveying minor irritation, disappointment, or mild anger."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["I missed my plane!", "It is raining."],
+    correct: "I missed my plane!",
+    explanation: "It shows immediate panic, worry, or extreme frustration."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["The grass is green.", "We won the championship!"],
+    correct: "We won the championship!",
+    explanation: "It highlights vast victory, group pride, or pure ecstasy."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["I can't believe it!", "Are you happy?"],
+    correct: "I can't believe it!",
+    explanation: "It delivers sudden shock, amazement, or utter disbelief."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Are you sad?", "What a relief!"],
+    correct: "What a relief!",
+    explanation: "It underscores a powerful release from stress or tension."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["You are a genius!", "Are you sitting?"],
+    correct: "You are a genius!",
+    explanation: "It provides energetic praise or high esteem toward someone's actions."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Can you explain why you are late?", "How sweet of you!"],
+    correct: "How sweet of you!",
+    explanation: "It shows appreciation for a kind or considerate gesture."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["The flowers are pretty.", "That is unbelievable!"],
+    correct: "That is unbelievable!",
+    explanation: "It voices deep skepticism, amazement, or general wonder."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["You were amazing!", "The water is cold."],
+    correct: "You were amazing!",
+    explanation: "It carries passionate feedback or intense approval of a performance."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["He was so unbelievable!", "The baby is born."],
+    correct: "He was so unbelievable!",
+    explanation: "It spotlights deep emphasis, shock, or admiration of an individual."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["No way!", "She is teacher."],
+    correct: "No way!",
+    explanation: "An intense idiom expressing absolute surprise or active refusal."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["We have homework.", "What a pity!"],
+    correct: "What a pity!",
+    explanation: "It shares an immediate sense of sorrow, empathy, or mild disappointment."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["You are late again!", "The bag is heavy."],
+    correct: "You are late again!",
+    explanation: "It voices frustration, direct annoyance, or irritation."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Is the road long?", "I lost him!"],
+    correct: "I lost him!",
+    explanation: "It details sudden distress, fear, or a severe loss scenario."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Do you like the idea?", "We lost him!"],
+    correct: "We lost him!",
+    explanation: "It conveys shared grief, urgent distress, or anxiety."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Do you want to ask the teacher?", "Most welcome!"],
+    correct: "Most welcome!",
+    explanation: "An enthusiastic alternative phrasing used to show polite hospitality."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["He drinks coffee.", "What a mess!"],
     correct: "What a mess!",
-    explanation: "It expresses disapproval."
+    explanation: "It documents annoyance or sudden distress when seeing disorder."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Did you see the text?", "How dirty!"],
+    correct: "How dirty!",
+    explanation: "It highlights an emphatic reaction of physical or moral disgust."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["I see the rainbow.", "No!"],
+    correct: "No!",
+    explanation: "A vital, monosyllabic outcry signaling refusal, panic, or denial."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Oh my god!", "The moon is bright."],
+    correct: "Oh my god!",
+    explanation: "An everyday phrase capturing immediate awe, horror, or amazement."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Help!", "I wear a hat."],
+    correct: "Help!",
+    explanation: "An urgent, single-word emergency plea demanding instant intervention."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["I wear a mask on my face.", "How fast he reads!"],
+    correct: "How fast he reads!",
+    explanation: "It details active wonder or astonishment at someone's performance."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["How fast she writes!", "The shop is open."],
+    correct: "How fast she writes!",
+    explanation: "It reports great surprise regarding structural writing capabilities."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Wow!", "The shop is open."],
+    correct: "Wow!",
+    explanation: "An expressive interjection conveying sheer amazement or shock."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["The shop is closed.", "Explain!"],
+    correct: "Explain!",
+    explanation: "An imperative demand delivered with sudden emotional force."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["How are you?", "Oops!"],
+    correct: "Oops!",
+    explanation: "An interjection used to note a sudden clumsy error or minor slip."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["She has two sisters.", "Mercy!"],
+    correct: "Mercy!",
+    explanation: "An outcry used to show shock or plead for leniency."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Do you love me?", "I am freezing!"],
+    correct: "I am freezing!",
+    explanation: "It states an intense physical reaction to freezing environments."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["I am sad!", "Do you like cakes?"],
+    correct: "I am sad!",
+    explanation: "It communicates strong emotional vulnerability or distress."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["I am tired!", "Are you tired?"],
+    correct: "I am tired!",
+    explanation: "It voices profound exhaustion or drainage."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Did you buy shoes?", "Stop!"],
+    correct: "Stop!",
+    explanation: "An authoritative command meant to immediately halt an action."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["She bought new clothes.", "Oh no!"],
+    correct: "Oh no!",
+    explanation: "An interjection expressing dread, shock, or realization of bad news."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["He bought new shoes.", "Oh yes!"],
+    correct: "Oh yes!",
+    explanation: "An expression used to voice sudden agreement, satisfaction, or delight."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["The results were good.", "Bravo!"],
+    correct: "Bravo!",
+    explanation: "An celebratory exclamation used to praise an excellent performance."
   }
 ];
 </script>
@@ -151,8 +619,8 @@ const questions = [
     <script src="../../../js/partials.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => {
-    initMCQQuiz(questions);
-  });
+        initMCQQuiz(questions);
+      });
     </script>
   </body>
 </html>
