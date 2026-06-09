@@ -23,128 +23,601 @@
 
     <script>
       const questions = [
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Sandy bought two _______</span>",
-    options: ["Apple", "apples"],
-    correct: "apples",
-    explanation: "Chose plural form because the sentence contains number word 'two'. Correct: 'apples'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Sam wrote three _______</span>",
-    options: ["letter", "letters"],
-    correct: "letters",
-    explanation: "Chose plural form because the sentence contains number word 'three'. Correct: 'letters'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The teacher gave them five _______</span>",
-    options: ["points", "point"],
-    correct: "points",
-    explanation: "Chose plural form because the sentence contains number word 'five'. Correct: 'points'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is on the desk.</span>",
-    options: ["book", "books"],
-    correct: "book",
-    explanation: "Chose singular form because the sentence uses singular verb ('is'/'was'). Correct: 'book'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Those _______ are new.</span>",
-    options: ["cars", "car"],
-    correct: "cars",
-    explanation: "Chose plural form because the sentence uses plural verb ('are'/'were'). Correct: 'cars'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>My _______ is very kind.</span>",
-    options: ["friend", "friends"],
-    correct: "friend",
-    explanation: "Chose singular form because the sentence uses singular verb ('is'/'was'). Correct: 'friend'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ are active.</span>",
-    options: ["student", "students"],
-    correct: "students",
-    explanation: "Chose plural form because the sentence uses plural verb ('are'/'were'). Correct: 'students'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>There are five _______ in the room.</span>",
-    options: ["chair", "chairs"],
-    correct: "chairs",
-    explanation: "Chose plural form because the sentence uses plural verb ('are'/'were'). Correct: 'chairs'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is speaking.</span>",
-    options: ["teachers", "teacher"],
-    correct: "teacher",
-    explanation: "Chose singular form because the sentence uses singular verb ('is'/'was'). Correct: 'teacher'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is working hard.</span>",
-    options: ["man", "men"],
-    correct: "man",
-    explanation: "Chose singular form because the sentence uses singular verb ('is'/'was'). Correct: 'man'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>She has two beautiful _______</span>",
-    options: ["children", "child"],
-    correct: "children",
-    explanation: "Chose plural form because the sentence contains number word 'two'. Correct: 'children'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>There are many _______ over there.</span>",
-    options: ["person", "people"],
-    correct: "people",
-    explanation: "Chose plural form because the sentence uses plural verb ('are'/'were'). Correct: 'people'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ need their books.</span>",
-    options: ["students", "student"],
-    correct: "student",
-    explanation: "Chose singular form because the sentence no clear cue. Correct: 'student'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>My _______ grow in the garden.</span>",
-    options: ["flower", "flowers"],
-    correct: "flower",
-    explanation: "Chose singular form because the sentence no clear cue. Correct: 'flower'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>My _______ was the same.</span>",
-    options: ["answer", "answers"],
-    correct: "answer",
-    explanation: "Chose singular form because the sentence uses singular verb ('is'/'was'). Correct: 'answer'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>There are ten _______ over there.</span>",
-    options: ["rat", "rats"],
-    correct: "rats",
-    explanation: "Chose plural form because the sentence uses plural verb ('are'/'were'). Correct: 'rats'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>I ate one _______</span>",
-    options: ["doughnut", "doughnuts"],
-    correct: "doughnut",
-    explanation: "Chose singular form because the sentence contains number word 'one'. Correct: 'doughnut'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is speaking.</span>",
-    options: ["teachers", "teacher"],
-    correct: "teacher",
-    explanation: "Chose singular form because the sentence uses singular verb ('is'/'was'). Correct: 'teacher'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is talking.</span>",
-    options: ["policemen", "Policeman"],
-    correct: "Policeman",
-    explanation: "Chose singular form because the sentence uses singular verb ('is'/'was'). Correct: 'Policeman'."
-  },
-  {
-    question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>That _______ is very old.</span>",
-    options: ["house", "houses"],
-    correct: "house",
-    explanation: "Chose singular form because the sentence uses singular verb ('is'/'was'). Correct: 'house'."
-  }
-];
-
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Keep an eye on those _______</span>",
+          options: ["dog", "dogs"],
+          correct: "dogs",
+          explanation: "The demonstrative adjective 'those' requires a plural noun. Correct: 'dogs'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Sandy bought two _______</span>",
+          options: ["Apple", "apples"],
+          correct: "apples",
+          explanation: "The quantifier 'two' indicates more than one item, requiring the plural noun 'apples'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Sam wrote three _______</span>",
+          options: ["letter", "letters"],
+          correct: "letters",
+          explanation: "The quantifier 'three' requires the plural form 'letters'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The teacher gave them five _______</span>",
+          options: ["points", "point"],
+          correct: "points",
+          explanation: "The numerical modifier 'five' requires the plural form 'points'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is on the desk.</span>",
+          options: ["book", "books"],
+          correct: "book",
+          explanation: "The singular verb 'is' agrees with the singular subject 'book'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Those _______ are new.</span>",
+          options: ["cars", "car"],
+          correct: "cars",
+          explanation: "The plural demonstrative 'Those' and plural verb 'are' require the plural noun 'cars'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>My _______ is very kind.</span>",
+          options: ["friend", "friends"],
+          correct: "friend",
+          explanation: "The singular verb 'is' dictates that the subject must be singular: 'friend'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ are active.</span>",
+          options: ["student", "students"],
+          correct: "students",
+          explanation: "The plural linking verb 'are' matches the plural noun 'students'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>There are five _______ in the room.</span>",
+          options: ["chair", "chairs"],
+          correct: "chairs",
+          explanation: "The number context 'five' requires the plural 'chairs'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is speaking.</span>",
+          options: ["teachers", "teacher"],
+          correct: "teacher",
+          explanation: "The singular verb 'is' points to a singular subject: 'teacher'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is working hard.</span>",
+          options: ["man", "men"],
+          correct: "man",
+          explanation: "The singular verb 'is' dictates the use of the singular form 'man'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>She has two beautiful _______</span>",
+          options: ["children", "child"],
+          correct: "children",
+          explanation: "The number 'two' calls for the irregular plural form 'children'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>There are many _______ over there.</span>",
+          options: ["person", "people"],
+          correct: "people",
+          explanation: "'Many' indicates a large plural count, requiring the collective plural 'people'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ need their books.</span>",
+          options: ["students", "student"],
+          correct: "students",
+          explanation: "The base verb 'need' and the plural possessive pronoun 'their' require the plural noun 'students'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>My _______ grow in the garden.</span>",
+          options: ["flower", "flowers"],
+          correct: "flowers",
+          explanation: "The plural base verb 'grow' indicates that the subject is plural: 'flowers'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>My _______ was the same.</span>",
+          options: ["answer", "answers"],
+          correct: "answer",
+          explanation: "The singular past tense verb 'was' pairs with the singular 'answer'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>There are ten _______ over there.</span>",
+          options: ["rat", "rats"],
+          correct: "rats",
+          explanation: "The phrase 'There are ten' indicates a plural count, matching 'rats'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>I ate one _______</span>",
+          options: ["doughnut", "doughnuts"],
+          correct: "doughnut",
+          explanation: "The quantity modifier 'one' designates the singular form 'doughnut'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is speaking.</span>",
+          options: ["teachers", "teacher"],
+          correct: "teacher",
+          explanation: "The singular verb 'is' matches the singular noun option 'teacher'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is talking.</span>",
+          options: ["policemen", "Policeman"],
+          correct: "Policeman",
+          explanation: "The singular verb 'is' goes with the singular subject variant 'Policeman'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>That _______ is very old.</span>",
+          options: ["house", "houses"],
+          correct: "house",
+          explanation: "The singular demonstrative 'That' and verb 'is' define a singular 'house'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>That _______ is fast.</span>",
+          options: ["car", "cars"],
+          correct: "car",
+          explanation: "The phrase structural markers 'That... is' mandate the singular noun 'car'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Sam bought new _______</span>",
+          options: ["shoe", "shoes"],
+          correct: "shoes",
+          explanation: "Shoes are normally purchased together as a pair, making the plural 'shoes' the standard semantic choice."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Sam bought new _______</span>",
+          options: ["clothes", "cloth"],
+          correct: "clothes",
+          explanation: "'Clothes' is a plural noun used to represent garments to wear, fitting the standard usage."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Sandy ate _______</span>",
+          options: ["strawberries", "strawberry"],
+          correct: "strawberries",
+          explanation: "When consuming fruit generally without a singular article like 'a', the plural 'strawberries' is preferred."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>I see the five _______ on the ground.</span>",
+          options: ["ball", "balls"],
+          correct: "balls",
+          explanation: "The specific count of 'five' specifies the plural form 'balls'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>We kicked the _______</span>",
+          options: ["ball", "balls"],
+          correct: "ball",
+          explanation: "The baseline target of kicking an object during typical activity supports the singular 'ball'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ helps me.</span>",
+          options: ["teacher", "teachers"],
+          correct: "teacher",
+          explanation: "The third-person singular verb ending in '-s' ('helps') requires the singular subject 'teacher'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ are broken.</span>",
+          options: ["toy", "toys"],
+          correct: "toys",
+          explanation: "The plural auxiliary verb 'are' explicitly demands the plural 'toys'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is full.</span>",
+          options: ["box", "boxes"],
+          correct: "box",
+          explanation: "The singular verb 'is' signifies a singular subject value: 'box'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ are placed on the table.</span>",
+          options: ["boxes", "box"],
+          correct: "boxes",
+          explanation: "The plural verb 'are' signals agreement with the plural noun 'boxes'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>A _______ is running.</span>",
+          options: ["horses", "horse"],
+          correct: "horse",
+          explanation: "The indefinite singular article 'A' couples exclusively with singular nouns like 'horse'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>These _______ are very heavy.</span>",
+          options: ["table", "tables"],
+          correct: "tables",
+          explanation: "The plural components 'These' and 'are' mandate the structural use of 'tables'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is examining the patient.</span>",
+          options: ["doctor", "doctors"],
+          correct: "doctor",
+          explanation: "The singular progressive verb chain 'is examining' denotes a single person: 'doctor'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Several _______ are barking.</span>",
+          options: ["dog", "dogs"],
+          correct: "dogs",
+          explanation: "The word 'Several' refers to an indefinite group larger than one, choosing 'dogs'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>A _______ is on the table.</span>",
+          options: ["watch", "watches"],
+          correct: "watch",
+          explanation: "The modifier flag 'A' matches up cleanly with the singular noun 'watch'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ works in the field.</span>",
+          options: ["farmers", "farmer"],
+          correct: "farmer",
+          explanation: "The singular verb form 'works' (with third-person singular suffix '-s') points to 'farmer'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ are happy working.</span>",
+          options: ["farmer", "farmers"],
+          correct: "farmers",
+          explanation: "The verb 'are' signifies the multi-subject plural state 'farmers'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ were fighting.</span>",
+          options: ["sisters", "sister"],
+          correct: "sisters",
+          explanation: "The plural past tense verb 'were' requires the plural subject match 'sisters'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>A _______ is playing soccer.</span>",
+          options: ["boys", "boy"],
+          correct: "boy",
+          explanation: "The article prefix 'A' validates selecting the singular instance 'boy'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>A _______ is writing a story.</span>",
+          options: ["girl", "girls"],
+          correct: "girl",
+          explanation: "The singular combination 'A... is' strictly allows the singular noun 'girl'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is working.</span>",
+          options: ["computer", "computers"],
+          correct: "computer",
+          explanation: "The presence of 'is' demonstrates that a singular machine ('computer') is active."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ ate all the grass.</span>",
+          options: ["cows", "cow"],
+          correct: "cows",
+          explanation: "Since 'ate' is past tense and works for both, 'cows' fits the concept of clearing 'all' the grass collectively."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Those _______ came from that tall tree.</span>",
+          options: ["apple", "apples"],
+          correct: "apples",
+          explanation: "The pronoun pointer 'Those' acts as a modifier demanding the plural 'apples'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Sandy made five _______ at her birthday party.</span>",
+          options: ["wishes", "wish"],
+          correct: "wishes",
+          explanation: "The numerical value 'five' sets a plural condition requiring 'wishes'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Sam bought two _______</span>",
+          options: ["ring", "rings"],
+          correct: "rings",
+          explanation: "The number condition value 'two' dictates the selection of 'rings'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Please take this _______ to grandma.</span>",
+          options: ["glasses", "glass"],
+          correct: "glass",
+          explanation: "The singular demonstrative 'this' functions to select a singular entity, which is 'glass' (drinking container)."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Please note that one _______ is coming.</span>",
+          options: ["Person", "people"],
+          correct: "Person",
+          explanation: "The explicit numeral context 'one' commands the choice of the singular 'Person'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Please buy him one _______</span>",
+          options: ["balloons", "balloon"],
+          correct: "balloon",
+          explanation: "The targeted quantity constraint 'one' forces the singular term 'balloon'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>I have a dress with two _______</span>",
+          options: ["Pocket", "pockets"],
+          correct: "pockets",
+          explanation: "The description modifier 'two' mandates the plural structural match 'pockets'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>My mom loves to read me a _______ a day.</span>",
+          options: ["story", "stories"],
+          correct: "story",
+          explanation: "The singular indefinite article 'a' directly introduces the singular 'story'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ are usually sleeping at this time.</span>",
+          options: ["cat", "cats"],
+          correct: "cats",
+          explanation: "The use of the plural verb 'are' confirms a plural subject, making 'cats' correct."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Those _______ are green.</span>",
+          options: ["pen", "pens"],
+          correct: "pens",
+          explanation: "The matching parameters 'Those... are' validate the choice of the plural form 'pens'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ usually run fast.</span>",
+          options: ["tigers", "tiger"],
+          correct: "tigers",
+          explanation: "The base form verb 'run' (lacking an '-s' suffix) requires a plural subject: 'tigers'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is happy.</span>",
+          options: ["boys", "boy"],
+          correct: "boy",
+          explanation: "The singular state marker verb 'is' pairs accurately with the singular 'boy'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ were jumping and dancing.</span>",
+          options: ["girl", "girls"],
+          correct: "girls",
+          explanation: "The past continuous plural auxiliary 'were' selects the plural keyword 'girls'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>These _______ are mine.</span>",
+          options: ["book", "books"],
+          correct: "books",
+          explanation: "The layout terms 'These... are' signal a plural environment, pointing to 'books'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>These _______ are old.</span>",
+          options: ["shoes", "shoe"],
+          correct: "shoes",
+          explanation: "The plural demonstrative indicator context requires the plural designation 'shoes'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>These _______ are very green.</span>",
+          options: ["tree", "trees"],
+          correct: "trees",
+          explanation: "The structural descriptors 'These... are' direct focus onto a plural target item: 'trees'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>That _______ is new.</span>",
+          options: ["Phone", "phones"],
+          correct: "Phone",
+          explanation: "The singular determiner 'That' matches up with the singular entity 'Phone'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ are aligned.</span>",
+          options: ["star", "stars"],
+          correct: "stars",
+          explanation: "The plural verbal structure 'are aligned' establishes a dependency on the plural 'stars'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ are long.</span>",
+          options: ["rivers", "river"],
+          correct: "rivers",
+          explanation: "The layout link verb 'are' validates selection of the plural database option 'rivers'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ show time.</span>",
+          options: ["clock", "clocks"],
+          correct: "clocks",
+          explanation: "The base plural verb 'show' matches a plural noun construct: 'clocks'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ are empty.</span>",
+          options: ["road", "roads"],
+          correct: "roads",
+          explanation: "The descriptive phrase linking verb 'are' confirms the selection of 'roads'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ are open.</span>",
+          options: ["shops", "shop"],
+          correct: "shops",
+          explanation: "The predicate plural indicator 'are' tracks with the plural subject option 'shops'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is broken.</span>",
+          options: ["toys", "toy"],
+          correct: "toy",
+          explanation: "The singular passive condition 'is broken' corresponds to the singular 'toy'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ are dirty.</span>",
+          options: ["shoes", "shoe"],
+          correct: "shoes",
+          explanation: "The predicate status marker 'are' mandates matching with the plural 'shoes'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is small.</span>",
+          options: ["cup", "cups"],
+          correct: "cup",
+          explanation: "The linking singular identifier 'is' enforces picking the singular item 'cup'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is full of coffee.</span>",
+          options: ["mug", "mugs"],
+          correct: "mug",
+          explanation: "The auxiliary singular element 'is' defines a singular focal noun object: 'mug'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ are very clean.</span>",
+          options: ["vegetable", "vegetables"],
+          correct: "vegetables",
+          explanation: "The plural alignment link 'are' sets up the validation check for 'vegetables'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ are long.</span>",
+          options: ["train", "trains"],
+          correct: "trains",
+          explanation: "The tracking auxiliary verb 'are' demands selection of the plural 'trains'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ were extremely sweet.</span>",
+          options: ["cupcakes", "cupcake"],
+          correct: "cupcakes",
+          explanation: "The plural past indicator item 'were' targets the plural formulation 'cupcakes'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ is going home.</span>",
+          options: ["doctors", "doctor"],
+          correct: "doctor",
+          explanation: "The singular progressive phrase 'is going' confirms a single entity: 'doctor'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ were beautiful.</span>",
+          options: ["lamp", "lamps"],
+          correct: "lamps",
+          explanation: "The plural past verb form 'were' marks the subject group requirement as 'lamps'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ were long.</span>",
+          options: ["day", "days"],
+          correct: "days",
+          explanation: "The linking plural operator 'were' dictates selection of the plural noun 'days'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ were on the table.</span>",
+          options: ["keys", "key"],
+          correct: "keys",
+          explanation: "The location statement plural tracker 'were' flags the plural configuration 'keys'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ was in the bag.</span>",
+          options: ["booklets", "booklet"],
+          correct: "booklet",
+          explanation: "The singular status marker 'was' aligns with the singular item description 'booklet'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ was in the mud.</span>",
+          options: ["Pig", "pigs"],
+          correct: "Pig",
+          explanation: "The singular auxiliary parameter 'was' specifies the singular entity selection 'Pig'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>One _______ on the table.</span>",
+          options: ["pen", "Pens"],
+          correct: "pen",
+          explanation: "The singular counting baseline item value 'One' selects the singular target object 'pen'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Five _______ were in the bag.</span>",
+          options: ["pens", "Pen"],
+          correct: "pens",
+          explanation: "The plural context framework built by 'Five' and 'were' validates 'pens'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ were black.</span>",
+          options: ["shirt", "shirts"],
+          correct: "shirts",
+          explanation: "The plural property definition link 'were' specifies the choice of 'shirts'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ was black.</span>",
+          options: ["shirt", "shirts"],
+          correct: "shirt",
+          explanation: "The tracking singular modifier property field 'was' locks onto 'shirt'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ are soft.</span>",
+          options: ["bed", "beds"],
+          correct: "beds",
+          explanation: "The property condition layout verb 'are' validates picking the plural configuration 'beds'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ was red.</span>",
+          options: ["rose", "roses"],
+          correct: "rose",
+          explanation: "The linking singular identifier 'was' mandates pairing with the singular noun 'rose'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ were sold.</span>",
+          options: ["donkey", "donkeys"],
+          correct: "donkeys",
+          explanation: "The transaction marker plural tracking verb 'were' requires the plural identifier 'donkeys'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ shines.</span>",
+          options: ["moon", "moons"],
+          correct: "moon",
+          explanation: "The singular active verb form 'shines' correlates with the singular astronomical entity 'moon'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ blooms.</span>",
+          options: ["flower", "flowers"],
+          correct: "flower",
+          explanation: "The functional singular form suffix '-s' on the action 'blooms' marks the subject as singular: 'flower'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ sounds.</span>",
+          options: ["bell", "bells"],
+          correct: "bell",
+          explanation: "The indicator suffix configuration present on 'sounds' references a singular subject entity: 'bell'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ were very large.</span>",
+          options: ["bush", "bushes"],
+          correct: "bushes",
+          explanation: "The sizing past tense tracking element 'were' demands checking off the plural 'bushes'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>We take the _______ to the nearest station.</span>",
+          options: ["busses", "bus"],
+          correct: "bus",
+          explanation: "Taking transit to a destination typically involves a singular generic route vehicle vehicle ride: 'bus'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>I won that _______</span>",
+          options: ["prizes", "prize"],
+          correct: "prize",
+          explanation: "The singular determiner pointer token 'that' matches a singular target property object: 'prize'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Look at that beautiful _______</span>",
+          options: ["pony", "ponies"],
+          correct: "pony",
+          explanation: "The singular assignment framework 'that beautiful' references the singular subject entity 'pony'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>A _______ stopped by the station.</span>",
+          options: ["lorry", "lorries"],
+          correct: "lorry",
+          explanation: "The indefinite single token layout flag 'A' mandates picking the singular noun option 'lorry'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>She collected all the _______</span>",
+          options: ["sticker", "stickers"],
+          correct: "stickers",
+          explanation: "The exhaustive dynamic collective quantifier 'all the' requires a plural target form: 'stickers'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>The _______ were full of water.</span>",
+          options: ["bottle", "bottles"],
+          correct: "bottles",
+          explanation: "The plural parameter checking variable 'were' forces the assignment of the plural database entry 'bottles'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>Those _______ look amazing.</span>",
+          options: ["plants", "plant"],
+          correct: "plants",
+          explanation: "The plural pointing demonstrative 'Those' coordinates explicitly with the plural 'plants'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>We have _______ now.</span>",
+          options: ["dinner", "dinners"],
+          correct: "dinner",
+          explanation: "Daily routine meals are referred to as an uncountable singular abstract category field: 'dinner'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>She has never been on an _______</span>",
+          options: ["airplane", "airplanes"],
+          correct: "airplane",
+          explanation: "The vowel-sound initial singular article tag 'an' pairs with the singular item 'airplane'."
+        },
+        {
+          question: "Choose the correct singular /plural form to complete the sentence? <br> <span style='color:black'>This is the golden _______</span>",
+          options: ["buttons", "button"],
+          correct: "button",
+          explanation: "The introductory marker parameters 'This is the' evaluate down onto a singular noun object target: 'button'."
+        }
+      ];
     </script>
 
     <div id="site-footer-placeholder"></div>
