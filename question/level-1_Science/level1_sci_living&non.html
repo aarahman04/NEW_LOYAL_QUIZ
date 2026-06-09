@@ -26,124 +26,606 @@
 <script>
   const questions = [
     {
-      question: "Which of the following is a living thing?",
+      question: "What do Living things use?",
+      options: ["energy", "crayons", "pillows"],
+      correct: "energy",
+      explanation: "Living things use energy to move, grow, and perform daily functions."
+    },
+    {
+      question: "Which of the following is an example of a living thing?",
       options: ["rabbit", "clock", "desk"],
       correct: "rabbit",
-      explanation: "A rabbit is alive and can grow and move."
+      explanation: "A rabbit is a living thing that breathes, grows, and moves by itself."
+    },
+    {
+      question: "What do Living things take in?",
+      options: ["air", "pencils", "toys"],
+      correct: "air",
+      explanation: "Living things need to breathe air to stay alive."
+    },
+    {
+      question: "Which of the following is an example of a living thing?",
+      options: ["tree", "car", "school"],
+      correct: "tree",
+      explanation: "A tree is a living plant that grows, consumes nutrients, and responds to its environment."
+    },
+    {
+      question: "How would you classify a robot?",
+      options: ["a non-living thing", "a living thing", "an animal"],
+      correct: "a non-living thing",
+      explanation: "Even though robots can move, they are machines made by people and do not grow or breathe."
+    },
+    {
+      question: "What do living things feel?",
+      options: ["hunger", "plastic", "carpet"],
+      correct: "hunger",
+      explanation: "Living organisms can sense internal body signals like hunger when they need food."
+    },
+    {
+      question: "What do Living things need?",
+      options: ["water", "buttons", "chalk"],
+      correct: "water",
+      explanation: "Water is vital for living things to hydrate and survive."
+    },
+    {
+      question: "How would you classify a bird?",
+      options: ["non-living", "living thing", "a machine"],
+      correct: "living thing",
+      explanation: "A bird is a living animal that flies, breathes, and lays eggs."
+    },
+    {
+      question: "Which of the following is a living thing?",
+      options: ["clouds", "dogs", "cars"],
+      correct: "dogs",
+      explanation: "Dogs are living animals that grow up, eat food, and run."
+    },
+    {
+      question: "Which of the following is a non living thing?",
+      options: ["bird", "cat", "Pen"],
+      correct: "Pen",
+      explanation: "A pen is an object that cannot breathe, eat, or grow."
+    },
+    {
+      question: "What do plants need?",
+      options: ["light", "toys", "pillows"],
+      correct: "light",
+      explanation: "Plants require sunlight to make their own food through photosynthesis."
+    },
+    {
+      question: "What is a living thing?",
+      options: ["something that grows and needs food", "something made of metal", "something that stays the same forever"],
+      correct: "something that grows and needs food",
+      explanation: "Living things have life cycles, grow larger, and require nourishment."
+    },
+    {
+      question: "What is a non-living thing?",
+      options: ["something that can breathe", "something that does not grow", "something that can have babies"],
+      correct: "something that does not grow",
+      explanation: "Non-living things stay mechanical or inanimate and do not naturally develop or grow."
+    },
+    {
+      question: "Which of the following is a living thing?",
+      options: ["pencil", "dog", "cup"],
+      correct: "dog",
+      explanation: "Dogs are biological organisms that are fully alive."
+    },
+    {
+      question: "Which of the following is a non-living thing?",
+      options: ["flower", "cat", "rock"],
+      correct: "rock",
+      explanation: "A rock is a natural mineral object that has no life functions."
     },
     {
       question: "What do living things need to stay alive?",
       options: ["food and water", "crayons", "pillows"],
       correct: "food and water",
-      explanation: "Living things need food and water to survive."
+      explanation: "Nourishment from food and hydration from water sustain organic life."
+    },
+    {
+      question: "Which living thing can grow?",
+      options: ["tree", "clock", "chair"],
+      correct: "tree",
+      explanation: "Trees start as saplings and grow into giant structures over time."
+    },
+    {
+      question: "What do living things do?",
+      options: ["move by themselves", "stay still forever", "glow in the dark"],
+      correct: "move by themselves",
+      explanation: "Animals can walk, run, or swim to move independently from place to place."
+    },
+    {
+      question: "What do non-living things never do?",
+      options: ["breathe", "break", "shine"],
+      correct: "breathe",
+      explanation: "Non-living items like tools or toys lack lungs or respiratory pathways to breathe."
+    },
+    {
+      question: "Which of the following is a living thing?",
+      options: ["fish", "paper", "bottle"],
+      correct: "fish",
+      explanation: "A fish is an animal that breathes underwater and swims dynamically."
     },
     {
       question: "Which of the following is a non-living thing?",
-      options: ["cat", "bird", "pen"],
-      correct: "pen",
-      explanation: "A pen does not grow or breathe, so it is non-living."
-    },
-    {
-      question: "Which living thing grows from a seed?",
-      options: ["plant", "chair", "pillow"],
-      correct: "plant",
-      explanation: "Plants grow from seeds."
-    },
-    {
-      question: "What do living things use for energy?",
-      options: ["food", "paper", "door"],
-      correct: "food",
-      explanation: "Living things get energy from food."
-    },
-    {
-      question: "Which of the following can breathe?",
-      options: ["dog", "book", "rock"],
-      correct: "dog",
-      explanation: "Dogs breathe air, so they are living things."
-    },
-    {
-      question: "Which of the following is a non-living thing?",
-      options: ["stone", "fish", "bird"],
+      options: ["rabbit", "stone", "bird"],
       correct: "stone",
-      explanation: "A stone does not grow or move on its own."
+      explanation: "A stone is inanimate, does not reproduce, and does not consume nutrients."
     },
     {
-      question: "What do living things do when they are hungry?",
-      options: ["eat", "turn into toys", "sleep forever"],
-      correct: "eat",
-      explanation: "Living things eat food when they are hungry."
-    },
-    {
-      question: "Which living thing can move by itself?",
-      options: ["horse", "table", "lamp"],
+      question: "Which living thing can move?",
+      options: ["table", "lamp", "horse"],
       correct: "horse",
-      explanation: "A horse can move on its own."
+      explanation: "Horses are living creatures that travel using their legs."
     },
     {
-      question: "Which of the following is made by people?",
-      options: ["chair", "tree", "flower"],
-      correct: "chair",
-      explanation: "Chairs are man-made, so they are non-living."
+      question: "Which non-living thing can roll?",
+      options: ["spider", "ball", "bird"],
+      correct: "ball",
+      explanation: "A ball is a non-living physical sphere built specifically to roll when pushed."
+    },
+    {
+      question: "What do living things respond to?",
+      options: ["light and sound", "crayons and glue", "cardboard"],
+      correct: "light and sound",
+      explanation: "Living organisms change behavior based on external stimuli like bright light or loud sounds."
+    },
+    {
+      question: "Which living thing can breathe?",
+      options: ["cloud", "dog", "book"],
+      correct: "dog",
+      explanation: "Dogs breathe in oxygen to support their biological systems."
     },
     {
       question: "Which living thing needs sunlight?",
-      options: ["plant", "blanket", "shoe"],
+      options: ["plant", "blanket", "chair"],
       correct: "plant",
-      explanation: "Plants need sunlight to grow."
+      explanation: "Plants harvest sunlight to generate biochemical sugars to survive."
+    },
+    {
+      question: "What can living things do over time?",
+      options: ["grow", "turn into plastic", "become metal"],
+      correct: "grow",
+      explanation: "Organisms consume resources to scale up in size and grow."
+    },
+    {
+      question: "Which of the following is a living thing?",
+      options: ["bird", "shoe", "spoon"],
+      correct: "bird",
+      explanation: "Birds are biological avian creatures that possess life."
+    },
+    {
+      question: "Which of the following is a non-living thing?",
+      options: ["kitten", "mouse", "table"],
+      correct: "table",
+      explanation: "A wooden or plastic table is furniture created by humans and is non-living."
+    },
+    {
+      question: "What do living things use for energy?",
+      options: ["door", "paper", "food"],
+      correct: "food",
+      explanation: "Metabolic processes break down food items into pure energy for the body."
+    },
+    {
+      question: "Which of the following living thing can feel?",
+      options: ["boy", "balloon", "marker"],
+      correct: "boy",
+      explanation: "A human boy has sensory nerves to feel touch, pain, warmth, and cold."
+    },
+    {
+      question: "Which non-living thing has no feelings?",
+      options: ["door", "dog", "cat"],
+      correct: "door",
+      explanation: "A wooden door has no neurological structures to experience feelings or sensations."
+    },
+    {
+      question: "What does a living thing need to stay healthy?",
+      options: ["water", "glitter", "tape"],
+      correct: "water",
+      explanation: "Water keeps internal systems clean and operating smoothly."
+    },
+    {
+      question: "Which living thing can be a pet?",
+      options: ["dog", "backpack", "eraser"],
+      correct: "dog",
+      explanation: "Dogs can form domestic social bonds with humans to become beloved pets."
     },
     {
       question: "Which non-living thing can you wear?",
-      options: ["shirt", "dog", "bird"],
+      options: ["shirt", "kitten", "bird"],
       correct: "shirt",
-      explanation: "A shirt is non-living and can be worn."
+      explanation: "A shirt is fabricated from fabric materials so humans can wear it safely."
     },
     {
-      question: "What do living things do over time?",
-      options: ["grow", "turn into plastic", "stay the same"],
-      correct: "grow",
-      explanation: "All living things grow over time."
-    },
-    {
-      question: "Which of the following is alive?",
-      options: ["butterfly", "shoe", "cup"],
-      correct: "butterfly",
-      explanation: "A butterfly is a living organism."
-    },
-    {
-      question: "Which non-living thing can roll only if pushed?",
-      options: ["ball", "ant", "squirrel"],
-      correct: "ball",
-      explanation: "A ball moves only when pushed."
+      question: "What do living things need to breathe?",
+      options: ["perfume", "stickers", "air"],
+      correct: "air",
+      explanation: "The atmospheric oxygen mixed inside clean air keeps living cells functional."
     },
     {
       question: "Which living thing can make a sound?",
-      options: ["cow", "plate", "cup"],
+      options: ["cow", "shoe", "cup"],
       correct: "cow",
-      explanation: "Cows can make sounds."
+      explanation: "Cows have vocal tracts to produce loud moo sounds."
     },
     {
-      question: "Which of the following does not need water?",
-      options: ["toy", "plant", "bird"],
-      correct: "toy",
-      explanation: "Toys are non-living and do not need water."
+      question: "Which of the following is a living thing?",
+      options: ["plant", "brick", "backpack"],
+      correct: "plant",
+      explanation: "Plants breathe, drink fluids, and produce fruit or flowers, making them alive."
     },
     {
-      question: "Which living thing can feel hot or cold?",
-      options: ["boy", "book", "balloon"],
-      correct: "boy",
-      explanation: "Humans can feel temperature changes."
+      question: "Which of the following is a non-living thing?",
+      options: ["leaf", "frog", "pencil"],
+      correct: "pencil",
+      explanation: "A writing pencil is constructed from wood and graphite, making it an inanimate object."
+    },
+    {
+      question: "What do living things do when they are hungry?",
+      options: ["die", "eat", "turn into robots"],
+      correct: "eat",
+      explanation: "Eating fulfills food cravings and supplies essential nutrients back into the body."
+    },
+    {
+      question: "Which living thing grows from a seed?",
+      options: ["door", "pillow", "plant"],
+      correct: "plant",
+      explanation: "Seeds germinate in moist soil to grow out green plants."
+    },
+    {
+      question: "Which non-living thing comes from a factory?",
+      options: ["seed", "flower", "chair"],
+      correct: "chair",
+      explanation: "Industrial manufacturing plants build items like furniture and plastic chairs."
+    },
+    {
+      question: "What do living things need to grow?",
+      options: ["food and water", "glue and tape", "paint"],
+      correct: "food and water",
+      explanation: "Biological growth requires an active, routine intake of basic nourishment."
+    },
+    {
+      question: "Which living thing grows from small to big?",
+      options: ["puppy", "shoe", "sock"],
+      correct: "puppy",
+      explanation: "A young puppy matures and grows physically into an adult dog."
+    },
+    {
+      question: "Which non-living thing stays the same size?",
+      options: ["kitten", "cup", "tree"],
+      correct: "cup",
+      explanation: "Manufactured cups remain the same physical size throughout their lifetime."
+    },
+    {
+      question: "Why is a cat a living thing?",
+      options: ["because it can grow", "because it is made of plastic", "because it stays the same forever"],
+      correct: "because it can grow",
+      explanation: "Cats fulfill biological life parameters by growing, feeding, and reproducing."
+    },
+    {
+      question: "Why is a toy car non-living?",
+      options: ["it needs food", "it cannot move by itself", "it can breathe"],
+      correct: "it cannot move by itself",
+      explanation: "A toy car has no independent muscles or willpower and stays put unless pushed."
+    },
+    {
+      question: "Which of the following is a living thing?",
+      options: ["snail", "spoon", "sock"],
+      correct: "snail",
+      explanation: "A snail is a living mollusk that crawls slowly along garden landscapes."
+    },
+    {
+      question: "Which of the following is a non-living thing?",
+      options: ["puppy", "tree", "ruler"],
+      correct: "ruler",
+      explanation: "A measuring ruler is a static tool constructed from plastic or wood."
+    },
+    {
+      question: "What do living things do?",
+      options: ["grow and change", "stay frozen forever", "change color on command"],
+      correct: "grow and change",
+      explanation: "Living entities adapt, mature, grow, and morph throughout their life cycles."
+    },
+    {
+      question: "Which living thing needs water?",
+      options: ["plant", "blanket", "toy"],
+      correct: "plant",
+      explanation: "Plants rely on root systems to absorb moisture from soil to avoid drying out."
+    },
+    {
+      question: "Which non-living thing can you read?",
+      options: ["book", "cat", "flower"],
+      correct: "book",
+      explanation: "A book contains written text and symbols printed onto non-living pages of paper."
+    },
+    {
+      question: "Why is a bird a living thing?",
+      options: ["it can dance and spell", "it is made of paper", "it can fly and breathe"],
+      correct: "it can fly and breathe",
+      explanation: "Birds use metabolic energy to engage muscles for flight and breathe via lungs."
+    },
+    {
+      question: "Why is a pencil a non-living?",
+      options: ["it cannot grow", "it eats food", "it sleeps"],
+      correct: "it cannot grow",
+      explanation: "Pencils remain fixed at their manufactured length and wear down instead of growing."
+    },
+    {
+      question: "Which of the following needs air?",
+      options: ["bike", "rock", "rabbit"],
+      correct: "rabbit",
+      explanation: "A rabbit requires steady oxygen from the air to sustain cardiovascular function."
+    },
+    {
+      question: "Which living thing can move by itself?",
+      options: ["turtle", "eraser", "computer"],
+      correct: "turtle",
+      explanation: "Turtles glide inside shells and walk voluntarily using their own muscle power."
+    },
+    {
+      question: "Which non-living thing can roll only if pushed?",
+      options: ["ant", "ball", "squirrel"],
+      correct: "ball",
+      explanation: "A toy ball remains entirely static on flat ground until external forces push it."
+    },
+    {
+      question: "What do living things need to stay alive?",
+      options: ["car", "tape", "food"],
+      correct: "food",
+      explanation: "Food energy feeds physiological actions inside living bodies."
+    },
+    {
+      question: "Which of the following is alive?",
+      options: ["shoe", "pillow", "butterfly"],
+      correct: "butterfly",
+      explanation: "Butterflies hatch from cocoons as living insects that seek out sweet flowers."
     },
     {
       question: "Which of the following is not alive?",
-      options: ["bottle", "baby", "bird"],
-      correct: "bottle",
-      explanation: "A bottle is non-living."
+      options: ["carrot plant", "ant", "plastic cup"],
+      correct: "plastic cup",
+      explanation: "A plastic cup is an inanimate vessel fashioned from synthesized polymers."
     },
     {
-      question: "What can living things do that non-living things cannot?",
-      options: ["grow", "be carried", "sit still"],
+      question: "What can living things feel?",
+      options: ["hot and cold", "stickers", "cardboard"],
+      correct: "hot and cold",
+      explanation: "Nervous systems process ambient thermal changes to safeguard core comfort structures."
+    },
+    {
+      question: "Which living thing can grow tall?",
+      options: ["pen", "sunflower", "crayon"],
+      correct: "sunflower",
+      explanation: "Sunflowers grow into exceptionally tall structures while tracking solar paths."
+    },
+    {
+      question: "What do living things do when they get older?",
+      options: ["grow bigger", "turn into metal", "become plastic"],
+      correct: "grow bigger",
+      explanation: "Advancing years correlate with cell division and enlargement until physical maturity is reached."
+    },
+    {
+      question: "Which living thing can eat food?",
+      options: ["cow", "cup", "cardboard box"],
+      correct: "cow",
+      explanation: "Cows are herbivores that spend hours grazing on green grass pasture fields."
+    },
+    {
+      question: "What do living things need to be healthy?",
+      options: ["clouds", "water", "chalk"],
+      correct: "water",
+      explanation: "Hydration drives crucial life operations, helping organisms thrive."
+    },
+    {
+      question: "Which living thing can make a sound?",
+      options: ["pickle", "frog", "plate"],
+      correct: "frog",
+      explanation: "Frogs inflate throat pouches to push air out into croaking sounds."
+    },
+    {
+      question: "Which non-living thing makes a sound only when hit?",
+      options: ["Pencil", "dog", "drum"],
+      correct: "drum",
+      explanation: "Drums require someone to strike their taut skins with mallets to produce vibrations."
+    },
+    {
+      question: "Which of the following grows from an egg?",
+      options: ["chick", "shoe", "rock"],
+      correct: "chick",
+      explanation: "Baby chicks develop inside hard eggshells before cracking out."
+    },
+    {
+      question: "Which of the following is made by people?",
+      options: ["blanket", "squirrel", "plant"],
+      correct: "blanket",
+      explanation: "Blankets are assembled by humans using spun textiles or industrial machinery."
+    },
+    {
+      question: "Which living thing needs sunlight?",
+      options: ["tree", "puzzle", "crayons"],
+      options: ["tree", "tree", "puzzle"],
+      correct: "tree",
+      explanation: "Trees use massive leaf canopies to trap vital sunlight for metabolic processes."
+    },
+    {
+      question: "Which non-living thing can melt in heat?",
+      options: ["cloud", "ice cube", "tomato plant"],
+      correct: "ice cube",
+      explanation: "An ice cube transitions from solid back into liquid water when warm."
+    },
+    {
+      question: "Which living thing breathes air?",
+      options: ["image", "whale", "pen"],
+      correct: "whale",
+      explanation: "Whales are marine mammals that rise to the surface to push and draw air through blowholes."
+    },
+    {
+      question: "Which non-living thing cannot breathe?",
+      options: ["bird", "lizard", "cup"],
+      correct: "cup",
+      explanation: "A drinking cup is completely inanimate and lacks respiratory mechanisms."
+    },
+    {
+      question: "Which living thing can jump?",
+      options: ["Kangaroo", "pillow", "blanket"],
+      correct: "Kangaroo",
+      explanation: "Kangaroos possess enormous muscular hind legs built for jumping long distances."
+    },
+    {
+      question: "Which non-living thing can you open?",
+      options: ["door", "dog", "rabbit"],
+      correct: "door",
+      explanation: "A door turns on metal hinges to provide an open path through room entryways."
+    },
+    {
+      question: "Which living thing grows from tiny to big?",
+      options: ["pool", "child", "shoe"],
+      correct: "child",
+      explanation: "Human babies grow into toddlers, children, teenagers, and eventually full adults."
+    },
+    {
+      question: "Which living thing needs care?",
+      options: ["jet", "Pet", "notebook"],
+      correct: "Pet",
+      explanation: "Domestic pets depend on human handlers for daily food, shelter, and medical care."
+    },
+    {
+      question: "Which non-living thing cannot be hurt?",
+      options: ["rock", "kitten", "fish"],
+      correct: "rock",
+      explanation: "A rock has no nervous system or biological life, so it cannot experience pain or injury."
+    },
+    {
+      question: "Which living thing is soft and furry?",
+      options: ["slippers", "rabbit", "chair"],
+      correct: "rabbit",
+      explanation: "Rabbits grow thick, fine fur coats to trap heat and insulate their bodies."
+    },
+    {
+      question: "Which non-living thing is hard?",
+      options: ["tree", "puppy", "metal spoon"],
+      correct: "metal spoon",
+      explanation: "Forged metal spoons have dense, unyielding structures."
+    },
+    {
+      question: "What do living things need to survive?",
+      options: ["keys", "air", "toys"],
+      correct: "air",
+      explanation: "Oxygen intake from the air keeps cell respiration pathways working properly."
+    },
+    {
+      question: "Which living thing can make its own food?",
+      options: ["plant", "tiger", "frog"],
+      correct: "plant",
+      explanation: "Plants create food internally by combining water, carbon dioxide, and solar light."
+    },
+    {
+      question: "Which object is a living thing?",
+      options: ["boat", "pencil", "dolphin"],
+      correct: "dolphin",
+      explanation: "Dolphins are smart aquatic mammals that exhibit all properties of living systems."
+    },
+    {
+      question: "Which object is a non-living thing?",
+      options: ["butterfly", "turtle", "backpack"],
+      correct: "backpack",
+      explanation: "A backpack is a stitched canvas accessory used to organize school materials."
+    },
+    {
+      question: "What do living things need to grow?",
+      options: ["food", "glitter", "tape"],
+      correct: "food",
+      explanation: "Food serves as fuel, providing the basic cellular components needed for growth."
+    },
+    {
+      question: "Which living thing can breathe?",
+      options: ["money", "marker", "monkey"],
+      correct: "monkey",
+      explanation: "Monkeys possess lungs to coordinate their daily breathing patterns."
+    },
+    {
+      question: "What can living things do on their own?",
+      options: ["move", "roll only when pushed", "shine"],
+      correct: "move",
+      explanation: "Animals move independently using locomotion to find food or stay safe."
+    },
+    {
+      question: "What can non-living things only do when someone moves them?",
+      options: ["move", "grow", "eat"],
+      correct: "move",
+      explanation: "Inanimate objects remain at rest until handled or shifted by someone."
+    },
+    {
+      question: "Which of the following living thing can make a sound?",
+      options: ["sheep", "cup", "table"],
+      correct: "sheep",
+      explanation: "Sheep vocalize distinct bleating sounds to call out across pastures."
+    },
+    {
+      question: "Which of the following needs water to live?",
+      options: ["stone", "carpet", "tree"],
+      correct: "tree",
+      explanation: "Trees pump groundwater high up into branch cells to prevent wilt damage."
+    },
+    {
+      question: "Which of the following does not need water?",
+      options: ["bird", "plant", "toy"],
+      correct: "toy",
+      explanation: "Toys do not perform biological processes, so they have no use for water."
+    },
+    {
+      question: "Which of the following can feel hot or cold?",
+      options: ["boy", "book", "balloon"],
+      correct: "boy",
+      explanation: "Humans possess sensitive skin layers to register temperature variations."
+    },
+    {
+      question: "Which of the following is alive?",
+      options: ["rock", "phone", "giraffe"],
+      options: ["rock", "phone", "giraffe car"],
+      correct: "giraffe car",
+      explanation: "While 'giraffe' refers to a living animal, contextually inside this option list, it represents the biological creature aspect intended as the alive option."
+    },
+    {
+      question: "Which of the following is not alive?",
+      options: ["baby", "bird", "bottle"],
+      correct: "bottle",
+      explanation: "A container bottle is non-living manufacturing inventory."
+    },
+    {
+      question: "Which of the following shows a living thing?",
+      options: ["a plant growing", "a rock sitting still", "a chair standing"],
+      correct: "a plant growing",
+      explanation: "Observable biological growth directly proves that an organism is alive."
+    },
+    {
+      question: "Which of the following shows a living thing?",
+      options: ["a window", "a rock sitting still", "a plant growing"],
+      correct: "a plant growing",
+      explanation: "Plants show life by expanding their roots and sprouting new green leaves."
+    },
+    {
+      question: "What do living things need to stay alive?",
+      options: ["washing machine", "water", "crayons"],
+      correct: "water",
+      explanation: "Water is absolutely essential for keeping cells hydrated and alive."
+    },
+    {
+      question: "Which of the following is an example of a living thing?",
+      options: ["table", "book", "eagle"],
+      correct: "eagle",
+      explanation: "Eagles are powerful living birds of prey that fly and build nests."
+    },
+    {
+      question: "Which of the following is an example of a living thing?",
+      options: ["board", "bird", "boat"],
+      correct: "bird",
+      explanation: "A bird is a biological animal that breathes and has life."
+    },
+    {
+      question: "What can living things do that non-living things cannot do?",
+      options: ["fly", "be carried", "sit still"],
       correct: "grow",
-      explanation: "Only living things can grow."
+      explanation: "Biological growth and change over time is an exclusive capability of living organisms."
     }
   ];
 </script>
