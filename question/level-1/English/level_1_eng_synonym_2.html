@@ -1,1 +1,638 @@
-s
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Synonyms 2</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {
+          question: "Which word is a synonym for big?",
+          options: ["tiny", "large", "cold"],
+          correct: "large",
+          explanation: "'large' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for happy?",
+          options: ["sad", "glad", "slow"],
+          correct: "glad",
+          explanation: "'glad' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for fast?",
+          options: ["quick", "sleepy", "loud"],
+          correct: "quick",
+          explanation: "'quick' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for small?",
+          options: ["huge", "little", "bright"],
+          correct: "little",
+          explanation: "'little' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for smart?",
+          options: ["clever", "messy", "weak"],
+          correct: "clever",
+          explanation: "'clever' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for cold?",
+          options: ["freezing", "warm", "dry"],
+          correct: "freezing",
+          explanation: "'freezing' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for begin?",
+          options: ["end", "start", "jump"],
+          correct: "start",
+          explanation: "'start' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for pretty?",
+          options: ["ugly", "beautiful", "dark"],
+          correct: "beautiful",
+          explanation: "'beautiful' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for funny?",
+          options: ["silly", "angry", "quiet"],
+          correct: "silly",
+          explanation: "'silly' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for jump?",
+          options: ["hop", "sit", "read"],
+          correct: "hop",
+          explanation: "'hop' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for baby?",
+          options: ["infant", "teacher", "giant"],
+          correct: "infant",
+          explanation: "'infant' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for end?",
+          options: ["finish", "open", "climb"],
+          correct: "finish",
+          explanation: "'finish' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for mad?",
+          options: ["angry", "hungry", "sleepy"],
+          correct: "angry",
+          explanation: "'angry' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for wet?",
+          options: ["dry", "soaked", "dusty"],
+          correct: "soaked",
+          explanation: "'soaked' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for look?",
+          options: ["see", "taste", "jump"],
+          correct: "see",
+          explanation: "'see' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for friend?",
+          options: ["enemy", "buddy", "stranger"],
+          correct: "buddy",
+          explanation: "'buddy' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for tiny?",
+          options: ["huge", "little", "noisy"],
+          correct: "little",
+          explanation: "'little' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for laugh?",
+          options: ["giggle", "cry", "hide"],
+          correct: "giggle",
+          explanation: "'giggle' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for job?",
+          options: ["word", "work", "game"],
+          correct: "work",
+          explanation: "'work' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for house?",
+          options: ["school", "home", "park"],
+          correct: "home",
+          explanation: "'home' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for cry?",
+          options: ["sob", "smile", "dance"],
+          correct: "sob",
+          explanation: "'sob' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for rich?",
+          options: ["poor", "wealthy", "tiny"],
+          correct: "wealthy",
+          explanation: "'wealthy' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for road?",
+          options: ["street", "pillow", "blanket"],
+          correct: "street",
+          explanation: "'street' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for beginner?",
+          options: ["expert", "learner", "captain"],
+          correct: "learner",
+          explanation: "'learner' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for clean?",
+          options: ["dirty", "tidy", "rough"],
+          correct: "tidy",
+          explanation: "'tidy' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for strong?",
+          options: ["weak", "powerful", "lazy"],
+          correct: "powerful",
+          explanation: "'powerful' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for quiet?",
+          options: ["silent", "noisy", "bright"],
+          correct: "silent",
+          explanation: "'silent' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for gift?",
+          options: ["present", "chair", "window"],
+          correct: "present",
+          explanation: "'present' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for brave?",
+          options: ["scared", "courageous", "shy"],
+          correct: "courageous",
+          explanation: "'courageous' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for eat?",
+          options: ["chew", "throw", "kick"],
+          correct: "chew",
+          explanation: "'chew' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for beautiful?",
+          options: ["lovely", "broken", "tiny"],
+          correct: "lovely",
+          explanation: "'lovely' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for walk?",
+          options: ["stroll", "shout", "paint"],
+          correct: "stroll",
+          explanation: "'stroll' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for hard?",
+          options: ["soft", "difficult", "smooth"],
+          correct: "difficult",
+          explanation: "'difficult' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for teacher?",
+          options: ["student", "educator", "driver"],
+          correct: "educator",
+          explanation: "'educator' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for help?",
+          options: ["assist", "hide", "climb"],
+          correct: "assist",
+          explanation: "'assist' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for story?",
+          options: ["tale", "rock", "shoe"],
+          correct: "tale",
+          explanation: "'tale' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for angry?",
+          options: ["calm", "upset", "playful"],
+          correct: "upset",
+          explanation: "'upset' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for tiny?",
+          options: ["enormous", "small", "heavy"],
+          correct: "small",
+          explanation: "'small' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for shout?",
+          options: ["whisper", "yell", "nap"],
+          correct: "yell",
+          explanation: "'yell' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for child?",
+          options: ["adult", "kid", "parent"],
+          correct: "kid",
+          explanation: "'kid' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for cold?",
+          options: ["chilly", "hot", "bright"],
+          correct: "chilly",
+          explanation: "'chilly' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for sad?",
+          options: ["unhappy", "excited", "strong"],
+          correct: "unhappy",
+          explanation: "'unhappy' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for run?",
+          options: ["race", "sleep", "draw"],
+          correct: "race",
+          explanation: "'race' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for tiny?",
+          options: ["big", "little", "loud"],
+          correct: "little",
+          explanation: "'little' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for friend?",
+          options: ["cat", "energy", "pal"],
+          correct: "pal",
+          explanation: "'pal' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for jump?",
+          options: ["frog", "crawl", "leap"],
+          correct: "leap",
+          explanation: "'leap' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for smart?",
+          options: ["fun", "clever", "sleepy"],
+          correct: "clever",
+          explanation: "'clever' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for love?",
+          options: ["adrenaline", "adore", "forget"],
+          correct: "adore",
+          explanation: "'adore' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for clean?",
+          options: ["near", "muddy", "neat"],
+          correct: "neat",
+          explanation: "'neat' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for fun?",
+          options: ["smart", "enjoyable", "difficult"],
+          correct: "enjoyable",
+          explanation: "'enjoyable' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for begin?",
+          options: ["sleep", "start", "stop"],
+          correct: "start",
+          explanation: "'start' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for tiny?",
+          options: ["noisy", "giant", "small"],
+          correct: "small",
+          explanation: "'small' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for yell?",
+          options: ["shout", "whisper", "tiptoe"],
+          correct: "shout",
+          explanation: "'shout' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for glad?",
+          options: ["tired", "happy", "angry"],
+          correct: "happy",
+          explanation: "'happy' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for close?",
+          options: ["toss", "open", "shut"],
+          correct: "shut",
+          explanation: "'shut' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for jump?",
+          options: ["nap", "leap", "crawl"],
+          correct: "leap",
+          explanation: "'leap' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for ill?",
+          options: ["hungry", "healthy", "sick"],
+          correct: "sick",
+          explanation: "'sick' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for fast?",
+          options: ["sleepy", "slow", "quick"],
+          correct: "quick",
+          explanation: "'quick' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for trash?",
+          options: ["flower", "garbage", "blanket"],
+          correct: "garbage",
+          explanation: "'garbage' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for bright?",
+          options: ["soft", "shiny", "dark"],
+          correct: "shiny",
+          explanation: "'shiny' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for fix?",
+          options: ["break", "throw", "repair"],
+          correct: "repair",
+          explanation: "'repair' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for quiet?",
+          options: ["messy", "loud", "silent"],
+          correct: "silent",
+          explanation: "'silent' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for gift?",
+          options: ["present", "rug", "box"],
+          correct: "present",
+          explanation: "'present' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for laugh?",
+          options: ["cry", "giggle", "shout"],
+          correct: "giggle",
+          explanation: "'giggle' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for angry?",
+          options: ["upset", "calm", "joyful"],
+          correct: "upset",
+          explanation: "'upset' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for job?",
+          options: ["work", "snack", "game"],
+          correct: "work",
+          explanation: "'work' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for look?",
+          options: ["she", "see", "jump"],
+          correct: "see",
+          explanation: "'see' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for strong?",
+          options: ["shy", "weak", "powerful"],
+          correct: "powerful",
+          explanation: "'powerful' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for clean?",
+          options: ["sticky", "tidy", "muddy"],
+          correct: "tidy",
+          explanation: "'tidy' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for smart?",
+          options: ["sleepy", "lever", "sharp"],
+          correct: "sharp",
+          explanation: "'sharp' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for cry?",
+          options: ["grin", "clap", "sob"],
+          correct: "sob",
+          explanation: "'sob' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for story?",
+          options: ["take", "tale", "stone"],
+          correct: "tale",
+          explanation: "'tale' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for brave?",
+          options: ["shy", "courageous", "afraid"],
+          correct: "courageous",
+          explanation: "'courageous' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for walk?",
+          options: ["toss", "sprint", "stroll"],
+          correct: "stroll",
+          explanation: "'stroll' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for end?",
+          options: ["laugh", "finish", "begin"],
+          correct: "finish",
+          explanation: "'finish' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for sad?",
+          options: ["unhappy", "excited", "cheerful"],
+          correct: "unhappy",
+          explanation: "'unhappy' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for house?",
+          options: ["school", "cave", "home"],
+          correct: "home",
+          explanation: "'home' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for run?",
+          options: ["rack", "race", "sit"],
+          correct: "race",
+          explanation: "'race' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for teacher?",
+          options: ["singer", "educator", "driver"],
+          correct: "educator",
+          explanation: "'educator' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for funny?",
+          options: ["grumpy", "serious", "silly"],
+          correct: "silly",
+          explanation: "'silly' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for road?",
+          options: ["street", "pillow", "spoon"],
+          correct: "street",
+          explanation: "'street' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for baby?",
+          options: ["captain", "infant", "giant"],
+          correct: "infant",
+          explanation: "'infant' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for rich?",
+          options: ["poor", "empty", "wealthy"],
+          correct: "wealthy",
+          explanation: "'wealthy' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for help?",
+          options: ["skip", "assist", "hide"],
+          correct: "assist",
+          explanation: "'assist' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for pretty?",
+          options: ["rough", "lovely", "ugly"],
+          correct: "lovely",
+          explanation: "'lovely' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for eat?",
+          options: ["paint", "chew", "toss"],
+          correct: "chew",
+          explanation: "'chew' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for mad?",
+          options: ["calm", "angry", "sleepy"],
+          correct: "angry",
+          explanation: "'angry' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for small?",
+          options: ["giant", "bright", "tiny"],
+          correct: "tiny",
+          explanation: "'tiny' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for hard?",
+          options: ["difficult", "smooth", "easy"],
+          correct: "difficult",
+          explanation: "'difficult' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for love?",
+          options: ["ignore", "dislike", "adore"],
+          correct: "adore",
+          explanation: "'adore' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for lady?",
+          options: ["child", "teacher", "woman"],
+          correct: "woman",
+          explanation: "'woman' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for tug?",
+          options: ["adults", "pull", "did"],
+          correct: "pull",
+          explanation: "'pull' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for dinner?",
+          options: ["difficulty", "supper", "boxing"],
+          correct: "supper",
+          explanation: "'supper' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for bike?",
+          options: ["dull", "lovely", "bicycle"],
+          correct: "bicycle",
+          explanation: "'bicycle' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for hello?",
+          options: ["leader", "hi", "expert"],
+          correct: "hi",
+          explanation: "'hi' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for good?",
+          options: ["unlock", "great", "open"],
+          correct: "great",
+          explanation: "'great' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for floor?",
+          options: ["car", "ground", "house"],
+          correct: "ground",
+          explanation: "'ground' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for warm?",
+          options: ["cold", "bath", "hot"],
+          correct: "hot",
+          explanation: "'hot' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for cap?",
+          options: ["hot", "hat", "mat"],
+          correct: "hat",
+          explanation: "'hat' is a synonym for the target word in the question."
+        },
+        {
+          question: "Which word is a synonym for think?",
+          options: ["edit", "believe", "drive"],
+          correct: "believe",
+          explanation: "'believe' is a synonym for the target word in the question."
+        }
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
