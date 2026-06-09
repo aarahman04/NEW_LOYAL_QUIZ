@@ -3,22 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Verb Have - Present tense</title>
-    <!-- point to your question.css in the root css/ folder -->
+    <title>Verb Have - Present Tense</title>
     <link rel="stylesheet" href="../../../css/question.css" />
   </head>
   <body>
 
-   <!-- Sticky Header -->
     <div id="site-header-placeholder"></div>
 
-    <!-- Quiz Content -->
     <main class="quiz-container">
       <div class="question-section">
         <h3 id="question-text">Loading...</h3>
-        <ul class="options" id="options-list">
-          <!-- Options dynamically generated -->
-        </ul>
+        <ul class="options" id="options-list"></ul>
       </div>
       <div id="feedback" class="hidden"></div>
       <div id="explanation" class="hidden"></div>
@@ -26,140 +21,618 @@
       <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
     </main>
 
-<script>
-  const questions = [
-    {
-      question: "Use the correct present tense to finish the sentence: I ………….. very strong.",
-      options: ["am", "is"],
-      correct: "am",
-      explanation: "'am' is correct because 'I' takes 'am' in present tense."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: He ………. very fast.",
-      options: ["is", "am"],
-      correct: "is",
-      explanation: "'is' is correct because 'He' takes 'is' in present tense."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: We…………. going to travel.",
-      options: ["are", "is"],
-      correct: "are",
-      explanation: "'are' is correct because 'We' takes 'are'."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: She ……….. crying.",
-      options: ["are", "is"],
-      correct: "is",
-      explanation: "'is' is correct for 'She'."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: It……………. on the table.",
-      options: ["is", "are"],
-      correct: "is",
-      explanation: "'is' is correct for 'It'."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: They……….. on the chair.",
-      options: ["am", "are"],
-      correct: "are",
-      explanation: "'are' is correct for 'They'."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: You…………… down stairs.",
-      options: ["are", "am"],
-      correct: "are",
-      explanation: "'are' is correct because 'You' always takes 'are'."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: We ……….. scared.",
-      options: ["is", "are"],
-      correct: "are",
-      explanation: "'are' is correct for 'We'."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: Some birds ……….. not able to fly.",
-      options: ["are", "is"],
-      correct: "are",
-      explanation: "'are' is correct for plural 'birds'."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: My pen………….. gone.",
-      options: ["are", "is"],
-      correct: "is",
-      explanation: "'is' is correct for singular 'pen'."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: Those cars……….. broken.",
-      options: ["are", "is"],
-      correct: "are",
-      explanation: "'are' is correct for plural 'cars'."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: My mom and dad …………… divorced.",
-      options: ["is", "are"],
-      correct: "are",
-      explanation: "'are' is correct for plural subject 'mom and dad'."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: The children………. in the street!",
-      options: ["are", "is"],
-      correct: "are",
-      explanation: "'are' is correct for plural 'children'."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: Your bag…………. on the chair.",
-      options: ["are", "is"],
-      correct: "is",
-      explanation: "'is' is correct for singular 'bag'."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: I……….. reading the book.",
-      options: ["am", "is"],
-      correct: "am",
-      explanation: "'am' is correct for 'I'."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: Some men ………going out.",
-      options: ["are", "is"],
-      correct: "are",
-      explanation: "'are' is correct for plural 'men'."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: She ………. in the library.",
-      options: ["are", "is"],
-      correct: "is",
-      explanation: "'is' is correct for 'She'."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: The river……….. flowing gently.",
-      options: ["is", "are"],
-      correct: "is",
-      explanation: "'is' is correct for singular 'river'."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: Those girls ……….. very pretty.",
-      options: ["is", "are"],
-      correct: "are",
-      explanation: "'are' is correct for plural 'girls'."
-    },
-    {
-      question: "Use the correct present tense to finish the sentence: The pizza …………… hot.",
-      options: ["are", "is"],
-      correct: "is",
-      explanation: "'is' is correct for singular 'pizza'."
-    }
-  ];
-</script>
+    <script>
+      const questions = [
+        {
+          question: "Use the correct present tense to finish the sentence: I ............ very strong.",
+          options: ["am", "is"],
+          correct: "am",
+          explanation: "'am' is used with the subject 'I'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: I ............ very sick.",
+          options: ["is", "am"],
+          correct: "am",
+          explanation: "'am' is used with the subject 'I'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: He ............ very fast.",
+          options: ["is", "am"],
+          correct: "is",
+          explanation: "'is' is used with singular subjects like 'He'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: We .............. going to travel.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used with plural subjects like 'We'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: She ............ crying.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used with singular subjects like 'She'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: It ............ on the table.",
+          options: ["is", "are"],
+          correct: "is",
+          explanation: "'is' is used with the singular subject 'It'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: They ......... on the chair.",
+          options: ["am", "are"],
+          correct: "are",
+          explanation: "'are' is used with plural subjects like 'They'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: You ......... downstairs.",
+          options: ["are", "am"],
+          correct: "are",
+          explanation: "'are' is always used with the subject 'You'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: He .......... sad.",
+          options: ["is", "are"],
+          correct: "is",
+          explanation: "'is' is used with singular subjects like 'He'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: They ........... happy.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used with plural subjects like 'They'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: We ............ scared.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is used with plural subjects like 'We'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: You ............. going to school.",
+          options: ["are", "am"],
+          correct: "are",
+          explanation: "'are' is always used with the subject 'You'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: You ......... very strong.",
+          options: ["am", "are"],
+          correct: "are",
+          explanation: "'are' is always used with the subject 'You'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: We ................ sleeping.",
+          options: ["are", "am"],
+          correct: "are",
+          explanation: "'are' is used with plural subjects like 'We'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Some birds ............ not able to fly.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used because 'Some birds' is a plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Some cats ............. very hungry.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is used because 'Some cats' is a plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: My pen ............... gone.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used because 'My pen' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: My cat ............ lost.",
+          options: ["is", "are"],
+          correct: "is",
+          explanation: "'is' is used because 'My cat' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: My favorite color ............. red.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used because 'My favorite color' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: My favorite color ............. white.",
+          options: ["is", "are"],
+          correct: "is",
+          explanation: "'is' is used because 'My favorite color' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: My dress ............ dirty.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used because 'My dress' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: My friends ............ at school.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is used because 'My friends' is a plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: I ............ a student.",
+          options: ["is", "am"],
+          correct: "am",
+          explanation: "'am' is used with the subject 'I'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Those cars ............ broken.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used because 'Those cars' is a plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Those cats ............ dirty.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is used because 'Those cats' is a plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: My mom and dad ............ divorced.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is used because 'My mom and dad' forms a compound plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: We ............ eating.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used with plural subjects like 'We'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: They ........... fighting.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is used with plural subjects like 'They'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Sam and Sama ............ best friends.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used because 'Sam and Sama' forms a compound plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Sam and Mike ............ not friends.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is used because 'Sam and Mike' forms a compound plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Sam and Sama ............ on travels.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used because 'Sam and Sama' forms a compound plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: We ....... leaving.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is used with plural subjects like 'We'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: They ............ leaving.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used with plural subjects like 'They'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: You ........... leaving.",
+          options: ["am", "are"],
+          correct: "are",
+          explanation: "'are' is always used with the subject 'You'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: These men ............ dangerous.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is used because 'These men' is a plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Those women ............ creepy.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used because 'Those women' is a plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: I ............ Sam's best friend.",
+          options: ["am", "is"],
+          correct: "am",
+          explanation: "'am' is used with the subject 'I'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: I ............ not Mike's best friend.",
+          options: ["is", "am"],
+          correct: "am",
+          explanation: "'am' is used with the subject 'I'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: We ......... trying to concentrate.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used with plural subjects like 'We'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: The workers ............ trying their best.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used because 'The workers' is a plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: You ............ too far away.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is always used with the subject 'You'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: We .......... going to see the clown.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is used with plural subjects like 'We'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: The children .......... in the street!",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used because 'The children' is a plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: The children ............ at the school.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used because 'The children' is a plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Mr. and Mrs. Smith ............ in the school.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is used because 'Mr. and Mrs. Smith' forms a compound plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Mr and Mrs. Smith ............ fighting.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used because 'Mr and Mrs. Smith' forms a compound plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Mr and Mrs. Smith ............ talking about the future.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is used because 'Mr and Mrs. Smith' forms a compound plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Your shoes and socks ............. in the cabinet.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used because 'Your shoes and socks' forms a compound plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Your bag ............... on the chair.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used because 'Your bag' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Your bag ............ on the ground.",
+          options: ["is", "are"],
+          correct: "is",
+          explanation: "'is' is used because 'Your bag' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: I ............ reading the book.",
+          options: ["am", "is"],
+          correct: "am",
+          explanation: "'am' is used with the subject 'I'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: He ............ flying an airplane.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used with singular subjects like 'He'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Some men ......... going out.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used because 'Some men' is a plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Some people ............ just so rude.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is used because 'Some people' functions as a plural collective subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: They ............ buying a new house.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used with plural subjects like 'They'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: I ............ near your house.",
+          options: ["am", "are"],
+          correct: "am",
+          explanation: "'am' is used with the subject 'I'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: We ............ near your house.",
+          options: ["am", "are"],
+          correct: "are",
+          explanation: "'are' is used with plural subjects like 'We'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: I ............ a doctor.",
+          options: ["am", "are"],
+          correct: "am",
+          explanation: "'am' is used with the subject 'I'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: He ............ in the hotel.",
+          options: ["is", "am"],
+          correct: "is",
+          explanation: "'is' is used with singular subjects like 'He'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: She ............ in the library.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used with singular subjects like 'She'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: They ............... going to the restaurant.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is used with plural subjects like 'They'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: You ............... looking pretty.",
+          options: ["am", "are"],
+          correct: "are",
+          explanation: "'are' is always used with the subject 'You'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: They ............ driving a vehicle.",
+          options: ["am", "are"],
+          correct: "are",
+          explanation: "'are' is used with plural subjects like 'They'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: It ............ a beautiful restaurant.",
+          options: ["is", "are"],
+          correct: "is",
+          explanation: "'is' is used with the singular subject 'It'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: She ............ smiling warmly.",
+          options: ["is", "am"],
+          correct: "is",
+          explanation: "'is' is used with singular subjects like 'She'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: We ............ dancing with everyone.",
+          options: ["are", "am"],
+          correct: "are",
+          explanation: "'are' is used with plural subjects like 'We'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: They ........... looking at the shops.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used with plural subjects like 'They'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: The river ............ flowing gently.",
+          options: ["is", "are"],
+          correct: "is",
+          explanation: "'is' is used because 'The river' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: The cat ......... meowing loudly.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used because 'The cat' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: I ............ excited for the weekend.",
+          options: ["am", "is"],
+          correct: "am",
+          explanation: "'am' is used with the subject 'I'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: She ............. the best singer.",
+          options: ["is", "am"],
+          correct: "is",
+          explanation: "'is' is used with singular subjects like 'She'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: He ............ the best player in the team.",
+          options: ["is", "are"],
+          correct: "is",
+          explanation: "'is' is used with singular subjects like 'He'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: My name ................. Sam.",
+          options: ["is", "are"],
+          correct: "is",
+          explanation: "'is' is used because 'My name' is a singular subject concept."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: My friends ............ so happy.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is used because 'My friends' is a plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Sandy ............ so kind.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used with proper singular names like 'Sandy'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: The wind ............ blowing fiercely.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used because 'The wind' is an uncountable/singular noun."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: The baby ........... sleeping peacefully.",
+          options: ["is", "are"],
+          correct: "is",
+          explanation: "'is' is used because 'The baby' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: This ............ a nice neighborhood.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used with the singular demonstrative pronoun 'This'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Those girls ............ very pretty.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is used because 'Those girls' is a plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: That house ............ attractive.",
+          options: ["is", "are"],
+          correct: "is",
+          explanation: "'is' is used with the singular demonstrative concept 'That house'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: I ............ ready for my own room.",
+          options: ["am", "is"],
+          correct: "am",
+          explanation: "'am' is used with the subject 'I'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: There ............ three bedrooms in the house.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' matches the plural noun 'three bedrooms' following 'there'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: There ............ five birds on that tree.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' matches the plural noun 'five birds' following 'there'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: He ............ a great engineer.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used with singular subjects like 'He'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: Ann ............ at home.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used with proper singular names like 'Ann'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: The dog ...... asleep.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used because 'The dog' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: The cat ............. on the tree.",
+          options: ["is", "are"],
+          correct: "is",
+          explanation: "'is' is used because 'The cat' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: The giraffe ............ very tall.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used because 'The giraffe' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: My hat ....... red.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used because 'My hat' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: The game .... fun.",
+          options: ["is", "are"],
+          correct: "is",
+          explanation: "'is' is used because 'The game' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: My hands ....... cold.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used because 'My hands' is a plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: My hands ............ small.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is used because 'My hands' is a plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: The pizza ............ hot.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used because 'The pizza' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: You ............ a good helper.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is always used with the subject 'You'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: You ..... so pretty.",
+          options: ["is", "are"],
+          correct: "are",
+          explanation: "'are' is always used with the subject 'You'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: It ............ a beautiful river.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used with the singular subject 'It'."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: My brother ............ in the garden.",
+          options: ["is", "are"],
+          correct: "is",
+          explanation: "'is' is used because 'My brother' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: My sister ............ in the middle of exams.",
+          options: ["are", "is"],
+          correct: "is",
+          explanation: "'is' is used because 'My sister' is a singular subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: The windows ............ closed.",
+          options: ["are", "is"],
+          correct: "are",
+          explanation: "'are' is used because 'The windows' is a plural subject."
+        },
+        {
+          question: "Use the correct present tense to finish the sentence: The story ........ interesting.",
+          options: ["is", "are"],
+          correct: "is",
+          explanation: "'is' is used because 'The story' is a singular subject."
+        }
+      ];
+    </script>
 
-  <!-- Professional Footer -->
     <div id="site-footer-placeholder"></div>
-    <!-- point to your main quiz logic -->
     <script src="../../../js/script.js"></script>
     <script src="../../../js/partials.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => {
-    initMCQQuiz(questions);
-  });
+        initMCQQuiz(questions);
+      });
     </script>
   </body>
 </html>
