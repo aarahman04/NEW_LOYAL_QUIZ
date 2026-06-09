@@ -4,21 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Adjectives</title>
-    <!-- point to your question.css in the root css/ folder -->
     <link rel="stylesheet" href="../../../css/question.css" />
   </head>
   <body>
 
-   <!-- Sticky Header -->
-    <div id="site-header-placeholder"></div>
+   <div id="site-header-placeholder"></div>
 
-    <!-- Quiz Content -->
     <main class="quiz-container">
       <div class="question-section">
         <h3 id="question-text">Loading...</h3>
         <ul class="options" id="options-list">
-          <!-- Options dynamically generated -->
-        </ul>
+          </ul>
       </div>
       <div id="feedback" class="hidden"></div>
       <div id="explanation" class="hidden"></div>
@@ -30,136 +26,614 @@
       const questions = [
         {
           question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The brown dog is happy.</span>",
-          options: ["brown", "the"],
+          options: ["the", "brown", "is"],
           correct: "brown",
           explanation: "'Brown' describes the dog. It's the adjective."
         },
         {
           question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The small cat is cute.</span>",
-          options: ["the", "is", "small", "cat"],
+          options: ["the", "is", "small"],
           correct: "small",
           explanation: "'Small' describes the cat. It's the adjective."
         },
         {
           question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I see a big dog.</span>",
-          options: ["see", "I", "big", "dog"],
+          options: ["see", "I", "big"],
           correct: "big",
           explanation: "'Big' describes the dog. It's the adjective."
         },
         {
           question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I see a small cat.</span>",
-          options: ["cat", "small", "I", "see"],
+          options: ["I", "cat", "small"],
           correct: "small",
           explanation: "'Small' describes the cat. It's the adjective."
         },
         {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I see a big cow.</span>",
+          options: ["I", "cow", "big"],
+          correct: "big",
+          explanation: "'Big' describes the cow. It's the adjective."
+        },
+        {
           question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The black horse is fast.</span>",
-          options: ["horse", "is", "black", "the"],
+          options: ["the", "horse", "black"],
           correct: "black",
           explanation: "'Black' describes the horse. It's the adjective."
         },
         {
           question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The fluffy puppy is sleepy.</span>",
-          options: ["puppy", "fluffy", "the", "sleepy"],
+          options: ["the", "fluffy", "puppy"],
           correct: "fluffy",
           explanation: "'Fluffy' describes the puppy. It's the adjective."
         },
         {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The fluffy cat is sleepy.</span>",
+          options: ["the", "fluffy", "puppy"],
+          correct: "fluffy",
+          explanation: "'Fluffy' describes the cat. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The fluffy cat is happy.</span>",
+          options: ["the", "puppy", "fluffy"],
+          correct: "fluffy",
+          explanation: "'Fluffy' describes the cat. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The gray mouse ran slow.</span>",
+          options: ["the", "mouse", "gray"],
+          correct: "gray",
+          explanation: "'Gray' describes the mouse. It's the adjective."
+        },
+        {
           question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The yellow duck is loud.</span>",
-          options: ["duck", "is", "yellow", "the"],
+          options: ["yellow", "duck", "is"],
           correct: "yellow",
           explanation: "'Yellow' describes the duck. It's the adjective."
         },
         {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The big bird is singing.</span>",
+          options: ["big", "is", "the"],
+          correct: "big",
+          explanation: "'Big' describes the bird. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The small bird is singing.</span>",
+          options: ["small", "bird", "is"],
+          correct: "small",
+          explanation: "'Small' describes the bird. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The quiet bird is singing.</span>",
+          options: ["the", "bird", "quiet"],
+          correct: "quiet",
+          explanation: "'Quiet' describes the bird. It's the adjective."
+        },
+        {
           question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The funny monkey jumps high.</span>",
-          options: ["monkey", "funny", "jumps", "the"],
+          options: ["the", "monkey", "funny"],
           correct: "funny",
           explanation: "'Funny' describes the monkey. It's the adjective."
         },
         {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The happy monkey jumps down.</span>",
+          options: ["funny", "the", "monkey", "happy"],
+          correct: "happy",
+          explanation: "'Happy' describes the monkey. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The happy squirrel jumped up.</span>",
+          options: ["the", "happy", "squirrel"],
+          correct: "happy",
+          explanation: "'Happy' describes the squirrel. It's the adjective."
+        },
+        {
           question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I ate a red apple.</span>",
-          options: ["I", "red", "apple", "ate"],
+          options: ["I", "red", "apple"],
           correct: "red",
           explanation: "'Red' describes the apple. It's the adjective."
         },
         {
           question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The sweet candy is yummy.</span>",
-          options: ["sweet", "is", "candy", "the"],
+          options: ["the", "sweet", "candy"],
           correct: "sweet",
           explanation: "'Sweet' describes the candy. It's the adjective."
         },
         {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The sweet doughnut was yummy.</span>",
+          options: ["the", "doughnut", "sweet"],
+          correct: "sweet",
+          explanation: "'Sweet' describes the doughnut. It's the adjective."
+        },
+        {
           question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I like cold juice.</span>",
-          options: ["cold", "I", "juice", "like"],
+          options: ["I", "like", "cold"],
           correct: "cold",
           explanation: "'Cold' describes the juice. It's the adjective."
         },
         {
           question: "Identify the adjective in the sentence. <br> <span style='color:black;'>That hot soup was tasty.</span>",
-          options: ["hot", "that", "soup", "was"],
+          options: ["hot", "soup", "that"],
           correct: "hot",
           explanation: "'Hot' describes the soup. It's the adjective."
         },
         {
           question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I want a big muffin.</span>",
-          options: ["want", "I", "big", "muffin"],
+          options: ["I", "big", "a"],
           correct: "big",
           explanation: "'Big' describes the muffin. It's the adjective."
         },
         {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I want a small muffin.</span>",
+          options: ["I", "small", "muffin"],
+          correct: "small",
+          explanation: "'Small' describes the muffin. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I want a round cookie.</span>",
+          options: ["I", "a", "round"],
+          correct: "round",
+          explanation: "'Round' describes the cookie. It's the adjective."
+        },
+        {
           question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The green grapes are soft.</span>",
-          options: ["soft", "green", "grapes", "the"],
+          options: ["the", "are", "green"],
           correct: "green",
           explanation: "'Green' describes the grapes. It's the adjective."
         },
         {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>She eats a big pizza.</span>",
+          options: ["she", "pizza", "big"],
+          correct: "big",
+          explanation: "'Big' describes the pizza. It's the adjective."
+        },
+        {
           question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The fresh bread is warm.</span>",
-          options: ["bread", "the", "warm", "fresh"],
+          options: ["the", "fresh", "bread"],
           correct: "fresh",
           explanation: "'Fresh' describes the bread. It's the adjective."
         },
         {
-          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The gray elephant is big.</span>",
-          options: ["gray", "is", "elephant", "the"],
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I buy four cats.</span>",
+          options: ["I", "buy", "four"],
+          correct: "four",
+          explanation: "'Four' is a numeral adjective specifying the number of cats."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I buy two dogs.</span>",
+          options: ["I", "two", "dogs"],
+          correct: "two",
+          explanation: "'Two' is a numeral adjective specifying the number of dogs."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I buy three birds.</span>",
+          options: ["I", "buy", "three"],
+          correct: "three",
+          explanation: "'Three' is a numeral adjective specifying the number of birds."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I buy five apples.</span>",
+          options: ["buy", "five", "apples"],
+          correct: "five",
+          explanation: "'Five' is a numeral adjective specifying the number of apples."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>We got four flashlights.</span>",
+          options: ["four", "we", "got"],
+          correct: "four",
+          explanation: "'Four' is a numeral adjective specifying the number of flashlights."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>We got five pots.</span>",
+          options: ["we", "got", "five"],
+          correct: "five",
+          explanation: "'Five' is a numeral adjective specifying the number of pots."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The gray elephant.</span>",
+          options: ["elephant", "gray", "the"],
           correct: "gray",
           explanation: "'Gray' describes the elephant. It's the adjective."
         },
         {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The pink flamingo.</span>",
+          options: ["pink", "the", "flamingo"],
+          correct: "pink",
+          explanation: "'Pink' describes the flamingo. It's the adjective."
+        },
+        {
           question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The juicy orange is good.</span>",
-          options: ["juicy", "orange", "good", "is"],
+          options: ["the", "orange", "juicy"],
           correct: "juicy",
           explanation: "'Juicy' describes the orange. It's the adjective."
         },
         {
-          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The white cat sleeps soundly.</span>",
-          options: ["white", "sleeps", "the", "cat"],
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The large whale.</span>",
+          options: ["the", "large", "whale"],
+          correct: "large",
+          explanation: "'Large' describes the whale. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The blue whale.</span>",
+          options: ["the", "whale", "blue"],
+          correct: "blue",
+          explanation: "'Blue' describes the whale. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The white cat.</span>",
+          options: ["the", "white", "cat"],
           correct: "white",
           explanation: "'White' describes the cat. It's the adjective."
         },
         {
-          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The sour lemonade tastes bad.</span>",
-          options: ["sour", "tastes", "lemonade", "the"],
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The sour lemonade.</span>",
+          options: ["lemonade", "sour", "the"],
           correct: "sour",
           explanation: "'Sour' describes the lemonade. It's the adjective."
         },
         {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The brown chocolate was yummy.</span>",
+          options: ["the", "brown", "chocolate"],
+          correct: "brown",
+          explanation: "'Brown' describes the chocolate. It's the adjective."
+        },
+        {
           question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Grandfather drives an old car.</span>",
-          options: ["old", "drives", "car", "Grandfather"],
+          options: ["old", "is", "car"],
           correct: "old",
           explanation: "'Old' describes the car. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Mom drives a white car.</span>",
+          options: ["mom", "white", "car"],
+          correct: "white",
+          explanation: "'White' describes the car. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Sam drives a new car.</span>",
+          options: ["Sam", "new", "car"],
+          correct: "new",
+          explanation: "'New' describes the car. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Give the baby some toys.</span>",
+          options: ["some", "toys", "the"],
+          correct: "some",
+          explanation: "'Some' is an adjective of quantity describing the toys."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I bought new gloves.</span>",
+          options: ["bought", "I", "new"],
+          correct: "new",
+          explanation: "'New' describes the gloves. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I cleaned the old shoes.</span>",
+          options: ["cleaned", "old", "shoes"],
+          correct: "old",
+          explanation: "'Old' describes the shoes. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I cleaned the new shoes.</span>",
+          options: ["new", "shoes", "cleaned"],
+          correct: "new",
+          explanation: "'New' describes the shoes. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>He found a new job.</span>",
+          options: ["new", "he", "job"],
+          correct: "new",
+          explanation: "'New' describes the job. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>She found a small apartment.</span>",
+          options: ["she", "found", "small"],
+          correct: "small",
+          explanation: "'Small' describes the apartment. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Mama has a new job.</span>",
+          options: ["mama", "new", "is"],
+          correct: "new",
+          explanation: "'New' describes the job. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Mama has blond hair.</span>",
+          options: ["mama", "is", "blond"],
+          correct: "blond",
+          explanation: "'Blond' describes the hair. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Dad has black pants.</span>",
+          options: ["dad", "is", "black"],
+          correct: "black",
+          explanation: "'Black' describes the pants. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Stop at the red light.</span>",
+          options: ["red", "light", "is"],
+          correct: "red",
+          explanation: "'Red' describes the light. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Look at the blue sky.</span>",
+          options: ["look", "at", "blue"],
+          correct: "blue",
+          explanation: "'Blue' describes the sky. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Look at white clouds.</span>",
+          options: ["at", "white", "clouds"],
+          correct: "white",
+          explanation: "'White' describes the clouds. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Look at the round moon.</span>",
+          options: ["at", "moon", "round"],
+          correct: "round",
+          explanation: "'Round' describes the moon. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The green grass.</span>",
+          options: ["green", "grass", "the"],
+          correct: "green",
+          explanation: "'Green' describes the grass. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I see the bright stars.</span>",
+          options: ["see", "I", "bright"],
+          correct: "bright",
+          explanation: "'Bright' describes the stars. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Six people came to the school.</span>",
+          options: ["six", "people", "came"],
+          correct: "six",
+          explanation: "'Six' is a numeral adjective specifying the number of people."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Ten people came to the party.</span>",
+          options: ["people", "came", "ten"],
+          correct: "ten",
+          explanation: "'Ten' is a numeral adjective specifying the number of people."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Sandy loves all animals.</span>",
+          options: ["sandy", "all", "loves"],
+          correct: "all",
+          explanation: "'All' is an indefinite adjective describing the animals."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Alexandra loves all cats.</span>",
+          options: ["alexandra", "all", "cats"],
+          correct: "all",
+          explanation: "'All' is an indefinite adjective describing the cats."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I see the bright sun.</span>",
+          options: ["see", "bright", "sun"],
+          correct: "bright",
+          explanation: "'Bright' describes the sun. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I see the bright diamond.</span>",
+          options: ["bright", "see", "the"],
+          correct: "bright",
+          explanation: "'Bright' describes the diamond. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Many people read.</span>",
+          options: ["many", "people", "read"],
+          correct: "many",
+          explanation: "'Many' is an indefinite adjective describing the people."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The cold wind.</span>",
+          options: ["wind", "the", "cold"],
+          correct: "cold",
+          explanation: "'Cold' describes the wind. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The big tree has apples.</span>",
+          options: ["the", "tree", "big"],
+          correct: "big",
+          explanation: "'Big' describes the tree. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The tall girl sat.</span>",
+          options: ["the", "tall", "girl"],
+          correct: "tall",
+          explanation: "'Tall' describes the girl. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The tall mountain is far.</span>",
+          options: ["the", "tall", "mountain"],
+          correct: "tall",
+          explanation: "'Tall' describes the mountain. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The warm weather makes me happy.</span>",
+          options: ["warm", "weather", "the"],
+          correct: "warm",
+          explanation: "'Warm' describes the weather. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The cute baby cried.</span>",
+          options: ["the", "cute", "cried"],
+          correct: "cute",
+          explanation: "'Cute' describes the baby. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I use a sharp knife.</span>",
+          options: ["use", "sharp", "knife"],
+          correct: "sharp",
+          explanation: "'Sharp' describes the knife. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I use a sharp pencil.</span>",
+          options: ["use", "sharp", "pencil"],
+          correct: "sharp",
+          explanation: "'Sharp' describes the pencil. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I have a clean room.</span>",
+          options: ["have", "I", "clean"],
+          correct: "clean",
+          explanation: "'Clean' describes the room. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I have a clean car.</span>",
+          options: ["I", "clean", "car"],
+          correct: "clean",
+          explanation: "'Clean' describes the car. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I have a dirty carpet.</span>",
+          options: ["I", "dirty", "carpet"],
+          correct: "dirty",
+          explanation: "'Dirty' describes the carpet. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The red bell is mine.</span>",
+          options: ["the", "bell", "red"],
+          correct: "red",
+          explanation: "'Red' describes the bell. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I sit in a soft chair.</span>",
+          options: ["I", "in", "soft"],
+          correct: "soft",
+          explanation: "'Soft' describes the chair. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>It is a small town.</span>",
+          options: ["it", "small", "town"],
+          correct: "small",
+          explanation: "'Small' describes the town. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The busy office.</span>",
+          options: ["the", "office", "busy"],
+          correct: "busy",
+          explanation: "'Busy' describes the office. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I like the clear water.</span>",
+          options: ["I", "like", "clear"],
+          correct: "clear",
+          explanation: "'Clear' describes the water. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>He likes the clear water.</span>",
+          options: ["clear", "like", "he"],
+          correct: "clear",
+          explanation: "'Clear' describes the water. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>She likes the clear text.</span>",
+          options: ["she", "clear", "text"],
+          correct: "clear",
+          explanation: "'Clear' describes the text. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>We ate all the sandwiches.</span>",
+          options: ["we", "all", "sandwiches"],
+          correct: "all",
+          explanation: "'All' is an indefinite adjective describing the sandwiches."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>The tall building.</span>",
+          options: ["tall", "the", "building"],
+          correct: "tall",
+          explanation: "'Tall' describes the building. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Look at the fluffy rabbit.</span>",
+          options: ["the", "rabbit", "fluffy"],
+          correct: "fluffy",
+          explanation: "'Fluffy' describes the rabbit. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Ants have six legs.</span>",
+          options: ["ants", "six", "have"],
+          correct: "six",
+          explanation: "'Six' is a numeral adjective specifying the number of legs."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>Sabrine is a good friend.</span>",
+          options: ["is", "sabrine", "good"],
+          correct: "good",
+          explanation: "'Good' describes the friend. It's the adjective."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I see three dinosaurs.</span>",
+          options: ["three", "see", "dinosaurs"],
+          correct: "three",
+          explanation: "'Three' is a numeral adjective specifying the number of dinosaurs."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>I see ten bears.</span>",
+          options: ["I", "see", "ten"],
+          correct: "ten",
+          explanation: "'Ten' is a numeral adjective specifying the number of bears."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>He sees five lions.</span>",
+          options: ["he", "lion", "five"],
+          correct: "five",
+          explanation: "'Five' is a numeral adjective specifying the number of lions."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>She sees two tigers.</span>",
+          options: ["she", "two", "tiger"],
+          correct: "two",
+          explanation: "'Two' is a numeral adjective specifying the number of tigers."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>They eat four hamburgers.</span>",
+          options: ["they", "hamburgers", "four"],
+          correct: "four",
+          explanation: "'Four' is a numeral adjective specifying the number of hamburgers."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>They carry eight bags.</span>",
+          options: ["they", "carry", "eight"],
+          correct: "eight",
+          explanation: "'Eight' is a numeral adjective specifying the number of bags."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>We have eleven cars.</span>",
+          options: ["eleven", "cars", "we"],
+          correct: "eleven",
+          explanation: "'Eleven' is a numeral adjective specifying the number of cars."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>All oranges grow on trees.</span>",
+          options: ["all", "oranges", "on"],
+          correct: "all",
+          explanation: "'All' is an indefinite adjective describing the oranges."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>All cows produce milk.</span>",
+          options: ["cows", "all", "milk"],
+          correct: "all",
+          explanation: "'All' is an indefinite adjective describing the cows."
+        },
+        {
+          question: "Identify the adjective in the sentence. <br> <span style='color:black;'>All the boys went to the library.</span>",
+          options: ["all", "the", "boys"],
+          correct: "all",
+          explanation: "'All' acts as a predeterminer/adjective referencing the full group of boys."
         }
       ];
     </script>
 
-    <!-- Professional Footer -->
     <div id="site-footer-placeholder"></div>
-    <!-- point to your main quiz logic -->
     <script src="../../../js/script.js"></script>
     <script src="../../../js/partials.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => {
-    initMCQQuiz(questions);
-  });
+        initMCQQuiz(questions);
+      });
     </script>
   </body>
 </html>
