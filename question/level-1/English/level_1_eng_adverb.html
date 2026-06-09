@@ -4,21 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Adverbs</title>
-    <!-- point to your question.css in the root css/ folder -->
     <link rel="stylesheet" href="../../../css/question.css" />
   </head>
   <body>
 
-   <!-- Sticky Header -->
-    <div id="site-header-placeholder"></div>
+   <div id="site-header-placeholder"></div>
 
-    <!-- Quiz Content -->
     <main class="quiz-container">
       <div class="question-section">
         <h3 id="question-text">Loading...</h3>
         <ul class="options" id="options-list">
-          <!-- Options dynamically generated -->
-        </ul>
+          </ul>
       </div>
       <div id="feedback" class="hidden"></div>
       <div id="explanation" class="hidden"></div>
@@ -27,138 +23,617 @@
     </main>
 
     <script>
-        const questions = [
-          {
-            question: "Identify the adverb in the sentence. <br> <span style='color:black;'>We gladly danced.</span>",
-            options: ["danced", "gladly"],
-            correct: "gladly",
-            explanation: "'Gladly' describes how the action was done, making it an adverb."
-          },
-          {
-            question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The cat runs fast.</span>",
-            options: ["cat", "fast", "runs", "the"],
-            correct: "fast",
-            explanation: "'Fast' tells how the cat runs, so it's an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'The dog runs away.'?",
-            options: ["dog", "runs", "away", "the"],
-            correct: "away",
-            explanation: "'Away' tells where the dog runs, making it an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'She talks loudly.'?",
-            options: ["talks", "none", "she", "loudly"],
-            correct: "loudly",
-            explanation: "'Loudly' shows how she talks, so it's an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'We talked slowly.'?",
-            options: ["we", "talked", "none", "slowly"],
-            correct: "slowly",
-            explanation: "'Slowly' describes the way of talking, so it is an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'She paints peacefully.'?",
-            options: ["peacefully", "she", "paint", "paints"],
-            correct: "peacefully",
-            explanation: "'Peacefully' tells how she paints — it’s an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'The baby laughs loudly.'?",
-            options: ["laughs", "baby", "loudly", "the"],
-            correct: "loudly",
-            explanation: "'Loudly' tells how the baby laughs — it’s an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'The woman sings beautifully.'?",
-            options: ["beautifully", "woman", "The", "sings"],
-            correct: "beautifully",
-            explanation: "'Beautifully' tells how she sings — it’s an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'They eat happily.'?",
-            options: ["happily", "They", "eat", "none"],
-            correct: "happily",
-            explanation: "'Happily' shows how they eat, so it's an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'The bird flies high.'?",
-            options: ["the", "high", "flies", "bird"],
-            correct: "high",
-            explanation: "'High' shows where the bird flies — it's an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'He reads quietly in the library.'?",
-            options: ["quietly", "he", "reads", "library"],
-            correct: "quietly",
-            explanation: "'Quietly' describes how he reads — it's an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'The children sleep peacefully.'?",
-            options: ["peacefully", "sleep", "children", "the"],
-            correct: "peacefully",
-            explanation: "'Peacefully' tells how they sleep — it’s an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'She speaks softly.'?",
-            options: ["speaks", "softly", "none", "she"],
-            correct: "softly",
-            explanation: "'Softly' tells how she speaks — it’s an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'The rain falls heavily.'?",
-            options: ["falls", "rain", "heavily", "the"],
-            correct: "heavily",
-            explanation: "'Heavily' shows how the rain falls — it's an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'He sat silently.'?",
-            options: ["he", "silently", "sat", "none"],
-            correct: "silently",
-            explanation: "'Silently' describes how he sat — it’s an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'The bus left early.'?",
-            options: ["left", "early", "the", "bus"],
-            correct: "early",
-            explanation: "'Early' describes when the bus left — it's an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'The cat slept soundly.'?",
-            options: ["the", "soundly", "slept", "cat"],
-            correct: "soundly",
-            explanation: "'Soundly' tells how the cat slept — it's an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'The girl swam frantically.'?",
-            options: ["swam", "frantically", "the", "girl"],
-            correct: "frantically",
-            explanation: "'Frantically' describes how she swam — it's an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'She helped willingly.'?",
-            options: ["willingly", "helped", "none", "she"],
-            correct: "willingly",
-            explanation: "'Willingly' tells how she helped — it's an adverb."
-          },
-          {
-            question: "Which word is the adverb in the sentence: 'The car moved smoothly.'?",
-            options: ["car", "moved", "smoothly", "the"],
-            correct: "smoothly",
-            explanation: "'Smoothly' describes how the car moved — it’s an adverb."
-          }
-        ];
-      </script>
+      const questions = [
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Sandy walked to the west of the town.</span>",
+          options: ["walked", "west", "Sandy"],
+          correct: "west",
+          explanation: "'West' indicates the direction/place of the action, making it an adverb here."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Sam went inside the school.</span>",
+          options: ["went", "school", "inside"],
+          correct: "inside",
+          explanation: "'Inside' tells where Sam went, making it an adverb of place."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Beth went outside the school.</span>",
+          options: ["school", "Beth", "outside"],
+          correct: "outside",
+          explanation: "'Outside' tells where Beth went, making it an adverb of place."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>We gladly danced.</span>",
+          options: ["we", "gladly", "danced."],
+          correct: "gladly",
+          explanation: "'Gladly' describes the manner in which they danced, making it an adverb."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>We gladly jumped in the pool.</span>",
+          options: ["we", "jumped", "gladly"],
+          correct: "gladly",
+          explanation: "'Gladly' tells how the jumping was done, so it is an adverb."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The cat runs fast.</span>",
+          options: ["The", "runs", "fast"],
+          correct: "fast",
+          explanation: "'Fast' describes how the cat runs, making it an adverb."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The dog runs away.</span>",
+          options: ["The", "away", "runs"],
+          correct: "away",
+          explanation: "'Away' indicates direction/place, telling where the dog runs."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The lion eats fast.</span>",
+          options: ["fast", "The", "Lion."],
+          correct: "fast",
+          explanation: "'Fast' indicates the manner or speed of eating, making it an adverb."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>She talks loudly.</span>",
+          options: ["she", "loudly", "talks"],
+          correct: "loudly",
+          explanation: "'Loudly' describes how she talks, making it an adverb."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>He talks loudly.</span>",
+          options: ["she", "loudly", "talks"],
+          correct: "loudly",
+          explanation: "'Loudly' describes how he talks, making it an adverb."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>We talked slowly.</span>",
+          options: ["talked", "we", "slowly"],
+          correct: "slowly",
+          explanation: "'Slowly' tells the manner in which they talked, making it an adverb."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>She paints peacefully.</span>",
+          options: ["paints", "peacefully", "she"],
+          correct: "peacefully",
+          explanation: "'Peacefully' describes the manner of painting, making it an adverb."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>He paints beautifully.</span>",
+          options: ["paints", "beautifully", "she"],
+          correct: "beautifully",
+          explanation: "'Beautifully' describes how he paints, making it an adverb."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>He walks slowly to the school.</span>",
+          options: ["He", "walks", "slowly"],
+          correct: "slowly",
+          explanation: "'Slowly' describes how he walks, making it an adverb."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The wind blows gently.</span>",
+          options: ["wind", "gently", "is"],
+          correct: "gently",
+          explanation: "'Gently' describes the manner in which the wind blows."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The baby laughs loudly.</span>",
+          options: ["baby", "laughs", "loudly"],
+          correct: "loudly",
+          explanation: "'Loudly' describes the manner of laughing, making it an adverb."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The woman sings beautifully.</span>",
+          options: ["The", "beautifully", "sings"],
+          correct: "beautifully",
+          explanation: "'Beautifully' tells how the woman sings, making it an adverb."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>They eat happily.</span>",
+          options: ["They", "eat", "happily"],
+          correct: "happily",
+          explanation: "'Happily' shows the manner in which they eat."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Beth eats happily.</span>",
+          options: ["Beth", "happily", "eats"],
+          correct: "happily",
+          explanation: "'Happily' shows the manner in which Beth eats."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The bird flies high.</span>",
+          options: ["the", "high", "flies"],
+          correct: "high",
+          explanation: "'High' acts as an adverb describing where or to what level the bird flies."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>He reads quietly in the library.</span>",
+          options: ["he", "quietly", "library"],
+          correct: "quietly",
+          explanation: "'Quietly' describes the manner of reading."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The children sleep peacefully.</span>",
+          options: ["the", "children", "peacefully"],
+          correct: "peacefully",
+          explanation: "'Peacefully' describes how the children sleep."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The children cry loudly.</span>",
+          options: ["the", "peacefully", "children", "loudly"],
+          correct: "loudly",
+          explanation: "'Loudly' describes how the children cry."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The children cry slowly.</span>",
+          options: ["slowly", "the", "children"],
+          correct: "slowly",
+          explanation: "'Slowly' describes the manner of crying."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The boys play noisily.</span>",
+          options: ["noisily", "the", "children"],
+          correct: "noisily",
+          explanation: "'Noisily' describes how the boys play."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>She finishes her homework quickly.</span>",
+          options: ["homework", "quickly", "her"],
+          correct: "quickly",
+          explanation: "'Quickly' describes the speed/manner of finishing homework."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>They finish their homework quickly.</span>",
+          options: ["homework", "their", "quickly"],
+          correct: "quickly",
+          explanation: "'Quickly' describes how they finish their homework."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>She speaks softly.</span>",
+          options: ["she", "softly", "speaks"],
+          correct: "softly",
+          explanation: "'Softly' describes the manner of speaking."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>He speaks gradually.</span>",
+          options: ["he", "speaks", "gradually"],
+          correct: "gradually",
+          explanation: "'Gradually' describes how he speaks."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The rain falls heavily.</span>",
+          options: ["the", "rain", "heavily"],
+          correct: "heavily",
+          explanation: "'Heavily' describes how the rain falls."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>He reads only good books.</span>",
+          options: ["only", "books", "reads"],
+          correct: "only",
+          explanation: "'Only' modifies the adjective 'good' or the action, acting as an adverb."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>She usually sings in the shower.</span>",
+          options: ["sings", "usually", "in"],
+          correct: "usually",
+          explanation: "'Usually' is an adverb of frequency showing how often she sings."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>He sat silently.</span>",
+          options: ["he", "silently", "sat"],
+          correct: "silently",
+          explanation: "'Silently' describes how he sat."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>She sat silently.</span>",
+          options: ["she", "sat", "silently"],
+          correct: "silently",
+          explanation: "'Silently' describes how she sat."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The turtle moved slowly.</span>",
+          options: ["turtle", "slowly", "the"],
+          correct: "slowly",
+          explanation: "'Slowly' describes how the turtle moved."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The bus left early.</span>",
+          options: ["the", "bus", "left", "early"],
+          correct: "early",
+          explanation: "'Early' is an adverb of time telling when the bus left."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The cat slept soundly.</span>",
+          options: ["the", "soundly", "cat"],
+          correct: "soundly",
+          explanation: "'Soundly' describes the manner of sleeping."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The girl swam frantically.</span>",
+          options: ["the", "girl", "frantically"],
+          correct: "frantically",
+          explanation: "'Frantically' describes how the girl swam."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>He swims well.</span>",
+          options: ["he", "well", "swim"],
+          correct: "well",
+          explanation: "'Well' describes how he swims."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>She sings well.</span>",
+          options: ["she", "sings", "well"],
+          correct: "well",
+          explanation: "'Well' describes how she sings."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The car moved smoothly.</span>",
+          options: ["smoothly", "car", "moved"],
+          correct: "smoothly",
+          explanation: "'Smoothly' describes how the car moved."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>She helped willingly.</span>",
+          options: ["she", "willingly", "helped"],
+          correct: "willingly",
+          explanation: "'Willingly' shows her manner or readiness to help."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Tom helped willingly.</span>",
+          options: ["Tom", "helped", "willingly"],
+          correct: "willingly",
+          explanation: "'Willingly' describes how Tom helped."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>I am eating now.</span>",
+          options: ["I", "am", "now"],
+          correct: "now",
+          explanation: "'Now' is an adverb of time indicating when the action occurs."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Sama came late.</span>",
+          options: ["Sama", "late", "came"],
+          correct: "late",
+          explanation: "'Late' is an adverb of time indicating when Sama arrived."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Tom sat comfortably.</span>",
+          options: ["Tom", "sat", "comfortably"],
+          correct: "comfortably",
+          explanation: "'Comfortably' describes how Tom sat."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>George is seriously sick.</span>",
+          options: ["George", "seriously", "is"],
+          correct: "seriously",
+          explanation: "'Seriously' is a degree adverb modifying the adjective 'sick'."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The lion sat calmly.</span>",
+          options: ["calmly", "sat", "the"],
+          correct: "calmly",
+          explanation: "'Calmly' describes how the lion sat."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The tiger looked carefully.</span>",
+          options: ["carefully", "tiger", "the"],
+          correct: "carefully",
+          explanation: "'Carefully' describes how the tiger looked."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The boys played outside.</span>",
+          options: ["the", "outside", "Played"],
+          correct: "outside",
+          explanation: "'Outside' is an adverb of place indicating where they played."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>She will come later.</span>",
+          options: ["come", "later", "will"],
+          correct: "later",
+          explanation: "'Later' is an adverb of time telling when she will come."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>He will come later.</span>",
+          options: ["later", "will", "come"],
+          correct: "later",
+          explanation: "'Later' is an adverb of time telling when he will come."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>They will come later.</span>",
+          options: ["will", "come", "later"],
+          correct: "later",
+          explanation: "'Later' is an adverb of time telling when they will come."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>She answered correctly.</span>",
+          options: ["answered", "she", "correctly"],
+          correct: "correctly",
+          explanation: "'Correctly' describes the manner of answering."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>He answered correctly.</span>",
+          options: ["answered", "correctly", "he"],
+          correct: "correctly",
+          explanation: "'Correctly' describes the manner of answering."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>We answered all the questions.</span>",
+          options: ["all", "answered", "the"],
+          correct: "all",
+          explanation: "'All' modifies the context or noun phrase here, acting contextually as a quantifier/adverbial modifier."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>We often go to the beach.</span>",
+          options: ["we", "to", "often"],
+          correct: "often",
+          explanation: "'Often' is an adverb of frequency stating how frequently they go."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>I often go to the beach.</span>",
+          options: ["often", "I", "to"],
+          correct: "often",
+          explanation: "'Often' is an adverb of frequency stating how frequently I go."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The boat sails quickly.</span>",
+          options: ["boat", "quickly", "the"],
+          correct: "quickly",
+          explanation: "'Quickly' describes how the boat sails."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Grandma always brings gifts.</span>",
+          options: ["grandma", "always", "gifts"],
+          correct: "always",
+          explanation: "'Always' is an adverb of frequency showing regular occurrence."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>She talked proudly.</span>",
+          options: ["she", "proudly", "talked"],
+          correct: "proudly",
+          explanation: "'Proudly' describes how she spoke."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>I swim weekly.</span>",
+          options: ["I", "swim", "weekly"],
+          correct: "weekly",
+          explanation: "'Weekly' is an adverb of frequency/time telling how often I swim."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>He sleeps upstairs.</span>",
+          options: ["he", "upstairs", "sleeps"],
+          correct: "upstairs",
+          explanation: "'Upstairs' is an adverb of place indicating where he sleeps."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>She sleeps downstairs.</span>",
+          options: ["she", "downstairs", "sleeps"],
+          correct: "downstairs",
+          explanation: "'Downstairs' is an adverb of place indicating where she sleeps."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>She follows carefully the rules.</span>",
+          options: ["carefully", "she", "follows"],
+          correct: "carefully",
+          explanation: "'Carefully' describes how she follows the rules."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>He follows carefully the rules.</span>",
+          options: ["He", "follows", "carefully"],
+          correct: "carefully",
+          explanation: "'Carefully' describes how he follows the rules."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Jana writes fast.</span>",
+          options: ["writes", "Jana", "fast"],
+          correct: "fast",
+          explanation: "'Fast' acts as an adverb describing the speed of writing."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Beth writes slowly.</span>",
+          options: ["writes", "slowly", "Beth"],
+          correct: "slowly",
+          explanation: "'Slowly' describes the speed/manner of writing."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The lion appeared suddenly.</span>",
+          options: ["appeared", "suddenly", "lion"],
+          correct: "suddenly",
+          explanation: "'Suddenly' indicates the unexpected time/manner of appearance."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The lion appeared suddenly.</span>",
+          options: ["suddenly", "lion", "appeared"],
+          correct: "suddenly",
+          explanation: "'Suddenly' describes how or when the lion appeared."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The flag waved above.</span>",
+          options: ["the", "above", "waved"],
+          correct: "above",
+          explanation: "'Above' is an adverb of place describing where the flag waved."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The rabbit ran away.</span>",
+          options: ["the", "ran", "away"],
+          correct: "away",
+          explanation: "'Away' indicates direction or place of movement."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The kangaroo ran away.</span>",
+          options: ["away", "the", "ran"],
+          correct: "away",
+          explanation: "'Away' indicates destination or track of movement."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Mr Smith writes everywhere.</span>",
+          options: ["everywhere", "Mr", "Smith"],
+          correct: "everywhere",
+          explanation: "'Everywhere' is an adverb of place showing where he writes."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>I am going today.</span>",
+          options: ["going", "am", "today"],
+          correct: "today",
+          explanation: "'Today' is an adverb of time specifying when the action occurs."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>I am going later.</span>",
+          options: ["going", "later", "I"],
+          correct: "later",
+          explanation: "'Later' is an adverb of time specifying when the action will occur."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Sandy reads often.</span>",
+          options: ["reads", "often", "Sandy"],
+          correct: "often",
+          explanation: "'Often' is an adverb of frequency describing reading habits."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Let's sleep now.</span>",
+          options: ["sleep", "now", "let's"],
+          correct: "now",
+          explanation: "'Now' specifies the precise timing of sleep."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Let's sleep later.</span>",
+          options: ["sleep", "later", "let's"],
+          correct: "later",
+          explanation: "'Later' specifies a delayed time to sleep."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>She managed the shop well.</span>",
+          options: ["She", "managed", "well"],
+          correct: "well",
+          explanation: "'Well' describes how successfully she managed the shop."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Mom drives terribly.</span>",
+          options: ["drives", "terribly", "mom"],
+          correct: "terribly",
+          explanation: "'Terribly' describes the manner of driving."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Grandpa drives terribly.</span>",
+          options: ["terribly", "drives", "Grandpa"],
+          correct: "terribly",
+          explanation: "'Terribly' describes the manner of driving."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Grandpa drives carefully.</span>",
+          options: ["carefully", "drives", "Grandpa"],
+          correct: "carefully",
+          explanation: "'Carefully' describes the safe manner of driving."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Luca writes nicely.</span>",
+          options: ["Luca", "writes", "nicely"],
+          correct: "nicely",
+          explanation: "'Nicely' describes the quality or manner of writing."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Dean writes nicely.</span>",
+          options: ["nicely", "Dean", "writes"],
+          correct: "nicely",
+          explanation: "'Nicely' describes the quality or manner of writing."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>John swims fast.</span>",
+          options: ["Swims", "fast", "John"],
+          correct: "fast",
+          explanation: "'Fast' indicates the speed of swimming."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>I write secretly.</span>",
+          options: ["secretly.", "I", "write"],
+          correct: "secretly.",
+          explanation: "'Secretly' shows the stealthy manner in which writing is done."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The ants moved ahead.</span>",
+          options: ["ahead", "ants", "moved"],
+          correct: "ahead",
+          explanation: "'Ahead' is an adverb of direction indicating forward movement."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>I will draw now.</span>",
+          options: ["I", "will", "now"],
+          correct: "now",
+          explanation: "'Now' is an adverb of time."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>The car stopped last.</span>",
+          options: ["car", "last", "stoped"],
+          correct: "last",
+          explanation: "'Last' acts as an adverb indicating positional order or timing."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>She always brings her money.</span>",
+          options: ["she", "always", "her"],
+          correct: "always",
+          explanation: "'Always' tells the continuous frequency of her action."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>She drinks fast.</span>",
+          options: ["she", "fast", "drink"],
+          correct: "fast",
+          explanation: "'Fast' tells how speed-focused her drinking action is."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>They eat together.</span>",
+          options: ["eat", "they", "together"],
+          correct: "together",
+          explanation: "'Together' tells the unified manner or social configuration of eating."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>They play together.</span>",
+          options: ["they", "together", "play"],
+          correct: "together",
+          explanation: "'Together' tells the configuration of playing."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Mom works here.</span>",
+          options: ["here", "Mom", "works"],
+          correct: "here",
+          explanation: "'Here' is an adverb of place."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Papa works here.</span>",
+          options: ["Papa", "works", "here"],
+          correct: "here",
+          explanation: "'Here' is an adverb of place."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>They swim together.</span>",
+          options: ["They", "swim", "together."],
+          correct: "together.",
+          explanation: "'Together' specifies the relationship or manner of swimming."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Dad works today.</span>",
+          options: ["today", "Dad", "works"],
+          correct: "today",
+          explanation: "'Today' is an adverb of time."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>Dad works today.</span>",
+          options: ["Dad", "works", "today"],
+          correct: "today",
+          explanation: "'Today' specifies when Dad works."
+        },
+        {
+          question: "Identify the adverb in the sentence. <br> <span style='color:black;'>She eats the doughnuts greedily.</span>",
+          options: ["She", "greedily", "doughnuts"],
+          correct: "greedily",
+          explanation: "'Greedily' describes the exact, desperate manner of eating."
+        }
+      ];
+    </script>
 
-  <!-- Professional Footer -->
     <div id="site-footer-placeholder"></div>
-    <!-- point to your main quiz logic -->
     <script src="../../../js/script.js"></script>
     <script src="../../../js/partials.js"></script>
-    <script>window.addEventListener("DOMContentLoaded", () => {
-    initMCQQuiz(questions);
-  });</script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
   </body>
 </html>
-
