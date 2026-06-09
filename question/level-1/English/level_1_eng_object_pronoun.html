@@ -4,21 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Object Pronouns</title>
-    <!-- point to your question.css in the root css/ folder -->
     <link rel="stylesheet" href="../../../css/question.css" />
   </head>
   <body>
 
-    <!-- Sticky Header -->
     <div id="site-header-placeholder"></div>
 
-    <!-- Quiz Content -->
     <main class="quiz-container">
       <div class="question-section">
         <h3 id="question-text">Loading...</h3>
         <ul class="options" id="options-list">
-          <!-- Options dynamically generated -->
-        </ul>
+          </ul>
       </div>
       <div id="feedback" class="hidden"></div>
       <div id="explanation" class="hidden"></div>
@@ -28,39 +24,610 @@
 
     <script>
       const questions = [
-  {"question":"Sam saw him at school","options":["Sam","him"],"correct":"him","explanation":"“him” is the correct object pronoun in this sentence."},
-  {"question":"The girl took her bag","options":["the","her"],"correct":"her","explanation":"“her” is the correct object pronoun in this sentence."},
-  {"question":"Grandfather blew his whistle","options":["grandfather","his"],"correct":"his","explanation":"“his” is the correct object pronoun in this sentence."},
-  {"question":"Grandma bought him candy.","options":["him","candy"],"correct":"him","explanation":"“him” is the correct object pronoun in this sentence."},
-  {"question":"Sam bit his own tongue.","options":["bit","his"],"correct":"his","explanation":"“his” is the correct object pronoun in this sentence."},
-  {"question":"Sandy got her bag.","options":["Sandy","her"],"correct":"her","explanation":"“her” is the correct object pronoun in this sentence."},
-  {"question":"The pilot gave him water.","options":["him","water"],"correct":"him","explanation":"“him” is the correct object pronoun in this sentence."},
-  {"question":"The manager gave him the book.","options":["him","book"],"correct":"him","explanation":"“him” is the correct object pronoun in this sentence."},
-  {"question":"Please give her the keys.","options":["her","give"],"correct":"her","explanation":"“her” is the correct object pronoun in this sentence."},
-  {"question":"Can you hear me!","options":["me","can"],"correct":"me","explanation":"“me” is the correct object pronoun in this sentence."},
-  {"question":"We like them very much.","options":["we","them"],"correct":"them","explanation":"“them” is the correct object pronoun in this sentence."},
-  {"question":"She met us after class.","options":["she","us"],"correct":"us","explanation":"“us” is the correct object pronoun in this sentence."},
-  {"question":"Please help me with this.","options":["help","me"],"correct":"me","explanation":"“me” is the correct object pronoun in this sentence."},
-  {"question":"Dad told her a story.","options":["dad","her"],"correct":"her","explanation":"“her” is the correct object pronoun in this sentence."},
-  {"question":"Coach praised him today.","options":["coach","him"],"correct":"him","explanation":"“him” is the correct object pronoun in this sentence."},
-  {"question":"Teacher asked us to read.","options":["teacher","us"],"correct":"us","explanation":"“us” is the correct object pronoun in this sentence."},
-  {"question":"They invited me to play.","options":["they","me"],"correct":"me","explanation":"“me” is the correct object pronoun in this sentence."},
-  {"question":"The gift is for her.","options":["gift","her"],"correct":"her","explanation":"“her” is the correct object pronoun in this sentence."},
-  {"question":"Mom called him back.","options":["mom","him"],"correct":"him","explanation":"“him” is the correct object pronoun in this sentence."},
-  {"question":"The teacher guided them.","options":["teacher","them"],"correct":"them","explanation":"“them” is the correct object pronoun in this sentence."}
-];
-
+        {
+          question: "Sam saw him at school.",
+          options: ["Sam", "him"],
+          correct: "him",
+          explanation: "'him' is the object pronoun because it receives the action of the verb 'saw'."
+        },
+        {
+          question: "The girl took her bag.",
+          options: ["her", "girl"],
+          correct: "her",
+          explanation: "'her' acts as the possessive pronoun modifier receiving the action contextually alongside the noun object."
+        },
+        {
+          question: "Grandfather blew his whistle.",
+          options: ["grandfather", "his"],
+          correct: "his",
+          explanation: "'his' represents the pronoun indicator modified by the structural action context."
+        },
+        {
+          question: "Grandma bought him candy.",
+          options: ["Grandma", "him"],
+          correct: "him",
+          explanation: "'him' is the indirect object pronoun receiving the buying action."
+        },
+        {
+          question: "Sam bit his own tongue.",
+          options: ["his", "bit"],
+          correct: "his",
+          explanation: "'his' is the pronominal modifier receiving the reflexive action trajectory."
+        },
+        {
+          question: "Sandy got her bag.",
+          options: ["Sandy", "her"],
+          correct: "her",
+          explanation: "'her' serves as the singular targeted feminine object pronominal modifier."
+        },
+        {
+          question: "The pilot gave him water.",
+          options: ["water", "him"],
+          correct: "him",
+          explanation: "'him' serves as the personal object pronoun receiving the package element."
+        },
+        {
+          question: "The manager gave him the book.",
+          options: ["him", "book"],
+          correct: "him",
+          explanation: "'him' identifies the direct recipient character segment receiving the book."
+        },
+        {
+          question: "Please give her the keys.",
+          options: ["give", "her"],
+          correct: "her",
+          explanation: "'her' operates as the target object pronoun receiving the keys."
+        },
+        {
+          question: "Can you hear me!",
+          options: ["you", "me"],
+          correct: "me",
+          explanation: "'me' is the first-person object pronoun receiving the action 'hear'."
+        },
+        {
+          question: "Can you listen to me!",
+          options: ["You", "me"],
+          correct: "me",
+          explanation: "'me' receives the focus of the prepositional action phrase 'listen to'."
+        },
+        {
+          question: "Alexandra put her bag on the table.",
+          options: ["on", "her"],
+          correct: "her",
+          explanation: "'her' serves as the pronoun element tracking back to the subject."
+        },
+        {
+          question: "Hana will invite you.",
+          options: ["Hana", "you"],
+          correct: "you",
+          explanation: "'you' is the second-person object pronoun receiving the action 'invite'."
+        },
+        {
+          question: "Will you invite me?",
+          options: ["will", "me"],
+          correct: "me",
+          explanation: "'me' is the object pronoun receiving the targeted action invitation."
+        },
+        {
+          question: "Please help her!",
+          options: ["her", "help"],
+          correct: "her",
+          explanation: "'her' is the feminine object pronoun receiving assistance."
+        },
+        {
+          question: "Please help him!",
+          options: ["help", "him"],
+          correct: "him",
+          explanation: "'him' is the masculine singular object pronoun receiving the action."
+        },
+        {
+          question: "They joined us later.",
+          options: ["They", "us"],
+          correct: "us",
+          explanation: "'us' is the first-person plural object pronoun receiving the structural action."
+        },
+        {
+          question: "We congratulated them.",
+          options: ["we", "them"],
+          correct: "them",
+          explanation: "'them' is the third-person plural object pronoun receiving the congratulations."
+        },
+        {
+          question: "We sent him home.",
+          options: ["we", "him"],
+          correct: "him",
+          explanation: "'him' is the third-person masculine singular object pronoun."
+        },
+        {
+          question: "Can you hear me?",
+          options: ["you", "me"],
+          correct: "me",
+          explanation: "'me' functions directly as the primary object pronoun receiving the action."
+        },
+        {
+          question: "She called me last night.",
+          options: ["she", "me"],
+          correct: "me",
+          explanation: "'me' is the singular first-person pronoun target receiving the call."
+        },
+        {
+          question: "He called me yesterday.",
+          options: ["me", "called"],
+          correct: "me",
+          explanation: "'me' is the targeted first-person singular object pronoun segment."
+        },
+        {
+          question: "My teacher helped me with the homework.",
+          options: ["teacher", "me"],
+          correct: "me",
+          explanation: "'me' is the objective personal pronoun unit receiving academic support."
+        },
+        {
+          question: "I love you!",
+          options: ["I", "you"],
+          correct: "you",
+          explanation: "'you' is the target object pronoun receiving the affective action sentiment."
+        },
+        {
+          question: "Can you hear me now!",
+          options: ["you", "me"],
+          correct: "me",
+          explanation: "'me' acts as the explicit targeted object pronoun entity."
+        },
+        {
+          question: "I will meet you after class.",
+          options: ["class", "you"],
+          correct: "you",
+          explanation: "'you' acts as the specific object pronoun tracking the individual met."
+        },
+        {
+          question: "The couch can hear you.",
+          options: ["couch", "you"],
+          correct: "you",
+          explanation: "'you' acts as the object pronoun receiving the perception."
+        },
+        {
+          question: "I can understand you perfectly.",
+          options: ["can", "you"],
+          correct: "you",
+          explanation: "'you' is the objective individual pronoun targeted by understanding."
+        },
+        {
+          question: "I can count on him.",
+          options: ["him", "count"],
+          correct: "him",
+          explanation: "'him' operates as the objective pronominal target of the relational block."
+        },
+        {
+          question: "We met her parents yesterday.",
+          options: ["parents", "her"],
+          correct: "her",
+          explanation: "'her' serves as the singular personal pronoun entity within the objective scope."
+        },
+        {
+          question: "The teacher smiled at her.",
+          options: ["teacher", "her"],
+          correct: "her",
+          explanation: "'her' serves as the target object pronoun of the preposition 'at'."
+        },
+        {
+          question: "Everyone admires him.",
+          options: ["him", "admires"],
+          correct: "him",
+          explanation: "'him' is the masculine third-person object pronoun receiving admiration."
+        },
+        {
+          question: "She joined us for lunch.",
+          options: ["joined", "us"],
+          correct: "us",
+          explanation: "'us' is the first-person plural object pronoun target."
+        },
+        {
+          question: "He joined him for dinner.",
+          options: ["he", "him"],
+          correct: "him",
+          explanation: "'him' tracks as the correct singular masculine objective pronoun target."
+        },
+        {
+          question: "Our parents drove us to school.",
+          options: ["our", "us"],
+          correct: "us",
+          explanation: "'us' is the first-person objective pronoun receiving transportation."
+        },
+        {
+          question: "We helped them move.",
+          options: ["we", "them"],
+          correct: "them",
+          explanation: "'them' is the plural third-person object pronoun receiving logistics support."
+        },
+        {
+          question: "They gave him a gift.",
+          options: ["gave", "him"],
+          correct: "him",
+          explanation: "'him' is the accurate recipient object pronoun of the giving process."
+        },
+        {
+          question: "They gave her a present.",
+          options: ["present", "her"],
+          correct: "her",
+          explanation: "'her' functions as the singular feminine objective pronoun recipient."
+        },
+        {
+          question: "We invited him to dinner.",
+          options: ["we", "him"],
+          correct: "him",
+          explanation: "'him' is the objective tracking reference pronoun entity."
+        },
+        {
+          question: "She hit him on the face!",
+          options: ["hit", "him"],
+          correct: "him",
+          explanation: "'him' acts as the targeted pronoun element taking physical contact."
+        },
+        {
+          question: "The story made me laugh!",
+          options: ["story", "me"],
+          correct: "me",
+          explanation: "'me' is the singular personal object pronoun influenced by the plot."
+        },
+        {
+          question: "The story made him cry!",
+          options: ["him", "story"],
+          correct: "him",
+          explanation: "'him' functions as the singular objective target pronoun here."
+        },
+        {
+          question: "They warned us!",
+          options: ["They", "us"],
+          correct: "us",
+          explanation: "'us' represents the first-person plural object pronoun receiving security warning alerts."
+        },
+        {
+          question: "They called him.",
+          options: ["they", "him"],
+          correct: "him",
+          explanation: "'him' acts as the specific third-person singular object pronoun tracking target."
+        },
+        {
+          question: "They have us.",
+          options: ["they", "us"],
+          correct: "us",
+          explanation: "'us' captures the role of the objective plural personal pronoun entity."
+        },
+        {
+          question: "I have him.",
+          options: ["I", "him"],
+          correct: "him",
+          explanation: "'him' represents the masculine singular object pronoun target."
+        },
+        {
+          question: "They visit him on weekends.",
+          options: ["they", "him"],
+          correct: "him",
+          explanation: "'him' coordinates as the correct targeted third-person singular object pronoun."
+        },
+        {
+          question: "I visit her.",
+          options: ["I", "her"],
+          correct: "her",
+          explanation: "'her' stands as the correct objective personal pronoun entity targeted."
+        },
+        {
+          question: "The teacher asks me many questions.",
+          options: ["asks", "me"],
+          correct: "me",
+          explanation: "'me' is the direct first-person objective target pronoun variable."
+        },
+        {
+          question: "She sees you in class.",
+          options: ["she", "you"],
+          correct: "you",
+          explanation: "'you' acts as the recipient object pronoun target of vision."
+        },
+        {
+          question: "The boy left her smiling.",
+          options: ["boy", "her"],
+          correct: "her",
+          explanation: "'her' is the feminine singular object pronoun tracking state shifts."
+        },
+        {
+          question: "The boy left her heartbroken.",
+          options: ["boy", "her"],
+          correct: "her",
+          explanation: "'her' remains the target object pronoun receiving the situation outcome."
+        },
+        {
+          question: "They like it a lot.",
+          options: ["they", "it"],
+          correct: "it",
+          explanation: "'it' acts as the neuter singular object pronoun tracking appreciation targets."
+        },
+        {
+          question: "She teaches us Arabic.",
+          options: ["Arabic", "us"],
+          correct: "us",
+          explanation: "'us' represents the group objective pronoun entity receiving tutoring."
+        },
+        {
+          question: "We see it in the garden.",
+          options: ["we", "it"],
+          correct: "it",
+          explanation: "'it' works as the object pronoun element spotted contextually."
+        },
+        {
+          question: "I used it for my homework.",
+          options: ["homework", "it"],
+          correct: "it",
+          explanation: "'it' represents the neuter object pronoun tracked inside action contexts."
+        },
+        {
+          question: "We watch him on T.V.",
+          options: ["we", "him"],
+          correct: "him",
+          explanation: "'him' maps the third-person object pronoun targeted by visual streaming media."
+        },
+        {
+          question: "We help her with scheduling.",
+          options: ["scheduling", "her"],
+          correct: "her",
+          explanation: "'her' serves as the singular feminine target object pronoun layer."
+        },
+        {
+          question: "I use it for my homework.",
+          options: ["use", "it"],
+          correct: "it",
+          explanation: "'it' represents the targeted tool entity acting as an object pronoun."
+        },
+        {
+          question: "Sam reads it every night.",
+          options: ["Sam", "it"],
+          correct: "it",
+          explanation: "'it' acts as the structural resource item represented by an object pronoun."
+        },
+        {
+          question: "She reads it to her mom.",
+          options: ["mom", "it"],
+          correct: "it",
+          explanation: "'it' acts as the specific target object pronoun tracked through narration loops."
+        },
+        {
+          question: "She asks us to leave now!",
+          options: ["leave", "us"],
+          correct: "us",
+          explanation: "'us' represents the first-person plural object pronoun target entity."
+        },
+        {
+          question: "We are singing her a beautiful song.",
+          options: ["song", "her"],
+          correct: "her",
+          explanation: "'her' represents the objective indirect recipient pronoun targeted by melodies."
+        },
+        {
+          question: "They always like them!",
+          options: ["always", "them"],
+          correct: "them",
+          explanation: "'them' functions accurately as the plural third-person object pronoun layer."
+        },
+        {
+          question: "We read it together.",
+          options: ["together", "it"],
+          correct: "it",
+          explanation: "'it' represents the unique object pronoun target block accessed textually."
+        },
+        {
+          question: "I see her at the bus stop.",
+          options: ["I", "her"],
+          correct: "her",
+          explanation: "'her' tracks as the correct singular objective target pronoun tracking metrics."
+        },
+        {
+          question: "The teacher teaches us hard lessons.",
+          options: ["lessons", "us"],
+          correct: "us",
+          explanation: "'us' captures the correct group orientation indexical object pronoun format."
+        },
+        {
+          question: "The math teacher helped her a lot.",
+          options: ["teacher", "her"],
+          correct: "her",
+          explanation: "'her' functions as the correct targeted third-person singular objective pronoun."
+        },
+        {
+          question: "My father drives us to school.",
+          options: ["father", "us"],
+          correct: "us",
+          explanation: "'us' coordinates cleanly as the specific first-person group object pronoun."
+        },
+        {
+          question: "We invite him to come to the party.",
+          options: ["party", "him"],
+          correct: "him",
+          explanation: "'him' operates as the target object pronoun receiving event credentials."
+        },
+        {
+          question: "He gives her the old book.",
+          options: ["he", "her"],
+          correct: "her",
+          explanation: "'her' serves contextually as the indirect recipient entity tracking as an object pronoun."
+        },
+        {
+          question: "I always thought her hair looked amazing!",
+          options: ["always", "her"],
+          correct: "her",
+          explanation: "'her' handles the standard pronominal identifier slot within the modified structure."
+        },
+        {
+          question: "He was everything to her.",
+          options: ["everything", "her"],
+          correct: "her",
+          explanation: "'her' acts as the specific destination object pronoun following prepositions."
+        },
+        {
+          question: "They want them to listen.",
+          options: ["want", "them"],
+          correct: "them",
+          explanation: "'them' functions as the third-person plural object pronoun target."
+        },
+        {
+          question: "Sarah saw me at the market.",
+          options: ["market", "me"],
+          correct: "me",
+          explanation: "'me' is the primary object pronoun receiving the visual action."
+        },
+        {
+          question: "The manager called us yesterday.",
+          options: ["manager", "us"],
+          correct: "us",
+          explanation: "'us' functions cleanly as the targeted group object pronoun."
+        },
+        {
+          question: "Listen to him carefully.",
+          options: ["carefully", "him"],
+          correct: "him",
+          explanation: "'him' serves as the pronoun entity tracking focus targets."
+        },
+        {
+          question: "We found it near the car.",
+          options: ["car", "it"],
+          correct: "it",
+          explanation: "'it' tracks as the target item objective pronoun."
+        },
+        {
+          question: "The doctor examined her.",
+          options: ["doctor", "her"],
+          correct: "her",
+          explanation: "'her' is the targeted personal pronoun taking diagnostic review."
+        },
+        {
+          question: "They will meet us at noon.",
+          options: ["noon", "us"],
+          correct: "us",
+          explanation: "'us' handles the structural group object pronoun assignment."
+        },
+        {
+          question: "Please show them the office.",
+          options: ["office", "them"],
+          correct: "them",
+          explanation: "'them' operates as the target object pronoun receiving navigation."
+        },
+        {
+          question: "The dog followed me home.",
+          options: ["home", "me"],
+          correct: "me",
+          explanation: "'me' acts as the tracked objective destination reference pronoun."
+        },
+        {
+          question: "The dynamic music surprised him.",
+          options: ["music", "him"],
+          correct: "him",
+          explanation: "'him' captures the third-person masculine singular object pronoun slot."
+        },
+        {
+          question: "We need to tell her the truth.",
+          options: ["truth", "her"],
+          correct: "her",
+          explanation: "'her' operates as the target objective pronoun receiving declarations."
+        },
+        {
+          question: "The storm scared them last night.",
+          options: ["storm", "them"],
+          correct: "them",
+          explanation: "'them' handles the plural third-person targeted objective assignment."
+        },
+        {
+          question: "Can you guide me through this?",
+          options: ["guide", "me"],
+          correct: "me",
+          explanation: "'me' acts as the first-person target receiving directional feedback."
+        },
+        {
+          question: "The team selected him as captain.",
+          options: ["team", "him"],
+          correct: "him",
+          explanation: "'him' is the specific object pronoun capturing structural leadership selections."
+        },
+        {
+          question: "He left it on the counter.",
+          options: ["counter", "it"],
+          correct: "it",
+          explanation: "'it' marks the neutral target item acting as the object pronoun."
+        },
+        {
+          question: "The dynamic guide helped us cross.",
+          options: ["guide", "us"],
+          correct: "us",
+          explanation: "'us' remains the first-person plural grouping tracking object pronoun actions."
+        },
+        {
+          question: "I will contact her tomorrow morning.",
+          options: ["morning", "her"],
+          correct: "her",
+          explanation: "'her' remains the individual objective target pronoun for communications."
+        },
+        {
+          question: "The postman brought them letters.",
+          options: ["letters", "them"],
+          correct: "them",
+          explanation: "'them' tracks contextually as the target grouping object pronoun receiving mail."
+        },
+        {
+          question: "A tracking signal reached me over the radio.",
+          options: ["radio", "me"],
+          correct: "me",
+          explanation: "'me' acts as the targeted personal pronoun capturing audio output streams."
+        },
+        {
+          question: "The children pushed it down the hill.",
+          options: ["hill", "it"],
+          correct: "it",
+          explanation: "'it' acts as the physical entity placeholder tracked via an object pronoun."
+        },
+        {
+          question: "Our coach trained him for weeks.",
+          options: ["weeks", "him"],
+          correct: "him",
+          explanation: "'him' covers the masculine singular object pronoun designation layer perfectly."
+        },
+        {
+          question: "The principal invited us inside.",
+          options: ["inside", "us"],
+          correct: "us",
+          explanation: "'us' handles the standard first-person destination group object pronoun parameters."
+        },
+        {
+          question: "The artist painted her beautifully.",
+          options: ["artist", "her"],
+          correct: "her",
+          explanation: "'her' serves as the targeted canvas model parameter tracking object pronouns."
+        },
+        {
+          question: "The firm hired them instantly.",
+          options: ["instantly", "them"],
+          correct: "them",
+          explanation: "'them' functions as the plural target corporate workforce object pronoun."
+        },
+        {
+          question: "Please hand me that report file.",
+          options: ["file", "me"],
+          correct: "me",
+          explanation: "'me' tracks accurately as the personal recipient first-person object pronoun configuration."
+        },
+        {
+          question: "The system tracked it dynamically.",
+          options: ["system", "it"],
+          correct: "it",
+          explanation: "'it' works as the target parameter entity tracked via an object pronoun model."
+        }
+      ];
     </script>
 
-    <!-- Professional Footer -->
     <div id="site-footer-placeholder"></div>
-    <!-- point to your main quiz logic -->
     <script src="../../../js/script.js"></script>
     <script src="../../../js/partials.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => {
-    initMCQQuiz(questions);
-  });
+        initMCQQuiz(questions);
+      });
     </script>
   </body>
 </html>
