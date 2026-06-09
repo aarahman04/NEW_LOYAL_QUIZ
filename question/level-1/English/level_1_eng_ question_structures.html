@@ -4,21 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Question Structures</title>
-    <!-- point to your question.css in the root css/ folder -->
     <link rel="stylesheet" href="../../../css/question.css" />
   </head>
   <body>
 
-   <!-- Sticky Header -->
-    <div id="site-header-placeholder"></div>
+   <div id="site-header-placeholder"></div>
 
-    <!-- Quiz Content -->
     <main class="quiz-container">
       <div class="question-section">
         <h3 id="question-text">Loading...</h3>
         <ul class="options" id="options-list">
-          <!-- Options dynamically generated -->
-        </ul>
+          </ul>
       </div>
       <div id="feedback" class="hidden"></div>
       <div id="explanation" class="hidden"></div>
@@ -28,140 +24,616 @@
 
     <script>
       const questions = [
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ are you late?</span>",
-    options: ["Why", "Where"],
-    correct: "Why",
-    explanation: "'Why' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ will you come?</span>",
-    options: ["when", "where"],
-    correct: "when",
-    explanation: "'when' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ are you happy?</span>",
-    options: ["why", "what"],
-    correct: "why",
-    explanation: "'why' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ is your best friend?</span>",
-    options: ["who", "how"],
-    correct: "how",
-    explanation: "'how' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ do you live?</span>",
-    options: ["where", "why"],
-    correct: "why",
-    explanation: "'why' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ is knocking at the door?</span>",
-    options: ["who", "how"],
-    correct: "how",
-    explanation: "'how' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ is your favorite color?</span>",
-    options: ["what", "where"],
-    correct: "what",
-    explanation: "'what' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ is your birthday?</span>",
-    options: ["who", "when"],
-    correct: "when",
-    explanation: "'when' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ is playing cricket?</span>",
-    options: ["who", "how"],
-    correct: "who",
-    explanation: "'who' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ are you crying?</span>",
-    options: ["why", "who"],
-    correct: "why",
-    explanation: "'why' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ are you going?</span>",
-    options: ["how", "where"],
-    correct: "where",
-    explanation: "'where' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ is knocking?</span>",
-    options: ["who", "where"],
-    correct: "where",
-    explanation: "'where' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ are you feeling?</span>",
-    options: ["how", "why"],
-    correct: "why",
-    explanation: "'why' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ is your teacher?</span>",
-    options: ["who", "why"],
-    correct: "why",
-    explanation: "'why' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ is your brother?</span>",
-    options: ["who", "when"],
-    correct: "when",
-    explanation: "'when' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ is playing outside?</span>",
-    options: ["who", "how"],
-    correct: "who",
-    explanation: "'who' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ is your name?</span>",
-    options: ["how", "who"],
-    correct: "who",
-    explanation: "'who' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ is your favorite teacher?</span>",
-    options: ["who", "when"],
-    correct: "when",
-    explanation: "'when' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ is coming to dinner?</span>",
-    options: ["when", "who"],
-    correct: "when",
-    explanation: "'when' is the correct question word."
-  },
-  {
-    question: "Complete the sentence with the best question word.<br><span style='color:black'>________ is your father?</span>",
-    options: ["when", "where"],
-    correct: "where",
-    explanation: "'where' is the correct question word."
-  }
-];
-
-
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ are you late?</span>",
+          "options": ["Why", "Where"],
+          "correct": "Why",
+          "explanation": "'Why' is used here to ask for the reason or cause of being late."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ will you come?</span>",
+          "options": ["when", "where"],
+          "correct": "when",
+          "explanation": "'when' is used to inquire about the specific time or date of arrival."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ are you happy?</span>",
+          "options": ["why", "what"],
+          "correct": "why",
+          "explanation": "'why' is used to ask for the underlying reason behind an emotional state."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ are you today?</span>",
+          "options": ["who", "how"],
+          "correct": "how",
+          "explanation": "'how' is an interrogative adverb used to ask about someone's current health or well-being."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is he late?</span>",
+          "options": ["where", "why"],
+          "correct": "why",
+          "explanation": "'why' functions as the proper question word to request an explanation for a delay."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ old are you?</span>",
+          "options": ["who", "how"],
+          "correct": "how",
+          "explanation": "'how' combines with adjectives like 'old' to ask about degree, age, or measurements."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is your favorite color?</span>",
+          "options": ["what", "where"],
+          "correct": "what",
+          "explanation": "'what' is used as an interrogative pronoun to ask for information about a specific thing or choice."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ did he leave?</span>",
+          "options": ["who", "when"],
+          "correct": "when",
+          "explanation": "'when' is correct because the question targets the chronological time of departure."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is going to finish?</span>",
+          "options": ["who", "how"],
+          "correct": "who",
+          "explanation": "'who' is used here to identify the specific person performing the final action."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is it cold?</span>",
+          "options": ["why", "who"],
+          "correct": "why",
+          "explanation": "'why' seeks the climatic or scientific explanation for the cold temperature."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do I live?</span>",
+          "options": ["how", "where"],
+          "correct": "where",
+          "explanation": "'where' serves to locate or inquire about a geographical place or residence."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ are you going?</span>",
+          "options": ["who", "where"],
+          "correct": "where",
+          "explanation": "'where' tracks destination variables, asking about the physical place someone is traveling to."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is it raining?</span>",
+          "options": ["how", "why"],
+          "correct": "why",
+          "explanation": "'why' requests the underlying cause or operational reason for the rainfall."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is your bag heavy?</span>",
+          "options": ["who", "why"],
+          "correct": "why",
+          "explanation": "'why' targets the reason why the object possesses the physical attribute of being heavy."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is your birthday party?</span>",
+          "options": ["who", "when"],
+          "correct": "when",
+          "explanation": "'when' is used to identify the time or scheduled date of an upcoming social gathering."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ hit him?</span>",
+          "options": ["who", "how"],
+          "correct": "who",
+          "explanation": "'who' serves as the subjective interrogative pronoun identifying the person responsible for the action."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ will help me?</span>",
+          "options": ["how", "who"],
+          "correct": "who",
+          "explanation": "'who' asks for the identity of the person willing to assist."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do you sleep?</span>",
+          "options": ["who", "when"],
+          "correct": "when",
+          "explanation": "'when' references time windows, asking for the specific period or hour someone rests."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do we eat?</span>",
+          "options": ["when", "who"],
+          "correct": "when",
+          "explanation": "'when' determines chronological timeline variables relative to dining hours."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is my beautiful baby?</span>",
+          "options": ["when", "where"],
+          "correct": "where",
+          "explanation": "'where' checks location mapping strings to find where the child is physically situated."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ are you here?</span>",
+          "options": ["who", "why"],
+          "correct": "why",
+          "explanation": "'why' evaluates intentionality metrics, demanding the purpose of presence at a location."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ are they?</span>",
+          "options": ["why", "where"],
+          "correct": "where",
+          "explanation": "'where' serves to identify the physical location or placement coordinates of the group."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is the cat?</span>",
+          "options": ["where", "when"],
+          "correct": "where",
+          "explanation": "'where' tracks localized tracking arrays to find out where the animal is positioned."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do you think like that?</span>",
+          "options": ["why", "where"],
+          "correct": "why",
+          "explanation": "'why' demands an explanatory logical rationale for an individual's specific mindset."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ will it be dark?</span>",
+          "options": ["who", "when"],
+          "correct": "when",
+          "explanation": "'when' tracks environmental state change markers over standard timeline hours."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is he tired?</span>",
+          "options": ["why", "who"],
+          "correct": "why",
+          "explanation": "'why' seeks the functional physiological or physical biological cause of fatigue."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ are you now?</span>",
+          "options": ["who", "where"],
+          "correct": "where",
+          "explanation": "'where' queries immediate real-time locational positioning data fields."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is the shop?</span>",
+          "options": ["where", "why"],
+          "correct": "where",
+          "explanation": "'where' validates geographical layout indices mapping retail business storefront addresses."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ was there?</span>",
+          "options": ["when", "who"],
+          "correct": "who",
+          "explanation": "'who' queries human presence lists linked back to past target locations."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ was she?</span>",
+          "options": ["who", "when"],
+          "correct": "who",
+          "explanation": "'who' functions to clarify or resolve personal identity registries for an unknown woman."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is she calling?</span>",
+          "options": ["what", "who"],
+          "correct": "who",
+          "explanation": "'who' profiles target destination identities across communication lines."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is Sam?</span>",
+          "options": ["who", "why"],
+          "correct": "who",
+          "explanation": "'who' clarifies individual classification records linked to an explicit name token."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is Sam coming?</span>",
+          "options": ["when", "who"],
+          "correct": "when",
+          "explanation": "'when' tracks expected incoming traffic arrivals across clock timelines."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is the sun hot?</span>",
+          "options": ["who", "why"],
+          "correct": "why",
+          "explanation": "'why' references astronomical or thermodynamics explanations of solar energy parameters."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ was the show?</span>",
+          "options": ["how", "who"],
+          "correct": "how",
+          "explanation": "'how' acts as an adverb assessing quality execution values of events."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is your mother?</span>",
+          "options": ["who", "how"],
+          "correct": "how",
+          "explanation": "'how' is a standard formatting question checking on health, well-being, or life status indices."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do you feel?</span>",
+          "options": ["who", "how"],
+          "correct": "how",
+          "explanation": "'how' registers immediate diagnostic internal state or emotional sensory indicators."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do you study?</span>",
+          "options": ["who", "how"],
+          "correct": "how",
+          "explanation": "'how' references processing methodology models utilized to complete learning tasks."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ plays football?</span>",
+          "options": ["who", "how"],
+          "correct": "who",
+          "explanation": "'who' identifies sports athlete team member listings."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ sings well?</span>",
+          "options": ["how", "who"],
+          "correct": "who",
+          "explanation": "'who' audits specific vocal profile actors meeting performance score parameters."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is in the room?</span>",
+          "options": ["who", "how"],
+          "correct": "who",
+          "explanation": "'who' tallies real-time spatial occupancy rosters inside enclosed structures."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is outside?</span>",
+          "options": ["who", "how"],
+          "correct": "who",
+          "explanation": "'who' checks perimeter security identity profiles situated external to base hulls."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is my phone?</span>",
+          "options": ["why", "where"],
+          "correct": "where",
+          "explanation": "'where' initiates physical item search operations across localized areas."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is the teacher?</span>",
+          "options": ["when", "where"],
+          "correct": "where",
+          "explanation": "'where' searches classroom geographical zones to locate faculty units."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ lives in that castle?</span>",
+          "options": ["how", "who"],
+          "correct": "who",
+          "explanation": "'who' maps residency occupancy rights back to specific individuals."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is your book?</span>",
+          "options": ["where", "who"],
+          "correct": "where",
+          "explanation": "'where' resolves inventory tracking locations for physical textual items."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ are trees green?</span>",
+          "options": ["why", "who"],
+          "correct": "why",
+          "explanation": "'why' targets standard biological botanical queries regarding chlorophyll functions."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is the park?</span>",
+          "options": ["who", "where"],
+          "correct": "where",
+          "explanation": "'where' determines topological mapping lines tracking public park borders."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ are you laughing at him?</span>",
+          "options": ["why", "who"],
+          "correct": "why",
+          "explanation": "'why' demands clarification regarding behavioral output motives targeting others."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is the most important person to you?</span>",
+          "options": ["why", "who"],
+          "correct": "who",
+          "explanation": "'who' ranks internal affinity value matrices designating priority human nodes."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do bats sleep?</span>",
+          "options": ["why", "where"],
+          "correct": "where",
+          "explanation": "'where' tracks zoological geographic roosting locations preferred by nocturnal fauna."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is he shouting?</span>",
+          "options": ["why", "Who"],
+          "correct": "why",
+          "explanation": "'why' analyzes acoustic threshold elevation triggers inside voice channels."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is she dancing?</span>",
+          "options": ["Who", "where"],
+          "correct": "where",
+          "explanation": "'where' identifies performance grid coordinates mapping staging areas."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is this called?</span>",
+          "options": ["what", "who"],
+          "correct": "what",
+          "explanation": "'what' retrieves objective terminology assignments naming items or constructs."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is the food?</span>",
+          "options": ["who", "how"],
+          "correct": "how",
+          "explanation": "'how' evaluates sensory quality parameters tracking culinary preparation output value metrics."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do you go home?</span>",
+          "options": ["how", "who"],
+          "correct": "how",
+          "explanation": "'how' addresses transit routing methodologies and logistical travel modes."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do you make tea?</span>",
+          "options": ["who", "how"],
+          "correct": "how",
+          "explanation": "'how' acts as a request for formula processing recipe execution guidelines."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do you solve it?</span>",
+          "options": ["how", "who"],
+          "correct": "how",
+          "explanation": "'how' monitors optimization workflows outlining logical debugging steps."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ was your first paragraph?</span>",
+          "options": ["who", "how"],
+          "correct": "how",
+          "explanation": "'how' evaluates textual syntax quality execution metrics for literary assets."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do you wash clothes?</span>",
+          "options": ["who", "how"],
+          "correct": "how",
+          "explanation": "'how' outlines operating procedures governing system cleanup tasks."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is knocking on my door?</span>",
+          "options": ["who", "where"],
+          "correct": "who",
+          "explanation": "'who' logs sensory physical disturbance sources back to active human actors."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is cleaning the kitchen?</span>",
+          "options": ["how", "who"],
+          "correct": "who",
+          "explanation": "'who' fields administrative labor tracking markers regarding home maintenance loops."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is absent?</span>",
+          "options": ["who", "how"],
+          "correct": "who",
+          "explanation": "'who' tallies system missing exception records across student log rosters."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is present?</span>",
+          "options": ["how", "who"],
+          "correct": "who",
+          "explanation": "'who' monitors physical attendance data entries validating validation keys."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is that man?</span>",
+          "options": ["who", "how"],
+          "correct": "who",
+          "explanation": "'who' references profile master indices clarifying unfamiliar individuals."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is your favorite school subject?</span>",
+          "options": ["where", "what"],
+          "correct": "what",
+          "explanation": "'what' queries itemized catalog choices targeting technical academic disciplines."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is your favorite book?</span>",
+          "options": ["what", "who"],
+          "correct": "what",
+          "explanation": "'what' indexes primary textual title selections located inside tracking records."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do you do every year?</span>",
+          "options": ["when", "what"],
+          "correct": "what",
+          "explanation": "'what' profiles recursive routine activity parameters scheduled annually."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ will you come to me?</span>",
+          "options": ["when", "why"],
+          "correct": "when",
+          "explanation": "'when' registers incoming timestamp thresholds mapping interaction points."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do you have time to write?</span>",
+          "options": ["where", "when"],
+          "correct": "when",
+          "explanation": "'when' isolates schedule availability blocks within calendar duration lines."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do go to bed?</span>",
+          "options": ["who", "when"],
+          "correct": "when",
+          "explanation": "'when' requests sleep cycle chronological timing variables. (Matches file text structure)."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is Tommy sad?</span>",
+          "options": ["where", "why"],
+          "correct": "why",
+          "explanation": "'why' targets diagnostic root problem metrics sourcing emotional downturn values."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is he leaving?</span>",
+          "options": ["who", "when"],
+          "correct": "when",
+          "explanation": "'when' marks specific scheduled departure milestone timestamps."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is the red ball?</span>",
+          "options": ["when", "where"],
+          "correct": "where",
+          "explanation": "'where' checks localized tracking array sectors containing physical assets."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ went out?</span>",
+          "options": ["why", "who"],
+          "correct": "who",
+          "explanation": "'who' checks building perimeter egress trackers to isolate users."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ will you arrive.</span>",
+          "options": ["how", "when"],
+          "correct": "when",
+          "explanation": "'when' requests delivery estimates forecasting transit destination updates."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do you like games?</span>",
+          "options": ["why", "who"],
+          "correct": "why",
+          "explanation": "'why' evaluates personal amusement evaluation parameters sourcing affinity."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is the sky blue?</span>",
+          "options": ["where", "why"],
+          "correct": "why",
+          "explanation": "'why' tracks causal physics reasoning parameters mapping light dispersion patterns."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ are you so quiet?</span>",
+          "options": ["why", "where"],
+          "correct": "why",
+          "explanation": "'why' probes conversational silence logs seeking underlying causes."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is the exam?</span>",
+          "options": ["who", "when"],
+          "correct": "when",
+          "explanation": "'when' references examination evaluation calendar intervals."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is the winner.</span>",
+          "options": ["who", "how"],
+          "correct": "who",
+          "explanation": "'who' processes high score data charts to select user profiles."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is that possible?</span>",
+          "options": ["how", "who"],
+          "correct": "how",
+          "explanation": "'how' checks operational structural execution logical feasibility metrics."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do you spell this?</span>",
+          "options": ["who", "how"],
+          "correct": "how",
+          "explanation": "'how' asks for precision letter configuration sequences defining text strings."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is waiting?</span>",
+          "options": ["who", "how"],
+          "correct": "who",
+          "explanation": "'who' indexes processing state queue arrays tracking active users."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ are they?</span>",
+          "options": ["who", "how"],
+          "correct": "who",
+          "explanation": "'who' resolves identity classification arrays over target user groupings."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do we start?</span>",
+          "options": ["when", "why"],
+          "correct": "when",
+          "explanation": "'when' opens process lifecycle timers tracking initial timestamps."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do you sleep late?</span>",
+          "options": ["why", "where"],
+          "correct": "why",
+          "explanation": "'why' probes cycle delay parameters tracking user scheduling metrics."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ do you want this?</span>",
+          "options": ["why", "who"],
+          "correct": "why",
+          "explanation": "'why' audits priority demand flags explaining acquisition workflows."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is the bus so full?</span>",
+          "options": ["why", "who"],
+          "correct": "why",
+          "explanation": "'why' looks for resource saturation triggers inside logistical systems."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is the weather?</span>",
+          "options": ["who", "how"],
+          "correct": "how",
+          "explanation": "'how' profiles structural weather matrix attributes like heat and moisture metrics."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is the wedding?</span>",
+          "options": ["when", "why"],
+          "correct": "when",
+          "explanation": "'when' isolates calendar timestamps blocking wedding celebration bookings."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is the meeting?</span>",
+          "options": ["when", "who"],
+          "correct": "when",
+          "explanation": "'when' details conference group calendar event timing frameworks."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is in your hand?</span>",
+          "options": ["what", "who"],
+          "correct": "what",
+          "explanation": "'what' isolates object classification items held in anatomical hands."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ did you put the car?</span>",
+          "options": ["who", "where"],
+          "correct": "where",
+          "explanation": "'where' catalogs parking location coordinates holding operational vehicle units."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ will he pick us up?</span>",
+          "options": ["when", "who"],
+          "correct": "when",
+          "explanation": "'when' monitors coordinate rendezvous timetable schedules cleanly."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is Ms Smith here right now?</span>",
+          "options": ["who", "why"],
+          "correct": "why",
+          "explanation": "'why' processes location presence validation parameters tracking personnel files."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ did you make?</span>",
+          "options": ["what", "when"],
+          "correct": "what",
+          "explanation": "'what' retrieves production object characteristics output from compilation steps."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is coming over for dinner?</span>",
+          "options": ["who", "how"],
+          "correct": "who",
+          "explanation": "'who' audits dinner guest allocation profiles safely."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is your beautiful party?</span>",
+          "options": ["where", "when"],
+          "correct": "where",
+          "explanation": "'where' tracks celebration infrastructure geolocation mappings safely."
+        },
+        {
+          "question": "Complete the sentence with the best question word.<br><span style='color:black'>________ is the last day in school?</span>",
+          "options": ["when", "where"],
+          "correct": "when",
+          "explanation": "'when' specifies calendar closure milestone dates ending academic terms exactly."
+        }
+      ];
     </script>
 
-    <!-- Professional Footer -->
     <div id="site-footer-placeholder"></div>
-    <!-- point to your main quiz logic -->
     <script src="../../../js/script.js"></script>
     <script src="../../../js/partials.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => {
-    initMCQQuiz(questions);
-  });
+        initMCQQuiz(questions);
+      });
     </script>
   </body>
 </html>
