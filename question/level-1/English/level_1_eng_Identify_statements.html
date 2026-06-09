@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Identify Exclamations</title>
+    <title>Identify Statements</title>
     <link rel="stylesheet" href="../../../css/question.css" />
   </head>
   <body>
@@ -133,7 +133,7 @@ const questions = [
   },
   {
     "question": "Which of the following is a statement?<br><span style='color:black'>Ms Sandy works with my mother. / Do you like swimming?</span>",
-    "options": ["Ms Sandy works with my mother.", "Do you like swimming?"],
+    "options": ["Ms Sandy works with my mother.", "Do you like swimming."],
     "correct": "Ms Sandy works with my mother.",
     "explanation": "It ends with a period and tells something."
   },
@@ -142,12 +142,485 @@ const questions = [
     "options": ["Does he like dogs?", "I went to the market."],
     "correct": "I went to the market.",
     "explanation": "It is a statement because it tells something."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The cat ran up the tree. / Did the cat run up the tree?</span>",
+    "options": ["The cat ran up the tree.", "Did the cat run up the tree?"],
+    "correct": "The cat ran up the tree.",
+    "explanation": "It is a statement that tells about an action."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The cat was not allowed in the house. / Was the cat allowed in the house?</span>",
+    "options": ["The cat was not allowed in the house.", "Was the cat allowed in the house?"],
+    "correct": "The cat was not allowed in the house.",
+    "explanation": "It provides factual information, ending with a period."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The dog was not allowed in the house. / Was the dog allowed in the house?</span>",
+    "options": ["The dog was not allowed in the house.", "Was the dog allowed in the house?"],
+    "correct": "The dog was not allowed in the house.",
+    "explanation": "It directly states a rule or fact."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Why are you crying? / The dog was sick.</span>",
+    "options": ["Why are you crying?", "The dog was sick."],
+    "correct": "The dog was sick.",
+    "explanation": "It presents information about the dog's condition."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Why are you crying? / The dog was sleeping.</span>",
+    "options": ["Why are you crying?", "The dog was sleeping."],
+    "correct": "The dog was sleeping.",
+    "explanation": "It describes what the dog was doing."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The rabbit was fluffy. / What time is it?</span>",
+    "options": ["The rabbit was fluffy.", "What time is it?"],
+    "correct": "The rabbit was fluffy.",
+    "explanation": "It tells a characteristic of the rabbit."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>What time do you study? / The hen sat on the bench.</span>",
+    "options": ["What time do you study?", "The hen sat on the bench."],
+    "correct": "The hen sat on the bench.",
+    "explanation": "It communicates an action directly."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The school bell rang. / Will you go to Sam's house?</span>",
+    "options": ["The school bell rang.", "Will you go to Sam's house?"],
+    "correct": "The school bell rang.",
+    "explanation": "It states a completed event."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The school bell rang very loud. / What is your favorite song?</span>",
+    "options": ["The school bell rang very loud.", "What is your favorite song?"],
+    "correct": "The school bell rang very loud.",
+    "explanation": "It describes how the bell sounded."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The boy plays with Sam. / Is Sam your friend?</span>",
+    "options": ["The boy plays with Sam.", "Is Sam your friend?"],
+    "correct": "The boy plays with Sam.",
+    "explanation": "It defines a factual occurrence."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The mouse ran away. / Did you see that mouse?</span>",
+    "options": ["The mouse ran away.", "Did you see that mouse?"],
+    "correct": "The mouse ran away.",
+    "explanation": "It explains the action of the mouse."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The mouse ran behind the cat. / Did you see that cat?</span>",
+    "options": ["The mouse ran behind the cat.", "Did you see that cat?"],
+    "correct": "The mouse ran behind the cat.",
+    "explanation": "It describes a location scenario."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The turtle moved to slow. / What was that on the table?</span>",
+    "options": ["The turtle moved to slow.", "What was that on the table?"],
+    "correct": "The turtle moved to slow.",
+    "explanation": "It shares information about the turtle's pace."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Sandy walked up the hill. / What are you saying?</span>",
+    "options": ["Sandy walked up the hill.", "What are you saying?"],
+    "correct": "Sandy walked up the hill.",
+    "explanation": "It tracks an evolutionary action vector."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>What are you saying? / Sandy walked down the hill.</span>",
+    "options": ["What are you saying?", "Sandy walked down the hill."],
+    "correct": "Sandy walked down the hill.",
+    "explanation": "It provides location movement parameters."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>What is he buying? / Sandy was writing a poem.</span>",
+    "options": ["What is he buying?", "Sandy was writing a poem."],
+    "correct": "Sandy was writing a poem.",
+    "explanation": "It notes a historical processing action."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Dad is in the front yard. / Are you lost?</span>",
+    "options": ["Dad is in the front yard.", "Are you lost?"],
+    "correct": "Dad is in the front yard.",
+    "explanation": "It defines parental orientation profiles."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Dad was dancing. / Are you sick?</span>",
+    "options": ["Dad was dancing.", "Are you sick?"],
+    "correct": "Dad was dancing.",
+    "explanation": "It catalogs continuous physical action flags."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Dad leaves to work early. / Are you sick?</span>",
+    "options": ["Dad leaves to work early.", "Are you sick?"],
+    "correct": "Dad leaves to work early.",
+    "explanation": "It documents standard everyday schedule facts."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Did you catch the bus? / He walks every single day.</span>",
+    "options": ["Did you catch the bus?", "He walks every single day."],
+    "correct": "He walks every single day.",
+    "explanation": "It identifies recurring behavior profiles safely."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Did you know this? / She walks every single day.</span>",
+    "options": ["Did you know this?", "She walks every single day."],
+    "correct": "She walks every single day.",
+    "explanation": "It details routine actions closing with a period."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>She studied yesterday. / What is she doing?</span>",
+    "options": ["She studied yesterday.", "What is she doing?"],
+    "correct": "She studied yesterday.",
+    "explanation": "It sets past educational activity logs."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>They studied yesterday. / What is he doing?</span>",
+    "options": ["They studied yesterday.", "What is he doing?"],
+    "correct": "They studied yesterday.",
+    "explanation": "It reports group study completion vectors."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Where do bears live? / I live in Germany.</span>",
+    "options": ["Where do bears live?", "I live in Germany."],
+    "correct": "I live in Germany.",
+    "explanation": "It profiles user localization attributes explicitly."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>I live in Japan. / What is the capital city of Germany?</span>",
+    "options": ["I live in Japan.", "What is the capital city of Germany?"],
+    "correct": "I live in Japan.",
+    "explanation": "It confirms geographic residency indexes."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>What is the capital city of Italy? / I live in London.</span>",
+    "options": ["What is the capital city of Italy?", "I live in London."],
+    "correct": "I live in London.",
+    "explanation": "It states residential positioning directly."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>We will go to the zoo. / Where is my passport?</span>",
+    "options": ["We will go to the zoo.", "Where is my passport?"],
+    "correct": "We will go to the zoo.",
+    "explanation": "It declares a future movement target sequence."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>When is the party? / Sandy likes to work in her garden.</span>",
+    "options": ["When is the party?", "Sandy likes to work in her garden."],
+    "correct": "Sandy likes to work in her garden.",
+    "explanation": "It logs baseline personal hobby preferences."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Where is my phone? / The phone is in my purse.</span>",
+    "options": ["Where is my phone?", "The phone is in my purse."],
+    "correct": "The phone is in my purse.",
+    "explanation": "It coordinates object location boundaries."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The wallet is in my purse. / Where is my wallet?</span>",
+    "options": ["The wallet is in my purse.", "Where is my wallet?"],
+    "correct": "The wallet is in my purse.",
+    "explanation": "It establishes precise component placement conditions."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Where is my money? / I love chocolate.</span>",
+    "options": ["Where is my money?", "I love chocolate."],
+    "correct": "I love chocolate.",
+    "explanation": "It notes flavor affinity choices cleanly."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>I love ice coffee. / Do you like ice coffee?</span>",
+    "options": ["I love ice coffee.", "Do you like ice coffee?"],
+    "correct": "I love ice coffee.",
+    "explanation": "It updates dynamic dietary choice logs."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>What is the name of his new baby? / The sun is shining.</span>",
+    "options": ["What is the name of his new baby?", "The sun is shining."],
+    "correct": "The sun is shining.",
+    "explanation": "It registers contextual weather observations directly."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The sun is yellow. / What is the name of her new baby?</span>",
+    "options": ["The sun is yellow.", "What is the name of her new baby?"],
+    "correct": "The sun is yellow.",
+    "explanation": "It asserts baseline astronomical properties."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>I have a red pen / Do you have a red pen?</span>",
+    "options": ["I have a red pen", "Do you have a red pen?"],
+    "correct": "I have a red pen",
+    "explanation": "It handles asset tracking updates."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Do you like Pizza? / I have a red car.</span>",
+    "options": ["Do you like Pizza?", "I have a red car."],
+    "correct": "I have a red car.",
+    "explanation": "It inventories physical fleet configurations."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>I have a red card. / Do you think it is ok?</span>",
+    "options": ["I have a red card.", "Do you think it is ok?"],
+    "correct": "I have a red card.",
+    "explanation": "It checks inventory card indicators directly."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Do you have a red car? / I have one cat.</span>",
+    "options": ["Do you have a red car?", "I have one cat."],
+    "correct": "I have one cat.",
+    "explanation": "It tracks domestic animal numbers cleanly."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Do you have a red car? / I have two cats.</span>",
+    "options": ["Do you have a red car?", "I have two cats."],
+    "correct": "I have two cats.",
+    "explanation": "It logs livestock or pet asset indexes accurately."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>My cat is so fluffy. / Do you have a bigger picture?</span>",
+    "options": ["My cat is so fluffy.", "Do you have a bigger picture?"],
+    "correct": "My cat is so fluffy.",
+    "explanation": "It tracks baseline visual properties via a period."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>My bird is colorful. / What is your favorite animal?</span>",
+    "options": ["My bird is colorful.", "What is your favorite animal?"],
+    "correct": "My bird is colorful.",
+    "explanation": "It reports visual animal configuration values."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Do you like to play Tennis? / I like Tennis.</span>",
+    "options": ["Do you like to play Tennis?", "I like Tennis."],
+    "correct": "I like Tennis.",
+    "explanation": "It saves sporting validation options safely."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>I like to fly kites. / Is Football great?</span>",
+    "options": ["I like to fly kites.", "Is Football great?"],
+    "correct": "I like to fly kites.",
+    "explanation": "It registers hobby profiles without question marks."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Is the train coming? / We are in the park.</span>",
+    "options": ["Is the train coming?", "We are in the park."],
+    "correct": "We are in the park.",
+    "explanation": "It sets position logs using a flat informative sentence."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>He is my friend. / Do you think he is my brother?</span>",
+    "options": ["He is my friend.", "Do you think he is my brother?"],
+    "correct": "He is my friend.",
+    "explanation": "It declares relationship status variables directly."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>We are in the restaurant. / Did you go to that restaurant?</span>",
+    "options": ["We are in the restaurant.", "Did you go to that restaurant?"],
+    "correct": "We are in the restaurant.",
+    "explanation": "It details geometric user positions dynamically."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>It is raining. / What is your address again?</span>",
+    "options": ["It is raining.", "What is your address again?"],
+    "correct": "It is raining.",
+    "explanation": "It logs baseline weather metrics cleanly."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>What do you want to do? / It is raining.</span>",
+    "options": ["What do you want to do?", "It is raining."],
+    "correct": "It is raining.",
+    "explanation": "It details continuous natural climate situations."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The grass is green. / What color is the grass?</span>",
+    "options": ["The grass is green.", "What color is the grass?"],
+    "correct": "The grass is green.",
+    "explanation": "It inventories physical surface properties."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>I am happy. / Are you happy?</span>",
+    "options": ["I am happy.", "Are you happy?"],
+    "correct": "I am happy.",
+    "explanation": "It records immediate personal emotion flags."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Are you sad? / I am sad.</span>",
+    "options": ["Are you sad?", "I am sad."],
+    "correct": "I am sad.",
+    "explanation": "It processes current personal framework conditions."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>She is singing. / Are you sitting?</span>",
+    "options": ["She is singing.", "Are you sitting?"],
+    "correct": "She is singing.",
+    "explanation": "It displays functional musical tracking parameters."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Can you explain why you are late? / We are eating lunch.</span>",
+    "options": ["Can you explain why you are late?", "We are eating lunch."],
+    "correct": "We are eating lunch.",
+    "explanation": "It shares information regarding structural group routines."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The flowers are pretty. / Do you like flowers?</span>",
+    "options": ["The flowers are pretty.", "Do you like flowers?"],
+    "correct": "The flowers are pretty.",
+    "explanation": "It documents descriptive features ending with a period."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Is the water cold? / The water is cold.</span>",
+    "options": ["Is the water cold?", "The water is cold."],
+    "correct": "The water is cold.",
+    "explanation": "It documents temperature environmental constants."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The baby is born. / Where was the baby born?</span>",
+    "options": ["The baby is born.", "Where was the baby born?"],
+    "correct": "The baby is born.",
+    "explanation": "It processes biographical milestone entries cleanly."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>She is teacher. / Is the teacher responsible?</span>",
+    "options": ["She is teacher.", "Is the teacher responsible?"],
+    "correct": "She is teacher.",
+    "explanation": "It catalogs occupational parameter fields."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>We have homework. / Do we have homework?</span>",
+    "options": ["We have homework.", "Do we have homework?"],
+    "correct": "We have homework.",
+    "explanation": "It verifies structural academic data configurations."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Do you like small bags? / The bag is heavy.</span>",
+    "options": ["Do you like small bags?", "The bag is heavy."],
+    "correct": "The bag is heavy.",
+    "explanation": "It assesses structural load limits on hardware profiles."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Is the road long? / The road is long.</span>",
+    "options": ["Is the road long?", "The road is long."],
+    "correct": "The road is long.",
+    "explanation": "It reports geographic transport dimensions clearly."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>I am learning English. / Do you like the idea?</span>",
+    "options": ["I am learning English.", "Do you like the idea?"],
+    "correct": "I am learning English.",
+    "explanation": "It tracks academic training updates dynamically."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Do you want to ask the teacher? / I am learning French.</span>",
+    "options": ["Do you want to ask the teacher?", "I am learning French."],
+    "correct": "I am learning French.",
+    "explanation": "It tracks dynamic instructional lesson logs safely."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>He drinks coffee. / Where did you buy the coffee?</span>",
+    "options": ["He drinks coffee.", "Where did you buy the coffee?"],
+    "correct": "He drinks coffee.",
+    "explanation": "It reports regular consumption routines with a period."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>I see the rainbow. / Did you see the text?</span>",
+    "options": ["I see the rainbow.", "Did you see the text?"],
+    "correct": "I see the rainbow.",
+    "explanation": "It monitors user environmental observation flags."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Did you ask yourself why? / I see the rainbow.</span>",
+    "options": ["Did you ask yourself why?", "I see the rainbow."],
+    "correct": "I see the rainbow.",
+    "explanation": "It details visible atmospheric conditions safely."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The moon is bright. / Did you see the game?</span>",
+    "options": ["The moon is bright.", "Did you see the game?"],
+    "correct": "The moon is bright.",
+    "explanation": "It registers night ambient brightness attributes directly."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>How are you? / I wear a hat.</span>",
+    "options": ["How are you?", "I wear a hat."],
+    "correct": "I wear a hat.",
+    "explanation": "It supplies personal apparel deployment metadata."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>I wear a mask on my face. / Did you cook dinner?</span>",
+    "options": ["I wear a mask on my face.", "Did you cook dinner?"],
+    "correct": "I wear a mask on my face.",
+    "explanation": "It captures structural clothing safety status metrics."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The shop is open. / Is the shop open?</span>",
+    "options": ["The shop is open.", "Is the shop open?"],
+    "correct": "The shop is open.",
+    "explanation": "It establishes retail location functional parameters directly."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Is the shop closed? / The shop is closed.</span>",
+    "options": ["Is the shop closed?", "The shop is closed."],
+    "correct": "The shop is closed.",
+    "explanation": "It marks structural operational boundary parameters safely."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>How are you? / I am fine.</span>",
+    "options": ["How are you?", "I am fine."],
+    "correct": "I am fine.",
+    "explanation": "It handles simple context tracking adjustments neatly."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>She has two sisters. / Do you love me?</span>",
+    "options": ["She has two sisters.", "Do you love me?"],
+    "correct": "She has two sisters.",
+    "explanation": "It clarifies standard family entity associations."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>Do you love me? / She has three sisters.</span>",
+    "options": ["Do you love me?", "She has three sisters."],
+    "correct": "She has three sisters.",
+    "explanation": "It supplies metric descriptions of a family structure."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The cake is sweet. / Do you like cakes?</span>",
+    "options": ["The cake is sweet.", "Do you like cakes?"],
+    "correct": "The cake is sweet.",
+    "explanation": "It outlines product flavor attributes explicitly."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>I am tired. / Are you tired?</span>",
+    "options": ["I am tired.", "Are you tired?"],
+    "correct": "I am tired.",
+    "explanation": "It displays continuous internal energy parameter levels."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>His shoes are new. / Did you buy shoes?</span>",
+    "options": ["His shoes are new.", "Did you buy shoes?"],
+    "correct": "His shoes are new.",
+    "explanation": "It monitors inventory status updates neatly."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>She bought new clothes. / How did she leave the country?</span>",
+    "options": ["She bought new clothes.", "How did she leave the country?"],
+    "correct": "She bought new clothes.",
+    "explanation": "It records transaction event logs clearly via a period."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>He bought new shoes. / How old are?</span>",
+    "options": ["He bought new shoes.", "How old are?"],
+    "correct": "He bought new shoes.",
+    "explanation": "It reports standard commercial product changes directly."
+  },
+  {
+    "question": "Which of the following is a statement?<br><span style='color:black'>The results were good. / Is she tall or short?</span>",
+    "options": ["The results were good.", "Is she tall or short?"],
+    "correct": "The results were good.",
+    "explanation": "It processes evaluation milestone outcomes cleanly."
   }
 ];
-
 </script>
 
-    <div id="site-footer-placeholder"></div>
+  <div id="site-footer-placeholder"></div>
     <script src="../../../js/script.js"></script>
     <script src="../../../js/partials.js"></script>
     <script>
