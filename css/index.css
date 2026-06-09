@@ -341,7 +341,7 @@ main.startpage .card:nth-child(7n+7) { --card-color: #6366f1; }
    ============================================================ */
 .container,
 .quiz-container {
-  width: 100%;
+  width: auto;
   max-width: 720px;
   margin: 3rem auto;
   background: var(--surface);
@@ -577,12 +577,33 @@ main.startpage .card:nth-child(7n+7) { --card-color: #6366f1; }
 }
 
 @media (max-width: 600px) {
+  /* leaner header */
+  .site-header .header-inner { padding: .4rem 1rem; }
+  .site-header .logo-icon { height: 36px; }
+  .site-header .logo-text { font-size: 1.12rem; }
+
   .card-grid { gap: 1rem; padding: 0 1rem; }
   .card { padding: 1.5rem 1.25rem 1.25rem; }
   .card-title { font-size: 1.15rem; }
   .card-icon { width: 50px; height: 50px; font-size: 1.4rem; }
-  .site-footer .footer-inner { grid-template-columns: 1fr; text-align: center; }
-  .site-footer a { justify-content: center; }
+
+  /* compact, organised footer (matches quiz pages) */
+  .site-footer { padding: 1.5rem 1rem 0; }
+  .site-footer .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.25rem;
+    padding-bottom: 1rem;
+    text-align: left;
+  }
+  .site-footer .footer-section.social { order: 2; }
+  .site-footer .footer-section:nth-child(2) { order: 3; grid-column: 1 / -1; }
+  .site-footer .footer-section h4 { font-size: 1.05rem; margin-bottom: .5rem; }
+  .site-footer .footer-section address,
+  .site-footer .footer-section p { line-height: 1.5; font-size: .9rem; }
+  .site-footer .footer-links li,
+  .site-footer .social-links li { margin-bottom: .35rem; }
+  .site-footer a { gap: .35rem; }
+  .site-footer .footer-bottom { padding: .85rem 0; font-size: .8rem; }
 }
 
 @media (max-width: 480px) {

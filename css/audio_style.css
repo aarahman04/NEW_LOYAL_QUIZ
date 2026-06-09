@@ -301,15 +301,56 @@ img.question-image:not([src]) { display: none; }
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ---------- Progress bar (shared pattern; injected by audio.js) ---------- */
+.quiz-progress { margin: 0 0 1.6rem; }
+.quiz-progress-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: .5rem;
+}
+.quiz-progress-label {
+  font-family: var(--font-display);
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+.quiz-progress-label strong { color: var(--text); }
+.quiz-progress-pct {
+  font-family: var(--font-display);
+  font-size: .9rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+.quiz-progress-track {
+  height: 10px;
+  background: #eceef6;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.quiz-progress-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--brand), var(--accent));
+  transition: width .35s cubic-bezier(.4, 0, .2, 1);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 768px) {
-  .quiz-container { padding: 1.5rem 1.35rem; margin: 2rem 1rem; }
-  img.question-image { width: 90%; }
+  .quiz-container { padding: 1.6rem 1.4rem; margin: 1.75rem 1.25rem; }
+  img.question-image { width: 100%; max-width: 360px; }
+}
+@media (max-width: 600px) {
+  /* Keep the quiz the focus on phones: drop the heavy footer during play */
+  .site-footer { display: none !important; }
 }
 @media (max-width: 480px) {
-  .quiz-container { padding: 1.15rem 1rem; margin: 1.25rem .75rem; border-radius: var(--radius-md); }
+  .quiz-container { padding: 1.3rem 1.15rem; margin: 1.25rem 1rem; border-radius: var(--radius-md); }
   h3 { text-align: center; }
-  img.question-image { width: 100%; }
+  img.question-image { width: 100%; max-width: 280px; }
   .options { grid-template-columns: 1fr; }
   .nav-row { flex-wrap: wrap; justify-content: center; }
 }

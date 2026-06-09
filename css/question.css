@@ -161,10 +161,53 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 2.25rem 2.25rem 2rem;
-  width: 100%;
+  /* width:auto + max-width + auto margins centers on desktop AND lets the
+     explicit side margins inset the card on mobile (no horizontal overflow) */
+  width: auto;
   max-width: 720px;
   margin: 3rem auto;
   animation: fadeIn .4s ease;
+}
+
+/* ============================================================
+   Progress indicator (injected by initMCQQuiz)
+   ============================================================ */
+.quiz-progress {
+  margin: 0 0 1.6rem;
+}
+.quiz-progress-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: .5rem;
+}
+.quiz-progress-label {
+  font-family: var(--font-display);
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+.quiz-progress-label strong { color: var(--text); }
+.quiz-progress-pct {
+  font-family: var(--font-display);
+  font-size: .9rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+.quiz-progress-track {
+  height: 10px;
+  background: #eceef6;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.quiz-progress-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--brand), var(--accent));
+  transition: width .35s cubic-bezier(.4, 0, .2, 1);
 }
 
 /* Question image */
@@ -184,16 +227,27 @@ img.question-image {
 img.question-image[src=""],
 img.question-image:not([src]) { display: none; }
 
-/* Question title */
+/* Question title — given its own emphasised panel so the eye lands here first */
 .question-section h3,
 #question-text {
   font-family: var(--font-display);
-  font-size: clamp(1.45rem, 1.1rem + 1.6vw, 2rem);
+  font-size: clamp(1.5rem, 1.15rem + 1.7vw, 2.05rem);
   font-weight: 700;
   color: var(--brand);
   margin: 0 0 1.5rem;
   text-align: left;
-  line-height: 1.3;
+  line-height: 1.35;
+  padding: 1.1rem 1.25rem;
+  background: linear-gradient(180deg, #fff6f4 0%, var(--surface) 100%);
+  border: 1px solid #ffe1db;
+  border-left: 5px solid var(--brand);
+  border-radius: var(--radius-md);
+}
+/* Don't wrap the completion message in the question panel */
+#question-text:has(.completion-message) {
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 /* ============================================================
@@ -211,32 +265,43 @@ img.question-image:not([src]) { display: none; }
   display: flex;
   align-items: center;
   gap: .85rem;
+  min-height: 56px;                 /* comfortable touch target */
   background: var(--surface-soft);
   border: 1.5px solid var(--border);
   border-radius: var(--radius-md);
-  padding: .95rem 1.15rem;
+  padding: .9rem 1.15rem;
   cursor: pointer;
-  transition: transform var(--transition), box-shadow var(--transition),
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .15s ease, box-shadow var(--transition),
               background var(--transition), border-color var(--transition);
 }
-.options li:hover {
-  background: var(--light-hover);
-  border-color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+/* Lift only on real hover devices, so phones don't get a stuck hover state */
+@media (hover: hover) {
+  .options li:hover {
+    background: var(--light-hover);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .options li:hover .option-label { background: rgba(79, 70, 229, .18); }
 }
-.options li:active { transform: translateY(0); }
+.options li:active { transform: scale(.99); }
 
 .options li.correct {
   background: var(--correct-bg);
   border-color: var(--success);
   color: #14532d;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, .12);
 }
 .options li.incorrect {
   background: var(--incorrect-bg);
   border-color: var(--danger);
   color: #7f1d1d;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, .1);
 }
+/* Once answered, options no longer look clickable */
+.options li.correct,
+.options li.incorrect { cursor: default; transform: none; }
 
 .option-label {
   flex: none;
@@ -333,6 +398,20 @@ button {
 #next-btn:active,
 .btn-home:active,
 .quiz-container > button:not(#back-btn):active { transform: translateY(0); }
+
+/* Next is locked while the celebration plays — dimmed & non-interactive */
+#next-btn.is-locked,
+#next-btn.is-locked:hover {
+  opacity: .5;
+  cursor: progress;
+  pointer-events: none;       /* blocks pointer; JS flag blocks keyboard */
+  transform: none;
+  box-shadow: none;
+  background: var(--accent);
+}
+
+/* Back button fully removed from the quiz flow (belt-and-suspenders) */
+#back-btn { display: none !important; }
 
 /* Back button (secondary / outline) */
 #back-btn {
@@ -594,24 +673,52 @@ button {
 }
 
 @media (max-width: 768px) {
-  .quiz-container { padding: 1.5rem 1.35rem; margin: 2rem 1rem; }
-  img.question-image { width: 90%; }
+  .quiz-container { padding: 1.6rem 1.4rem; margin: 1.75rem 1.25rem; }
+  img.question-image { width: 100%; max-width: 360px; }
   .option-text { font-size: 1rem; }
   #feedback { font-size: 1.2rem; }
   #explanation { font-size: 1rem; }
 }
 
+/* Phones & small tablets: leaner header + compact, organised footer */
+@media (max-width: 600px) {
+  .site-header .header-inner { padding: .4rem 1rem; }
+  .site-header .logo-icon { height: 36px; }
+  .site-header .logo-text { font-size: 1.12rem; }
+
+  .site-footer { padding: 1.5rem 1rem 0; }
+  .site-footer .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.25rem;
+    padding-bottom: 1rem;
+    text-align: left;
+  }
+  .site-footer .footer-section.social { order: 2; }      /* Follow Us shares row 1 */
+  .site-footer .footer-section:nth-child(2) { order: 3; grid-column: 1 / -1; } /* Contact full width */
+  .site-footer .footer-section h4 { font-size: 1.05rem; margin-bottom: .5rem; }
+  .site-footer .footer-section address,
+  .site-footer .footer-section p { line-height: 1.5; font-size: .9rem; }
+  .site-footer .footer-links li,
+  .site-footer .social-links li { margin-bottom: .35rem; }
+  .site-footer a { gap: .35rem; }
+  .site-footer .footer-bottom { padding: .85rem 0; font-size: .8rem; }
+}
+
+/* On phones, keep the quiz card the focus: hide the footer during play.
+   (Quiz pages only load question.css, so this never affects home/options.) */
+@media (max-width: 600px) {
+  .site-footer { display: none !important; }
+}
+
 @media (max-width: 480px) {
-  .quiz-container { padding: 1.15rem 1rem; margin: 1.25rem .75rem; border-radius: var(--radius-md); }
-  img.question-image { width: 100%; margin-bottom: 1rem; }
-  .question-section h3,
-  #question-text { text-align: center; }
-  .options li { padding: .8rem .9rem; }
+  .quiz-container { padding: 1.3rem 1.15rem; margin: 1.25rem 1rem; border-radius: var(--radius-md); }
+  .quiz-progress { margin-bottom: 1.25rem; }
+  #question-text { padding: .95rem 1rem; }
+  img.question-image { width: 100%; max-width: 280px; margin: 0 auto 1rem; }
+  .options li { padding: .8rem .9rem; min-height: 52px; }
   .option-label { min-width: 1.75rem; height: 1.75rem; }
   .option-text { font-size: .98rem; }
   #next-btn,
   #back-btn { width: 100%; margin-right: 0; text-align: center; }
   #back-btn { margin-bottom: .25rem; }
-  .site-footer .footer-inner { grid-template-columns: 1fr; text-align: center; }
-  .site-footer a { justify-content: center; }
 }

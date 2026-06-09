@@ -121,29 +121,65 @@
 
 .draggable,
 .quiz-container .draggable {
-  display: inline-block;
-  padding: .6rem .95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .65rem 1rem;
+  min-height: 44px;
   border-radius: var(--radius-sm);
   border: 1.5px solid var(--border);
   background: var(--surface);
   color: var(--text);
   font-weight: 700;
   cursor: grab;
+  /* Pointer-based drag handles movement; disable native drag + selection */
+  touch-action: none;
   user-select: none;
-  -webkit-user-drag: element;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
-.draggable:hover {
+@media (hover: hover) {
+  .draggable:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+}
+.draggable:active { cursor: grabbing; }
+
+/* ---------- Touch-friendly drag states (pointer drag) ---------- */
+.draggable.pressing {            /* holding on touch, about to pick up */
+  transform: scale(1.12);
   border-color: var(--accent);
-  transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
-.draggable:active,
-.quiz-container .draggable:active {
-  cursor: grabbing;
-  transform: scale(1.04);
-  box-shadow: var(--shadow-md);
+.draggable.dragging { opacity: .35; }   /* original dims while the clone moves */
+.draggable.used {
+  opacity: .55;
+  pointer-events: none;
+  cursor: default;
+  box-shadow: none;
+}
+.drag-clone {
+  position: fixed;
+  z-index: 10000;
+  margin: 0 !important;
+  pointer-events: none;
+  border: 1.5px solid var(--accent);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-lg);
+  transform: scale(1.06) rotate(-2deg);
+  opacity: .98;
+}
+body.dnd-active,
+body.dnd-active * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  cursor: grabbing !important;
 }
 
 /* Feedback / explanation spacing inside DnD container */
@@ -162,17 +198,22 @@
     margin-inline: auto;
   }
   .dropbox {
-    min-height: 58px;
+    min-height: 66px;                /* easier drop target for small fingers */
     width: clamp(220px, 82vw, 300px);
     margin-inline: auto;
-    padding: .5rem;
+    padding: .6rem;
   }
   #choices {
-    max-width: clamp(240px, 86vw, 320px);
-    gap: .55rem;
-    margin-top: .75rem;
+    max-width: clamp(240px, 90vw, 340px);
+    gap: .7rem;                      /* more breathing room between chips */
+    margin-top: .9rem;
   }
-  .draggable { font-size: 1rem; padding: .55rem .8rem; }
+  .draggable {
+    font-size: 1.05rem;
+    padding: .7rem 1.05rem;
+    min-height: 48px;                /* comfortable touch target */
+  }
+  .dropzone { min-width: 120px; min-height: 50px; }
 }
 
 /* Auto-condense when there are 3+ targets on larger screens */

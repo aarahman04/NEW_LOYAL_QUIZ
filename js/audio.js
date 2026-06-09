@@ -33,8 +33,10 @@ const optsDiv    = document.getElementById("options");
 const fb         = document.getElementById("feedback");
 const instrEl    = document.getElementById("instruction");
 const imgEl      = document.getElementById("qimg");
-const prevBtn    = document.getElementById("prevBtn");  // acts as Back
+const prevBtn    = document.getElementById("prevBtn");  // (removed: forward-only flow)
 const nextBtn    = document.getElementById("nextBtn");
+// Forward-only flow: remove the Prev/Back control entirely.
+if (prevBtn) prevBtn.remove();
 const indexSpan  = document.getElementById("index");
 const totalSpan  = document.getElementById("total");
 
@@ -91,28 +93,93 @@ function chooseBestVoice(voices, desiredLang = "en-US", preferredName = "") {
   return v || null;
 }
 
+// ---------- 25-of-100 selection ----------
+const QUIZ_SIZE = 25;
+function shuffleArr(a) {
+  a = a.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function pickSubset(bank, size) {
+  const l = Array.isArray(bank) ? bank : [];
+  return shuffleArr(l).slice(0, Math.min(size, l.length));
+}
+
+// Strip a stale leading list-marker ("1." / "12)" / "3 - x") — never math.
+function stripLeadingNumber(text) {
+  if (typeof text !== "string") return text;
+  return text
+    .replace(/^\s*\d{1,3}\s*[.):]\s+/, "")
+    .replace(/^\s*\d{1,3}\s+-\s+(?=\D)/, "");
+}
+
 // ---------- State ----------
-let QUESTIONS = normalizeInput(RAW);
+// Draw a fresh random 25 from the full bank every time the page opens.
+let QUESTIONS = pickSubset(normalizeInput(RAW), QUIZ_SIZE);
 let idx = 0;
 let speaking = false;
 let answeredThisQuestion = false;
 let correctCount = 0;
 
+// Progress-bar elements (created in setupProgress)
+let progressEl = null, qCurEl = null, qPctEl = null, qFillEl = null;
+
 // ---------- Init ----------
 init();
 
 function init() {
-  totalSpan.textContent = QUESTIONS.length;
+  setupProgress();
 
   // Controls
   playBtn.addEventListener("click", onPlayClick);
 
   // -------------------- Navigation --------------------
   nextBtn.addEventListener("click", loadNextQuestion);
-  prevBtn.addEventListener("click", loadPreviousQuestion);
 
   // Load first
   loadQuestion(0);
+}
+
+// Replace the raw "1 / 100" counter with the shared progress-bar pattern.
+function setupProgress() {
+  const rawCounter = indexSpan ? indexSpan.closest(".progress") : null;
+  if (rawCounter) rawCounter.style.display = "none";
+
+  const container = document.querySelector(".quiz-container") || document.body;
+  progressEl = document.getElementById("quiz-progress");
+  if (!progressEl) {
+    progressEl = document.createElement("div");
+    progressEl.id = "quiz-progress";
+    progressEl.className = "quiz-progress";
+    progressEl.setAttribute("role", "progressbar");
+    progressEl.setAttribute("aria-valuemin", "0");
+    progressEl.innerHTML =
+      '<div class="quiz-progress-meta">' +
+        '<span class="quiz-progress-label">Question <strong id="q-current">1</strong> of <strong id="q-total"></strong></span>' +
+        '<span class="quiz-progress-pct" id="q-pct">0%</span>' +
+      '</div>' +
+      '<div class="quiz-progress-track"><span class="quiz-progress-fill" id="q-fill"></span></div>';
+    container.insertBefore(progressEl, container.firstChild);
+  }
+  qCurEl  = progressEl.querySelector("#q-current");
+  qPctEl  = progressEl.querySelector("#q-pct");
+  qFillEl = progressEl.querySelector("#q-fill");
+  const qTot = progressEl.querySelector("#q-total");
+  if (qTot) qTot.textContent = String(QUESTIONS.length);
+}
+
+function updateProgress() {
+  const n = idx + 1, total = QUESTIONS.length || 1, pct = Math.round((n / total) * 100);
+  if (qCurEl)  qCurEl.textContent = String(n);
+  if (qPctEl)  qPctEl.textContent = pct + "%";
+  if (qFillEl) qFillEl.style.width = pct + "%";
+  if (progressEl) {
+    progressEl.setAttribute("aria-valuenow", String(n));
+    progressEl.setAttribute("aria-valuemax", String(total));
+  }
 }
 
 // Build voice dropdown (prefers Microsoft Christopher; uses its lang)
@@ -173,14 +240,17 @@ function loadQuestion(i) {
   nextBtn.classList.add("is-disabled");
   setFeedback("", "");
 
-  // Text
-  instrEl.textContent = q.question || "Listen and choose the correct word.";
+  // Text (strip any stale leading "1." / "12)" numbering)
+  instrEl.textContent = stripLeadingNumber(q.question) || "Listen and choose the correct word.";
 
-  // Image (optional)
+  // Image (optional) — hide gracefully if it fails to load
   if (q.image) {
+    imgEl.onerror = () => { imgEl.style.display = "none"; };
+    imgEl.onload  = () => { imgEl.style.display = ""; };
     imgEl.src = q.image;
     imgEl.style.display = "";
   } else {
+    imgEl.onerror = null;
     imgEl.src = "";
     imgEl.style.display = "none";
   }
@@ -194,9 +264,8 @@ function loadQuestion(i) {
     optsDiv.appendChild(b);
   });
 
-  // Progress
-  indexSpan.textContent = idx + 1;
-  totalSpan.textContent = QUESTIONS.length;
+  // Progress (shared progress-bar pattern; reflects the 25-question session)
+  updateProgress();
 }
 
 // ---------- Interactions ----------
@@ -236,10 +305,10 @@ function check(chosen) {
   if (isRight) {
     correctCount++;
     setFeedback("Well done ❤️", "good");
-    addEmojiRain("❤️", 50);
+    addEmojiRain("❤️", 16);
   } else {
     setFeedback("Oops, try again 😢", "bad");
-    addEmojiRain("😭", 50);
+    addEmojiRain("😭", 16);
   }
 
   // Mark answered; enable Next (no auto-advance)
@@ -339,35 +408,26 @@ function showCompletionScreen() {
   setFeedback("", "");
   if (imgEl) { imgEl.src = ""; imgEl.style.display = "none"; }
 
-  // Hide nav buttons
-  if (prevBtn) prevBtn.style.display = "none";
+  // Hide the progress bar and all controls/nav for the results screen
+  if (progressEl) progressEl.style.display = "none";
   if (nextBtn) nextBtn.style.display = "none";
-
-  // HIDE PLAY BUTTON & ITS ROW  👇
-  if (playBtn) {
-    playBtn.disabled = true;
-    playBtn.style.display = "none";
-  }
+  if (playBtn) { playBtn.disabled = true; playBtn.style.display = "none"; }
   const controlsRow = document.querySelector(".controls-row");
   if (controlsRow) controlsRow.style.display = "none";
+  const navRow = document.querySelector(".nav-row");
+  if (navRow) navRow.style.display = "none";
 
   // Home button
-  choices.innerHTML      = "";
-      clearFeedback();
-      explanation.textContent= "";
-      explanation.classList.add("hidden");
-      nextBtn.style.display  = "none";
-      backBtn.style.display  = "none";
-
-      document.getElementById("home-btn").addEventListener("click", () => {
-        const headerHome =
-          document.querySelector(".logo-link") ||
-          document.querySelector(".site-header .logo a") ||
-          document.querySelector('nav a[href$="index.html"]');
-        const href = headerHome?.getAttribute("href") || (window.base || "/") + "index.html";
-        location.href = href;
-    });
-  }
+  document.getElementById("home-btn").addEventListener("click", () => {
+    const headerHome =
+      document.querySelector(".logo-link") ||
+      document.querySelector(".site-header .logo a") ||
+      document.querySelector('nav a[href$="index.html"]');
+    const href = headerHome ? headerHome.getAttribute("href")
+                            : (window.base || "/") + "index.html";
+    location.href = href;
+  });
+}
 
 
 

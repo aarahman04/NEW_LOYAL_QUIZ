@@ -41,6 +41,15 @@
     const backBtn        = document.getElementById("back-btn");
     const optionLabels   = ["A", "B", "C", "D"];
 
+    // Forward-only flow: remove the Back button from the DOM entirely so it
+    // can't be seen, clicked, focused, or reached by keyboard.
+    if (backBtn) backBtn.remove();
+
+    // Interaction guards: block double-answers and lock Next while the
+    // celebration animation is playing.
+    let answered   = false;
+    let nextLocked = false;
+
     // Create/reuse single <img> above question text
     const questionSection = document.querySelector(".question-section") || document.body;
     let questionImage = questionSection.querySelector("img.question-image");
@@ -49,15 +58,59 @@
       questionImage.className = "question-image hidden";
       questionSection.insertBefore(questionImage, questionText);
     }
+    // Graceful fallback: if an image fails to load, hide it instead of
+    // showing a broken-image icon (questions stay readable).
+    questionImage.addEventListener("error", () => {
+      questionImage.classList.add("hidden");
+      questionImage.removeAttribute("src");
+    });
+
+    // Create/reuse the progress indicator at the top of the quiz card.
+    const quizContainer = document.querySelector(".quiz-container") || document.body;
+    let progress = document.getElementById("quiz-progress");
+    if (!progress) {
+      progress = document.createElement("div");
+      progress.id = "quiz-progress";
+      progress.className = "quiz-progress";
+      progress.setAttribute("role", "progressbar");
+      progress.setAttribute("aria-valuemin", "0");
+      progress.setAttribute("aria-valuemax", String(questions.length));
+      progress.innerHTML =
+        '<div class="quiz-progress-meta">' +
+          '<span class="quiz-progress-label">Question ' +
+            '<strong id="q-current">1</strong> of <strong id="q-total"></strong>' +
+          '</span>' +
+          '<span class="quiz-progress-pct" id="q-pct">0%</span>' +
+        '</div>' +
+        '<div class="quiz-progress-track"><span class="quiz-progress-fill" id="q-fill"></span></div>';
+      quizContainer.insertBefore(progress, quizContainer.firstChild);
+    }
+    const qCurrent = progress.querySelector("#q-current");
+    const qTotal   = progress.querySelector("#q-total");
+    const qPct     = progress.querySelector("#q-pct");
+    const qFill    = progress.querySelector("#q-fill");
+    if (qTotal) qTotal.textContent = String(questions.length);
 
     // --- Boot ---
     bindNav();
     loadQuestion();
 
+    function updateProgress() {
+      const n = currentQuestionIndex + 1;
+      const total = questions.length || 1;
+      const pct = Math.round((n / total) * 100);
+      if (qCurrent) qCurrent.textContent = String(n);
+      if (qPct)     qPct.textContent = pct + "%";
+      if (qFill)    qFill.style.width = pct + "%";
+      progress.setAttribute("aria-valuenow", String(n));
+    }
+
     // --- Functions ---
 
     function loadQuestion() {
       const q = questions[currentQuestionIndex];
+
+      updateProgress();
 
       // Image (optional)
       if (q.image) {
@@ -70,13 +123,14 @@
         questionImage.removeAttribute("alt");
       }
 
-      // Text & reset UI
-      questionText.innerHTML = q.question;
+      // Text & reset UI (strip any stale leading "1." / "12)" numbering)
+      questionText.innerHTML = stripLeadingNumber(q.question);
       optionsList.innerHTML  = "";
       hide(feedbackDiv);
       hide(explanationDiv);
       hide(nextBtn);
-      toggle(backBtn, currentQuestionIndex > 0);
+      answered = false;
+      unlockNext();
 
       // Build options in original order (no shuffle)
       (q.options || []).forEach((opt, idx) => {
@@ -93,6 +147,8 @@
     }
 
     function checkAnswer(selectedLI, chosen, correct, iconId) {
+      if (answered) return;                 // ignore repeat taps / double submits
+      answered = true;
       // Disable further clicks
       optionsList.querySelectorAll("li").forEach(li => li.onclick = null);
 
@@ -132,11 +188,11 @@
       explanationDiv.innerHTML = exp ? `<strong>Solution:</strong><br>${exp}` : "";
       toggle(explanationDiv, !!exp);
 
-      // Next button
+      // Reveal Next, but keep it locked until the celebration finishes so
+      // kids can't spam-tap ahead or stack overlapping effects.
       show(nextBtn);
-
-      // Emoji rain (sad for wrong, hearts for correct)
-      addEmojiRain(rainEmoji, isCorrect ? 20 : 20);
+      lockNext();
+      addEmojiRain(rainEmoji, 16, unlockNext);
     }
 
     function setIcon(iconId, type) {
@@ -153,6 +209,7 @@
 
     function bindNav() {
       nextBtn.addEventListener("click", () => {
+        if (nextLocked) return;             // celebration still playing
         currentQuestionIndex++;
         if (currentQuestionIndex < questions.length) {
           loadQuestion();
@@ -160,18 +217,25 @@
           showCompletionScreen();
         }
       });
+    }
 
-      backBtn.addEventListener("click", () => {
-        if (currentQuestionIndex > 0) {
-          currentQuestionIndex--;
-          loadQuestion();
-        }
-      });
+    function lockNext() {
+      nextLocked = true;
+      nextBtn.classList.add("is-locked");
+      nextBtn.setAttribute("aria-disabled", "true");
+    }
+    function unlockNext() {
+      nextLocked = false;
+      nextBtn.classList.remove("is-locked");
+      nextBtn.removeAttribute("aria-disabled");
     }
 
     // --- Completion Screen (fixed) ---
     function showCompletionScreen() {
       const total = questions.length;
+
+      // Quiz finished: hide the progress bar.
+      if (progress) progress.classList.add("hidden");
 
       // Replace the question area with completion content
       questionText.innerHTML = `
@@ -191,9 +255,8 @@
       explanationDiv.textContent = "";
       hide(explanationDiv);
 
-      // Hide nav buttons
+      // Hide nav button (Back no longer exists)
       nextBtn.style.display = "none";
-      backBtn.style.display = "none";
 
       // Optional: hide image if visible
       questionImage.classList.add("hidden");
@@ -221,31 +284,56 @@
 })();
 
 /* ================================
+   Strip a stale leading list-marker from question text, e.g.
+   "61. what color is the grass" -> "what color is the grass".
+   Only removes an unambiguous marker at the very start; never touches
+   numbers that are part of the question (math, "3 - 1", etc.).
+   ================================ */
+function stripLeadingNumber(text) {
+  if (typeof text !== "string") return text;
+  return text
+    .replace(/^\s*\d{1,3}\s*[.):]\s+/, "")        // "1. "  "12) "  "3: "
+    .replace(/^\s*\d{1,3}\s+-\s+(?=\D)/, "");      // "3 - x" but NOT "3 - 1"
+}
+
+/* ================================
    Emoji Rain (unchanged visuals)
    ================================ */
-function addEmojiRain(emoji, count = 30) {
-  let container = document.getElementById("emoji-rain");
-  if (!container) {
-    container = document.createElement("div");
-    container.id = "emoji-rain";
-    document.body.appendChild(container);
-  }
+function addEmojiRain(emoji, count = 16, onComplete) {
+  // Replace any in-flight celebration so effects never stack up.
+  const old = document.getElementById("emoji-rain");
+  if (old) old.remove();
+
+  const container = document.createElement("div");
+  container.id = "emoji-rain";
+  document.body.appendChild(container);
+
+  const DUR_MIN = 1.0, DUR_RANGE = 0.7;     // 1.0–1.7s fall
+  const DELAY_RANGE = 0.25;                 // 0–0.25s stagger
+  let maxEnd = 0;
 
   for (let i = 0; i < count; i++) {
     const drop = document.createElement("div");
     drop.className = "emoji-drop";
     drop.textContent = emoji;
 
-    drop.style.left              = `${5 + Math.random() * 70}%`;
-    drop.style.fontSize          = "5rem";
-    drop.style.animationDuration = `${2 + Math.random() * 3}s`;
-    drop.style.animationDelay    = `${Math.random()}s`;
+    const dur = DUR_MIN + Math.random() * DUR_RANGE;
+    const delay = Math.random() * DELAY_RANGE;
+    maxEnd = Math.max(maxEnd, dur + delay);
+
+    drop.style.left              = `${5 + Math.random() * 80}%`;
+    drop.style.fontSize          = `${2.4 + Math.random() * 1.4}rem`;
+    drop.style.animationDuration = `${dur}s`;
+    drop.style.animationDelay    = `${delay}s`;
 
     container.appendChild(drop);
     drop.addEventListener("animationend", () => drop.remove());
   }
 
+  // Fire onComplete once the whole celebration window has elapsed.
+  const totalMs = Math.round(maxEnd * 1000) + 60;
   setTimeout(() => {
-    if (container.childElementCount === 0) container.remove();
-  }, 5000);
+    container.remove();
+    if (typeof onComplete === "function") onComplete();
+  }, totalMs);
 }
