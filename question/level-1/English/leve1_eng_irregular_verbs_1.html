@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Irregular Verbs 1</title>
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <script>
+      const questions = [
+        {
+          question: "Identify the correct verb to finish the correct tense: Eat",
+          options: ["ate", "eating", "eats"],
+          correct: "ate",
+          explanation: "'ate' is the correct past tense form of the verb 'eat'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Go",
+          options: ["going", "went", "goes"],
+          correct: "went",
+          explanation: "'went' is the correct past tense form of the verb 'go'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: See",
+          options: ["saw", "seeing", "sees"],
+          correct: "saw",
+          explanation: "'saw' is the correct past tense form of the verb 'see'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Write",
+          options: ["wrote", "writing", "writes"],
+          correct: "wrote",
+          explanation: "'wrote' is the correct past tense form of the verb 'write'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Drink",
+          options: ["drinks", "drank", "drunk"],
+          correct: "drank",
+          explanation: "'drank' is the correct past tense form of the verb 'drink'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Take",
+          options: ["taking", "took", "takes"],
+          correct: "took",
+          explanation: "'took' is the correct past tense form of the verb 'take'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Give",
+          options: ["giving", "given", "gave"],
+          correct: "gave",
+          explanation: "'gave' is the correct past tense form of the verb 'give'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Sing",
+          options: ["sang", "sings", "singing"],
+          correct: "sang",
+          explanation: "'sang' is the correct past tense form of the verb 'sing'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Drive",
+          options: ["driving", "drove", "drives"],
+          correct: "drove",
+          explanation: "'drove' is the correct past tense form of the verb 'drive'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Break",
+          options: ["broke", "breaking", "breaks"],
+          correct: "broke",
+          explanation: "'broke' is the correct past tense form of the verb 'break'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Choose",
+          options: ["chooses", "choosing", "chose"],
+          correct: "chose",
+          explanation: "'chose' is the correct past tense form of the verb 'choose'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Speak",
+          options: ["speaking", "boke", "speaks"],
+          correct: "boke",
+          explanation: "'boke' (spoke) is the correct past tense form of the verb 'speak'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Ride",
+          options: ["rode", "rides", "riding"],
+          correct: "rode",
+          explanation: "'rode' is the correct past tense form of the verb 'ride'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Throw",
+          options: ["throws", "throwing", "threw"],
+          correct: "threw",
+          explanation: "'threw' is the correct past tense form of the verb 'throw'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Blow",
+          options: ["blew", "blows", "blowing"],
+          correct: "blew",
+          explanation: "'blew' is the correct past tense form of the verb 'blow'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Fly",
+          options: ["flying", "flew", "flies"],
+          correct: "flew",
+          explanation: "'flew' is the correct past tense form of the verb 'fly'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Know",
+          options: ["knew", "knows", "knowing"],
+          correct: "knew",
+          explanation: "'knew' is the correct past tense form of the verb 'know'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Grow",
+          options: ["grows", "growing", "grew"],
+          correct: "grew",
+          explanation: "'grew' is the correct past tense form of the verb 'grow'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Draw",
+          options: ["drew", "drawing", "draws"],
+          correct: "drew",
+          explanation: "'drew' is the correct past tense form of the verb 'draw'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Fall",
+          options: ["falling", "fell", "falls"],
+          correct: "fell",
+          explanation: "'fell' is the correct past tense form of the verb 'fall'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Forget",
+          options: ["forgot", "forgetting", "forgets"],
+          correct: "forgot",
+          explanation: "'forgot' is the correct past tense form of the verb 'forget'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Begin",
+          options: ["began", "beginning", "begins"],
+          correct: "began",
+          explanation: "'began' is the correct past tense form of the verb 'begin'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Swim",
+          options: ["swimming", "swims", "swam"],
+          correct: "swam",
+          explanation: "'swam' is the correct past tense form of the verb 'swim'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Ring",
+          options: ["rang", "ringing", "rings"],
+          correct: "rang",
+          explanation: "'rang' is the correct past tense form of the verb 'ring'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Wear",
+          options: ["wearing", "wore", "wears"],
+          correct: "wore",
+          explanation: "'wore' is the correct past tense form of the verb 'wear'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Wake",
+          options: ["woke", "waking", "wakes"],
+          correct: "woke",
+          explanation: "'woke' is the correct past tense form of the verb 'wake'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Steal",
+          options: ["stealing", "stole", "steals"],
+          correct: "stole",
+          explanation: "'stole' is the correct past tense form of the verb 'steal'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Shake",
+          options: ["shook", "shaking", "shakes"],
+          correct: "shook",
+          explanation: "'shook' is the correct past tense form of the verb 'shake'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Hide",
+          options: ["hides", "hid", "hiding"],
+          correct: "hid",
+          explanation: "'hid' is the correct past tense form of the verb 'hide'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Freeze",
+          options: ["freezing", "froze", "freezes"],
+          correct: "froze",
+          explanation: "'froze' is the correct past tense form of the verb 'freeze'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Be",
+          options: ["was/were", "being", "is"],
+          correct: "was/were",
+          explanation: "'was/were' is the correct past tense form of the verb 'be'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Beat",
+          options: ["beating", "beat", "returns"],
+          correct: "beat",
+          explanation: "'beat' remains 'beat' in its simple past tense form."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Become",
+          options: ["becoming", "became", "becomes"],
+          correct: "became",
+          explanation: "'became' is the correct past tense form of the verb 'become'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Bite",
+          options: ["bites", "bit", "biting"],
+          correct: "bit",
+          explanation: "'bit' is the correct past tense form of the verb 'bite'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Build",
+          options: ["building", "built", "builds"],
+          correct: "built",
+          explanation: "'built' is the correct past tense form of the verb 'build'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Buy",
+          options: ["buys", "buying", "bought"],
+          correct: "bought",
+          explanation: "'bought' is the correct past tense form of the verb 'buy'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Catch",
+          options: ["caught", "catching", "catches"],
+          correct: "caught",
+          explanation: "'caught' is the correct past tense form of the verb 'catch'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Cost",
+          options: ["costs", "costing", "cost"],
+          correct: "cost",
+          explanation: "'cost' remains unchanged in its simple past tense form."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Cut",
+          options: ["cut", "cutting", "cuts"],
+          correct: "cut",
+          explanation: "'cut' remains unchanged in its simple past tense form."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Dig",
+          options: ["digs", "dug", "digging"],
+          correct: "dug",
+          explanation: "'dug' is the correct past tense form of the verb 'dig'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Feel",
+          options: ["feeling", "feels", "felt"],
+          correct: "felt",
+          explanation: "'felt' is the correct past tense form of the verb 'feel'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Fight",
+          options: ["fought", "fights", "fighting"],
+          correct: "fought",
+          explanation: "'fought' is the correct past tense form of the verb 'fight'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Find",
+          options: ["finding", "found", "finds"],
+          correct: "found",
+          explanation: "'found' is the correct past tense form of the verb 'find'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Get",
+          options: ["got", "gets", "getting"],
+          correct: "got",
+          explanation: "'got' is the correct past tense form of the verb 'get'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Have",
+          options: ["having", "had", "has"],
+          correct: "had",
+          explanation: "'had' is the correct past tense form of the verb 'have'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Hear",
+          options: ["hears", "hearing", "heard"],
+          correct: "heard",
+          explanation: "'heard' is the correct past tense form of the verb 'hear'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Hold",
+          options: ["held", "holding", "holds"],
+          correct: "held",
+          explanation: "'held' is the correct past tense form of the verb 'hold'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Keep",
+          options: ["keeps", "kept", "keeping"],
+          correct: "kept",
+          explanation: "'kept' is the correct past tense form of the verb 'keep'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Leave",
+          options: ["leaving", "leaves", "left"],
+          correct: "left",
+          explanation: "'left' is the correct past tense form of the verb 'leave'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Lose",
+          options: ["lost", "losing", "loses"],
+          correct: "lost",
+          explanation: "'lost' is the correct past tense form of the verb 'lose'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Make",
+          options: ["making", "made", "makes"],
+          correct: "made",
+          explanation: "'made' is the correct past tense form of the verb 'make'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Meet",
+          options: ["meets", "meeting", "met"],
+          correct: "met",
+          explanation: "'met' is the correct past tense form of the verb 'meet'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Pay",
+          options: ["paid", "paying", "pays"],
+          correct: "paid",
+          explanation: "'paid' is the correct past tense form of the verb 'pay'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Put",
+          options: ["putting", "put", "puts"],
+          correct: "put",
+          explanation: "'put' remains unchanged in its simple past tense form."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Read",
+          options: ["reads", "read", "reading"],
+          correct: "read",
+          explanation: "'read' is spelled the same way in its simple past tense form."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Say",
+          options: ["saying", "says", "said"],
+          correct: "said",
+          explanation: "'said' is the correct past tense form of the verb 'say'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Sell",
+          options: ["sold", "selling", "sells"],
+          correct: "sold",
+          explanation: "'sold' is the correct past tense form of the verb 'sell'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Send",
+          options: ["sends", "sent", "sending"],
+          correct: "sent",
+          explanation: "'sent' is the correct past tense form of the verb 'send'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Shoot",
+          options: ["shooting", "shot", "shoots"],
+          correct: "shot",
+          explanation: "'shot' is the correct past tense form of the verb 'shoot'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Shut",
+          options: ["shut", "shutting", "shuts"],
+          correct: "shut",
+          explanation: "'shut' remains unchanged in its simple past tense form."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Sit",
+          options: ["sits", "sat", "sitting"],
+          correct: "sat",
+          explanation: "'sat' is the correct past tense form of the verb 'sit'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Sleep",
+          options: ["sleeping", "sleeps", "slept"],
+          correct: "slept",
+          explanation: "'slept' is the correct past tense form of the verb 'sleep'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Spend",
+          options: ["spent", "spending", "spends"],
+          correct: "spent",
+          explanation: "'spent' is the correct past tense form of the verb 'spend'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Stand",
+          options: ["stood", "standing", "stands"],
+          correct: "stood",
+          explanation: "'stood' is the correct past tense form of the verb 'stand'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Stick",
+          options: ["sticking", "stuck", "sticks"],
+          correct: "stuck",
+          explanation: "'stuck' is the correct past tense form of the verb 'stick'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Strike",
+          options: ["strikes", "striking", "struck"],
+          correct: "struck",
+          explanation: "'struck' is the correct past tense form of the verb 'strike'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Sweep",
+          options: ["swept", "sweeping", "sweeps"],
+          correct: "swept",
+          explanation: "'swept' is the correct past tense form of the verb 'sweep'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Teach",
+          options: ["teaching", "taught", "teaches"],
+          correct: "taught",
+          explanation: "'taught' is the correct past tense form of the verb 'teach'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Tear",
+          options: ["tears", "tearing", "tore"],
+          correct: "tore",
+          explanation: "'tore' is the correct past tense form of the verb 'tear'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Tell",
+          options: ["told", "telling", "tells"],
+          correct: "told",
+          explanation: "'told' is the correct past tense form of the verb 'tell'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Think",
+          options: ["thinks", "thought", "thinking"],
+          correct: "thought",
+          explanation: "'thought' is the correct past tense form of the verb 'think'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Understand",
+          options: ["understanding", "understood", "understands"],
+          correct: "understood",
+          explanation: "'understood' is the correct past tense form of the verb 'understand'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Win",
+          options: ["winning", "wins", "won"],
+          correct: "won",
+          explanation: "'won' is the correct past tense form of the verb 'win'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Lead",
+          options: ["led", "leading", "leads"],
+          correct: "led",
+          explanation: "'led' is the correct past tense form of the verb 'lead'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Lend",
+          options: ["lending", "lent", "lends"],
+          correct: "lent",
+          explanation: "'lent' is the correct past tense form of the verb 'lend'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Light",
+          options: ["lit", "lighting", "lights"],
+          correct: "lit",
+          explanation: "'lit' is the correct past tense form of the verb 'light'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Mean",
+          options: ["means", "meaning", "meant"],
+          correct: "meant",
+          explanation: "'meant' is the correct past tense form of the verb 'mean'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Mistake",
+          options: ["mistook", "mistakes", "mistaking"],
+          correct: "mistook",
+          explanation: "'mistook' is the correct past tense form of the verb 'mistake'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Shoot",
+          options: ["shoots", "shot", "shooting"],
+          correct: "shot",
+          explanation: "'shot' is the correct past tense form of the verb 'shoot'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Stick",
+          options: ["stuck", "sticks", "sticking"],
+          correct: "stuck",
+          explanation: "'stuck' is the correct past tense form of the verb 'stick'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Arise",
+          options: ["arose", "arising", "arises"],
+          correct: "arose",
+          explanation: "'arose' is the correct past tense form of the verb 'arise'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Awake",
+          options: ["awakes", "awoke", "awaking"],
+          correct: "awoke",
+          explanation: "'awoke' is the correct past tense form of the verb 'awake'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Bear",
+          options: ["bearing", "bears", "bore"],
+          correct: "bore",
+          explanation: "'bore' is the correct past tense form of the verb 'bear'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Creep",
+          options: ["creeps", "creeping", "crept"],
+          correct: "crept",
+          explanation: "'crept' is the correct past tense form of the verb 'creep'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Flee",
+          options: ["fled", "fleeing", "flees"],
+          correct: "fled",
+          explanation: "'fled' is the correct past tense form of the verb 'flee'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Forbid",
+          options: ["forbids", "forbade", "forbidding"],
+          correct: "forbade",
+          explanation: "'forbade' is the correct past tense form of the verb 'forbid'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Grind",
+          options: ["grinding", "ground", "grinds"],
+          correct: "ground",
+          explanation: "'ground' is the correct past tense form of the verb 'grind'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Kneel",
+          options: ["kneels", "kneeling", "knelt"],
+          correct: "knelt",
+          explanation: "'knelt' is the correct past tense form of the verb 'kneel'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Shrink",
+          options: ["shank", "shrinking", "shrinks"],
+          correct: "shank",
+          explanation: "'shank' (shrank) is the correct past tense form of the verb 'shrink'."
+        },
+        {
+          question: "Identify the correct verb to finish the correct tense: Weep",
+          options: ["weeps", "weeping", "wept"],
+          correct: "wept",
+          explanation: "'wept' is the correct past tense form of the verb 'weep'."
+        }
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+  </body>
+</html>
