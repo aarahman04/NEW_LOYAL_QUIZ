@@ -4,21 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Verbs in sentences</title>
-    <!-- point to your question.css in the root css/ folder -->
     <link rel="stylesheet" href="../../../css/question.css" />
   </head>
   <body>
 
-   <!-- Sticky Header -->
-    <div id="site-header-placeholder"></div>
+   <div id="site-header-placeholder"></div>
 
-    <!-- Quiz Content -->
     <main class="quiz-container">
       <div class="question-section">
         <h3 id="question-text">Loading...</h3>
         <ul class="options" id="options-list">
-          <!-- Options dynamically generated -->
-        </ul>
+          </ul>
       </div>
       <div id="feedback" class="hidden"></div>
       <div id="explanation" class="hidden"></div>
@@ -29,137 +25,729 @@
     <script>
       const questions = [
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>Sam ______ cards.</span>",
+          question: "Sam ______ cards.",
           options: ["cards", "plays"],
           correct: "plays",
           explanation: "'plays' is the action that fits the sentence; 'cards' is a noun."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>The cat ______ on the couch.</span>",
+          question: "The cat ______ on the couch.",
           options: ["jumps", "milk"],
           correct: "jumps",
           explanation: "'jumps' is a verb; 'milk' is a noun."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>The dog ______ loudly.</span>",
+          question: "The dog ______ loudly.",
           options: ["barks", "chair"],
           correct: "barks",
           explanation: "'barks' is a verb; 'chair' is a noun."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>The teacher ______ the book.</span>",
+          question: "The teacher ______ the book.",
           options: ["opens", "pencil"],
           correct: "opens",
           explanation: "'opens' is a verb; 'pencil' is a noun."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>Tom ______ milk.</span>",
+          question: "Tom ______ milk.",
           options: ["drinks", "sleep"],
           correct: "drinks",
           explanation: "'drinks' is the correct verb; 'sleep' does not fit here."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>The boy ______ his mom.</span>",
+          question: "The boy ______ his mom.",
           options: ["calls", "ball"],
           correct: "calls",
           explanation: "'calls' is a verb; 'ball' is a noun."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>The cat ______ the food on the table.</span>",
+          question: "The cat ______ the food on the table.",
           options: ["sees", "sleep"],
           correct: "sees",
           explanation: "'sees' is a verb; 'sleep' is not correct here."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>The bat ______ away.</span>",
+          question: "The bat ______ away.",
           options: ["flies", "hat"],
           correct: "flies",
           explanation: "'flies' is a verb; 'hat' is a noun."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>The policeman ______ the thief.</span>",
+          question: "The policeman ______ the thief.",
           options: ["catches", "door"],
           correct: "catches",
           explanation: "'catches' is a verb; 'door' is a noun."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>The girl ______.</span>",
+          question: "The girl ______..",
           options: ["dances", "sun"],
           correct: "dances",
           explanation: "'dances' is a verb; 'sun' is a noun."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>The girl ______ her father.</span>",
+          question: "The girl ______ her father.",
           options: ["thanks", "flower"],
           correct: "thanks",
           explanation: "'thanks' is a verb; 'flower' is a noun."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>The father ______ his son at school.</span>",
+          question: "The father ______ his son at school.",
           options: ["drops", "pencil"],
           correct: "drops",
           explanation: "'drops' is a verb; 'pencil' is a noun."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>The teacher ______ Math.</span>",
+          question: "The teacher ______ Math.",
           options: ["teaches", "book"],
           correct: "teaches",
           explanation: "'teaches' is a verb; 'book' is a noun."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>She ______ a beautiful poem.</span>",
+          question: "She ______ a beautiful poem.",
           options: ["writes", "sleep"],
           correct: "writes",
           explanation: "'writes' is the verb that fits; 'sleep' is not."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>He ______ a beautiful letter.</span>",
+          question: "He ______ a beautiful letter.",
           options: ["writes", "bed"],
           correct: "writes",
           explanation: "'writes' is a verb; 'bed' is a noun."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>The bell ______.</span>",
+          question: "The bell ______.",
           options: ["rings", "rope"],
           correct: "rings",
           explanation: "'rings' is a verb; 'rope' is a noun."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>The doctor ______ to his patients.</span>",
+          question: "The doctor ______ to his patients.",
           options: ["talks", "chair"],
           correct: "talks",
           explanation: "'talks' is a verb; 'chair' is a noun."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>The teacher ______ the lesson very well.</span>",
+          question: "The teacher ______ the lesson very well.",
           options: ["explains", "map"],
           correct: "explains",
           explanation: "'explains' is a verb; 'map' is a noun."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>The boy ______ his mom.</span>",
+          question: "The boy ______ his mom.",
           options: ["thanks", "sun"],
           correct: "thanks",
           explanation: "'thanks' is a verb; 'sun' is a noun."
         },
         {
-          question: "Choose the correct verb to complete the sentence. <br> <span style='color:black;'>The teacher ______ English.</span>",
+          question: "The teacher ______ English.",
           options: ["teaches", "pencil"],
           correct: "teaches",
           explanation: "'teaches' is a verb; 'pencil' is a noun."
+        },
+        {
+          question: "Sam ______.",
+          options: ["paints", "paints brush"],
+          correct: "paints",
+          explanation: "'paints' is the action verb in this sentence."
+        },
+        {
+          question: "Sama ______.",
+          options: ["food", "eats"],
+          correct: "eats",
+          explanation: "'eats' expresses the action statement performed by Sama."
+        },
+        {
+          question: "Sam ______.",
+          options: ["plays", "game"],
+          correct: "plays",
+          explanation: "'plays' acts as the structural active verb phrase element."
+        },
+        {
+          question: "Sama ______.",
+          options: ["bed", "sleeps"],
+          correct: "sleeps",
+          explanation: "'sleeps' is the action verb tracking state transitions."
+        },
+        {
+          question: "Sam ______.",
+          options: ["drives", "car"],
+          correct: "drives",
+          explanation: "'drives' represents the active dynamic operational verb here."
+        },
+        {
+          question: "My teacher ______.",
+          options: ["paper", "writes"],
+          correct: "writes",
+          explanation: "'writes' indicates the structural action process performed by the teacher."
+        },
+        {
+          question: "My father ______.",
+          options: ["cooks", "kitchen"],
+          correct: "cooks",
+          explanation: "'cooks' represents the core operational action verb in the phrase."
+        },
+        {
+          question: "My family ______.",
+          options: ["dinner", "eat"],
+          correct: "eat",
+          explanation: "'eat' functions as the plural action verb mapping family activities."
+        },
+        {
+          question: "Dad ______ the car.",
+          options: ["drives", "road"],
+          correct: "drives",
+          explanation: "'drives' is the target transit verb describing operation of the car."
+        },
+        {
+          question: "Mom ______.",
+          options: ["stove", "cooks"],
+          correct: "cooks",
+          explanation: "'cooks' functions as the active state action indicator verb."
+        },
+        {
+          question: "The cats ______.",
+          options: ["eat", "milk"],
+          correct: "eat",
+          explanation: "'eat' is the plural verb parameter mapping feline behavior patterns."
+        },
+        {
+          question: "The boys ______.",
+          options: ["playground", "play"],
+          correct: "play",
+          explanation: "'play' is the direct active performance verb matching the plural subject."
+        },
+        {
+          question: "The stars ______.",
+          options: ["shine", "sky"],
+          correct: "shine",
+          explanation: "'shine' serves as the active existential state action verb."
+        },
+        {
+          question: "Sam ______.",
+          options: ["notebook", "writes"],
+          correct: "writes",
+          explanation: "'writes' tracks explicitly as the action parameter verb."
+        },
+        {
+          question: "Sama ______.",
+          options: ["writes", "pencil"],
+          correct: "writes",
+          explanation: "'writes' captures the core process verb string in this sentence."
+        },
+        {
+          question: "The children ______.",
+          options: ["tears", "cry"],
+          correct: "cry",
+          explanation: "'cry' is the targeted plural vocal action verb element."
+        },
+        {
+          question: "The children ______.",
+          options: ["swim", "pool"],
+          correct: "swim",
+          explanation: "'swim' acts as the plural baseline physical movement verb."
+        },
+        {
+          question: "The kids ______.",
+          options: ["laugh", "funny"],
+          correct: "laugh",
+          explanation: "'laugh' is the expressive emotional action verb tracking the kids."
+        },
+        {
+          question: "The children ______.",
+          options: ["happy", "laugh"],
+          correct: "laugh",
+          explanation: "'laugh' delivers the active structural plural verb parameter here."
+        },
+        {
+          question: "The parents ______.",
+          options: ["talk", "room"],
+          correct: "talk",
+          explanation: "'talk' represents the plural communication exchange verb metric."
+        },
+        {
+          question: "Cats ______ milk.",
+          options: ["drink", "white"],
+          correct: "drink",
+          explanation: "'drink' captures the physical fluid consumption action verb."
+        },
+        {
+          question: "Dogs ______ meat.",
+          options: ["bone", "eat"],
+          correct: "eat",
+          explanation: "'eat' serves as the primary consumption action process verb."
+        },
+        {
+          question: "People ______.",
+          options: ["pray", "church"],
+          correct: "pray",
+          explanation: "'pray' tracks cleanly as the targeted mental or spiritual action verb."
+        },
+        {
+          question: "I ______.",
+          options: ["sleep", "pillow"],
+          correct: "sleep",
+          explanation: "'sleep' marks the first-person singular restorative state verb."
+        },
+        {
+          question: "Birds ______.",
+          options: ["fly", "wings"],
+          correct: "fly",
+          explanation: "'fly' identifies the natural locomotive action verb for avian subjects."
+        },
+        {
+          question: "Birds ______ fish.",
+          options: ["water", "eat"],
+          correct: "eat",
+          explanation: "'eat' establishes the standard transitive feeding action verb parameter."
+        },
+        {
+          question: "He ______.",
+          options: ["paints", "canvas"],
+          correct: "paints",
+          explanation: "'paints' tracks as the active singular third-person action verb."
+        },
+        {
+          question: "We ______.",
+          options: ["sleep", "blanket"],
+          correct: "sleep",
+          explanation: "'sleep' acts as the plural first-person collective state verb."
+        },
+        {
+          question: "My father ______.",
+          options: ["swims", "ocean"],
+          correct: "swims",
+          explanation: "'swims' serves as the singular targeted aquatic movement action verb."
+        },
+        {
+          question: "My family ______.",
+          options: ["luggage", "travel"],
+          correct: "travel",
+          explanation: "'travel' outlines the collective journey action parameter verb."
+        },
+        {
+          question: "Mice ______.",
+          options: ["eat", "cheese"],
+          correct: "eat",
+          explanation: "'eat' functions as the baseline plural animal feeding action verb."
+        },
+        {
+          question: "Sama ______.",
+          options: ["draws", "picture"],
+          correct: "draws",
+          explanation: "'draws' targets the custom creative execution action verb."
+        },
+        {
+          question: "Sam ______.",
+          options: ["sketch", "draws"],
+          correct: "draws",
+          explanation: "'draws' maps out the precise third-person action verb loop."
+        },
+        {
+          question: "The teacher ______.",
+          options: ["write", "board"],
+          correct: "write",
+          explanation: "'write' identifies the instructional execution action verb."
+        },
+        {
+          question: "The boys ______ cats.",
+          options: ["friendly", "like"],
+          correct: "like",
+          explanation: "'like' represents a stative emotional configuration category verb."
+        },
+        {
+          question: "The girls ______ pink.",
+          options: ["like", "color"],
+          correct: "like",
+          explanation: "'like' operates as the target relational preference status verb."
+        },
+        {
+          question: "The girls ______ candies.",
+          options: ["love", "sweet"],
+          correct: "love",
+          explanation: "'love' establishes the high-affinity stative personal verb marker."
+        },
+        {
+          question: "They ______ lunch.",
+          options: ["cook", "kitchen"],
+          correct: "cook",
+          explanation: "'cook' functions as the collective structural action prep verb."
+        },
+        {
+          question: "They ______ dinner.",
+          options: ["cook", "food"],
+          correct: "cook",
+          explanation: "'cook' matches the primary structural plural transformation verb parameter."
+        },
+        {
+          question: "The baby ______.",
+          options: ["tears", "cries"],
+          correct: "cries",
+          explanation: "'cries' charts the singular vocal distress vocalization action verb."
+        },
+        {
+          question: "The cats ______.",
+          options: ["jump", "high"],
+          correct: "jump",
+          explanation: "'jump' captures the sudden physical launch motion action verb."
+        },
+        {
+          question: "The dogs ______.",
+          options: ["yard", "jump"],
+          correct: "jump",
+          explanation: "'jump' operates cleanly as the animal physical trajectory action verb."
+        },
+        {
+          question: "The birds ______ the fish.",
+          options: ["catch", "claws"],
+          correct: "catch",
+          explanation: "'catch' registers the transitive physical acquisition capture action verb."
+        },
+        {
+          question: "The bear ______.",
+          options: ["sleeps", "cave"],
+          correct: "sleeps",
+          explanation: "'sleeps' details the natural cyclic resting state verb configuration."
+        },
+        {
+          question: "The bear ______ the honey.",
+          options: ["eats", "sweet"],
+          correct: "eats",
+          explanation: "'eats' states the explicit structural wildlife feeding action verb."
+        },
+        {
+          question: "The doctors ______.",
+          options: ["talk", "hospital"],
+          correct: "talk",
+          explanation: "'talk' serves as the plural professional dialogue action verb component."
+        },
+        {
+          question: "He ______.",
+          options: ["eats", "apple"],
+          correct: "eats",
+          explanation: "'eats' represents the standard third-person singular intake action verb."
+        },
+        {
+          question: "He ______.",
+          options: ["ground", "jumps"],
+          correct: "jumps",
+          explanation: "'jumps' acts as the specific physical vertical leap action verb."
+        },
+        {
+          question: "She ______.",
+          options: ["dives", "water"],
+          correct: "dives",
+          explanation: "'dives' records the plunging locomotion execution style action verb."
+        },
+        {
+          question: "The balloons ______.",
+          options: ["pop", "air"],
+          correct: "pop",
+          explanation: "'pop' captures the structural burst rupture action verb state shift."
+        },
+        {
+          question: "The car ______.",
+          options: ["crashes", "street"],
+          correct: "crashes",
+          explanation: "'crashes' describes the physical impact dynamic collision action verb."
+        },
+        {
+          question: "The driver ______.",
+          options: ["stops", "brake"],
+          correct: "stops",
+          explanation: "'stops' functions as the decelerative motion halting action verb."
+        },
+        {
+          question: "We ______ the T.V.",
+          options: ["watch", "screen"],
+          correct: "watch",
+          explanation: "'watch' registers the intentional plural visual observation action verb."
+        },
+        {
+          question: "The boys ______ to school.",
+          options: ["go", "bus"],
+          correct: "go",
+          explanation: "'go' marks the fundamental plural transit motion action verb here."
+        },
+        {
+          question: "The boys ______ to class.",
+          options: ["go", "room"],
+          correct: "go",
+          explanation: "'go' defines the physical transit directional orientation action verb."
+        },
+        {
+          question: "The girls ______ to school.",
+          options: ["go", "walk"],
+          correct: "go",
+          explanation: "'go' implements the plural destination movement travel action verb."
+        },
+        {
+          question: "The girls ______ to work.",
+          options: ["office", "go"],
+          correct: "go",
+          explanation: "'go' establishes the locomotive travel routing path action verb."
+        },
+        {
+          question: "The teachers ______.",
+          options: ["travel", "airplane"],
+          correct: "travel",
+          explanation: "'travel' records the plural professional or leisure transit journey verb."
+        },
+        {
+          question: "The train ______.",
+          options: ["moves", "track"],
+          correct: "moves",
+          explanation: "'moves' defines the continuous mechanical locomotion execution action verb."
+        },
+        {
+          question: "Sandy ______ the chicken.",
+          options: ["eats", "plate"],
+          correct: "eats",
+          explanation: "'eats' highlights the transitive personal consumption process action verb."
+        },
+        {
+          question: "Sandy ______ the meat.",
+          options: ["fork", "eats"],
+          correct: "eats",
+          explanation: "'eats' functions as the active physical dining statement verb parameter."
+        },
+        {
+          question: "Sama ______ in the pool.",
+          options: ["swims", "water"],
+          correct: "swims",
+          explanation: "'swims' identifies the active targeted swimming movement action verb."
+        },
+        {
+          question: "Sam ______ in the pond.",
+          options: ["swims", "fish"],
+          correct: "swims",
+          explanation: "'swims' covers the singular third-person aquatic locomotion action verb."
+        },
+        {
+          question: "I ______ popcorn.",
+          options: ["movie", "eat"],
+          correct: "eat",
+          explanation: "'eat' tracks as the correct first-person consumption indicator verb."
+        },
+        {
+          question: "I ______ meatballs.",
+          options: ["eat", "bowl"],
+          correct: "eat",
+          explanation: "'eat' coordinates as the primary first-person dining choice action verb."
+        },
+        {
+          question: "The girls ______ popcorn.",
+          options: ["eat", "bag"],
+          correct: "eat",
+          explanation: "'eat' matches the target plural collective consumption tracking verb."
+        },
+        {
+          question: "The boys ______ in the ocean.",
+          options: ["swim", "waves"],
+          correct: "swim",
+          explanation: "'swim' acts as the plural baseline outdoor aquatic navigation action verb."
+        },
+        {
+          question: "He ______ the pizza.",
+          options: ["eats", "box"],
+          correct: "eats",
+          explanation: "'eats' serves as the singular masculine food consumption action verb."
+        },
+        {
+          question: "She ______ Behind a tree.",
+          options: ["hides", "forest"],
+          correct: "hides",
+          explanation: "'hides' details the tactical concealment posture action verb."
+        },
+        {
+          question: "She ______ a song.",
+          options: ["sings", "voice"],
+          correct: "sings",
+          explanation: "'sings' tracks cleanly as the musical vocal performance action verb."
+        },
+        {
+          question: "He ______ the car.",
+          options: ["stops", "garage"],
+          correct: "stops",
+          explanation: "'stops' indicates the operational vehicular immobilization action verb."
+        },
+        {
+          question: "Sandy ______ the fish.",
+          options: ["catches", "boat"],
+          correct: "catches",
+          explanation: "'catches' maps the successful hunting tracking target acquisition action verb."
+        },
+        {
+          question: "Sandy ______ at the book.",
+          options: ["looks", "pages"],
+          correct: "looks",
+          explanation: "'looks' defines the targeted sensory observation layout action verb."
+        },
+        {
+          question: "He ______ the book.",
+          options: ["reads", "words"],
+          correct: "reads",
+          explanation: "'reads' logs the cognitive textual item comprehension action verb."
+        },
+        {
+          question: "The teacher ______ to school.",
+          options: ["walks", "sidewalk"],
+          correct: "walks",
+          explanation: "'walks' tracks the pedestrian transit mode singular action verb."
+        },
+        {
+          question: "I ______ to school.",
+          options: ["go", "morning"],
+          correct: "go",
+          explanation: "'go' implements the base directional first-person travel route action verb."
+        },
+        {
+          question: "My dad ______ the piano.",
+          options: ["plays", "keys"],
+          correct: "plays",
+          explanation: "'plays' charts the artistic instrumental audio manipulation action verb."
+        },
+        {
+          question: "The door ______.",
+          options: ["opens", "room"],
+          correct: "opens",
+          explanation: "'opens' records the physical structural clear boundary path activation action verb."
+        },
+        {
+          question: "The door ______.",
+          options: ["closes", "wall"],
+          correct: "closes",
+          explanation: "'closes' specifies the sealing motion path terminal operation action verb."
+        },
+        {
+          question: "Sandy ______ the race.",
+          options: ["wins", "medal"],
+          correct: "wins",
+          explanation: "'wins' tracks the competitive victory achievement benchmark action verb."
+        },
+        {
+          question: "Sandy ______ the prize.",
+          options: ["wins", "trophy"],
+          correct: "wins",
+          explanation: "'wins' documents the securement processing acquisition state action verb."
+        },
+        {
+          question: "Sandy ______ the contest.",
+          options: ["stage", "wins"],
+          correct: "wins",
+          explanation: "'wins' delivers the single victory performance outcome validation verb."
+        },
+        {
+          question: "The girl ______ the flower.",
+          options: ["picks", "garden"],
+          correct: "picks",
+          explanation: "'picks' outlines the manual harvest separation activity action verb."
+        },
+        {
+          question: "The boy ______ the flower.",
+          options: ["smells", "nose"],
+          correct: "smells",
+          explanation: "'smells' processes the active olfactory evaluation tracking sensory action verb."
+        },
+        {
+          question: "The children ______ the flowers.",
+          options: ["pick", "basket"],
+          correct: "pick",
+          explanation: "'pick' matches the plural execution group harvest operation action verb."
+        },
+        {
+          question: "The cat ______ the mouse.",
+          options: ["picks", "yard"],
+          correct: "picks",
+          explanation: "'picks' handles the predatory tracking selection action verb parameter."
+        },
+        {
+          question: "Dad ______ to Dean.",
+          options: ["talks", "son"],
+          correct: "talks",
+          explanation: "'talks' establishes the distinct interactive communication execution action verb."
+        },
+        {
+          question: "Dad ______ to mom.",
+          options: ["talks", "house"],
+          correct: "talks",
+          explanation: "'talks' outlines the relational discussion interaction execution action verb."
+        },
+        {
+          question: "Sam ______ the pizza.",
+          options: ["eats", "crust"],
+          correct: "eats",
+          explanation: "'eats' isolates the standard transitive processing consumption execution verb."
+        },
+        {
+          question: "Sama ______ the chicken.",
+          options: ["eats", "dinner"],
+          correct: "eats",
+          explanation: "'eats' covers the third-person concrete feeding operation action verb."
+        },
+        {
+          question: "They ______ at the flower.",
+          options: ["look", "eyes"],
+          correct: "look",
+          explanation: "'look' handles the group multi-person collective focal sensory action verb."
+        },
+        {
+          question: "They ______ at me.",
+          options: ["look", "here"],
+          correct: "look",
+          explanation: "'look' represents the directed visual tracking placement behavior action verb."
+        },
+        {
+          question: "Sandy ______.",
+          options: ["music", "dances"],
+          correct: "dances",
+          explanation: "'dances' states the custom rhythmic body physical performance action verb."
+        },
+        {
+          question: "Sam ______ At Sama.",
+          options: ["looks", "across"],
+          correct: "looks",
+          explanation: "'looks' tracks the targeted individual optical direction tracking action verb."
+        },
+        {
+          question: "We ______ the cats.",
+          options: ["love", "pets"],
+          correct: "love",
+          explanation: "'love' charts the deep affective connection expression state verb loop."
+        },
+        {
+          question: "We ______ the birds.",
+          options: ["like", "trees"],
+          correct: "like",
+          explanation: "'like' records the positive first-person plural preference metric verb."
+        },
+        {
+          question: "We ______ dogs.",
+          options: ["have", "leash"],
+          correct: "have",
+          explanation: "'have' serves as the relational possession structural verification verb."
+        },
+        {
+          question: "We ______ chickens.",
+          options: ["coop", "have"],
+          correct: "have",
+          explanation: "'have' defines the plural state domain asset ownership validation verb."
+        },
+        {
+          question: "It ______ me.",
+          options: ["likes", "friend"],
+          correct: "likes",
+          explanation: "'likes' expresses the singular affinity state verification process verb."
         }
       ];
     </script>
 
-    <!-- Professional Footer -->
     <div id="site-footer-placeholder"></div>
-    <!-- point to your main quiz logic -->
     <script src="../../../js/script.js"></script>
     <script src="../../../js/partials.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => {
-    initMCQQuiz(questions);
-  });
+        initMCQQuiz(questions);
+      });
     </script>
   </body>
 </html>
