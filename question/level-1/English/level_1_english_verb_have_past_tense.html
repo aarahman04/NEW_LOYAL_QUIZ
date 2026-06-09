@@ -4,21 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Verb Have - Past tense</title>
-    <!-- point to your question.css in the root css/ folder -->
     <link rel="stylesheet" href="../../../css/question.css" />
   </head>
   <body>
 
-   <!-- Sticky Header -->
-    <div id="site-header-placeholder"></div>
+   <div id="site-header-placeholder"></div>
 
-    <!-- Quiz Content -->
     <main class="quiz-container">
       <div class="question-section">
         <h3 id="question-text">Loading...</h3>
         <ul class="options" id="options-list">
-          <!-- Options dynamically generated -->
-        </ul>
+          </ul>
       </div>
       <div id="feedback" class="hidden"></div>
       <div id="explanation" class="hidden"></div>
@@ -29,131 +25,633 @@
 <script>
   const questions = [
     {
-      question: "Choose the correct tense to complete the sentence: I …….. a cold last month.",
+      question: "Choose the correct tense to complete the sentence: I ........ a cold last month.",
       options: ["have", "had"],
       correct: "had",
       explanation: "'had' is correct because it shows past possession."
     },
     {
-      question: "Choose the correct tense to complete the sentence: He ……… a stroke last week.",
+      question: "Choose the correct tense to complete the sentence: He ............ a stroke last week.",
       options: ["have", "had"],
       correct: "had",
       explanation: "'had' is correct as it indicates something in the past."
     },
     {
-      question: "Choose the correct tense to complete the sentence: She ……….. a beautiful vacation last year.",
-      options: ["have", "had"],
+      question: "Choose the correct tense to complete the sentence: She ............ a beautiful vacation last year.",
+      options: ["had", "have"],
       correct: "had",
       explanation: "'had' is correct for past events."
     },
     {
-      question: "Choose the correct tense to complete the sentence: We …………. to go to the hospital last night.",
+      question: "Choose the correct tense to complete the sentence: He ............ a big exam yesterday.",
       options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for an event that happened in the past."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: He ............ a big part in the play yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is used to talk about actions completed in the past."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: She ............ an interview with him yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is the past tense form of 'have'."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: He.......... the flu yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for past medical experiences."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We.............. to go to the hospital last night.",
+      options: ["had", "have"],
       correct: "had",
       explanation: "'had' is correct because it happened yesterday."
     },
     {
-      question: "Choose the correct tense to complete the sentence: They ……… to leave to Germany last week.",
-      options: ["have", "had"],
+      question: "Choose the correct tense to complete the sentence: They ............ to leave to Germany last week.",
+      options: ["had", "have"],
       correct: "had",
       explanation: "'had' is correct for past necessity."
     },
     {
-      question: "Choose the correct tense to complete the sentence: You ……….. the flu last week.",
-      options: ["have", "had"],
+      question: "Choose the correct tense to complete the sentence: You ............ the flu last week.",
+      options: ["had", "have"],
       correct: "had",
       explanation: "'had' is correct to show past illness."
     },
     {
-      question: "Choose the correct tense to complete the sentence: She …….. a red bicycle when she was a child.",
+      question: "Choose the correct tense to complete the sentence: I............. a great time at the party yesterday.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' is used to show experiences in the past."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: She...... a red bicycle when she was a child.",
       options: ["have", "had"],
       correct: "had",
       explanation: "'had' is correct for past possession."
     },
     {
-      question: "Choose the correct tense to complete the sentence: We……… lunch at 1 P.M. yesterday.",
-      options: ["have", "had"],
-      correct: "had",
-      explanation: "'had' is correct for past actions."
-    },
-    {
-      question: "Choose the correct tense to complete the sentence: He …….. a bad headache this morning.",
-      options: ["have", "had"],
-      correct: "had",
-      explanation: "'had' is correct for past illness."
-    },
-    {
-      question: "Choose the correct tense to complete the sentence: I ……….. some free time yesterday.",
-      options: ["have", "had"],
-      correct: "had",
-      explanation: "'had' is correct for past free time."
-    },
-    {
-      question: "Choose the correct tense to complete the sentence: We ……… a car accident last week.",
-      options: ["have", "had"],
-      correct: "had",
-      explanation: "'had' is correct because it is a past incident."
-    },
-    {
-      question: "Choose the correct tense to complete the sentence: They ……… three dogs and a cat.",
+      question: "Choose the correct tense to complete the sentence: They ............ three dogs and a cat.",
       options: ["have", "had"],
       correct: "had",
       explanation: "'had' is correct for possession in the past."
     },
     {
-      question: "Choose the correct tense to complete the sentence: I …….. pancakes yesterday.",
+      question: "Choose the correct tense to complete the sentence: We......... lunch at 1 P.M. yesterday.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' is correct for past actions."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: He ............ a bad headache this morning.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for past illness."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: This hotel ............ a swimming pool.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is used to describe past attributes of a place."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: I ............ a strange dream last night.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is used to mention past dreams and occurrences."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: She ............ an argument with her boss.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' represents past conflict experiences."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We ............ fun at the amusement park last week.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is used for collective experiences in the past."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: He ............ a new job last month.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' describes professional acquisitions in the past."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: They ............ tickets from the last time.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' specifies past ownership of items."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: I ............ a flat tire on the way to work.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' is applicable for negative encounters in the past."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: She ............ a beautiful time last summer.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' matches expressions related to past seasonal trips."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We ............ a lot of homework yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' expresses previous academic workloads."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We ......... a snow storm yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is used to signal past weather disruptions encountered."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: I............. some free time yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for past free time."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: She ............ a fever all night.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' handles past continuous overnight physical symptoms."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We ............ a car accident last week.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct because it is a past incident."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: They ............ a car wash yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' tracks specific routines finished in the past."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: I ............ pancakes yesterday.",
       options: ["have", "had"],
       correct: "had",
       explanation: "'had' is correct for past meals."
     },
     {
-      question: "Choose the correct tense to complete the sentence: She………… a long day at work.",
-      options: ["have", "had"],
+      question: "Choose the correct tense to complete the sentence: She.............. a long day at work.",
+      options: ["had", "have"],
       correct: "had",
       explanation: "'had' is correct for past experiences."
     },
     {
-      question: "Choose the correct tense to complete the sentence: We……… a barbecue on Sunday.",
-      options: ["have", "had"],
+      question: "Choose the correct tense to complete the sentence: We......... a barbecue on Sunday.",
+      options: ["had", "have"],
       correct: "had",
       explanation: "'had' is correct for past events."
     },
     {
-      question: "Choose the correct tense to complete the sentence: They…………… Pizza for dinner yesterday.",
+      question: "Choose the correct tense to complete the sentence: They............ a barbecue on Friday.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' points out social tracking on completed dates."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: You........... a party last month.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' documents historical celebrations."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: I ............ a meeting with manager last night.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' refers back to preceding business operations."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: I............... to buy bread for my son yesterday.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' marks domestic priorities executed in the past."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: They............... to write yesterday.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' establishes general previous objectives."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: She......... to go to the beach.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' represents structural historical travel obligations."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: They............. Pizza for dinner yesterday.",
       options: ["have", "had"],
       correct: "had",
       explanation: "'had' is correct because it happened yesterday."
     },
     {
-      question: "Choose the correct tense to complete the sentence: He………… a sore throat last week.",
+      question: "Choose the correct tense to complete the sentence: We........ noodles for breakfast.",
       options: ["have", "had"],
       correct: "had",
-      explanation: "'had' is correct for past health condition."
+      explanation: "'had' chronicles morning dining routines that have already finished."
     },
     {
-      question: "Choose the correct tense to complete the sentence: The team ……. a great season.",
+      question: "Choose the correct tense to complete the sentence: He............ eggs for lunch.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' registers culinary records from past hours."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: They............ to drive away yesterday.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' highlights movement constraints fulfilled yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: You.......... to pay for him yesterday.",
       options: ["have", "had"],
       correct: "had",
-      explanation: "'had' is correct for past achievements."
+      explanation: "'had' applies directly to historical standard billing interactions."
     },
     {
-      question: "Choose the correct tense to complete the sentence: We……….. a picnic last Sunday.",
+      question: "Choose the correct tense to complete the sentence: I ............ no idea what to do.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' evaluates past states of complete cognitive confusion."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: He ............ an injury last year.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' records isolated trauma metrics from previous years."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: She......... an injury last winter.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' catalogs historical personal physical limitations."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: Our friends............. to leave the party yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' reports on departures requested by visitors yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: Our friends............. to write a long story last night.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' covers structural deadlines completed by authors overnight."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: My friend ............ an exam last month.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' registers testing operations assigned in past periods."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: My sister............. a problem last week.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' documents complications discovered during previous cycles."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: My father............. a problem last spring.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' traces long-term domestic hurdles resolved months ago."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: My mother............. a big dinner last year.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' confirms festive historical production dates."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: My family....... a vacation in Spain last year.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' contextualizes structural familial logistics overseas."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We........... breakfast at the restaurant last week.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' states dining details recorded last week."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: They............ to go to the supermarket yesterday.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' coordinates errand tasks completely finished yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: He ............ to play the piano yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' describes rehearsal schedules managed yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: She............ to sing last night.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' logs specific performance windows checked last night."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: It............ spots all over it yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' tracks visual conditions noted on previous inspection dates."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: You ............ to clean the kitchen last night.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' is used to define explicit past cleanup requirements."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: The cat ............ to be washed yesterday.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' references historical pet hygiene milestones."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We...... to run all day yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' covers extensive previous endurance profiles."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: You ............ to cook all night yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' tracks exhausting meal production hours spent yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: She ............ to drive the children to school yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' outlines student morning transport runs finalized yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: He ............ to fly to Italy.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' signals past flight logistics mandates."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: They............ lost their keys last week.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' serves as the auxiliary verb for a past perfect event."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We............. lost their keys last night.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' coordinates auxiliary status matching a specific night."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: I ............ nightmare last night.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' maps night sleep anomalies precisely back to past timelines."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: It................ rained all night.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' structures absolute precipitation indicators using past perfect."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We........... to shower last night.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' states daily recovery procedures completed last night."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: I ............ to leave as fast as possible yesterday.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' tracks critical safety extractions from yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We............. a snow storm yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' references historical extreme regional freeze incidents."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We.............. a big birthday party yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' logs specific celebratory turnouts achieved yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: You.......... a beautiful dress on yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' records specific item tracking observed yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We ............ a lot of fun yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' registers broad satisfaction levels from yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We............ to leave early yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' monitors exit parameters verified yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: She ............ a beautiful coat on yesterday.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' notes specific outer layers observed during past intervals."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: They.............. a great time at the school yesterday.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' charts student integration comfort scored yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: She........... a big sandwich yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' monitors fast food distribution markers from yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: He ............ a big meal yesterday.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' tallies total personal caloric intake finished yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We.............. a lovely meeting yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' confirms positive reviews of conferences organized yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: She ............ difficult homework last Thursday.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' preserves previous demanding school assignments."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We.......... beautiful fruit in our garden last summer.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' confirms historical yields from personal horticulture."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: They................ many people over last night.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' validates attendance variables tracking home traffic overnight."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We ............ a picnic last Sunday.",
       options: ["have", "had"],
       correct: "had",
       explanation: "'had' is correct for past activities."
     },
     {
-      question: "Choose the correct tense to complete the sentence: I ……..…. five different jobs last year.",
+      question: "Choose the correct tense to complete the sentence: He ............ a surprise party last week.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' marks hidden event production completed last week."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: The house ............ a big garden.",
       options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' tracks structural features associated with property boundaries in the past."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: The people ............ danced all night yesterday.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' acts as an auxiliary verb to compile historical choreography values."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We............. to leave yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' tracks formal requirements completed yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: I ............ to cry as I saw him last week.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' evaluates past automatic emotional changes checked last week."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: I ............ a great time last winter.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' measures seasonal wellness markers achieved last winter."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: They............ fun training the dog yesterday.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' verifies animal instruction timelines handled yesterday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: I ............ a strange dream last night.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' logs night dream anomalies recorded from past sleep sequences."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: He............ a strange feeling last night.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' monitors past instinct responses registered overnight."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: He............ a sore throat last week.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for past health condition."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: She ............ Tennis last Monday.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' coordinates sport field reservations logged last Monday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: He ............ driving lessons last Friday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' catalogs vocational skill practices completed last Friday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: They ............ booked the hotel last Spring.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' provides clean auxiliary perfect aspects for spring holiday bookings."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: Tom and Sam.......... missed their train last night.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' states auxiliary support indicating previous transit platform delays."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: The team ....... a great season.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' is correct for past achievements."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: The team.............. played extremely poorly yesterday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' sets past perfect auxiliary conditions for completed athletic reviews."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: Tom and Sam ........ coffee at the same place yesterday.",
+      options: ["had", "have"],
+      correct: "had",
+      explanation: "'had' points out social meeting updates recorded yesterday afternoon."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: I ............ some free time last Monday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' maps personal availability metrics from last Monday."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: We............ a car accident last Wednesday.",
+      options: ["have", "had"],
+      correct: "had",
+      explanation: "'had' logs vehicular claims matching past Wednesday incidents."
+    },
+    {
+      question: "Choose the correct tense to complete the sentence: I ........ five different jobs last year.",
+      options: ["had", "have"],
       correct: "had",
       explanation: "'had' is correct to indicate past experiences."
     }
   ];
 </script>
 
-  <!-- Professional Footer -->
-    <div id="site-footer-placeholder"></div>
-    <!-- point to your main quiz logic -->
+  <div id="site-footer-placeholder"></div>
     <script src="../../../js/script.js"></script>
     <script src="../../../js/partials.js"></script>
     <script>
