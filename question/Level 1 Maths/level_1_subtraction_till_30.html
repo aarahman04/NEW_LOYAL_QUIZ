@@ -28,126 +28,106 @@
 
 <script>
   const questions = [
-    {
-      question: "What is 30 - 18?",
-      options: ["11", "12"],
-      correct: "12",
-      explanation: "30 - 18 = 12"
-    },
-    {
-      question: "What is 29 - 15?",
-      options: ["14", "13"],
-      correct: "14",
-      explanation: "29 - 15 = 14"
-    },
-    {
-      question: "What is 28 - 7?",
-      options: ["21", "20"],
-      correct: "21",
-      explanation: "28 - 7 = 21"
-    },
-    {
-      question: "What is 27 - 9?",
-      options: ["17", "18"],
-      correct: "18",
-      explanation: "27 - 9 = 18"
-    },
-    {
-      question: "What is 26 - 22?",
-      options: ["3", "4"],
-      correct: "4",
-      explanation: "26 - 22 = 4"
-    },
-    {
-      question: "What is 25 - 5?",
-      options: ["19", "20"],
-      correct: "20",
-      explanation: "25 - 5 = 20"
-    },
-    {
-      question: "What is 30 - 29?",
-      options: ["0", "1"],
-      correct: "1",
-      explanation: "30 - 29 = 1"
-    },
-    {
-      question: "What is 29 - 19?",
-      options: ["11", "10"],
-      correct: "10",
-      explanation: "29 - 19 = 10"
-    },
-    {
-      question: "What is 28 - 24?",
-      options: ["4", "5"],
-      correct: "4",
-      explanation: "28 - 24 = 4"
-    },
-    {
-      question: "What is 27 - 16?",
-      options: ["11", "12"],
-      correct: "11",
-      explanation: "27 - 16 = 11"
-    },
-    {
-      question: "What is 26 - 14?",
-      options: ["11", "12"],
-      correct: "12",
-      explanation: "26 - 14 = 12"
-    },
-    {
-      question: "What is 25 - 18?",
-      options: ["7", "8"],
-      correct: "7",
-      explanation: "25 - 18 = 7"
-    },
-    {
-      question: "What is 30 - 11?",
-      options: ["18", "19"],
-      correct: "19",
-      explanation: "30 - 11 = 19"
-    },
-    {
-      question: "What is 29 - 28?",
-      options: ["0", "1"],
-      correct: "1",
-      explanation: "29 - 28 = 1"
-    },
-    {
-      question: "What is 28 - 10?",
-      options: ["17", "18"],
-      correct: "18",
-      explanation: "28 - 10 = 18"
-    },
-    {
-      question: "What is 27 - 25?",
-      options: ["2", "3"],
-      correct: "2",
-      explanation: "27 - 25 = 2"
-    },
-    {
-      question: "What is 26 - 13?",
-      options: ["12", "13"],
-      correct: "13",
-      explanation: "26 - 13 = 13"
-    },
-    {
-      question: "What is 25 - 21?",
-      options: ["3", "4"],
-      correct: "4",
-      explanation: "25 - 21 = 4"
-    },
-    {
-      question: "What is 30 - 17?",
-      options: ["13", "12"],
-      correct: "13",
-      explanation: "30 - 17 = 13"
-    },
-    {
-      question: "What is 29 - 8?",
-      options: ["21", "20"],
-      correct: "21",
-      explanation: "29 - 8 = 21"
-    }
+    { question: "What is 27 − 16?", options: ["12", "11"], correct: "11", explanation: "27 − 16 = 11" },
+    { question: "What is 12 − 9?", options: ["3", "4"], correct: "3", explanation: "12 − 9 = 3" },
+    { question: "What is 16 − 3?", options: ["13", "14"], correct: "13", explanation: "16 − 3 = 13" },
+    { question: "What is 9 − 3?", options: ["7", "6"], correct: "6", explanation: "9 − 3 = 6" },
+    { question: "What is 13 − 10?", options: ["3", "4"], correct: "3", explanation: "13 − 10 = 3" },
+    { question: "What is 29 − 14?", options: ["15", "14"], correct: "15", explanation: "29 − 14 = 15" },
+    { question: "What is 8 − 3?", options: ["4", "5"], correct: "5", explanation: "8 − 3 = 5" },
+    { question: "What is 10 − 2?", options: ["7", "8"], correct: "8", explanation: "10 − 2 = 8" },
+    { question: "What is 24 − 23?", options: ["0", "1"], correct: "1", explanation: "24 − 23 = 1" },
+    { question: "What is 27 − 7?", options: ["20", "19"], correct: "20", explanation: "27 − 7 = 20" },
+    { question: "What is 11 − 0?", options: ["10", "11"], correct: "11", explanation: "11 − 0 = 11" },
+    { question: "What is 10 − 10?", options: ["0", "1"], correct: "0", explanation: "10 − 10 = 0" },
+    { question: "What is 15 − 2?", options: ["13", "14"], correct: "13", explanation: "15 − 2 = 13" },
+    { question: "What is 25 − 12?", options: ["13", "14"], correct: "13", explanation: "25 − 12 = 13" },
+    { question: "What is 29 − 19?", options: ["9", "10"], correct: "10", explanation: "29 − 19 = 10" },
+    { question: "What is 21 − 7?", options: ["13", "14"], correct: "14", explanation: "21 − 7 = 14" },
+    { question: "What is 12 − 7?", options: ["5", "4"], correct: "5", explanation: "12 − 7 = 5" },
+    { question: "What is 12 − 1?", options: ["12", "11"], correct: "11", explanation: "12 − 1 = 11" },
+    { question: "What is 28 − 25?", options: ["4", "3"], correct: "3", explanation: "28 − 25 = 3" },
+    { question: "What is 29 − 24?", options: ["4", "5"], correct: "5", explanation: "29 − 24 = 5" },
+    { question: "What is 7 − 3?", options: ["3", "4"], correct: "4", explanation: "7 − 3 = 4" },
+    { question: "What is 28 − 21?", options: ["8", "7"], correct: "7", explanation: "28 − 21 = 7" },
+    { question: "What is 12 − 10?", options: ["1", "2"], correct: "2", explanation: "12 − 10 = 2" },
+    { question: "What is 25 − 7?", options: ["17", "18"], correct: "18", explanation: "25 − 7 = 18" },
+    { question: "What is 13 − 8?", options: ["4", "5"], correct: "5", explanation: "13 − 8 = 5" },
+    { question: "What is 16 − 9?", options: ["7", "8"], correct: "7", explanation: "16 − 9 = 7" },
+    { question: "What is 24 − 5?", options: ["19", "18"], correct: "19", explanation: "24 − 5 = 19" },
+    { question: "What is 13 − 2?", options: ["12", "11"], correct: "11", explanation: "13 − 2 = 11" },
+    { question: "What is 16 − 13?", options: ["3", "2"], correct: "3", explanation: "16 − 13 = 3" },
+    { question: "What is 29 − 10?", options: ["19", "20"], correct: "19", explanation: "29 − 10 = 19" },
+    { question: "What is 30 − 26?", options: ["4", "3"], correct: "4", explanation: "30 − 26 = 4" },
+    { question: "What is 19 − 16?", options: ["3", "4"], correct: "3", explanation: "19 − 16 = 3" },
+    { question: "What is 28 − 1?", options: ["27", "26"], correct: "27", explanation: "28 − 1 = 27" },
+    { question: "What is 26 − 17?", options: ["9", "10"], correct: "9", explanation: "26 − 17 = 9" },
+    { question: "What is 22 − 19?", options: ["4", "3"], correct: "3", explanation: "22 − 19 = 3" },
+    { question: "What is 11 − 9?", options: ["2", "3"], correct: "2", explanation: "11 − 9 = 2" },
+    { question: "What is 25 − 20?", options: ["5", "4"], correct: "5", explanation: "25 − 20 = 5" },
+    { question: "What is 15 − 11?", options: ["3", "4"], correct: "4", explanation: "15 − 11 = 4" },
+    { question: "What is 28 − 8?", options: ["19", "20"], correct: "20", explanation: "28 − 8 = 20" },
+    { question: "What is 6 − 1?", options: ["6", "5"], correct: "5", explanation: "6 − 1 = 5" },
+    { question: "What is 30 − 28?", options: ["1", "2"], correct: "2", explanation: "30 − 28 = 2" },
+    { question: "What is 28 − 10?", options: ["19", "18"], correct: "18", explanation: "28 − 10 = 18" },
+    { question: "What is 25 − 11?", options: ["15", "14"], correct: "14", explanation: "25 − 11 = 14" },
+    { question: "What is 28 − 28?", options: ["1", "0"], correct: "0", explanation: "28 − 28 = 0" },
+    { question: "What is 26 − 20?", options: ["6", "5"], correct: "6", explanation: "26 − 20 = 6" },
+    { question: "What is 15 − 8?", options: ["8", "7"], correct: "7", explanation: "15 − 8 = 7" },
+    { question: "What is 3 − 3?", options: ["0", "1"], correct: "0", explanation: "3 − 3 = 0" },
+    { question: "What is 19 − 15?", options: ["5", "4"], correct: "4", explanation: "19 − 15 = 4" },
+    { question: "What is 21 − 12?", options: ["9", "10"], correct: "9", explanation: "21 − 12 = 9" },
+    { question: "What is 10 − 0?", options: ["11", "10"], correct: "10", explanation: "10 − 0 = 10" },
+    { question: "What is 26 − 11?", options: ["14", "15"], correct: "15", explanation: "26 − 11 = 15" },
+    { question: "What is 30 − 0?", options: ["30", "29"], correct: "30", explanation: "30 − 0 = 30" },
+    { question: "What is 16 − 10?", options: ["6", "5"], correct: "6", explanation: "16 − 10 = 6" },
+    { question: "What is 20 − 7?", options: ["12", "13"], correct: "13", explanation: "20 − 7 = 13" },
+    { question: "What is 12 − 12?", options: ["1", "0"], correct: "0", explanation: "12 − 12 = 0" },
+    { question: "What is 6 − 6?", options: ["1", "0"], correct: "0", explanation: "6 − 6 = 0" },
+    { question: "What is 6 − 0?", options: ["5", "6"], correct: "6", explanation: "6 − 0 = 6" },
+    { question: "What is 29 − 2?", options: ["27", "26"], correct: "27", explanation: "29 − 2 = 27" },
+    { question: "What is 18 − 11?", options: ["6", "7"], correct: "7", explanation: "18 − 11 = 7" },
+    { question: "What is 19 − 6?", options: ["12", "13"], correct: "13", explanation: "19 − 6 = 13" },
+    { question: "What is 24 − 16?", options: ["7", "8"], correct: "8", explanation: "24 − 16 = 8" },
+    { question: "What is 9 − 0?", options: ["9", "8"], correct: "9", explanation: "9 − 0 = 9" },
+    { question: "What is 30 − 1?", options: ["28", "29"], correct: "29", explanation: "30 − 1 = 29" },
+    { question: "What is 30 − 21?", options: ["8", "9"], correct: "9", explanation: "30 − 21 = 9" },
+    { question: "What is 17 − 15?", options: ["2", "1"], correct: "2", explanation: "17 − 15 = 2" },
+    { question: "What is 19 − 7?", options: ["12", "11"], correct: "12", explanation: "19 − 7 = 12" },
+    { question: "What is 21 − 11?", options: ["11", "10"], correct: "10", explanation: "21 − 11 = 10" },
+    { question: "What is 13 − 0?", options: ["12", "13"], correct: "13", explanation: "13 − 0 = 13" },
+    { question: "What is 6 − 3?", options: ["4", "3"], correct: "3", explanation: "6 − 3 = 3" },
+    { question: "What is 17 − 7?", options: ["9", "10"], correct: "10", explanation: "17 − 7 = 10" },
+    { question: "What is 20 − 4?", options: ["15", "16"], correct: "16", explanation: "20 − 4 = 16" },
+    { question: "What is 14 − 8?", options: ["6", "7"], correct: "6", explanation: "14 − 8 = 6" },
+    { question: "What is 6 − 4?", options: ["2", "3"], correct: "2", explanation: "6 − 4 = 2" },
+    { question: "What is 4 − 3?", options: ["0", "1"], correct: "1", explanation: "4 − 3 = 1" },
+    { question: "What is 20 − 14?", options: ["6", "7"], correct: "6", explanation: "20 − 14 = 6" },
+    { question: "What is 23 − 9?", options: ["14", "15"], correct: "14", explanation: "23 − 9 = 14" },
+    { question: "What is 9 − 5?", options: ["4", "3"], correct: "4", explanation: "9 − 5 = 4" },
+    { question: "What is 2 − 2?", options: ["0", "1"], correct: "0", explanation: "2 − 2 = 0" },
+    { question: "What is 25 − 23?", options: ["2", "3"], correct: "2", explanation: "25 − 23 = 2" },
+    { question: "What is 30 − 4?", options: ["27", "26"], correct: "26", explanation: "30 − 4 = 26" },
+    { question: "What is 14 − 1?", options: ["12", "13"], correct: "13", explanation: "14 − 1 = 13" },
+    { question: "What is 19 − 0?", options: ["20", "19"], correct: "19", explanation: "19 − 0 = 19" },
+    { question: "What is 26 − 21?", options: ["5", "4"], correct: "5", explanation: "26 − 21 = 5" },
+    { question: "What is 28 − 7?", options: ["21", "22"], correct: "21", explanation: "28 − 7 = 21" },
+    { question: "What is 26 − 16?", options: ["10", "9"], correct: "10", explanation: "26 − 16 = 10" },
+    { question: "What is 16 − 1?", options: ["15", "16"], correct: "15", explanation: "16 − 1 = 15" },
+    { question: "What is 23 − 17?", options: ["5", "6"], correct: "6", explanation: "23 − 17 = 6" },
+    { question: "What is 30 − 29?", options: ["2", "1"], correct: "1", explanation: "30 − 29 = 1" },
+    { question: "What is 13 − 4?", options: ["10", "9"], correct: "9", explanation: "13 − 4 = 9" },
+    { question: "What is 30 − 3?", options: ["27", "28"], correct: "27", explanation: "30 − 3 = 27" },
+    { question: "What is 10 − 5?", options: ["6", "5"], correct: "5", explanation: "10 − 5 = 5" },
+    { question: "What is 21 − 0?", options: ["20", "21"], correct: "21", explanation: "21 − 0 = 21" },
+    { question: "What is 30 − 19?", options: ["12", "11"], correct: "11", explanation: "30 − 19 = 11" },
+    { question: "What is 20 − 2?", options: ["18", "19"], correct: "18", explanation: "20 − 2 = 18" },
+    { question: "What is 24 − 24?", options: ["1", "0"], correct: "0", explanation: "24 − 24 = 0" },
+    { question: "What is 20 − 11?", options: ["8", "9"], correct: "9", explanation: "20 − 11 = 9" },
+    { question: "What is 28 − 5?", options: ["23", "22"], correct: "23", explanation: "28 − 5 = 23" },
+    { question: "What is 23 − 4?", options: ["18", "19"], correct: "19", explanation: "23 − 4 = 19" },
+    { question: "What is 26 − 3?", options: ["24", "23"], correct: "23", explanation: "26 − 3 = 23" },
+    { question: "What is 30 − 10?", options: ["19", "20"], correct: "20", explanation: "30 − 10 = 20" }
   ];
 </script>
 

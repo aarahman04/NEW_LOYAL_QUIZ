@@ -23,127 +23,107 @@
 
     <script>
       const questions = [
-        {
-          question: "Which shows the numbers 1, 4 and 7 in ascending (small to big) order?",
-          options: ["1, 4, 7", "4, 1, 7", "7, 4, 1"],
-          correct: "1, 4, 7",
-          explanation: "Ascending order means smallest to biggest: 1, 4, 7."
-        },
-        {
-          question: "Which shows the numbers 2, 9 and 5 in descending (big to small) order?",
-          options: ["2, 5, 9", "9, 5, 2", "5, 9, 2"],
-          correct: "9, 5, 2",
-          explanation: "Largest is 9, then 5, then 2: 9, 5, 2."
-        },
-        {
-          question: "Put 6, 3 and 8 in ascending order.",
-          options: ["3, 6, 8", "6, 3, 8", "8, 6, 3"],
-          correct: "3, 6, 8",
-          explanation: "Smallest is 3, then 6, then 8: 3, 6, 8."
-        },
-        {
-          question: "Put 10, 4 and 7 in descending order.",
-          options: ["4, 7, 10", "10, 7, 4", "7, 10, 4"],
-          correct: "10, 7, 4",
-          explanation: "Descending is biggest to smallest: 10, 7, 4."
-        },
-        {
-          question: "Which set is in ascending order?",
-          options: ["12, 15, 18", "18, 12, 15", "15, 18, 12"],
-          correct: "12, 15, 18",
-          explanation: "12 &lt; 15 &lt; 18, so 12, 15, 18 is ascending."
-        },
-        {
-          question: "Which set is in descending order?",
-          options: ["30, 25, 20", "20, 25, 30", "25, 30, 20"],
-          correct: "30, 25, 20",
-          explanation: "30 &gt; 25 &gt; 20, so 30, 25, 20 is descending."
-        },
-        {
-          question: "Put 11, 2 and 9 in ascending order.",
-          options: ["2, 9, 11", "11, 9, 2", "9, 2, 11"],
-          correct: "2, 9, 11",
-          explanation: "Smallest is 2, then 9, then 11: 2, 9, 11."
-        },
-        {
-          question: "Put 14, 4 and 9 in descending order.",
-          options: ["14, 9, 4", "4, 9, 14", "9, 14, 4"],
-          correct: "14, 9, 4",
-          explanation: "Biggest to smallest: 14, 9, 4."
-        },
-        {
-          question: "Which list shows numbers in ascending order?",
-          options: ["5, 8, 11", "11, 8, 5", "8, 5, 11"],
-          correct: "5, 8, 11",
-          explanation: "5 &lt; 8 &lt; 11 so 5, 8, 11 is ascending."
-        },
-        {
-          question: "Which list shows numbers in descending order?",
-          options: ["40, 35, 30", "30, 35, 40", "35, 30, 40"],
-          correct: "40, 35, 30",
-          explanation: "40 &gt; 35 &gt; 30 so 40, 35, 30 is descending."
-        },
-        {
-          question: "Put 2, 10, 4 and 8 in ascending order.",
-          options: ["2, 4, 8, 10", "10, 8, 4, 2", "4, 2, 8, 10"],
-          correct: "2, 4, 8, 10",
-          explanation: "Order from smallest to biggest: 2, 4, 8, 10."
-        },
-        {
-          question: "Put 16, 3, 12 and 7 in descending order.",
-          options: ["16, 12, 7, 3", "3, 7, 12, 16", "16, 7, 12, 3"],
-          correct: "16, 12, 7, 3",
-          explanation: "Order from biggest to smallest: 16, 12, 7, 3."
-        },
-        {
-          question: "Which list is in ascending order?",
-          options: ["21, 23, 25, 27", "27, 25, 23, 21", "23, 21, 25, 27"],
-          correct: "21, 23, 25, 27",
-          explanation: "21 &lt; 23 &lt; 25 &lt; 27, so it is ascending."
-        },
-        {
-          question: "Which list is in descending order?",
-          options: ["50, 45, 40, 35", "35, 40, 45, 50", "50, 40, 45, 35"],
-          correct: "50, 45, 40, 35",
-          explanation: "50 &gt; 45 &gt; 40 &gt; 35, so it is descending."
-        },
-        {
-          question: "Put 9, 16, 13 and 4 in ascending order.",
-          options: ["4, 9, 13, 16", "16, 13, 9, 4", "9, 4, 13, 16"],
-          correct: "4, 9, 13, 16",
-          explanation: "Smallest to biggest: 4, 9, 13, 16."
-        },
-        {
-          question: "Put 28, 15, 19 and 10 in descending order.",
-          options: ["10, 15, 19, 28", "28, 19, 15, 10", "28, 15, 19, 10"],
-          correct: "28, 19, 15, 10",
-          explanation: "Biggest to smallest: 28, 19, 15, 10."
-        },
-        {
-          question: "Which list is in ascending order?",
-          options: ["6, 7, 7, 8", "7, 6, 7, 8", "8, 7, 7, 6"],
-          correct: "6, 7, 7, 8",
-          explanation: "Numbers go up or stay the same: 6, 7, 7, 8."
-        },
-        {
-          question: "Which list is in descending order?",
-          options: ["22, 25, 22, 20", "25, 22, 22, 20", "25, 22, 20, 22"],
-          correct: "25, 22, 22, 20",
-          explanation: "From biggest to smallest (or same): 25, 22, 22, 20."
-        },
-        {
-          question: "Put 32, 29 and 35 in ascending order.",
-          options: ["29, 32, 35", "35, 32, 29", "32, 29, 35"],
-          correct: "29, 32, 35",
-          explanation: "Smallest to biggest: 29, 32, 35."
-        },
-        {
-          question: "Put 18, 11, 15 and 5 in descending order.",
-          options: ["18, 15, 11, 5", "5, 11, 15, 18", "18, 11, 15, 5"],
-          correct: "18, 15, 11, 5",
-          explanation: "Biggest to smallest: 18, 15, 11, 5."
-        }
-      ];
+    { question: "Which shows the numbers 37, 13, 45 in ascending (small to big) order?", options: ["37, 45, 13", "13, 37, 45", "45, 37, 13"], correct: "13, 37, 45", explanation: "Ascending means smallest to biggest: 13, 37, 45." },
+    { question: "Which shows the numbers 27, 39, 5 in descending (big to small) order?", options: ["39, 27, 5", "27, 39, 5", "5, 27, 39"], correct: "39, 27, 5", explanation: "Descending means biggest to smallest: 39, 27, 5." },
+    { question: "Which shows the numbers 35, 6, 48 in ascending (small to big) order?", options: ["48, 35, 6", "35, 48, 6", "6, 35, 48"], correct: "6, 35, 48", explanation: "Ascending means smallest to biggest: 6, 35, 48." },
+    { question: "Which shows the numbers 31, 20, 45 in descending (big to small) order?", options: ["20, 31, 45", "20, 45, 31", "45, 31, 20"], correct: "45, 31, 20", explanation: "Descending means biggest to smallest: 45, 31, 20." },
+    { question: "Which shows the numbers 17, 14, 25 in descending (big to small) order?", options: ["14, 17, 25", "25, 17, 14", "17, 25, 14"], correct: "25, 17, 14", explanation: "Descending means biggest to smallest: 25, 17, 14." },
+    { question: "Which shows the numbers 35, 6, 4 in ascending (small to big) order?", options: ["35, 6, 4", "35, 4, 6", "4, 6, 35"], correct: "4, 6, 35", explanation: "Ascending means smallest to biggest: 4, 6, 35." },
+    { question: "Which shows the numbers 38, 33, 24 in ascending (small to big) order?", options: ["38, 24, 33", "38, 33, 24", "24, 33, 38"], correct: "24, 33, 38", explanation: "Ascending means smallest to biggest: 24, 33, 38." },
+    { question: "Which shows the numbers 49, 2, 42 in ascending (small to big) order?", options: ["2, 42, 49", "42, 49, 2", "49, 42, 2"], correct: "2, 42, 49", explanation: "Ascending means smallest to biggest: 2, 42, 49." },
+    { question: "Which shows the numbers 38, 36, 45 in descending (big to small) order?", options: ["36, 38, 45", "45, 38, 36", "36, 45, 38"], correct: "45, 38, 36", explanation: "Descending means biggest to smallest: 45, 38, 36." },
+    { question: "Which shows the numbers 25, 34, 24 in ascending (small to big) order?", options: ["25, 24, 34", "24, 25, 34", "34, 25, 24"], correct: "24, 25, 34", explanation: "Ascending means smallest to biggest: 24, 25, 34." },
+    { question: "Which shows the numbers 14, 50, 21 in descending (big to small) order?", options: ["50, 21, 14", "50, 14, 21", "14, 21, 50"], correct: "50, 21, 14", explanation: "Descending means biggest to smallest: 50, 21, 14." },
+    { question: "Which shows the numbers 39, 4, 1 in descending (big to small) order?", options: ["4, 39, 1", "1, 4, 39", "39, 4, 1"], correct: "39, 4, 1", explanation: "Descending means biggest to smallest: 39, 4, 1." },
+    { question: "Which shows the numbers 6, 25, 8 in descending (big to small) order?", options: ["25, 6, 8", "6, 8, 25", "25, 8, 6"], correct: "25, 8, 6", explanation: "Descending means biggest to smallest: 25, 8, 6." },
+    { question: "Which shows the numbers 38, 42, 35 in descending (big to small) order?", options: ["42, 35, 38", "35, 38, 42", "42, 38, 35"], correct: "42, 38, 35", explanation: "Descending means biggest to smallest: 42, 38, 35." },
+    { question: "Which shows the numbers 46, 40, 36 in descending (big to small) order?", options: ["36, 40, 46", "40, 46, 36", "46, 40, 36"], correct: "46, 40, 36", explanation: "Descending means biggest to smallest: 46, 40, 36." },
+    { question: "Which shows the numbers 23, 35, 11 in descending (big to small) order?", options: ["23, 35, 11", "35, 23, 11", "11, 23, 35"], correct: "35, 23, 11", explanation: "Descending means biggest to smallest: 35, 23, 11." },
+    { question: "Which shows the numbers 22, 9, 48 in descending (big to small) order?", options: ["22, 9, 48", "48, 22, 9", "9, 22, 48"], correct: "48, 22, 9", explanation: "Descending means biggest to smallest: 48, 22, 9." },
+    { question: "Which shows the numbers 33, 30, 13 in descending (big to small) order?", options: ["30, 33, 13", "13, 30, 33", "33, 30, 13"], correct: "33, 30, 13", explanation: "Descending means biggest to smallest: 33, 30, 13." },
+    { question: "Which shows the numbers 39, 29, 43 in ascending (small to big) order?", options: ["39, 43, 29", "29, 39, 43", "43, 39, 29"], correct: "29, 39, 43", explanation: "Ascending means smallest to biggest: 29, 39, 43." },
+    { question: "Which shows the numbers 43, 32, 15 in ascending (small to big) order?", options: ["43, 32, 15", "43, 15, 32", "15, 32, 43"], correct: "15, 32, 43", explanation: "Ascending means smallest to biggest: 15, 32, 43." },
+    { question: "Which shows the numbers 43, 10, 29 in ascending (small to big) order?", options: ["10, 43, 29", "43, 29, 10", "10, 29, 43"], correct: "10, 29, 43", explanation: "Ascending means smallest to biggest: 10, 29, 43." },
+    { question: "Which shows the numbers 14, 6, 40 in descending (big to small) order?", options: ["40, 14, 6", "6, 14, 40", "14, 40, 6"], correct: "40, 14, 6", explanation: "Descending means biggest to smallest: 40, 14, 6." },
+    { question: "Which shows the numbers 4, 38, 25 in descending (big to small) order?", options: ["4, 25, 38", "38, 25, 4", "38, 4, 25"], correct: "38, 25, 4", explanation: "Descending means biggest to smallest: 38, 25, 4." },
+    { question: "Which shows the numbers 45, 8, 22 in descending (big to small) order?", options: ["8, 22, 45", "45, 22, 8", "8, 45, 22"], correct: "45, 22, 8", explanation: "Descending means biggest to smallest: 45, 22, 8." },
+    { question: "Which shows the numbers 32, 31, 43 in descending (big to small) order?", options: ["43, 32, 31", "31, 43, 32", "31, 32, 43"], correct: "43, 32, 31", explanation: "Descending means biggest to smallest: 43, 32, 31." },
+    { question: "Which shows the numbers 5, 26, 16 in descending (big to small) order?", options: ["26, 16, 5", "5, 16, 26", "26, 5, 16"], correct: "26, 16, 5", explanation: "Descending means biggest to smallest: 26, 16, 5." },
+    { question: "Which shows the numbers 35, 8, 19 in descending (big to small) order?", options: ["35, 19, 8", "8, 19, 35", "8, 35, 19"], correct: "35, 19, 8", explanation: "Descending means biggest to smallest: 35, 19, 8." },
+    { question: "Which shows the numbers 7, 23, 22 in descending (big to small) order?", options: ["23, 22, 7", "23, 7, 22", "7, 22, 23"], correct: "23, 22, 7", explanation: "Descending means biggest to smallest: 23, 22, 7." },
+    { question: "Which shows the numbers 44, 45, 32 in descending (big to small) order?", options: ["45, 44, 32", "32, 45, 44", "32, 44, 45"], correct: "45, 44, 32", explanation: "Descending means biggest to smallest: 45, 44, 32." },
+    { question: "Which shows the numbers 15, 49, 5 in descending (big to small) order?", options: ["5, 15, 49", "49, 15, 5", "49, 5, 15"], correct: "49, 15, 5", explanation: "Descending means biggest to smallest: 49, 15, 5." },
+    { question: "Which shows the numbers 46, 36, 28 in ascending (small to big) order?", options: ["46, 28, 36", "46, 36, 28", "28, 36, 46"], correct: "28, 36, 46", explanation: "Ascending means smallest to biggest: 28, 36, 46." },
+    { question: "Which shows the numbers 45, 22, 38 in descending (big to small) order?", options: ["22, 45, 38", "45, 38, 22", "22, 38, 45"], correct: "45, 38, 22", explanation: "Descending means biggest to smallest: 45, 38, 22." },
+    { question: "Which shows the numbers 24, 31, 10 in descending (big to small) order?", options: ["24, 10, 31", "31, 24, 10", "10, 24, 31"], correct: "31, 24, 10", explanation: "Descending means biggest to smallest: 31, 24, 10." },
+    { question: "Which shows the numbers 24, 25, 43 in ascending (small to big) order?", options: ["24, 43, 25", "43, 25, 24", "24, 25, 43"], correct: "24, 25, 43", explanation: "Ascending means smallest to biggest: 24, 25, 43." },
+    { question: "Which shows the numbers 45, 33, 2 in descending (big to small) order?", options: ["2, 33, 45", "33, 45, 2", "45, 33, 2"], correct: "45, 33, 2", explanation: "Descending means biggest to smallest: 45, 33, 2." },
+    { question: "Which shows the numbers 6, 18, 36 in ascending (small to big) order?", options: ["36, 18, 6", "6, 36, 18", "6, 18, 36"], correct: "6, 18, 36", explanation: "Ascending means smallest to biggest: 6, 18, 36." },
+    { question: "Which shows the numbers 20, 35, 49 in descending (big to small) order?", options: ["49, 35, 20", "20, 35, 49", "35, 20, 49"], correct: "49, 35, 20", explanation: "Descending means biggest to smallest: 49, 35, 20." },
+    { question: "Which shows the numbers 16, 6, 36 in descending (big to small) order?", options: ["36, 16, 6", "36, 6, 16", "6, 16, 36"], correct: "36, 16, 6", explanation: "Descending means biggest to smallest: 36, 16, 6." },
+    { question: "Which shows the numbers 28, 15, 46 in descending (big to small) order?", options: ["46, 28, 15", "15, 28, 46", "46, 15, 28"], correct: "46, 28, 15", explanation: "Descending means biggest to smallest: 46, 28, 15." },
+    { question: "Which shows the numbers 18, 26, 36 in descending (big to small) order?", options: ["36, 26, 18", "26, 18, 36", "18, 26, 36"], correct: "36, 26, 18", explanation: "Descending means biggest to smallest: 36, 26, 18." },
+    { question: "Which shows the numbers 31, 37, 42 in ascending (small to big) order?", options: ["31, 42, 37", "31, 37, 42", "42, 37, 31"], correct: "31, 37, 42", explanation: "Ascending means smallest to biggest: 31, 37, 42." },
+    { question: "Which shows the numbers 44, 37, 17 in descending (big to small) order?", options: ["44, 37, 17", "37, 44, 17", "17, 37, 44"], correct: "44, 37, 17", explanation: "Descending means biggest to smallest: 44, 37, 17." },
+    { question: "Which shows the numbers 8, 26, 44 in ascending (small to big) order?", options: ["8, 26, 44", "44, 26, 8", "8, 44, 26"], correct: "8, 26, 44", explanation: "Ascending means smallest to biggest: 8, 26, 44." },
+    { question: "Which shows the numbers 48, 10, 23 in ascending (small to big) order?", options: ["23, 10, 48", "10, 23, 48", "48, 23, 10"], correct: "10, 23, 48", explanation: "Ascending means smallest to biggest: 10, 23, 48." },
+    { question: "Which shows the numbers 33, 43, 14 in ascending (small to big) order?", options: ["14, 33, 43", "33, 14, 43", "43, 33, 14"], correct: "14, 33, 43", explanation: "Ascending means smallest to biggest: 14, 33, 43." },
+    { question: "Which shows the numbers 36, 4, 23 in ascending (small to big) order?", options: ["36, 23, 4", "4, 23, 36", "36, 4, 23"], correct: "4, 23, 36", explanation: "Ascending means smallest to biggest: 4, 23, 36." },
+    { question: "Which shows the numbers 37, 19, 30 in ascending (small to big) order?", options: ["37, 30, 19", "30, 19, 37", "19, 30, 37"], correct: "19, 30, 37", explanation: "Ascending means smallest to biggest: 19, 30, 37." },
+    { question: "Which shows the numbers 27, 49, 19 in descending (big to small) order?", options: ["49, 27, 19", "19, 49, 27", "19, 27, 49"], correct: "49, 27, 19", explanation: "Descending means biggest to smallest: 49, 27, 19." },
+    { question: "Which shows the numbers 46, 11, 25 in ascending (small to big) order?", options: ["25, 46, 11", "46, 25, 11", "11, 25, 46"], correct: "11, 25, 46", explanation: "Ascending means smallest to biggest: 11, 25, 46." },
+    { question: "Which shows the numbers 26, 20, 39 in ascending (small to big) order?", options: ["39, 26, 20", "20, 26, 39", "26, 39, 20"], correct: "20, 26, 39", explanation: "Ascending means smallest to biggest: 20, 26, 39." },
+    { question: "Which shows the numbers 31, 10, 24 in ascending (small to big) order?", options: ["24, 10, 31", "10, 24, 31", "31, 24, 10"], correct: "10, 24, 31", explanation: "Ascending means smallest to biggest: 10, 24, 31." },
+    { question: "Which shows the numbers 45, 17, 20 in ascending (small to big) order?", options: ["17, 45, 20", "17, 20, 45", "45, 20, 17"], correct: "17, 20, 45", explanation: "Ascending means smallest to biggest: 17, 20, 45." },
+    { question: "Which shows the numbers 21, 5, 11 in descending (big to small) order?", options: ["5, 21, 11", "21, 11, 5", "5, 11, 21"], correct: "21, 11, 5", explanation: "Descending means biggest to smallest: 21, 11, 5." },
+    { question: "Which shows the numbers 50, 7, 31 in descending (big to small) order?", options: ["50, 31, 7", "7, 50, 31", "7, 31, 50"], correct: "50, 31, 7", explanation: "Descending means biggest to smallest: 50, 31, 7." },
+    { question: "Which shows the numbers 27, 37, 42 in ascending (small to big) order?", options: ["27, 37, 42", "42, 37, 27", "27, 42, 37"], correct: "27, 37, 42", explanation: "Ascending means smallest to biggest: 27, 37, 42." },
+    { question: "Which shows the numbers 16, 9, 37 in ascending (small to big) order?", options: ["16, 37, 9", "37, 16, 9", "9, 16, 37"], correct: "9, 16, 37", explanation: "Ascending means smallest to biggest: 9, 16, 37." },
+    { question: "Which shows the numbers 21, 45, 12 in descending (big to small) order?", options: ["45, 21, 12", "12, 45, 21", "12, 21, 45"], correct: "45, 21, 12", explanation: "Descending means biggest to smallest: 45, 21, 12." },
+    { question: "Which shows the numbers 31, 23, 45 in descending (big to small) order?", options: ["31, 45, 23", "45, 31, 23", "23, 31, 45"], correct: "45, 31, 23", explanation: "Descending means biggest to smallest: 45, 31, 23." },
+    { question: "Which shows the numbers 49, 2, 9 in ascending (small to big) order?", options: ["2, 49, 9", "49, 9, 2", "2, 9, 49"], correct: "2, 9, 49", explanation: "Ascending means smallest to biggest: 2, 9, 49." },
+    { question: "Which shows the numbers 11, 33, 20 in descending (big to small) order?", options: ["11, 20, 33", "33, 11, 20", "33, 20, 11"], correct: "33, 20, 11", explanation: "Descending means biggest to smallest: 33, 20, 11." },
+    { question: "Which shows the numbers 20, 47, 26 in ascending (small to big) order?", options: ["20, 26, 47", "47, 20, 26", "47, 26, 20"], correct: "20, 26, 47", explanation: "Ascending means smallest to biggest: 20, 26, 47." },
+    { question: "Which shows the numbers 28, 17, 13 in descending (big to small) order?", options: ["13, 17, 28", "17, 28, 13", "28, 17, 13"], correct: "28, 17, 13", explanation: "Descending means biggest to smallest: 28, 17, 13." },
+    { question: "Which shows the numbers 36, 5, 1 in ascending (small to big) order?", options: ["36, 5, 1", "1, 5, 36", "36, 1, 5"], correct: "1, 5, 36", explanation: "Ascending means smallest to biggest: 1, 5, 36." },
+    { question: "Which shows the numbers 5, 49, 31 in ascending (small to big) order?", options: ["49, 31, 5", "5, 31, 49", "5, 49, 31"], correct: "5, 31, 49", explanation: "Ascending means smallest to biggest: 5, 31, 49." },
+    { question: "Which shows the numbers 12, 24, 26 in ascending (small to big) order?", options: ["12, 24, 26", "26, 24, 12", "12, 26, 24"], correct: "12, 24, 26", explanation: "Ascending means smallest to biggest: 12, 24, 26." },
+    { question: "Which shows the numbers 22, 28, 24 in descending (big to small) order?", options: ["28, 24, 22", "28, 22, 24", "22, 24, 28"], correct: "28, 24, 22", explanation: "Descending means biggest to smallest: 28, 24, 22." },
+    { question: "Which shows the numbers 15, 27, 45 in ascending (small to big) order?", options: ["45, 27, 15", "15, 45, 27", "15, 27, 45"], correct: "15, 27, 45", explanation: "Ascending means smallest to biggest: 15, 27, 45." },
+    { question: "Which shows the numbers 25, 9, 42 in descending (big to small) order?", options: ["9, 25, 42", "42, 25, 9", "9, 42, 25"], correct: "42, 25, 9", explanation: "Descending means biggest to smallest: 42, 25, 9." },
+    { question: "Which shows the numbers 24, 35, 46 in descending (big to small) order?", options: ["24, 35, 46", "35, 24, 46", "46, 35, 24"], correct: "46, 35, 24", explanation: "Descending means biggest to smallest: 46, 35, 24." },
+    { question: "Which shows the numbers 25, 5, 30 in descending (big to small) order?", options: ["5, 25, 30", "25, 5, 30", "30, 25, 5"], correct: "30, 25, 5", explanation: "Descending means biggest to smallest: 30, 25, 5." },
+    { question: "Which shows the numbers 32, 48, 23 in descending (big to small) order?", options: ["23, 48, 32", "23, 32, 48", "48, 32, 23"], correct: "48, 32, 23", explanation: "Descending means biggest to smallest: 48, 32, 23." },
+    { question: "Which shows the numbers 22, 30, 11 in descending (big to small) order?", options: ["30, 22, 11", "11, 22, 30", "22, 11, 30"], correct: "30, 22, 11", explanation: "Descending means biggest to smallest: 30, 22, 11." },
+    { question: "Which shows the numbers 50, 49, 27 in ascending (small to big) order?", options: ["50, 27, 49", "50, 49, 27", "27, 49, 50"], correct: "27, 49, 50", explanation: "Ascending means smallest to biggest: 27, 49, 50." },
+    { question: "Which shows the numbers 9, 12, 18 in ascending (small to big) order?", options: ["9, 12, 18", "9, 18, 12", "18, 12, 9"], correct: "9, 12, 18", explanation: "Ascending means smallest to biggest: 9, 12, 18." },
+    { question: "Which shows the numbers 41, 16, 1 in descending (big to small) order?", options: ["1, 16, 41", "41, 16, 1", "16, 41, 1"], correct: "41, 16, 1", explanation: "Descending means biggest to smallest: 41, 16, 1." },
+    { question: "Which shows the numbers 2, 23, 17 in ascending (small to big) order?", options: ["2, 23, 17", "2, 17, 23", "23, 17, 2"], correct: "2, 17, 23", explanation: "Ascending means smallest to biggest: 2, 17, 23." },
+    { question: "Which shows the numbers 5, 10, 2 in descending (big to small) order?", options: ["10, 5, 2", "10, 2, 5", "2, 5, 10"], correct: "10, 5, 2", explanation: "Descending means biggest to smallest: 10, 5, 2." },
+    { question: "Which shows the numbers 48, 25, 9 in ascending (small to big) order?", options: ["48, 25, 9", "48, 9, 25", "9, 25, 48"], correct: "9, 25, 48", explanation: "Ascending means smallest to biggest: 9, 25, 48." },
+    { question: "Which shows the numbers 26, 42, 6 in descending (big to small) order?", options: ["6, 42, 26", "6, 26, 42", "42, 26, 6"], correct: "42, 26, 6", explanation: "Descending means biggest to smallest: 42, 26, 6." },
+    { question: "Which shows the numbers 8, 27, 14 in ascending (small to big) order?", options: ["27, 14, 8", "8, 14, 27", "14, 8, 27"], correct: "8, 14, 27", explanation: "Ascending means smallest to biggest: 8, 14, 27." },
+    { question: "Which shows the numbers 40, 47, 17 in descending (big to small) order?", options: ["47, 40, 17", "47, 17, 40", "17, 40, 47"], correct: "47, 40, 17", explanation: "Descending means biggest to smallest: 47, 40, 17." },
+    { question: "Which shows the numbers 6, 7, 45 in descending (big to small) order?", options: ["6, 7, 45", "45, 7, 6", "7, 6, 45"], correct: "45, 7, 6", explanation: "Descending means biggest to smallest: 45, 7, 6." },
+    { question: "Which shows the numbers 17, 1, 48 in descending (big to small) order?", options: ["48, 1, 17", "48, 17, 1", "1, 17, 48"], correct: "48, 17, 1", explanation: "Descending means biggest to smallest: 48, 17, 1." },
+    { question: "Which shows the numbers 27, 50, 46 in descending (big to small) order?", options: ["27, 46, 50", "50, 46, 27", "50, 27, 46"], correct: "50, 46, 27", explanation: "Descending means biggest to smallest: 50, 46, 27." },
+    { question: "Which shows the numbers 1, 30, 45 in ascending (small to big) order?", options: ["1, 45, 30", "45, 30, 1", "1, 30, 45"], correct: "1, 30, 45", explanation: "Ascending means smallest to biggest: 1, 30, 45." },
+    { question: "Which shows the numbers 2, 4, 21 in descending (big to small) order?", options: ["21, 4, 2", "4, 2, 21", "2, 4, 21"], correct: "21, 4, 2", explanation: "Descending means biggest to smallest: 21, 4, 2." },
+    { question: "Which shows the numbers 2, 23, 8 in descending (big to small) order?", options: ["23, 8, 2", "2, 8, 23", "23, 2, 8"], correct: "23, 8, 2", explanation: "Descending means biggest to smallest: 23, 8, 2." },
+    { question: "Which shows the numbers 22, 49, 31 in ascending (small to big) order?", options: ["22, 31, 49", "49, 31, 22", "49, 22, 31"], correct: "22, 31, 49", explanation: "Ascending means smallest to biggest: 22, 31, 49." },
+    { question: "Which shows the numbers 35, 25, 46 in ascending (small to big) order?", options: ["46, 35, 25", "25, 35, 46", "35, 46, 25"], correct: "25, 35, 46", explanation: "Ascending means smallest to biggest: 25, 35, 46." },
+    { question: "Which shows the numbers 19, 42, 34 in ascending (small to big) order?", options: ["34, 19, 42", "42, 34, 19", "19, 34, 42"], correct: "19, 34, 42", explanation: "Ascending means smallest to biggest: 19, 34, 42." },
+    { question: "Which shows the numbers 8, 26, 49 in ascending (small to big) order?", options: ["8, 26, 49", "8, 49, 26", "49, 26, 8"], correct: "8, 26, 49", explanation: "Ascending means smallest to biggest: 8, 26, 49." },
+    { question: "Which shows the numbers 7, 48, 17 in ascending (small to big) order?", options: ["48, 7, 17", "48, 17, 7", "7, 17, 48"], correct: "7, 17, 48", explanation: "Ascending means smallest to biggest: 7, 17, 48." },
+    { question: "Which shows the numbers 26, 49, 19 in ascending (small to big) order?", options: ["26, 19, 49", "19, 26, 49", "49, 26, 19"], correct: "19, 26, 49", explanation: "Ascending means smallest to biggest: 19, 26, 49." },
+    { question: "Which shows the numbers 6, 20, 32 in descending (big to small) order?", options: ["20, 6, 32", "6, 20, 32", "32, 20, 6"], correct: "32, 20, 6", explanation: "Descending means biggest to smallest: 32, 20, 6." },
+    { question: "Which shows the numbers 2, 40, 23 in ascending (small to big) order?", options: ["40, 23, 2", "2, 40, 23", "2, 23, 40"], correct: "2, 23, 40", explanation: "Ascending means smallest to biggest: 2, 23, 40." },
+    { question: "Which shows the numbers 50, 39, 26 in descending (big to small) order?", options: ["50, 39, 26", "39, 50, 26", "26, 39, 50"], correct: "50, 39, 26", explanation: "Descending means biggest to smallest: 50, 39, 26." },
+    { question: "Which shows the numbers 4, 34, 16 in ascending (small to big) order?", options: ["4, 16, 34", "16, 34, 4", "34, 16, 4"], correct: "4, 16, 34", explanation: "Ascending means smallest to biggest: 4, 16, 34." },
+    { question: "Which shows the numbers 17, 24, 5 in ascending (small to big) order?", options: ["24, 17, 5", "5, 17, 24", "17, 5, 24"], correct: "5, 17, 24", explanation: "Ascending means smallest to biggest: 5, 17, 24." },
+    { question: "Which shows the numbers 5, 31, 29 in descending (big to small) order?", options: ["31, 29, 5", "5, 29, 31", "31, 5, 29"], correct: "31, 29, 5", explanation: "Descending means biggest to smallest: 31, 29, 5." },
+    { question: "Which shows the numbers 12, 1, 49 in descending (big to small) order?", options: ["1, 12, 49", "49, 12, 1", "12, 49, 1"], correct: "49, 12, 1", explanation: "Descending means biggest to smallest: 49, 12, 1." }
+  ];
     </script>
 
     <div id="site-footer-placeholder"></div>

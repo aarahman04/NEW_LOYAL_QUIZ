@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(sed -n '150,166p' level_1_addition_upto_5.html)",
+      "Bash(sed -n '20,30p' Level_1_maths_Number_Bonds_to_10.html)",
+      "Bash(python gen_questions.py)",
+      "Bash(python -c ' *)",
+      "Bash(cp -r \"question/level_1_GK\" \"question/_GK_backup\")",
+      "Bash(python gen_gk.py)",
+      "Bash(python _validate_gk.py)",
+      "Bash(python _patch_gk_cards.py)"
+    ]
+  }
+}

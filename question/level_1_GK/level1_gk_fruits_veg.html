@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GK – Fruits & Vegetables</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        { question: "Is a peas a fruit or a vegetable?", options: ["Bird", "Fruit", "Vegetable"], correct: "Vegetable", explanation: "A peas is a vegetable." },
+        { question: "Which of these is a fruit — strawberry, cabbage or spinach?", options: ["Strawberry", "Radish", "Cabbage"], correct: "Strawberry", explanation: "A strawberry is a fruit." },
+        { question: "We call a pear a ___.", options: ["Vegetable", "Animal", "Fruit"], correct: "Fruit", explanation: "A pear is a fruit." },
+        { question: "Which of these is a vegetable — radish, apple or peach?", options: ["Radish", "Grapes", "Orange"], correct: "Radish", explanation: "A radish is a vegetable." },
+        { question: "Which of these is a fruit — apple, peas or spinach?", options: ["Pumpkin", "Apple", "Spinach"], correct: "Apple", explanation: "A apple is a fruit." },
+        { question: "Which of these is a vegetable — cauliflower, cherry or cherry?", options: ["Apple", "Cherry", "Cauliflower"], correct: "Cauliflower", explanation: "A cauliflower is a vegetable." },
+        { question: "A beans is a kind of ___.", options: ["Vegetable", "Fruit", "Bird"], correct: "Vegetable", explanation: "A beans is a vegetable." },
+        { question: "A grapes is a kind of ___.", options: ["Fruit", "Animal", "Vegetable"], correct: "Fruit", explanation: "A grapes is a fruit." },
+        { question: "Which of these is a fruit — guava, beans or potato?", options: ["Guava", "Brinjal", "Spinach"], correct: "Guava", explanation: "A guava is a fruit." },
+        { question: "A orange is a kind of ___.", options: ["Vegetable", "Fruit", "Animal"], correct: "Fruit", explanation: "A orange is a fruit." },
+        { question: "Is a spinach a fruit or a vegetable?", options: ["Vegetable", "Bird", "Fruit"], correct: "Vegetable", explanation: "A spinach is a vegetable." },
+        { question: "We call a grapes a ___.", options: ["Vegetable", "Fruit", "Animal"], correct: "Fruit", explanation: "A grapes is a fruit." },
+        { question: "A garlic is a kind of ___.", options: ["Bird", "Vegetable", "Fruit"], correct: "Vegetable", explanation: "A garlic is a vegetable." },
+        { question: "A radish is a kind of ___.", options: ["Fruit", "Vegetable", "Bird"], correct: "Vegetable", explanation: "A radish is a vegetable." },
+        { question: "What colour is a lemon?", options: ["Blue", "White", "Yellow"], correct: "Yellow", explanation: "A lemon is yellow." },
+        { question: "Is a grapes a fruit or a vegetable?", options: ["Animal", "Vegetable", "Fruit"], correct: "Fruit", explanation: "A grapes is a fruit." },
+        { question: "Is a cherry a fruit or a vegetable?", options: ["Vegetable", "Fruit", "Animal"], correct: "Fruit", explanation: "A cherry is a fruit." },
+        { question: "Does a onion grow under the ground or on a tree?", options: ["In the sky", "On a tree", "Under the ground"], correct: "Under the ground", explanation: "A onion grows under the ground." },
+        { question: "Is a radish a fruit or a vegetable?", options: ["Bird", "Fruit", "Vegetable"], correct: "Vegetable", explanation: "A radish is a vegetable." },
+        { question: "Is a potato a fruit or a vegetable?", options: ["Vegetable", "Fruit", "Bird"], correct: "Vegetable", explanation: "A potato is a vegetable." },
+        { question: "We call a papaya a ___.", options: ["Animal", "Vegetable", "Fruit"], correct: "Fruit", explanation: "A papaya is a fruit." },
+        { question: "Which of these is a vegetable — beans, strawberry or cherry?", options: ["Beans", "Strawberry", "Pineapple"], correct: "Beans", explanation: "A beans is a vegetable." },
+        { question: "We call a banana a ___.", options: ["Fruit", "Vegetable", "Animal"], correct: "Fruit", explanation: "A banana is a fruit." },
+        { question: "What colour is a carrot?", options: ["White", "Purple", "Orange"], correct: "Orange", explanation: "A carrot is orange." },
+        { question: "A cherry is a kind of ___.", options: ["Vegetable", "Animal", "Fruit"], correct: "Fruit", explanation: "A cherry is a fruit." },
+        { question: "A mango is a kind of ___.", options: ["Vegetable", "Fruit", "Animal"], correct: "Fruit", explanation: "A mango is a fruit." },
+        { question: "Is a banana a fruit or a vegetable?", options: ["Animal", "Fruit", "Vegetable"], correct: "Fruit", explanation: "A banana is a fruit." },
+        { question: "Is a pumpkin a fruit or a vegetable?", options: ["Bird", "Vegetable", "Fruit"], correct: "Vegetable", explanation: "A pumpkin is a vegetable." },
+        { question: "A onion is a kind of ___.", options: ["Fruit", "Vegetable", "Bird"], correct: "Vegetable", explanation: "A onion is a vegetable." },
+        { question: "A papaya is a kind of ___.", options: ["Animal", "Vegetable", "Fruit"], correct: "Fruit", explanation: "A papaya is a fruit." },
+        { question: "Which of these is a vegetable — cabbage, guava or pineapple?", options: ["Orange", "Apple", "Cabbage"], correct: "Cabbage", explanation: "A cabbage is a vegetable." },
+        { question: "We call a orange a ___.", options: ["Vegetable", "Animal", "Fruit"], correct: "Fruit", explanation: "A orange is a fruit." },
+        { question: "Is a guava a fruit or a vegetable?", options: ["Animal", "Vegetable", "Fruit"], correct: "Fruit", explanation: "A guava is a fruit." },
+        { question: "We call a radish a ___.", options: ["Fruit", "Bird", "Vegetable"], correct: "Vegetable", explanation: "A radish is a vegetable." },
+        { question: "Is a apple a fruit or a vegetable?", options: ["Fruit", "Vegetable", "Animal"], correct: "Fruit", explanation: "A apple is a fruit." },
+        { question: "What colour is a pumpkin?", options: ["Orange", "Blue", "Pink"], correct: "Orange", explanation: "A pumpkin is orange." },
+        { question: "We call a mango a ___.", options: ["Fruit", "Animal", "Vegetable"], correct: "Fruit", explanation: "A mango is a fruit." },
+        { question: "What colour is a mango?", options: ["Brown", "White", "Yellow"], correct: "Yellow", explanation: "A mango is yellow." },
+        { question: "Does a radish grow under the ground or on a tree?", options: ["On a tree", "In the sky", "Under the ground"], correct: "Under the ground", explanation: "A radish grows under the ground." },
+        { question: "We call a spinach a ___.", options: ["Fruit", "Vegetable", "Bird"], correct: "Vegetable", explanation: "A spinach is a vegetable." },
+        { question: "Which of these is a fruit — grapes, cabbage or beans?", options: ["Grapes", "Onion", "Carrot"], correct: "Grapes", explanation: "A grapes is a fruit." },
+        { question: "Is a orange a fruit or a vegetable?", options: ["Fruit", "Vegetable", "Animal"], correct: "Fruit", explanation: "A orange is a fruit." },
+        { question: "Is a brinjal a fruit or a vegetable?", options: ["Fruit", "Bird", "Vegetable"], correct: "Vegetable", explanation: "A brinjal is a vegetable." },
+        { question: "A pear is a kind of ___.", options: ["Vegetable", "Animal", "Fruit"], correct: "Fruit", explanation: "A pear is a fruit." },
+        { question: "Which of these is a fruit — mango, brinjal or beans?", options: ["Mango", "Cauliflower", "Peas"], correct: "Mango", explanation: "A mango is a fruit." },
+        { question: "What colour is a banana?", options: ["Purple", "Yellow", "Brown"], correct: "Yellow", explanation: "A banana is yellow." },
+        { question: "Is a papaya a fruit or a vegetable?", options: ["Fruit", "Animal", "Vegetable"], correct: "Fruit", explanation: "A papaya is a fruit." },
+        { question: "A cauliflower is a kind of ___.", options: ["Vegetable", "Fruit", "Bird"], correct: "Vegetable", explanation: "A cauliflower is a vegetable." },
+        { question: "Which of these is a fruit — peach, pumpkin or peas?", options: ["Peach", "Brinjal", "Cabbage"], correct: "Peach", explanation: "A peach is a fruit." },
+        { question: "Which of these is a fruit — pear, spinach or carrot?", options: ["Carrot", "Pear", "Radish"], correct: "Pear", explanation: "A pear is a fruit." },
+        { question: "What colour is a orange?", options: ["Orange", "Red", "Brown"], correct: "Orange", explanation: "A orange is orange." },
+        { question: "Does a carrot grow under the ground or on a tree?", options: ["On a tree", "In the sky", "Under the ground"], correct: "Under the ground", explanation: "A carrot grows under the ground." },
+        { question: "We call a strawberry a ___.", options: ["Animal", "Fruit", "Vegetable"], correct: "Fruit", explanation: "A strawberry is a fruit." },
+        { question: "Is a mango a fruit or a vegetable?", options: ["Vegetable", "Fruit", "Animal"], correct: "Fruit", explanation: "A mango is a fruit." },
+        { question: "Is a peach a fruit or a vegetable?", options: ["Vegetable", "Animal", "Fruit"], correct: "Fruit", explanation: "A peach is a fruit." },
+        { question: "We call a cauliflower a ___.", options: ["Fruit", "Vegetable", "Bird"], correct: "Vegetable", explanation: "A cauliflower is a vegetable." },
+        { question: "A banana is a kind of ___.", options: ["Animal", "Fruit", "Vegetable"], correct: "Fruit", explanation: "A banana is a fruit." },
+        { question: "Is a pineapple a fruit or a vegetable?", options: ["Vegetable", "Fruit", "Animal"], correct: "Fruit", explanation: "A pineapple is a fruit." },
+        { question: "Which of these is a fruit — banana, garlic or peas?", options: ["Banana", "Garlic", "Pumpkin"], correct: "Banana", explanation: "A banana is a fruit." },
+        { question: "Which of these is a vegetable — carrot, watermelon or orange?", options: ["Pineapple", "Carrot", "Grapes"], correct: "Carrot", explanation: "A carrot is a vegetable." },
+        { question: "A carrot is a kind of ___.", options: ["Vegetable", "Bird", "Fruit"], correct: "Vegetable", explanation: "A carrot is a vegetable." },
+        { question: "We call a cabbage a ___.", options: ["Bird", "Vegetable", "Fruit"], correct: "Vegetable", explanation: "A cabbage is a vegetable." },
+        { question: "We call a garlic a ___.", options: ["Fruit", "Bird", "Vegetable"], correct: "Vegetable", explanation: "A garlic is a vegetable." },
+        { question: "Is a onion a fruit or a vegetable?", options: ["Fruit", "Vegetable", "Bird"], correct: "Vegetable", explanation: "A onion is a vegetable." },
+        { question: "A pineapple is a kind of ___.", options: ["Vegetable", "Fruit", "Animal"], correct: "Fruit", explanation: "A pineapple is a fruit." },
+        { question: "Which of these is a vegetable — brinjal, watermelon or orange?", options: ["Watermelon", "Pear", "Brinjal"], correct: "Brinjal", explanation: "A brinjal is a vegetable." },
+        { question: "Which of these is a fruit — cherry, potato or spinach?", options: ["Pumpkin", "Carrot", "Cherry"], correct: "Cherry", explanation: "A cherry is a fruit." },
+        { question: "We call a carrot a ___.", options: ["Fruit", "Bird", "Vegetable"], correct: "Vegetable", explanation: "A carrot is a vegetable." },
+        { question: "A brinjal is a kind of ___.", options: ["Bird", "Fruit", "Vegetable"], correct: "Vegetable", explanation: "A brinjal is a vegetable." },
+        { question: "Is a beans a fruit or a vegetable?", options: ["Vegetable", "Fruit", "Bird"], correct: "Vegetable", explanation: "A beans is a vegetable." },
+        { question: "We call a guava a ___.", options: ["Vegetable", "Animal", "Fruit"], correct: "Fruit", explanation: "A guava is a fruit." },
+        { question: "Which of these is a vegetable — onion, pear or pineapple?", options: ["Onion", "Cherry", "Peach"], correct: "Onion", explanation: "A onion is a vegetable." },
+        { question: "Is a cabbage a fruit or a vegetable?", options: ["Vegetable", "Bird", "Fruit"], correct: "Vegetable", explanation: "A cabbage is a vegetable." },
+        { question: "A peach is a kind of ___.", options: ["Vegetable", "Fruit", "Animal"], correct: "Fruit", explanation: "A peach is a fruit." },
+        { question: "Which of these is a fruit — orange, onion or garlic?", options: ["Radish", "Orange", "Spinach"], correct: "Orange", explanation: "A orange is a fruit." },
+        { question: "Which of these is a fruit — watermelon, radish or potato?", options: ["Watermelon", "Potato", "Onion"], correct: "Watermelon", explanation: "A watermelon is a fruit." },
+        { question: "Does a potato grow under the ground or on a tree?", options: ["In the sky", "On a tree", "Under the ground"], correct: "Under the ground", explanation: "A potato grows under the ground." },
+        { question: "Which of these is a fruit — pineapple, beans or carrot?", options: ["Spinach", "Pineapple", "Garlic"], correct: "Pineapple", explanation: "A pineapple is a fruit." },
+        { question: "Is a carrot a fruit or a vegetable?", options: ["Bird", "Vegetable", "Fruit"], correct: "Vegetable", explanation: "A carrot is a vegetable." },
+        { question: "A potato is a kind of ___.", options: ["Vegetable", "Fruit", "Bird"], correct: "Vegetable", explanation: "A potato is a vegetable." },
+        { question: "We call a peas a ___.", options: ["Vegetable", "Fruit", "Bird"], correct: "Vegetable", explanation: "A peas is a vegetable." },
+        { question: "We call a pumpkin a ___.", options: ["Fruit", "Vegetable", "Bird"], correct: "Vegetable", explanation: "A pumpkin is a vegetable." },
+        { question: "Is a pear a fruit or a vegetable?", options: ["Animal", "Fruit", "Vegetable"], correct: "Fruit", explanation: "A pear is a fruit." },
+        { question: "A peas is a kind of ___.", options: ["Vegetable", "Bird", "Fruit"], correct: "Vegetable", explanation: "A peas is a vegetable." },
+        { question: "Which of these is a fruit — papaya, cauliflower or cabbage?", options: ["Beans", "Papaya", "Peas"], correct: "Papaya", explanation: "A papaya is a fruit." },
+        { question: "What colour is a spinach?", options: ["Black", "Brown", "Green"], correct: "Green", explanation: "A spinach is green." },
+        { question: "Which of these is a vegetable — pumpkin, cherry or cherry?", options: ["Pumpkin", "Grapes", "Orange"], correct: "Pumpkin", explanation: "A pumpkin is a vegetable." },
+        { question: "What colour is a cabbage?", options: ["Green", "Black", "White"], correct: "Green", explanation: "A cabbage is green." },
+        { question: "What colour is a apple?", options: ["Orange", "Black", "Red"], correct: "Red", explanation: "A apple is red." },
+        { question: "We call a apple a ___.", options: ["Fruit", "Animal", "Vegetable"], correct: "Fruit", explanation: "A apple is a fruit." },
+        { question: "We call a peach a ___.", options: ["Animal", "Fruit", "Vegetable"], correct: "Fruit", explanation: "A peach is a fruit." },
+        { question: "A guava is a kind of ___.", options: ["Vegetable", "Animal", "Fruit"], correct: "Fruit", explanation: "A guava is a fruit." },
+        { question: "A pumpkin is a kind of ___.", options: ["Bird", "Fruit", "Vegetable"], correct: "Vegetable", explanation: "A pumpkin is a vegetable." },
+        { question: "Which of these is a vegetable — spinach, apple or mango?", options: ["Spinach", "Strawberry", "Orange"], correct: "Spinach", explanation: "A spinach is a vegetable." },
+        { question: "Is a strawberry a fruit or a vegetable?", options: ["Vegetable", "Animal", "Fruit"], correct: "Fruit", explanation: "A strawberry is a fruit." },
+        { question: "What colour is a peas?", options: ["Blue", "Green", "Orange"], correct: "Green", explanation: "A peas is green." },
+        { question: "We call a onion a ___.", options: ["Vegetable", "Fruit", "Bird"], correct: "Vegetable", explanation: "A onion is a vegetable." },
+        { question: "What colour is a cherry?", options: ["Purple", "Green", "Red"], correct: "Red", explanation: "A cherry is red." },
+        { question: "Which of these is a vegetable — garlic, cherry or pear?", options: ["Strawberry", "Papaya", "Garlic"], correct: "Garlic", explanation: "A garlic is a vegetable." },
+        { question: "A watermelon is a kind of ___.", options: ["Fruit", "Animal", "Vegetable"], correct: "Fruit", explanation: "A watermelon is a fruit." }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>

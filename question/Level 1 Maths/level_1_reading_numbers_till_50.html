@@ -28,312 +28,106 @@
 
 <script>
   const questions = [
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty</span>",
-      options: ["30", "12"],
-      correct: "30",
-      explanation: "Thirty = 30"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Seven</span>",
-      options: ["22", "7"],
-      correct: "7",
-      explanation: "Seven = 7"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-nine</span>",
-      options: ["49", "18"],
-      correct: "49",
-      explanation: "Forty-nine = 49"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Fifteen</span>",
-      options: ["15", "24"],
-      correct: "15",
-      explanation: "Fifteen = 15"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Two</span>",
-      options: ["2", "27"],
-      correct: "2",
-      explanation: "Two = 2"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-seven</span>",
-      options: ["27", "6"],
-      correct: "27",
-      explanation: "Twenty-seven = 27"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty</span>",
-      options: ["40", "14"],
-      correct: "40",
-      explanation: "Forty = 40"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Zero</span>",
-      options: ["0", "19"],
-      correct: "0",
-      explanation: "Zero = 0"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-one</span>",
-      options: ["9", "21"],
-      correct: "21",
-      explanation: "Twenty-one = 21"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Nine</span>",
-      options: ["9", "32"],
-      correct: "9",
-      explanation: "Nine = 9"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-seven</span>",
-      options: ["25", "47"],
-      correct: "47",
-      explanation: "Forty-seven = 47"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Sixteen</span>",
-      options: ["5", "16"],
-      correct: "16",
-      explanation: "Sixteen = 16"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-nine</span>",
-      options: ["29", "8"],
-      correct: "29",
-      explanation: "Twenty-nine = 29"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Four</span>",
-      options: ["4", "36"],
-      correct: "4",
-      explanation: "Four = 4"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Eleven</span>",
-      options: ["11", "20"],
-      correct: "11",
-      explanation: "Eleven = 11"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty</span>",
-      options: ["17", "20"],
-      correct: "20",
-      explanation: "Twenty = 20"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Three</span>",
-      options: ["3", "41"],
-      correct: "3",
-      explanation: "Three = 3"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-five</span>",
-      options: ["45", "23"],
-      correct: "45",
-      explanation: "Forty-five = 45"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Eighteen</span>",
-      options: ["39", "18"],
-      correct: "18",
-      explanation: "Eighteen = 18"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Five</span>",
-      options: ["12", "5"],
-      correct: "5",
-      explanation: "Five = 5"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-five</span>",
-      options: ["25", "2"],
-      correct: "25",
-      explanation: "Twenty-five = 25"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-two</span>",
-      options: ["33", "42"],
-      correct: "42",
-      explanation: "Forty-two = 42"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirteen</span>",
-      options: ["13", "34"],
-      correct: "13",
-      explanation: "Thirteen = 13"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>One</span>",
-      options: ["46", "1"],
-      correct: "1",
-      explanation: "One = 1"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Nineteen</span>",
-      options: ["19", "31"],
-      correct: "19",
-      explanation: "Nineteen = 19"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-one</span>",
-      options: ["41", "26"],
-      correct: "41",
-      explanation: "Forty-one = 41"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Ten</span>",
-      options: ["10", "28"],
-      correct: "10",
-      explanation: "Ten = 10"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Six</span>",
-      options: ["6", "43"],
-      correct: "6",
-      explanation: "Six = 6"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-three</span>",
-      options: ["23", "44"],
-      correct: "23",
-      explanation: "Twenty-three = 23"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twelve</span>",
-      options: ["12", "48"],
-      correct: "12",
-      explanation: "Twelve = 12"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-four</span>",
-      options: ["44", "7"],
-      correct: "44",
-      explanation: "Forty-four = 44"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Seventeen</span>",
-      options: ["50", "17"],
-      correct: "17",
-      explanation: "Seventeen = 17"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Eight</span>",
-      options: ["8", "38"],
-      correct: "8",
-      explanation: "Eight = 8"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-six</span>",
-      options: ["26", "35"],
-      correct: "26",
-      explanation: "Twenty-six = 26"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-three</span>",
-      options: ["43", "30"],
-      correct: "43",
-      explanation: "Forty-three = 43"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-eight</span>",
-      options: ["28", "37"],
-      correct: "28",
-      explanation: "Twenty-eight = 28"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-five</span>",
-      options: ["29", "35"],
-      correct: "35",
-      explanation: "Thirty-five = 35"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-six</span>",
-      options: ["46", "21"],
-      correct: "46",
-      explanation: "Forty-six = 46"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-two</span>",
-      options: ["22", "16"],
-      correct: "22",
-      explanation: "Twenty-two = 22"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Fourteen</span>",
-      options: ["14", "45"],
-      correct: "14",
-      explanation: "Fourteen = 14"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-one</span>",
-      options: ["31", "4"],
-      correct: "31",
-      explanation: "Thirty-one = 31"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-four</span>",
-      options: ["24", "40"],
-      correct: "24",
-      explanation: "Twenty-four = 24"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-eight</span>",
-      options: ["38", "1"],
-      correct: "38",
-      explanation: "Thirty-eight = 38"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-seven</span>",
-      options: ["2", "37"],
-      correct: "37",
-      explanation: "Thirty-seven = 37"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-nine</span>",
-      options: ["39", "11"],
-      correct: "39",
-      explanation: "Thirty-nine = 39"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-four</span>",
-      options: ["34", "42"],
-      correct: "34",
-      explanation: "Thirty-four = 34"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-six</span>",
-      options: ["36", "13"],
-      correct: "36",
-      explanation: "Thirty-six = 36"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-two</span>",
-      options: ["15", "32"],
-      correct: "32",
-      explanation: "Thirty-two = 32"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-three</span>",
-      options: ["33", "47"],
-      correct: "33",
-      explanation: "Thirty-three = 33"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-eight</span>",
-      options: ["48", "36"],
-      correct: "48",
-      explanation: "Forty-eight = 48"
-    },
-    {
-      question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Fifty</span>",
-      options: ["50", "22"],
-      correct: "50",
-      explanation: "Fifty = 50"
-    }
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Zero</span>", options: ["0", "1"], correct: "0", explanation: "Zero = 0" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>One</span>", options: ["0", "1"], correct: "1", explanation: "One = 1" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Two</span>", options: ["2", "1"], correct: "2", explanation: "Two = 2" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Three</span>", options: ["2", "3"], correct: "3", explanation: "Three = 3" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Four</span>", options: ["4", "5"], correct: "4", explanation: "Four = 4" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Five</span>", options: ["4", "5"], correct: "5", explanation: "Five = 5" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Six</span>", options: ["6", "7"], correct: "6", explanation: "Six = 6" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Seven</span>", options: ["6", "7"], correct: "7", explanation: "Seven = 7" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Eight</span>", options: ["9", "8"], correct: "8", explanation: "Eight = 8" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Nine</span>", options: ["8", "9"], correct: "9", explanation: "Nine = 9" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Ten</span>", options: ["9", "10"], correct: "10", explanation: "Ten = 10" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Eleven</span>", options: ["11", "12"], correct: "11", explanation: "Eleven = 11" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twelve</span>", options: ["12", "11"], correct: "12", explanation: "Twelve = 12" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirteen</span>", options: ["13", "12"], correct: "13", explanation: "Thirteen = 13" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Fourteen</span>", options: ["15", "14"], correct: "14", explanation: "Fourteen = 14" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Fifteen</span>", options: ["14", "15"], correct: "15", explanation: "Fifteen = 15" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Sixteen</span>", options: ["15", "16"], correct: "16", explanation: "Sixteen = 16" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Seventeen</span>", options: ["18", "17"], correct: "17", explanation: "Seventeen = 17" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Eighteen</span>", options: ["18", "17"], correct: "18", explanation: "Eighteen = 18" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Nineteen</span>", options: ["20", "19"], correct: "19", explanation: "Nineteen = 19" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty</span>", options: ["20", "19"], correct: "20", explanation: "Twenty = 20" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-one</span>", options: ["21", "22"], correct: "21", explanation: "Twenty-one = 21" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-two</span>", options: ["22", "23"], correct: "22", explanation: "Twenty-two = 22" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-three</span>", options: ["24", "23"], correct: "23", explanation: "Twenty-three = 23" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-four</span>", options: ["25", "24"], correct: "24", explanation: "Twenty-four = 24" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-five</span>", options: ["25", "26"], correct: "25", explanation: "Twenty-five = 25" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-six</span>", options: ["27", "26"], correct: "26", explanation: "Twenty-six = 26" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-seven</span>", options: ["27", "28"], correct: "27", explanation: "Twenty-seven = 27" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-eight</span>", options: ["27", "28"], correct: "28", explanation: "Twenty-eight = 28" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Twenty-nine</span>", options: ["29", "30"], correct: "29", explanation: "Twenty-nine = 29" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty</span>", options: ["29", "30"], correct: "30", explanation: "Thirty = 30" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-one</span>", options: ["30", "31"], correct: "31", explanation: "Thirty-one = 31" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-two</span>", options: ["32", "33"], correct: "32", explanation: "Thirty-two = 32" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-three</span>", options: ["32", "33"], correct: "33", explanation: "Thirty-three = 33" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-four</span>", options: ["33", "34"], correct: "34", explanation: "Thirty-four = 34" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-five</span>", options: ["34", "35"], correct: "35", explanation: "Thirty-five = 35" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-six</span>", options: ["36", "37"], correct: "36", explanation: "Thirty-six = 36" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-seven</span>", options: ["38", "37"], correct: "37", explanation: "Thirty-seven = 37" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-eight</span>", options: ["37", "38"], correct: "38", explanation: "Thirty-eight = 38" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Thirty-nine</span>", options: ["38", "39"], correct: "39", explanation: "Thirty-nine = 39" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty</span>", options: ["40", "39"], correct: "40", explanation: "Forty = 40" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-one</span>", options: ["41", "40"], correct: "41", explanation: "Forty-one = 41" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-two</span>", options: ["42", "41"], correct: "42", explanation: "Forty-two = 42" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-three</span>", options: ["43", "44"], correct: "43", explanation: "Forty-three = 43" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-four</span>", options: ["43", "44"], correct: "44", explanation: "Forty-four = 44" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-five</span>", options: ["45", "46"], correct: "45", explanation: "Forty-five = 45" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-six</span>", options: ["45", "46"], correct: "46", explanation: "Forty-six = 46" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-seven</span>", options: ["47", "48"], correct: "47", explanation: "Forty-seven = 47" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-eight</span>", options: ["49", "48"], correct: "48", explanation: "Forty-eight = 48" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Forty-nine</span>", options: ["48", "49"], correct: "49", explanation: "Forty-nine = 49" },
+    { question: "Read the numbers in words. Choose the correct numeral. <br> <span style='color:black;'>Fifty</span>", options: ["49", "50"], correct: "50", explanation: "Fifty = 50" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Zero</span>", options: ["1", "0"], correct: "0", explanation: "Zero = 0" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>One</span>", options: ["2", "1"], correct: "1", explanation: "One = 1" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Two</span>", options: ["1", "2"], correct: "2", explanation: "Two = 2" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Three</span>", options: ["4", "3"], correct: "3", explanation: "Three = 3" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Four</span>", options: ["4", "5"], correct: "4", explanation: "Four = 4" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Five</span>", options: ["5", "6"], correct: "5", explanation: "Five = 5" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Six</span>", options: ["6", "7"], correct: "6", explanation: "Six = 6" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Seven</span>", options: ["8", "7"], correct: "7", explanation: "Seven = 7" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Eight</span>", options: ["8", "7"], correct: "8", explanation: "Eight = 8" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Nine</span>", options: ["9", "10"], correct: "9", explanation: "Nine = 9" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Ten</span>", options: ["9", "10"], correct: "10", explanation: "Ten = 10" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Eleven</span>", options: ["12", "11"], correct: "11", explanation: "Eleven = 11" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Twelve</span>", options: ["13", "12"], correct: "12", explanation: "Twelve = 12" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Thirteen</span>", options: ["13", "12"], correct: "13", explanation: "Thirteen = 13" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Fourteen</span>", options: ["14", "15"], correct: "14", explanation: "Fourteen = 14" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Fifteen</span>", options: ["14", "15"], correct: "15", explanation: "Fifteen = 15" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Sixteen</span>", options: ["17", "16"], correct: "16", explanation: "Sixteen = 16" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Seventeen</span>", options: ["16", "17"], correct: "17", explanation: "Seventeen = 17" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Eighteen</span>", options: ["19", "18"], correct: "18", explanation: "Eighteen = 18" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Nineteen</span>", options: ["19", "20"], correct: "19", explanation: "Nineteen = 19" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Twenty</span>", options: ["19", "20"], correct: "20", explanation: "Twenty = 20" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Twenty-one</span>", options: ["21", "22"], correct: "21", explanation: "Twenty-one = 21" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Twenty-two</span>", options: ["21", "22"], correct: "22", explanation: "Twenty-two = 22" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Twenty-three</span>", options: ["24", "23"], correct: "23", explanation: "Twenty-three = 23" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Twenty-four</span>", options: ["23", "24"], correct: "24", explanation: "Twenty-four = 24" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Twenty-five</span>", options: ["25", "26"], correct: "25", explanation: "Twenty-five = 25" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Twenty-six</span>", options: ["26", "25"], correct: "26", explanation: "Twenty-six = 26" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Twenty-seven</span>", options: ["28", "27"], correct: "27", explanation: "Twenty-seven = 27" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Twenty-eight</span>", options: ["27", "28"], correct: "28", explanation: "Twenty-eight = 28" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Twenty-nine</span>", options: ["29", "30"], correct: "29", explanation: "Twenty-nine = 29" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Thirty</span>", options: ["30", "31"], correct: "30", explanation: "Thirty = 30" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Thirty-one</span>", options: ["30", "31"], correct: "31", explanation: "Thirty-one = 31" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Thirty-two</span>", options: ["33", "32"], correct: "32", explanation: "Thirty-two = 32" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Thirty-three</span>", options: ["33", "32"], correct: "33", explanation: "Thirty-three = 33" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Thirty-four</span>", options: ["34", "33"], correct: "34", explanation: "Thirty-four = 34" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Thirty-five</span>", options: ["36", "35"], correct: "35", explanation: "Thirty-five = 35" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Thirty-six</span>", options: ["36", "37"], correct: "36", explanation: "Thirty-six = 36" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Thirty-seven</span>", options: ["37", "36"], correct: "37", explanation: "Thirty-seven = 37" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Thirty-eight</span>", options: ["39", "38"], correct: "38", explanation: "Thirty-eight = 38" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Thirty-nine</span>", options: ["38", "39"], correct: "39", explanation: "Thirty-nine = 39" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Forty</span>", options: ["40", "39"], correct: "40", explanation: "Forty = 40" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Forty-one</span>", options: ["40", "41"], correct: "41", explanation: "Forty-one = 41" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Forty-two</span>", options: ["43", "42"], correct: "42", explanation: "Forty-two = 42" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Forty-three</span>", options: ["42", "43"], correct: "43", explanation: "Forty-three = 43" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Forty-four</span>", options: ["44", "43"], correct: "44", explanation: "Forty-four = 44" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Forty-five</span>", options: ["45", "44"], correct: "45", explanation: "Forty-five = 45" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Forty-six</span>", options: ["46", "47"], correct: "46", explanation: "Forty-six = 46" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Forty-seven</span>", options: ["48", "47"], correct: "47", explanation: "Forty-seven = 47" },
+    { question: "Which numeral matches this word? <br> <span style='color:black;'>Forty-eight</span>", options: ["48", "49"], correct: "48", explanation: "Forty-eight = 48" }
   ];
 </script>
 

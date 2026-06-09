@@ -28,147 +28,107 @@
 
 <script>
   const questions = [
-  {
-    question: "What comes after 7?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["8", "6"],
-    correct: "8",
-    explanation: "On the number line, after 7 comes 8."
-  },
-  {
-    question: "What comes after 15?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["16", "14"],
-    correct: "16",
-    explanation: "On the number line, after 15 comes 16."
-  },
-  {
-    question: "What comes after 2?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["4", "3"],
-    correct: "3",
-    explanation: "On the number line, after 2 comes 3."
-  },
-  {
-    question: "What comes after 18?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["19", "20"],
-    correct: "19",
-    explanation: "On the number line, after 18 comes 19."
-  },
-  {
-    question: "What comes after 10?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["12", "11"],
-    correct: "11",
-    explanation: "On the number line, after 10 comes 11."
-  },
-  {
-    question: "What comes after 0?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["2", "1"],
-    correct: "1",
-    explanation: "On the number line, after 0 comes 1."
-  },
-  {
-    question: "What comes after 5?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["6", "4"],
-    correct: "6",
-    explanation: "On the number line, after 5 comes 6."
-  },
-  {
-    question: "What comes after 12?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["13", "14"],
-    correct: "13",
-    explanation: "On the number line, after 12 comes 13."
-  },
-  {
-    question: "What comes after 9?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["8", "10"],
-    correct: "10",
-    explanation: "On the number line, after 9 comes 10."
-  },
-  {
-    question: "What comes after 19?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["20", "18"],
-    correct: "20",
-    explanation: "On the number line, after 19 comes 20."
-  },
-  {
-    question: "What comes after 3?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["2", "4"],
-    correct: "4",
-    explanation: "On the number line, after 3 comes 4."
-  },
-  {
-    question: "What comes after 14?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["15", "16"],
-    correct: "15",
-    explanation: "On the number line, after 14 comes 15."
-  },
-  {
-    question: "What comes after 8?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["10", "9"],
-    correct: "9",
-    explanation: "On the number line, after 8 comes 9."
-  },
-  {
-    question: "What comes after 6?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["8", "7"],
-    correct: "7",
-    explanation: "On the number line, after 6 comes 7."
-  },
-  {
-    question: "What comes after 16?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["18", "17"],
-    correct: "17",
-    explanation: "On the number line, after 16 comes 17."
-  },
-  {
-    question: "What comes after 11?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["10", "12"],
-    correct: "12",
-    explanation: "On the number line, after 11 comes 12."
-  },
-  {
-    question: "What comes after 4?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["6", "5"],
-    correct: "5",
-    explanation: "On the number line, after 4 comes 5."
-  },
-  {
-    question: "What comes after 1?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["0", "2"],
-    correct: "2",
-    explanation: "On the number line, after 1 comes 2."
-  },
-  {
-    question: "What comes after 17?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["18", "16"],
-    correct: "18",
-    explanation: "On the number line, after 17 comes 18."
-  },
-  {
-    question: "What comes after 13?",
-    image: "../../image/level_1_math/number_line_1_to_50.jpg",
-    options: ["14", "12"],
-    correct: "14",
-    explanation: "On the number line, after 13 comes 14."
-  }
-];
+    { question: "What is 1 more than 18?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["19", "18"], correct: "19", explanation: "1 more than 18 is 19." },
+    { question: "Which number comes just before 13?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["12", "11"], correct: "12", explanation: "On the number line, before 13 comes 12." },
+    { question: "What number is between 13 and 15?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["14", "13"], correct: "14", explanation: "14 sits between 13 and 15 on the number line." },
+    { question: "What comes before 16?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["14", "15"], correct: "15", explanation: "On the number line, before 16 comes 15." },
+    { question: "What comes before 9?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["7", "8"], correct: "8", explanation: "On the number line, before 9 comes 8." },
+    { question: "Find the number just after 17 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["19", "18"], correct: "18", explanation: "On the number line, after 17 comes 18." },
+    { question: "What comes before 11?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["10", "9"], correct: "10", explanation: "On the number line, before 11 comes 10." },
+    { question: "Find the number right before 10 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["8", "9"], correct: "9", explanation: "On the number line, before 10 comes 9." },
+    { question: "Find the number just after 5 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["6", "5"], correct: "6", explanation: "On the number line, after 5 comes 6." },
+    { question: "Which number comes right after 8?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["9", "8"], correct: "9", explanation: "On the number line, after 8 comes 9." },
+    { question: "What comes before 8?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["7", "8"], correct: "7", explanation: "On the number line, before 8 comes 7." },
+    { question: "Find the number right before 20 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["19", "18"], correct: "19", explanation: "On the number line, before 20 comes 19." },
+    { question: "What comes after 6?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["6", "7"], correct: "7", explanation: "On the number line, after 6 comes 7." },
+    { question: "What is 1 less than 5?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["3", "4"], correct: "4", explanation: "1 less than 5 is 4." },
+    { question: "Find the number right before 3 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["1", "2"], correct: "2", explanation: "On the number line, before 3 comes 2." },
+    { question: "What is 1 less than 15?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["13", "14"], correct: "14", explanation: "1 less than 15 is 14." },
+    { question: "Which number comes right after 14?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["15", "14"], correct: "15", explanation: "On the number line, after 14 comes 15." },
+    { question: "Find the number just after 9 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["10", "11"], correct: "10", explanation: "On the number line, after 9 comes 10." },
+    { question: "What comes after 16?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["16", "17"], correct: "17", explanation: "On the number line, after 16 comes 17." },
+    { question: "What comes after 7?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["8", "7"], correct: "8", explanation: "On the number line, after 7 comes 8." },
+    { question: "Which number comes just before 6?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["4", "5"], correct: "5", explanation: "On the number line, before 6 comes 5." },
+    { question: "What number is between 18 and 20?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["19", "18"], correct: "19", explanation: "19 sits between 18 and 20 on the number line." },
+    { question: "Which number comes right after 13?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["14", "13"], correct: "14", explanation: "On the number line, after 13 comes 14." },
+    { question: "Find the number just after 3 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["4", "5"], correct: "4", explanation: "On the number line, after 3 comes 4." },
+    { question: "What is 1 less than 2?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["1", "0"], correct: "1", explanation: "1 less than 2 is 1." },
+    { question: "Which number comes just before 2?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["1", "0"], correct: "1", explanation: "On the number line, before 2 comes 1." },
+    { question: "Which number comes just before 16?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["15", "14"], correct: "15", explanation: "On the number line, before 16 comes 15." },
+    { question: "Which number comes right after 19?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["20", "21"], correct: "20", explanation: "On the number line, after 19 comes 20." },
+    { question: "Which number comes right after 6?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["6", "7"], correct: "7", explanation: "On the number line, after 6 comes 7." },
+    { question: "What is 1 more than 5?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["6", "5"], correct: "6", explanation: "1 more than 5 is 6." },
+    { question: "Find the number just after 8 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["9", "10"], correct: "9", explanation: "On the number line, after 8 comes 9." },
+    { question: "Which number comes just before 19?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["17", "18"], correct: "18", explanation: "On the number line, before 19 comes 18." },
+    { question: "What is 1 less than 4?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["2", "3"], correct: "3", explanation: "1 less than 4 is 3." },
+    { question: "What comes before 12?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["10", "11"], correct: "11", explanation: "On the number line, before 12 comes 11." },
+    { question: "What number is between 15 and 17?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["16", "15"], correct: "16", explanation: "16 sits between 15 and 17 on the number line." },
+    { question: "What comes after 1?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["2", "1"], correct: "2", explanation: "On the number line, after 1 comes 2." },
+    { question: "What comes before 13?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["13", "12"], correct: "12", explanation: "On the number line, before 13 comes 12." },
+    { question: "What number is between 16 and 18?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["17", "16"], correct: "17", explanation: "17 sits between 16 and 18 on the number line." },
+    { question: "What comes before 7?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["5", "6"], correct: "6", explanation: "On the number line, before 7 comes 6." },
+    { question: "What comes after 2?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["4", "3"], correct: "3", explanation: "On the number line, after 2 comes 3." },
+    { question: "What comes after 17?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["17", "18"], correct: "18", explanation: "On the number line, after 17 comes 18." },
+    { question: "Find the number just after 12 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["13", "14"], correct: "13", explanation: "On the number line, after 12 comes 13." },
+    { question: "Which number comes right after 4?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["5", "6"], correct: "5", explanation: "On the number line, after 4 comes 5." },
+    { question: "What number is between 4 and 6?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["5", "4"], correct: "5", explanation: "5 sits between 4 and 6 on the number line." },
+    { question: "What is 1 less than 11?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["10", "11"], correct: "10", explanation: "1 less than 11 is 10." },
+    { question: "Find the number right before 11 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["10", "9"], correct: "10", explanation: "On the number line, before 11 comes 10." },
+    { question: "Which number comes just before 12?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["11", "10"], correct: "11", explanation: "On the number line, before 12 comes 11." },
+    { question: "Which number comes just before 9?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["7", "8"], correct: "8", explanation: "On the number line, before 9 comes 8." },
+    { question: "What is 1 less than 3?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["1", "2"], correct: "2", explanation: "1 less than 3 is 2." },
+    { question: "Find the number right before 18 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["17", "16"], correct: "17", explanation: "On the number line, before 18 comes 17." },
+    { question: "What is 1 less than 7?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["7", "6"], correct: "6", explanation: "1 less than 7 is 6." },
+    { question: "What is 1 less than 9?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["8", "9"], correct: "8", explanation: "1 less than 9 is 8." },
+    { question: "Which number comes right after 10?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["12", "11"], correct: "11", explanation: "On the number line, after 10 comes 11." },
+    { question: "What number is between 3 and 5?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["3", "4"], correct: "4", explanation: "4 sits between 3 and 5 on the number line." },
+    { question: "What comes after 13?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["14", "13"], correct: "14", explanation: "On the number line, after 13 comes 14." },
+    { question: "Find the number just after 15 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["15", "16"], correct: "16", explanation: "On the number line, after 15 comes 16." },
+    { question: "What is 1 less than 12?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["10", "11"], correct: "11", explanation: "1 less than 12 is 11." },
+    { question: "Which number comes just before 15?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["13", "14"], correct: "14", explanation: "On the number line, before 15 comes 14." },
+    { question: "Find the number just after 19 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["19", "20"], correct: "20", explanation: "On the number line, after 19 comes 20." },
+    { question: "What is 1 more than 12?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["14", "13"], correct: "13", explanation: "1 more than 12 is 13." },
+    { question: "What is 1 more than 2?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["4", "3"], correct: "3", explanation: "1 more than 2 is 3." },
+    { question: "What comes after 3?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["3", "4"], correct: "4", explanation: "On the number line, after 3 comes 4." },
+    { question: "What is 1 less than 14?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["13", "12"], correct: "13", explanation: "1 less than 14 is 13." },
+    { question: "What comes before 10?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["8", "9"], correct: "9", explanation: "On the number line, before 10 comes 9." },
+    { question: "What is 1 more than 3?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["4", "5"], correct: "4", explanation: "1 more than 3 is 4." },
+    { question: "What comes before 4?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["3", "4"], correct: "3", explanation: "On the number line, before 4 comes 3." },
+    { question: "What comes before 3?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["1", "2"], correct: "2", explanation: "On the number line, before 3 comes 2." },
+    { question: "Which number comes right after 12?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["14", "13"], correct: "13", explanation: "On the number line, after 12 comes 13." },
+    { question: "Find the number just after 14 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["14", "15"], correct: "15", explanation: "On the number line, after 14 comes 15." },
+    { question: "What number is between 2 and 4?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["4", "3"], correct: "3", explanation: "3 sits between 2 and 4 on the number line." },
+    { question: "What is 1 more than 10?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["11", "10"], correct: "11", explanation: "1 more than 10 is 11." },
+    { question: "What is 1 less than 10?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["9", "8"], correct: "9", explanation: "1 less than 10 is 9." },
+    { question: "What is 1 less than 18?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["17", "16"], correct: "17", explanation: "1 less than 18 is 17." },
+    { question: "What is 1 more than 6?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["7", "8"], correct: "7", explanation: "1 more than 6 is 7." },
+    { question: "What number is between 7 and 9?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["8", "9"], correct: "8", explanation: "8 sits between 7 and 9 on the number line." },
+    { question: "What is 1 more than 13?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["13", "14"], correct: "14", explanation: "1 more than 13 is 14." },
+    { question: "Which number comes right after 18?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["19", "18"], correct: "19", explanation: "On the number line, after 18 comes 19." },
+    { question: "What is 1 less than 17?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["16", "17"], correct: "16", explanation: "1 less than 17 is 16." },
+    { question: "Which number comes just before 18?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["17", "16"], correct: "17", explanation: "On the number line, before 18 comes 17." },
+    { question: "Find the number just after 7 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["8", "7"], correct: "8", explanation: "On the number line, after 7 comes 8." },
+    { question: "What number is between 14 and 16?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["15", "16"], correct: "15", explanation: "15 sits between 14 and 16 on the number line." },
+    { question: "Find the number just after 11 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["13", "12"], correct: "12", explanation: "On the number line, after 11 comes 12." },
+    { question: "Find the number right before 8 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["8", "7"], correct: "7", explanation: "On the number line, before 8 comes 7." },
+    { question: "What is 1 more than 1?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["1", "2"], correct: "2", explanation: "1 more than 1 is 2." },
+    { question: "Which number comes right after 9?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["11", "10"], correct: "10", explanation: "On the number line, after 9 comes 10." },
+    { question: "What comes after 10?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["12", "11"], correct: "11", explanation: "On the number line, after 10 comes 11." },
+    { question: "Which number comes just before 10?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["10", "9"], correct: "9", explanation: "On the number line, before 10 comes 9." },
+    { question: "What is 1 more than 11?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["13", "12"], correct: "12", explanation: "1 more than 11 is 12." },
+    { question: "What is 1 less than 16?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["14", "15"], correct: "15", explanation: "1 less than 16 is 15." },
+    { question: "What is 1 more than 4?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["4", "5"], correct: "5", explanation: "1 more than 4 is 5." },
+    { question: "Which number comes just before 3?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["1", "2"], correct: "2", explanation: "On the number line, before 3 comes 2." },
+    { question: "What number is between 9 and 11?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["11", "10"], correct: "10", explanation: "10 sits between 9 and 11 on the number line." },
+    { question: "What is 1 less than 19?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["18", "19"], correct: "18", explanation: "1 less than 19 is 18." },
+    { question: "Find the number right before 13 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["11", "12"], correct: "12", explanation: "On the number line, before 13 comes 12." },
+    { question: "Which number comes just before 20?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["20", "19"], correct: "19", explanation: "On the number line, before 20 comes 19." },
+    { question: "What number is between 5 and 7?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["7", "6"], correct: "6", explanation: "6 sits between 5 and 7 on the number line." },
+    { question: "Find the number right before 7 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["7", "6"], correct: "6", explanation: "On the number line, before 7 comes 6." },
+    { question: "Which number comes right after 17?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["19", "18"], correct: "18", explanation: "On the number line, after 17 comes 18." },
+    { question: "Which number comes right after 5?", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["6", "5"], correct: "6", explanation: "On the number line, after 5 comes 6." },
+    { question: "Find the number just after 10 on the number line.", image: "../../image/level_1_math/number_line_1_to_50.jpg", options: ["11", "12"], correct: "11", explanation: "On the number line, after 10 comes 11." }
+  ];
 </script>
 
 

@@ -28,126 +28,106 @@
 
 <script>
   const questions = [
-    {
-      question: "What is 5 - 3?",
-      options: ["3", "2"],
-      correct: "2",
-      explanation: "5 - 3 = 2"
-    },
-    {
-      question: "What is 4 - 2?",
-      options: ["2", "3"],
-      correct: "2",
-      explanation: "4 - 2 = 2"
-    },
-    {
-      question: "What is 3 - 1?",
-      options: ["2", "1"],
-      correct: "2",
-      explanation: "3 - 1 = 2"
-    },
-    {
-      question: "What is 2 - 1?",
-      options: ["1", "2"],
-      correct: "1",
-      explanation: "2 - 1 = 1"
-    },
-    {
-      question: "What is 5 - 5?",
-      options: ["1", "0"],
-      correct: "0",
-      explanation: "5 - 5 = 0"
-    },
-    {
-      question: "What is 4 - 1?",
-      options: ["3", "4"],
-      correct: "3",
-      explanation: "4 - 1 = 3"
-    },
-    {
-      question: "What is 3 - 2?",
-      options: ["2", "1"],
-      correct: "1",
-      explanation: "3 - 2 = 1"
-    },
-    {
-      question: "What is 2 - 0?",
-      options: ["2", "1"],
-      correct: "2",
-      explanation: "2 - 0 = 2"
-    },
-    {
-      question: "What is 1 - 1?",
-      options: ["0", "1"],
-      correct: "0",
-      explanation: "1 - 1 = 0"
-    },
-    {
-      question: "What is 5 - 4?",
-      options: ["1", "2"],
-      correct: "1",
-      explanation: "5 - 4 = 1"
-    },
-    {
-      question: "What is 4 - 3?",
-      options: ["0", "1"],
-      correct: "1",
-      explanation: "4 - 3 = 1"
-    },
-    {
-      question: "What is 2 - 2?",
-      options: ["0", "1"],
-      correct: "0",
-      explanation: "2 - 2 = 0"
-    },
-    {
-      question: "What is 3 - 0?",
-      options: ["2", "3"],
-      correct: "3",
-      explanation: "3 - 0 = 3"
-    },
-    {
-      question: "What is 5 - 2?",
-      options: ["2", "3"],
-      correct: "3",
-      explanation: "5 - 2 = 3"
-    },
-    {
-      question: "What is 4 - 0?",
-      options: ["4", "3"],
-      correct: "4",
-      explanation: "4 - 0 = 4"
-    },
-    {
-      question: "What is 1 - 0?",
-      options: ["1", "2"],
-      correct: "1",
-      explanation: "1 - 0 = 1"
-    },
-    {
-      question: "What is 5 - 1?",
-      options: ["4", "5"],
-      correct: "4",
-      explanation: "5 - 1 = 4"
-    },
-    {
-      question: "What is 3 - 3?",
-      options: ["0", "1"],
-      correct: "0",
-      explanation: "3 - 3 = 0"
-    },
-    {
-      question: "What is 2 - 1?",
-      options: ["0", "1"],
-      correct: "1",
-      explanation: "2 - 1 = 1"
-    },
-    {
-      question: "What is 4 - 4?",
-      options: ["0", "1"],
-      correct: "0",
-      explanation: "4 - 4 = 0"
-    }
+    { question: "What is 5 − 5?", options: ["1", "0"], correct: "0", explanation: "5 − 5 = 0" },
+    { question: "What is 4 − 2?", options: ["2", "1"], correct: "2", explanation: "4 − 2 = 2" },
+    { question: "What is 5 − 0?", options: ["4", "5"], correct: "5", explanation: "5 − 0 = 5" },
+    { question: "What is 2 − 1?", options: ["1", "2"], correct: "1", explanation: "2 − 1 = 1" },
+    { question: "What is 0 − 0?", options: ["0", "1"], correct: "0", explanation: "0 − 0 = 0" },
+    { question: "What is 4 − 3?", options: ["1", "2"], correct: "1", explanation: "4 − 3 = 1" },
+    { question: "What is 2 − 2?", options: ["1", "0"], correct: "0", explanation: "2 − 2 = 0" },
+    { question: "What is 3 − 0?", options: ["2", "3"], correct: "3", explanation: "3 − 0 = 3" },
+    { question: "What is 5 − 1?", options: ["3", "4"], correct: "4", explanation: "5 − 1 = 4" },
+    { question: "What is 4 − 4?", options: ["0", "1"], correct: "0", explanation: "4 − 4 = 0" },
+    { question: "What is 3 − 3?", options: ["1", "0"], correct: "0", explanation: "3 − 3 = 0" },
+    { question: "What is 3 − 2?", options: ["1", "2"], correct: "1", explanation: "3 − 2 = 1" },
+    { question: "What is 4 − 1?", options: ["3", "4"], correct: "3", explanation: "4 − 1 = 3" },
+    { question: "What is 5 − 4?", options: ["1", "2"], correct: "1", explanation: "5 − 4 = 1" },
+    { question: "What is 5 − 2?", options: ["3", "4"], correct: "3", explanation: "5 − 2 = 3" },
+    { question: "What is 5 − 3?", options: ["3", "2"], correct: "2", explanation: "5 − 3 = 2" },
+    { question: "What is 3 − 1?", options: ["2", "3"], correct: "2", explanation: "3 − 1 = 2" },
+    { question: "What is 4 − 0?", options: ["4", "3"], correct: "4", explanation: "4 − 0 = 4" },
+    { question: "What is 1 − 1?", options: ["0", "1"], correct: "0", explanation: "1 − 1 = 0" },
+    { question: "What is 1 − 0?", options: ["2", "1"], correct: "1", explanation: "1 − 0 = 1" },
+    { question: "What is 2 − 0?", options: ["2", "1"], correct: "2", explanation: "2 − 0 = 2" },
+    { question: "5 − 5 = ?", options: ["1", "0"], correct: "0", explanation: "5 − 5 = 0" },
+    { question: "4 − 2 = ?", options: ["2", "1"], correct: "2", explanation: "4 − 2 = 2" },
+    { question: "5 − 0 = ?", options: ["5", "4"], correct: "5", explanation: "5 − 0 = 5" },
+    { question: "2 − 1 = ?", options: ["0", "1"], correct: "1", explanation: "2 − 1 = 1" },
+    { question: "0 − 0 = ?", options: ["0", "1"], correct: "0", explanation: "0 − 0 = 0" },
+    { question: "4 − 3 = ?", options: ["0", "1"], correct: "1", explanation: "4 − 3 = 1" },
+    { question: "2 − 2 = ?", options: ["0", "1"], correct: "0", explanation: "2 − 2 = 0" },
+    { question: "3 − 0 = ?", options: ["4", "3"], correct: "3", explanation: "3 − 0 = 3" },
+    { question: "5 − 1 = ?", options: ["3", "4"], correct: "4", explanation: "5 − 1 = 4" },
+    { question: "4 − 4 = ?", options: ["1", "0"], correct: "0", explanation: "4 − 4 = 0" },
+    { question: "3 − 3 = ?", options: ["1", "0"], correct: "0", explanation: "3 − 3 = 0" },
+    { question: "3 − 2 = ?", options: ["1", "0"], correct: "1", explanation: "3 − 2 = 1" },
+    { question: "4 − 1 = ?", options: ["2", "3"], correct: "3", explanation: "4 − 1 = 3" },
+    { question: "5 − 4 = ?", options: ["1", "2"], correct: "1", explanation: "5 − 4 = 1" },
+    { question: "5 − 2 = ?", options: ["4", "3"], correct: "3", explanation: "5 − 2 = 3" },
+    { question: "5 − 3 = ?", options: ["3", "2"], correct: "2", explanation: "5 − 3 = 2" },
+    { question: "3 − 1 = ?", options: ["3", "2"], correct: "2", explanation: "3 − 1 = 2" },
+    { question: "4 − 0 = ?", options: ["4", "3"], correct: "4", explanation: "4 − 0 = 4" },
+    { question: "1 − 1 = ?", options: ["1", "0"], correct: "0", explanation: "1 − 1 = 0" },
+    { question: "1 − 0 = ?", options: ["1", "2"], correct: "1", explanation: "1 − 0 = 1" },
+    { question: "2 − 0 = ?", options: ["1", "2"], correct: "2", explanation: "2 − 0 = 2" },
+    { question: "Subtract: 5 − 5", options: ["1", "0"], correct: "0", explanation: "5 − 5 = 0" },
+    { question: "Subtract: 4 − 2", options: ["1", "2"], correct: "2", explanation: "4 − 2 = 2" },
+    { question: "Subtract: 5 − 0", options: ["4", "5"], correct: "5", explanation: "5 − 0 = 5" },
+    { question: "Subtract: 2 − 1", options: ["0", "1"], correct: "1", explanation: "2 − 1 = 1" },
+    { question: "Subtract: 0 − 0", options: ["0", "1"], correct: "0", explanation: "0 − 0 = 0" },
+    { question: "Subtract: 4 − 3", options: ["2", "1"], correct: "1", explanation: "4 − 3 = 1" },
+    { question: "Subtract: 2 − 2", options: ["0", "1"], correct: "0", explanation: "2 − 2 = 0" },
+    { question: "Subtract: 3 − 0", options: ["2", "3"], correct: "3", explanation: "3 − 0 = 3" },
+    { question: "Subtract: 5 − 1", options: ["4", "3"], correct: "4", explanation: "5 − 1 = 4" },
+    { question: "Subtract: 4 − 4", options: ["0", "1"], correct: "0", explanation: "4 − 4 = 0" },
+    { question: "Subtract: 3 − 3", options: ["1", "0"], correct: "0", explanation: "3 − 3 = 0" },
+    { question: "Subtract: 3 − 2", options: ["0", "1"], correct: "1", explanation: "3 − 2 = 1" },
+    { question: "Subtract: 4 − 1", options: ["3", "4"], correct: "3", explanation: "4 − 1 = 3" },
+    { question: "Subtract: 5 − 4", options: ["2", "1"], correct: "1", explanation: "5 − 4 = 1" },
+    { question: "Subtract: 5 − 2", options: ["2", "3"], correct: "3", explanation: "5 − 2 = 3" },
+    { question: "Subtract: 5 − 3", options: ["2", "1"], correct: "2", explanation: "5 − 3 = 2" },
+    { question: "Subtract: 3 − 1", options: ["3", "2"], correct: "2", explanation: "3 − 1 = 2" },
+    { question: "Subtract: 4 − 0", options: ["3", "4"], correct: "4", explanation: "4 − 0 = 4" },
+    { question: "Subtract: 1 − 1", options: ["0", "1"], correct: "0", explanation: "1 − 1 = 0" },
+    { question: "Subtract: 1 − 0", options: ["2", "1"], correct: "1", explanation: "1 − 0 = 1" },
+    { question: "Subtract: 2 − 0", options: ["3", "2"], correct: "2", explanation: "2 − 0 = 2" },
+    { question: "Take away 5 from 5. What is left?", options: ["0", "1"], correct: "0", explanation: "5 − 5 = 0" },
+    { question: "Take away 2 from 4. What is left?", options: ["2", "1"], correct: "2", explanation: "4 − 2 = 2" },
+    { question: "Take away 0 from 5. What is left?", options: ["5", "4"], correct: "5", explanation: "5 − 0 = 5" },
+    { question: "Take away 1 from 2. What is left?", options: ["1", "0"], correct: "1", explanation: "2 − 1 = 1" },
+    { question: "Take away 0 from 0. What is left?", options: ["1", "0"], correct: "0", explanation: "0 − 0 = 0" },
+    { question: "Take away 3 from 4. What is left?", options: ["0", "1"], correct: "1", explanation: "4 − 3 = 1" },
+    { question: "Take away 2 from 2. What is left?", options: ["1", "0"], correct: "0", explanation: "2 − 2 = 0" },
+    { question: "Take away 0 from 3. What is left?", options: ["2", "3"], correct: "3", explanation: "3 − 0 = 3" },
+    { question: "Take away 1 from 5. What is left?", options: ["5", "4"], correct: "4", explanation: "5 − 1 = 4" },
+    { question: "Take away 4 from 4. What is left?", options: ["0", "1"], correct: "0", explanation: "4 − 4 = 0" },
+    { question: "Take away 3 from 3. What is left?", options: ["1", "0"], correct: "0", explanation: "3 − 3 = 0" },
+    { question: "Take away 2 from 3. What is left?", options: ["1", "0"], correct: "1", explanation: "3 − 2 = 1" },
+    { question: "Take away 1 from 4. What is left?", options: ["2", "3"], correct: "3", explanation: "4 − 1 = 3" },
+    { question: "Take away 4 from 5. What is left?", options: ["2", "1"], correct: "1", explanation: "5 − 4 = 1" },
+    { question: "Take away 2 from 5. What is left?", options: ["3", "2"], correct: "3", explanation: "5 − 2 = 3" },
+    { question: "Take away 3 from 5. What is left?", options: ["2", "3"], correct: "2", explanation: "5 − 3 = 2" },
+    { question: "Take away 1 from 3. What is left?", options: ["3", "2"], correct: "2", explanation: "3 − 1 = 2" },
+    { question: "Take away 0 from 4. What is left?", options: ["4", "5"], correct: "4", explanation: "4 − 0 = 4" },
+    { question: "Take away 1 from 1. What is left?", options: ["1", "0"], correct: "0", explanation: "1 − 1 = 0" },
+    { question: "Take away 0 from 1. What is left?", options: ["1", "0"], correct: "1", explanation: "1 − 0 = 1" },
+    { question: "Take away 0 from 2. What is left?", options: ["3", "2"], correct: "2", explanation: "2 − 0 = 2" },
+    { question: "How much is 5 − 5?", options: ["0", "1"], correct: "0", explanation: "5 − 5 = 0" },
+    { question: "How much is 4 − 2?", options: ["3", "2"], correct: "2", explanation: "4 − 2 = 2" },
+    { question: "How much is 5 − 0?", options: ["5", "4"], correct: "5", explanation: "5 − 0 = 5" },
+    { question: "How much is 2 − 1?", options: ["2", "1"], correct: "1", explanation: "2 − 1 = 1" },
+    { question: "How much is 0 − 0?", options: ["0", "1"], correct: "0", explanation: "0 − 0 = 0" },
+    { question: "How much is 4 − 3?", options: ["1", "2"], correct: "1", explanation: "4 − 3 = 1" },
+    { question: "How much is 2 − 2?", options: ["1", "0"], correct: "0", explanation: "2 − 2 = 0" },
+    { question: "How much is 3 − 0?", options: ["4", "3"], correct: "3", explanation: "3 − 0 = 3" },
+    { question: "How much is 5 − 1?", options: ["3", "4"], correct: "4", explanation: "5 − 1 = 4" },
+    { question: "How much is 4 − 4?", options: ["1", "0"], correct: "0", explanation: "4 − 4 = 0" },
+    { question: "How much is 3 − 3?", options: ["0", "1"], correct: "0", explanation: "3 − 3 = 0" },
+    { question: "How much is 3 − 2?", options: ["1", "0"], correct: "1", explanation: "3 − 2 = 1" },
+    { question: "How much is 4 − 1?", options: ["4", "3"], correct: "3", explanation: "4 − 1 = 3" },
+    { question: "How much is 5 − 4?", options: ["1", "0"], correct: "1", explanation: "5 − 4 = 1" },
+    { question: "How much is 5 − 2?", options: ["3", "4"], correct: "3", explanation: "5 − 2 = 3" },
+    { question: "How much is 5 − 3?", options: ["3", "2"], correct: "2", explanation: "5 − 3 = 2" }
   ];
 </script>
 

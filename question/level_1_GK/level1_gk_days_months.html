@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GK – Days & Months</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        { question: "Which day comes after Friday?", options: ["Tuesday", "Saturday", "Thursday"], correct: "Saturday", explanation: "After Friday comes Saturday." },
+        { question: "What is the month just before October?", options: ["September", "June", "May"], correct: "September", explanation: "Before October comes September." },
+        { question: "Which month comes after November?", options: ["July", "August", "December"], correct: "December", explanation: "After November comes December." },
+        { question: "Which month comes after March?", options: ["February", "April", "October"], correct: "April", explanation: "After March comes April." },
+        { question: "Which month comes between May and July?", options: ["December", "September", "June"], correct: "June", explanation: "June comes between May and July." },
+        { question: "What is the month just before March?", options: ["February", "October", "May"], correct: "February", explanation: "Before March comes February." },
+        { question: "What is the month just before July?", options: ["November", "February", "June"], correct: "June", explanation: "Before July comes June." },
+        { question: "Which day comes before Thursday?", options: ["Sunday", "Wednesday", "Thursday"], correct: "Wednesday", explanation: "Before Thursday comes Wednesday." },
+        { question: "Which day comes before Tuesday?", options: ["Monday", "Saturday", "Sunday"], correct: "Monday", explanation: "Before Tuesday comes Monday." },
+        { question: "What is the month right after January?", options: ["November", "December", "February"], correct: "February", explanation: "After January comes February." },
+        { question: "Which day comes after Sunday?", options: ["Monday", "Sunday", "Tuesday"], correct: "Monday", explanation: "After Sunday comes Monday." },
+        { question: "What is the month right after December?", options: ["May", "February", "January"], correct: "January", explanation: "After December comes January." },
+        { question: "Which month comes between July and September?", options: ["February", "June", "August"], correct: "August", explanation: "August comes between July and September." },
+        { question: "What is the day right after Friday?", options: ["Saturday", "Sunday", "Monday"], correct: "Saturday", explanation: "After Friday comes Saturday." },
+        { question: "What is the month just before June?", options: ["May", "July", "January"], correct: "May", explanation: "Before June comes May." },
+        { question: "Which month comes before May?", options: ["November", "February", "April"], correct: "April", explanation: "Before May comes April." },
+        { question: "Which day comes after Monday?", options: ["Wednesday", "Tuesday", "Friday"], correct: "Tuesday", explanation: "After Monday comes Tuesday." },
+        { question: "Which day comes between Friday and Sunday?", options: ["Sunday", "Saturday", "Thursday"], correct: "Saturday", explanation: "Saturday comes between Friday and Sunday." },
+        { question: "Which day comes before Saturday?", options: ["Friday", "Wednesday", "Saturday"], correct: "Friday", explanation: "Before Saturday comes Friday." },
+        { question: "What is the month just before January?", options: ["December", "October", "May"], correct: "December", explanation: "Before January comes December." },
+        { question: "What is the day right after Thursday?", options: ["Friday", "Thursday", "Wednesday"], correct: "Friday", explanation: "After Thursday comes Friday." },
+        { question: "What is the month right after August?", options: ["September", "June", "January"], correct: "September", explanation: "After August comes September." },
+        { question: "Which month comes after October?", options: ["December", "September", "November"], correct: "November", explanation: "After October comes November." },
+        { question: "Which month comes after July?", options: ["August", "September", "March"], correct: "August", explanation: "After July comes August." },
+        { question: "What is the month right after April?", options: ["May", "October", "January"], correct: "May", explanation: "After April comes May." },
+        { question: "Which month comes between April and June?", options: ["July", "May", "June"], correct: "May", explanation: "May comes between April and June." },
+        { question: "What is the day right after Wednesday?", options: ["Wednesday", "Thursday", "Saturday"], correct: "Thursday", explanation: "After Wednesday comes Thursday." },
+        { question: "Which month comes before September?", options: ["August", "June", "November"], correct: "August", explanation: "Before September comes August." },
+        { question: "Which day comes between Monday and Wednesday?", options: ["Monday", "Sunday", "Tuesday"], correct: "Tuesday", explanation: "Tuesday comes between Monday and Wednesday." },
+        { question: "Which month comes after January?", options: ["August", "January", "February"], correct: "February", explanation: "After January comes February." },
+        { question: "Which month comes after February?", options: ["August", "March", "June"], correct: "March", explanation: "After February comes March." },
+        { question: "Which month comes between August and October?", options: ["February", "November", "September"], correct: "September", explanation: "September comes between August and October." },
+        { question: "Which day comes before Wednesday?", options: ["Tuesday", "Saturday", "Wednesday"], correct: "Tuesday", explanation: "Before Wednesday comes Tuesday." },
+        { question: "Which month comes between December and February?", options: ["January", "October", "August"], correct: "January", explanation: "January comes between December and February." },
+        { question: "What is the month just before August?", options: ["February", "July", "October"], correct: "July", explanation: "Before August comes July." },
+        { question: "What is the month just before December?", options: ["November", "October", "July"], correct: "November", explanation: "Before December comes November." },
+        { question: "Which day comes before Friday?", options: ["Sunday", "Saturday", "Thursday"], correct: "Thursday", explanation: "Before Friday comes Thursday." },
+        { question: "Which day comes before Monday?", options: ["Tuesday", "Sunday", "Saturday"], correct: "Sunday", explanation: "Before Monday comes Sunday." },
+        { question: "What is the day just before Saturday?", options: ["Friday", "Wednesday", "Thursday"], correct: "Friday", explanation: "Before Saturday comes Friday." },
+        { question: "Which day comes between Thursday and Saturday?", options: ["Wednesday", "Friday", "Tuesday"], correct: "Friday", explanation: "Friday comes between Thursday and Saturday." },
+        { question: "What is the day just before Wednesday?", options: ["Wednesday", "Tuesday", "Saturday"], correct: "Tuesday", explanation: "Before Wednesday comes Tuesday." },
+        { question: "What is the day just before Sunday?", options: ["Saturday", "Tuesday", "Friday"], correct: "Saturday", explanation: "Before Sunday comes Saturday." },
+        { question: "What is the month right after March?", options: ["June", "April", "December"], correct: "April", explanation: "After March comes April." },
+        { question: "Which day comes after Thursday?", options: ["Saturday", "Friday", "Sunday"], correct: "Friday", explanation: "After Thursday comes Friday." },
+        { question: "Which month comes between March and May?", options: ["February", "April", "March"], correct: "April", explanation: "April comes between March and May." },
+        { question: "What is the month just before November?", options: ["April", "October", "February"], correct: "October", explanation: "Before November comes October." },
+        { question: "Which month comes before October?", options: ["January", "September", "August"], correct: "September", explanation: "Before October comes September." },
+        { question: "What is the month right after February?", options: ["March", "July", "December"], correct: "March", explanation: "After February comes March." },
+        { question: "Which of these is a weekend day?", options: ["Saturday", "Tuesday", "Monday"], correct: "Saturday", explanation: "Saturday is a weekend day." },
+        { question: "Which is the first month of the year?", options: ["August", "February", "January"], correct: "January", explanation: "January is the first month of the year." },
+        { question: "What is the day right after Tuesday?", options: ["Sunday", "Wednesday", "Tuesday"], correct: "Wednesday", explanation: "After Tuesday comes Wednesday." },
+        { question: "What is the day right after Saturday?", options: ["Sunday", "Saturday", "Wednesday"], correct: "Sunday", explanation: "After Saturday comes Sunday." },
+        { question: "Which month comes before January?", options: ["March", "April", "December"], correct: "December", explanation: "Before January comes December." },
+        { question: "Which month comes between February and April?", options: ["July", "February", "March"], correct: "March", explanation: "March comes between February and April." },
+        { question: "Which month comes between June and August?", options: ["October", "December", "July"], correct: "July", explanation: "July comes between June and August." },
+        { question: "Which month comes after August?", options: ["January", "December", "September"], correct: "September", explanation: "After August comes September." },
+        { question: "What is the day just before Monday?", options: ["Monday", "Sunday", "Tuesday"], correct: "Sunday", explanation: "Before Monday comes Sunday." },
+        { question: "What is the month just before February?", options: ["May", "January", "August"], correct: "January", explanation: "Before February comes January." },
+        { question: "Which month comes after June?", options: ["August", "May", "July"], correct: "July", explanation: "After June comes July." },
+        { question: "Which day comes after Wednesday?", options: ["Monday", "Saturday", "Thursday"], correct: "Thursday", explanation: "After Wednesday comes Thursday." },
+        { question: "Which month comes before June?", options: ["August", "May", "July"], correct: "May", explanation: "Before June comes May." },
+        { question: "Which day comes after Saturday?", options: ["Tuesday", "Sunday", "Friday"], correct: "Sunday", explanation: "After Saturday comes Sunday." },
+        { question: "What is the month just before April?", options: ["April", "March", "January"], correct: "March", explanation: "Before April comes March." },
+        { question: "Which month comes before December?", options: ["April", "February", "November"], correct: "November", explanation: "Before December comes November." },
+        { question: "Which month comes after December?", options: ["March", "January", "August"], correct: "January", explanation: "After December comes January." },
+        { question: "What is the day just before Friday?", options: ["Thursday", "Tuesday", "Friday"], correct: "Thursday", explanation: "Before Friday comes Thursday." },
+        { question: "What is the month right after July?", options: ["February", "August", "December"], correct: "August", explanation: "After July comes August." },
+        { question: "Which month comes before July?", options: ["November", "June", "December"], correct: "June", explanation: "Before July comes June." },
+        { question: "Which month comes between October and December?", options: ["November", "October", "September"], correct: "November", explanation: "November comes between October and December." },
+        { question: "How many days are there in a week?", options: ["7", "12", "6"], correct: "7", explanation: "There are 7 days in a week." },
+        { question: "What is the day right after Sunday?", options: ["Friday", "Wednesday", "Monday"], correct: "Monday", explanation: "After Sunday comes Monday." },
+        { question: "What is the month just before May?", options: ["March", "June", "April"], correct: "April", explanation: "Before May comes April." },
+        { question: "Which month comes before February?", options: ["May", "January", "August"], correct: "January", explanation: "Before February comes January." },
+        { question: "Which month comes before November?", options: ["October", "August", "November"], correct: "October", explanation: "Before November comes October." },
+        { question: "What is the day just before Thursday?", options: ["Wednesday", "Saturday", "Thursday"], correct: "Wednesday", explanation: "Before Thursday comes Wednesday." },
+        { question: "Which day comes before Sunday?", options: ["Saturday", "Monday", "Friday"], correct: "Saturday", explanation: "Before Sunday comes Saturday." },
+        { question: "What is the day just before Tuesday?", options: ["Monday", "Thursday", "Wednesday"], correct: "Monday", explanation: "Before Tuesday comes Monday." },
+        { question: "Which day comes after Tuesday?", options: ["Monday", "Sunday", "Wednesday"], correct: "Wednesday", explanation: "After Tuesday comes Wednesday." },
+        { question: "What is the day right after Monday?", options: ["Thursday", "Saturday", "Tuesday"], correct: "Tuesday", explanation: "After Monday comes Tuesday." },
+        { question: "Which is the last month of the year?", options: ["May", "December", "March"], correct: "December", explanation: "December is the last month of the year." },
+        { question: "Which day comes between Sunday and Tuesday?", options: ["Monday", "Tuesday", "Thursday"], correct: "Monday", explanation: "Monday comes between Sunday and Tuesday." },
+        { question: "What is the month right after November?", options: ["June", "December", "November"], correct: "December", explanation: "After November comes December." },
+        { question: "Which month comes between September and November?", options: ["March", "November", "October"], correct: "October", explanation: "October comes between September and November." },
+        { question: "What is the month just before September?", options: ["August", "March", "June"], correct: "August", explanation: "Before September comes August." },
+        { question: "What is the month right after October?", options: ["November", "July", "August"], correct: "November", explanation: "After October comes November." },
+        { question: "Which month comes before March?", options: ["February", "October", "September"], correct: "February", explanation: "Before March comes February." },
+        { question: "How many months are there in a year?", options: ["30", "12", "10"], correct: "12", explanation: "There are 12 months in a year." },
+        { question: "What is the month right after September?", options: ["November", "October", "February"], correct: "October", explanation: "After September comes October." },
+        { question: "Which day comes between Tuesday and Thursday?", options: ["Sunday", "Wednesday", "Thursday"], correct: "Wednesday", explanation: "Wednesday comes between Tuesday and Thursday." },
+        { question: "Which month comes before April?", options: ["March", "December", "April"], correct: "March", explanation: "Before April comes March." },
+        { question: "What is the month right after June?", options: ["November", "December", "July"], correct: "July", explanation: "After June comes July." },
+        { question: "Which month comes after April?", options: ["August", "May", "January"], correct: "May", explanation: "After April comes May." },
+        { question: "Which day comes between Saturday and Monday?", options: ["Friday", "Saturday", "Sunday"], correct: "Sunday", explanation: "Sunday comes between Saturday and Monday." },
+        { question: "Which month comes after May?", options: ["June", "October", "May"], correct: "June", explanation: "After May comes June." },
+        { question: "What is the month right after May?", options: ["June", "January", "February"], correct: "June", explanation: "After May comes June." },
+        { question: "Which day comes between Wednesday and Friday?", options: ["Thursday", "Tuesday", "Sunday"], correct: "Thursday", explanation: "Thursday comes between Wednesday and Friday." },
+        { question: "Which month comes between November and January?", options: ["December", "February", "June"], correct: "December", explanation: "December comes between November and January." },
+        { question: "Which month comes before August?", options: ["May", "July", "November"], correct: "July", explanation: "Before August comes July." },
+        { question: "Which month comes after September?", options: ["August", "October", "May"], correct: "October", explanation: "After September comes October." },
+        { question: "Which month comes between January and March?", options: ["February", "May", "June"], correct: "February", explanation: "February comes between January and March." }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>

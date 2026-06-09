@@ -28,192 +28,106 @@
 
 <script>
   const questions = [
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>21</span>",
-      options: ["Twenty-One", "Seventeen"],
-      correct: "Twenty-One",
-      explanation: "21 = Twenty-One"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>4</span>",
-      options: ["Four", "Nine"],
-      correct: "Four",
-      explanation: "4 = Four"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>12</span>",
-      options: ["Twelve", "Fifteen"],
-      correct: "Twelve",
-      explanation: "12 = Twelve"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>0</span>",
-      options: ["Zero", "Three"],
-      correct: "Zero",
-      explanation: "0 = Zero"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>27</span>",
-      options: ["Twenty-Seven", "Twenty"],
-      correct: "Twenty-Seven",
-      explanation: "27 = Twenty-Seven"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>8</span>",
-      options: ["Ten", "Eight"],
-      correct: "Eight",
-      explanation: "8 = Eight"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>19</span>",
-      options: ["Nineteen", "Fourteen"],
-      correct: "Nineteen",
-      explanation: "19 = Nineteen"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>25</span>",
-      options: ["Twenty-Five", "Twenty-Two"],
-      correct: "Twenty-Five",
-      explanation: "25 = Twenty-Five"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>2</span>",
-      options: ["Nine", "Two"],
-      correct: "Two",
-      explanation: "2 = Two"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>15</span>",
-      options: ["Sixteen", "Fifteen"],
-      correct: "Fifteen",
-      explanation: "15 = Fifteen"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>29</span>",
-      options: ["Twenty-Nine", "Twenty-Four"],
-      correct: "Twenty-Nine",
-      explanation: "29 = Twenty-Nine"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>6</span>",
-      options: ["Six", "Eleven"],
-      correct: "Six",
-      explanation: "6 = Six"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>11</span>",
-      options: ["Eleven", "Thirteen"],
-      correct: "Eleven",
-      explanation: "11 = Eleven"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>30</span>",
-      options: ["Twenty", "Thirty"],
-      correct: "Thirty",
-      explanation: "30 = Thirty"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>20</span>",
-      options: ["Twenty", "Six"],
-      correct: "Twenty",
-      explanation: "20 = Twenty"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>14</span>",
-      options: ["Fourteen", "Seventeen"],
-      correct: "Fourteen",
-      explanation: "14 = Fourteen"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>9</span>",
-      options: ["Nine", "Five"],
-      correct: "Nine",
-      explanation: "9 = Nine"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>23</span>",
-      options: ["Twenty-Three", "Eighteen"],
-      correct: "Twenty-Three",
-      explanation: "23 = Twenty-Three"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>1</span>",
-      options: ["One", "Four"],
-      correct: "One",
-      explanation: "1 = One"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>5</span>",
-      options: ["Seven", "Five"],
-      correct: "Five",
-      explanation: "5 = Five"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>18</span>",
-      options: ["Nineteen", "Eighteen"],
-      correct: "Eighteen",
-      explanation: "18 = Eighteen"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>7</span>",
-      options: ["Seven", "Twelve"],
-      correct: "Seven",
-      explanation: "7 = Seven"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>17</span>",
-      options: ["Thirteen", "Seventeen"],
-      correct: "Seventeen",
-      explanation: "17 = Seventeen"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>22</span>",
-      options: ["Twenty-Two", "Twenty-Six"],
-      correct: "Twenty-Two",
-      explanation: "22 = Twenty-Two"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>3</span>",
-      options: ["Three", "Eight"],
-      correct: "Three",
-      explanation: "3 = Three"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>28</span>",
-      options: ["Twenty-Eight", "Twenty-One"],
-      correct: "Twenty-Eight",
-      explanation: "28 = Twenty-Eight"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>16</span>",
-      options: ["Sixteen", "Nineteen"],
-      correct: "Sixteen",
-      explanation: "16 = Sixteen"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>26</span>",
-      options: ["Twenty-Four", "Twenty-Six"],
-      correct: "Twenty-Six",
-      explanation: "26 = Twenty-Six"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>13</span>",
-      options: ["Fifteen", "Thirteen"],
-      correct: "Thirteen",
-      explanation: "13 = Thirteen"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>24</span>",
-      options: ["Twenty-Nine", "Twenty-Four"],
-      correct: "Twenty-Four",
-      explanation: "24 = Twenty-Four"
-    },
-    {
-      question: "Convert the given number in words: <br> <span style='color:black;'>10</span>",
-      options: ["Ten", "Six"],
-      correct: "Ten",
-      explanation: "10 = Ten"
-    }
+    { question: "Convert the given number in words: <br> <span style='color:black;'>0</span>", options: ["One", "Zero"], correct: "Zero", explanation: "0 = Zero" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>1</span>", options: ["One", "Two"], correct: "One", explanation: "1 = One" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>2</span>", options: ["Two", "One"], correct: "Two", explanation: "2 = Two" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>3</span>", options: ["Four", "Three"], correct: "Three", explanation: "3 = Three" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>4</span>", options: ["Four", "Five"], correct: "Four", explanation: "4 = Four" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>5</span>", options: ["Four", "Five"], correct: "Five", explanation: "5 = Five" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>6</span>", options: ["Five", "Six"], correct: "Six", explanation: "6 = Six" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>7</span>", options: ["Seven", "Six"], correct: "Seven", explanation: "7 = Seven" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>8</span>", options: ["Seven", "Eight"], correct: "Eight", explanation: "8 = Eight" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>9</span>", options: ["Nine", "Eight"], correct: "Nine", explanation: "9 = Nine" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>10</span>", options: ["Eleven", "Ten"], correct: "Ten", explanation: "10 = Ten" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>11</span>", options: ["Twelve", "Eleven"], correct: "Eleven", explanation: "11 = Eleven" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>12</span>", options: ["Thirteen", "Twelve"], correct: "Twelve", explanation: "12 = Twelve" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>13</span>", options: ["Thirteen", "Twelve"], correct: "Thirteen", explanation: "13 = Thirteen" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>14</span>", options: ["Fifteen", "Fourteen"], correct: "Fourteen", explanation: "14 = Fourteen" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>15</span>", options: ["Sixteen", "Fifteen"], correct: "Fifteen", explanation: "15 = Fifteen" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>16</span>", options: ["Seventeen", "Sixteen"], correct: "Sixteen", explanation: "16 = Sixteen" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>17</span>", options: ["Sixteen", "Seventeen"], correct: "Seventeen", explanation: "17 = Seventeen" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>18</span>", options: ["Nineteen", "Eighteen"], correct: "Eighteen", explanation: "18 = Eighteen" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>19</span>", options: ["Nineteen", "Twenty"], correct: "Nineteen", explanation: "19 = Nineteen" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>20</span>", options: ["Nineteen", "Twenty"], correct: "Twenty", explanation: "20 = Twenty" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>21</span>", options: ["Twenty", "Twenty-one"], correct: "Twenty-one", explanation: "21 = Twenty-one" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>22</span>", options: ["Twenty-one", "Twenty-two"], correct: "Twenty-two", explanation: "22 = Twenty-two" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>23</span>", options: ["Twenty-two", "Twenty-three"], correct: "Twenty-three", explanation: "23 = Twenty-three" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>24</span>", options: ["Twenty-four", "Twenty-three"], correct: "Twenty-four", explanation: "24 = Twenty-four" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>25</span>", options: ["Twenty-five", "Twenty-six"], correct: "Twenty-five", explanation: "25 = Twenty-five" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>26</span>", options: ["Twenty-five", "Twenty-six"], correct: "Twenty-six", explanation: "26 = Twenty-six" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>27</span>", options: ["Twenty-seven", "Twenty-eight"], correct: "Twenty-seven", explanation: "27 = Twenty-seven" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>28</span>", options: ["Twenty-eight", "Twenty-nine"], correct: "Twenty-eight", explanation: "28 = Twenty-eight" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>29</span>", options: ["Twenty-eight", "Twenty-nine"], correct: "Twenty-nine", explanation: "29 = Twenty-nine" },
+    { question: "Convert the given number in words: <br> <span style='color:black;'>30</span>", options: ["Twenty-nine", "Thirty"], correct: "Thirty", explanation: "30 = Thirty" },
+    { question: "Write the number in words: <br> <span style='color:black;'>0</span>", options: ["Zero", "One"], correct: "Zero", explanation: "0 = Zero" },
+    { question: "Write the number in words: <br> <span style='color:black;'>1</span>", options: ["Zero", "One"], correct: "One", explanation: "1 = One" },
+    { question: "Write the number in words: <br> <span style='color:black;'>2</span>", options: ["Two", "One"], correct: "Two", explanation: "2 = Two" },
+    { question: "Write the number in words: <br> <span style='color:black;'>3</span>", options: ["Three", "Four"], correct: "Three", explanation: "3 = Three" },
+    { question: "Write the number in words: <br> <span style='color:black;'>4</span>", options: ["Four", "Three"], correct: "Four", explanation: "4 = Four" },
+    { question: "Write the number in words: <br> <span style='color:black;'>5</span>", options: ["Five", "Four"], correct: "Five", explanation: "5 = Five" },
+    { question: "Write the number in words: <br> <span style='color:black;'>6</span>", options: ["Six", "Seven"], correct: "Six", explanation: "6 = Six" },
+    { question: "Write the number in words: <br> <span style='color:black;'>7</span>", options: ["Eight", "Seven"], correct: "Seven", explanation: "7 = Seven" },
+    { question: "Write the number in words: <br> <span style='color:black;'>8</span>", options: ["Seven", "Eight"], correct: "Eight", explanation: "8 = Eight" },
+    { question: "Write the number in words: <br> <span style='color:black;'>9</span>", options: ["Nine", "Ten"], correct: "Nine", explanation: "9 = Nine" },
+    { question: "Write the number in words: <br> <span style='color:black;'>10</span>", options: ["Ten", "Eleven"], correct: "Ten", explanation: "10 = Ten" },
+    { question: "Write the number in words: <br> <span style='color:black;'>11</span>", options: ["Eleven", "Twelve"], correct: "Eleven", explanation: "11 = Eleven" },
+    { question: "Write the number in words: <br> <span style='color:black;'>12</span>", options: ["Twelve", "Thirteen"], correct: "Twelve", explanation: "12 = Twelve" },
+    { question: "Write the number in words: <br> <span style='color:black;'>13</span>", options: ["Fourteen", "Thirteen"], correct: "Thirteen", explanation: "13 = Thirteen" },
+    { question: "Write the number in words: <br> <span style='color:black;'>14</span>", options: ["Fifteen", "Fourteen"], correct: "Fourteen", explanation: "14 = Fourteen" },
+    { question: "Write the number in words: <br> <span style='color:black;'>15</span>", options: ["Sixteen", "Fifteen"], correct: "Fifteen", explanation: "15 = Fifteen" },
+    { question: "Write the number in words: <br> <span style='color:black;'>16</span>", options: ["Fifteen", "Sixteen"], correct: "Sixteen", explanation: "16 = Sixteen" },
+    { question: "Write the number in words: <br> <span style='color:black;'>17</span>", options: ["Eighteen", "Seventeen"], correct: "Seventeen", explanation: "17 = Seventeen" },
+    { question: "Write the number in words: <br> <span style='color:black;'>18</span>", options: ["Eighteen", "Seventeen"], correct: "Eighteen", explanation: "18 = Eighteen" },
+    { question: "Write the number in words: <br> <span style='color:black;'>19</span>", options: ["Eighteen", "Nineteen"], correct: "Nineteen", explanation: "19 = Nineteen" },
+    { question: "Write the number in words: <br> <span style='color:black;'>20</span>", options: ["Twenty", "Twenty-one"], correct: "Twenty", explanation: "20 = Twenty" },
+    { question: "Write the number in words: <br> <span style='color:black;'>21</span>", options: ["Twenty", "Twenty-one"], correct: "Twenty-one", explanation: "21 = Twenty-one" },
+    { question: "Write the number in words: <br> <span style='color:black;'>22</span>", options: ["Twenty-two", "Twenty-one"], correct: "Twenty-two", explanation: "22 = Twenty-two" },
+    { question: "Write the number in words: <br> <span style='color:black;'>23</span>", options: ["Twenty-three", "Twenty-two"], correct: "Twenty-three", explanation: "23 = Twenty-three" },
+    { question: "Write the number in words: <br> <span style='color:black;'>24</span>", options: ["Twenty-five", "Twenty-four"], correct: "Twenty-four", explanation: "24 = Twenty-four" },
+    { question: "Write the number in words: <br> <span style='color:black;'>25</span>", options: ["Twenty-five", "Twenty-six"], correct: "Twenty-five", explanation: "25 = Twenty-five" },
+    { question: "Write the number in words: <br> <span style='color:black;'>26</span>", options: ["Twenty-seven", "Twenty-six"], correct: "Twenty-six", explanation: "26 = Twenty-six" },
+    { question: "Write the number in words: <br> <span style='color:black;'>27</span>", options: ["Twenty-seven", "Twenty-six"], correct: "Twenty-seven", explanation: "27 = Twenty-seven" },
+    { question: "Write the number in words: <br> <span style='color:black;'>28</span>", options: ["Twenty-seven", "Twenty-eight"], correct: "Twenty-eight", explanation: "28 = Twenty-eight" },
+    { question: "Write the number in words: <br> <span style='color:black;'>29</span>", options: ["Twenty-nine", "Twenty-eight"], correct: "Twenty-nine", explanation: "29 = Twenty-nine" },
+    { question: "Write the number in words: <br> <span style='color:black;'>30</span>", options: ["Twenty-nine", "Thirty"], correct: "Thirty", explanation: "30 = Thirty" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>0</span>", options: ["Zero", "One"], correct: "Zero", explanation: "0 = Zero" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>1</span>", options: ["Zero", "One"], correct: "One", explanation: "1 = One" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>2</span>", options: ["Two", "One"], correct: "Two", explanation: "2 = Two" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>3</span>", options: ["Four", "Three"], correct: "Three", explanation: "3 = Three" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>4</span>", options: ["Five", "Four"], correct: "Four", explanation: "4 = Four" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>5</span>", options: ["Four", "Five"], correct: "Five", explanation: "5 = Five" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>6</span>", options: ["Six", "Five"], correct: "Six", explanation: "6 = Six" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>7</span>", options: ["Seven", "Six"], correct: "Seven", explanation: "7 = Seven" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>8</span>", options: ["Eight", "Nine"], correct: "Eight", explanation: "8 = Eight" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>9</span>", options: ["Nine", "Ten"], correct: "Nine", explanation: "9 = Nine" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>10</span>", options: ["Eleven", "Ten"], correct: "Ten", explanation: "10 = Ten" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>11</span>", options: ["Ten", "Eleven"], correct: "Eleven", explanation: "11 = Eleven" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>12</span>", options: ["Twelve", "Eleven"], correct: "Twelve", explanation: "12 = Twelve" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>13</span>", options: ["Thirteen", "Twelve"], correct: "Thirteen", explanation: "13 = Thirteen" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>14</span>", options: ["Fifteen", "Fourteen"], correct: "Fourteen", explanation: "14 = Fourteen" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>15</span>", options: ["Sixteen", "Fifteen"], correct: "Fifteen", explanation: "15 = Fifteen" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>16</span>", options: ["Seventeen", "Sixteen"], correct: "Sixteen", explanation: "16 = Sixteen" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>17</span>", options: ["Eighteen", "Seventeen"], correct: "Seventeen", explanation: "17 = Seventeen" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>18</span>", options: ["Eighteen", "Nineteen"], correct: "Eighteen", explanation: "18 = Eighteen" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>19</span>", options: ["Nineteen", "Twenty"], correct: "Nineteen", explanation: "19 = Nineteen" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>20</span>", options: ["Twenty-one", "Twenty"], correct: "Twenty", explanation: "20 = Twenty" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>21</span>", options: ["Twenty", "Twenty-one"], correct: "Twenty-one", explanation: "21 = Twenty-one" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>22</span>", options: ["Twenty-two", "Twenty-three"], correct: "Twenty-two", explanation: "22 = Twenty-two" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>23</span>", options: ["Twenty-two", "Twenty-three"], correct: "Twenty-three", explanation: "23 = Twenty-three" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>24</span>", options: ["Twenty-four", "Twenty-three"], correct: "Twenty-four", explanation: "24 = Twenty-four" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>25</span>", options: ["Twenty-five", "Twenty-six"], correct: "Twenty-five", explanation: "25 = Twenty-five" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>26</span>", options: ["Twenty-six", "Twenty-five"], correct: "Twenty-six", explanation: "26 = Twenty-six" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>27</span>", options: ["Twenty-eight", "Twenty-seven"], correct: "Twenty-seven", explanation: "27 = Twenty-seven" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>28</span>", options: ["Twenty-eight", "Twenty-nine"], correct: "Twenty-eight", explanation: "28 = Twenty-eight" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>29</span>", options: ["Twenty-eight", "Twenty-nine"], correct: "Twenty-nine", explanation: "29 = Twenty-nine" },
+    { question: "How do you write this number in words? <br> <span style='color:black;'>30</span>", options: ["Thirty", "Twenty-nine"], correct: "Thirty", explanation: "30 = Thirty" },
+    { question: "Choose the correct word for: <br> <span style='color:black;'>0</span>", options: ["Zero", "One"], correct: "Zero", explanation: "0 = Zero" },
+    { question: "Choose the correct word for: <br> <span style='color:black;'>1</span>", options: ["One", "Zero"], correct: "One", explanation: "1 = One" },
+    { question: "Choose the correct word for: <br> <span style='color:black;'>2</span>", options: ["Three", "Two"], correct: "Two", explanation: "2 = Two" },
+    { question: "Choose the correct word for: <br> <span style='color:black;'>3</span>", options: ["Two", "Three"], correct: "Three", explanation: "3 = Three" },
+    { question: "Choose the correct word for: <br> <span style='color:black;'>4</span>", options: ["Three", "Four"], correct: "Four", explanation: "4 = Four" },
+    { question: "Choose the correct word for: <br> <span style='color:black;'>5</span>", options: ["Four", "Five"], correct: "Five", explanation: "5 = Five" },
+    { question: "Choose the correct word for: <br> <span style='color:black;'>6</span>", options: ["Seven", "Six"], correct: "Six", explanation: "6 = Six" }
   ];
 </script>
 

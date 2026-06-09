@@ -3,8 +3,31 @@
    ================================= */
 
 (function () {
+  // How many questions to show per attempt (drawn from the full bank).
+  const QUIZ_SIZE = 25;
+
+  // Fisher–Yates shuffle on a COPY (never mutate the caller's bank).
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  // Pick a fresh random subset of up to `size` items from the full bank.
+  function pickSubset(bank, size) {
+    const list = Array.isArray(bank) ? bank : [];
+    return shuffle(list).slice(0, Math.min(size, list.length));
+  }
+
   // Public init
-  window.initMCQQuiz = function initMCQQuiz(questions) {
+  window.initMCQQuiz = function initMCQQuiz(allQuestions) {
+    // Draw a new random 25 from the 100-question bank every time the
+    // exercise is opened. Order is randomized too.
+    const questions = pickSubset(allQuestions, QUIZ_SIZE);
+
     // --- State ---
     let currentQuestionIndex = 0;
     let correctCount = 0;

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GK – My Body</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        { question: "What is the main job of our eyes?", options: ["see", "bite", "sing"], correct: "see", explanation: "We use our eyes to see." },
+        { question: "What is the main job of our hands?", options: ["hold things", "smell", "catch a ball"], correct: "hold things", explanation: "We use our hands to hold things." },
+        { question: "We use our ___ to throw.", options: ["hair", "hands", "nose"], correct: "hands", explanation: "We use our hands to throw." },
+        { question: "We use our ___ to bite.", options: ["teeth", "legs", "ears"], correct: "teeth", explanation: "We use our teeth to bite." },
+        { question: "We use our ___ to think.", options: ["ears", "brain", "eyes"], correct: "brain", explanation: "We use our brain to think." },
+        { question: "We use our ___ to draw.", options: ["teeth", "tongue", "hands"], correct: "hands", explanation: "We use our hands to draw." },
+        { question: "How many hands do we have?", options: ["1", "5", "2"], correct: "2", explanation: "We have 2 hands." },
+        { question: "We use our ___ to smell.", options: ["teeth", "nose", "ears"], correct: "nose", explanation: "We use our nose to smell." },
+        { question: "We use our ___ to walk.", options: ["teeth", "hair", "legs"], correct: "legs", explanation: "We use our legs to walk." },
+        { question: "What is the main job of our ears?", options: ["hear", "watch TV", "sing"], correct: "hear", explanation: "We use our ears to hear." },
+        { question: "Which body part do we use to chew food?", options: ["nose", "teeth", "ears"], correct: "teeth", explanation: "We use our teeth to chew food." },
+        { question: "Which body part do we use to throw?", options: ["legs", "tongue", "hands"], correct: "hands", explanation: "We use our hands to throw." },
+        { question: "How many legs do we have?", options: ["1", "2", "5"], correct: "2", explanation: "We have 2 legs." },
+        { question: "We use our ___ to sing.", options: ["brain", "mouth", "legs"], correct: "mouth", explanation: "We use our mouth to sing." },
+        { question: "We use our ___ to chew food.", options: ["tongue", "teeth", "brain"], correct: "teeth", explanation: "We use our teeth to chew food." },
+        { question: "Which body part do we use to breathe?", options: ["tongue", "brain", "nose"], correct: "nose", explanation: "We use our nose to breathe." },
+        { question: "Which body part do we use to hear?", options: ["teeth", "hair", "ears"], correct: "ears", explanation: "We use our ears to hear." },
+        { question: "Count them: how many neck do we have?", options: ["10", "1", "4"], correct: "1", explanation: "We have 1 neck." },
+        { question: "Count them: how many knees do we have?", options: ["2", "1", "5"], correct: "2", explanation: "We have 2 knees." },
+        { question: "A person has how many feet?", options: ["10", "4", "2"], correct: "2", explanation: "We have 2 feet." },
+        { question: "Count them: how many arms do we have?", options: ["1", "2", "5"], correct: "2", explanation: "We have 2 arms." },
+        { question: "We use our ___ to clap.", options: ["eyes", "hands", "tongue"], correct: "hands", explanation: "We use our hands to clap." },
+        { question: "How many ears do we have?", options: ["2", "10", "1"], correct: "2", explanation: "We have 2 ears." },
+        { question: "A person has how many ears?", options: ["4", "2", "5"], correct: "2", explanation: "We have 2 ears." },
+        { question: "How many head do we have?", options: ["5", "1", "4"], correct: "1", explanation: "We have 1 head." },
+        { question: "A person has how many chin?", options: ["10", "1", "2"], correct: "1", explanation: "We have 1 chin." },
+        { question: "A person has how many knees?", options: ["2", "10", "1"], correct: "2", explanation: "We have 2 knees." },
+        { question: "Which body part do we use to blink?", options: ["hands", "brain", "eyes"], correct: "eyes", explanation: "We use our eyes to blink." },
+        { question: "A person has how many arms?", options: ["1", "2", "10"], correct: "2", explanation: "We have 2 arms." },
+        { question: "How many knees do we have?", options: ["5", "10", "2"], correct: "2", explanation: "We have 2 knees." },
+        { question: "Count them: how many toes on one foot do we have?", options: ["4", "5", "10"], correct: "5", explanation: "We have 5 toes on one foot." },
+        { question: "How many lips do we have?", options: ["1", "10", "2"], correct: "2", explanation: "We have 2 lips." },
+        { question: "Count them: how many legs do we have?", options: ["2", "10", "4"], correct: "2", explanation: "We have 2 legs." },
+        { question: "Count them: how many chin do we have?", options: ["5", "2", "1"], correct: "1", explanation: "We have 1 chin." },
+        { question: "We use our ___ to hear.", options: ["ears", "brain", "nose"], correct: "ears", explanation: "We use our ears to hear." },
+        { question: "How many toes on one foot do we have?", options: ["5", "1", "2"], correct: "5", explanation: "We have 5 toes on one foot." },
+        { question: "A person has how many nose?", options: ["5", "4", "1"], correct: "1", explanation: "We have 1 nose." },
+        { question: "Count them: how many nose do we have?", options: ["4", "1", "5"], correct: "1", explanation: "We have 1 nose." },
+        { question: "We use our ___ to taste.", options: ["tongue", "teeth", "legs"], correct: "tongue", explanation: "We use our tongue to taste." },
+        { question: "Count them: how many elbows do we have?", options: ["5", "2", "10"], correct: "2", explanation: "We have 2 elbows." },
+        { question: "How many elbows do we have?", options: ["2", "4", "10"], correct: "2", explanation: "We have 2 elbows." },
+        { question: "We use our ___ to jump.", options: ["mouth", "teeth", "legs"], correct: "legs", explanation: "We use our legs to jump." },
+        { question: "Which body part do we use to run?", options: ["mouth", "eyes", "legs"], correct: "legs", explanation: "We use our legs to run." },
+        { question: "Which body part do we use to see?", options: ["legs", "eyes", "brain"], correct: "eyes", explanation: "We use our eyes to see." },
+        { question: "Which body part do we use to hold things?", options: ["teeth", "hands", "nose"], correct: "hands", explanation: "We use our hands to hold things." },
+        { question: "How many nose do we have?", options: ["10", "4", "1"], correct: "1", explanation: "We have 1 nose." },
+        { question: "Count them: how many tongue do we have?", options: ["1", "2", "10"], correct: "1", explanation: "We have 1 tongue." },
+        { question: "How many arms do we have?", options: ["2", "1", "10"], correct: "2", explanation: "We have 2 arms." },
+        { question: "Which body part do we use to clap?", options: ["hands", "ears", "tongue"], correct: "hands", explanation: "We use our hands to clap." },
+        { question: "We use our ___ to listen to music.", options: ["ears", "hair", "nose"], correct: "ears", explanation: "We use our ears to listen to music." },
+        { question: "We use our ___ to watch TV.", options: ["mouth", "eyes", "tongue"], correct: "eyes", explanation: "We use our eyes to watch TV." },
+        { question: "Count them: how many lips do we have?", options: ["4", "2", "1"], correct: "2", explanation: "We have 2 lips." },
+        { question: "Which body part do we use to bite?", options: ["teeth", "eyes", "legs"], correct: "teeth", explanation: "We use our teeth to bite." },
+        { question: "How many tongue do we have?", options: ["10", "1", "4"], correct: "1", explanation: "We have 1 tongue." },
+        { question: "Count them: how many ears do we have?", options: ["2", "1", "5"], correct: "2", explanation: "We have 2 ears." },
+        { question: "Which body part do we use to smell?", options: ["hair", "nose", "brain"], correct: "nose", explanation: "We use our nose to smell." },
+        { question: "How many chin do we have?", options: ["5", "10", "1"], correct: "1", explanation: "We have 1 chin." },
+        { question: "Count them: how many mouth do we have?", options: ["1", "10", "5"], correct: "1", explanation: "We have 1 mouth." },
+        { question: "Which body part do we use to write?", options: ["hands", "legs", "nose"], correct: "hands", explanation: "We use our hands to write." },
+        { question: "A person has how many legs?", options: ["2", "5", "10"], correct: "2", explanation: "We have 2 legs." },
+        { question: "We use our ___ to catch a ball.", options: ["ears", "mouth", "hands"], correct: "hands", explanation: "We use our hands to catch a ball." },
+        { question: "What is the main job of our nose?", options: ["hold things", "smell", "catch a ball"], correct: "smell", explanation: "We use our nose to smell." },
+        { question: "A person has how many elbows?", options: ["2", "4", "1"], correct: "2", explanation: "We have 2 elbows." },
+        { question: "What is the main job of our teeth?", options: ["chew food", "bite", "walk"], correct: "chew food", explanation: "We use our teeth to chew food." },
+        { question: "How many eyes do we have?", options: ["2", "10", "1"], correct: "2", explanation: "We have 2 eyes." },
+        { question: "A person has how many tongue?", options: ["2", "1", "10"], correct: "1", explanation: "We have 1 tongue." },
+        { question: "What is the main job of our legs?", options: ["watch TV", "blink", "walk"], correct: "walk", explanation: "We use our legs to walk." },
+        { question: "Count them: how many head do we have?", options: ["2", "5", "1"], correct: "1", explanation: "We have 1 head." },
+        { question: "Which body part do we use to listen to music?", options: ["mouth", "hands", "ears"], correct: "ears", explanation: "We use our ears to listen to music." },
+        { question: "How many feet do we have?", options: ["4", "10", "2"], correct: "2", explanation: "We have 2 feet." },
+        { question: "Which body part do we use to draw?", options: ["hands", "ears", "mouth"], correct: "hands", explanation: "We use our hands to draw." },
+        { question: "Which body part do we use to kick a ball?", options: ["legs", "teeth", "brain"], correct: "legs", explanation: "We use our legs to kick a ball." },
+        { question: "How many neck do we have?", options: ["1", "10", "2"], correct: "1", explanation: "We have 1 neck." },
+        { question: "How many thumbs do we have?", options: ["2", "10", "1"], correct: "2", explanation: "We have 2 thumbs." },
+        { question: "A person has how many head?", options: ["10", "1", "4"], correct: "1", explanation: "We have 1 head." },
+        { question: "Count them: how many eyes do we have?", options: ["2", "1", "4"], correct: "2", explanation: "We have 2 eyes." },
+        { question: "We use our ___ to talk.", options: ["tongue", "mouth", "hair"], correct: "mouth", explanation: "We use our mouth to talk." },
+        { question: "A person has how many lips?", options: ["2", "10", "5"], correct: "2", explanation: "We have 2 lips." },
+        { question: "We use our ___ to blink.", options: ["eyes", "hair", "ears"], correct: "eyes", explanation: "We use our eyes to blink." },
+        { question: "How many eyebrows do we have?", options: ["4", "2", "5"], correct: "2", explanation: "We have 2 eyebrows." },
+        { question: "A person has how many thumbs?", options: ["5", "2", "1"], correct: "2", explanation: "We have 2 thumbs." },
+        { question: "Which body part do we use to watch TV?", options: ["nose", "eyes", "brain"], correct: "eyes", explanation: "We use our eyes to watch TV." },
+        { question: "Count them: how many fingers on one hand do we have?", options: ["5", "1", "4"], correct: "5", explanation: "We have 5 fingers on one hand." },
+        { question: "Which body part do we use to think?", options: ["tongue", "nose", "brain"], correct: "brain", explanation: "We use our brain to think." },
+        { question: "A person has how many fingers on one hand?", options: ["2", "1", "5"], correct: "5", explanation: "We have 5 fingers on one hand." },
+        { question: "A person has how many eyebrows?", options: ["10", "5", "2"], correct: "2", explanation: "We have 2 eyebrows." },
+        { question: "Which body part do we use to taste?", options: ["brain", "tongue", "mouth"], correct: "tongue", explanation: "We use our tongue to taste." },
+        { question: "Count them: how many hands do we have?", options: ["5", "4", "2"], correct: "2", explanation: "We have 2 hands." },
+        { question: "A person has how many hands?", options: ["10", "5", "2"], correct: "2", explanation: "We have 2 hands." },
+        { question: "We use our ___ to breathe.", options: ["nose", "hands", "legs"], correct: "nose", explanation: "We use our nose to breathe." },
+        { question: "Which body part do we use to jump?", options: ["legs", "tongue", "eyes"], correct: "legs", explanation: "We use our legs to jump." },
+        { question: "Which body part do we use to walk?", options: ["hands", "tongue", "legs"], correct: "legs", explanation: "We use our legs to walk." },
+        { question: "A person has how many eyes?", options: ["2", "10", "5"], correct: "2", explanation: "We have 2 eyes." },
+        { question: "How many fingers on one hand do we have?", options: ["5", "10", "2"], correct: "5", explanation: "We have 5 fingers on one hand." },
+        { question: "A person has how many toes on one foot?", options: ["5", "1", "10"], correct: "5", explanation: "We have 5 toes on one foot." },
+        { question: "We use our ___ to kick a ball.", options: ["legs", "mouth", "ears"], correct: "legs", explanation: "We use our legs to kick a ball." },
+        { question: "How many cheeks do we have?", options: ["5", "1", "2"], correct: "2", explanation: "We have 2 cheeks." },
+        { question: "We use our ___ to run.", options: ["legs", "teeth", "ears"], correct: "legs", explanation: "We use our legs to run." },
+        { question: "Count them: how many eyebrows do we have?", options: ["4", "1", "2"], correct: "2", explanation: "We have 2 eyebrows." },
+        { question: "Count them: how many feet do we have?", options: ["1", "2", "4"], correct: "2", explanation: "We have 2 feet." }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>

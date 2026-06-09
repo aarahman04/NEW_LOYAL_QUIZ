@@ -27,186 +27,106 @@
 
 <script>
   const questions = [
-    {
-      question: "Which shape has <strong>3 sides</strong>?",
-      options: ["Triangle", "Square", "Circle"],
-      correct: "Triangle",
-      explanation: "A Triangle has 3 sides and 3 corners."
-    },
-    {
-      question: "How many corners does a <strong>Rectangle</strong> have?",
-      options: ["3", "4", "5"],
-      correct: "4",
-      explanation: "A Rectangle has 4 corners (also called vertices)."
-    },
-    {
-      question: "Which shape has <strong>no corners</strong> at all?",
-      options: ["Triangle", "Square", "Circle"],
-      correct: "Circle",
-      explanation: "A Circle is perfectly round and has no corners or sides."
-    },
-    {
-      question: "How many sides does a <strong>Square</strong> have?",
-      options: ["3", "4", "5"],
-      correct: "4",
-      explanation: "A Square has 4 equal sides and 4 corners."
-    },
-    {
-      question: "Which shape looks like a <strong>ball</strong>?",
-      options: ["Triangle", "Rectangle", "Circle"],
-      correct: "Circle",
-      explanation: "A Circle is round like a ball."
-    },
-    {
-      question: "How many sides does a <strong>Triangle</strong> have?",
-      options: ["2", "3", "4"],
-      correct: "3",
-      explanation: "A Triangle has exactly 3 sides and 3 corners."
-    },
-    {
-      question: "Which shape has <strong>4 sides</strong> but they are <strong>not all equal</strong>?",
-      options: ["Square", "Rectangle", "Triangle"],
-      correct: "Rectangle",
-      explanation: "A Rectangle has 4 sides — 2 long sides and 2 short sides."
-    },
-    {
-      question: "How many corners does a <strong>Triangle</strong> have?",
-      options: ["2", "3", "4"],
-      correct: "3",
-      explanation: "A Triangle has 3 corners (vertices) and 3 sides."
-    },
-    {
-      question: "Which shape has <strong>all sides equal</strong> and <strong>4 corners</strong>?",
-      options: ["Circle", "Triangle", "Square"],
-      correct: "Square",
-      explanation: "A Square has 4 equal sides and 4 equal corners."
-    },
-    {
-      question: "How many sides does a <strong>Circle</strong> have?",
-      options: ["0", "1", "2"],
-      correct: "0",
-      explanation: "A Circle has no straight sides. It is a curved shape."
-    },
-    {
-      question: "Which shape has <strong>5 sides</strong>?",
-      options: ["Square", "Pentagon", "Hexagon"],
-      correct: "Pentagon",
-      explanation: "A Pentagon has exactly 5 sides and 5 corners."
-    },
-    {
-      question: "How many sides does a <strong>Pentagon</strong> have?",
-      options: ["4", "5", "6"],
-      correct: "5",
-      explanation: "A Pentagon has 5 sides and 5 corners."
-    },
-    {
-      question: "Which shape has <strong>6 sides</strong>?",
-      options: ["Pentagon", "Hexagon", "Octagon"],
-      correct: "Hexagon",
-      explanation: "A Hexagon has exactly 6 sides and 6 corners."
-    },
-    {
-      question: "How many corners does a <strong>Square</strong> have?",
-      options: ["3", "4", "5"],
-      correct: "4",
-      explanation: "A Square has 4 corners and 4 equal sides."
-    },
-    {
-      question: "Which shape looks like a <strong>door</strong>?",
-      options: ["Circle", "Triangle", "Rectangle"],
-      correct: "Rectangle",
-      explanation: "A Rectangle looks like a door — it has 4 sides with 2 long and 2 short sides."
-    },
-    {
-      question: "A shape has <strong>3 corners</strong>. What is it?",
-      options: ["Circle", "Triangle", "Square"],
-      correct: "Triangle",
-      explanation: "Any shape with 3 corners and 3 sides is a Triangle."
-    },
-    {
-      question: "Which shape has <strong>8 sides</strong>?",
-      options: ["Hexagon", "Octagon", "Pentagon"],
-      correct: "Octagon",
-      explanation: "An Octagon has 8 sides and 8 corners. A stop sign is an octagon!"
-    },
-    {
-      question: "How many sides does a <strong>Rectangle</strong> have?",
-      options: ["3", "4", "5"],
-      correct: "4",
-      explanation: "A Rectangle has 4 sides — 2 long and 2 short."
-    },
-    {
-      question: "Which shape is round like the <strong>sun</strong>?",
-      options: ["Triangle", "Circle", "Square"],
-      correct: "Circle",
-      explanation: "A Circle is perfectly round, just like the sun."
-    },
-    {
-      question: "A shape has <strong>4 equal sides</strong>. What is it?",
-      options: ["Rectangle", "Triangle", "Square"],
-      correct: "Square",
-      explanation: "A Square has 4 sides that are all the same length."
-    },
-    {
-      question: "Which shape has <strong>more sides</strong> — a Triangle or a Square?",
-      options: ["Triangle (3 sides)", "Square (4 sides)", "They are the same"],
-      correct: "Square (4 sides)",
-      explanation: "A Square has 4 sides, while a Triangle has only 3 sides."
-    },
-    {
-      question: "How many corners does a <strong>Circle</strong> have?",
-      options: ["0", "1", "2"],
-      correct: "0",
-      explanation: "A Circle has no corners at all. It is a smooth, curved shape."
-    },
-    {
-      question: "Which shape is like a <strong>pizza slice</strong>?",
-      options: ["Circle", "Triangle", "Rectangle"],
-      correct: "Triangle",
-      explanation: "A pizza slice is shaped like a Triangle — it has 3 sides."
-    },
-    {
-      question: "Which shape has <strong>fewer sides</strong> — a Pentagon or a Triangle?",
-      options: ["Pentagon (5 sides)", "Triangle (3 sides)", "They are the same"],
-      correct: "Triangle (3 sides)",
-      explanation: "A Triangle has only 3 sides, while a Pentagon has 5 sides."
-    },
-    {
-      question: "A <strong>Hexagon</strong> has how many corners?",
-      options: ["5", "6", "7"],
-      correct: "6",
-      explanation: "A Hexagon has 6 sides and 6 corners."
-    },
-    {
-      question: "Which shape looks like a <strong>wheel</strong>?",
-      options: ["Square", "Circle", "Triangle"],
-      correct: "Circle",
-      explanation: "A wheel is shaped like a Circle — perfectly round with no corners."
-    },
-    {
-      question: "Which shape has <strong>the most sides</strong>?",
-      options: ["Triangle", "Square", "Hexagon"],
-      correct: "Hexagon",
-      explanation: "Hexagon has 6 sides, Square has 4, and Triangle has 3."
-    },
-    {
-      question: "A <strong>stop sign</strong> is shaped like which shape?",
-      options: ["Hexagon", "Octagon", "Pentagon"],
-      correct: "Octagon",
-      explanation: "A stop sign is an Octagon — it has 8 sides and 8 corners."
-    },
-    {
-      question: "Which shape has <strong>4 corners</strong> but is <strong>NOT a Square</strong>?",
-      options: ["Triangle", "Circle", "Rectangle"],
-      correct: "Rectangle",
-      explanation: "A Rectangle has 4 corners just like a Square, but its sides are not all equal."
-    },
-    {
-      question: "Which shape is like a <strong>book</strong>?",
-      options: ["Circle", "Triangle", "Rectangle"],
-      correct: "Rectangle",
-      explanation: "A book is shaped like a Rectangle — 4 sides with 2 long and 2 short sides."
-    }
+    { question: "A <strong>Rectangle</strong> — how many corners does it have?", options: ["3", "5", "4"], correct: "4", explanation: "A Rectangle has 4 corners." },
+    { question: "Which shape looks like <strong>a twinkling star in the sky</strong>?", options: ["Star", "Square", "Circle"], correct: "Star", explanation: "A twinkling star in the sky looks like Star." },
+    { question: "Which shape has <strong>fewer sides</strong>: a Triangle or a Square?", options: ["Circle", "Square", "Triangle"], correct: "Triangle", explanation: "A Triangle has fewer sides than a Square." },
+    { question: "How many corners (vertices) does a <strong>Diamond</strong> have?", options: ["3", "4", "5"], correct: "4", explanation: "A Diamond has 4 corners." },
+    { question: "Which shape has <strong>3 sides</strong>?", options: ["Triangle", "Oval", "Pentagon"], correct: "Triangle", explanation: "A Triangle has 3 sides and 3 corners." },
+    { question: "A <strong>Pentagon</strong> — how many corners does it have?", options: ["5", "6", "4"], correct: "5", explanation: "A Pentagon has 5 corners." },
+    { question: "A <strong>Star</strong> — how many sides does it have?", options: ["4", "6", "5"], correct: "5", explanation: "A Star has 5 sides." },
+    { question: "How many corners (vertices) does a <strong>Square</strong> have?", options: ["5", "4", "3"], correct: "4", explanation: "A Square has 4 corners." },
+    { question: "A <strong>Pentagon</strong> — how many sides does it have?", options: ["4", "6", "5"], correct: "5", explanation: "A Pentagon has 5 sides." },
+    { question: "How many straight sides does a <strong>Circle</strong> have?", options: ["0", "2", "1"], correct: "0", explanation: "A Circle has 0 sides." },
+    { question: "How many corners (vertices) does a <strong>Triangle</strong> have?", options: ["3", "2", "4"], correct: "3", explanation: "A Triangle has 3 corners." },
+    { question: "Which shape looks like <strong>a kite</strong>?", options: ["Circle", "Triangle", "Diamond"], correct: "Diamond", explanation: "A kite looks like Diamond." },
+    { question: "How many straight sides does a <strong>Rectangle</strong> have?", options: ["3", "5", "4"], correct: "4", explanation: "A Rectangle has 4 sides." },
+    { question: "Which shape has <strong>fewer sides</strong>: a Square or a Pentagon?", options: ["Square", "Pentagon", "Circle"], correct: "Square", explanation: "A Square has fewer sides than a Pentagon." },
+    { question: "Tell the number of sides of a <strong>Diamond</strong>.", options: ["4", "5", "3"], correct: "4", explanation: "A Diamond has 4 sides." },
+    { question: "Which shape has <strong>more sides</strong>: a Pentagon or a Square?", options: ["Circle", "Square", "Pentagon"], correct: "Pentagon", explanation: "A Pentagon has more sides than a Square." },
+    { question: "Which shape has <strong>3 equal-looking corners</strong>?", options: ["Triangle", "Square", "Hexagon"], correct: "Triangle", explanation: "A Triangle has 3 sides and 3 corners." },
+    { question: "How many corners (vertices) does a <strong>Oval</strong> have?", options: ["2", "0", "1"], correct: "0", explanation: "A Oval has 0 corners." },
+    { question: "A <strong>Square</strong> — how many corners does it have?", options: ["3", "5", "4"], correct: "4", explanation: "A Square has 4 corners." },
+    { question: "A <strong>Circle</strong> — how many sides does it have?", options: ["1", "0", "2"], correct: "0", explanation: "A Circle has 0 sides." },
+    { question: "How many corners does a <strong>Triangle</strong> have?", options: ["3", "4", "2"], correct: "3", explanation: "A Triangle has 3 corners." },
+    { question: "Which shape has <strong>6 equal-looking corners</strong>?", options: ["Hexagon", "Square", "Triangle"], correct: "Hexagon", explanation: "A Hexagon has 6 sides and 6 corners." },
+    { question: "Which shape looks like <strong>a door</strong>?", options: ["Star", "Pentagon", "Rectangle"], correct: "Rectangle", explanation: "A door looks like Rectangle." },
+    { question: "Which shape has <strong>more sides</strong>: a Hexagon or a Pentagon?", options: ["Hexagon", "Circle", "Pentagon"], correct: "Hexagon", explanation: "A Hexagon has more sides than a Pentagon." },
+    { question: "How many corners (vertices) does a <strong>Rectangle</strong> have?", options: ["3", "5", "4"], correct: "4", explanation: "A Rectangle has 4 corners." },
+    { question: "Count the corners of a <strong>Rectangle</strong>. How many are there?", options: ["4", "5", "3"], correct: "4", explanation: "A Rectangle has 4 corners." },
+    { question: "A <strong>Hexagon</strong> — how many sides does it have?", options: ["7", "5", "6"], correct: "6", explanation: "A Hexagon has 6 sides." },
+    { question: "Which shape looks like <strong>a chess board</strong>?", options: ["Square", "Hexagon", "Diamond"], correct: "Square", explanation: "A chess board looks like Square." },
+    { question: "How many corners does a <strong>Diamond</strong> have?", options: ["5", "4", "3"], correct: "4", explanation: "A Diamond has 4 corners." },
+    { question: "Count the sides: how many sides does a <strong>Oval</strong> have?", options: ["2", "1", "0"], correct: "0", explanation: "A Oval has 0 sides." },
+    { question: "Which shape looks like <strong>an egg</strong>?", options: ["Oval", "Rectangle", "Star"], correct: "Oval", explanation: "An egg looks like Oval." },
+    { question: "Which shape looks like <strong>a wheel</strong>?", options: ["Circle", "Triangle", "Square"], correct: "Circle", explanation: "A wheel looks like Circle." },
+    { question: "How many corners does a <strong>Hexagon</strong> have?", options: ["5", "7", "6"], correct: "6", explanation: "A Hexagon has 6 corners." },
+    { question: "How many straight sides does a <strong>Triangle</strong> have?", options: ["2", "3", "4"], correct: "3", explanation: "A Triangle has 3 sides." },
+    { question: "How many sides does a <strong>Diamond</strong> have?", options: ["5", "3", "4"], correct: "4", explanation: "A Diamond has 4 sides." },
+    { question: "Tell the number of sides of a <strong>Square</strong>.", options: ["5", "4", "3"], correct: "4", explanation: "A Square has 4 sides." },
+    { question: "How many straight sides does a <strong>Square</strong> have?", options: ["3", "5", "4"], correct: "4", explanation: "A Square has 4 sides." },
+    { question: "Count the sides: how many sides does a <strong>Square</strong> have?", options: ["4", "5", "3"], correct: "4", explanation: "A Square has 4 sides." },
+    { question: "How many corners (vertices) does a <strong>Circle</strong> have?", options: ["0", "2", "1"], correct: "0", explanation: "A Circle has 0 corners." },
+    { question: "Count the corners of a <strong>Star</strong>. How many are there?", options: ["6", "5", "4"], correct: "5", explanation: "A Star has 5 corners." },
+    { question: "Which shape has exactly <strong>4 sides and 4 corners</strong>?", options: ["Triangle", "Star", "Rectangle"], correct: "Rectangle", explanation: "A Rectangle has 4 sides and 4 corners." },
+    { question: "Which shape has <strong>4 sides</strong>?", options: ["Square", "Pentagon", "Circle"], correct: "Square", explanation: "A Square has 4 sides and 4 corners." },
+    { question: "How many straight sides does a <strong>Diamond</strong> have?", options: ["5", "4", "3"], correct: "4", explanation: "A Diamond has 4 sides." },
+    { question: "Tell the number of sides of a <strong>Pentagon</strong>.", options: ["4", "5", "6"], correct: "5", explanation: "A Pentagon has 5 sides." },
+    { question: "Which shape looks like <strong>a slice of pizza</strong>?", options: ["Star", "Triangle", "Pentagon"], correct: "Triangle", explanation: "A slice of pizza looks like Triangle." },
+    { question: "Which shape is round and has <strong>no corners</strong>?", options: ["Square", "Circle", "Triangle"], correct: "Circle", explanation: "A Circle is round and has no corners." },
+    { question: "Count the corners of a <strong>Oval</strong>. How many are there?", options: ["0", "1", "2"], correct: "0", explanation: "A Oval has 0 corners." },
+    { question: "How many straight sides does a <strong>Star</strong> have?", options: ["6", "4", "5"], correct: "5", explanation: "A Star has 5 sides." },
+    { question: "Count the sides: how many sides does a <strong>Hexagon</strong> have?", options: ["6", "5", "7"], correct: "6", explanation: "A Hexagon has 6 sides." },
+    { question: "A <strong>Circle</strong> — how many corners does it have?", options: ["2", "0", "1"], correct: "0", explanation: "A Circle has 0 corners." },
+    { question: "How many sides does a <strong>Rectangle</strong> have?", options: ["3", "5", "4"], correct: "4", explanation: "A Rectangle has 4 sides." },
+    { question: "How many straight sides does a <strong>Oval</strong> have?", options: ["1", "0", "2"], correct: "0", explanation: "A Oval has 0 sides." },
+    { question: "How many corners does a <strong>Pentagon</strong> have?", options: ["5", "6", "4"], correct: "5", explanation: "A Pentagon has 5 corners." },
+    { question: "Tell the number of sides of a <strong>Circle</strong>.", options: ["0", "2", "1"], correct: "0", explanation: "A Circle has 0 sides." },
+    { question: "Which shape has <strong>5 equal-looking corners</strong>?", options: ["Star", "Diamond", "Pentagon"], correct: "Pentagon", explanation: "A Pentagon has 5 sides and 5 corners." },
+    { question: "How many corners does a <strong>Oval</strong> have?", options: ["0", "1", "2"], correct: "0", explanation: "A Oval has 0 corners." },
+    { question: "Which shape has exactly <strong>5 sides and 5 corners</strong>?", options: ["Diamond", "Circle", "Star"], correct: "Star", explanation: "A Star has 5 sides and 5 corners." },
+    { question: "Count the sides: how many sides does a <strong>Pentagon</strong> have?", options: ["5", "6", "4"], correct: "5", explanation: "A Pentagon has 5 sides." },
+    { question: "How many corners does a <strong>Square</strong> have?", options: ["4", "5", "3"], correct: "4", explanation: "A Square has 4 corners." },
+    { question: "Count the corners of a <strong>Square</strong>. How many are there?", options: ["4", "3", "5"], correct: "4", explanation: "A Square has 4 corners." },
+    { question: "Which shape has <strong>5 sides</strong>?", options: ["Hexagon", "Square", "Pentagon"], correct: "Pentagon", explanation: "A Pentagon has 5 sides and 5 corners." },
+    { question: "Count the corners of a <strong>Hexagon</strong>. How many are there?", options: ["7", "6", "5"], correct: "6", explanation: "A Hexagon has 6 corners." },
+    { question: "Which shape has <strong>6 sides</strong>?", options: ["Hexagon", "Square", "Oval"], correct: "Hexagon", explanation: "A Hexagon has 6 sides and 6 corners." },
+    { question: "How many sides does a <strong>Star</strong> have?", options: ["4", "5", "6"], correct: "5", explanation: "A Star has 5 sides." },
+    { question: "Count the corners of a <strong>Diamond</strong>. How many are there?", options: ["5", "3", "4"], correct: "4", explanation: "A Diamond has 4 corners." },
+    { question: "A <strong>Rectangle</strong> — how many sides does it have?", options: ["4", "5", "3"], correct: "4", explanation: "A Rectangle has 4 sides." },
+    { question: "Which shape has <strong>4 equal-looking corners</strong>?", options: ["Diamond", "Square", "Star"], correct: "Square", explanation: "A Square has 4 sides and 4 corners." },
+    { question: "How many sides does a <strong>Square</strong> have?", options: ["3", "5", "4"], correct: "4", explanation: "A Square has 4 sides." },
+    { question: "Count the corners of a <strong>Circle</strong>. How many are there?", options: ["0", "1", "2"], correct: "0", explanation: "A Circle has 0 corners." },
+    { question: "Count the corners of a <strong>Triangle</strong>. How many are there?", options: ["3", "4", "2"], correct: "3", explanation: "A Triangle has 3 corners." },
+    { question: "How many sides does a <strong>Pentagon</strong> have?", options: ["6", "5", "4"], correct: "5", explanation: "A Pentagon has 5 sides." },
+    { question: "Count the sides: how many sides does a <strong>Star</strong> have?", options: ["5", "4", "6"], correct: "5", explanation: "A Star has 5 sides." },
+    { question: "How many corners (vertices) does a <strong>Hexagon</strong> have?", options: ["7", "6", "5"], correct: "6", explanation: "A Hexagon has 6 corners." },
+    { question: "How many corners (vertices) does a <strong>Pentagon</strong> have?", options: ["5", "4", "6"], correct: "5", explanation: "A Pentagon has 5 corners." },
+    { question: "Tell the number of sides of a <strong>Triangle</strong>.", options: ["2", "4", "3"], correct: "3", explanation: "A Triangle has 3 sides." },
+    { question: "A <strong>Diamond</strong> — how many sides does it have?", options: ["4", "3", "5"], correct: "4", explanation: "A Diamond has 4 sides." },
+    { question: "Count the corners of a <strong>Pentagon</strong>. How many are there?", options: ["4", "5", "6"], correct: "5", explanation: "A Pentagon has 5 corners." },
+    { question: "Which shape has <strong>more sides</strong>: a Square or a Triangle?", options: ["Square", "Circle", "Triangle"], correct: "Square", explanation: "A Square has more sides than a Triangle." },
+    { question: "Tell the number of sides of a <strong>Oval</strong>.", options: ["1", "0", "2"], correct: "0", explanation: "A Oval has 0 sides." },
+    { question: "How many sides does a <strong>Hexagon</strong> have?", options: ["6", "7", "5"], correct: "6", explanation: "A Hexagon has 6 sides." },
+    { question: "Count the sides: how many sides does a <strong>Triangle</strong> have?", options: ["2", "4", "3"], correct: "3", explanation: "A Triangle has 3 sides." },
+    { question: "Count the sides: how many sides does a <strong>Rectangle</strong> have?", options: ["3", "4", "5"], correct: "4", explanation: "A Rectangle has 4 sides." },
+    { question: "How many corners does a <strong>Circle</strong> have?", options: ["0", "1", "2"], correct: "0", explanation: "A Circle has 0 corners." },
+    { question: "How many corners (vertices) does a <strong>Star</strong> have?", options: ["6", "5", "4"], correct: "5", explanation: "A Star has 5 corners." },
+    { question: "Count the sides: how many sides does a <strong>Circle</strong> have?", options: ["0", "2", "1"], correct: "0", explanation: "A Circle has 0 sides." },
+    { question: "A <strong>Square</strong> — how many sides does it have?", options: ["3", "4", "5"], correct: "4", explanation: "A Square has 4 sides." },
+    { question: "How many straight sides does a <strong>Hexagon</strong> have?", options: ["5", "6", "7"], correct: "6", explanation: "A Hexagon has 6 sides." },
+    { question: "How many sides does a <strong>Triangle</strong> have?", options: ["3", "4", "2"], correct: "3", explanation: "A Triangle has 3 sides." },
+    { question: "A <strong>Triangle</strong> — how many corners does it have?", options: ["4", "3", "2"], correct: "3", explanation: "A Triangle has 3 corners." },
+    { question: "A <strong>Hexagon</strong> — how many corners does it have?", options: ["6", "7", "5"], correct: "6", explanation: "A Hexagon has 6 corners." },
+    { question: "Tell the number of sides of a <strong>Hexagon</strong>.", options: ["7", "5", "6"], correct: "6", explanation: "A Hexagon has 6 sides." },
+    { question: "How many straight sides does a <strong>Pentagon</strong> have?", options: ["6", "5", "4"], correct: "5", explanation: "A Pentagon has 5 sides." },
+    { question: "A <strong>Triangle</strong> — how many sides does it have?", options: ["2", "4", "3"], correct: "3", explanation: "A Triangle has 3 sides." },
+    { question: "How many corners does a <strong>Rectangle</strong> have?", options: ["4", "5", "3"], correct: "4", explanation: "A Rectangle has 4 corners." },
+    { question: "A <strong>Oval</strong> — how many sides does it have?", options: ["2", "0", "1"], correct: "0", explanation: "A Oval has 0 sides." },
+    { question: "Count the sides: how many sides does a <strong>Diamond</strong> have?", options: ["4", "3", "5"], correct: "4", explanation: "A Diamond has 4 sides." },
+    { question: "How many corners does a <strong>Star</strong> have?", options: ["5", "4", "6"], correct: "5", explanation: "A Star has 5 corners." },
+    { question: "A <strong>Oval</strong> — how many corners does it have?", options: ["1", "2", "0"], correct: "0", explanation: "A Oval has 0 corners." },
+    { question: "Tell the number of sides of a <strong>Star</strong>.", options: ["5", "6", "4"], correct: "5", explanation: "A Star has 5 sides." },
+    { question: "Tell the number of sides of a <strong>Rectangle</strong>.", options: ["5", "4", "3"], correct: "4", explanation: "A Rectangle has 4 sides." }
   ];
 </script>
 

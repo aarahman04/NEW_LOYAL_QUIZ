@@ -27,157 +27,107 @@
     </main>
 <script>
   const questions = [
-    {
-      question: "Which of the following is an animal that has a pouch?",
-      options: ["kangaroo", "dog", "cat"],
-      correct: "kangaroo",
-      explanation: "A kangaroo has a pouch to carry its baby."
-    },
-    {
-      question: "What do we use to lock a door?",
-      options: ["lock", "rope", "paper"],
-      correct: "lock",
-      explanation: "We use a lock to lock a door."
-    },
-    {
-      question: "Which of the following is used to measure length?",
-      options: ["ant", "ruler", "bowl"],
-      correct: "ruler",
-      explanation: "A ruler is used to measure length."
-    },
-    {
-      question: "What do we use to carry water?",
-      options: ["pool", "bucket", "book"],
-      correct: "bucket",
-      explanation: "A bucket is used to carry water."
-    },
-    {
-      question: "What do we eat for breakfast?",
-      options: ["bread & eggs", "stone", "leaf"],
-      correct: "bread & eggs",
-      explanation: "Bread and eggs are common breakfast foods."
-    },
-    {
-      question: "Which of the following is a sense organ?",
-      options: ["ant", "tongue", "bag"],
-      correct: "tongue",
-      explanation: "The tongue helps us taste."
-    },
-    {
-      question: "What do we use to dry our body?",
-      options: ["towel", "spoon", "box"],
-      correct: "towel",
-      explanation: "A towel is used to dry the body."
-    },
-    {
-      question: "Which of the following animals has a long tail?",
-      options: ["money", "monkey", "pig"],
-      correct: "monkey",
-      explanation: "A monkey has a long tail."
-    },
-    {
-      question: "Where can we see stars?",
-      options: ["sky", "river", "road"],
-      correct: "sky",
-      explanation: "We see stars in the sky."
-    },
-    {
-      question: "Which of the following is a kitchen item?",
-      options: ["pan", "pillow", "shoe"],
-      correct: "pan",
-      explanation: "A pan is used in the kitchen for cooking."
-    },
-    {
-      question: "What do we use to sweep the floor?",
-      options: ["room", "broom", "pen"],
-      correct: "broom",
-      explanation: "A broom is used to sweep the floor."
-    },
-    {
-      question: "Which of the following animals lives on a farm?",
-      options: ["car", "hen", "lion"],
-      correct: "hen",
-      explanation: "Hens are commonly found on farms."
-    },
-    {
-      question: "What do we use to draw straight lines?",
-      options: ["ruler", "spoon", "cup"],
-      correct: "ruler",
-      explanation: "A ruler helps draw straight lines."
-    },
-    {
-      question: "What do we use to hear music?",
-      options: ["car", "ears", "nose"],
-      correct: "ears",
-      explanation: "We hear sounds using our ears."
-    },
-    {
-      question: "Which of the following animals pulls a cart?",
-      options: ["ant", "cat", "horse"],
-      correct: "horse",
-      explanation: "A horse can pull a cart."
-    },
-    {
-      question: "What do we drink in summer?",
-      options: ["water", "oil", "ink"],
-      correct: "water",
-      explanation: "Water keeps us hydrated, especially in summer."
-    },
-    {
-      question: "Which of the following is a playground item?",
-      options: ["slime", "slide", "bed"],
-      correct: "slide",
-      explanation: "A slide is found in playgrounds."
-    },
-    {
-      question: "What do we use to open a bottle?",
-      options: ["opener", "comb", "chalk"],
-      correct: "opener",
-      explanation: "A bottle opener is used to open bottles."
-    },
-    {
-      question: "What do we use to erase writing?",
-      options: ["ant", "eraser", "glue"],
-      correct: "eraser",
-      explanation: "An eraser removes pencil writing."
-    },
-    {
-      question: "Which of the following is a body movement?",
-      options: ["talk", "walk", "sit"],
-      correct: "walk",
-      explanation: "Walking is a movement our body does."
-    },
-    {
-      question: "Which animal is known for jumping high?",
-      options: ["kangaroo", "cow", "dog"],
-      correct: "kangaroo",
-      explanation: "Kangaroos are known for jumping high."
-    },
-    {
-      question: "What do we use to stay dry in rain?",
-      options: ["ants", "umbrella", "mat"],
-      correct: "umbrella",
-      explanation: "An umbrella protects us from rain."
-    },
-    {
-      question: "Which of the following is a body covering?",
-      options: ["ant", "skin", "stone"],
-      correct: "skin",
-      explanation: "Skin covers our body."
-    },
-    {
-      question: "What do we use to cook food?",
-      options: ["stove", "pillow", "book"],
-      correct: "stove",
-      explanation: "A stove is used to cook food."
-    },
-    {
-      question: "Which of the following animals has a hump?",
-      options: ["dog", "camel", "sheep"],
-      correct: "camel",
-      explanation: "A camel has a hump on its back."
-    }
-  ];
+        { question: "Count them: how many feet do we have?", options: ["1", "2", "5"], correct: "2", explanation: "We have 2 feet." },
+        { question: "Which day comes between Thursday and Saturday?", options: ["Thursday", "Wednesday", "Friday"], correct: "Friday", explanation: "Friday comes between Thursday and Saturday." },
+        { question: "Where does a rocket move?", options: ["in the air", "on water", "on a track"], correct: "in the air", explanation: "A rocket moves in the air." },
+        { question: "What is the month right after February?", options: ["August", "March", "December"], correct: "March", explanation: "After February comes March." },
+        { question: "What colour is the orange?", options: ["Orange", "Yellow", "Red"], correct: "Orange", explanation: "The orange is orange." },
+        { question: "Which month comes before February?", options: ["May", "October", "January"], correct: "January", explanation: "Before February comes January." },
+        { question: "How many hands do we have?", options: ["2", "4", "10"], correct: "2", explanation: "We have 2 hands." },
+        { question: "Which month comes between August and October?", options: ["May", "September", "July"], correct: "September", explanation: "September comes between August and October." },
+        { question: "Count them: how many thumbs do we have?", options: ["10", "2", "5"], correct: "2", explanation: "We have 2 thumbs." },
+        { question: "We call a pineapple a ___.", options: ["Vegetable", "Fruit", "Animal"], correct: "Fruit", explanation: "A pineapple is a fruit." },
+        { question: "We use our ___ to hear.", options: ["ears", "brain", "legs"], correct: "ears", explanation: "We use our ears to hear." },
+        { question: "The lettuce is usually which colour?", options: ["Green", "Orange", "Purple"], correct: "Green", explanation: "The lettuce is green." },
+        { question: "A peach is a kind of ___.", options: ["Vegetable", "Animal", "Fruit"], correct: "Fruit", explanation: "A peach is a fruit." },
+        { question: "Which day comes after Tuesday?", options: ["Friday", "Thursday", "Wednesday"], correct: "Wednesday", explanation: "After Tuesday comes Wednesday." },
+        { question: "A person has how many feet?", options: ["4", "2", "10"], correct: "2", explanation: "We have 2 feet." },
+        { question: "What is the body of a pig covered with?", options: ["Wool", "Skin", "Feathers"], correct: "Skin", explanation: "A pig's body is covered with skin." },
+        { question: "Where does a bus move?", options: ["in the air", "on the road", "on water"], correct: "on the road", explanation: "A bus moves on the road." },
+        { question: "What is the month just before February?", options: ["May", "January", "April"], correct: "January", explanation: "Before February comes January." },
+        { question: "Does a onion grow under the ground or on a tree?", options: ["On a tree", "Under the ground", "In the sky"], correct: "Under the ground", explanation: "A onion grows under the ground." },
+        { question: "Which of these animals can fly?", options: ["Tiger", "Duck", "Cat"], correct: "Duck", explanation: "A duck can fly." },
+        { question: "What is the body of a dog covered with?", options: ["Wool", "Hair", "Fur"], correct: "Fur", explanation: "A dog's body is covered with fur." },
+        { question: "A cabbage is a kind of ___.", options: ["Vegetable", "Bird", "Fruit"], correct: "Vegetable", explanation: "A cabbage is a vegetable." },
+        { question: "What colour is the chocolate?", options: ["Black", "Brown", "Blue"], correct: "Brown", explanation: "The chocolate is brown." },
+        { question: "Which month comes between November and January?", options: ["December", "October", "April"], correct: "December", explanation: "December comes between November and January." },
+        { question: "Is a cauliflower a fruit or a vegetable?", options: ["Vegetable", "Bird", "Fruit"], correct: "Vegetable", explanation: "A cauliflower is a vegetable." },
+        { question: "What colour is the sky?", options: ["Red", "Green", "Blue"], correct: "Blue", explanation: "The sky is blue." },
+        { question: "How many chin do we have?", options: ["5", "2", "1"], correct: "1", explanation: "We have 1 chin." },
+        { question: "Which animal makes the sound “Oink”?", options: ["Dog", "Pig", "Goat"], correct: "Pig", explanation: "A pig makes the sound 'oink'." },
+        { question: "We call a garlic a ___.", options: ["Bird", "Vegetable", "Fruit"], correct: "Vegetable", explanation: "A garlic is a vegetable." },
+        { question: "Where does a pig live?", options: ["Sty", "Pond", "Tree"], correct: "Sty", explanation: "A pig lives in a sty." },
+        { question: "The bubblegum is usually which colour?", options: ["Pink", "White", "Blue"], correct: "Pink", explanation: "The bubblegum is pink." },
+        { question: "Which body part do we use to smell?", options: ["ears", "nose", "eyes"], correct: "nose", explanation: "We use our nose to smell." },
+        { question: "Where does a ship move?", options: ["on water", "on the road", "on a track"], correct: "on water", explanation: "A ship moves on water." },
+        { question: "Count them: how many tongue do we have?", options: ["10", "1", "4"], correct: "1", explanation: "We have 1 tongue." },
+        { question: "What is the baby of a tiger called?", options: ["Tadpole", "Cub", "Baby"], correct: "Cub", explanation: "A baby tiger is called a cub." },
+        { question: "What colour is the rose?", options: ["Red", "Purple", "Blue"], correct: "Red", explanation: "The rose is red." },
+        { question: "What is the month just before September?", options: ["March", "June", "August"], correct: "August", explanation: "Before September comes August." },
+        { question: "Which month comes after May?", options: ["September", "June", "December"], correct: "June", explanation: "After May comes June." },
+        { question: "Which body part do we use to hold things?", options: ["hands", "brain", "mouth"], correct: "hands", explanation: "We use our hands to hold things." },
+        { question: "Which month comes before October?", options: ["September", "December", "August"], correct: "September", explanation: "Before October comes September." },
+        { question: "The banana is usually which colour?", options: ["Yellow", "Green", "Black"], correct: "Yellow", explanation: "The banana is yellow." },
+        { question: "Before crossing the road we should ___.", options: ["look both ways", "run fast", "close our eyes"], correct: "look both ways", explanation: "Always look both ways." },
+        { question: "A orange is a kind of ___.", options: ["Vegetable", "Animal", "Fruit"], correct: "Fruit", explanation: "A orange is a fruit." },
+        { question: "Where does a bird live?", options: ["Sty", "Nest", "House"], correct: "Nest", explanation: "A bird lives in a nest." },
+        { question: "Is a grapes a fruit or a vegetable?", options: ["Vegetable", "Fruit", "Animal"], correct: "Fruit", explanation: "A grapes is a fruit." },
+        { question: "Where does a horse live?", options: ["Sty", "Stable", "House"], correct: "Stable", explanation: "A horse lives in a stable." },
+        { question: "Which of these moves on water?", options: ["Helicopter", "Rocket", "Boat"], correct: "Boat", explanation: "A boat moves on water." },
+        { question: "Is a onion a fruit or a vegetable?", options: ["Vegetable", "Bird", "Fruit"], correct: "Vegetable", explanation: "A onion is a vegetable." },
+        { question: "Count them: how many fingers on one hand do we have?", options: ["2", "5", "4"], correct: "5", explanation: "We have 5 fingers on one hand." },
+        { question: "What colour is the rice?", options: ["Red", "Blue", "White"], correct: "White", explanation: "The rice is white." },
+        { question: "Which of these is a weekend day?", options: ["Tuesday", "Monday", "Saturday"], correct: "Saturday", explanation: "Saturday is a weekend day." },
+        { question: "How many eyes do we have?", options: ["1", "10", "2"], correct: "2", explanation: "We have 2 eyes." },
+        { question: "What sound does a pig make?", options: ["Oink", "Bleat", "Roar"], correct: "Oink", explanation: "A pig says 'oink'." },
+        { question: "The cotton is usually which colour?", options: ["White", "Red", "Blue"], correct: "White", explanation: "The cotton is white." },
+        { question: "What colour is the banana?", options: ["Blue", "Yellow", "Orange"], correct: "Yellow", explanation: "The banana is yellow." },
+        { question: "What does a farmer do?", options: ["takes care of our teeth", "flies an aeroplane", "grows crops in the field"], correct: "grows crops in the field", explanation: "A farmer grows crops in the field." },
+        { question: "A person has how many head?", options: ["1", "10", "5"], correct: "1", explanation: "We have 1 head." },
+        { question: "The corn is usually which colour?", options: ["Green", "Yellow", "Purple"], correct: "Yellow", explanation: "The corn is yellow." },
+        { question: "How many legs does a horse have?", options: ["0", "4", "6"], correct: "4", explanation: "A horse has 4 legs." },
+        { question: "What colour is a lemon?", options: ["Yellow", "Orange", "White"], correct: "Yellow", explanation: "A lemon is yellow." },
+        { question: "A beans is a kind of ___.", options: ["Fruit", "Vegetable", "Bird"], correct: "Vegetable", explanation: "A beans is a vegetable." },
+        { question: "Which of these is a vegetable — cauliflower, pineapple or grapes?", options: ["Strawberry", "Pear", "Cauliflower"], correct: "Cauliflower", explanation: "A cauliflower is a vegetable." },
+        { question: "What sound does a horse make?", options: ["Quack", "Chirp", "Neigh"], correct: "Neigh", explanation: "A horse says 'neigh'." },
+        { question: "A person has how many elbows?", options: ["1", "2", "5"], correct: "2", explanation: "We have 2 elbows." },
+        { question: "The milk is usually which colour?", options: ["Pink", "White", "Purple"], correct: "White", explanation: "The milk is white." },
+        { question: "A person has how many ears?", options: ["2", "4", "1"], correct: "2", explanation: "We have 2 ears." },
+        { question: "Which month comes between April and June?", options: ["October", "May", "April"], correct: "May", explanation: "May comes between April and June." },
+        { question: "What is the body of a cat covered with?", options: ["Feathers", "Wool", "Fur"], correct: "Fur", explanation: "A cat's body is covered with fur." },
+        { question: "We call a orange a ___.", options: ["Fruit", "Vegetable", "Animal"], correct: "Fruit", explanation: "A orange is a fruit." },
+        { question: "Which day comes after Saturday?", options: ["Sunday", "Tuesday", "Wednesday"], correct: "Sunday", explanation: "After Saturday comes Sunday." },
+        { question: "Who teaches us in school?", options: ["dentist", "teacher", "farmer"], correct: "teacher", explanation: "A teacher teaches us in school." },
+        { question: "Count them: how many elbows do we have?", options: ["5", "2", "10"], correct: "2", explanation: "We have 2 elbows." },
+        { question: "Who makes things from wood?", options: ["tailor", "carpenter", "cook"], correct: "carpenter", explanation: "A carpenter makes things from wood." },
+        { question: "Does a radish grow under the ground or on a tree?", options: ["Under the ground", "In the sky", "On a tree"], correct: "Under the ground", explanation: "A radish grows under the ground." },
+        { question: "What is the day right after Tuesday?", options: ["Wednesday", "Tuesday", "Thursday"], correct: "Wednesday", explanation: "After Tuesday comes Wednesday." },
+        { question: "How many head do we have?", options: ["2", "4", "1"], correct: "1", explanation: "We have 1 head." },
+        { question: "What is the main job of our brain?", options: ["bite", "kick a ball", "think"], correct: "think", explanation: "We use our brain to think." },
+        { question: "The rice is usually which colour?", options: ["Pink", "Orange", "White"], correct: "White", explanation: "The rice is white." },
+        { question: "Who delivers our letters?", options: ["postman", "cook", "farmer"], correct: "postman", explanation: "A postman delivers our letters." },
+        { question: "What colour is the swan?", options: ["Pink", "White", "Red"], correct: "White", explanation: "The swan is white." },
+        { question: "What colour is a cherry?", options: ["Red", "Brown", "Black"], correct: "Red", explanation: "A cherry is red." },
+        { question: "What is the main job of our legs?", options: ["sing", "walk", "draw"], correct: "walk", explanation: "We use our legs to walk." },
+        { question: "What is the day right after Sunday?", options: ["Monday", "Thursday", "Saturday"], correct: "Monday", explanation: "After Sunday comes Monday." },
+        { question: "A person has how many thumbs?", options: ["2", "10", "5"], correct: "2", explanation: "We have 2 thumbs." },
+        { question: "Which day comes after Sunday?", options: ["Sunday", "Thursday", "Monday"], correct: "Monday", explanation: "After Sunday comes Monday." },
+        { question: "What is the body of a sheep covered with?", options: ["Feathers", "Skin", "Wool"], correct: "Wool", explanation: "A sheep's body is covered with wool." },
+        { question: "What do we say when we make a mistake?", options: ["Hurray", "Sorry", "Hello"], correct: "Sorry", explanation: "We say 'Sorry' when we are wrong." },
+        { question: "Which animal makes the sound “Trumpet”?", options: ["Hen", "Elephant", "Bee"], correct: "Elephant", explanation: "A elephant makes the sound 'trumpet'." },
+        { question: "Who stitches our clothes?", options: ["tailor", "driver", "pilot"], correct: "tailor", explanation: "A tailor stitches our clothes." },
+        { question: "What does a pilot do?", options: ["cuts our hair", "takes care of our teeth", "flies an aeroplane"], correct: "flies an aeroplane", explanation: "A pilot flies an aeroplane." },
+        { question: "Which shape is round?", options: ["Triangle", "Circle", "Square"], correct: "Circle", explanation: "A circle is round and has no corners." },
+        { question: "Where does a frog live?", options: ["Tree", "Pond", "House"], correct: "Pond", explanation: "A frog lives in a pond." },
+        { question: "Which of these is hot?", options: ["Ice", "Snow", "Fire"], correct: "Fire", explanation: "Fire is hot." },
+        { question: "What colour is the night sky?", options: ["Pink", "Black", "Green"], correct: "Black", explanation: "The night sky is black." },
+        { question: "Count them: how many cheeks do we have?", options: ["1", "4", "2"], correct: "2", explanation: "We have 2 cheeks." },
+        { question: "Which day comes before Wednesday?", options: ["Wednesday", "Tuesday", "Monday"], correct: "Tuesday", explanation: "Before Wednesday comes Tuesday." },
+        { question: "What does a gardener do?", options: ["puts out fires", "takes care of plants", "flies an aeroplane"], correct: "takes care of plants", explanation: "A gardener takes care of plants." },
+        { question: "What is the day right after Wednesday?", options: ["Thursday", "Wednesday", "Tuesday"], correct: "Thursday", explanation: "After Wednesday comes Thursday." },
+        { question: "Which of these is a fruit — pineapple, garlic or peas?", options: ["Potato", "Pineapple", "Carrot"], correct: "Pineapple", explanation: "A pineapple is a fruit." },
+        { question: "Which day comes after Friday?", options: ["Tuesday", "Saturday", "Wednesday"], correct: "Saturday", explanation: "After Friday comes Saturday." }
+      ];
 </script>
 
     <!-- Professional Footer -->

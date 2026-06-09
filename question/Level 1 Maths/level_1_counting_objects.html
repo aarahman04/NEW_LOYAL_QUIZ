@@ -27,186 +27,106 @@
 
 <script>
   const questions = [
-    {
-      question: "Which group has <strong>3</strong> objects?",
-      options: ["🍎🍎🍎", "🍎🍎🍎🍎🍎"],
-      correct: "🍎🍎🍎",
-      explanation: "🍎🍎🍎 has 3 apples."
-    },
-    {
-      question: "Which group has <strong>5</strong> objects?",
-      options: ["🌟🌟🌟", "🌟🌟🌟🌟🌟"],
-      correct: "🌟🌟🌟🌟🌟",
-      explanation: "🌟🌟🌟🌟🌟 has 5 stars."
-    },
-    {
-      question: "Which group has <strong>2</strong> objects?",
-      options: ["🐶🐶", "🐶🐶🐶🐶"],
-      correct: "🐶🐶",
-      explanation: "🐶🐶 has 2 dogs."
-    },
-    {
-      question: "Which group has <strong>7</strong> objects?",
-      options: ["🍌🍌🍌🍌🍌🍌🍌", "🍌🍌🍌🍌"],
-      correct: "🍌🍌🍌🍌🍌🍌🍌",
-      explanation: "🍌🍌🍌🍌🍌🍌🍌 has 7 bananas."
-    },
-    {
-      question: "Which group has <strong>4</strong> objects?",
-      options: ["🏠🏠🏠🏠🏠🏠", "🏠🏠🏠🏠"],
-      correct: "🏠🏠🏠🏠",
-      explanation: "🏠🏠🏠🏠 has 4 houses."
-    },
-    {
-      question: "Which group has <strong>6</strong> objects?",
-      options: ["🦋🦋🦋🦋🦋🦋", "🦋🦋🦋🦋🦋🦋🦋🦋"],
-      correct: "🦋🦋🦋🦋🦋🦋",
-      explanation: "🦋🦋🦋🦋🦋🦋 has 6 butterflies."
-    },
-    {
-      question: "Which group has <strong>1</strong> object?",
-      options: ["🌈", "🌈🌈🌈"],
-      correct: "🌈",
-      explanation: "🌈 has 1 rainbow."
-    },
-    {
-      question: "Which group has <strong>8</strong> objects?",
-      options: ["🐠🐠🐠🐠🐠🐠🐠🐠", "🐠🐠🐠🐠🐠"],
-      correct: "🐠🐠🐠🐠🐠🐠🐠🐠",
-      explanation: "🐠🐠🐠🐠🐠🐠🐠🐠 has 8 fish."
-    },
-    {
-      question: "Which group has <strong>9</strong> objects?",
-      options: ["🍕🍕🍕🍕🍕🍕🍕", "🍕🍕🍕🍕🍕🍕🍕🍕🍕"],
-      correct: "🍕🍕🍕🍕🍕🍕🍕🍕🍕",
-      explanation: "🍕🍕🍕🍕🍕🍕🍕🍕🍕 has 9 pizzas."
-    },
-    {
-      question: "Which group has <strong>10</strong> objects?",
-      options: ["🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈", "🎈🎈🎈🎈🎈🎈🎈"],
-      correct: "🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈",
-      explanation: "🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈 has 10 balloons."
-    },
-    {
-      question: "Which group has <strong>11</strong> objects?",
-      options: ["🍦🍦🍦🍦🍦🍦🍦🍦🍦🍦🍦", "🍦🍦🍦🍦🍦🍦🍦🍦"],
-      correct: "🍦🍦🍦🍦🍦🍦🍦🍦🍦🍦🍦",
-      explanation: "🍦🍦🍦🍦🍦🍦🍦🍦🍦🍦🍦 has 11 ice creams."
-    },
-    {
-      question: "Which group has <strong>12</strong> objects?",
-      options: ["🐸🐸🐸🐸🐸🐸🐸🐸🐸", "🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸"],
-      correct: "🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸",
-      explanation: "🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸 has 12 frogs."
-    },
-    {
-      question: "Which group has <strong>13</strong> objects?",
-      options: ["🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸", "🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸"],
-      correct: "🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸",
-      explanation: "🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸 has 13 flowers."
-    },
-    {
-      question: "Which group has <strong>14</strong> objects?",
-      options: ["🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗", "🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗"],
-      correct: "🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗",
-      explanation: "🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗 has 14 cars."
-    },
-    {
-      question: "Which group has <strong>15</strong> objects?",
-      options: ["🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩", "🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩"],
-      correct: "🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩",
-      explanation: "🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩 has 15 donuts."
-    },
-    {
-      question: "Which group has <strong>16</strong> objects?",
-      options: ["🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱", "🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱"],
-      correct: "🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱",
-      explanation: "🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱 has 16 cats."
-    },
-    {
-      question: "Which group has <strong>17</strong> objects?",
-      options: ["⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐", "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐"],
-      correct: "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐",
-      explanation: "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ has 17 stars."
-    },
-    {
-      question: "Which group has <strong>18</strong> objects?",
-      options: ["🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓", "🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓"],
-      correct: "🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓",
-      explanation: "🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓 has 18 strawberries."
-    },
-    {
-      question: "Which group has <strong>19</strong> objects?",
-      options: ["🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝", "🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝"],
-      correct: "🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝",
-      explanation: "🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝 has 19 bees."
-    },
-    {
-      question: "Which group has <strong>20</strong> objects?",
-      options: ["🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀", "🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀"],
-      correct: "🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀",
-      explanation: "🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀🎀 has 20 ribbons."
-    },
-    {
-      question: "How many 🍎 are there? <br><span style='font-size:1.4em;'>🍎🍎🍎🍎</span>",
-      options: ["3", "4", "5"],
-      correct: "4",
-      explanation: "Count carefully: 🍎🍎🍎🍎 = 4 apples."
-    },
-    {
-      question: "How many 🐸 are there? <br><span style='font-size:1.4em;'>🐸🐸🐸🐸🐸🐸</span>",
-      options: ["5", "6", "7"],
-      correct: "6",
-      explanation: "Count carefully: 🐸🐸🐸🐸🐸🐸 = 6 frogs."
-    },
-    {
-      question: "How many 🌟 are there? <br><span style='font-size:1.4em;'>🌟🌟🌟🌟🌟🌟🌟🌟</span>",
-      options: ["7", "8", "9"],
-      correct: "8",
-      explanation: "Count carefully: 🌟🌟🌟🌟🌟🌟🌟🌟 = 8 stars."
-    },
-    {
-      question: "How many 🎈 are there? <br><span style='font-size:1.4em;'>🎈🎈🎈</span>",
-      options: ["2", "3", "4"],
-      correct: "3",
-      explanation: "Count carefully: 🎈🎈🎈 = 3 balloons."
-    },
-    {
-      question: "How many 🦋 are there? <br><span style='font-size:1.4em;'>🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋</span>",
-      options: ["9", "10", "11"],
-      correct: "10",
-      explanation: "Count carefully: 10 butterflies."
-    },
-    {
-      question: "How many 🍕 are there? <br><span style='font-size:1.4em;'>🍕🍕</span>",
-      options: ["1", "2", "3"],
-      correct: "2",
-      explanation: "Count carefully: 🍕🍕 = 2 pizzas."
-    },
-    {
-      question: "How many 🐶 are there? <br><span style='font-size:1.4em;'>🐶🐶🐶🐶🐶🐶🐶🐶🐶</span>",
-      options: ["8", "9", "10"],
-      correct: "9",
-      explanation: "Count carefully: 9 dogs."
-    },
-    {
-      question: "How many 🚗 are there? <br><span style='font-size:1.4em;'>🚗🚗🚗🚗🚗🚗🚗</span>",
-      options: ["6", "7", "8"],
-      correct: "7",
-      explanation: "Count carefully: 🚗🚗🚗🚗🚗🚗🚗 = 7 cars."
-    },
-    {
-      question: "How many 🍦 are there? <br><span style='font-size:1.4em;'>🍦🍦🍦🍦🍦</span>",
-      options: ["4", "5", "6"],
-      correct: "5",
-      explanation: "Count carefully: 🍦🍦🍦🍦🍦 = 5 ice creams."
-    },
-    {
-      question: "How many 🌸 are there? <br><span style='font-size:1.4em;'>🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸</span>",
-      options: ["11", "12", "13"],
-      correct: "12",
-      explanation: "Count carefully: 12 flowers."
-    }
+    { question: "Which group shows <strong>6</strong> cookies?", options: ["🍪🍪🍪🍪🍪🍪🍪", "🍪🍪🍪🍪🍪🍪"], correct: "🍪🍪🍪🍪🍪🍪", explanation: "🍪🍪🍪🍪🍪🍪 shows 6 cookies." },
+    { question: "Which group shows <strong>10</strong> bananas?", options: ["🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌", "🍌🍌🍌🍌🍌🍌🍌🍌🍌"], correct: "🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌", explanation: "🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌 shows 10 bananas." },
+    { question: "Which group shows <strong>8</strong> fish?", options: ["🐟🐟🐟🐟🐟🐟🐟🐟🐟", "🐟🐟🐟🐟🐟🐟🐟🐟"], correct: "🐟🐟🐟🐟🐟🐟🐟🐟", explanation: "🐟🐟🐟🐟🐟🐟🐟🐟 shows 8 fish." },
+    { question: "Which group shows <strong>2</strong> cookies?", options: ["🍪🍪", "🍪🍪🍪"], correct: "🍪🍪", explanation: "🍪🍪 shows 2 cookies." },
+    { question: "Which group shows <strong>1</strong> stars?", options: ["⭐⭐", "⭐"], correct: "⭐", explanation: "⭐ shows 1 stars." },
+    { question: "Which group shows <strong>2</strong> balls?", options: ["⚽⚽⚽", "⚽⚽"], correct: "⚽⚽", explanation: "⚽⚽ shows 2 balls." },
+    { question: "Which group shows <strong>4</strong> fish?", options: ["🐟🐟🐟🐟", "🐟🐟🐟🐟🐟"], correct: "🐟🐟🐟🐟", explanation: "🐟🐟🐟🐟 shows 4 fish." },
+    { question: "Which group shows <strong>6</strong> bees?", options: ["🐝🐝🐝🐝🐝🐝", "🐝🐝🐝🐝🐝🐝🐝"], correct: "🐝🐝🐝🐝🐝🐝", explanation: "🐝🐝🐝🐝🐝🐝 shows 6 bees." },
+    { question: "Which group shows <strong>10</strong> flowers?", options: ["🌸🌸🌸🌸🌸🌸🌸🌸🌸", "🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸"], correct: "🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸", explanation: "🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸 shows 10 flowers." },
+    { question: "Which group shows <strong>5</strong> stars?", options: ["⭐⭐⭐⭐⭐", "⭐⭐⭐⭐⭐⭐"], correct: "⭐⭐⭐⭐⭐", explanation: "⭐⭐⭐⭐⭐ shows 5 stars." },
+    { question: "Which group shows <strong>9</strong> stars?", options: ["⭐⭐⭐⭐⭐⭐⭐⭐⭐", "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐"], correct: "⭐⭐⭐⭐⭐⭐⭐⭐⭐", explanation: "⭐⭐⭐⭐⭐⭐⭐⭐⭐ shows 9 stars." },
+    { question: "Which group shows <strong>1</strong> cookies?", options: ["🍪🍪", "🍪"], correct: "🍪", explanation: "🍪 shows 1 cookies." },
+    { question: "Which group shows <strong>5</strong> bananas?", options: ["🍌🍌🍌🍌🍌🍌", "🍌🍌🍌🍌🍌"], correct: "🍌🍌🍌🍌🍌", explanation: "🍌🍌🍌🍌🍌 shows 5 bananas." },
+    { question: "Which group shows <strong>10</strong> stars?", options: ["⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐", "⭐⭐⭐⭐⭐⭐⭐⭐⭐"], correct: "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐", explanation: "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ shows 10 stars." },
+    { question: "Which group shows <strong>5</strong> bees?", options: ["🐝🐝🐝🐝🐝🐝", "🐝🐝🐝🐝🐝"], correct: "🐝🐝🐝🐝🐝", explanation: "🐝🐝🐝🐝🐝 shows 5 bees." },
+    { question: "Which group shows <strong>2</strong> apples?", options: ["🍎🍎🍎", "🍎🍎"], correct: "🍎🍎", explanation: "🍎🍎 shows 2 apples." },
+    { question: "Which group shows <strong>10</strong> bees?", options: ["🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝", "🐝🐝🐝🐝🐝🐝🐝🐝🐝"], correct: "🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝", explanation: "🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝 shows 10 bees." },
+    { question: "Which group shows <strong>9</strong> apples?", options: ["🍎🍎🍎🍎🍎🍎🍎🍎🍎", "🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎"], correct: "🍎🍎🍎🍎🍎🍎🍎🍎🍎", explanation: "🍎🍎🍎🍎🍎🍎🍎🍎🍎 shows 9 apples." },
+    { question: "Which group shows <strong>5</strong> balloons?", options: ["🎈🎈🎈🎈🎈", "🎈🎈🎈🎈🎈🎈"], correct: "🎈🎈🎈🎈🎈", explanation: "🎈🎈🎈🎈🎈 shows 5 balloons." },
+    { question: "Which group shows <strong>9</strong> flowers?", options: ["🌸🌸🌸🌸🌸🌸🌸🌸🌸", "🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸"], correct: "🌸🌸🌸🌸🌸🌸🌸🌸🌸", explanation: "🌸🌸🌸🌸🌸🌸🌸🌸🌸 shows 9 flowers." },
+    { question: "Which group shows <strong>4</strong> flowers?", options: ["🌸🌸🌸🌸", "🌸🌸🌸🌸🌸"], correct: "🌸🌸🌸🌸", explanation: "🌸🌸🌸🌸 shows 4 flowers." },
+    { question: "Which group shows <strong>4</strong> stars?", options: ["⭐⭐⭐⭐", "⭐⭐⭐⭐⭐"], correct: "⭐⭐⭐⭐", explanation: "⭐⭐⭐⭐ shows 4 stars." },
+    { question: "Which group shows <strong>8</strong> bananas?", options: ["🍌🍌🍌🍌🍌🍌🍌🍌🍌", "🍌🍌🍌🍌🍌🍌🍌🍌"], correct: "🍌🍌🍌🍌🍌🍌🍌🍌", explanation: "🍌🍌🍌🍌🍌🍌🍌🍌 shows 8 bananas." },
+    { question: "Which group shows <strong>1</strong> cars?", options: ["🚗🚗", "🚗"], correct: "🚗", explanation: "🚗 shows 1 cars." },
+    { question: "Which group shows <strong>5</strong> flowers?", options: ["🌸🌸🌸🌸🌸", "🌸🌸🌸🌸🌸🌸"], correct: "🌸🌸🌸🌸🌸", explanation: "🌸🌸🌸🌸🌸 shows 5 flowers." },
+    { question: "Which group shows <strong>7</strong> cars?", options: ["🚗🚗🚗🚗🚗🚗🚗🚗", "🚗🚗🚗🚗🚗🚗🚗"], correct: "🚗🚗🚗🚗🚗🚗🚗", explanation: "🚗🚗🚗🚗🚗🚗🚗 shows 7 cars." },
+    { question: "Which group shows <strong>10</strong> fish?", options: ["🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟", "🐟🐟🐟🐟🐟🐟🐟🐟🐟"], correct: "🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟", explanation: "🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟 shows 10 fish." },
+    { question: "Which group shows <strong>6</strong> apples?", options: ["🍎🍎🍎🍎🍎🍎", "🍎🍎🍎🍎🍎🍎🍎"], correct: "🍎🍎🍎🍎🍎🍎", explanation: "🍎🍎🍎🍎🍎🍎 shows 6 apples." },
+    { question: "Which group shows <strong>2</strong> stars?", options: ["⭐⭐⭐", "⭐⭐"], correct: "⭐⭐", explanation: "⭐⭐ shows 2 stars." },
+    { question: "Which group shows <strong>7</strong> apples?", options: ["🍎🍎🍎🍎🍎🍎🍎", "🍎🍎🍎🍎🍎🍎🍎🍎"], correct: "🍎🍎🍎🍎🍎🍎🍎", explanation: "🍎🍎🍎🍎🍎🍎🍎 shows 7 apples." },
+    { question: "Which group shows <strong>5</strong> apples?", options: ["🍎🍎🍎🍎🍎🍎", "🍎🍎🍎🍎🍎"], correct: "🍎🍎🍎🍎🍎", explanation: "🍎🍎🍎🍎🍎 shows 5 apples." },
+    { question: "Which group shows <strong>9</strong> bees?", options: ["🐝🐝🐝🐝🐝🐝🐝🐝🐝", "🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝"], correct: "🐝🐝🐝🐝🐝🐝🐝🐝🐝", explanation: "🐝🐝🐝🐝🐝🐝🐝🐝🐝 shows 9 bees." },
+    { question: "Which group shows <strong>1</strong> balloons?", options: ["🎈🎈", "🎈"], correct: "🎈", explanation: "🎈 shows 1 balloons." },
+    { question: "Which group shows <strong>8</strong> bees?", options: ["🐝🐝🐝🐝🐝🐝🐝🐝🐝", "🐝🐝🐝🐝🐝🐝🐝🐝"], correct: "🐝🐝🐝🐝🐝🐝🐝🐝", explanation: "🐝🐝🐝🐝🐝🐝🐝🐝 shows 8 bees." },
+    { question: "Which group shows <strong>7</strong> balls?", options: ["⚽⚽⚽⚽⚽⚽⚽⚽", "⚽⚽⚽⚽⚽⚽⚽"], correct: "⚽⚽⚽⚽⚽⚽⚽", explanation: "⚽⚽⚽⚽⚽⚽⚽ shows 7 balls." },
+    { question: "Which group shows <strong>10</strong> balls?", options: ["⚽⚽⚽⚽⚽⚽⚽⚽⚽", "⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽"], correct: "⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽", explanation: "⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽ shows 10 balls." },
+    { question: "Which group shows <strong>1</strong> bees?", options: ["🐝🐝", "🐝"], correct: "🐝", explanation: "🐝 shows 1 bees." },
+    { question: "Which group shows <strong>3</strong> cookies?", options: ["🍪🍪🍪", "🍪🍪🍪🍪"], correct: "🍪🍪🍪", explanation: "🍪🍪🍪 shows 3 cookies." },
+    { question: "Which group shows <strong>4</strong> cookies?", options: ["🍪🍪🍪🍪", "🍪🍪🍪🍪🍪"], correct: "🍪🍪🍪🍪", explanation: "🍪🍪🍪🍪 shows 4 cookies." },
+    { question: "Which group shows <strong>6</strong> cars?", options: ["🚗🚗🚗🚗🚗🚗", "🚗🚗🚗🚗🚗🚗🚗"], correct: "🚗🚗🚗🚗🚗🚗", explanation: "🚗🚗🚗🚗🚗🚗 shows 6 cars." },
+    { question: "Which group shows <strong>8</strong> flowers?", options: ["🌸🌸🌸🌸🌸🌸🌸🌸🌸", "🌸🌸🌸🌸🌸🌸🌸🌸"], correct: "🌸🌸🌸🌸🌸🌸🌸🌸", explanation: "🌸🌸🌸🌸🌸🌸🌸🌸 shows 8 flowers." },
+    { question: "Which group shows <strong>8</strong> cookies?", options: ["🍪🍪🍪🍪🍪🍪🍪🍪🍪", "🍪🍪🍪🍪🍪🍪🍪🍪"], correct: "🍪🍪🍪🍪🍪🍪🍪🍪", explanation: "🍪🍪🍪🍪🍪🍪🍪🍪 shows 8 cookies." },
+    { question: "Which group shows <strong>8</strong> balloons?", options: ["🎈🎈🎈🎈🎈🎈🎈🎈🎈", "🎈🎈🎈🎈🎈🎈🎈🎈"], correct: "🎈🎈🎈🎈🎈🎈🎈🎈", explanation: "🎈🎈🎈🎈🎈🎈🎈🎈 shows 8 balloons." },
+    { question: "Which group shows <strong>3</strong> stars?", options: ["⭐⭐⭐⭐", "⭐⭐⭐"], correct: "⭐⭐⭐", explanation: "⭐⭐⭐ shows 3 stars." },
+    { question: "Which group shows <strong>5</strong> cookies?", options: ["🍪🍪🍪🍪🍪🍪", "🍪🍪🍪🍪🍪"], correct: "🍪🍪🍪🍪🍪", explanation: "🍪🍪🍪🍪🍪 shows 5 cookies." },
+    { question: "Which group shows <strong>9</strong> cookies?", options: ["🍪🍪🍪🍪🍪🍪🍪🍪🍪", "🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪"], correct: "🍪🍪🍪🍪🍪🍪🍪🍪🍪", explanation: "🍪🍪🍪🍪🍪🍪🍪🍪🍪 shows 9 cookies." },
+    { question: "Which group shows <strong>6</strong> flowers?", options: ["🌸🌸🌸🌸🌸🌸", "🌸🌸🌸🌸🌸🌸🌸"], correct: "🌸🌸🌸🌸🌸🌸", explanation: "🌸🌸🌸🌸🌸🌸 shows 6 flowers." },
+    { question: "Which group shows <strong>8</strong> balls?", options: ["⚽⚽⚽⚽⚽⚽⚽⚽", "⚽⚽⚽⚽⚽⚽⚽⚽⚽"], correct: "⚽⚽⚽⚽⚽⚽⚽⚽", explanation: "⚽⚽⚽⚽⚽⚽⚽⚽ shows 8 balls." },
+    { question: "Which group shows <strong>10</strong> cars?", options: ["🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗", "🚗🚗🚗🚗🚗🚗🚗🚗🚗"], correct: "🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗", explanation: "🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗 shows 10 cars." },
+    { question: "Which group shows <strong>10</strong> apples?", options: ["🍎🍎🍎🍎🍎🍎🍎🍎🍎", "🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎"], correct: "🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎", explanation: "🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎 shows 10 apples." },
+    { question: "Which group shows <strong>1</strong> flowers?", options: ["🌸🌸", "🌸"], correct: "🌸", explanation: "🌸 shows 1 flowers." },
+    { question: "Which group shows <strong>2</strong> fish?", options: ["🐟🐟", "🐟🐟🐟"], correct: "🐟🐟", explanation: "🐟🐟 shows 2 fish." },
+    { question: "Which group shows <strong>4</strong> bees?", options: ["🐝🐝🐝🐝🐝", "🐝🐝🐝🐝"], correct: "🐝🐝🐝🐝", explanation: "🐝🐝🐝🐝 shows 4 bees." },
+    { question: "Which group shows <strong>6</strong> bananas?", options: ["🍌🍌🍌🍌🍌🍌", "🍌🍌🍌🍌🍌🍌🍌"], correct: "🍌🍌🍌🍌🍌🍌", explanation: "🍌🍌🍌🍌🍌🍌 shows 6 bananas." },
+    { question: "Which group shows <strong>3</strong> bananas?", options: ["🍌🍌🍌🍌", "🍌🍌🍌"], correct: "🍌🍌🍌", explanation: "🍌🍌🍌 shows 3 bananas." },
+    { question: "Which group shows <strong>1</strong> apples?", options: ["🍎🍎", "🍎"], correct: "🍎", explanation: "🍎 shows 1 apples." },
+    { question: "Which group shows <strong>7</strong> stars?", options: ["⭐⭐⭐⭐⭐⭐⭐⭐", "⭐⭐⭐⭐⭐⭐⭐"], correct: "⭐⭐⭐⭐⭐⭐⭐", explanation: "⭐⭐⭐⭐⭐⭐⭐ shows 7 stars." },
+    { question: "Which group shows <strong>7</strong> fish?", options: ["🐟🐟🐟🐟🐟🐟🐟🐟", "🐟🐟🐟🐟🐟🐟🐟"], correct: "🐟🐟🐟🐟🐟🐟🐟", explanation: "🐟🐟🐟🐟🐟🐟🐟 shows 7 fish." },
+    { question: "Which group shows <strong>2</strong> bananas?", options: ["🍌🍌🍌", "🍌🍌"], correct: "🍌🍌", explanation: "🍌🍌 shows 2 bananas." },
+    { question: "Which group shows <strong>7</strong> bees?", options: ["🐝🐝🐝🐝🐝🐝🐝", "🐝🐝🐝🐝🐝🐝🐝🐝"], correct: "🐝🐝🐝🐝🐝🐝🐝", explanation: "🐝🐝🐝🐝🐝🐝🐝 shows 7 bees." },
+    { question: "Which group shows <strong>4</strong> cars?", options: ["🚗🚗🚗🚗🚗", "🚗🚗🚗🚗"], correct: "🚗🚗🚗🚗", explanation: "🚗🚗🚗🚗 shows 4 cars." },
+    { question: "Which group shows <strong>9</strong> bananas?", options: ["🍌🍌🍌🍌🍌🍌🍌🍌🍌", "🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌"], correct: "🍌🍌🍌🍌🍌🍌🍌🍌🍌", explanation: "🍌🍌🍌🍌🍌🍌🍌🍌🍌 shows 9 bananas." },
+    { question: "Which group shows <strong>10</strong> balloons?", options: ["🎈🎈🎈🎈🎈🎈🎈🎈🎈", "🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈"], correct: "🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈", explanation: "🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈 shows 10 balloons." },
+    { question: "Which group shows <strong>3</strong> fish?", options: ["🐟🐟🐟", "🐟🐟🐟🐟"], correct: "🐟🐟🐟", explanation: "🐟🐟🐟 shows 3 fish." },
+    { question: "Which group shows <strong>1</strong> bananas?", options: ["🍌🍌", "🍌"], correct: "🍌", explanation: "🍌 shows 1 bananas." },
+    { question: "Which group shows <strong>9</strong> balloons?", options: ["🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈", "🎈🎈🎈🎈🎈🎈🎈🎈🎈"], correct: "🎈🎈🎈🎈🎈🎈🎈🎈🎈", explanation: "🎈🎈🎈🎈🎈🎈🎈🎈🎈 shows 9 balloons." },
+    { question: "Which group shows <strong>5</strong> balls?", options: ["⚽⚽⚽⚽⚽", "⚽⚽⚽⚽⚽⚽"], correct: "⚽⚽⚽⚽⚽", explanation: "⚽⚽⚽⚽⚽ shows 5 balls." },
+    { question: "Which group shows <strong>1</strong> fish?", options: ["🐟🐟", "🐟"], correct: "🐟", explanation: "🐟 shows 1 fish." },
+    { question: "Which group shows <strong>4</strong> balloons?", options: ["🎈🎈🎈🎈", "🎈🎈🎈🎈🎈"], correct: "🎈🎈🎈🎈", explanation: "🎈🎈🎈🎈 shows 4 balloons." },
+    { question: "Which group shows <strong>3</strong> cars?", options: ["🚗🚗🚗", "🚗🚗🚗🚗"], correct: "🚗🚗🚗", explanation: "🚗🚗🚗 shows 3 cars." },
+    { question: "Which group shows <strong>3</strong> flowers?", options: ["🌸🌸🌸🌸", "🌸🌸🌸"], correct: "🌸🌸🌸", explanation: "🌸🌸🌸 shows 3 flowers." },
+    { question: "Which group shows <strong>8</strong> cars?", options: ["🚗🚗🚗🚗🚗🚗🚗🚗🚗", "🚗🚗🚗🚗🚗🚗🚗🚗"], correct: "🚗🚗🚗🚗🚗🚗🚗🚗", explanation: "🚗🚗🚗🚗🚗🚗🚗🚗 shows 8 cars." },
+    { question: "Which group shows <strong>4</strong> apples?", options: ["🍎🍎🍎🍎🍎", "🍎🍎🍎🍎"], correct: "🍎🍎🍎🍎", explanation: "🍎🍎🍎🍎 shows 4 apples." },
+    { question: "Which group shows <strong>8</strong> stars?", options: ["⭐⭐⭐⭐⭐⭐⭐⭐⭐", "⭐⭐⭐⭐⭐⭐⭐⭐"], correct: "⭐⭐⭐⭐⭐⭐⭐⭐", explanation: "⭐⭐⭐⭐⭐⭐⭐⭐ shows 8 stars." },
+    { question: "Which group shows <strong>6</strong> fish?", options: ["🐟🐟🐟🐟🐟🐟", "🐟🐟🐟🐟🐟🐟🐟"], correct: "🐟🐟🐟🐟🐟🐟", explanation: "🐟🐟🐟🐟🐟🐟 shows 6 fish." },
+    { question: "Which group shows <strong>4</strong> bananas?", options: ["🍌🍌🍌🍌", "🍌🍌🍌🍌🍌"], correct: "🍌🍌🍌🍌", explanation: "🍌🍌🍌🍌 shows 4 bananas." },
+    { question: "Which group shows <strong>2</strong> bees?", options: ["🐝🐝🐝", "🐝🐝"], correct: "🐝🐝", explanation: "🐝🐝 shows 2 bees." },
+    { question: "Which group shows <strong>10</strong> cookies?", options: ["🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪", "🍪🍪🍪🍪🍪🍪🍪🍪🍪"], correct: "🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪", explanation: "🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪 shows 10 cookies." },
+    { question: "Which group shows <strong>3</strong> balls?", options: ["⚽⚽⚽⚽", "⚽⚽⚽"], correct: "⚽⚽⚽", explanation: "⚽⚽⚽ shows 3 balls." },
+    { question: "Which group shows <strong>3</strong> bees?", options: ["🐝🐝🐝🐝", "🐝🐝🐝"], correct: "🐝🐝🐝", explanation: "🐝🐝🐝 shows 3 bees." },
+    { question: "Which group shows <strong>6</strong> stars?", options: ["⭐⭐⭐⭐⭐⭐", "⭐⭐⭐⭐⭐⭐⭐"], correct: "⭐⭐⭐⭐⭐⭐", explanation: "⭐⭐⭐⭐⭐⭐ shows 6 stars." },
+    { question: "Which group shows <strong>7</strong> balloons?", options: ["🎈🎈🎈🎈🎈🎈🎈🎈", "🎈🎈🎈🎈🎈🎈🎈"], correct: "🎈🎈🎈🎈🎈🎈🎈", explanation: "🎈🎈🎈🎈🎈🎈🎈 shows 7 balloons." },
+    { question: "Which group shows <strong>9</strong> cars?", options: ["🚗🚗🚗🚗🚗🚗🚗🚗🚗", "🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗"], correct: "🚗🚗🚗🚗🚗🚗🚗🚗🚗", explanation: "🚗🚗🚗🚗🚗🚗🚗🚗🚗 shows 9 cars." },
+    { question: "Which group shows <strong>8</strong> apples?", options: ["🍎🍎🍎🍎🍎🍎🍎🍎🍎", "🍎🍎🍎🍎🍎🍎🍎🍎"], correct: "🍎🍎🍎🍎🍎🍎🍎🍎", explanation: "🍎🍎🍎🍎🍎🍎🍎🍎 shows 8 apples." },
+    { question: "Which group shows <strong>9</strong> balls?", options: ["⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽", "⚽⚽⚽⚽⚽⚽⚽⚽⚽"], correct: "⚽⚽⚽⚽⚽⚽⚽⚽⚽", explanation: "⚽⚽⚽⚽⚽⚽⚽⚽⚽ shows 9 balls." },
+    { question: "Which group shows <strong>1</strong> balls?", options: ["⚽⚽", "⚽"], correct: "⚽", explanation: "⚽ shows 1 balls." },
+    { question: "Which group shows <strong>2</strong> flowers?", options: ["🌸🌸", "🌸🌸🌸"], correct: "🌸🌸", explanation: "🌸🌸 shows 2 flowers." },
+    { question: "Which group shows <strong>6</strong> balls?", options: ["⚽⚽⚽⚽⚽⚽⚽", "⚽⚽⚽⚽⚽⚽"], correct: "⚽⚽⚽⚽⚽⚽", explanation: "⚽⚽⚽⚽⚽⚽ shows 6 balls." },
+    { question: "Which group shows <strong>3</strong> apples?", options: ["🍎🍎🍎", "🍎🍎🍎🍎"], correct: "🍎🍎🍎", explanation: "🍎🍎🍎 shows 3 apples." },
+    { question: "Which group shows <strong>7</strong> cookies?", options: ["🍪🍪🍪🍪🍪🍪🍪🍪", "🍪🍪🍪🍪🍪🍪🍪"], correct: "🍪🍪🍪🍪🍪🍪🍪", explanation: "🍪🍪🍪🍪🍪🍪🍪 shows 7 cookies." },
+    { question: "Which group shows <strong>6</strong> balloons?", options: ["🎈🎈🎈🎈🎈🎈", "🎈🎈🎈🎈🎈🎈🎈"], correct: "🎈🎈🎈🎈🎈🎈", explanation: "🎈🎈🎈🎈🎈🎈 shows 6 balloons." },
+    { question: "Which group shows <strong>3</strong> balloons?", options: ["🎈🎈🎈", "🎈🎈🎈🎈"], correct: "🎈🎈🎈", explanation: "🎈🎈🎈 shows 3 balloons." },
+    { question: "Which group shows <strong>5</strong> cars?", options: ["🚗🚗🚗🚗🚗", "🚗🚗🚗🚗🚗🚗"], correct: "🚗🚗🚗🚗🚗", explanation: "🚗🚗🚗🚗🚗 shows 5 cars." },
+    { question: "Which group shows <strong>7</strong> bananas?", options: ["🍌🍌🍌🍌🍌🍌🍌", "🍌🍌🍌🍌🍌🍌🍌🍌"], correct: "🍌🍌🍌🍌🍌🍌🍌", explanation: "🍌🍌🍌🍌🍌🍌🍌 shows 7 bananas." },
+    { question: "Which group shows <strong>2</strong> balloons?", options: ["🎈🎈🎈", "🎈🎈"], correct: "🎈🎈", explanation: "🎈🎈 shows 2 balloons." },
+    { question: "Which group shows <strong>2</strong> cars?", options: ["🚗🚗🚗", "🚗🚗"], correct: "🚗🚗", explanation: "🚗🚗 shows 2 cars." },
+    { question: "Which group shows <strong>9</strong> fish?", options: ["🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟", "🐟🐟🐟🐟🐟🐟🐟🐟🐟"], correct: "🐟🐟🐟🐟🐟🐟🐟🐟🐟", explanation: "🐟🐟🐟🐟🐟🐟🐟🐟🐟 shows 9 fish." },
+    { question: "Which group shows <strong>4</strong> balls?", options: ["⚽⚽⚽⚽", "⚽⚽⚽⚽⚽"], correct: "⚽⚽⚽⚽", explanation: "⚽⚽⚽⚽ shows 4 balls." },
+    { question: "Which group shows <strong>5</strong> fish?", options: ["🐟🐟🐟🐟🐟🐟", "🐟🐟🐟🐟🐟"], correct: "🐟🐟🐟🐟🐟", explanation: "🐟🐟🐟🐟🐟 shows 5 fish." },
+    { question: "Which group shows <strong>7</strong> flowers?", options: ["🌸🌸🌸🌸🌸🌸🌸🌸", "🌸🌸🌸🌸🌸🌸🌸"], correct: "🌸🌸🌸🌸🌸🌸🌸", explanation: "🌸🌸🌸🌸🌸🌸🌸 shows 7 flowers." }
   ];
 </script>
 

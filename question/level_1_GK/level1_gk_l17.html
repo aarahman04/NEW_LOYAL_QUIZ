@@ -29,126 +29,106 @@
     <!-- Questions -->
     <script>
       const questions = [
-        {
-          question: "What does brave mean?",
-          options: ["afraid", "not afraid", "sad"],
-          correct: "not afraid",
-          explanation: "Brave means not afraid."
-        },
-        {
-          question: "What is a journey?",
-          options: ["a meal", "a long trip", "a book"],
-          correct: "a long trip",
-          explanation: "A journey means a long trip."
-        },
-        {
-          question: "What does honest mean?",
-          options: ["tells the truth", "tells lies", "angry"],
-          correct: "tells the truth",
-          explanation: "Honest means telling the truth."
-        },
-        {
-          question: "What is history?",
-          options: ["study of the future", "study of the past", "study of plants"],
-          correct: "study of the past",
-          explanation: "History is the study of the past."
-        },
-        {
-          question: "Who is a leader?",
-          options: ["a person who guides others", "a student", "a baby"],
-          correct: "a person who guides others",
-          explanation: "A leader guides others."
-        },
-        {
-          question: "What is war?",
-          options: ["a game", "fighting between groups", "a song"],
-          correct: "fighting between groups",
-          explanation: "War is fighting between groups."
-        },
-        {
-          question: "What is a map?",
-          options: ["a toy", "a drawing of places", "a story"],
-          correct: "a drawing of places",
-          explanation: "A map is a drawing of places."
-        },
-        {
-          question: "What is a river?",
-          options: ["flowing water", "dry land", "hot air"],
-          correct: "flowing water",
-          explanation: "A river is flowing water."
-        },
-        {
-          question: "What is a mountain?",
-          options: ["flat land", "very high land", "deep water"],
-          correct: "very high land",
-          explanation: "A mountain is very high land."
-        },
-        {
-          question: "What do plants need to grow?",
-          options: ["water", "toys", "shoes"],
-          correct: "water",
-          explanation: "Plants need water to grow."
-        },
-        {
-          question: "What do we breathe?",
-          options: ["sand", "air", "food"],
-          correct: "air",
-          explanation: "We breathe air."
-        },
-        {
-          question: "Which is a living thing?",
-          options: ["chair", "animal", "stone"],
-          correct: "animal",
-          explanation: "Animals are living things."
-        },
-        {
-          question: "I shine in the day. Who am I?",
-          options: ["moon", "sun", "star"],
-          correct: "sun",
-          explanation: "The sun shines in the day."
-        },
-        {
-          question: "I have hands but cannot clap. What am I?",
-          options: ["clock", "dog", "tree"],
-          correct: "clock",
-          explanation: "A clock has hands but cannot clap."
-        },
-        {
-          question: "What is peace?",
-          options: ["fighting", "no fighting", "noise"],
-          correct: "no fighting",
-          explanation: "Peace means no fighting."
-        },
-        {
-          question: "What does fast mean?",
-          options: ["slow", "quick", "weak"],
-          correct: "quick",
-          explanation: "Fast means quick."
-        },
-        {
-          question: "What is a friend?",
-          options: ["someone who helps you", "someone you do not know", "an animal"],
-          correct: "someone who helps you",
-          explanation: "A friend helps and supports you."
-        },
-        {
-          question: "What is a king?",
-          options: ["a teacher", "a ruler", "a farmer"],
-          correct: "a ruler",
-          explanation: "A king is a ruler."
-        },
-        {
-          question: "What is a monument?",
-          options: ["a new house", "a place from the past", "a shop"],
-          correct: "a place from the past",
-          explanation: "A monument is a place from the past."
-        },
-        {
-          question: "Why do people study history?",
-          options: ["to learn about the past", "to play games", "to sleep"],
-          correct: "to learn about the past",
-          explanation: "People study history to learn about the past."
-        }
+        { question: "Who grows crops in the field?", options: ["farmer", "barber", "doctor"], correct: "farmer", explanation: "A farmer grows crops in the field." },
+        { question: "What is the main job of our teeth?", options: ["throw", "write", "chew food"], correct: "chew food", explanation: "We use our teeth to chew food." },
+        { question: "What colour is the parrot?", options: ["Brown", "Green", "Purple"], correct: "Green", explanation: "The parrot is green." },
+        { question: "How many ears do we have?", options: ["1", "10", "2"], correct: "2", explanation: "We have 2 ears." },
+        { question: "What is the month right after January?", options: ["February", "December", "June"], correct: "February", explanation: "After January comes February." },
+        { question: "We use our ___ to hold things.", options: ["tongue", "teeth", "hands"], correct: "hands", explanation: "We use our hands to hold things." },
+        { question: "What is the baby of a monkey called?", options: ["Kitten", "Baby", "Cub"], correct: "Baby", explanation: "A baby monkey is called a baby." },
+        { question: "How many feet do we have?", options: ["1", "4", "2"], correct: "2", explanation: "We have 2 feet." },
+        { question: "The blood is usually which colour?", options: ["Black", "Red", "Yellow"], correct: "Red", explanation: "The blood is red." },
+        { question: "What is the body of a monkey covered with?", options: ["Fur", "Scales", "Hair"], correct: "Fur", explanation: "A monkey's body is covered with fur." },
+        { question: "Which of these is a vegetable — pumpkin, apple or guava?", options: ["Apple", "Papaya", "Pumpkin"], correct: "Pumpkin", explanation: "A pumpkin is a vegetable." },
+        { question: "How many legs does a pig have?", options: ["0", "4", "8"], correct: "4", explanation: "A pig has 4 legs." },
+        { question: "What colour is the mint leaf?", options: ["Green", "White", "Purple"], correct: "Green", explanation: "The mint leaf is green." },
+        { question: "A beans is a kind of ___.", options: ["Fruit", "Vegetable", "Bird"], correct: "Vegetable", explanation: "A beans is a vegetable." },
+        { question: "What is the month just before May?", options: ["January", "April", "July"], correct: "April", explanation: "Before May comes April." },
+        { question: "We call a guava a ___.", options: ["Fruit", "Vegetable", "Animal"], correct: "Fruit", explanation: "A guava is a fruit." },
+        { question: "What do we use to stay dry in the rain?", options: ["Spoon", "Fan", "Umbrella"], correct: "Umbrella", explanation: "We use an umbrella in the rain." },
+        { question: "What colour is the orange?", options: ["Orange", "Yellow", "Red"], correct: "Orange", explanation: "The orange is orange." },
+        { question: "What colour is a brinjal?", options: ["Pink", "Yellow", "Purple"], correct: "Purple", explanation: "A brinjal is purple." },
+        { question: "We call a brinjal a ___.", options: ["Vegetable", "Bird", "Fruit"], correct: "Vegetable", explanation: "A brinjal is a vegetable." },
+        { question: "Which month comes before July?", options: ["June", "March", "November"], correct: "June", explanation: "Before July comes June." },
+        { question: "What is the main job of our ears?", options: ["hear", "talk", "draw"], correct: "hear", explanation: "We use our ears to hear." },
+        { question: "The pumpkin is usually which colour?", options: ["Orange", "Black", "Purple"], correct: "Orange", explanation: "The pumpkin is orange." },
+        { question: "Which animal makes the sound “Baa”?", options: ["Monkey", "Sheep", "Fish"], correct: "Sheep", explanation: "A sheep makes the sound 'baa'." },
+        { question: "What colour is the peas?", options: ["Pink", "Green", "Yellow"], correct: "Green", explanation: "The peas is green." },
+        { question: "Who puts out fires?", options: ["fireman", "pilot", "barber"], correct: "fireman", explanation: "A fireman puts out fires." },
+        { question: "What colour is the swan?", options: ["Pink", "White", "Red"], correct: "White", explanation: "The swan is white." },
+        { question: "Which day comes between Saturday and Monday?", options: ["Friday", "Sunday", "Saturday"], correct: "Sunday", explanation: "Sunday comes between Saturday and Monday." },
+        { question: "What do we use to cut paper?", options: ["Scissors", "Cup", "Pillow"], correct: "Scissors", explanation: "We cut paper with scissors." },
+        { question: "What colour is the corn?", options: ["Yellow", "Green", "Blue"], correct: "Yellow", explanation: "The corn is yellow." },
+        { question: "We call a banana a ___.", options: ["Fruit", "Vegetable", "Animal"], correct: "Fruit", explanation: "A banana is a fruit." },
+        { question: "The fire truck is usually which colour?", options: ["Pink", "Green", "Red"], correct: "Red", explanation: "The fire truck is red." },
+        { question: "The night sky is usually which colour?", options: ["Black", "Yellow", "White"], correct: "Black", explanation: "The night sky is black." },
+        { question: "We use our ___ to taste.", options: ["hair", "tongue", "eyes"], correct: "tongue", explanation: "We use our tongue to taste." },
+        { question: "How many legs does a cock have?", options: ["6", "0", "2"], correct: "2", explanation: "A cock has 2 legs." },
+        { question: "The leaf is usually which colour?", options: ["Green", "Pink", "Purple"], correct: "Green", explanation: "The leaf is green." },
+        { question: "What do we get from a hen?", options: ["Honey", "Wool", "Eggs"], correct: "Eggs", explanation: "We get eggs from a hen." },
+        { question: "Which of these sinks in water?", options: ["Stone", "Leaf", "Paper"], correct: "Stone", explanation: "A heavy stone sinks." },
+        { question: "Which body part do we use to bite?", options: ["mouth", "brain", "teeth"], correct: "teeth", explanation: "We use our teeth to bite." },
+        { question: "Which of these is a fruit — papaya, brinjal or spinach?", options: ["Papaya", "Brinjal", "Carrot"], correct: "Papaya", explanation: "A papaya is a fruit." },
+        { question: "Is a papaya a fruit or a vegetable?", options: ["Vegetable", "Fruit", "Animal"], correct: "Fruit", explanation: "A papaya is a fruit." },
+        { question: "What is the month just before January?", options: ["December", "November", "April"], correct: "December", explanation: "Before January comes December." },
+        { question: "Which month comes between October and December?", options: ["October", "June", "November"], correct: "November", explanation: "November comes between October and December." },
+        { question: "The tomato is usually which colour?", options: ["Brown", "White", "Red"], correct: "Red", explanation: "The tomato is red." },
+        { question: "What colour is the butter?", options: ["Yellow", "Black", "Brown"], correct: "Yellow", explanation: "The butter is yellow." },
+        { question: "A person has how many nose?", options: ["10", "4", "1"], correct: "1", explanation: "We have 1 nose." },
+        { question: "The lettuce is usually which colour?", options: ["Green", "Orange", "Purple"], correct: "Green", explanation: "The lettuce is green." },
+        { question: "What is the baby of a frog called?", options: ["Calf", "Kit", "Tadpole"], correct: "Tadpole", explanation: "A baby frog is called a tadpole." },
+        { question: "What colour is a strawberry?", options: ["Blue", "Orange", "Red"], correct: "Red", explanation: "A strawberry is red." },
+        { question: "What is the opposite of 'empty'?", options: ["big", "less", "full"], correct: "full", explanation: "The opposite of empty is full." },
+        { question: "What is the body of a cow covered with?", options: ["Skin", "Scales", "Hair"], correct: "Hair", explanation: "A cow's body is covered with hair." },
+        { question: "The chick is usually which colour?", options: ["White", "Yellow", "Orange"], correct: "Yellow", explanation: "The chick is yellow." },
+        { question: "What is the opposite of 'on'?", options: ["dirty", "off", "last"], correct: "off", explanation: "The opposite of on is off." },
+        { question: "A person has how many cheeks?", options: ["2", "5", "4"], correct: "2", explanation: "We have 2 cheeks." },
+        { question: "What is the baby of a rabbit called?", options: ["Kit", "Kid", "Piglet"], correct: "Kit", explanation: "A baby rabbit is called a kit." },
+        { question: "Does a radish grow under the ground or on a tree?", options: ["Under the ground", "In the sky", "On a tree"], correct: "Under the ground", explanation: "A radish grows under the ground." },
+        { question: "Which animal makes the sound “Bark”?", options: ["Rabbit", "Dog", "Pig"], correct: "Dog", explanation: "A dog makes the sound 'bark'." },
+        { question: "Which animal makes the sound “Cluck”?", options: ["Hen", "Frog", "Cock"], correct: "Hen", explanation: "A hen makes the sound 'cluck'." },
+        { question: "What colour is the blueberry?", options: ["Blue", "Brown", "Black"], correct: "Blue", explanation: "The blueberry is blue." },
+        { question: "What colour is the pumpkin?", options: ["Orange", "Brown", "Purple"], correct: "Orange", explanation: "The pumpkin is orange." },
+        { question: "A carrot is a kind of ___.", options: ["Vegetable", "Fruit", "Bird"], correct: "Vegetable", explanation: "A carrot is a vegetable." },
+        { question: "What is the month right after August?", options: ["August", "November", "September"], correct: "September", explanation: "After August comes September." },
+        { question: "How many hands do we have?", options: ["2", "4", "10"], correct: "2", explanation: "We have 2 hands." },
+        { question: "We brush our teeth to keep them ___.", options: ["clean", "dirty", "broken"], correct: "clean", explanation: "Brushing keeps teeth clean." },
+        { question: "Which animal makes the sound “Meow”?", options: ["Tiger", "Cat", "Snake"], correct: "Cat", explanation: "A cat makes the sound 'meow'." },
+        { question: "Which of these is a farm animal?", options: ["Elephant", "Monkey", "Cow"], correct: "Cow", explanation: "A cow is a farm animal." },
+        { question: "Does a potato grow under the ground or on a tree?", options: ["In the sky", "On a tree", "Under the ground"], correct: "Under the ground", explanation: "A potato grows under the ground." },
+        { question: "Which shape looks like a ball?", options: ["Circle", "Square", "Pentagon"], correct: "Circle", explanation: "A ball looks like a circle." },
+        { question: "What is the baby of a duck called?", options: ["Duckling", "Kitten", "Chick"], correct: "Duckling", explanation: "A baby duck is called a duckling." },
+        { question: "Which of these is usually white?", options: ["marigold", "jamun", "snow"], correct: "snow", explanation: "The snow is white." },
+        { question: "Which body part do we use to chew food?", options: ["ears", "tongue", "teeth"], correct: "teeth", explanation: "We use our teeth to chew food." },
+        { question: "Which month comes after January?", options: ["November", "February", "May"], correct: "February", explanation: "After January comes February." },
+        { question: "Which of these is a vegetable — peas, pear or pineapple?", options: ["Peas", "Mango", "Cherry"], correct: "Peas", explanation: "A peas is a vegetable." },
+        { question: "What colour is the sun?", options: ["Yellow", "Green", "Pink"], correct: "Yellow", explanation: "The sun is yellow." },
+        { question: "How many legs does a frog have?", options: ["0", "8", "4"], correct: "4", explanation: "A frog has 4 legs." },
+        { question: "Which day comes before Sunday?", options: ["Monday", "Thursday", "Saturday"], correct: "Saturday", explanation: "Before Sunday comes Saturday." },
+        { question: "Count them: how many arms do we have?", options: ["4", "10", "2"], correct: "2", explanation: "We have 2 arms." },
+        { question: "We use our ___ to hear.", options: ["ears", "brain", "legs"], correct: "ears", explanation: "We use our ears to hear." },
+        { question: "Which of these is a vegetable — carrot, banana or cherry?", options: ["Grapes", "Pineapple", "Carrot"], correct: "Carrot", explanation: "A carrot is a vegetable." },
+        { question: "How many neck do we have?", options: ["1", "4", "2"], correct: "1", explanation: "We have 1 neck." },
+        { question: "We use our ___ to walk.", options: ["legs", "tongue", "hair"], correct: "legs", explanation: "We use our legs to walk." },
+        { question: "Where does a dog live?", options: ["Water", "Kennel", "Den"], correct: "Kennel", explanation: "A dog lives in a kennel." },
+        { question: "What do we use to write on paper?", options: ["Pencil", "Spoon", "Shoe"], correct: "Pencil", explanation: "We write with a pencil." },
+        { question: "Which of these is a fruit — peach, radish or cabbage?", options: ["Peach", "Pumpkin", "Onion"], correct: "Peach", explanation: "A peach is a fruit." },
+        { question: "What is the day just before Friday?", options: ["Sunday", "Thursday", "Friday"], correct: "Thursday", explanation: "Before Friday comes Thursday." },
+        { question: "What do we get from a cow?", options: ["Milk", "Wool", "Honey"], correct: "Milk", explanation: "We get milk from a cow." },
+        { question: "What colour is the lemon?", options: ["Yellow", "Red", "Brown"], correct: "Yellow", explanation: "The lemon is yellow." },
+        { question: "We should wash our hands before ___.", options: ["sleeping at noon", "playing in mud", "eating"], correct: "eating", explanation: "Wash hands before eating." },
+        { question: "What is the body of a sheep covered with?", options: ["Feathers", "Skin", "Wool"], correct: "Wool", explanation: "A sheep's body is covered with wool." },
+        { question: "Which body part do we use to think?", options: ["ears", "brain", "eyes"], correct: "brain", explanation: "We use our brain to think." },
+        { question: "What colour is a spinach?", options: ["Green", "Blue", "Orange"], correct: "Green", explanation: "A spinach is green." },
+        { question: "What does a farmer do?", options: ["takes care of our teeth", "flies an aeroplane", "grows crops in the field"], correct: "grows crops in the field", explanation: "A farmer grows crops in the field." },
+        { question: "Where does a train move?", options: ["in the air", "on the road", "on a track"], correct: "on a track", explanation: "A train moves on a track." },
+        { question: "The marigold is usually which colour?", options: ["Red", "Orange", "Blue"], correct: "Orange", explanation: "The marigold is orange." },
+        { question: "What do we get from a sheep?", options: ["Wool", "Milk", "Eggs"], correct: "Wool", explanation: "We get wool from a sheep." },
+        { question: "What colour is the milk?", options: ["Pink", "Green", "White"], correct: "White", explanation: "The milk is white." },
+        { question: "Is a cauliflower a fruit or a vegetable?", options: ["Vegetable", "Bird", "Fruit"], correct: "Vegetable", explanation: "A cauliflower is a vegetable." },
+        { question: "What is the body of a goat covered with?", options: ["Wool", "Hair", "Scales"], correct: "Hair", explanation: "A goat's body is covered with hair." },
+        { question: "Count them: how many tongue do we have?", options: ["10", "1", "4"], correct: "1", explanation: "We have 1 tongue." },
+        { question: "What is the day right after Monday?", options: ["Tuesday", "Sunday", "Thursday"], correct: "Tuesday", explanation: "After Monday comes Tuesday." }
       ];
     </script>
 

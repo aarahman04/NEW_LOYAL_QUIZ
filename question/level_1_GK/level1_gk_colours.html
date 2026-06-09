@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GK – Colours</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        { question: "The cotton is usually which colour?", options: ["White", "Red", "Brown"], correct: "White", explanation: "The cotton is white." },
+        { question: "What colour is the sky?", options: ["Yellow", "Blue", "Purple"], correct: "Blue", explanation: "The sky is blue." },
+        { question: "What colour is the cloud?", options: ["White", "Purple", "Pink"], correct: "White", explanation: "The cloud is white." },
+        { question: "The pumpkin is usually which colour?", options: ["Blue", "Orange", "Brown"], correct: "Orange", explanation: "The pumpkin is orange." },
+        { question: "The ant is usually which colour?", options: ["Yellow", "White", "Black"], correct: "Black", explanation: "The ant is black." },
+        { question: "Which of these is usually brown?", options: ["soil", "cherry", "frog"], correct: "soil", explanation: "The soil is brown." },
+        { question: "Which of these is usually white?", options: ["night sky", "ant", "snow"], correct: "snow", explanation: "The snow is white." },
+        { question: "What colour is the milk?", options: ["White", "Pink", "Purple"], correct: "White", explanation: "The milk is white." },
+        { question: "What colour is the strawberry?", options: ["Green", "Yellow", "Red"], correct: "Red", explanation: "The strawberry is red." },
+        { question: "What colour is the tyre?", options: ["Orange", "Green", "Black"], correct: "Black", explanation: "The tyre is black." },
+        { question: "The sunflower is usually which colour?", options: ["Green", "Red", "Yellow"], correct: "Yellow", explanation: "The sunflower is yellow." },
+        { question: "The milk is usually which colour?", options: ["White", "Purple", "Black"], correct: "White", explanation: "The milk is white." },
+        { question: "The flamingo is usually which colour?", options: ["Pink", "Red", "Blue"], correct: "Pink", explanation: "The flamingo is pink." },
+        { question: "What colour is the crow?", options: ["Red", "Pink", "Black"], correct: "Black", explanation: "The crow is black." },
+        { question: "The crow is usually which colour?", options: ["White", "Orange", "Black"], correct: "Black", explanation: "The crow is black." },
+        { question: "What colour is the marigold?", options: ["Green", "Brown", "Orange"], correct: "Orange", explanation: "The marigold is orange." },
+        { question: "The brinjal is usually which colour?", options: ["Orange", "Purple", "Brown"], correct: "Purple", explanation: "The brinjal is purple." },
+        { question: "The bear is usually which colour?", options: ["Brown", "White", "Orange"], correct: "Brown", explanation: "The bear is brown." },
+        { question: "What colour is the snow?", options: ["Blue", "Pink", "White"], correct: "White", explanation: "The snow is white." },
+        { question: "The apple is usually which colour?", options: ["Red", "Purple", "Pink"], correct: "Red", explanation: "The apple is red." },
+        { question: "What colour is the brinjal?", options: ["Purple", "Orange", "Blue"], correct: "Purple", explanation: "The brinjal is purple." },
+        { question: "What colour is the rice?", options: ["Black", "White", "Orange"], correct: "White", explanation: "The rice is white." },
+        { question: "What colour is the blood?", options: ["Orange", "Red", "Pink"], correct: "Red", explanation: "The blood is red." },
+        { question: "What colour is the leaf?", options: ["Green", "Orange", "Brown"], correct: "Green", explanation: "The leaf is green." },
+        { question: "The sun is usually which colour?", options: ["Red", "Purple", "Yellow"], correct: "Yellow", explanation: "The sun is yellow." },
+        { question: "The snow is usually which colour?", options: ["Purple", "White", "Black"], correct: "White", explanation: "The snow is white." },
+        { question: "The ladybird is usually which colour?", options: ["Red", "White", "Orange"], correct: "Red", explanation: "The ladybird is red." },
+        { question: "What colour is the tomato?", options: ["Black", "Purple", "Red"], correct: "Red", explanation: "The tomato is red." },
+        { question: "What colour is the parrot?", options: ["Black", "Pink", "Green"], correct: "Green", explanation: "The parrot is green." },
+        { question: "The cotton candy is usually which colour?", options: ["Blue", "Pink", "Brown"], correct: "Pink", explanation: "The cotton candy is pink." },
+        { question: "What colour is the wood?", options: ["Blue", "Brown", "Black"], correct: "Brown", explanation: "The wood is brown." },
+        { question: "The butter is usually which colour?", options: ["Pink", "Black", "Yellow"], correct: "Yellow", explanation: "The butter is yellow." },
+        { question: "The cherry is usually which colour?", options: ["Red", "Purple", "Black"], correct: "Red", explanation: "The cherry is red." },
+        { question: "What colour is the piglet?", options: ["Pink", "Purple", "White"], correct: "Pink", explanation: "The piglet is pink." },
+        { question: "What colour is the butter?", options: ["Pink", "Green", "Yellow"], correct: "Yellow", explanation: "The butter is yellow." },
+        { question: "The jamun is usually which colour?", options: ["White", "Brown", "Purple"], correct: "Purple", explanation: "The jamun is purple." },
+        { question: "The blueberry is usually which colour?", options: ["Yellow", "Blue", "Green"], correct: "Blue", explanation: "The blueberry is blue." },
+        { question: "The coal is usually which colour?", options: ["Yellow", "Black", "Pink"], correct: "Black", explanation: "The coal is black." },
+        { question: "What colour is the cherry?", options: ["Red", "Green", "Pink"], correct: "Red", explanation: "The cherry is red." },
+        { question: "The blood is usually which colour?", options: ["Red", "Black", "Brown"], correct: "Red", explanation: "The blood is red." },
+        { question: "The camel is usually which colour?", options: ["Red", "Purple", "Brown"], correct: "Brown", explanation: "The camel is brown." },
+        { question: "What colour is the swan?", options: ["Pink", "White", "Purple"], correct: "White", explanation: "The swan is white." },
+        { question: "The chocolate is usually which colour?", options: ["Blue", "Green", "Brown"], correct: "Brown", explanation: "The chocolate is brown." },
+        { question: "Which of these is usually pink?", options: ["ladybird", "flamingo", "night sky"], correct: "flamingo", explanation: "The flamingo is pink." },
+        { question: "What colour is the cotton candy?", options: ["Pink", "Orange", "Yellow"], correct: "Pink", explanation: "The cotton candy is pink." },
+        { question: "What colour is the frog?", options: ["Blue", "Green", "Pink"], correct: "Green", explanation: "The frog is green." },
+        { question: "What colour is the basketball?", options: ["Purple", "Orange", "Red"], correct: "Orange", explanation: "The basketball is orange." },
+        { question: "Which of these is usually black?", options: ["sky", "coal", "parrot"], correct: "coal", explanation: "The coal is black." },
+        { question: "What colour is the cotton?", options: ["Pink", "White", "Purple"], correct: "White", explanation: "The cotton is white." },
+        { question: "The tree trunk is usually which colour?", options: ["Brown", "Black", "Blue"], correct: "Brown", explanation: "The tree trunk is brown." },
+        { question: "The grass is usually which colour?", options: ["Red", "Green", "Yellow"], correct: "Green", explanation: "The grass is green." },
+        { question: "The piglet is usually which colour?", options: ["Green", "Pink", "Blue"], correct: "Pink", explanation: "The piglet is pink." },
+        { question: "What colour is the peas?", options: ["Purple", "Red", "Green"], correct: "Green", explanation: "The peas is green." },
+        { question: "The rose is usually which colour?", options: ["Green", "Purple", "Red"], correct: "Red", explanation: "The rose is red." },
+        { question: "Which of these is usually red?", options: ["basketball", "apple", "snow"], correct: "apple", explanation: "The apple is red." },
+        { question: "What colour is the orange?", options: ["Blue", "Brown", "Orange"], correct: "Orange", explanation: "The orange is orange." },
+        { question: "The carrot is usually which colour?", options: ["Blue", "Black", "Orange"], correct: "Orange", explanation: "The carrot is orange." },
+        { question: "The leaf is usually which colour?", options: ["White", "Green", "Pink"], correct: "Green", explanation: "The leaf is green." },
+        { question: "Which of these is usually orange?", options: ["butter", "carrot", "bear"], correct: "carrot", explanation: "The carrot is orange." },
+        { question: "The chalk is usually which colour?", options: ["White", "Yellow", "Green"], correct: "White", explanation: "The chalk is white." },
+        { question: "What colour is the mint leaf?", options: ["Red", "Green", "Purple"], correct: "Green", explanation: "The mint leaf is green." },
+        { question: "Which of these is usually yellow?", options: ["crow", "tomato", "sun"], correct: "sun", explanation: "The sun is yellow." },
+        { question: "What colour is the corn?", options: ["Yellow", "Pink", "Blue"], correct: "Yellow", explanation: "The corn is yellow." },
+        { question: "What colour is the banana?", options: ["Yellow", "Brown", "White"], correct: "Yellow", explanation: "The banana is yellow." },
+        { question: "What colour is the tree trunk?", options: ["Black", "Red", "Brown"], correct: "Brown", explanation: "The tree trunk is brown." },
+        { question: "What colour is the grass?", options: ["Green", "White", "Pink"], correct: "Green", explanation: "The grass is green." },
+        { question: "What colour is the rose?", options: ["Green", "Red", "White"], correct: "Red", explanation: "The rose is red." },
+        { question: "The orange is usually which colour?", options: ["Yellow", "Pink", "Orange"], correct: "Orange", explanation: "The orange is orange." },
+        { question: "The frog is usually which colour?", options: ["Blue", "White", "Green"], correct: "Green", explanation: "The frog is green." },
+        { question: "The peas is usually which colour?", options: ["Purple", "Green", "Black"], correct: "Green", explanation: "The peas is green." },
+        { question: "What colour is the lettuce?", options: ["Green", "Purple", "Pink"], correct: "Green", explanation: "The lettuce is green." },
+        { question: "What colour is the ladybird?", options: ["Red", "Brown", "Orange"], correct: "Red", explanation: "The ladybird is red." },
+        { question: "What colour is the blueberry?", options: ["White", "Red", "Blue"], correct: "Blue", explanation: "The blueberry is blue." },
+        { question: "The sky is usually which colour?", options: ["White", "Pink", "Blue"], correct: "Blue", explanation: "The sky is blue." },
+        { question: "What colour is the bubblegum?", options: ["Blue", "Orange", "Pink"], correct: "Pink", explanation: "The bubblegum is pink." },
+        { question: "The sea is usually which colour?", options: ["Blue", "Brown", "Red"], correct: "Blue", explanation: "The sea is blue." },
+        { question: "Which of these is usually blue?", options: ["sky", "corn", "blood"], correct: "sky", explanation: "The sky is blue." },
+        { question: "What colour is the apple?", options: ["Black", "Yellow", "Red"], correct: "Red", explanation: "The apple is red." },
+        { question: "What colour is the lemon?", options: ["Red", "Blue", "Yellow"], correct: "Yellow", explanation: "The lemon is yellow." },
+        { question: "What colour is the pumpkin?", options: ["Green", "Blue", "Orange"], correct: "Orange", explanation: "The pumpkin is orange." },
+        { question: "What colour is the sunflower?", options: ["White", "Yellow", "Green"], correct: "Yellow", explanation: "The sunflower is yellow." },
+        { question: "What colour is the coal?", options: ["Black", "Red", "Brown"], correct: "Black", explanation: "The coal is black." },
+        { question: "The corn is usually which colour?", options: ["Green", "Black", "Yellow"], correct: "Yellow", explanation: "The corn is yellow." },
+        { question: "The tomato is usually which colour?", options: ["Green", "Red", "Black"], correct: "Red", explanation: "The tomato is red." },
+        { question: "The chick is usually which colour?", options: ["Pink", "Green", "Yellow"], correct: "Yellow", explanation: "The chick is yellow." },
+        { question: "The cloud is usually which colour?", options: ["White", "Black", "Yellow"], correct: "White", explanation: "The cloud is white." },
+        { question: "What colour is the carrot?", options: ["Yellow", "Orange", "White"], correct: "Orange", explanation: "The carrot is orange." },
+        { question: "The strawberry is usually which colour?", options: ["Pink", "Red", "Black"], correct: "Red", explanation: "The strawberry is red." },
+        { question: "What colour is the night sky?", options: ["Black", "White", "Orange"], correct: "Black", explanation: "The night sky is black." },
+        { question: "The wood is usually which colour?", options: ["Brown", "Orange", "Blue"], correct: "Brown", explanation: "The wood is brown." },
+        { question: "What colour is the ant?", options: ["Red", "Pink", "Black"], correct: "Black", explanation: "The ant is black." },
+        { question: "The lemon is usually which colour?", options: ["White", "Yellow", "Green"], correct: "Yellow", explanation: "The lemon is yellow." },
+        { question: "Which of these is usually green?", options: ["pumpkin", "apple", "grass"], correct: "grass", explanation: "The grass is green." },
+        { question: "What colour is the bear?", options: ["Yellow", "Brown", "Purple"], correct: "Brown", explanation: "The bear is brown." },
+        { question: "What colour is the chalk?", options: ["Brown", "Green", "White"], correct: "White", explanation: "The chalk is white." },
+        { question: "The swan is usually which colour?", options: ["Orange", "Purple", "White"], correct: "White", explanation: "The swan is white." },
+        { question: "The rice is usually which colour?", options: ["Black", "Brown", "White"], correct: "White", explanation: "The rice is white." },
+        { question: "The bubblegum is usually which colour?", options: ["Pink", "Purple", "Red"], correct: "Pink", explanation: "The bubblegum is pink." },
+        { question: "What colour is the sea?", options: ["Black", "Blue", "Yellow"], correct: "Blue", explanation: "The sea is blue." },
+        { question: "The lettuce is usually which colour?", options: ["Blue", "Red", "Green"], correct: "Green", explanation: "The lettuce is green." }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>

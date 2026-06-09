@@ -28,126 +28,106 @@
 
 <script>
   const questions = [
-    {
-      question: "What is 20 - 11?",
-      options: ["8", "9"],
-      correct: "9",
-      explanation: "20 - 11 = 9"
-    },
-    {
-      question: "What is 18 - 12?",
-      options: ["7", "6"],
-      correct: "6",
-      explanation: "18 - 12 = 6"
-    },
-    {
-      question: "What is 19 - 5?",
-      options: ["14", "15"],
-      correct: "14",
-      explanation: "19 - 5 = 14"
-    },
-    {
-      question: "What is 17 - 9?",
-      options: ["8", "7"],
-      correct: "8",
-      explanation: "17 - 9 = 8"
-    },
-    {
-      question: "What is 16 - 14?",
-      options: ["1", "2"],
-      correct: "2",
-      explanation: "16 - 14 = 2"
-    },
-    {
-      question: "What is 20 - 18?",
-      options: ["1", "2"],
-      correct: "2",
-      explanation: "20 - 18 = 2"
-    },
-    {
-      question: "What is 19 - 10?",
-      options: ["8", "9"],
-      correct: "9",
-      explanation: "19 - 10 = 9"
-    },
-    {
-      question: "What is 18 - 3?",
-      options: ["14", "15"],
-      correct: "15",
-      explanation: "18 - 3 = 15"
-    },
-    {
-      question: "What is 17 - 7?",
-      options: ["9", "10"],
-      correct: "10",
-      explanation: "17 - 7 = 10"
-    },
-    {
-      question: "What is 16 - 8?",
-      options: ["7", "8"],
-      correct: "8",
-      explanation: "16 - 8 = 8"
-    },
-    {
-      question: "What is 20 - 5?",
-      options: ["14", "15"],
-      correct: "15",
-      explanation: "20 - 5 = 15"
-    },
-    {
-      question: "What is 18 - 16?",
-      options: ["2", "1"],
-      correct: "2",
-      explanation: "18 - 16 = 2"
-    },
-    {
-      question: "What is 19 - 13?",
-      options: ["7", "6"],
-      correct: "6",
-      explanation: "19 - 13 = 6"
-    },
-    {
-      question: "What is 17 - 12?",
-      options: ["5", "4"],
-      correct: "5",
-      explanation: "17 - 12 = 5"
-    },
-    {
-      question: "What is 16 - 6?",
-      options: ["9", "10"],
-      correct: "10",
-      explanation: "16 - 6 = 10"
-    },
-    {
-      question: "What is 20 - 19?",
-      options: ["0", "1"],
-      correct: "1",
-      explanation: "20 - 19 = 1"
-    },
-    {
-      question: "What is 18 - 9?",
-      options: ["8", "9"],
-      correct: "9",
-      explanation: "18 - 9 = 9"
-    },
-    {
-      question: "What is 19 - 8?",
-      options: ["11", "12"],
-      correct: "11",
-      explanation: "19 - 8 = 11"
-    },
-    {
-      question: "What is 17 - 15?",
-      options: ["1", "2"],
-      correct: "2",
-      explanation: "17 - 15 = 2"
-    },
-    {
-      question: "What is 16 - 12?",
-      options: ["4", "3"],
-      correct: "4",
-      explanation: "16 - 12 = 4"
-    }
+    { question: "What is 19 − 15?", options: ["5", "4"], correct: "4", explanation: "19 − 15 = 4" },
+    { question: "What is 20 − 13?", options: ["7", "8"], correct: "7", explanation: "20 − 13 = 7" },
+    { question: "What is 17 − 5?", options: ["12", "13"], correct: "12", explanation: "17 − 5 = 12" },
+    { question: "What is 20 − 9?", options: ["10", "11"], correct: "11", explanation: "20 − 9 = 11" },
+    { question: "What is 18 − 3?", options: ["14", "15"], correct: "15", explanation: "18 − 3 = 15" },
+    { question: "What is 14 − 3?", options: ["11", "12"], correct: "11", explanation: "14 − 3 = 11" },
+    { question: "What is 16 − 1?", options: ["16", "15"], correct: "15", explanation: "16 − 1 = 15" },
+    { question: "What is 18 − 16?", options: ["3", "2"], correct: "2", explanation: "18 − 16 = 2" },
+    { question: "What is 8 − 5?", options: ["4", "3"], correct: "3", explanation: "8 − 5 = 3" },
+    { question: "What is 15 − 0?", options: ["16", "15"], correct: "15", explanation: "15 − 0 = 15" },
+    { question: "What is 10 − 10?", options: ["1", "0"], correct: "0", explanation: "10 − 10 = 0" },
+    { question: "What is 11 − 11?", options: ["1", "0"], correct: "0", explanation: "11 − 11 = 0" },
+    { question: "What is 18 − 8?", options: ["9", "10"], correct: "10", explanation: "18 − 8 = 10" },
+    { question: "What is 17 − 10?", options: ["7", "8"], correct: "7", explanation: "17 − 10 = 7" },
+    { question: "What is 19 − 10?", options: ["10", "9"], correct: "9", explanation: "19 − 10 = 9" },
+    { question: "What is 19 − 1?", options: ["19", "18"], correct: "18", explanation: "19 − 1 = 18" },
+    { question: "What is 10 − 8?", options: ["3", "2"], correct: "2", explanation: "10 − 8 = 2" },
+    { question: "What is 20 − 11?", options: ["10", "9"], correct: "9", explanation: "20 − 11 = 9" },
+    { question: "What is 8 − 0?", options: ["8", "7"], correct: "8", explanation: "8 − 0 = 8" },
+    { question: "What is 19 − 17?", options: ["3", "2"], correct: "2", explanation: "19 − 17 = 2" },
+    { question: "What is 17 − 2?", options: ["16", "15"], correct: "15", explanation: "17 − 2 = 15" },
+    { question: "What is 16 − 7?", options: ["10", "9"], correct: "9", explanation: "16 − 7 = 9" },
+    { question: "What is 2 − 1?", options: ["1", "2"], correct: "1", explanation: "2 − 1 = 1" },
+    { question: "What is 7 − 4?", options: ["4", "3"], correct: "3", explanation: "7 − 4 = 3" },
+    { question: "What is 19 − 3?", options: ["15", "16"], correct: "16", explanation: "19 − 3 = 16" },
+    { question: "What is 18 − 18?", options: ["1", "0"], correct: "0", explanation: "18 − 18 = 0" },
+    { question: "What is 12 − 1?", options: ["11", "12"], correct: "11", explanation: "12 − 1 = 11" },
+    { question: "What is 18 − 2?", options: ["16", "17"], correct: "16", explanation: "18 − 2 = 16" },
+    { question: "What is 17 − 17?", options: ["0", "1"], correct: "0", explanation: "17 − 17 = 0" },
+    { question: "What is 13 − 7?", options: ["6", "5"], correct: "6", explanation: "13 − 7 = 6" },
+    { question: "What is 19 − 19?", options: ["1", "0"], correct: "0", explanation: "19 − 19 = 0" },
+    { question: "What is 6 − 1?", options: ["5", "6"], correct: "5", explanation: "6 − 1 = 5" },
+    { question: "What is 4 − 3?", options: ["1", "2"], correct: "1", explanation: "4 − 3 = 1" },
+    { question: "What is 9 − 8?", options: ["1", "0"], correct: "1", explanation: "9 − 8 = 1" },
+    { question: "What is 3 − 3?", options: ["0", "1"], correct: "0", explanation: "3 − 3 = 0" },
+    { question: "What is 3 − 2?", options: ["0", "1"], correct: "1", explanation: "3 − 2 = 1" },
+    { question: "What is 19 − 12?", options: ["6", "7"], correct: "7", explanation: "19 − 12 = 7" },
+    { question: "What is 10 − 5?", options: ["5", "6"], correct: "5", explanation: "10 − 5 = 5" },
+    { question: "What is 8 − 7?", options: ["1", "2"], correct: "1", explanation: "8 − 7 = 1" },
+    { question: "What is 5 − 1?", options: ["4", "3"], correct: "4", explanation: "5 − 1 = 4" },
+    { question: "What is 19 − 9?", options: ["10", "11"], correct: "10", explanation: "19 − 9 = 10" },
+    { question: "What is 12 − 8?", options: ["4", "3"], correct: "4", explanation: "12 − 8 = 4" },
+    { question: "What is 12 − 11?", options: ["1", "0"], correct: "1", explanation: "12 − 11 = 1" },
+    { question: "What is 11 − 4?", options: ["8", "7"], correct: "7", explanation: "11 − 4 = 7" },
+    { question: "What is 17 − 12?", options: ["4", "5"], correct: "5", explanation: "17 − 12 = 5" },
+    { question: "What is 6 − 2?", options: ["4", "5"], correct: "4", explanation: "6 − 2 = 4" },
+    { question: "What is 6 − 3?", options: ["4", "3"], correct: "3", explanation: "6 − 3 = 3" },
+    { question: "What is 20 − 2?", options: ["19", "18"], correct: "18", explanation: "20 − 2 = 18" },
+    { question: "What is 15 − 8?", options: ["8", "7"], correct: "7", explanation: "15 − 8 = 7" },
+    { question: "What is 6 − 4?", options: ["3", "2"], correct: "2", explanation: "6 − 4 = 2" },
+    { question: "What is 10 − 6?", options: ["5", "4"], correct: "4", explanation: "10 − 6 = 4" },
+    { question: "What is 14 − 0?", options: ["14", "15"], correct: "14", explanation: "14 − 0 = 14" },
+    { question: "What is 15 − 9?", options: ["6", "7"], correct: "6", explanation: "15 − 9 = 6" },
+    { question: "What is 18 − 1?", options: ["18", "17"], correct: "17", explanation: "18 − 1 = 17" },
+    { question: "What is 17 − 1?", options: ["16", "15"], correct: "16", explanation: "17 − 1 = 16" },
+    { question: "What is 11 − 3?", options: ["8", "9"], correct: "8", explanation: "11 − 3 = 8" },
+    { question: "What is 15 − 15?", options: ["1", "0"], correct: "0", explanation: "15 − 15 = 0" },
+    { question: "What is 13 − 5?", options: ["7", "8"], correct: "8", explanation: "13 − 5 = 8" },
+    { question: "What is 13 − 4?", options: ["10", "9"], correct: "9", explanation: "13 − 4 = 9" },
+    { question: "What is 16 − 2?", options: ["14", "13"], correct: "14", explanation: "16 − 2 = 14" },
+    { question: "What is 13 − 0?", options: ["13", "14"], correct: "13", explanation: "13 − 0 = 13" },
+    { question: "What is 15 − 11?", options: ["4", "3"], correct: "4", explanation: "15 − 11 = 4" },
+    { question: "What is 15 − 14?", options: ["1", "0"], correct: "1", explanation: "15 − 14 = 1" },
+    { question: "What is 20 − 3?", options: ["18", "17"], correct: "17", explanation: "20 − 3 = 17" },
+    { question: "What is 17 − 8?", options: ["9", "8"], correct: "9", explanation: "17 − 8 = 9" },
+    { question: "What is 10 − 0?", options: ["10", "9"], correct: "10", explanation: "10 − 0 = 10" },
+    { question: "What is 14 − 2?", options: ["11", "12"], correct: "12", explanation: "14 − 2 = 12" },
+    { question: "What is 14 − 6?", options: ["9", "8"], correct: "8", explanation: "14 − 6 = 8" },
+    { question: "What is 8 − 6?", options: ["3", "2"], correct: "2", explanation: "8 − 6 = 2" },
+    { question: "What is 3 − 0?", options: ["2", "3"], correct: "3", explanation: "3 − 0 = 3" },
+    { question: "What is 12 − 5?", options: ["8", "7"], correct: "7", explanation: "12 − 5 = 7" },
+    { question: "What is 15 − 4?", options: ["10", "11"], correct: "11", explanation: "15 − 4 = 11" },
+    { question: "What is 15 − 5?", options: ["11", "10"], correct: "10", explanation: "15 − 5 = 10" },
+    { question: "What is 14 − 5?", options: ["9", "10"], correct: "9", explanation: "14 − 5 = 9" },
+    { question: "What is 17 − 0?", options: ["17", "16"], correct: "17", explanation: "17 − 0 = 17" },
+    { question: "What is 20 − 15?", options: ["6", "5"], correct: "5", explanation: "20 − 15 = 5" },
+    { question: "What is 9 − 4?", options: ["4", "5"], correct: "5", explanation: "9 − 4 = 5" },
+    { question: "What is 7 − 5?", options: ["2", "3"], correct: "2", explanation: "7 − 5 = 2" },
+    { question: "What is 4 − 4?", options: ["1", "0"], correct: "0", explanation: "4 − 4 = 0" },
+    { question: "What is 5 − 5?", options: ["1", "0"], correct: "0", explanation: "5 − 5 = 0" },
+    { question: "What is 10 − 4?", options: ["6", "5"], correct: "6", explanation: "10 − 4 = 6" },
+    { question: "What is 8 − 1?", options: ["8", "7"], correct: "7", explanation: "8 − 1 = 7" },
+    { question: "What is 13 − 8?", options: ["5", "6"], correct: "5", explanation: "13 − 8 = 5" },
+    { question: "What is 16 − 8?", options: ["7", "8"], correct: "8", explanation: "16 − 8 = 8" },
+    { question: "What is 17 − 7?", options: ["10", "11"], correct: "10", explanation: "17 − 7 = 10" },
+    { question: "What is 13 − 2?", options: ["11", "10"], correct: "11", explanation: "13 − 2 = 11" },
+    { question: "What is 20 − 17?", options: ["2", "3"], correct: "3", explanation: "20 − 17 = 3" },
+    { question: "What is 19 − 7?", options: ["11", "12"], correct: "12", explanation: "19 − 7 = 12" },
+    { question: "What is 9 − 1?", options: ["8", "9"], correct: "8", explanation: "9 − 1 = 8" },
+    { question: "What is 12 − 4?", options: ["9", "8"], correct: "8", explanation: "12 − 4 = 8" },
+    { question: "What is 16 − 10?", options: ["6", "5"], correct: "6", explanation: "16 − 10 = 6" },
+    { question: "What is 10 − 1?", options: ["9", "10"], correct: "9", explanation: "10 − 1 = 9" },
+    { question: "What is 18 − 11?", options: ["7", "8"], correct: "7", explanation: "18 − 11 = 7" },
+    { question: "What is 19 − 2?", options: ["17", "16"], correct: "17", explanation: "19 − 2 = 17" },
+    { question: "What is 19 − 13?", options: ["6", "7"], correct: "6", explanation: "19 − 13 = 6" },
+    { question: "What is 16 − 6?", options: ["9", "10"], correct: "10", explanation: "16 − 6 = 10" },
+    { question: "What is 9 − 5?", options: ["4", "5"], correct: "4", explanation: "9 − 5 = 4" },
+    { question: "What is 18 − 17?", options: ["2", "1"], correct: "1", explanation: "18 − 17 = 1" },
+    { question: "What is 14 − 11?", options: ["2", "3"], correct: "3", explanation: "14 − 11 = 3" },
+    { question: "What is 18 − 10?", options: ["9", "8"], correct: "8", explanation: "18 − 10 = 8" }
   ];
 </script>
 

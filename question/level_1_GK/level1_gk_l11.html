@@ -29,126 +29,106 @@
     <!-- Questions -->
     <script>
       const questions = [
-        {
-          question: "Which body part helps you see?",
-          options: ["eye", "ear", "nose"],
-          correct: "eye",
-          explanation: "We use our eyes to see."
-        },
-        {
-          question: "Which body part helps you hear?",
-          options: ["hand", "ear", "foot"],
-          correct: "ear",
-          explanation: "We hear with our ears."
-        },
-        {
-          question: "Which body part helps you smell?",
-          options: ["nose", "eye", "leg"],
-          correct: "nose",
-          explanation: "The nose helps us smell."
-        },
-        {
-          question: "Which body part helps you think?",
-          options: ["feet", "brain", "foot"],
-          correct: "brain",
-          explanation: "The brain helps us think."
-        },
-        {
-          question: "Which body part helps you eat?",
-          options: ["nose", "mouth", "eye"],
-          correct: "mouth",
-          explanation: "We eat using our mouth."
-        },
-        {
-          question: "Which body part helps you hold things?",
-          options: ["eye", "leg", "hand"],
-          correct: "hand",
-          explanation: "Hands help us hold objects."
-        },
-        {
-          question: "Which invention helps people talk even if far away?",
-          options: ["book", "phone", "spoon"],
-          correct: "phone",
-          explanation: "Phones help people talk from far away."
-        },
-        {
-          question: "Which invention helps us see at night?",
-          options: ["light", "book", "shoe"],
-          correct: "light",
-          explanation: "Light helps us see in the dark."
-        },
-        {
-          question: "Which invention helps us travel fast?",
-          options: ["horse", "table", "car"],
-          correct: "car",
-          explanation: "Cars help us travel fast."
-        },
-        {
-          question: "Which invention helps cook food?",
-          options: ["stove", "pillow", "toy"],
-          correct: "stove",
-          explanation: "A stove is used to cook food."
-        },
-        {
-          question: "Which invention helps us read?",
-          options: ["ball", "book", "cup"],
-          correct: "book",
-          explanation: "Books help us read."
-        },
-        {
-          question: "Which invention helps clean clothes?",
-          options: ["pool", "washing machine", "plate"],
-          correct: "washing machine",
-          explanation: "A washing machine cleans clothes."
-        },
-        {
-          question: "Which invention helps keep food cold?",
-          options: ["fridge", "fan", "clock"],
-          correct: "fridge",
-          explanation: "A fridge keeps food cold."
-        },
-        {
-          question: "Which invention helps watch shows?",
-          options: ["calendar", "television", "bag"],
-          correct: "television",
-          explanation: "Television is used to watch shows."
-        },
-        {
-          question: "Which planet is very hot?",
-          options: ["Mercury", "Earth", "Neptune"],
-          correct: "Mercury",
-          explanation: "Mercury is very close to the sun and very hot."
-        },
-        {
-          question: "Which planet is red?",
-          options: ["Mars", "Venus", "Jupiter"],
-          correct: "Mars",
-          explanation: "Mars is called the red planet."
-        },
-        {
-          question: "Which planet has rings?",
-          options: ["Mars", "Earth", "Saturn"],
-          correct: "Saturn",
-          explanation: "Saturn is famous for its rings."
-        },
-        {
-          question: "Which planet is very big?",
-          options: ["Jupiter", "Mercury", "Earth"],
-          correct: "Jupiter",
-          explanation: "Jupiter is the largest planet."
-        },
-        {
-          question: "Which animal lives in the ocean?",
-          options: ["lion", "fish", "bird"],
-          correct: "fish",
-          explanation: "Fish live in the ocean."
-        },
-        {
-          question: "Which ocean water tastes salty?",
-          options: ["rain", "river", "sea"],
-          correct: "sea",
-          explanation: "Sea water is salty."
-        }
+        { question: "What sound does a bird make?", options: ["Bark", "Croak", "Chirp"], correct: "Chirp", explanation: "A bird says 'chirp'." },
+        { question: "The lemon is usually which colour?", options: ["Yellow", "Red", "Green"], correct: "Yellow", explanation: "The lemon is yellow." },
+        { question: "The snow is usually which colour?", options: ["Orange", "Blue", "White"], correct: "White", explanation: "The snow is white." },
+        { question: "What is the baby of a pig called?", options: ["Tadpole", "Baby", "Piglet"], correct: "Piglet", explanation: "A baby pig is called a piglet." },
+        { question: "The cloud is usually which colour?", options: ["White", "Pink", "Blue"], correct: "White", explanation: "The cloud is white." },
+        { question: "A pear is a kind of ___.", options: ["Vegetable", "Animal", "Fruit"], correct: "Fruit", explanation: "A pear is a fruit." },
+        { question: "Which body part do we use to clap?", options: ["brain", "ears", "hands"], correct: "hands", explanation: "We use our hands to clap." },
+        { question: "What is the month just before January?", options: ["December", "November", "April"], correct: "December", explanation: "Before January comes December." },
+        { question: "We call a cauliflower a ___.", options: ["Bird", "Fruit", "Vegetable"], correct: "Vegetable", explanation: "A cauliflower is a vegetable." },
+        { question: "What is the opposite of 'off'?", options: ["out", "on", "off"], correct: "on", explanation: "The opposite of off is on." },
+        { question: "The strawberry is usually which colour?", options: ["Yellow", "Red", "Black"], correct: "Red", explanation: "The strawberry is red." },
+        { question: "The sky is usually which colour?", options: ["Purple", "Blue", "White"], correct: "Blue", explanation: "The sky is blue." },
+        { question: "How many days are there in a week?", options: ["7", "12", "6"], correct: "7", explanation: "There are 7 days in a week." },
+        { question: "Which of these is a non-living thing?", options: ["Table", "Cat", "Plant"], correct: "Table", explanation: "A table is non-living." },
+        { question: "What colour is the coal?", options: ["Pink", "Black", "White"], correct: "Black", explanation: "The coal is black." },
+        { question: "We call a peas a ___.", options: ["Bird", "Vegetable", "Fruit"], correct: "Vegetable", explanation: "A peas is a vegetable." },
+        { question: "What is the opposite of 'cold'?", options: ["near", "short", "hot"], correct: "hot", explanation: "The opposite of cold is hot." },
+        { question: "Who takes care of our teeth?", options: ["carpenter", "tailor", "dentist"], correct: "dentist", explanation: "A dentist takes care of our teeth." },
+        { question: "Is a pineapple a fruit or a vegetable?", options: ["Vegetable", "Animal", "Fruit"], correct: "Fruit", explanation: "A pineapple is a fruit." },
+        { question: "What colour is the milk?", options: ["Pink", "Green", "White"], correct: "White", explanation: "The milk is white." },
+        { question: "We call a radish a ___.", options: ["Vegetable", "Bird", "Fruit"], correct: "Vegetable", explanation: "A radish is a vegetable." },
+        { question: "Which day comes between Sunday and Tuesday?", options: ["Saturday", "Wednesday", "Monday"], correct: "Monday", explanation: "Monday comes between Sunday and Tuesday." },
+        { question: "Is a cherry a fruit or a vegetable?", options: ["Vegetable", "Fruit", "Animal"], correct: "Fruit", explanation: "A cherry is a fruit." },
+        { question: "Which of these is a weekend day?", options: ["Tuesday", "Monday", "Saturday"], correct: "Saturday", explanation: "Saturday is a weekend day." },
+        { question: "What is the opposite of 'open'?", options: ["on", "short", "shut"], correct: "shut", explanation: "The opposite of open is shut." },
+        { question: "Which animal makes the sound “Buzz”?", options: ["Rabbit", "Bee", "Lion"], correct: "Bee", explanation: "A bee makes the sound 'buzz'." },
+        { question: "Which animal makes the sound “Chirp”?", options: ["Elephant", "Monkey", "Bird"], correct: "Bird", explanation: "A bird makes the sound 'chirp'." },
+        { question: "What colour is a cabbage?", options: ["Brown", "Blue", "Green"], correct: "Green", explanation: "A cabbage is green." },
+        { question: "Count them: how many tongue do we have?", options: ["10", "1", "4"], correct: "1", explanation: "We have 1 tongue." },
+        { question: "What sound does a dog make?", options: ["Bark", "Hiss", "Oink"], correct: "Bark", explanation: "A dog says 'bark'." },
+        { question: "The chick is usually which colour?", options: ["White", "Yellow", "Orange"], correct: "Yellow", explanation: "The chick is yellow." },
+        { question: "How many legs does a elephant have?", options: ["4", "8", "0"], correct: "4", explanation: "A elephant has 4 legs." },
+        { question: "A person has how many ears?", options: ["2", "4", "1"], correct: "2", explanation: "We have 2 ears." },
+        { question: "How many mouth do we have?", options: ["1", "4", "10"], correct: "1", explanation: "We have 1 mouth." },
+        { question: "We use our ___ to taste.", options: ["hair", "tongue", "eyes"], correct: "tongue", explanation: "We use our tongue to taste." },
+        { question: "What colour is the orange?", options: ["Orange", "Yellow", "Red"], correct: "Orange", explanation: "The orange is orange." },
+        { question: "Is a garlic a fruit or a vegetable?", options: ["Vegetable", "Bird", "Fruit"], correct: "Vegetable", explanation: "A garlic is a vegetable." },
+        { question: "What colour is a lemon?", options: ["Yellow", "Orange", "White"], correct: "Yellow", explanation: "A lemon is yellow." },
+        { question: "We brush our teeth to keep them ___.", options: ["clean", "dirty", "broken"], correct: "clean", explanation: "Brushing keeps teeth clean." },
+        { question: "What is the baby of a cow called?", options: ["Calf", "Cub", "Lamb"], correct: "Calf", explanation: "A baby cow is called a calf." },
+        { question: "What is the month just before February?", options: ["May", "January", "April"], correct: "January", explanation: "Before February comes January." },
+        { question: "Which month comes before June?", options: ["May", "February", "January"], correct: "May", explanation: "Before June comes May." },
+        { question: "How many hands do we have?", options: ["2", "4", "10"], correct: "2", explanation: "We have 2 hands." },
+        { question: "What is the body of a rabbit covered with?", options: ["Skin", "Fur", "Scales"], correct: "Fur", explanation: "A rabbit's body is covered with fur." },
+        { question: "What does a pilot do?", options: ["cuts our hair", "takes care of our teeth", "flies an aeroplane"], correct: "flies an aeroplane", explanation: "A pilot flies an aeroplane." },
+        { question: "What is the month just before March?", options: ["February", "August", "April"], correct: "February", explanation: "Before March comes February." },
+        { question: "What is the opposite of 'slow'?", options: ["no", "fast", "big"], correct: "fast", explanation: "The opposite of slow is fast." },
+        { question: "A person has how many cheeks?", options: ["2", "5", "4"], correct: "2", explanation: "We have 2 cheeks." },
+        { question: "What does a police officer do?", options: ["flies an aeroplane", "keeps us safe", "delivers our letters"], correct: "keeps us safe", explanation: "A police officer keeps us safe." },
+        { question: "Which body part do we use to smell?", options: ["ears", "nose", "eyes"], correct: "nose", explanation: "We use our nose to smell." },
+        { question: "What colour is the crow?", options: ["Green", "Black", "Orange"], correct: "Black", explanation: "The crow is black." },
+        { question: "A person has how many toes on one foot?", options: ["10", "5", "4"], correct: "5", explanation: "We have 5 toes on one foot." },
+        { question: "The ant is usually which colour?", options: ["Green", "Purple", "Black"], correct: "Black", explanation: "The ant is black." },
+        { question: "Which day comes before Thursday?", options: ["Wednesday", "Monday", "Friday"], correct: "Wednesday", explanation: "Before Thursday comes Wednesday." },
+        { question: "What is the opposite of 'far'?", options: ["near", "off", "shut"], correct: "near", explanation: "The opposite of far is near." },
+        { question: "What falls from the clouds as rain?", options: ["Water", "Milk", "Sand"], correct: "Water", explanation: "Rain is water from the clouds." },
+        { question: "What do we say when we make a mistake?", options: ["Hurray", "Sorry", "Hello"], correct: "Sorry", explanation: "We say 'Sorry' when we are wrong." },
+        { question: "Count them: how many head do we have?", options: ["10", "1", "5"], correct: "1", explanation: "We have 1 head." },
+        { question: "Which day comes before Wednesday?", options: ["Wednesday", "Tuesday", "Monday"], correct: "Tuesday", explanation: "Before Wednesday comes Tuesday." },
+        { question: "What colour is the cotton?", options: ["Brown", "Black", "White"], correct: "White", explanation: "The cotton is white." },
+        { question: "How many fingers on one hand do we have?", options: ["10", "2", "5"], correct: "5", explanation: "We have 5 fingers on one hand." },
+        { question: "What is the baby of a monkey called?", options: ["Kitten", "Baby", "Cub"], correct: "Baby", explanation: "A baby monkey is called a baby." },
+        { question: "Which month comes between April and June?", options: ["October", "May", "April"], correct: "May", explanation: "May comes between April and June." },
+        { question: "Which body part do we use to see?", options: ["eyes", "nose", "hair"], correct: "eyes", explanation: "We use our eyes to see." },
+        { question: "What colour is the bubblegum?", options: ["Yellow", "Purple", "Pink"], correct: "Pink", explanation: "The bubblegum is pink." },
+        { question: "Which month comes between December and February?", options: ["January", "February", "August"], correct: "January", explanation: "January comes between December and February." },
+        { question: "What does a doctor do?", options: ["grows crops in the field", "treats sick people", "teaches us in school"], correct: "treats sick people", explanation: "A doctor treats sick people." },
+        { question: "Which of these animals can fly?", options: ["Tiger", "Duck", "Cat"], correct: "Duck", explanation: "A duck can fly." },
+        { question: "Which animal makes the sound “Trumpet”?", options: ["Hen", "Elephant", "Bee"], correct: "Elephant", explanation: "A elephant makes the sound 'trumpet'." },
+        { question: "What do we see in the sky at night?", options: ["Sun", "Rainbow", "Moon"], correct: "Moon", explanation: "We see the Moon at night." },
+        { question: "Which of these is usually orange?", options: ["blood", "strawberry", "carrot"], correct: "carrot", explanation: "The carrot is orange." },
+        { question: "What is the opposite of 'good'?", options: ["out", "on", "bad"], correct: "bad", explanation: "The opposite of good is bad." },
+        { question: "A grapes is a kind of ___.", options: ["Animal", "Fruit", "Vegetable"], correct: "Fruit", explanation: "A grapes is a fruit." },
+        { question: "Count them: how many fingers on one hand do we have?", options: ["2", "5", "4"], correct: "5", explanation: "We have 5 fingers on one hand." },
+        { question: "The piglet is usually which colour?", options: ["Orange", "Red", "Pink"], correct: "Pink", explanation: "The piglet is pink." },
+        { question: "Which month comes before May?", options: ["August", "November", "April"], correct: "April", explanation: "Before May comes April." },
+        { question: "We use our ___ to blink.", options: ["nose", "teeth", "eyes"], correct: "eyes", explanation: "We use our eyes to blink." },
+        { question: "What is the body of a duck covered with?", options: ["Fur", "Feathers", "Skin"], correct: "Feathers", explanation: "A duck's body is covered with feathers." },
+        { question: "Who cuts our hair?", options: ["barber", "postman", "police officer"], correct: "barber", explanation: "A barber cuts our hair." },
+        { question: "What does a tailor do?", options: ["grows crops in the field", "stitches our clothes", "puts out fires"], correct: "stitches our clothes", explanation: "A tailor stitches our clothes." },
+        { question: "Count them: how many mouth do we have?", options: ["5", "1", "4"], correct: "1", explanation: "We have 1 mouth." },
+        { question: "How many legs does a cow have?", options: ["6", "0", "4"], correct: "4", explanation: "A cow has 4 legs." },
+        { question: "The blueberry is usually which colour?", options: ["Yellow", "Blue", "Pink"], correct: "Blue", explanation: "The blueberry is blue." },
+        { question: "Count them: how many hands do we have?", options: ["4", "10", "2"], correct: "2", explanation: "We have 2 hands." },
+        { question: "What sound does a cat make?", options: ["Hiss", "Chirp", "Meow"], correct: "Meow", explanation: "A cat says 'meow'." },
+        { question: "Is a beans a fruit or a vegetable?", options: ["Fruit", "Vegetable", "Bird"], correct: "Vegetable", explanation: "A beans is a vegetable." },
+        { question: "What is the baby of a bird called?", options: ["Calf", "Puppy", "Chick"], correct: "Chick", explanation: "A baby bird is called a chick." },
+        { question: "We call a garlic a ___.", options: ["Bird", "Vegetable", "Fruit"], correct: "Vegetable", explanation: "A garlic is a vegetable." },
+        { question: "How many toes on one foot do we have?", options: ["1", "4", "5"], correct: "5", explanation: "We have 5 toes on one foot." },
+        { question: "What colour is the sunflower?", options: ["Yellow", "Black", "Purple"], correct: "Yellow", explanation: "The sunflower is yellow." },
+        { question: "Is a pear a fruit or a vegetable?", options: ["Fruit", "Animal", "Vegetable"], correct: "Fruit", explanation: "A pear is a fruit." },
+        { question: "What sound does a elephant make?", options: ["Trumpet", "Bark", "Crow"], correct: "Trumpet", explanation: "A elephant says 'trumpet'." },
+        { question: "A spinach is a kind of ___.", options: ["Bird", "Fruit", "Vegetable"], correct: "Vegetable", explanation: "A spinach is a vegetable." },
+        { question: "Which month comes before November?", options: ["November", "October", "August"], correct: "October", explanation: "Before November comes October." },
+        { question: "What is the body of a frog covered with?", options: ["Wool", "Skin", "Hair"], correct: "Skin", explanation: "A frog's body is covered with skin." },
+        { question: "What is the opposite of 'first'?", options: ["soft", "last", "up"], correct: "last", explanation: "The opposite of first is last." },
+        { question: "What colour is the cherry?", options: ["Black", "Green", "Red"], correct: "Red", explanation: "The cherry is red." },
+        { question: "Which of these is a fruit — grapes, radish or brinjal?", options: ["Brinjal", "Onion", "Grapes"], correct: "Grapes", explanation: "A grapes is a fruit." },
+        { question: "What colour is the fire truck?", options: ["Red", "Brown", "Purple"], correct: "Red", explanation: "The fire truck is red." },
+        { question: "How many legs does a bee have?", options: ["4", "6", "8"], correct: "6", explanation: "A bee has 6 legs." }
       ];
     </script>
 

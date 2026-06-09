@@ -27,186 +27,106 @@
 
 <script>
   const questions = [
-    {
-      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>5</span>?",
-      options: ["4", "6", "7"],
-      correct: "6",
-      explanation: "5 comes before 6. So the number after 5 is 6."
-    },
-    {
-      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>3</span>?",
-      options: ["2", "4", "1"],
-      correct: "2",
-      explanation: "2 comes just before 3 on the number line."
-    },
-    {
-      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>9</span>?",
-      options: ["8", "11", "10"],
-      correct: "10",
-      explanation: "9 comes before 10. So the number after 9 is 10."
-    },
-    {
-      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>7</span>?",
-      options: ["8", "6", "5"],
-      correct: "6",
-      explanation: "6 comes just before 7 on the number line."
-    },
-    {
-      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>14</span>?",
-      options: ["13", "15", "16"],
-      correct: "15",
-      explanation: "14 comes before 15. So the number after 14 is 15."
-    },
-    {
-      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>20</span>?",
-      options: ["21", "18", "19"],
-      correct: "19",
-      explanation: "19 comes just before 20 on the number line."
-    },
-    {
-      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>1</span>?",
-      options: ["3", "2", "0"],
-      correct: "2",
-      explanation: "1 comes before 2. So the number after 1 is 2."
-    },
-    {
-      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>10</span>?",
-      options: ["11", "9", "8"],
-      correct: "9",
-      explanation: "9 comes just before 10 on the number line."
-    },
-    {
-      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>19</span>?",
-      options: ["18", "21", "20"],
-      correct: "20",
-      explanation: "19 comes before 20. So the number after 19 is 20."
-    },
-    {
-      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>15</span>?",
-      options: ["16", "14", "13"],
-      correct: "14",
-      explanation: "14 comes just before 15 on the number line."
-    },
-    {
-      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>25</span>?",
-      options: ["24", "26", "27"],
-      correct: "26",
-      explanation: "25 comes before 26. So the number after 25 is 26."
-    },
-    {
-      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>30</span>?",
-      options: ["31", "28", "29"],
-      correct: "29",
-      explanation: "29 comes just before 30 on the number line."
-    },
-    {
-      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>39</span>?",
-      options: ["38", "41", "40"],
-      correct: "40",
-      explanation: "39 comes before 40. So the number after 39 is 40."
-    },
-    {
-      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>50</span>?",
-      options: ["51", "48", "49"],
-      correct: "49",
-      explanation: "49 comes just before 50 on the number line."
-    },
-    {
-      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>33</span>?",
-      options: ["32", "34", "35"],
-      correct: "34",
-      explanation: "33 comes before 34. So the number after 33 is 34."
-    },
-    {
-      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>22</span>?",
-      options: ["23", "20", "21"],
-      correct: "21",
-      explanation: "21 comes just before 22 on the number line."
-    },
-    {
-      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>47</span>?",
-      options: ["46", "49", "48"],
-      correct: "48",
-      explanation: "47 comes before 48. So the number after 47 is 48."
-    },
-    {
-      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>36</span>?",
-      options: ["37", "35", "34"],
-      correct: "35",
-      explanation: "35 comes just before 36 on the number line."
-    },
-    {
-      question: "What number is <strong>BETWEEN</strong> <span style='color:black;'>8 and 10</span>?",
-      options: ["7", "9", "11"],
-      correct: "9",
-      explanation: "8, 9, 10 — so 9 is between 8 and 10."
-    },
-    {
-      question: "What number is <strong>BETWEEN</strong> <span style='color:black;'>14 and 16</span>?",
-      options: ["13", "17", "15"],
-      correct: "15",
-      explanation: "14, 15, 16 — so 15 is between 14 and 16."
-    },
-    {
-      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>29</span>?",
-      options: ["28", "31", "30"],
-      correct: "30",
-      explanation: "29 comes before 30. So the number after 29 is 30."
-    },
-    {
-      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>45</span>?",
-      options: ["46", "43", "44"],
-      correct: "44",
-      explanation: "44 comes just before 45 on the number line."
-    },
-    {
-      question: "What number is <strong>BETWEEN</strong> <span style='color:black;'>20 and 22</span>?",
-      options: ["19", "21", "23"],
-      correct: "21",
-      explanation: "20, 21, 22 — so 21 is between 20 and 22."
-    },
-    {
-      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>17</span>?",
-      options: ["16", "19", "18"],
-      correct: "18",
-      explanation: "17 comes before 18. So the number after 17 is 18."
-    },
-    {
-      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>12</span>?",
-      options: ["13", "10", "11"],
-      correct: "11",
-      explanation: "11 comes just before 12 on the number line."
-    },
-    {
-      question: "What number is <strong>BETWEEN</strong> <span style='color:black;'>42 and 44</span>?",
-      options: ["41", "43", "45"],
-      correct: "43",
-      explanation: "42, 43, 44 — so 43 is between 42 and 44."
-    },
-    {
-      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>49</span>?",
-      options: ["48", "51", "50"],
-      correct: "50",
-      explanation: "49 comes before 50. So the number after 49 is 50."
-    },
-    {
-      question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>27</span>?",
-      options: ["28", "25", "26"],
-      correct: "26",
-      explanation: "26 comes just before 27 on the number line."
-    },
-    {
-      question: "What number is <strong>BETWEEN</strong> <span style='color:black;'>5 and 7</span>?",
-      options: ["4", "6", "8"],
-      correct: "6",
-      explanation: "5, 6, 7 — so 6 is between 5 and 7."
-    },
-    {
-      question: "What number comes <strong>AFTER</strong> <span style='color:black;'>11</span>?",
-      options: ["10", "13", "12"],
-      correct: "12",
-      explanation: "11 comes before 12. So the number after 11 is 12."
-    }
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>35</span>?", options: ["34", "33", "35"], correct: "34", explanation: "The number before 35 is 34." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>25</span>?", options: ["24", "25", "23"], correct: "24", explanation: "The number before 25 is 24." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>6</span>?", options: ["6", "8", "7"], correct: "7", explanation: "The number after 6 is 7." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>35</span>?", options: ["35", "36", "37"], correct: "36", explanation: "The number after 35 is 36." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>16</span>?", options: ["16", "15", "14"], correct: "15", explanation: "The number before 16 is 15." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>11</span>?", options: ["9", "10", "11"], correct: "10", explanation: "The number before 11 is 10." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>30</span>?", options: ["30", "31", "32"], correct: "31", explanation: "The number after 30 is 31." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>33</span>?", options: ["35", "33", "34"], correct: "34", explanation: "The number after 33 is 34." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>5</span>?", options: ["5", "4", "3"], correct: "4", explanation: "The number before 5 is 4." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>13</span>?", options: ["15", "13", "14"], correct: "14", explanation: "The number after 13 is 14." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>10</span>?", options: ["11", "10", "12"], correct: "11", explanation: "The number after 10 is 11." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>38</span>?", options: ["40", "39", "38"], correct: "39", explanation: "The number after 38 is 39." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>21</span>?", options: ["20", "19", "21"], correct: "20", explanation: "The number before 21 is 20." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>48</span>?", options: ["49", "50", "48"], correct: "49", explanation: "The number after 48 is 49." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>18</span>?", options: ["18", "16", "17"], correct: "17", explanation: "The number before 18 is 17." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>24</span>?", options: ["23", "24", "22"], correct: "23", explanation: "The number before 24 is 23." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>26</span>?", options: ["24", "25", "26"], correct: "25", explanation: "The number before 26 is 25." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>5</span>?", options: ["5", "6", "7"], correct: "6", explanation: "The number after 5 is 6." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>41</span>?", options: ["41", "43", "42"], correct: "42", explanation: "The number after 41 is 42." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>46</span>?", options: ["48", "46", "47"], correct: "47", explanation: "The number after 46 is 47." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>33</span>?", options: ["33", "31", "32"], correct: "32", explanation: "The number before 33 is 32." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>13</span>?", options: ["11", "12", "13"], correct: "12", explanation: "The number before 13 is 12." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>44</span>?", options: ["46", "44", "45"], correct: "45", explanation: "The number after 44 is 45." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>26</span>?", options: ["27", "26", "28"], correct: "27", explanation: "The number after 26 is 27." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>14</span>?", options: ["13", "14", "12"], correct: "13", explanation: "The number before 14 is 13." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>22</span>?", options: ["21", "20", "22"], correct: "21", explanation: "The number before 22 is 21." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>17</span>?", options: ["15", "17", "16"], correct: "16", explanation: "The number before 17 is 16." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>50</span>?", options: ["51", "52", "50"], correct: "51", explanation: "The number after 50 is 51." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>18</span>?", options: ["20", "19", "18"], correct: "19", explanation: "The number after 18 is 19." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>40</span>?", options: ["41", "42", "40"], correct: "41", explanation: "The number after 40 is 41." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>32</span>?", options: ["30", "31", "32"], correct: "31", explanation: "The number before 32 is 31." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>2</span>?", options: ["3", "4", "2"], correct: "3", explanation: "The number after 2 is 3." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>22</span>?", options: ["23", "22", "24"], correct: "23", explanation: "The number after 22 is 23." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>4</span>?", options: ["3", "2", "4"], correct: "3", explanation: "The number before 4 is 3." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>25</span>?", options: ["27", "25", "26"], correct: "26", explanation: "The number after 25 is 26." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>34</span>?", options: ["36", "35", "34"], correct: "35", explanation: "The number after 34 is 35." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>16</span>?", options: ["17", "18", "16"], correct: "17", explanation: "The number after 16 is 17." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>43</span>?", options: ["43", "44", "45"], correct: "44", explanation: "The number after 43 is 44." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>11</span>?", options: ["13", "11", "12"], correct: "12", explanation: "The number after 11 is 12." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>9</span>?", options: ["9", "8", "7"], correct: "8", explanation: "The number before 9 is 8." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>39</span>?", options: ["38", "37", "39"], correct: "38", explanation: "The number before 39 is 38." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>12</span>?", options: ["10", "12", "11"], correct: "11", explanation: "The number before 12 is 11." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>14</span>?", options: ["16", "15", "14"], correct: "15", explanation: "The number after 14 is 15." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>41</span>?", options: ["40", "41", "39"], correct: "40", explanation: "The number before 41 is 40." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>27</span>?", options: ["29", "28", "27"], correct: "28", explanation: "The number after 27 is 28." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>40</span>?", options: ["38", "39", "40"], correct: "39", explanation: "The number before 40 is 39." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>29</span>?", options: ["27", "28", "29"], correct: "28", explanation: "The number before 29 is 28." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>37</span>?", options: ["38", "37", "39"], correct: "38", explanation: "The number after 37 is 38." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>42</span>?", options: ["42", "43", "44"], correct: "43", explanation: "The number after 42 is 43." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>6</span>?", options: ["5", "4", "6"], correct: "5", explanation: "The number before 6 is 5." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>31</span>?", options: ["31", "30", "29"], correct: "30", explanation: "The number before 31 is 30." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>38</span>?", options: ["36", "38", "37"], correct: "37", explanation: "The number before 38 is 37." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>48</span>?", options: ["46", "47", "48"], correct: "47", explanation: "The number before 48 is 47." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>4</span>?", options: ["4", "6", "5"], correct: "5", explanation: "The number after 4 is 5." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>31</span>?", options: ["32", "33", "31"], correct: "32", explanation: "The number after 31 is 32." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>19</span>?", options: ["19", "20", "21"], correct: "20", explanation: "The number after 19 is 20." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>29</span>?", options: ["29", "30", "31"], correct: "30", explanation: "The number after 29 is 30." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>28</span>?", options: ["27", "28", "26"], correct: "27", explanation: "The number before 28 is 27." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>37</span>?", options: ["36", "35", "37"], correct: "36", explanation: "The number before 37 is 36." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>49</span>?", options: ["51", "49", "50"], correct: "50", explanation: "The number after 49 is 50." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>27</span>?", options: ["26", "27", "25"], correct: "26", explanation: "The number before 27 is 26." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>3</span>?", options: ["3", "1", "2"], correct: "2", explanation: "The number before 3 is 2." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>2</span>?", options: ["0", "2", "1"], correct: "1", explanation: "The number before 2 is 1." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>8</span>?", options: ["6", "8", "7"], correct: "7", explanation: "The number before 8 is 7." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>47</span>?", options: ["49", "47", "48"], correct: "48", explanation: "The number after 47 is 48." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>19</span>?", options: ["18", "17", "19"], correct: "18", explanation: "The number before 19 is 18." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>17</span>?", options: ["17", "18", "19"], correct: "18", explanation: "The number after 17 is 18." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>3</span>?", options: ["5", "3", "4"], correct: "4", explanation: "The number after 3 is 4." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>49</span>?", options: ["49", "47", "48"], correct: "48", explanation: "The number before 49 is 48." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>45</span>?", options: ["45", "44", "43"], correct: "44", explanation: "The number before 45 is 44." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>50</span>?", options: ["49", "50", "48"], correct: "49", explanation: "The number before 50 is 49." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>15</span>?", options: ["17", "16", "15"], correct: "16", explanation: "The number after 15 is 16." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>1</span>?", options: ["1", "2", "3"], correct: "2", explanation: "The number after 1 is 2." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>8</span>?", options: ["8", "9", "10"], correct: "9", explanation: "The number after 8 is 9." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>21</span>?", options: ["23", "22", "21"], correct: "22", explanation: "The number after 21 is 22." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>1</span>?", options: ["2", "1", "0"], correct: "0", explanation: "The number before 1 is 0." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>9</span>?", options: ["9", "11", "10"], correct: "10", explanation: "The number after 9 is 10." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>20</span>?", options: ["18", "19", "20"], correct: "19", explanation: "The number before 20 is 19." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>39</span>?", options: ["40", "39", "41"], correct: "40", explanation: "The number after 39 is 40." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>23</span>?", options: ["23", "21", "22"], correct: "22", explanation: "The number before 23 is 22." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>32</span>?", options: ["33", "32", "34"], correct: "33", explanation: "The number after 32 is 33." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>36</span>?", options: ["35", "34", "36"], correct: "35", explanation: "The number before 36 is 35." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>28</span>?", options: ["29", "30", "28"], correct: "29", explanation: "The number after 28 is 29." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>34</span>?", options: ["32", "34", "33"], correct: "33", explanation: "The number before 34 is 33." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>42</span>?", options: ["40", "41", "42"], correct: "41", explanation: "The number before 42 is 41." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>12</span>?", options: ["12", "13", "14"], correct: "13", explanation: "The number after 12 is 13." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>7</span>?", options: ["5", "6", "7"], correct: "6", explanation: "The number before 7 is 6." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>36</span>?", options: ["38", "36", "37"], correct: "37", explanation: "The number after 36 is 37." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>10</span>?", options: ["9", "10", "8"], correct: "9", explanation: "The number before 10 is 9." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>23</span>?", options: ["25", "23", "24"], correct: "24", explanation: "The number after 23 is 24." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>30</span>?", options: ["30", "29", "28"], correct: "29", explanation: "The number before 30 is 29." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>15</span>?", options: ["13", "15", "14"], correct: "14", explanation: "The number before 15 is 14." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>43</span>?", options: ["42", "41", "43"], correct: "42", explanation: "The number before 43 is 42." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>24</span>?", options: ["24", "25", "26"], correct: "25", explanation: "The number after 24 is 25." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>46</span>?", options: ["44", "45", "46"], correct: "45", explanation: "The number before 46 is 45." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>45</span>?", options: ["46", "47", "45"], correct: "46", explanation: "The number after 45 is 46." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>20</span>?", options: ["22", "20", "21"], correct: "21", explanation: "The number after 20 is 21." },
+    { question: "What number comes <strong>AFTER</strong> <span style='color:black;'>7</span>?", options: ["7", "9", "8"], correct: "8", explanation: "The number after 7 is 8." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>44</span>?", options: ["44", "43", "42"], correct: "43", explanation: "The number before 44 is 43." },
+    { question: "What number comes <strong>BEFORE</strong> <span style='color:black;'>47</span>?", options: ["47", "46", "45"], correct: "46", explanation: "The number before 47 is 46." }
   ];
 </script>
 

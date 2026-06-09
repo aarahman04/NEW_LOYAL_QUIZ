@@ -23,127 +23,107 @@
 
     <script>
       const questions = [
-        {
-          question: "A basket has 35 apples. The farmer buys 10 more apples. How many apples are in the basket now?",
-          options: ["44", "45", "46"],
-          correct: "45",
-          explanation: "35 + 10 = 45 apples."
-        },
-        {
-          question: "There are 50 balloons in a hall. Fifteen balloons fly away. How many balloons are left?",
-          options: ["34", "35", "36"],
-          correct: "35",
-          explanation: "50 − 15 = 35 balloons."
-        },
-        {
-          question: "A jar has 28 candies. Mother adds 12 more candies. How many candies are in the jar now?",
-          options: ["39", "40", "41"],
-          correct: "40",
-          explanation: "28 + 12 = 40 candies."
-        },
-        {
-          question: "A box has 45 marbles. The boy gives 5 marbles to his friend. How many marbles remain?",
-          options: ["39", "40", "41"],
-          correct: "40",
-          explanation: "45 − 5 = 40 marbles."
-        },
-        {
-          question: "There are 39 stickers in a packet. The teacher adds 11 more stickers. How many stickers are there in all?",
-          options: ["49", "50", "51"],
-          correct: "50",
-          explanation: "39 + 11 = 50 stickers."
-        },
-        {
-          question: "A toy box has 48 blocks. The child loses 18 blocks. How many blocks are left?",
-          options: ["29", "30", "31"],
-          correct: "30",
-          explanation: "48 − 18 = 30 blocks."
-        },
-        {
-          question: "A boy has 25 toy cars. His uncle buys him 20 more toy cars. How many toy cars does he have now?",
-          options: ["44", "45", "46"],
-          correct: "45",
-          explanation: "25 + 20 = 45 toy cars."
-        },
-        {
-          question: "There are 42 sweets in a jar. Twelve sweets are eaten. How many sweets are left?",
-          options: ["29", "30", "31"],
-          correct: "30",
-          explanation: "42 − 12 = 30 sweets."
-        },
-        {
-          question: "A garden has 33 flowers. Thirteen flowers fall. How many flowers stay in the garden?",
-          options: ["19", "20", "21"],
-          correct: "20",
-          explanation: "33 − 13 = 20 flowers."
-        },
-        {
-          question: "A toy shop has 40 toy cars. The shopkeeper gets 8 more toy cars. How many toy cars are there now?",
-          options: ["47", "48", "49"],
-          correct: "48",
-          explanation: "40 + 8 = 48 toy cars."
-        },
-        {
-          question: "A pencil box has 37 pencils. The child gives 7 pencils to his friend. How many pencils are left?",
-          options: ["29", "30", "31"],
-          correct: "30",
-          explanation: "37 − 7 = 30 pencils."
-        },
-        {
-          question: "A boy has 29 storybooks. His aunt gives him 16 more storybooks. How many storybooks does he have now?",
-          options: ["44", "45", "46"],
-          correct: "45",
-          explanation: "29 + 16 = 45 storybooks."
-        },
-        {
-          question: "A plate has 44 cookies. The children eat 14 cookies. How many cookies remain?",
-          options: ["29", "30", "31"],
-          correct: "30",
-          explanation: "44 − 14 = 30 cookies."
-        },
-        {
-          question: "A box has 36 crayons. The teacher adds 9 more crayons. How many crayons are in the box now?",
-          options: ["44", "45", "46"],
-          correct: "45",
-          explanation: "36 + 9 = 45 crayons."
-        },
-        {
-          question: "There are 50 balls in a basket. The coach gives 25 balls to the children. How many balls stay in the basket?",
-          options: ["24", "25", "26"],
-          correct: "25",
-          explanation: "50 − 25 = 25 balls."
-        },
-        {
-          question: "A basket has 31 oranges. Mother buys 19 more oranges. How many oranges are there now?",
-          options: ["49", "50", "51"],
-          correct: "50",
-          explanation: "31 + 19 = 50 oranges."
-        },
-        {
-          question: "A jar has 27 candies. The boy eats 7 candies. How many candies are left in the jar?",
-          options: ["19", "20", "21"],
-          correct: "20",
-          explanation: "27 − 7 = 20 candies."
-        },
-        {
-          question: "There are 46 marbles in a box. The child gives 6 marbles to a friend. How many marbles remain?",
-          options: ["39", "40", "41"],
-          correct: "40",
-          explanation: "46 − 6 = 40 marbles."
-        },
-        {
-          question: "A packet has 30 stickers. The teacher adds 15 more stickers. How many stickers are there in all?",
-          options: ["44", "45", "46"],
-          correct: "45",
-          explanation: "30 + 15 = 45 stickers."
-        },
-        {
-          question: "There are 49 balloons at a fair. Nine balloons pop. How many balloons are left?",
-          options: ["39", "40", "41"],
-          correct: "40",
-          explanation: "49 − 9 = 40 balloons."
-        }
-      ];
+    { question: "Sami has 22 flowers. Sami gets 18 more flowers. How many flowers now?", options: ["39", "40", "41"], correct: "40", explanation: "22 + 18 = 40 flowers." },
+    { question: "Hana has 29 flowers. Hana gets 19 more flowers. How many flowers now?", options: ["47", "48", "49"], correct: "48", explanation: "29 + 19 = 48 flowers." },
+    { question: "Hana has 30 flowers. Hana gets 7 more flowers. How many flowers now?", options: ["36", "38", "37"], correct: "37", explanation: "30 + 7 = 37 flowers." },
+    { question: "Rana has 14 pencils. 3 pencils are given away. How many pencils are left?", options: ["12", "11", "10"], correct: "11", explanation: "14 − 3 = 11 pencils left." },
+    { question: "Lina has 37 stickers and 8 marbles. How many things does Lina have altogether?", options: ["46", "45", "44"], correct: "45", explanation: "37 + 8 = 45 altogether." },
+    { question: "Dina has 18 books and 10 books. How many things does Dina have altogether?", options: ["29", "27", "28"], correct: "28", explanation: "18 + 10 = 28 altogether." },
+    { question: "Tariq has 15 stickers and 8 cookies. How many things does Tariq have altogether?", options: ["24", "23", "22"], correct: "23", explanation: "15 + 8 = 23 altogether." },
+    { question: "Adam has 19 stickers. 16 stickers are lost. How many stickers are left?", options: ["3", "2", "4"], correct: "3", explanation: "19 − 16 = 3 stickers left." },
+    { question: "Sami has 25 oranges. Sami gets 22 more oranges. How many oranges now?", options: ["46", "48", "47"], correct: "47", explanation: "25 + 22 = 47 oranges." },
+    { question: "Sara has 12 pencils. Sara gets 23 more pencils. How many pencils now?", options: ["36", "34", "35"], correct: "35", explanation: "12 + 23 = 35 pencils." },
+    { question: "Lina has 12 oranges. Lina gets 6 more oranges. How many oranges now?", options: ["17", "19", "18"], correct: "18", explanation: "12 + 6 = 18 oranges." },
+    { question: "Adam has 2 cookies. Adam gets 18 more cookies. How many cookies now?", options: ["19", "21", "20"], correct: "20", explanation: "2 + 18 = 20 cookies." },
+    { question: "Ali has 14 balloons and 30 balloons. How many things does Ali have altogether?", options: ["45", "43", "44"], correct: "44", explanation: "14 + 30 = 44 altogether." },
+    { question: "Zaid has 11 books. 4 books are taken away. How many books are left?", options: ["8", "6", "7"], correct: "7", explanation: "11 − 4 = 7 books left." },
+    { question: "Lina has 39 stickers. Lina gets 9 more stickers. How many stickers now?", options: ["47", "48", "49"], correct: "48", explanation: "39 + 9 = 48 stickers." },
+    { question: "Omar has 39 crayons. 4 crayons are taken away. How many crayons are left?", options: ["35", "34", "36"], correct: "35", explanation: "39 − 4 = 35 crayons left." },
+    { question: "Omar has 39 stickers and 2 candies. How many things does Omar have altogether?", options: ["42", "41", "40"], correct: "41", explanation: "39 + 2 = 41 altogether." },
+    { question: "Karim has 41 books and 6 candies. How many things does Karim have altogether?", options: ["48", "46", "47"], correct: "47", explanation: "41 + 6 = 47 altogether." },
+    { question: "Maya has 40 books and 2 apples. How many things does Maya have altogether?", options: ["41", "42", "43"], correct: "42", explanation: "40 + 2 = 42 altogether." },
+    { question: "Dina has 12 crayons. Dina gets 7 more crayons. How many crayons now?", options: ["20", "19", "18"], correct: "19", explanation: "12 + 7 = 19 crayons." },
+    { question: "Lara has 26 books and 10 flowers. How many things does Lara have altogether?", options: ["35", "36", "37"], correct: "36", explanation: "26 + 10 = 36 altogether." },
+    { question: "Adam has 8 toy cars. 4 toy cars go missing. How many toy cars are left?", options: ["4", "5", "3"], correct: "4", explanation: "8 − 4 = 4 toy cars left." },
+    { question: "Zaid has 2 oranges. Zaid gets 8 more oranges. How many oranges now?", options: ["10", "9", "11"], correct: "10", explanation: "2 + 8 = 10 oranges." },
+    { question: "Omar has 35 balloons. Omar gets 13 more balloons. How many balloons now?", options: ["48", "49", "47"], correct: "48", explanation: "35 + 13 = 48 balloons." },
+    { question: "Zaid has 11 crayons and 17 crayons. How many things does Zaid have altogether?", options: ["29", "27", "28"], correct: "28", explanation: "11 + 17 = 28 altogether." },
+    { question: "Omar has 20 toy cars. Omar gets 8 more toy cars. How many toy cars now?", options: ["27", "28", "29"], correct: "28", explanation: "20 + 8 = 28 toy cars." },
+    { question: "Noor has 14 oranges. Noor gets 26 more oranges. How many oranges now?", options: ["41", "40", "39"], correct: "40", explanation: "14 + 26 = 40 oranges." },
+    { question: "Yusuf has 12 flowers. 9 flowers go missing. How many flowers are left?", options: ["2", "3", "4"], correct: "3", explanation: "12 − 9 = 3 flowers left." },
+    { question: "Yusuf has 8 apples and 18 apples. How many things does Yusuf have altogether?", options: ["26", "27", "25"], correct: "26", explanation: "8 + 18 = 26 altogether." },
+    { question: "Omar has 47 crayons. Omar gets 3 more crayons. How many crayons now?", options: ["51", "49", "50"], correct: "50", explanation: "47 + 3 = 50 crayons." },
+    { question: "Omar has 2 pencils. Omar gets 48 more pencils. How many pencils now?", options: ["51", "50", "49"], correct: "50", explanation: "2 + 48 = 50 pencils." },
+    { question: "Maya has 24 apples. 5 apples are used up. How many apples are left?", options: ["19", "18", "20"], correct: "19", explanation: "24 − 5 = 19 apples left." },
+    { question: "Rana has 24 pencils. 16 pencils are lost. How many pencils are left?", options: ["8", "9", "7"], correct: "8", explanation: "24 − 16 = 8 pencils left." },
+    { question: "Tariq has 42 oranges. Tariq gets 8 more oranges. How many oranges now?", options: ["51", "49", "50"], correct: "50", explanation: "42 + 8 = 50 oranges." },
+    { question: "Adam has 31 cookies and 17 books. How many things does Adam have altogether?", options: ["49", "47", "48"], correct: "48", explanation: "31 + 17 = 48 altogether." },
+    { question: "Maya has 26 toy cars. 8 toy cars are lost. How many toy cars are left?", options: ["19", "17", "18"], correct: "18", explanation: "26 − 8 = 18 toy cars left." },
+    { question: "Maya has 30 marbles and 20 toy cars. How many things does Maya have altogether?", options: ["49", "51", "50"], correct: "50", explanation: "30 + 20 = 50 altogether." },
+    { question: "Tariq has 15 pencils. 9 pencils go missing. How many pencils are left?", options: ["6", "7", "5"], correct: "6", explanation: "15 − 9 = 6 pencils left." },
+    { question: "Sami has 47 toy cars. Sami gets 2 more toy cars. How many toy cars now?", options: ["50", "48", "49"], correct: "49", explanation: "47 + 2 = 49 toy cars." },
+    { question: "Karim has 9 pencils and 10 oranges. How many things does Karim have altogether?", options: ["19", "18", "20"], correct: "19", explanation: "9 + 10 = 19 altogether." },
+    { question: "Maya has 38 oranges. 3 oranges go missing. How many oranges are left?", options: ["34", "36", "35"], correct: "35", explanation: "38 − 3 = 35 oranges left." },
+    { question: "Lara has 28 flowers. 15 flowers are shared with friends. How many flowers are left?", options: ["13", "14", "12"], correct: "13", explanation: "28 − 15 = 13 flowers left." },
+    { question: "Maya has 22 cookies. Maya gets 17 more cookies. How many cookies now?", options: ["38", "39", "40"], correct: "39", explanation: "22 + 17 = 39 cookies." },
+    { question: "Adam has 40 candies and 10 stickers. How many things does Adam have altogether?", options: ["49", "51", "50"], correct: "50", explanation: "40 + 10 = 50 altogether." },
+    { question: "Karim has 28 candies and 3 candies. How many things does Karim have altogether?", options: ["31", "30", "32"], correct: "31", explanation: "28 + 3 = 31 altogether." },
+    { question: "Noor has 48 pencils and 2 balloons. How many things does Noor have altogether?", options: ["49", "51", "50"], correct: "50", explanation: "48 + 2 = 50 altogether." },
+    { question: "Sara has 11 flowers. 6 flowers are lost. How many flowers are left?", options: ["4", "6", "5"], correct: "5", explanation: "11 − 6 = 5 flowers left." },
+    { question: "Lara has 25 flowers. Lara gets 10 more flowers. How many flowers now?", options: ["34", "35", "36"], correct: "35", explanation: "25 + 10 = 35 flowers." },
+    { question: "Dina has 15 books. Dina gets 21 more books. How many books now?", options: ["35", "37", "36"], correct: "36", explanation: "15 + 21 = 36 books." },
+    { question: "Tariq has 44 balloons. Tariq gets 5 more balloons. How many balloons now?", options: ["48", "50", "49"], correct: "49", explanation: "44 + 5 = 49 balloons." },
+    { question: "Sara has 47 pencils and 2 candies. How many things does Sara have altogether?", options: ["50", "49", "48"], correct: "49", explanation: "47 + 2 = 49 altogether." },
+    { question: "Sami has 2 stickers and 9 oranges. How many things does Sami have altogether?", options: ["10", "11", "12"], correct: "11", explanation: "2 + 9 = 11 altogether." },
+    { question: "Sara has 20 stickers. Sara gets 30 more stickers. How many stickers now?", options: ["49", "50", "51"], correct: "50", explanation: "20 + 30 = 50 stickers." },
+    { question: "Dina has 29 cookies and 14 flowers. How many things does Dina have altogether?", options: ["42", "44", "43"], correct: "43", explanation: "29 + 14 = 43 altogether." },
+    { question: "Adam has 16 books. Adam gets 5 more books. How many books now?", options: ["21", "22", "20"], correct: "21", explanation: "16 + 5 = 21 books." },
+    { question: "Ali has 45 flowers. 20 flowers are shared with friends. How many flowers are left?", options: ["25", "26", "24"], correct: "25", explanation: "45 − 20 = 25 flowers left." },
+    { question: "Karim has 12 apples and 37 flowers. How many things does Karim have altogether?", options: ["48", "50", "49"], correct: "49", explanation: "12 + 37 = 49 altogether." },
+    { question: "Adam has 18 crayons. Adam gets 9 more crayons. How many crayons now?", options: ["26", "28", "27"], correct: "27", explanation: "18 + 9 = 27 crayons." },
+    { question: "Hana has 14 toy cars and 30 toy cars. How many things does Hana have altogether?", options: ["43", "44", "45"], correct: "44", explanation: "14 + 30 = 44 altogether." },
+    { question: "Sami has 35 candies and 13 stickers. How many things does Sami have altogether?", options: ["47", "48", "49"], correct: "48", explanation: "35 + 13 = 48 altogether." },
+    { question: "Sara has 33 candies. 20 candies go missing. How many candies are left?", options: ["14", "12", "13"], correct: "13", explanation: "33 − 20 = 13 candies left." },
+    { question: "Noor has 5 balloons. Noor gets 42 more balloons. How many balloons now?", options: ["48", "46", "47"], correct: "47", explanation: "5 + 42 = 47 balloons." },
+    { question: "Karim has 12 pencils and 6 oranges. How many things does Karim have altogether?", options: ["17", "19", "18"], correct: "18", explanation: "12 + 6 = 18 altogether." },
+    { question: "Dina has 46 toy cars and 4 flowers. How many things does Dina have altogether?", options: ["51", "50", "49"], correct: "50", explanation: "46 + 4 = 50 altogether." },
+    { question: "Lina has 12 apples. 10 apples are used up. How many apples are left?", options: ["3", "1", "2"], correct: "2", explanation: "12 − 10 = 2 apples left." },
+    { question: "Karim has 31 apples. 4 apples go missing. How many apples are left?", options: ["26", "27", "28"], correct: "27", explanation: "31 − 4 = 27 apples left." },
+    { question: "Sami has 41 stickers. Sami gets 2 more stickers. How many stickers now?", options: ["42", "43", "44"], correct: "43", explanation: "41 + 2 = 43 stickers." },
+    { question: "Ali has 18 books and 12 cookies. How many things does Ali have altogether?", options: ["30", "29", "31"], correct: "30", explanation: "18 + 12 = 30 altogether." },
+    { question: "Ali has 29 candies. 8 candies are taken away. How many candies are left?", options: ["20", "21", "22"], correct: "21", explanation: "29 − 8 = 21 candies left." },
+    { question: "Zaid has 32 books and 18 flowers. How many things does Zaid have altogether?", options: ["49", "51", "50"], correct: "50", explanation: "32 + 18 = 50 altogether." },
+    { question: "Omar has 46 marbles. 13 marbles are shared with friends. How many marbles are left?", options: ["32", "34", "33"], correct: "33", explanation: "46 − 13 = 33 marbles left." },
+    { question: "Rana has 34 apples. 25 apples are taken away. How many apples are left?", options: ["10", "9", "8"], correct: "9", explanation: "34 − 25 = 9 apples left." },
+    { question: "Noor has 25 books. 15 books are given away. How many books are left?", options: ["11", "9", "10"], correct: "10", explanation: "25 − 15 = 10 books left." },
+    { question: "Yusuf has 37 books. 28 books are lost. How many books are left?", options: ["9", "10", "8"], correct: "9", explanation: "37 − 28 = 9 books left." },
+    { question: "Hana has 38 pencils. Hana gets 10 more pencils. How many pencils now?", options: ["48", "47", "49"], correct: "48", explanation: "38 + 10 = 48 pencils." },
+    { question: "Karim has 30 marbles and 10 apples. How many things does Karim have altogether?", options: ["41", "40", "39"], correct: "40", explanation: "30 + 10 = 40 altogether." },
+    { question: "Sara has 32 pencils. 29 pencils go missing. How many pencils are left?", options: ["2", "3", "4"], correct: "3", explanation: "32 − 29 = 3 pencils left." },
+    { question: "Noor has 23 candies and 6 marbles. How many things does Noor have altogether?", options: ["29", "28", "30"], correct: "29", explanation: "23 + 6 = 29 altogether." },
+    { question: "Lara has 36 crayons. 7 crayons are shared with friends. How many crayons are left?", options: ["30", "29", "28"], correct: "29", explanation: "36 − 7 = 29 crayons left." },
+    { question: "Karim has 42 pencils. Karim gets 6 more pencils. How many pencils now?", options: ["48", "47", "49"], correct: "48", explanation: "42 + 6 = 48 pencils." },
+    { question: "Zaid has 46 toy cars. 30 toy cars are shared with friends. How many toy cars are left?", options: ["16", "17", "15"], correct: "16", explanation: "46 − 30 = 16 toy cars left." },
+    { question: "Sara has 23 crayons and 3 books. How many things does Sara have altogether?", options: ["27", "25", "26"], correct: "26", explanation: "23 + 3 = 26 altogether." },
+    { question: "Lina has 20 flowers. 5 flowers go missing. How many flowers are left?", options: ["16", "14", "15"], correct: "15", explanation: "20 − 5 = 15 flowers left." },
+    { question: "Rana has 33 books. 24 books are used up. How many books are left?", options: ["10", "8", "9"], correct: "9", explanation: "33 − 24 = 9 books left." },
+    { question: "Lina has 16 oranges. 10 oranges are shared with friends. How many oranges are left?", options: ["7", "6", "5"], correct: "6", explanation: "16 − 10 = 6 oranges left." },
+    { question: "Dina has 29 candies. 7 candies are taken away. How many candies are left?", options: ["22", "23", "21"], correct: "22", explanation: "29 − 7 = 22 candies left." },
+    { question: "Ali has 36 flowers. 33 flowers go missing. How many flowers are left?", options: ["2", "3", "4"], correct: "3", explanation: "36 − 33 = 3 flowers left." },
+    { question: "Yusuf has 31 oranges. Yusuf gets 4 more oranges. How many oranges now?", options: ["35", "36", "34"], correct: "35", explanation: "31 + 4 = 35 oranges." },
+    { question: "Adam has 38 toy cars and 10 pencils. How many things does Adam have altogether?", options: ["49", "48", "47"], correct: "48", explanation: "38 + 10 = 48 altogether." },
+    { question: "Dina has 38 stickers. 22 stickers are lost. How many stickers are left?", options: ["17", "15", "16"], correct: "16", explanation: "38 − 22 = 16 stickers left." },
+    { question: "Sara has 10 oranges. 6 oranges are used up. How many oranges are left?", options: ["3", "5", "4"], correct: "4", explanation: "10 − 6 = 4 oranges left." },
+    { question: "Hana has 44 candies. 25 candies go missing. How many candies are left?", options: ["20", "19", "18"], correct: "19", explanation: "44 − 25 = 19 candies left." },
+    { question: "Adam has 27 books. Adam gets 18 more books. How many books now?", options: ["44", "46", "45"], correct: "45", explanation: "27 + 18 = 45 books." },
+    { question: "Adam has 3 toy cars and 6 books. How many things does Adam have altogether?", options: ["9", "10", "8"], correct: "9", explanation: "3 + 6 = 9 altogether." },
+    { question: "Lara has 16 marbles. Lara gets 3 more marbles. How many marbles now?", options: ["20", "18", "19"], correct: "19", explanation: "16 + 3 = 19 marbles." },
+    { question: "Dina has 31 apples and 19 toy cars. How many things does Dina have altogether?", options: ["51", "49", "50"], correct: "50", explanation: "31 + 19 = 50 altogether." },
+    { question: "Rana has 15 flowers. 13 flowers go missing. How many flowers are left?", options: ["3", "1", "2"], correct: "2", explanation: "15 − 13 = 2 flowers left." },
+    { question: "Sara has 4 pencils. Sara gets 15 more pencils. How many pencils now?", options: ["19", "20", "18"], correct: "19", explanation: "4 + 15 = 19 pencils." },
+    { question: "Adam has 38 crayons. 23 crayons are lost. How many crayons are left?", options: ["16", "14", "15"], correct: "15", explanation: "38 − 23 = 15 crayons left." },
+    { question: "Yusuf has 12 cookies. Yusuf gets 6 more cookies. How many cookies now?", options: ["19", "18", "17"], correct: "18", explanation: "12 + 6 = 18 cookies." }
+  ];
     </script>
 
     <div id="site-footer-placeholder"></div>

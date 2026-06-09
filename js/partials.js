@@ -1,6 +1,47 @@
 // js/partials.js
-// Ensure Bootstrap Icons CSS is loaded once (for all pages using partials.js)
+
+// ─── Site root, derived from THIS script's own URL ───────────────────
+// Robust across every hosting style: local servers, file://, custom
+// domains, and GitHub Pages project subdirectories. partials.js always
+// lives at "<root>/js/partials.js", so stripping that tail yields the
+// root that every header/footer link & image should be built from.
+const PARTIALS_ROOT = (function () {
+  const self =
+    document.currentScript ||
+    Array.prototype.slice
+      .call(document.getElementsByTagName('script'))
+      .filter((s) => /(^|\/)js\/partials\.js(\?|#|$)/.test(s.getAttribute('src') || ''))
+      .pop();
+  if (self && self.src) {
+    return self.src.replace(/js\/partials\.js.*$/, '');
+  }
+  // Fallback: site root
+  return '/';
+})();
+
+// Ensure favicon + Bootstrap Icons CSS are loaded once (for all pages).
 (function ensureIconStyles() {
+  // ── Favicons (path-safe for every nested page via PARTIALS_ROOT) ──
+  if (!document.getElementById('site-favicons')) {
+    const fav = PARTIALS_ROOT + 'favicon/';
+    const icons = [
+      ['icon', 'image/svg+xml', fav + 'favicon.svg', null],
+      ['icon', 'image/png', fav + 'favicon-96x96.png', '96x96'],
+      ['shortcut icon', null, fav + 'favicon.ico', null],
+      ['apple-touch-icon', null, fav + 'apple-touch-icon.png', '180x180'],
+      ['manifest', null, fav + 'site.webmanifest', null],
+    ];
+    icons.forEach(([rel, type, href, sizes], i) => {
+      const l = document.createElement('link');
+      if (i === 0) l.id = 'site-favicons';
+      l.rel = rel;
+      if (type) l.type = type;
+      if (sizes) l.sizes = sizes;
+      l.href = href;
+      document.head.appendChild(l);
+    });
+  }
+
   const CDN_ID = 'bi-icons-cdn';
   if (!document.getElementById(CDN_ID)) {
     const link = document.createElement('link');
@@ -33,11 +74,10 @@
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
-  // ─── Compute “base” so all links/images point to your repo root ───
-  // e.g. "/LIS-Quiz/" on GitHub Pages, or "/" on a custom domain/local
-  const pathParts = window.location.pathname.split('/');
-  const repoName  = pathParts[1];                // "LIS-Quiz" when hosted
-  const base      = repoName ? `/${repoName}/` : '/';
+  // ─── Base for all header/footer links & images ───────────────────
+  // Derived from this script's own location (see PARTIALS_ROOT above),
+  // so assets resolve correctly no matter how deep the page is nested.
+  const base = PARTIALS_ROOT;
 
   // ─── 1) HEADER + HAMBURGER ─────────────────────────────────────────
   const headerHtml = `

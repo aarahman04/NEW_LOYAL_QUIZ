@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GK – Animals</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+
+      <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
+      <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
+    </main>
+
+    <!-- Questions -->
+    <script>
+      const questions = [
+        { question: "Where does a hen live?", options: ["Tree", "Water", "Coop"], correct: "Coop", explanation: "A hen lives in a coop." },
+        { question: "Where does a elephant live?", options: ["Jungle", "Kennel", "Pen"], correct: "Jungle", explanation: "A elephant lives in a jungle." },
+        { question: "Where does a lion live?", options: ["Den", "Shed", "Hole"], correct: "Den", explanation: "A lion lives in a den." },
+        { question: "Where does a duck live?", options: ["Coop", "House", "Pond"], correct: "Pond", explanation: "A duck lives in a pond." },
+        { question: "Which animal makes the sound “Quack”?", options: ["Goat", "Duck", "Tiger"], correct: "Duck", explanation: "A duck makes the sound 'quack'." },
+        { question: "How many legs does a hen have?", options: ["2", "6", "0"], correct: "2", explanation: "A hen has 2 legs." },
+        { question: "How many legs does a frog have?", options: ["4", "2", "0"], correct: "4", explanation: "A frog has 4 legs." },
+        { question: "How many legs does a elephant have?", options: ["6", "4", "2"], correct: "4", explanation: "A elephant has 4 legs." },
+        { question: "What is the body of a pig covered with?", options: ["Hair", "Feathers", "Skin"], correct: "Skin", explanation: "A pig's body is covered with skin." },
+        { question: "Where does a snake live?", options: ["Hive", "Coop", "Hole"], correct: "Hole", explanation: "A snake lives in a hole." },
+        { question: "What is the body of a snake covered with?", options: ["Scales", "Wool", "Fur"], correct: "Scales", explanation: "A snake's body is covered with scales." },
+        { question: "How many legs does a tiger have?", options: ["0", "4", "8"], correct: "4", explanation: "A tiger has 4 legs." },
+        { question: "How many legs does a bird have?", options: ["2", "8", "0"], correct: "2", explanation: "A bird has 2 legs." },
+        { question: "What is the baby of a monkey called?", options: ["Baby", "Foal", "Chick"], correct: "Baby", explanation: "A baby monkey is called a baby." },
+        { question: "What sound does a hen make?", options: ["Hiss", "Cluck", "Neigh"], correct: "Cluck", explanation: "A hen says 'cluck'." },
+        { question: "How many legs does a dog have?", options: ["4", "2", "0"], correct: "4", explanation: "A dog has 4 legs." },
+        { question: "Which animal makes the sound “Bleat”?", options: ["Sheep", "Cock", "Goat"], correct: "Goat", explanation: "A goat makes the sound 'bleat'." },
+        { question: "Which animal makes the sound “Trumpet”?", options: ["Snake", "Elephant", "Pig"], correct: "Elephant", explanation: "A elephant makes the sound 'trumpet'." },
+        { question: "What sound does a cat make?", options: ["Bleat", "Meow", "Crow"], correct: "Meow", explanation: "A cat says 'meow'." },
+        { question: "How many legs does a cow have?", options: ["4", "6", "0"], correct: "4", explanation: "A cow has 4 legs." },
+        { question: "What is the body of a hen covered with?", options: ["Skin", "Scales", "Feathers"], correct: "Feathers", explanation: "A hen's body is covered with feathers." },
+        { question: "Which animal makes the sound “Cluck”?", options: ["Cow", "Bee", "Hen"], correct: "Hen", explanation: "A hen makes the sound 'cluck'." },
+        { question: "How many legs does a rabbit have?", options: ["4", "0", "2"], correct: "4", explanation: "A rabbit has 4 legs." },
+        { question: "What sound does a sheep make?", options: ["Baa", "Roar", "Oink"], correct: "Baa", explanation: "A sheep says 'baa'." },
+        { question: "Which animal makes the sound “Crow”?", options: ["Dog", "Cock", "Monkey"], correct: "Cock", explanation: "A cock makes the sound 'crow'." },
+        { question: "Which of these is a wild animal?", options: ["Rabbit", "Cow", "Lion"], correct: "Lion", explanation: "A lion is a wild animal." },
+        { question: "What is the body of a fish covered with?", options: ["Wool", "Scales", "Hair"], correct: "Scales", explanation: "A fish's body is covered with scales." },
+        { question: "How many legs does a bee have?", options: ["4", "0", "6"], correct: "6", explanation: "A bee has 6 legs." },
+        { question: "What sound does a bee make?", options: ["Hiss", "Trumpet", "Buzz"], correct: "Buzz", explanation: "A bee says 'buzz'." },
+        { question: "Which animal makes the sound “Chirp”?", options: ["Goat", "Bird", "Dog"], correct: "Bird", explanation: "A bird makes the sound 'chirp'." },
+        { question: "What is the baby of a cock called?", options: ["Tadpole", "Chick", "Duckling"], correct: "Chick", explanation: "A baby cock is called a chick." },
+        { question: "What is the baby of a hen called?", options: ["Piglet", "Chick", "Foal"], correct: "Chick", explanation: "A baby hen is called a chick." },
+        { question: "What sound does a horse make?", options: ["Trumpet", "Neigh", "Roar"], correct: "Neigh", explanation: "A horse says 'neigh'." },
+        { question: "What sound does a dog make?", options: ["Hiss", "Oink", "Bark"], correct: "Bark", explanation: "A dog says 'bark'." },
+        { question: "Where does a sheep live?", options: ["Coop", "Shed", "Pen"], correct: "Pen", explanation: "A sheep lives in a pen." },
+        { question: "How many legs does a lion have?", options: ["2", "6", "4"], correct: "4", explanation: "A lion has 4 legs." },
+        { question: "Which of these is a farm animal?", options: ["Monkey", "Cow", "Tiger"], correct: "Cow", explanation: "A cow is a farm animal." },
+        { question: "What is the baby of a frog called?", options: ["Tadpole", "Kid", "Lamb"], correct: "Tadpole", explanation: "A baby frog is called a tadpole." },
+        { question: "Which animal makes the sound “Hiss”?", options: ["Cock", "Snake", "Elephant"], correct: "Snake", explanation: "A snake makes the sound 'hiss'." },
+        { question: "What is the baby of a elephant called?", options: ["Kit", "Calf", "Tadpole"], correct: "Calf", explanation: "A baby elephant is called a calf." },
+        { question: "What is the body of a tiger covered with?", options: ["Wool", "Fur", "Hair"], correct: "Fur", explanation: "A tiger's body is covered with fur." },
+        { question: "What sound does a pig make?", options: ["Cluck", "Oink", "Hiss"], correct: "Oink", explanation: "A pig says 'oink'." },
+        { question: "Which of these animals can fly?", options: ["Duck", "Lion", "Rabbit"], correct: "Duck", explanation: "A duck can fly." },
+        { question: "How many legs does a monkey have?", options: ["0", "4", "6"], correct: "4", explanation: "A monkey has 4 legs." },
+        { question: "Where does a goat live?", options: ["Den", "Pen", "Shed"], correct: "Shed", explanation: "A goat lives in a shed." },
+        { question: "How many legs does a cock have?", options: ["2", "6", "8"], correct: "2", explanation: "A cock has 2 legs." },
+        { question: "What is the body of a monkey covered with?", options: ["Feathers", "Fur", "Scales"], correct: "Fur", explanation: "A monkey's body is covered with fur." },
+        { question: "What is the baby of a sheep called?", options: ["Cub", "Kitten", "Lamb"], correct: "Lamb", explanation: "A baby sheep is called a lamb." },
+        { question: "How many legs does a goat have?", options: ["0", "2", "4"], correct: "4", explanation: "A goat has 4 legs." },
+        { question: "What sound does a lion make?", options: ["Roar", "Baa", "Croak"], correct: "Roar", explanation: "A lion says 'roar'." },
+        { question: "Which of these animals lives in water?", options: ["Pig", "Rabbit", "Duck"], correct: "Duck", explanation: "A duck can live in water." },
+        { question: "Where does a monkey live?", options: ["Tree", "Stable", "Hive"], correct: "Tree", explanation: "A monkey lives in a tree." },
+        { question: "What is the baby of a bird called?", options: ["Kit", "Foal", "Chick"], correct: "Chick", explanation: "A baby bird is called a chick." },
+        { question: "What sound does a snake make?", options: ["Roar", "Hiss", "Chirp"], correct: "Hiss", explanation: "A snake says 'hiss'." },
+        { question: "Which animal makes the sound “Croak”?", options: ["Cat", "Bird", "Frog"], correct: "Frog", explanation: "A frog makes the sound 'croak'." },
+        { question: "Which animal makes the sound “Buzz”?", options: ["Frog", "Cat", "Bee"], correct: "Bee", explanation: "A bee makes the sound 'buzz'." },
+        { question: "How many legs does a snake have?", options: ["2", "4", "0"], correct: "0", explanation: "A snake has 0 legs." },
+        { question: "What sound does a cock make?", options: ["Crow", "Hiss", "Moo"], correct: "Crow", explanation: "A cock says 'crow'." },
+        { question: "What is the body of a sheep covered with?", options: ["Wool", "Skin", "Scales"], correct: "Wool", explanation: "A sheep's body is covered with wool." },
+        { question: "Where does a cow live?", options: ["Shed", "Sty", "Tree"], correct: "Shed", explanation: "A cow lives in a shed." },
+        { question: "What is the baby of a lion called?", options: ["Lamb", "Piglet", "Cub"], correct: "Cub", explanation: "A baby lion is called a cub." },
+        { question: "Where does a cock live?", options: ["Shed", "Coop", "Tree"], correct: "Coop", explanation: "A cock lives in a coop." },
+        { question: "What is the baby of a goat called?", options: ["Kitten", "Kid", "Piglet"], correct: "Kid", explanation: "A baby goat is called a kid." },
+        { question: "What sound does a elephant make?", options: ["Bleat", "Trumpet", "Hiss"], correct: "Trumpet", explanation: "A elephant says 'trumpet'." },
+        { question: "What sound does a cow make?", options: ["Moo", "Bark", "Croak"], correct: "Moo", explanation: "A cow says 'moo'." },
+        { question: "What sound does a duck make?", options: ["Moo", "Oink", "Quack"], correct: "Quack", explanation: "A duck says 'quack'." },
+        { question: "Which animal makes the sound “Meow”?", options: ["Cow", "Cat", "Elephant"], correct: "Cat", explanation: "A cat makes the sound 'meow'." },
+        { question: "What is the body of a bird covered with?", options: ["Scales", "Feathers", "Hair"], correct: "Feathers", explanation: "A bird's body is covered with feathers." },
+        { question: "How many legs does a duck have?", options: ["0", "4", "2"], correct: "2", explanation: "A duck has 2 legs." },
+        { question: "Which animal makes the sound “Roar”?", options: ["Cow", "Fish", "Lion"], correct: "Lion", explanation: "A lion makes the sound 'roar'." },
+        { question: "What sound does a tiger make?", options: ["Roar", "Oink", "Crow"], correct: "Roar", explanation: "A tiger says 'roar'." },
+        { question: "How many legs does a cat have?", options: ["6", "4", "8"], correct: "4", explanation: "A cat has 4 legs." },
+        { question: "Where does a cat live?", options: ["House", "Shed", "Hole"], correct: "House", explanation: "A cat lives in a house." },
+        { question: "What is the baby of a horse called?", options: ["Cub", "Lamb", "Foal"], correct: "Foal", explanation: "A baby horse is called a foal." },
+        { question: "Which animal makes the sound “Baa”?", options: ["Cow", "Sheep", "Horse"], correct: "Sheep", explanation: "A sheep makes the sound 'baa'." },
+        { question: "What is the baby of a cow called?", options: ["Calf", "Kitten", "Lamb"], correct: "Calf", explanation: "A baby cow is called a calf." },
+        { question: "Which animal makes the sound “Neigh”?", options: ["Lion", "Sheep", "Horse"], correct: "Horse", explanation: "A horse makes the sound 'neigh'." },
+        { question: "How many legs does a horse have?", options: ["4", "0", "6"], correct: "4", explanation: "A horse has 4 legs." },
+        { question: "What is the body of a cat covered with?", options: ["Fur", "Feathers", "Scales"], correct: "Fur", explanation: "A cat's body is covered with fur." },
+        { question: "What is the body of a lion covered with?", options: ["Hair", "Fur", "Scales"], correct: "Fur", explanation: "A lion's body is covered with fur." },
+        { question: "Which animal makes the sound “Moo”?", options: ["Pig", "Cow", "Cock"], correct: "Cow", explanation: "A cow makes the sound 'moo'." },
+        { question: "What is the body of a frog covered with?", options: ["Scales", "Fur", "Skin"], correct: "Skin", explanation: "A frog's body is covered with skin." },
+        { question: "What is the baby of a rabbit called?", options: ["Kit", "Baby", "Chick"], correct: "Kit", explanation: "A baby rabbit is called a kit." },
+        { question: "How many legs does a fish have?", options: ["0", "2", "6"], correct: "0", explanation: "A fish has 0 legs." },
+        { question: "Where does a bird live?", options: ["Kennel", "Nest", "Water"], correct: "Nest", explanation: "A bird lives in a nest." },
+        { question: "What is the body of a elephant covered with?", options: ["Scales", "Skin", "Wool"], correct: "Skin", explanation: "A elephant's body is covered with skin." },
+        { question: "Which animal makes the sound “Bark”?", options: ["Frog", "Dog", "Fish"], correct: "Dog", explanation: "A dog makes the sound 'bark'." },
+        { question: "What is the baby of a tiger called?", options: ["Baby", "Kid", "Cub"], correct: "Cub", explanation: "A baby tiger is called a cub." },
+        { question: "What is the baby of a duck called?", options: ["Chick", "Duckling", "Foal"], correct: "Duckling", explanation: "A baby duck is called a duckling." },
+        { question: "How many legs does a pig have?", options: ["4", "0", "2"], correct: "4", explanation: "A pig has 4 legs." },
+        { question: "Which animal makes the sound “Oink”?", options: ["Elephant", "Sheep", "Pig"], correct: "Pig", explanation: "A pig makes the sound 'oink'." },
+        { question: "What sound does a goat make?", options: ["Bleat", "Roar", "Moo"], correct: "Bleat", explanation: "A goat says 'bleat'." },
+        { question: "What is the baby of a cat called?", options: ["Tadpole", "Kitten", "Foal"], correct: "Kitten", explanation: "A baby cat is called a kitten." },
+        { question: "What is the body of a cow covered with?", options: ["Feathers", "Hair", "Skin"], correct: "Hair", explanation: "A cow's body is covered with hair." },
+        { question: "What is the body of a duck covered with?", options: ["Skin", "Scales", "Feathers"], correct: "Feathers", explanation: "A duck's body is covered with feathers." },
+        { question: "What is the baby of a dog called?", options: ["Kid", "Puppy", "Calf"], correct: "Puppy", explanation: "A baby dog is called a puppy." },
+        { question: "How many legs does a sheep have?", options: ["4", "8", "0"], correct: "4", explanation: "A sheep has 4 legs." },
+        { question: "What is the body of a goat covered with?", options: ["Feathers", "Hair", "Skin"], correct: "Hair", explanation: "A goat's body is covered with hair." },
+        { question: "Where does a bee live?", options: ["Hole", "Kennel", "Hive"], correct: "Hive", explanation: "A bee lives in a hive." },
+        { question: "Where does a pig live?", options: ["Jungle", "Water", "Sty"], correct: "Sty", explanation: "A pig lives in a sty." }
+      ];
+    </script>
+
+    <!-- Footer -->
+    <div id="site-footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        initMCQQuiz(questions);
+      });
+    </script>
+
+  </body>
+</html>
