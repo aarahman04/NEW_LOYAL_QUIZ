@@ -3,230 +3,637 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Verb to be - past tense</title>
-    <!-- point to your question.css in the root css/ folder -->
+    <title>Verb To Be - Past Tense</title>
     <link rel="stylesheet" href="../../../css/question.css" />
   </head>
   <body>
 
-   <!-- Sticky Header -->
     <div id="site-header-placeholder"></div>
 
-    <!-- Quiz Content -->
     <main class="quiz-container">
       <div class="question-section">
         <h3 id="question-text">Loading...</h3>
-        <ul class="options" id="options-list">
-          <!-- Options dynamically generated -->
-        </ul>
+        <ul class="options" id="options-list"></ul>
       </div>
       <div id="feedback" class="hidden"></div>
       <div id="explanation" class="hidden"></div>
       <button id="back-btn" class="hidden" onclick="loadPreviousQuestion()">Back</button>
       <button id="next-btn" class="hidden" onclick="loadNextQuestion()">Next</button>
     </main>
-    
-   <script>
-  const questions = [
 
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>The brown hen _______ lost?</span>",
-      options: ["was", "were"],
-      correct: "was",
-      explanation: "'Was' is used with singular subjects in past tense."
-    },
+    <script>
+      const questions = [
+        {
+          question: "Use the correct past tense to finish the sentence: The brown hen ....... lost.",
+          options: ["was", "were"],
+          correct: "was",
+          explanation: "'was' is used because 'The brown hen' is a singular subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The brown bear ............ large.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used because 'The brown bear' is a singular subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The whales ............ swimming.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'The whales' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The fisherman ............ sick.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used because 'The fisherman' is a singular subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The birds ............ far away.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'The birds' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: They ............ new to our town.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used with the plural subject 'They'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The ducks........... very loud.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'The ducks' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The dogs ............ all gone.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'The dogs' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The children ............ on vacation.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'The children' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The children ............ in the pool all day.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'The children' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Mr. and Mrs. Smith ............ very upset.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'Mr. and Mrs. Smith' forms a compound plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Mr and Mrs. Smith ............ very nice people.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because Mr and Mrs. Smith is a compound plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Those women ............ really very kind.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'Those women' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Sandy and Hayfa ............ friends for many years.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'Sandy and Hayfa' forms a compound plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Alexandra and Tom ..... students.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'Alexandra and Tom' forms a compound plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Sandy's dress ............ on the bed.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used because 'Sandy's dress' is a singular subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: They ............ very happy.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used with the plural subject 'They'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: We ............ happy to go to the Cinema.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used with the plural subject 'We'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: It ............ very difficult to move.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used with the singular subject 'It'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: I ............ on the phone all day.",
+          options: ["was", "were"],
+          correct: "was",
+          explanation: "'was' is used with the subject 'I'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: He ............ very happy with his performance.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used with singular subjects like 'He'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Sam's cookies ............ yummy.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'Sam's cookies' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Sama ............ Sam's best friend.",
+          options: ["was", "were"],
+          correct: "was",
+          explanation: "'was' is used with singular proper names like 'Sama'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: It ............ difficult to find my bag.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used with the singular subject 'It'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: It ............ a different situation.",
+          options: ["was", "were"],
+          correct: "was",
+          explanation: "'was' is used with the singular subject 'It'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: They ............ crying.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used with the plural subject 'They'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: We ............ gone for the night.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used with the plural subject 'We'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: He ............ at the hospital.",
+          options: ["was", "were"],
+          correct: "was",
+          explanation: "'was' is used with singular subjects like 'He'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: She.......... at the school.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used with singular subjects like 'She'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: You............ not friendly.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is always used with the subject 'You' in the past tense."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: You.............. very beautiful.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is always used with the subject 'You' in the past tense."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: You ............ very sad.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is always used with the subject 'You' in the past tense."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Some toys and teddies ............ in the box.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'Some toys and teddies' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Some toys and teddies ............ in the cabinet.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'Some toys and teddies' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: She............... nice to our family.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used with singular subjects like 'She'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: They ............ nice to our family.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used with the plural subject 'They'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: He ............ nice to my family.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used with singular subjects like 'He'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The drums ............ very loud.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'The drums' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The drums ............ very different.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'The drums' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The music ............ so loud.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used because 'The music' is an uncountable/singular noun."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The rats ............ small and stinky.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'The rats' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The rats ............ big and ugly.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'The rats' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The cats ............ small and cute.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'The cats' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: She ............ faster than Sandy.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used with singular subjects like 'She'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: He ............ upset because he lost his key.",
+          options: ["was", "were"],
+          correct: "was",
+          explanation: "'was' is used with singular subjects like 'He'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: She ............ the best friend of the family.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used with singular subjects like 'She'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: They......... going on a long journey.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used with the plural subject 'They'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: We ............ flying to Germany.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used with the plural subject 'We'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: You.............. going to Italy.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is always used with the subject 'You' in the past tense."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: I ............ just thinking.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used with the subject 'I'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: He ............ a great player.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used with singular subjects like 'He'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: He ............ great writer.",
+          options: ["was", "were"],
+          correct: "was",
+          explanation: "'was' is used with singular subjects like 'He'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: We ............ friends.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used with the plural subject 'We'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The clothes ............ dirty.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'The clothes' functions as a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The shoes ............ big.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'The shoes' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The houses ............ all painted white.",
+          options: ["all", "were"],
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'The houses' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The papers ............ on the floor.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'The papers' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The books ............ on the table.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'The books' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The cats ............ jumping to catch the fish.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'The cats' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Sandy's ball ............ missing.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used because 'Sandy's ball' is a singular subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Sandy's birthday party ....... amazing.",
+          options: ["was", "were"],
+          correct: "was",
+          explanation: "'was' is used because 'Sandy's birthday party' is a singular subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Sam's birthday party ............ cancelled.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used because 'Sam's birthday party' is a singular subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: They ............ scared as they watched the movie.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used with the plural subject 'They'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: She ............ so cute.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used with singular subjects like 'She'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: We ............ flying to America.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used with the plural subject 'We'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: She ............ alone all day.",
+          options: ["was", "were"],
+          correct: "was",
+          explanation: "'was' is used with singular subjects like 'She'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The road ............ full of nails.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used because 'The road' is a singular subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The road ............ full of cars.",
+          options: ["was", "were"],
+          correct: "was",
+          explanation: "'was' is used because 'The road' is a singular subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: All of the doors ............ open.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'All of the doors' is a plural subject concept."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The candy and cookies ............ a surprise.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'The candy and cookies' forms a compound plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Some changes ............ going to happen.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'Some changes' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: I ............ lucky.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used with the subject 'I'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: I ............ very sorry.",
+          options: ["was", "were"],
+          correct: "was",
+          explanation: "'was' is used with the subject 'I'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Those ............ in the restaurant.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' matches the plural plural demonstrative pronoun 'Those'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Many people... happy to see him.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'Many people' functions as a plural collective subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The big fan ............ on all day.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used because 'The big fan' is a singular subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The small fan ............ broken.",
+          options: ["was", "were"],
+          correct: "was",
+          explanation: "'was' is used because 'The small fan' is a singular subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The dogs ............ behind us.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'The dogs' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The cats ............ behind us.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'The cats' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: We ............ on the phone.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used with the plural subject 'We'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: They ............ Safe and sound.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used with the plural subject 'They'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: It ............ broken.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used with the singular subject 'It'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: It ............ ok to go out.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used with the singular subject 'It'."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: You ............ right!",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is always used with the subject 'You' in the past tense."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The dog ............ old.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used because 'The dog' is a singular subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The cat and dog ............ both sick.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'The cat and dog' forms a compound plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The rabbits ............ so fluffy.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'The rabbits' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The cats ............ so scared.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'The cats' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The birds ............ flying very high.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'The birds' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Some papers and pens ............ on the table.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'Some papers and pens' forms a compound plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The white bear ............ so big.",
+          options: ["was", "were"],
+          correct: "was",
+          explanation: "'was' is used because 'The white bear' is a singular subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The flowers ............ so beautiful.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is used because 'The flowers' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The bags ............ so expensive.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'The bags' is a plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: You ............ here first.",
+          options: ["was", "were"],
+          correct: "were",
+          explanation: "'were' is always used with the subject 'You' in the past tense."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Some pots and pans ............ expensive.",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' is used because 'Some pots and pans' forms a compound plural subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The fire ............ in the house.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used because 'The fire' is a singular subject/concept."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: The big brown eagle ............ so fast.",
+          options: ["was", "were"],
+          correct: "was",
+          explanation: "'was' is used because 'The big brown eagle' is a singular subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Sam's cat ............ under the table.",
+          options: ["was", "were"],
+          correct: "was",
+          explanation: "'was' is used because 'Sam's cat' is a singular subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: Sam's dog ....... very funny.",
+          options: ["were", "was"],
+          correct: "was",
+          explanation: "'was' is used because 'Sam's dog' is a singular subject."
+        },
+        {
+          question: "Use the correct past tense to finish the sentence: We finally finished ............ .",
+          options: ["were", "was"],
+          correct: "were",
+          explanation: "'were' matches the preceding plural subject 'We'."
+        }
+      ];
+    </script>
 
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>The brown bear _______ large?</span>",
-      options: ["was", "were"],
-      correct: "was",
-      explanation: "'Was' is used with singular subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>The whales _______ swimming?</span>",
-      options: ["was", "were"],
-      correct: "were",
-      explanation: "'Were' is used with plural subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>The fisherman _______ sick?</span>",
-      options: ["was", "were"],
-      correct: "was",
-      explanation: "'Was' is used with singular subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>The birds _______ far away?</span>",
-      options: ["was", "were"],
-      correct: "were",
-      explanation: "'Were' is used with plural subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>They _______ new to our town?</span>",
-      options: ["was", "were"],
-      correct: "were",
-      explanation: "'Were' is used with plural subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>The ducks _______ very loud?</span>",
-      options: ["was", "were"],
-      correct: "were",
-      explanation: "'Were' is used with plural subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>The dogs _______ all gone?</span>",
-      options: ["was", "were"],
-      correct: "were",
-      explanation: "'Were' is used with plural subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>The children _______ on vacation?</span>",
-      options: ["was", "were"],
-      correct: "were",
-      explanation: "'Were' is used with plural subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>The children _______ in the pool all day?</span>",
-      options: ["was", "were"],
-      correct: "were",
-      explanation: "'Were' is used with plural subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>Mr. and Mrs. Smith _______ very upset?</span>",
-      options: ["was", "were"],
-      correct: "were",
-      explanation: "'Were' is used with plural subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>Mr. and Mrs. Smith _______ very nice people?</span>",
-      options: ["was", "were"],
-      correct: "were",
-      explanation: "'Were' is used with plural subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>Those women _______ really kind?</span>",
-      options: ["was", "were"],
-      correct: "were",
-      explanation: "'Were' is used with plural subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>Sandy and Hayfa _______ friends for many years?</span>",
-      options: ["was", "were"],
-      correct: "were",
-      explanation: "'Were' is used with plural subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>Alexandra and Tom _______ students?</span>",
-      options: ["was", "were"],
-      correct: "were",
-      explanation: "'Were' is used with plural subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>Sandy’s dress _______ on the bed?</span>",
-      options: ["was", "were"],
-      correct: "was",
-      explanation: "'Was' is used with singular subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>They _______ very happy?</span>",
-      options: ["was", "were"],
-      correct: "were",
-      explanation: "'Were' is used with plural subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>We _______ happy to go to the cinema?</span>",
-      options: ["was", "were"],
-      correct: "were",
-      explanation: "'Were' is used with plural subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>It _______ very difficult to move?</span>",
-      options: ["was", "were"],
-      correct: "was",
-      explanation: "'Was' is used with singular subjects in past tense."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>I _______ on the phone all day?</span>",
-      options: ["was", "were"],
-      correct: "was",
-      explanation: "'Was' is used with singular subjects in past tense."
-    }
-
-  ];
-</script>
-
-
-
-
-
-
-  <!-- Professional Footer -->
     <div id="site-footer-placeholder"></div>
-    <!-- point to your main quiz logic -->
     <script src="../../../js/script.js"></script>
     <script src="../../../js/partials.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => {
-    initMCQQuiz(questions);
-  });
+        initMCQQuiz(questions);
+      });
     </script>
   </body>
 </html>
-
