@@ -3,22 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Verb to be - present tense</title>
-    <!-- point to your question.css in the root css/ folder -->
+    <title>Verb to be (Have/Has) - present tense</title>
     <link rel="stylesheet" href="../../../css/question.css" />
   </head>
   <body>
 
-   <!-- Sticky Header -->
-    <div id="site-header-placeholder"></div>
+   <div id="site-header-placeholder"></div>
 
-    <!-- Quiz Content -->
     <main class="quiz-container">
       <div class="question-section">
         <h3 id="question-text">Loading...</h3>
         <ul class="options" id="options-list">
-          <!-- Options dynamically generated -->
-        </ul>
+          </ul>
       </div>
       <div id="feedback" class="hidden"></div>
       <div id="explanation" class="hidden"></div>
@@ -28,192 +24,604 @@
     
    <script>
   const questions = [
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>I _______ a big garden.</span>",
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ a big garden.</span>",
       options: ["have", "has"],
       correct: "have",
-      explanation: "'have' is the correct verb that fits the sentence."
+      explanation: "'have' is the correct verb form used with 'I'."
     },
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>We _______ a big house.</span>",
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ a big house.</span>",
       options: ["has", "have"],
       correct: "have",
-      explanation: "'have' is the correct verb that fits the sentence."
+      explanation: "'have' is used for plural pronouns like 'We'."
     },
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>We _______ a big problem.</span>",
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ a big problem.</span>",
       options: ["have", "has"],
       correct: "have",
-      explanation: "'have' is the correct verb that fits the sentence."
+      explanation: "'have' is correct for 'We'."
     },
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>I _______ new shoes.</span>",
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ new shoes.</span>",
       options: ["have", "has"],
       correct: "have",
-      explanation: "'have' is the correct verb that fits the sentence."
+      explanation: "'have' is correct for 'I'."
     },
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>He _______ a big heart.</span>",
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>He _______ a big heart.</span>",
       options: ["have", "has"],
       correct: "has",
-      explanation: "'has' is used for he/she/it."
+      explanation: "'has' is used for the singular pronoun 'He'."
     },
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>She _______ new clothes.</span>",
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>She _______ new clothes.</span>",
       options: ["has", "have"],
       correct: "has",
-      explanation: "'has' is the correct verb for 'she'."
+      explanation: "'has' is the correct verb for 'She'."
     },
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>This book _______ beautiful details.</span>",
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>This book _______ beautiful details.</span>",
       options: ["has", "have"],
       correct: "has",
-      explanation: "'has' is correct for singular subjects like 'this book'."
+      explanation: "'has' is correct for a singular subject like 'This book'."
     },
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>Sam and Sama _______ beautiful pants.</span>",
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Sam and Sama _______ beautiful pants.</span>",
       options: ["have", "has"],
       correct: "have",
-      explanation: "'have' is used for plural subjects."
+      explanation: "'have' is used for compound plural subjects like 'Sam and Sama'."
     },
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>All duck _______ flat feet.</span>",
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>All duck _______ flat feet.</span>",
       options: ["have", "has"],
       correct: "have",
-      explanation: "'have' is correct for plural nouns like 'all duck'."
+      explanation: "'have' is correct here as 'All duck' functions as a plural context."
     },
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>My town _______ many restaurants.</span>",
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>My town _______ many restaurants.</span>",
       options: ["has", "have"],
       correct: "has",
-      explanation: "'has' is correct for singular nouns like 'my town'."
+      explanation: "'has' is correct for singular nouns like 'My town'."
     },
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>My father _______ a beautiful house.</span>",
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>My father _______ a beautiful house.</span>",
       options: ["have", "has"],
       correct: "has",
-      explanation: "'has' is correct for 'he'."
+      explanation: "'has' is used for a singular third-person subject like 'My father'."
     },
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>I _______ a new puppy.</span>",
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ a new puppy.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is the correct form for 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ hamburgers.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is correct for 'We'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>They _______ three children.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is correct for the plural pronoun 'They'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>It _______ a big garden.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is correct for the singular pronoun 'It'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>You _______ good manners.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is always used with 'You'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Sandy _______ many chickens.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is used for singular proper nouns like 'Sandy'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Sandy _______ many cats.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is correct for the singular subject 'Sandy'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The puppy _______ brown spots.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is used for a singular subject like 'The puppy'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Our garden _______ many flowers.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is used for the singular noun phrase 'Our garden'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Our garden _______ many trees.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is used because 'Our garden' is a singular subject."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>You _______ a nice father.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is the correct matching verb form for 'You'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>She _______ nice parents.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' matches the third-person singular pronoun 'She'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ many problems.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is correct for the plural pronoun 'We'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>They _______ a lot of vegetables.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' matches the plural pronoun 'They'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>He _______ a lot of money.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is used for the singular pronoun 'He'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>She _______ a lot of make up.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is used for the singular pronoun 'She'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>It _______ a small pool.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is used for the third-person singular pronoun 'It'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ the map.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is the proper form to use with 'We'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>She _______ many beautiful dresses.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is correct for 'She'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>He _______ many different cars.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is correct for 'He'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The painters _______ different paint brushes.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used because 'The painters' is a plural noun."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Some people _______ green eyes.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is correct because 'people' is a plural noun."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Some people _______ dogs.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is correct because 'people' represents more than one person."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ a baseball cap.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is always used with 'I' in the present tense."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ a basket full of apples.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' matches the first-person singular pronoun 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The children _______ funny masks for the party.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used because 'The children' is a plural subject."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The children _______ their homework.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is correct for plural subjects like 'The children'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>They _______ a lot of homework.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' corresponds with the plural pronoun 'They'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ to catch the deer.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is correct for 'We'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>She _______ three sisters.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is used for the singular pronoun 'She'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>My garden _______ many trees.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is used because 'My garden' is a single place/thing."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The cats _______ beautiful eyes.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is used because 'The cats' is a plural noun."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The birds _______ black wings.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used because 'The birds' is a plural subject."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Sandy _______ 5 apples.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is used for single individual names like 'Sandy'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>All apples _______ seeds.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used because 'All apples' is a plural subject."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>All oranges _______ seeds.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used for plural subjects like 'All oranges'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Those horses _______ beautiful legs.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is correct for plural subjects like 'Those horses'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>That doll _______ long hair.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is correct for a singular object like 'That doll'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>That monkey _______ a banana.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is used for a singular animal like 'That monkey'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>That baby _______ his bottle of milk.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is correct for a singular individual like 'That baby'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Mr. and Mrs. Smith _______ a farm.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used for multiple people like 'Mr. and Mrs. Smith'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Sandy _______ a pink and white dress.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is used for singular proper nouns like 'Sandy'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Sama _______ a beautiful smile.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is correct for a single person like 'Sama'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Sam and Tom _______ blue eyes.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used because 'Sam and Tom' makes a plural subject."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Our team _______ a game on Sunday.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is correct because 'Our team' acts as a singular collective unit."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Our team _______ a game on Saturday.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is correct for the singular collective noun 'Our team'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>My grandfather _______ a beard.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' matches the third-person singular subject 'My grandfather'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>This story _______ a happy ending.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is used for a single item like 'This story'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>This story _______ a sad ending.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is the correct choice for the singular subject 'This story'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The park _______ a red slide.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is used for singular places like 'The park'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The park _______ two swings.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' matches the singular noun 'The park'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The park _______ a library.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is used for a single place like 'The park'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The hospital _______ many patients.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is correct for a singular institution/place like 'The hospital'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>That hospital _______ many different rooms.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is used because 'That hospital' is singular."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>That school _______ many students.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is correct for a single school."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ a pencil.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is standard for the first-person pronoun 'I'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>She _______ a laptop.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' matches the singular third-person pronoun 'She'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>He _______ an I-Pad.</span>",
+      options: ["has", "have"],
+      correct: "has",
+      explanation: "'has' is the proper form used with 'He'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>It _______ a map.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is used for the singular pronoun 'It'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>It _______ a key.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is correct for the third-person singular pronoun 'It'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ a plan.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' matches the plural pronoun 'We'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ a plan.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is used with the plural pronoun 'We'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I _______ pencils.</span>",
       options: ["has", "have"],
       correct: "have",
       explanation: "'have' is correct for 'I'."
     },
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>We _______ hamburgers.</span>",
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>They _______ a test today.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' matches the plural subject 'They'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>They _______ no music lesson today.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used for the plural pronoun 'They'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I don't _______ any brothers.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "After auxiliary verbs like 'don't', use the base form 'have'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I don't _______ any sisters.</span>",
       options: ["has", "have"],
       correct: "have",
-      explanation: "'have' is correct for 'we'."
+      explanation: "The base form 'have' follows the helping verb 'don't'."
     },
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>They _______ three children.</span>",
-      options: ["has", "have"],
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>I have _______ candies.</span>",
+      options: ["have", "has"],
       correct: "have",
-      explanation: "'have' is correct for 'they'."
+      explanation: "'have' is the proper form corresponding with 'I' (Note: text repetition from source file)."
     },
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>It _______ a big garden.</span>",
-      options: ["has", "have"],
-      correct: "has",
-      explanation: "'has' is correct for 'it'."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>You _______ good manners.</span>",
-      options: ["has", "have"],
-      correct: "have",
-      explanation: "'have' is correct for 'you'."
-    },
-
-    {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>Sandy _______ many chickens.</span>",
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>It _______ four seats.</span>",
       options: ["have", "has"],
       correct: "has",
-      explanation: "'has' is correct for singular proper nouns like 'Sandy'."
+      explanation: "'has' is used with the singular pronoun 'It'."
     },
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>Sandy _______ many cats.</span>",
-      options: ["has", "have"],
-      correct: "has",
-      explanation: "'has' is used for 'Sandy'."
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>You _______ to do it.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used with the pronoun 'You'."
     },
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>The puppy _______ brown spots.</span>",
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ a great plan.</span>",
       options: ["has", "have"],
-      correct: "has",
-      explanation: "'has' is correct for singular subjects like 'the puppy'."
+      correct: "have",
+      explanation: "'have' is correct for the plural pronoun 'We'."
     },
-
     {
-      question:
-        "Choose the correct tense form to complete the sentence.<br/>" +
-        "<span style='color:black;'>Our garden _______ many flowers.</span>",
-      options: ["has", "have"],
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>The sun _______ already set.</span>",
+      options: ["have", "has"],
       correct: "has",
-      explanation: "'has' is correct for 'our garden'."
+      explanation: "'has' is the singular helping verb used for 'The sun'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>They _______ very playful puppies.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' matches the plural pronoun 'They'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ pink shoes.</span>",
+      options: ["pink", "have"], 
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' matches the plural pronoun 'We'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>She _______ a beautiful long dress.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is correct for the third-person singular pronoun 'She'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>She _______ a beautiful jaw.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is used with 'She'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>They _______ a cool robot.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used with the plural pronoun 'They'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ beautiful children.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used with 'We'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>They _______ many booklets.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is used for the plural pronoun 'They'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>We _______ to go to the school.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' matches the plural pronoun 'We'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Some people _______ pets.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used because 'people' is a plural noun."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Some people don't _______ Pets.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "Following 'don't', the root base form verb 'have' must be used."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Sam and Sama _______ many toys.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is correct for compound plural subjects like 'Sam and Sama'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Sam and Sama _______ three cats.</span>",
+      options: ["has", "have"],
+      correct: "have",
+      explanation: "'have' is correct for plural subjects."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Those children _______ good bags.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used because 'Those children' is plural."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>My little brother _______ many toys.</span>",
+      options: ["have", "has"],
+      correct: "has",
+      explanation: "'has' is used for third-person singular nouns like 'My little brother'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Tom and Sam _______ a new job.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used for compound plural subjects like 'Tom and Sam'."
+    },
+    {
+      question: "Choose the correct tense form to complete the sentence.<br/><span style='color:black;'>Sam and Sama _______ a lot of stickers.</span>",
+      options: ["have", "has"],
+      correct: "have",
+      explanation: "'have' is used because 'Sam and Sama' refers to multiple people."
     }
-
   ];
 </script>
-  <!-- Professional Footer -->
-    <div id="site-footer-placeholder"></div>
-    <!-- point to your main quiz logic -->
+  <div id="site-footer-placeholder"></div>
     <script src="../../../js/script.js"></script>
     <script src="../../../js/partials.js"></script>
     <script>
@@ -223,4 +631,3 @@
     </script>
   </body>
 </html>
-
