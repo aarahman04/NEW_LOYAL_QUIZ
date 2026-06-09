@@ -4,21 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Common Nouns</title>
-    <!-- point to your question.css in the root css/ folder -->
     <link rel="stylesheet" href="../../../css/question.css" />
   </head>
   <body>
 
-   <!-- Sticky Header -->
-    <div id="site-header-placeholder"></div>
+   <div id="site-header-placeholder"></div>
 
-    <!-- Quiz Content -->
     <main class="quiz-container">
       <div class="question-section">
         <h3 id="question-text">Loading...</h3>
         <ul class="options" id="options-list">
-          <!-- Options dynamically generated -->
-        </ul>
+          </ul>
       </div>
       <div id="feedback" class="hidden"></div>
       <div id="explanation" class="hidden"></div>
@@ -28,139 +24,616 @@
 
     <script>
     const questions = [
-      // 20 Common Noun Questions (reduced to 2 options each; order varies)
       {
         question: "Which of the following is a common noun?",
-        options: ["Girl", "Washington"],
+        options: ["Girl", "Sandy"],
         correct: "Girl",
-        explanation: "'Girl' names a general person, so it’s a common noun."
+        explanation: "'Girl' is a general term for a person, whereas 'Sandy' is a specific name (proper noun)."
       },
       {
         question: "Which of the following is a common noun?",
-        options: ["Paris", "Boy"],
+        options: ["Sam", "Boy"],
         correct: "Boy",
-        explanation: "'Boy' is a general term for a male child, making it a common noun."
+        explanation: "'Boy' names a general type of person, making it a common noun."
       },
       {
         question: "Which of the following is a common noun?",
-        options: ["Google", "School"],
-        correct: "School",
-        explanation: "'School' refers to any educational building, so it’s a common noun."
+        options: ["London", "City"],
+        correct: "City",
+        explanation: "'City' refers generally to any large urban town, so it is a common noun."
       },
       {
         question: "Which of the following is a common noun?",
-        options: ["Author", "Charles Dickens"],
-        correct: "Author",
-        explanation: "'Author' names a general profession, so it’s a common noun."
+        options: ["City", "Paris"],
+        correct: "City",
+        explanation: "'City' is a common noun because it does not refer to a specific, unique city by name."
       },
       {
         question: "Which of the following is a common noun?",
-        options: ["Fido", "Dog"],
+        options: ["Max", "Dog"],
         correct: "Dog",
-        explanation: "'Dog' names any canine, making it a common noun."
+        explanation: "'Dog' is a general classification for an animal, making it a common noun."
       },
       {
         question: "Which of the following is a common noun?",
-        options: ["Google", "Tech Company"],
-        correct: "Tech Company",
-        explanation: "'Tech Company' is a general business category, so it’s a common noun."
-      },
-      {
-        question: "Which of the following is a common noun?",
-        options: ["France", "Country"],
-        correct: "Country",
-        explanation: "'Country' names any nation or region, so it’s a common noun."
-      },
-      {
-        question: "Which of the following is a common noun?",
-        options: ["River", "Paris"],
+        options: ["River", "Nile River"],
         correct: "River",
-        explanation: "'River' refers to any watercourse, making it a common noun."
+        explanation: "'River' is a generic geographic term, whereas 'Nile River' is a specific proper name."
       },
       {
         question: "Which of the following is a common noun?",
-        options: ["Harry Potter", "Book"],
-        correct: "Book",
-        explanation: "'Book' names any bound written work, so it’s a common noun."
-      },
-      {
-        question: "Which of the following is a common noun?",
-        options: ["New York", "City"],
-        correct: "City",
-        explanation: "'City' names any urban area, making it a common noun."
-      },
-      {
-        question: "Which of the following is a common noun?",
-        options: ["City", "White House"],
-        correct: "City",
-        explanation: "'City' names any town, so it’s a common noun."
-      },
-      {
-        question: "Which of the following is a common noun?",
-        options: ["Tree", "The Nile"],
-        correct: "Tree",
-        explanation: "'Tree' is a general term for any woody plant, so it’s a common noun."
-      },
-      {
-        question: "Which of the following is a common noun?",
-        options: ["Snickers", "Flower"],
-        correct: "Flower",
-        explanation: "'Flower' names any blossom, making it a common noun."
-      },
-      {
-        question: "Which of the following is a common noun?",
-        options: ["Planet", "Denmark"],
-        correct: "Planet",
-        explanation: "'Planet' names any celestial body orbiting a star, so it’s a common noun."
-      },
-      {
-        question: "Which of the following is a common noun?",
-        options: ["England", "Mountain"],
+        options: ["Mount Everest", "Mountain"],
         correct: "Mountain",
-        explanation: "'Mountain' is a general landform type, making it a common noun."
+        explanation: "'Mountain' is a general landform classification, which makes it a common noun."
       },
       {
         question: "Which of the following is a common noun?",
-        options: ["Fruit", "Saturn"],
-        correct: "Fruit",
-        explanation: "'Fruit' names any edible produce, so it’s a common noun."
+        options: ["Toyota", "Car Company"],
+        correct: "Car Company",
+        explanation: "'Car Company' refers generically to any manufacturer of vehicles."
       },
       {
         question: "Which of the following is a common noun?",
-        options: ["Volleyball", "Car"],
-        correct: "Car",
-        explanation: "'Car' names any motor vehicle, making it a common noun."
+        options: ["Tech Company", "Microsoft"],
+        correct: "Tech Company",
+        explanation: "'Tech Company' is a generic industrial sector label, classifying it as a common noun."
       },
       {
         question: "Which of the following is a common noun?",
-        options: ["School", "Banana"],
+        options: ["Christmas", "Holiday"],
+        correct: "Holiday",
+        explanation: "'Holiday' is a generic name for a celebratory day, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Day of the Week", "Monday"],
+        correct: "Day of the Week",
+        explanation: "'Day of the Week' refers to any of the seven days generally, making it a common noun phrase."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["October", "Month"],
+        correct: "Month",
+        explanation: "'Month' is a common noun that refers to any of the twelve periods in a calendar year."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Doctor", "Dr. Smith"],
+        correct: "Doctor",
+        explanation: "'Doctor' is a generic title for a medical professional, so it is a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Professor Jones", "Professor"],
+        correct: "Professor",
+        explanation: "'Professor' refers generally to any educator in higher education, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Planet", "Earth"],
+        correct: "Planet",
+        explanation: "'Planet' is a general astronomical term for an orbiting body, so it is a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Jupiter", "Planet"],
+        correct: "Planet",
+        explanation: "'Planet' names a generic category of celestial entities, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Monument", "Eiffel Tower"],
+        correct: "Monument",
+        explanation: "'Monument' refers generally to any historical structure or landmark."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Statue of Liberty", "Statue"],
+        correct: "Statue",
+        explanation: "'Statue' is a general word for a carved or cast sculpture, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Man", "John"],
+        correct: "Man",
+        explanation: "'Man' is a general term for an adult male human, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Mary", "Woman"],
+        correct: "Woman",
+        explanation: "'Woman' refers generally to any adult female human, classifying it as a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Continent", "Asia"],
+        correct: "Continent",
+        explanation: "'Continent' is a common noun naming any of the main continuous expanses of land."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Africa", "Continent"],
+        correct: "Continent",
+        explanation: "'Continent' is a generic term for large landmass divisions across the globe."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Ocean", "Pacific Ocean"],
+        correct: "Ocean",
+        explanation: "'Ocean' is a generic classification for a large body of salt water."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Amazon Rainforest", "Rainforest"],
+        correct: "Rainforest",
+        explanation: "'Rainforest' is a common noun characterizing a dense, high-rainfall forest type."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Brand", "Nike"],
+        correct: "Brand",
+        explanation: "'Brand' is a common noun describing any trade name or company identity."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Apple", "Company"],
+        correct: "Company",
+        explanation: "'Company' is a generic corporate business term, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Language", "English"],
+        correct: "Language",
+        explanation: "'Language' refers generally to any system of human communication, so it is a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Spanish", "Language"],
+        correct: "Language",
+        explanation: "'Language' is a common noun classifying modes of speech and communication."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Titanic", "Ship"],
+        correct: "Ship",
+        explanation: "'Ship' is a generic noun for a large seafaring vessel."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Boeing 747", "Airplane"],
+        correct: "Airplane",
+        explanation: "'Airplane' is a common noun pointing generally to any fixed-wing aircraft."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Street", "Main Street"],
+        correct: "Street",
+        explanation: "'Street' is a common public thoroughfare category, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Broadway", "Street"],
+        correct: "Street",
+        explanation: "'Street' refers generally to any paved public road in a city or town."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Queen Elizabeth", "Queen"],
+        correct: "Queen",
+        explanation: "'Queen' is a general title or role for a female monarch, classifying it as a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["President", "President Lincoln"],
+        correct: "President",
+        explanation: "'President' is a generic official term for a head of state or organization."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Harvard University", "University"],
+        correct: "University",
+        explanation: "'University' is a general word for an institution of higher learning, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Lincoln High School", "High School"],
+        correct: "High School",
+        explanation: "'High School' names a secondary school category generally, representing a common noun phrase."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Desert", "Sahara Desert"],
+        correct: "Desert",
+        explanation: "'Desert' is a common noun for any barren, arid region of land."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Grand Canyon", "Canyon"],
+        correct: "Canyon",
+        explanation: "'Canyon' refers generically to any deep gorge with a river flowing through it."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Electronics Company", "Sony"],
+        correct: "Electronics Company",
+        explanation: "'Electronics Company' is a common noun phrase identifying a generic commercial enterprise type."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Nintendo", "Video Game Company"],
+        correct: "Video Game Company",
+        explanation: "'Video Game Company' is a generic industrial classification phrase, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Thanksgiving", "Holiday"],
+        correct: "Holiday",
+        explanation: "'Holiday' is a generic term for a day of festivity or recreation."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Halloween", "Holiday"],
+        correct: "Holiday",
+        explanation: "'Holiday' refers to any special day of celebration rather than a specific one."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Day", "Friday"],
+        correct: "Day",
+        explanation: "'Day' is a common noun pointing generally to any 24-hour time increment."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Sunday", "Day"],
+        correct: "Day",
+        explanation: "'Day' is a basic generic unit of calendar tracking, functioning as a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Month", "January"],
+        correct: "Month",
+        explanation: "'Month' is a generic time classification for a structural division of the year."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["August", "Month"],
+        correct: "Month",
+        explanation: "'Month' refers generally to any of the calendar segments, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Doctor", "Dr. Jones"],
+        correct: "Doctor",
+        explanation: "'Doctor' is a general noun applied to any professional licensed to practice medicine."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Officer Smith", "Officer"],
+        correct: "Officer",
+        explanation: "'Officer' is a common noun denoting any individual holding a position of authority or command."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Planet", "Mars"],
+        correct: "Planet",
+        explanation: "'Planet' is a general descriptive classification for a celestial body."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Saturn", "Planet"],
+        correct: "Planet",
+        explanation: "'Planet' refers generally to celestial objects orbiting a star, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Ancient Monument", "Colosseum"],
+        correct: "Ancient Monument",
+        explanation: "'Ancient Monument' serves as a generic term for old archeological structures."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Great Wall", "Wall"],
+        correct: "Wall",
+        explanation: "'Wall' is a common noun indicating any vertical structure used to enclose or protect an area."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Man", "David"],
+        correct: "Man",
+        explanation: "'Man' is a generic category word for an adult human male."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Sarah", "Woman"],
+        correct: "Woman",
+        explanation: "'Woman' is a common noun describing any adult female human entity."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Continent", "Europe"],
+        correct: "Continent",
+        explanation: "'Continent' represents a generic landmass category designation."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Australia", "Country"],
+        correct: "Country",
+        explanation: "'Country' names any sovereign nation or distinct territory generally, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Ocean", "Atlantic Ocean"],
+        correct: "Ocean",
+        explanation: "'Ocean' is a generic noun for any of the main expanses of salt water on earth."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Indian Ocean", "Ocean"],
+        correct: "Ocean",
+        explanation: "'Ocean' refers to a general body of maritime water, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Sportswear Company", "Adidas"],
+        correct: "Sportswear Company",
+        explanation: "'Sportswear Company' is a generic multi-word common noun phrase describing an athletic apparel firm."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Google", "Search Engine"],
+        correct: "Search Engine",
+        explanation: "'Search Engine' generically references any software program that searches a database, making it a common noun phrase."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Language", "French"],
+        correct: "Language",
+        explanation: "'Language' is a common noun referencing systems of speech and symbols structurally."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["German", "Language"],
+        correct: "Language",
+        explanation: "'Language' is a general noun defining systems of human communication."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Mayflower", "Historic Ship"],
+        correct: "Historic Ship",
+        explanation: "'Historic Ship' is a generic phrase defining an old vessel, functioning as a common noun phrase."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Concorde", "Jet"],
+        correct: "Jet",
+        explanation: "'Jet' is a generic term for an airplane powered by jet engines, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Street", "Fifth Avenue"],
+        correct: "Street",
+        explanation: "'Street' is a generic public road category designation, which represents a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Sunset Boulevard", "Boulevard"],
+        correct: "Boulevard",
+        explanation: "'Boulevard' is a generic common noun term for a wide, tree-lined street."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["King Arthur", "King"],
+        correct: "King",
+        explanation: "'King' refers generically to any male sovereign ruler, classifying it as a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Governor", "Governor Green"],
+        correct: "Governor",
+        explanation: "'Governor' is a common noun designating any elected executive head of a state or territory."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Stanford University", "University"],
+        correct: "University",
+        explanation: "'University' is a generic term for an institution of higher education and research."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Washington Elementary School", "School"],
         correct: "School",
-        explanation: "'School' is a general place of learning, so it’s a common noun."
+        explanation: "'School' refers generally to any institution for educating children, making it a common noun."
       },
       {
         question: "Which of the following is a common noun?",
-        options: ["Toyota", "Pear"],
-        correct: "Pear",
-        explanation: "'Pear' names any of the fruit, making it a common noun."
+        options: ["Gobi Desert", "Desert"],
+        correct: "Desert",
+        explanation: "'Desert' is a general name for an arid geographic ecosystem."
       },
       {
         question: "Which of the following is a common noun?",
-        options: ["Melons", "Harvard University"],
-        correct: "Melons",
-        explanation: "'Melons' refers to any type of melon, so it’s a common noun."
+        options: ["Niagara Falls", "Waterfall"],
+        correct: "Waterfall",
+        explanation: "'Waterfall' is a general term describing a cascade of water falling from a height."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Samsung", "Company"],
+        correct: "Company",
+        explanation: "'Company' refers generically to a commercial business association, classifying it as a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Intel", "Corporation"],
+        correct: "Corporation",
+        explanation: "'Corporation' is a common noun identifying a large company authorized to act as a single entity."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Easter", "Holiday"],
+        correct: "Holiday",
+        explanation: "'Holiday' refers generically to any distinct day of release or festivity."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["New Year's Day", "Holiday"],
+        correct: "Holiday",
+        explanation: "'Holiday' is a generic noun for any calendar day marked by celebration."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Tuesday", "Day"],
+        correct: "Day",
+        explanation: "'Day' is a general time designation unit, serving as a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Thursday", "Day"],
+        correct: "Day",
+        explanation: "'Day' names a general 24-hour period block on a calendar."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Month", "February"],
+        correct: "Month",
+        explanation: "'Month' refers generally to a structural calendar bracket division."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["September", "Month"],
+        correct: "Month",
+        explanation: "'Month' is a common noun representing any of the twelve yearly time blocks."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Nurse Kelly", "Nurse"],
+        correct: "Nurse",
+        explanation: "'Nurse' is a generic professional category for a healthcare worker."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Coach Evans", "Coach"],
+        correct: "Coach",
+        explanation: "'Coach' is a generic term for someone who trains athletes or performers."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Neptune", "Planet"],
+        correct: "Planet",
+        explanation: "'Planet' is a generic descriptive noun matching any spherical celestial world."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Mercury", "Planet"],
+        correct: "Planet",
+        explanation: "'Planet' names a general category of solid stellar objects orbiting a sun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Parthenon", "Temple"],
+        correct: "Temple",
+        explanation: "'Temple' is a common noun targeting any building devoted to religious worship."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Taj Mahal", "Mausoleum"],
+        correct: "Mausoleum",
+        explanation: "'Mausoleum' is a generic architectural classification for a stately tomb building."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Robert", "Engineer"],
+        correct: "Engineer",
+        explanation: "'Engineer' is a general occupational term for a technical designer, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Artist", "Jessica"],
+        correct: "Artist",
+        explanation: "'Artist' is a common noun identifying any person who produces creative art paintings or items."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Antarctica", "Continent"],
+        correct: "Continent",
+        explanation: "'Continent' is a basic global generic geographic landmass bracket classification."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["South America", "Continent"],
+        correct: "Continent",
+        explanation: "'Continent' represents a generic landmass class, classifying it as a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Arctic Ocean", "Ocean"],
+        correct: "Ocean",
+        explanation: "'Ocean' is a generic term referencing vast continuous expanses of salt water."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Mediterranean Sea", "Sea"],
+        correct: "Sea",
+        explanation: "'Sea' refers generically to any expanse of salt water, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Puma", "Brand"],
+        correct: "Brand",
+        explanation: "'Brand' is a generic noun for a company trademark line identity."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Amazon", "Conglomerate"],
+        correct: "Conglomerate",
+        explanation: "'Conglomerate' is a general corporate enterprise classification term, functioning as a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Japanese", "Nationality"],
+        correct: "Nationality",
+        explanation: "'Nationality' is a common noun identifying the generic status of belonging to a nation."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Italian", "Culture"],
+        correct: "Culture",
+        explanation: "'Culture' is a generic noun representing the customs and arts of a nation or group."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Santa Maria", "Vessel"],
+        correct: "Vessel",
+        explanation: "'Vessel' is a generic classification noun for any ship or large watercraft."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Spirit of St. Louis", "Airplane"],
+        correct: "Airplane",
+        explanation: "'Airplane' is a common noun naming any flying vehicle with wings and an engine."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Abbey Road", "Street"],
+        correct: "Street",
+        explanation: "'Street' is a general urban roadway designation, making it a common noun."
+      },
+      {
+        question: "Which of the following is a common noun?",
+        options: ["Wall Street", "Financial Hub"],
+        correct: "Financial Hub",
+        explanation: "'Financial Hub' is a generic descriptive concept phrase, classifying it as a common noun phrase."
       }
     ];
-  </script>
+    </script>
 
-  <!-- Professional Footer -->
     <div id="site-footer-placeholder"></div>
-    <!-- point to your main quiz logic -->
     <script src="../../../js/script.js"></script>
     <script src="../../../js/partials.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => {
-    initMCQQuiz(questions);
-  });
+        initMCQQuiz(questions);
+      });
     </script>
   </body>
 </html>
