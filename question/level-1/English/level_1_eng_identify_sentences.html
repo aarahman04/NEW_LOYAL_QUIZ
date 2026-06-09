@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Identify Sentences</title>
+    <title>Identify Sentence - Quiz</title>
     <link rel="stylesheet" href="../../../css/question.css" />
   </head>
   <body>
@@ -25,123 +25,591 @@
 const questions = [
   {
     question: "Which of the following is a Question?",
-    options: ["Was the dog allowed in the house?", "The dog was not allowed in the house."],
-    correct: "Was the dog allowed in the house?",
-    explanation: "A question asks something and ends with a question mark."
-  },
-  {
-    question: "Which of the following is an exclamation?",
-    options: ["Yikes, that’s a big spider!", "The road was closed."],
-    correct: "Yikes, that’s a big spider!",
-    explanation: "It shows fear and surprise."
+    options: ["The boy is fast", "How are you?"],
+    correct: "How are you?",
+    explanation: "It asks something and ends with a question mark."
   },
   {
     question: "Which of the following is a statement?",
-    options: ["The school bell rang.", "Will you go to Sam’s house?"],
-    correct: "The school bell rang.",
-    explanation: "A statement tells something and ends with a period."
+    options: ["What is your name?", "The girl is pretty."],
+    correct: "The girl is pretty.",
+    explanation: "It states a fact and ends with a period."
   },
   {
     question: "Which of the following is an exclamation?",
-    options: ["That was close, phew!", "Do you like Ms Sandy?"],
-    correct: "That was close, phew!",
-    explanation: "It shows relief."
+    options: ["That was really pretty!", "The ocean was calm."],
+    correct: "That was really pretty!",
+    explanation: "It expresses strong feelings or admiration and ends with an exclamation point."
   },
   {
     question: "Which of the following is a Question?",
-    options: ["What is the capital city of Germany?", "I live in Japan."],
-    correct: "What is the capital city of Germany?",
-    explanation: "It asks for information."
-  },
-  {
-    question: "Which of the following is an exclamation?",
-    options: ["What a surprise!", "Some people can’t eat peanuts."],
-    correct: "What a surprise!",
-    explanation: "It shows amazement."
-  },
-  {
-    question: "Which of the following is a statement?",
-    options: ["Dad leaves to work early.", "Are you sick?"],
-    correct: "Dad leaves to work early.",
-    explanation: "It tells a fact."
+    options: ["What is your favorite book?", "The boy read many books."],
+    correct: "What is your favorite book?",
+    explanation: "It requests information and ends with a question mark."
   },
   {
     question: "Which of the following is a Question?",
-    options: ["What is your favorite song?", "The school bell rang very loud."],
-    correct: "What is your favorite song?",
-    explanation: "It requests information."
-  },
-  {
-    question: "Which of the following is an exclamation?",
-    options: ["You scared me!", "Some people are scared of spiders."],
-    correct: "You scared me!",
-    explanation: "It expresses fear."
+    options: ["What is your middle name?", "The girl is beautiful."],
+    correct: "What is your middle name?",
+    explanation: "It asks a specific question requiring an answer."
   },
   {
     question: "Which of the following is a statement?",
-    options: ["The cat slept on the table.", "What is your father’s name?"],
+    options: ["What is your father's name?", "The cat slept on the table."],
     correct: "The cat slept on the table.",
-    explanation: "It provides information."
+    explanation: "It tells something about an action or reality and ends with a period."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Wow!", "How are they doing?"],
+    correct: "Wow!",
+    explanation: "It is an interjection displaying a sudden burst of strong feeling or surprise."
   },
   {
     question: "Which of the following is a Question?",
-    options: ["Do you like grapes?", "Some people are just very scary."],
-    correct: "Do you like grapes?",
-    explanation: "It asks for an opinion."
-  },
-  {
-    question: "Which of the following is an exclamation?",
-    options: ["Hooray, the weekend is here!", "The bank was full of people."],
-    correct: "Hooray, the weekend is here!",
-    explanation: "It expresses excitement."
+    options: ["What is your opinion?", "The sky was full of birds."],
+    correct: "What is your opinion?",
+    explanation: "It prompts the listener for a personal view, ending with a question mark."
   },
   {
     question: "Which of the following is a statement?",
-    options: ["The phone is in my car.", "Where is my phone?"],
-    correct: "The phone is in my car.",
-    explanation: "It declares a fact."
+    options: ["The baby was crying.", "Where is your school?"],
+    correct: "The baby was crying.",
+    explanation: "It provides clear factual information and concludes with a period."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What is the difference between them?", "That is fantastic!"],
+    correct: "That is fantastic!",
+    explanation: "It highlights intense positive emotion, marked by an exclamation point."
   },
   {
     question: "Which of the following is a Question?",
-    options: ["Why are you crying?", "That’s fantastic news!"],
-    correct: "Why are you crying?",
-    explanation: "It asks for an explanation."
-  },
-  {
-    question: "Which of the following is an exclamation?",
-    options: ["This restaurant is great!", "He walks every single day."],
-    correct: "This restaurant is great!",
-    explanation: "It shows admiration."
+    options: ["The road was closed.", "What is his favorite part?"],
+    correct: "What is his favorite part?",
+    explanation: "It opens an inquiry into preferences and holds a question mark."
   },
   {
     question: "Which of the following is a statement?",
-    options: ["The rabbit is brown.", "What time is it?"],
-    correct: "The rabbit is brown.",
-    explanation: "It describes something."
+    options: ["The road was open.", "What was the quiz about?"],
+    correct: "The road was open.",
+    explanation: "It is a declarative sentence asserting a state of affairs."
   },
   {
-    question: "Which of the following is an exclamation?",
-    options: ["That really hurt, ouch!", "I went to the market."],
-    correct: "That really hurt, ouch!",
-    explanation: "It expresses pain."
+    question: "Which of the following is a Question?",
+    options: ["What is his purpose?", "The cat was fluffy."],
+    correct: "What is his purpose?",
+    explanation: "It structures a question designed to find meaning or intent."
   },
   {
     question: "Which of the following is a Question?",
     options: ["What was your first impression?", "The hen was sleeping."],
     correct: "What was your first impression?",
-    explanation: "It asks about an opinion."
+    explanation: "It directly asks about an initial reaction."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Some people can't eat peanuts.", "What a surprise!"],
+    correct: "What a surprise!",
+    explanation: "It indicates absolute amazement or sudden delight."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["Do you like apples?", "Some people are just very sensitive."],
+    correct: "Some people are just very sensitive.",
+    explanation: "It states an observation or fact about a group plainly."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Do you like grapes?", "Some people are just very scary."],
+    correct: "Do you like grapes?",
+    explanation: "It utilizes inverted auxiliary structures to initiate a point of inquiry."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Do you like puzzles?", "No!"],
+    correct: "No!",
+    explanation: "It conveys strong emphasis, emotional refusal, or shock."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Do you like swimming?", "Ms Sandy works with my mother."],
+    correct: "Do you like swimming?",
+    explanation: "It asks for a person's preferences regarding an activity."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["Does he like dogs?", "I went to the market."],
+    correct: "I went to the market.",
+    explanation: "It explains where the speaker went and finishes with a full stop."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["The cat was not allowed in the house.", "Was the cat allowed in the house?"],
+    correct: "Was the cat allowed in the house?",
+    explanation: "An interrogative construction starting with a verb to ask a past event."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The dog was not allowed in the house.", "Was the dog allowed in the house?"],
+    correct: "The dog was not allowed in the house.",
+    explanation: "It is a negative declaration stating an established rule or state."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["You are joking!", "The dog was sick."],
+    correct: "You are joking!",
+    explanation: "It conveys disbelief, light shock, or humor emphatically."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Why are you crying?", "The dog was sleeping."],
+    correct: "Why are you crying?",
+    explanation: "It starts with an interrogative word 'Why' to seek a rationale."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The rabbit was fluffy.", "What time is it?"],
+    correct: "The rabbit was fluffy.",
+    explanation: "It is a direct, straightforward description of an animal."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What time do you study?", "I don't believe that!"],
+    correct: "I don't believe that!",
+    explanation: "It reveals heightened astonishment or a sharp opinion."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The school bell rang.", "Will you go to Sam's house?"],
+    correct: "The school bell rang.",
+    explanation: "It updates the listener about an occurrence in an active way."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The tiger ate the ox.", "What did the tiger eat?"],
+    correct: "The tiger ate the ox.",
+    explanation: "It recounts a basic description or narrative sentence smoothly."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What a beautiful woman!", "How are you?"],
+    correct: "What a beautiful woman!",
+    explanation: "It uses an exclamatory phrase structure to voice clear admiration."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What is your name?", "That song was really a hit!"],
+    correct: "That song was really a hit!",
+    explanation: "It dynamically notes enthusiasm about a piece of music."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Wow, the ocean was calm!", "What is your mother's name?"],
+    correct: "Wow, the ocean was calm!",
+    explanation: "It incorporates an explicit exclamation keyword and structural point."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What is your favorite book?", "Yummy, this was lovely ice cream!"],
+    correct: "Yummy, this was lovely ice cream!",
+    explanation: "It registers sensory satisfaction and strong enthusiastic feedback."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The girl is beautiful.", "Wow, I loved that color!"],
+    correct: "The girl is beautiful.",
+    explanation: "It declares a simple declarative sentence detailing a specific characteristic."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Sam helped me so much!", "What is your father's name?"],
+    correct: "What is your father's name?",
+    explanation: "An interrogative structure asking for an identifier pattern."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Tom got an A+ on his last exam!", "How are they doing?"],
+    correct: "Tom got an A+ on his last exam!",
+    explanation: "It demonstrates strong celebration regarding academic achievements."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What is your opinion?", "Wow, it was a great idea!"],
+    correct: "Wow, it was a great idea!",
+    explanation: "It underscores positive enthusiasm starting with 'Wow'."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Where is your school?", "Our dog had five puppies!"],
+    correct: "Our dog had five puppies!",
+    explanation: "It reports exciting unexpected pet news forcefully."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["The bank was full of people.", "Hooray, the weekend is here!"],
+    correct: "Hooray, the weekend is here!",
+    explanation: "It captures absolute joy regarding a scheduled holiday or break."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["The road was closed.", "Yikes, that's a big spider!"],
+    correct: "Yikes, that's a big spider!",
+    explanation: "It emphasizes instantaneous surprise mixed with minor fear."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Yikes, that's a big ant!", "What was the quiz about?"],
+    correct: "What was the quiz about?",
+    explanation: "It targets clarification of a topic, using a question mark."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The cat was fluffy.", "Oops, I dropped my phone!"],
+    correct: "The cat was fluffy.",
+    explanation: "It reports a property of an animal using clear statement guidelines."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What was your first impression?", "Oops, I dropped my cup!"],
+    correct: "Oops, I dropped my cup!",
+    explanation: "It conveys an involuntary exclamation during an accidental slip."
+  },
+  {
+    question: "Which of the following is an Question?",
+    options: ["Do you like Ms Sandy?", "That was close, phew!"],
+    correct: "Do you like Ms Sandy?",
+    explanation: "It represents a standard query looking for basic affirmation."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Some people are just very sensitive.", "That was a big problem, ugh!"],
+    correct: "That was a big problem, ugh!",
+    explanation: "It manifests sudden frustration using the descriptive marker 'ugh'."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["Some people are just very scary.", "I can't believe it, wow!"],
+    correct: "Some people are just very scary.",
+    explanation: "It functions as a general declarative thought about people."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["You scared me!", "Some people are scared of spiders."],
+    correct: "You scared me!",
+    explanation: "It communicates strong direct feelings due to being startled sudden."
+  },
+  {
+    question: "Which of the following is a question?",
+    options: ["Do you like swimming?", "It slipped out of my hand, ouch!"],
+    correct: "Do you like swimming?",
+    explanation: "It seeks simple contextual validation of choices and likes."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["That really hurt, ouch!", "I went to the market."],
+    correct: "That really hurt, ouch!",
+    explanation: "It documents an instant response to sensory pain dramatically."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["Does he like dogs?", "I went to the market."],
+    correct: "I went to the market.",
+    explanation: "It recounts personal active information using standard declarative terms."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The cat ran up the tree.", "Did the cat run up the tree?"],
+    correct: "The cat ran up the tree.",
+    explanation: "It defines an action taken by a pet as an active fact."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["The cat was not allowed in the house.", "Was the cat allowed in the house?"],
+    correct: "Was the cat allowed in the house?",
+    explanation: "It checks validity of past actions through proper syntax placement."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["The dog was not allowed in the house.", "Was the dog allowed in the house?"],
+    correct: "Was the dog allowed in the house?",
+    explanation: "It initiates a request regarding authorization or access levels."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["Why are you crying?", "The dog was sick."],
+    correct: "The dog was sick.",
+    explanation: "It describes a situation calmly without explicit exclamation signs."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["Why are you crying?", "The dog was sleeping."],
+    correct: "The dog was sleeping.",
+    explanation: "It defines an observable fact directly ending in a full stop."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The rabbit is brown.", "What time is it?"],
+    correct: "The rabbit is brown.",
+    explanation: "It serves to outline simple structural identification colors."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["What time do you study?", "The hen sat on the bench."],
+    correct: "What time do you study?",
+    explanation: "It acts as a scheduling query targeting daily activities."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The school bell rang.", "Will you go to Sam's house?"],
+    correct: "The school bell rang.",
+    explanation: "It outlines an independent reality event ending with standard punctuation."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["The school bell rang very loud.", "What is your favorite song?"],
+    correct: "What is your favorite song?",
+    explanation: "It relies on explicit interrogatives to understand target preferences."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["Is Sam your friend?", "The boy plays with Sam."],
+    correct: "The boy plays with Sam.",
+    explanation: "It models basic descriptions of localized behavioral facts."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["We finally made it!", "The cat was not allowed in the house."],
+    correct: "We finally made it!",
+    explanation: "It features celebratory breakthrough language and an exclamation point."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["She solved it all by herself!", "Was the dog allowed in the house?"],
+    correct: "She solved it all by herself!",
+    explanation: "It shows dramatic praise and deep praise indicators."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What are you typing?", "The cake is amazing!"],
+    correct: "The cake is amazing!",
+    explanation: "It offers intense high praise about food quality dynamically."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["That's fantastic news!", "Why are you crying?"],
+    correct: "Why are you crying?",
+    explanation: "It targets reasons for emotional expression, requiring feedback."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["That's great news!", "What time is it?"],
+    correct: "That's great news!",
+    explanation: "It registers intense situational happiness on current updates."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["He just vanished!", "The hen sat on the bench."],
+    correct: "The hen sat on the bench.",
+    explanation: "It outlines descriptive physical positioning details routinely."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The school bell rang.", "I passed the quiz!"],
+    correct: "The school bell rang.",
+    explanation: "It delivers an informative event description via clear syntax patterns."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["I am so happy for you!", "The school bell rang very loud."],
+    correct: "I am so happy for you!",
+    explanation: "It broadcasts active direct interpersonal joy explicitly."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Is Sam your friend?", "Carful with that glass!"],
+    correct: "Carful with that glass!",
+    explanation: "It presents a warning context layout with urgent emotional phrasing."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Oh my goodness!", "The mouse ran away."],
+    correct: "Oh my goodness!",
+    explanation: "It incorporates a highly conversational shock exclamation format."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["I love what I see!", "Did you see that tiger?"],
+    correct: "Did you see that tiger?",
+    explanation: "It poses a visual verification challenge using question marks."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["What was that on the table?", "Beautiful!"],
+    correct: "What was that on the table?",
+    explanation: "It structures a real-time question about environmental objects."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What are you saying?", "Your cat bit my finger!"],
+    correct: "Your cat bit my finger!",
+    explanation: "It signals shock, surprise, or distress concerning physical events."
+  },
+  {
+    question: "Which of the following is statement?",
+    options: ["Sandy walked down the hill.", "Your dog bit my leg!"],
+    correct: "Sandy walked down the hill.",
+    explanation: "A declarative structural text path clarifying past spatial motion."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What is he buying?", "Your cat bit your father's hand!"],
+    correct: "Your cat bit your father's hand!",
+    explanation: "It logs an intense dynamic alert concerning startling historical moments."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["Are you lost?", "There is a big tiger over there!"],
+    correct: "There is a big tiger over there!",
+    explanation: "It sounds a dramatic spatial warning with absolute force."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["Dad leaves to work early.", "Sama guessed very fast!"],
+    correct: "Dad leaves to work early.",
+    explanation: "It frames an objective routine or habit with simple period formats."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["This restaurant is great!", "He walks every single day."],
+    correct: "He walks every single day.",
+    explanation: "It explains continuous periodic acts utilizing descriptive text statements."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["I don't want to go!", "What is he buying?"],
+    correct: "What is he buying?",
+    explanation: "It evaluates purchasing decisions using clear question tools."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["What is she doing?", "She runs every every Saturday."],
+    correct: "What is she doing?",
+    explanation: "It questions structural activity paths actively."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The deer ran away.", "Did you see that mouse?"],
+    correct: "The deer ran away.",
+    explanation: "It chronicles an escape scenario clearly via full stop setups."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The mouse ran behind the cat.", "Did you see that cat?"],
+    correct: "The mouse ran behind the cat.",
+    explanation: "It tracks action positions naturally without emotional tone marks."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["The turtle moved too slow.", "What was that on the table?"],
+    correct: "The turtle moved too slow.",
+    explanation: "It summarizes real velocity rates objectively."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Sandy walked up the hill.", "What are you saying?"],
+    correct: "What are you saying?",
+    explanation: "It points out communication checks directly."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["What are you saying?", "Sandy walked down the hill."],
+    correct: "Sandy walked down the hill.",
+    explanation: "It chronicles historical navigation patterns neutrally."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["What is she buying?", "Sandy was writing a poem."],
+    correct: "What is she buying?",
+    explanation: "It focuses interrogative tracking patterns directly on commercial acquisitions."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["Dad is in the front yard.", "Are you lost?"],
+    correct: "Dad is in the front yard.",
+    explanation: "It notes current architectural proximity setups calmly."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Dad was dancing.", "Are you sick?"],
+    correct: "Are you sick?",
+    explanation: "It raises direct medical or status verification tracks explicitly."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["Dad leaves to work early.", "Are you sick?"],
+    correct: "Dad leaves to work early.",
+    explanation: "It lists routine temporal actions finishing with regular periods."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["Did you catch the bus?", "He walks every single day."],
+    correct: "He walks every single day.",
+    explanation: "It expresses straightforward habits via declarative structure rules."
+  },
+  {
+    question: "Which of the following is a Question?",
+    options: ["Did you know this?", "They walk every morning."],
+    correct: "Did you know this?",
+    explanation: "It establishes real-time cognitive awareness challenges explicitly."
   },
   {
     question: "Which of the following is a statement?",
     options: ["She studied yesterday.", "What is she doing?"],
     correct: "She studied yesterday.",
-    explanation: "It tells something about the past."
+    explanation: "It presents specific information detailing past timeline behavior configurations."
   },
   {
     question: "Which of the following is an exclamation?",
-    options: ["Wow, it was a great idea!", "What is your opinion?"],
-    correct: "Wow, it was a great idea!",
-    explanation: "It expresses strong approval."
+    options: ["What is he doing?", "This is disrespectful!"],
+    correct: "This is disrespectful!",
+    explanation: "It alerts standard evaluation rules with dramatic personal conviction updates."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["Where do bears live?", "I am not sure."],
+    correct: "I am not sure.",
+    explanation: "It discloses internal certainty levels via basic declarative models."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["I live in Japan.", "What is the capital city of Germany?"],
+    correct: "I live in Japan.",
+    explanation: "It defines residency tracking indicators accurately using full stops."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["What is the capital city of Italy?", "The cat soap!"],
+    correct: "The cat soap!",
+    explanation: "An intensive phrase voicing nonsensical confusion or high exclamation emphasis."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["We will go to the zoo.", "Where is my passport?"],
+    correct: "We will go to the zoo.",
+    explanation: "It states future travel paths uniformly using regular period notation."
+  },
+  {
+    question: "Which of the following is an exclamation?",
+    options: ["When is the party?", "That is so cute!"],
+    correct: "That is so cute!",
+    explanation: "It documents instant visual delight via classic exclamatory markers."
+  },
+  {
+    question: "Which of the following is a statement?",
+    options: ["Where is my phone?", "The phone is in my car."],
+    correct: "The phone is in my car.",
+    explanation: "It details localization truths and ends properly with a period."
   }
 ];
 </script>
@@ -151,8 +619,8 @@ const questions = [
     <script src="../../../js/partials.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => {
-    initMCQQuiz(questions);
-  });
+        initMCQQuiz(questions);
+      });
     </script>
   </body>
 </html>
