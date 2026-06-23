@@ -1,0 +1,57 @@
+UNIQUE IMAGE EXTRACTION REPORT — L.Real Life p1.pdf
+=======================================================
+Total pages in PDF      : 51
+Total unique images     : 50
+Duplicate pages skipped : 1
+
+Image -> Page mapping:
+  Image  1  ->  Page 1
+  Image  2  ->  Page 2
+  Image  3  ->  Page 3
+  Image  4  ->  Page 4
+  Image  5  ->  Page 5
+  Image  6  ->  Page 6
+  Image  7  ->  Page 7
+  Image  8  ->  Page 8
+  Image  9  ->  Page 9
+  Image 10  ->  Page 10
+  Image 11  ->  Page 11
+  Image 12  ->  Page 12
+  Image 13  ->  Page 13
+  Image 14  ->  Page 14
+  Image 15  ->  Page 15
+  Image 16  ->  Page 16
+  Image 17  ->  Page 17
+  Image 18  ->  Page 18
+  Image 19  ->  Page 19
+  Image 20  ->  Pages 20-21
+  Image 21  ->  Page 22
+  Image 22  ->  Page 23
+  Image 23  ->  Page 24
+  Image 24  ->  Page 25
+  Image 25  ->  Page 26
+  Image 26  ->  Page 27
+  Image 27  ->  Page 28
+  Image 28  ->  Page 29
+  Image 29  ->  Page 30
+  Image 30  ->  Page 31
+  Image 31  ->  Page 32
+  Image 32  ->  Page 33
+  Image 33  ->  Page 34
+  Image 34  ->  Page 35
+  Image 35  ->  Page 36
+  Image 36  ->  Page 37
+  Image 37  ->  Page 38
+  Image 38  ->  Page 39
+  Image 39  ->  Page 40
+  Image 40  ->  Page 41
+  Image 41  ->  Page 42
+  Image 42  ->  Page 43
+  Image 43  ->  Page 44
+  Image 44  ->  Page 45
+  Image 45  ->  Page 46
+  Image 46  ->  Page 47
+  Image 47  ->  Page 48
+  Image 48  ->  Page 49
+  Image 49  ->  Page 50
+  Image 50  ->  Page 51

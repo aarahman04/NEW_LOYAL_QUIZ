@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    …
+    <link rel="stylesheet" href="../../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+
+    <main class="quiz-container">
+  <div class="question-section">
+    <h3 id="question-text">Loading…</h3>
+    <ul id="options-list" class="options"></ul>
+  </div>
+
+  <div id="feedback" class="hidden"></div>
+  <div id="explanation" class="hidden"></div>
+  <button id="back-btn" class="hidden">Back</button>
+  <button id="next-btn" class="hidden">Next</button>
+</main>
+
+
+    <!-- your question data: only one entry -->
+
+    <script>
+      
+
+  const questions = [
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/1.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 1",
+    explanation: "Watering a plant with a watering can really happens. Water cannot be poured upward into a cloud — that's just pretend."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/2.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 1",
+    explanation: "Pouring kibble into a bowl is how dogs are really fed. Food cannot float and arc through the air on its own."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/3.png",
+    options: ["image 2", "image 1", "none of the above"],
+    correct: "image 1",
+    explanation: "Pouring juice from a jug into a glass is something that really happens. You can't drink juice through a straw poked straight into a whole orange still growing on a tree."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/4.png",
+    options: ["image 2", "image 1", "none of the above"],
+    correct: "image 2",
+    explanation: "Cars drive on roads — they cannot fly through the sky like an airplane."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/5.png",
+    options: ["image 1", "image 2", "both can happen in real life"],
+    correct: "both can happen in real life",
+    explanation: "Plants can be grown outside in garden soil or repotted into containers indoors — both are real ways people plant things."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/6.png",
+    options: ["image 1", "image 2", "both can happen in real life"],
+    correct: "image 1",
+    explanation: "Planting in garden soil outside is how gardening really works. Dumping loose soil straight onto a kitchen floor isn't how planting is really done."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/7.png",
+    options: ["image 1", "image 2", "both can happen in real life"],
+    correct: "both can happen in real life",
+    explanation: "Writing at a desk and drawing a silly doodle (even on a pet) are both things kids can really do."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/8.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "none of the above",
+    explanation: "Bicycles can't fly through the sky, and a giant paper airplane can't really carry a person — neither picture could happen in real life."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/9.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 2",
+    explanation: "Cooking on a kitchen stove is how meals are really made. You can't cook a meal balanced on a car's hood at a charging station."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/10.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 1",
+    explanation: "Swimming in a pool is something people really do. People can't swim or fly freely through the open sky."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/11.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 2",
+    explanation: "Ice skating on a frozen lake is a real winter activity. A skateboard cannot fly high up above the clouds."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/12.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 2",
+    explanation: "Eating pizza at a pizzeria is something that really happens. You can't sit down on a cloud in the sky."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/13.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 2",
+    explanation: "Sleeping in a cozy bed at home is real. Clouds can't hold up a sleeping animal high in the sky."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/14.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 1",
+    explanation: "Pigs really do love rolling and splashing around in mud. Pigs can't fly through the sky wearing goggles and a cape."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/15.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 1",
+    explanation: "A bird splashing into a muddy puddle is something that could really happen. A bird can't soar all the way up next to the sun above the clouds."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/16.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 2",
+    explanation: "Doing homework at a desk in a classroom is real. Sitting down to do homework inside a shoe store isn't how it normally happens."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/17.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 2",
+    explanation: "Walking across a wooden bridge in a park is real. Rainbows can't turn into solid paths, and castles can't float in the clouds."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/18.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 1",
+    explanation: "Riding a real horse with a helmet and saddle is something people really do. A giant snail can't be saddled and ridden like a racehorse."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/19.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 1",
+    explanation: "Eating dinner with a fork and knife is real. Horses don't eat crayons, and they can't poke their heads into a room like that."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/20.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 1",
+    explanation: "Eating a normal dinner with a fork and knife is real — and just like the sign says, crayons are made for coloring, not for eating."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/20.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 1",
+    explanation: "Eating a healthy dinner with utensils is real. Crayons are made for coloring, not for eating, so that picture isn't something that should really happen."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/21.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 2",
+    explanation: "Apple trees really do grow apples you can pick. Trees don't grow sneakers like fruit."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/22.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "none of the above",
+    explanation: "A huge piano can't balance on a tree branch, and ladybugs can't really sit down and play the piano — neither picture could happen in real life."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/23.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 2",
+    explanation: "Dolphins really do leap out of the ocean. Dolphins can't sit at a school desk and write with a pencil."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/24.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "none of the above",
+    explanation: "Ladybugs don't sleep tucked into human beds, and they don't sit at school desks writing — neither picture shows something that really happens."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/25.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 2",
+    explanation: "Ladybugs really do rest on leaves. They don't tuck themselves into a human bed with a blanket and pillow."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/26.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 2",
+    explanation: "Playing soccer with a soccer ball on a field is real. You don't play soccer by kicking a bunch of apples around."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/27.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 1",
+    explanation: "Pet birds really do live in birdcages. A bird can't breathe and live submerged underwater inside a fish tank."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/28.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 1",
+    explanation: "People really do get married at a wedding ceremony like this. Giraffes can't stand up in a tuxedo and gown and get married."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/29.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 1",
+    explanation: "Putting on your own sneakers is something kids really do. Cats can't sit up and slip on high-heeled shoes with their paws."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/30.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 1",
+    explanation: "Painting designs onto your own sneakers is a real craft kids can do. You can't sit on a cloud and paint an actual rainbow into the sky."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/31.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 2",
+    explanation: "Rowing a boat across the ocean near an island is real. You can't row a wooden boat through outer space."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/32.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 2",
+    explanation: "Picking flowers in the forest is something people really do. Pots, pans, and spoons can't float and fly through the air by themselves."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/33.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 1",
+    explanation: "Talking on a telephone is something people really do. A book can't project a glowing, talking alien hologram."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/34.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 2",
+    explanation: "Brushing your teeth at a bathroom sink is real. A sink can't sit on a cloud in the sky with a smiling rainbow waterfall."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/35.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 2",
+    explanation: "Sleeping in a cozy bed is something we really do every night. Elephants are far too big and heavy to balance asleep on a tree branch."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/36.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 1",
+    explanation: "Ballet dancers really do practice and perform in a dance studio. An elephant can't stand on one toe in a tutu and dance ballet."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/37.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 1",
+    explanation: "Traveling through an airport with a suitcase is real. An elephant can't ride inside a rocket ship through outer space."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/38.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 1",
+    explanation: "Walking along a path in the forest is something people really do. An elephant can't wear a dress and backpack and ride a school bus to school."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/39.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 2",
+    explanation: "Walking through a shopping mall with shopping bags is real. People can't walk around on the moon without a spacesuit."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/40.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 1",
+    explanation: "Eating spaghetti at a restaurant is something that really happens. You can't sit down and eat a meal on the moon without a spacesuit."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/41.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 1",
+    explanation: "Fishing in a pond and catching a small fish is real. You can't sit on clouds in the night sky and fish from a floating pond."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/42.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 1",
+    explanation: "Fishing off a dock and catching a small fish is something that really happens. You can't reel in a giant marlin leaping out of the water beside a fairytale castle."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/43.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 2",
+    explanation: "Walking into a real cinema to watch a movie is something people do. Mice don't wear dresses and walk into a magical forest cinema."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/44.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 1",
+    explanation: "Riding in a taxi through the city is real. Mice can't wear dresses and ride ponies to the movies."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/45.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 1",
+    explanation: "Cooking soup on a stove in a kitchen is real. You can't cook on the moon wearing nothing but a glass bubble helmet."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/46.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 2",
+    explanation: "Riding a pony along a path is something people really do. A snail can't be saddled and ridden like a horse."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/47.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 2",
+    explanation: "Riding a pony near a barn is real. A giant snail can't be ridden with a saddle and reins."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/48.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 2",
+    explanation: "Building a snowman in the snow is something families really do. Horses can't fly with wings, and snowmen can't come alive and wave."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could happen in real life?</span>`,
+    image: "../../../image/level1_real_life/49.png",
+    options: ["image 1", "image 2", "all of the above"],
+    correct: "image 2",
+    explanation: "Feeding real sheep on a farm is something that really happens. Sheep can't sit on a couch holding popcorn buckets like people."
+  },
+  {
+    question: `<div style="text-align:center; color:black;">
+</div><br>
+<span style="color:red;">Which of the following image could not happen in real life?</span>`,
+    image: "../../../image/level1_real_life/50.png",
+    options: ["image 1", "image 2", "none of the above"],
+    correct: "image 1",
+    explanation: "Giraffes live in the savanna and really do eat leaves from trees like this, even by hand at a wildlife park. Polar bears live in the Arctic, not the savanna, so feeding a wild polar bear by hand like a pet is not something that could really happen."
+  }
+];
+
+  
+
+    </script>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    initMCQQuiz(questions);
+  });
+    </script>
+  </body>
+</html>
