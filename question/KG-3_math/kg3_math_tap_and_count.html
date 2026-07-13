@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tap &amp; Count</title>
+    <!-- Quiz shell + tap-select layer (tokens live in question.css) -->
+    <link rel="stylesheet" href="../../css/question.css" />
+    <link rel="stylesheet" href="../../css/tap_select.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+      </div>
+
+      <!-- Tap-select tiles are rendered here by the engine -->
+      <div id="tap-grid" class="tap-grid"></div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+
+    <script>
+      // COUNT MODE: tap exactly `count` of the tiles. A live counter and a
+      // Check button are added by the engine. Bank of 100; 25 shown per try.
+      const questions = [
+    { question: "Tap 6 🌟 stars", count: 6, items: ["🌟", "🌟", "🌟", "🌟", "🌟", "🌟", "🌟"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6. That makes six (6) stars." },
+    { question: "Tap 2 🎈 balloons", count: 2, items: ["🎈", "🎈", "🎈", "🎈"], explanation: "Count as you tap: 1, 2. That makes two (2) balloons." },
+    { question: "Tap 3 🍊 oranges", count: 3, items: ["🍊", "🍊", "🍊", "🍊", "🍊", "🍊"], explanation: "Count as you tap: 1, 2, 3. That makes three (3) oranges." },
+    { question: "Tap 6 🐞 ladybugs", count: 6, items: ["🐞", "🐞", "🐞", "🐞", "🐞", "🐞", "🐞"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6. That makes six (6) ladybugs." },
+    { question: "Tap 8 🐢 turtles", count: 8, items: ["🐢", "🐢", "🐢", "🐢", "🐢", "🐢", "🐢", "🐢", "🐢"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8. That makes eight (8) turtles." },
+    { question: "Tap 7 🌟 stars", count: 7, items: ["🌟", "🌟", "🌟", "🌟", "🌟", "🌟", "🌟", "🌟", "🌟", "🌟"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7. That makes seven (7) stars." },
+    { question: "Tap 10 🐞 ladybugs", count: 10, items: ["🐞", "🐞", "🐞", "🐞", "🐞", "🐞", "🐞", "🐞", "🐞", "🐞", "🐞", "🐞"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. That makes ten (10) ladybugs." },
+    { question: "Tap 7 🍓 strawberries", count: 7, items: ["🍓", "🍓", "🍓", "🍓", "🍓", "🍓", "🍓", "🍓", "🍓", "🍓"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7. That makes seven (7) strawberries." },
+    { question: "Tap 10 🍊 oranges", count: 10, items: ["🍊", "🍊", "🍊", "🍊", "🍊", "🍊", "🍊", "🍊", "🍊", "🍊", "🍊", "🍊"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. That makes ten (10) oranges." },
+    { question: "Tap 9 🍪 cookies", count: 9, items: ["🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9. That makes nine (9) cookies." },
+    { question: "Tap 4 🌟 stars", count: 4, items: ["🌟", "🌟", "🌟", "🌟", "🌟"], explanation: "Count as you tap: 1, 2, 3, 4. That makes four (4) stars." },
+    { question: "Tap 1 🐶 dog", count: 1, items: ["🐶", "🐶", "🐶", "🐶"], explanation: "Count as you tap: 1. That makes one (1) dog." },
+    { question: "Tap 1 🚗 car", count: 1, items: ["🚗", "🚗"], explanation: "Count as you tap: 1. That makes one (1) car." },
+    { question: "Tap 3 🚗 cars", count: 3, items: ["🚗", "🚗", "🚗", "🚗", "🚗"], explanation: "Count as you tap: 1, 2, 3. That makes three (3) cars." },
+    { question: "Tap 8 🍓 strawberries", count: 8, items: ["🍓", "🍓", "🍓", "🍓", "🍓", "🍓", "🍓", "🍓", "🍓"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8. That makes eight (8) strawberries." },
+    { question: "Tap 6 🚗 cars", count: 6, items: ["🚗", "🚗", "🚗", "🚗", "🚗", "🚗", "🚗"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6. That makes six (6) cars." },
+    { question: "Tap 1 🦆 duck", count: 1, items: ["🦆", "🦆", "🦆"], explanation: "Count as you tap: 1. That makes one (1) duck." },
+    { question: "Tap 2 🌸 flowers", count: 2, items: ["🌸", "🌸", "🌸"], explanation: "Count as you tap: 1, 2. That makes two (2) flowers." },
+    { question: "Tap 7 🐝 bees", count: 7, items: ["🐝", "🐝", "🐝", "🐝", "🐝", "🐝", "🐝", "🐝"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7. That makes seven (7) bees." },
+    { question: "Tap 10 🍪 cookies", count: 10, items: ["🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. That makes ten (10) cookies." },
+    { question: "Tap 1 🍪 cookie", count: 1, items: ["🍪", "🍪", "🍪", "🍪"], explanation: "Count as you tap: 1. That makes one (1) cookie." },
+    { question: "Tap 7 🦋 butterflies", count: 7, items: ["🦋", "🦋", "🦋", "🦋", "🦋", "🦋", "🦋", "🦋", "🦋"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7. That makes seven (7) butterflies." },
+    { question: "Tap 9 🚗 cars", count: 9, items: ["🚗", "🚗", "🚗", "🚗", "🚗", "🚗", "🚗", "🚗", "🚗", "🚗"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9. That makes nine (9) cars." },
+    { question: "Tap 10 🚗 cars", count: 10, items: ["🚗", "🚗", "🚗", "🚗", "🚗", "🚗", "🚗", "🚗", "🚗", "🚗", "🚗"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. That makes ten (10) cars." },
+    { question: "Tap 3 ⭐ stars", count: 3, items: ["⭐", "⭐", "⭐", "⭐", "⭐", "⭐"], explanation: "Count as you tap: 1, 2, 3. That makes three (3) stars." },
+    { question: "Tap 4 🚗 cars", count: 4, items: ["🚗", "🚗", "🚗", "🚗", "🚗", "🚗"], explanation: "Count as you tap: 1, 2, 3, 4. That makes four (4) cars." },
+    { question: "Tap 1 🌟 star", count: 1, items: ["🌟", "🌟", "🌟"], explanation: "Count as you tap: 1. That makes one (1) star." },
+    { question: "Tap 3 🐟 fish", count: 3, items: ["🐟", "🐟", "🐟", "🐟", "🐟", "🐟"], explanation: "Count as you tap: 1, 2, 3. That makes three (3) fish." },
+    { question: "Tap 7 🚗 cars", count: 7, items: ["🚗", "🚗", "🚗", "🚗", "🚗", "🚗", "🚗", "🚗", "🚗"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7. That makes seven (7) cars." },
+    { question: "Tap 10 🍎 apples", count: 10, items: ["🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. That makes ten (10) apples." },
+    { question: "Tap 8 🌸 flowers", count: 8, items: ["🌸", "🌸", "🌸", "🌸", "🌸", "🌸", "🌸", "🌸", "🌸", "🌸"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8. That makes eight (8) flowers." },
+    { question: "Tap 3 🍪 cookies", count: 3, items: ["🍪", "🍪", "🍪", "🍪"], explanation: "Count as you tap: 1, 2, 3. That makes three (3) cookies." },
+    { question: "Tap 1 🐱 cat", count: 1, items: ["🐱", "🐱", "🐱"], explanation: "Count as you tap: 1. That makes one (1) cat." },
+    { question: "Tap 10 🐝 bees", count: 10, items: ["🐝", "🐝", "🐝", "🐝", "🐝", "🐝", "🐝", "🐝", "🐝", "🐝", "🐝", "🐝"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. That makes ten (10) bees." },
+    { question: "Tap 1 🐝 bee", count: 1, items: ["🐝", "🐝", "🐝", "🐝"], explanation: "Count as you tap: 1. That makes one (1) bee." },
+    { question: "Tap 9 🍎 apples", count: 9, items: ["🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9. That makes nine (9) apples." },
+    { question: "Tap 8 🐟 fish", count: 8, items: ["🐟", "🐟", "🐟", "🐟", "🐟", "🐟", "🐟", "🐟", "🐟"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8. That makes eight (8) fish." },
+    { question: "Tap 6 🐱 cats", count: 6, items: ["🐱", "🐱", "🐱", "🐱", "🐱", "🐱", "🐱"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6. That makes six (6) cats." },
+    { question: "Tap 1 🐢 turtle", count: 1, items: ["🐢", "🐢", "🐢", "🐢"], explanation: "Count as you tap: 1. That makes one (1) turtle." },
+    { question: "Tap 5 🍊 oranges", count: 5, items: ["🍊", "🍊", "🍊", "🍊", "🍊", "🍊", "🍊", "🍊"], explanation: "Count as you tap: 1, 2, 3, 4, 5. That makes five (5) oranges." },
+    { question: "Tap 10 🐢 turtles", count: 10, items: ["🐢", "🐢", "🐢", "🐢", "🐢", "🐢", "🐢", "🐢", "🐢", "🐢", "🐢"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. That makes ten (10) turtles." },
+    { question: "Tap 4 ⭐ stars", count: 4, items: ["⭐", "⭐", "⭐", "⭐", "⭐", "⭐"], explanation: "Count as you tap: 1, 2, 3, 4. That makes four (4) stars." },
+    { question: "Tap 1 🍊 orange", count: 1, items: ["🍊", "🍊", "🍊", "🍊"], explanation: "Count as you tap: 1. That makes one (1) orange." },
+    { question: "Tap 3 🐝 bees", count: 3, items: ["🐝", "🐝", "🐝", "🐝", "🐝"], explanation: "Count as you tap: 1, 2, 3. That makes three (3) bees." },
+    { question: "Tap 7 🌸 flowers", count: 7, items: ["🌸", "🌸", "🌸", "🌸", "🌸", "🌸", "🌸", "🌸", "🌸"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7. That makes seven (7) flowers." },
+    { question: "Tap 5 🌸 flowers", count: 5, items: ["🌸", "🌸", "🌸", "🌸", "🌸", "🌸", "🌸", "🌸"], explanation: "Count as you tap: 1, 2, 3, 4, 5. That makes five (5) flowers." },
+    { question: "Tap 3 🐱 cats", count: 3, items: ["🐱", "🐱", "🐱", "🐱"], explanation: "Count as you tap: 1, 2, 3. That makes three (3) cats." },
+    { question: "Tap 3 🦆 ducks", count: 3, items: ["🦆", "🦆", "🦆", "🦆", "🦆", "🦆"], explanation: "Count as you tap: 1, 2, 3. That makes three (3) ducks." },
+    { question: "Tap 6 🍓 strawberries", count: 6, items: ["🍓", "🍓", "🍓", "🍓", "🍓", "🍓", "🍓", "🍓", "🍓"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6. That makes six (6) strawberries." },
+    { question: "Tap 7 🐞 ladybugs", count: 7, items: ["🐞", "🐞", "🐞", "🐞", "🐞", "🐞", "🐞", "🐞"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7. That makes seven (7) ladybugs." },
+    { question: "Tap 4 🐱 cats", count: 4, items: ["🐱", "🐱", "🐱", "🐱", "🐱", "🐱", "🐱"], explanation: "Count as you tap: 1, 2, 3, 4. That makes four (4) cats." },
+    { question: "Tap 9 🐞 ladybugs", count: 9, items: ["🐞", "🐞", "🐞", "🐞", "🐞", "🐞", "🐞", "🐞", "🐞", "🐞", "🐞"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9. That makes nine (9) ladybugs." },
+    { question: "Tap 8 🍪 cookies", count: 8, items: ["🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8. That makes eight (8) cookies." },
+    { question: "Tap 9 🍊 oranges", count: 9, items: ["🍊", "🍊", "🍊", "🍊", "🍊", "🍊", "🍊", "🍊", "🍊", "🍊"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9. That makes nine (9) oranges." },
+    { question: "Tap 3 🌸 flowers", count: 3, items: ["🌸", "🌸", "🌸", "🌸", "🌸", "🌸"], explanation: "Count as you tap: 1, 2, 3. That makes three (3) flowers." },
+    { question: "Tap 2 🐢 turtles", count: 2, items: ["🐢", "🐢", "🐢"], explanation: "Count as you tap: 1, 2. That makes two (2) turtles." },
+    { question: "Tap 2 🐱 cats", count: 2, items: ["🐱", "🐱", "🐱"], explanation: "Count as you tap: 1, 2. That makes two (2) cats." },
+    { question: "Tap 5 🚗 cars", count: 5, items: ["🚗", "🚗", "🚗", "🚗", "🚗", "🚗", "🚗", "🚗"], explanation: "Count as you tap: 1, 2, 3, 4, 5. That makes five (5) cars." },
+    { question: "Tap 2 🦋 butterflies", count: 2, items: ["🦋", "🦋", "🦋", "🦋", "🦋"], explanation: "Count as you tap: 1, 2. That makes two (2) butterflies." },
+    { question: "Tap 3 🐞 ladybugs", count: 3, items: ["🐞", "🐞", "🐞", "🐞"], explanation: "Count as you tap: 1, 2, 3. That makes three (3) ladybugs." },
+    { question: "Tap 3 🦋 butterflies", count: 3, items: ["🦋", "🦋", "🦋", "🦋", "🦋"], explanation: "Count as you tap: 1, 2, 3. That makes three (3) butterflies." },
+    { question: "Tap 5 🐝 bees", count: 5, items: ["🐝", "🐝", "🐝", "🐝", "🐝", "🐝", "🐝", "🐝"], explanation: "Count as you tap: 1, 2, 3, 4, 5. That makes five (5) bees." },
+    { question: "Tap 6 🍪 cookies", count: 6, items: ["🍪", "🍪", "🍪", "🍪", "🍪", "🍪", "🍪"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6. That makes six (6) cookies." },
+    { question: "Tap 7 🦆 ducks", count: 7, items: ["🦆", "🦆", "🦆", "🦆", "🦆", "🦆", "🦆", "🦆", "🦆"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7. That makes seven (7) ducks." },
+    { question: "Tap 9 🐝 bees", count: 9, items: ["🐝", "🐝", "🐝", "🐝", "🐝", "🐝", "🐝", "🐝", "🐝", "🐝", "🐝", "🐝"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9. That makes nine (9) bees." },
+    { question: "Tap 5 🎈 balloons", count: 5, items: ["🎈", "🎈", "🎈", "🎈", "🎈", "🎈", "🎈", "🎈"], explanation: "Count as you tap: 1, 2, 3, 4, 5. That makes five (5) balloons." },
+    { question: "Tap 3 🐶 dogs", count: 3, items: ["🐶", "🐶", "🐶", "🐶"], explanation: "Count as you tap: 1, 2, 3. That makes three (3) dogs." },
+    { question: "Tap 7 🍊 oranges", count: 7, items: ["🍊", "🍊", "🍊", "🍊", "🍊", "🍊", "🍊", "🍊"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7. That makes seven (7) oranges." },
+    { question: "Tap 6 🐶 dogs", count: 6, items: ["🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6. That makes six (6) dogs." },
+    { question: "Tap 5 🐞 ladybugs", count: 5, items: ["🐞", "🐞", "🐞", "🐞", "🐞", "🐞", "🐞", "🐞"], explanation: "Count as you tap: 1, 2, 3, 4, 5. That makes five (5) ladybugs." },
+    { question: "Tap 9 🍌 bananas", count: 9, items: ["🍌", "🍌", "🍌", "🍌", "🍌", "🍌", "🍌", "🍌", "🍌", "🍌"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9. That makes nine (9) bananas." },
+    { question: "Tap 1 🐟 fish", count: 1, items: ["🐟", "🐟", "🐟", "🐟"], explanation: "Count as you tap: 1. That makes one (1) fish." },
+    { question: "Tap 1 🍌 banana", count: 1, items: ["🍌", "🍌"], explanation: "Count as you tap: 1. That makes one (1) banana." },
+    { question: "Tap 2 🐞 ladybugs", count: 2, items: ["🐞", "🐞", "🐞"], explanation: "Count as you tap: 1, 2. That makes two (2) ladybugs." },
+    { question: "Tap 3 🍌 bananas", count: 3, items: ["🍌", "🍌", "🍌", "🍌", "🍌", "🍌"], explanation: "Count as you tap: 1, 2, 3. That makes three (3) bananas." },
+    { question: "Tap 9 🐢 turtles", count: 9, items: ["🐢", "🐢", "🐢", "🐢", "🐢", "🐢", "🐢", "🐢", "🐢", "🐢"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9. That makes nine (9) turtles." },
+    { question: "Tap 4 🍌 bananas", count: 4, items: ["🍌", "🍌", "🍌", "🍌", "🍌", "🍌"], explanation: "Count as you tap: 1, 2, 3, 4. That makes four (4) bananas." },
+    { question: "Tap 5 🐶 dogs", count: 5, items: ["🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶"], explanation: "Count as you tap: 1, 2, 3, 4, 5. That makes five (5) dogs." },
+    { question: "Tap 6 ⭐ stars", count: 6, items: ["⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6. That makes six (6) stars." },
+    { question: "Tap 9 🐶 dogs", count: 9, items: ["🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9. That makes nine (9) dogs." },
+    { question: "Tap 4 🐞 ladybugs", count: 4, items: ["🐞", "🐞", "🐞", "🐞", "🐞", "🐞"], explanation: "Count as you tap: 1, 2, 3, 4. That makes four (4) ladybugs." },
+    { question: "Tap 3 🎈 balloons", count: 3, items: ["🎈", "🎈", "🎈", "🎈"], explanation: "Count as you tap: 1, 2, 3. That makes three (3) balloons." },
+    { question: "Tap 3 🍓 strawberries", count: 3, items: ["🍓", "🍓", "🍓", "🍓", "🍓"], explanation: "Count as you tap: 1, 2, 3. That makes three (3) strawberries." },
+    { question: "Tap 4 🐢 turtles", count: 4, items: ["🐢", "🐢", "🐢", "🐢", "🐢", "🐢"], explanation: "Count as you tap: 1, 2, 3, 4. That makes four (4) turtles." },
+    { question: "Tap 2 🌟 stars", count: 2, items: ["🌟", "🌟", "🌟"], explanation: "Count as you tap: 1, 2. That makes two (2) stars." },
+    { question: "Tap 4 🍓 strawberries", count: 4, items: ["🍓", "🍓", "🍓", "🍓", "🍓", "🍓"], explanation: "Count as you tap: 1, 2, 3, 4. That makes four (4) strawberries." },
+    { question: "Tap 8 🦆 ducks", count: 8, items: ["🦆", "🦆", "🦆", "🦆", "🦆", "🦆", "🦆", "🦆", "🦆"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8. That makes eight (8) ducks." },
+    { question: "Tap 5 🌟 stars", count: 5, items: ["🌟", "🌟", "🌟", "🌟", "🌟", "🌟", "🌟"], explanation: "Count as you tap: 1, 2, 3, 4, 5. That makes five (5) stars." },
+    { question: "Tap 4 🐟 fish", count: 4, items: ["🐟", "🐟", "🐟", "🐟", "🐟", "🐟"], explanation: "Count as you tap: 1, 2, 3, 4. That makes four (4) fish." },
+    { question: "Tap 10 🐶 dogs", count: 10, items: ["🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. That makes ten (10) dogs." },
+    { question: "Tap 1 🍓 strawberry", count: 1, items: ["🍓", "🍓", "🍓"], explanation: "Count as you tap: 1. That makes one (1) strawberry." },
+    { question: "Tap 10 🍓 strawberries", count: 10, items: ["🍓", "🍓", "🍓", "🍓", "🍓", "🍓", "🍓", "🍓", "🍓", "🍓", "🍓", "🍓"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. That makes ten (10) strawberries." },
+    { question: "Tap 7 🎈 balloons", count: 7, items: ["🎈", "🎈", "🎈", "🎈", "🎈", "🎈", "🎈", "🎈", "🎈"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7. That makes seven (7) balloons." },
+    { question: "Tap 2 🍎 apples", count: 2, items: ["🍎", "🍎", "🍎"], explanation: "Count as you tap: 1, 2. That makes two (2) apples." },
+    { question: "Tap 4 🌸 flowers", count: 4, items: ["🌸", "🌸", "🌸", "🌸", "🌸", "🌸"], explanation: "Count as you tap: 1, 2, 3, 4. That makes four (4) flowers." },
+    { question: "Tap 8 🍎 apples", count: 8, items: ["🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8. That makes eight (8) apples." },
+    { question: "Tap 8 🐶 dogs", count: 8, items: ["🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶", "🐶"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8. That makes eight (8) dogs." },
+    { question: "Tap 9 🐟 fish", count: 9, items: ["🐟", "🐟", "🐟", "🐟", "🐟", "🐟", "🐟", "🐟", "🐟", "🐟", "🐟"], explanation: "Count as you tap: 1, 2, 3, 4, 5, 6, 7, 8, 9. That makes nine (9) fish." },
+    { question: "Tap 1 🦋 butterfly", count: 1, items: ["🦋", "🦋"], explanation: "Count as you tap: 1. That makes one (1) butterfly." },
+    { question: "Tap 5 🦋 butterflies", count: 5, items: ["🦋", "🦋", "🦋", "🦋", "🦋", "🦋", "🦋", "🦋"], explanation: "Count as you tap: 1, 2, 3, 4, 5. That makes five (5) butterflies." },
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+
+    <!-- Tap-select engine (exposes window.initTapSelectQuiz) -->
+    <script src="../../js/tap_select.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => initTapSelectQuiz(questions));
+    </script>
+  </body>
+</html>
