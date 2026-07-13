@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>More or Fewer?</title>
+    <!-- Quiz shell + tap-select layer (tokens live in question.css) -->
+    <link rel="stylesheet" href="../../css/question.css" />
+    <link rel="stylesheet" href="../../css/tap_select.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+      </div>
+
+      <!-- Tap-select tiles are rendered here by the engine -->
+      <div id="tap-grid" class="tap-grid"></div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+
+    <script>
+      // MORE vs LESS: compare two groups of the same object.
+      // Tap the group with more / fewer; instant tap.
+      const questions = [
+    { question: "Tap the side with fewer ⭐", layout: "row", items: [{ label: "⭐", correct: true }, { label: "⭐⭐", correct: false }], explanation: "1 is fewer than 2, so tap the side with 1 ⭐." },
+    { question: "Tap the side with fewer 🎈", layout: "row", items: [{ label: "🎈🎈", correct: true }, { label: "🎈🎈🎈🎈🎈🎈🎈", correct: false }], explanation: "2 is fewer than 7, so tap the side with 2 🎈." },
+    { question: "Tap the side with more 🎈", layout: "row", items: [{ label: "🎈🎈🎈🎈🎈🎈", correct: false }, { label: "🎈🎈🎈🎈🎈🎈🎈🎈", correct: true }], explanation: "8 is more than 6, so tap the side with 8 🎈." },
+    { question: "Tap the side with more ⭐", layout: "row", items: [{ label: "⭐⭐", correct: false }, { label: "⭐⭐⭐", correct: true }], explanation: "3 is more than 2, so tap the side with 3 ⭐." },
+    { question: "Tap the side with more 🐝", layout: "row", items: [{ label: "🐝🐝🐝🐝🐝", correct: true }, { label: "🐝🐝🐝", correct: false }], explanation: "5 is more than 3, so tap the side with 5 🐝." },
+    { question: "Tap the side with fewer 🐱", layout: "row", items: [{ label: "🐱🐱🐱🐱🐱🐱", correct: false }, { label: "🐱🐱🐱🐱🐱", correct: true }], explanation: "5 is fewer than 6, so tap the side with 5 🐱." },
+    { question: "Tap the side with fewer 🍌", layout: "row", items: [{ label: "🍌🍌🍌", correct: true }, { label: "🍌🍌🍌🍌", correct: false }], explanation: "3 is fewer than 4, so tap the side with 3 🍌." },
+    { question: "Tap the side with more ⭐", layout: "row", items: [{ label: "⭐⭐⭐", correct: true }, { label: "⭐⭐", correct: false }], explanation: "3 is more than 2, so tap the side with 3 ⭐." },
+    { question: "Tap the side with fewer 🧸", layout: "row", items: [{ label: "🧸🧸🧸🧸🧸🧸🧸", correct: false }, { label: "🧸🧸🧸", correct: true }], explanation: "3 is fewer than 7, so tap the side with 3 🧸." },
+    { question: "Tap the side with more 🐞", layout: "row", items: [{ label: "🐞🐞🐞🐞🐞", correct: true }, { label: "🐞🐞🐞🐞", correct: false }], explanation: "5 is more than 4, so tap the side with 5 🐞." },
+    { question: "Tap the side with more 🐱", layout: "row", items: [{ label: "🐱🐱🐱🐱🐱🐱", correct: true }, { label: "🐱🐱🐱🐱🐱", correct: false }], explanation: "6 is more than 5, so tap the side with 6 🐱." },
+    { question: "Tap the side with fewer 🐝", layout: "row", items: [{ label: "🐝🐝🐝🐝🐝🐝🐝", correct: false }, { label: "🐝🐝🐝🐝", correct: true }], explanation: "4 is fewer than 7, so tap the side with 4 🐝." },
+    { question: "Tap the side with more ⚽", layout: "row", items: [{ label: "⚽⚽⚽⚽", correct: false }, { label: "⚽⚽⚽⚽⚽", correct: true }], explanation: "5 is more than 4, so tap the side with 5 ⚽." },
+    { question: "Tap the side with fewer 🚗", layout: "row", items: [{ label: "🚗🚗", correct: false }, { label: "🚗", correct: true }], explanation: "1 is fewer than 2, so tap the side with 1 🚗." },
+    { question: "Tap the side with fewer 🐟", layout: "row", items: [{ label: "🐟", correct: true }, { label: "🐟🐟🐟🐟🐟🐟🐟🐟", correct: false }], explanation: "1 is fewer than 8, so tap the side with 1 🐟." },
+    { question: "Tap the side with fewer 🍎", layout: "row", items: [{ label: "🍎🍎🍎🍎", correct: false }, { label: "🍎🍎", correct: true }], explanation: "2 is fewer than 4, so tap the side with 2 🍎." },
+    { question: "Tap the side with fewer 🎈", layout: "row", items: [{ label: "🎈🎈🎈🎈🎈", correct: false }, { label: "🎈", correct: true }], explanation: "1 is fewer than 5, so tap the side with 1 🎈." },
+    { question: "Tap the side with fewer 🚗", layout: "row", items: [{ label: "🚗🚗🚗🚗🚗", correct: true }, { label: "🚗🚗🚗🚗🚗🚗🚗", correct: false }], explanation: "5 is fewer than 7, so tap the side with 5 🚗." },
+    { question: "Tap the side with more 🐱", layout: "row", items: [{ label: "🐱🐱🐱🐱", correct: true }, { label: "🐱", correct: false }], explanation: "4 is more than 1, so tap the side with 4 🐱." },
+    { question: "Tap the side with more 🍪", layout: "row", items: [{ label: "🍪🍪🍪🍪🍪", correct: true }, { label: "🍪🍪", correct: false }], explanation: "5 is more than 2, so tap the side with 5 🍪." },
+    { question: "Tap the side with fewer 🚗", layout: "row", items: [{ label: "🚗", correct: true }, { label: "🚗🚗🚗🚗🚗", correct: false }], explanation: "1 is fewer than 5, so tap the side with 1 🚗." },
+    { question: "Tap the side with fewer 🎈", layout: "row", items: [{ label: "🎈🎈🎈🎈🎈🎈🎈", correct: false }, { label: "🎈🎈🎈", correct: true }], explanation: "3 is fewer than 7, so tap the side with 3 🎈." },
+    { question: "Tap the side with more 🌸", layout: "row", items: [{ label: "🌸🌸🌸🌸", correct: false }, { label: "🌸🌸🌸🌸🌸", correct: true }], explanation: "5 is more than 4, so tap the side with 5 🌸." },
+    { question: "Tap the side with more 🍊", layout: "row", items: [{ label: "🍊🍊🍊🍊", correct: true }, { label: "🍊🍊", correct: false }], explanation: "4 is more than 2, so tap the side with 4 🍊." },
+    { question: "Tap the side with more 🎈", layout: "row", items: [{ label: "🎈🎈", correct: false }, { label: "🎈🎈🎈🎈🎈🎈🎈", correct: true }], explanation: "7 is more than 2, so tap the side with 7 🎈." },
+    { question: "Tap the side with fewer 🐟", layout: "row", items: [{ label: "🐟🐟🐟🐟🐟🐟🐟", correct: false }, { label: "🐟🐟", correct: true }], explanation: "2 is fewer than 7, so tap the side with 2 🐟." },
+    { question: "Tap the side with more ⚽", layout: "row", items: [{ label: "⚽⚽⚽⚽⚽⚽", correct: false }, { label: "⚽⚽⚽⚽⚽⚽⚽⚽", correct: true }], explanation: "8 is more than 6, so tap the side with 8 ⚽." },
+    { question: "Tap the side with fewer 🍊", layout: "row", items: [{ label: "🍊🍊🍊🍊🍊", correct: true }, { label: "🍊🍊🍊🍊🍊🍊🍊", correct: false }], explanation: "5 is fewer than 7, so tap the side with 5 🍊." },
+    { question: "Tap the side with fewer 🐝", layout: "row", items: [{ label: "🐝🐝🐝🐝", correct: true }, { label: "🐝🐝🐝🐝🐝", correct: false }], explanation: "4 is fewer than 5, so tap the side with 4 🐝." },
+    { question: "Tap the side with more 🍓", layout: "row", items: [{ label: "🍓🍓🍓🍓", correct: false }, { label: "🍓🍓🍓🍓🍓🍓", correct: true }], explanation: "6 is more than 4, so tap the side with 6 🍓." },
+    { question: "Tap the side with more 🍓", layout: "row", items: [{ label: "🍓", correct: false }, { label: "🍓🍓🍓🍓🍓🍓🍓", correct: true }], explanation: "7 is more than 1, so tap the side with 7 🍓." },
+    { question: "Tap the side with more 🍓", layout: "row", items: [{ label: "🍓🍓", correct: true }, { label: "🍓", correct: false }], explanation: "2 is more than 1, so tap the side with 2 🍓." },
+    { question: "Tap the side with more 🍊", layout: "row", items: [{ label: "🍊🍊", correct: false }, { label: "🍊🍊🍊🍊🍊", correct: true }], explanation: "5 is more than 2, so tap the side with 5 🍊." },
+    { question: "Tap the side with more 🍎", layout: "row", items: [{ label: "🍎🍎🍎🍎🍎", correct: true }, { label: "🍎", correct: false }], explanation: "5 is more than 1, so tap the side with 5 🍎." },
+    { question: "Tap the side with more 🐟", layout: "row", items: [{ label: "🐟🐟", correct: false }, { label: "🐟🐟🐟🐟", correct: true }], explanation: "4 is more than 2, so tap the side with 4 🐟." },
+    { question: "Tap the side with more 🦆", layout: "row", items: [{ label: "🦆", correct: false }, { label: "🦆🦆🦆🦆🦆🦆🦆🦆", correct: true }], explanation: "8 is more than 1, so tap the side with 8 🦆." },
+    { question: "Tap the side with fewer 🧸", layout: "row", items: [{ label: "🧸🧸", correct: false }, { label: "🧸", correct: true }], explanation: "1 is fewer than 2, so tap the side with 1 🧸." },
+    { question: "Tap the side with fewer 🍎", layout: "row", items: [{ label: "🍎🍎🍎🍎🍎🍎", correct: false }, { label: "🍎", correct: true }], explanation: "1 is fewer than 6, so tap the side with 1 🍎." },
+    { question: "Tap the side with more ⚽", layout: "row", items: [{ label: "⚽⚽", correct: false }, { label: "⚽⚽⚽⚽⚽⚽⚽⚽", correct: true }], explanation: "8 is more than 2, so tap the side with 8 ⚽." },
+    { question: "Tap the side with more 🐞", layout: "row", items: [{ label: "🐞🐞🐞", correct: false }, { label: "🐞🐞🐞🐞🐞🐞🐞🐞", correct: true }], explanation: "8 is more than 3, so tap the side with 8 🐞." },
+    { question: "Tap the side with more 🚗", layout: "row", items: [{ label: "🚗🚗🚗🚗🚗🚗", correct: false }, { label: "🚗🚗🚗🚗🚗🚗🚗🚗", correct: true }], explanation: "8 is more than 6, so tap the side with 8 🚗." },
+    { question: "Tap the side with fewer 🍓", layout: "row", items: [{ label: "🍓🍓🍓🍓", correct: true }, { label: "🍓🍓🍓🍓🍓🍓🍓🍓", correct: false }], explanation: "4 is fewer than 8, so tap the side with 4 🍓." },
+    { question: "Tap the side with fewer 🧸", layout: "row", items: [{ label: "🧸🧸🧸🧸", correct: false }, { label: "🧸", correct: true }], explanation: "1 is fewer than 4, so tap the side with 1 🧸." },
+    { question: "Tap the side with more 🧸", layout: "row", items: [{ label: "🧸🧸🧸🧸", correct: true }, { label: "🧸🧸🧸", correct: false }], explanation: "4 is more than 3, so tap the side with 4 🧸." },
+    { question: "Tap the side with fewer 🍓", layout: "row", items: [{ label: "🍓🍓🍓🍓🍓🍓🍓", correct: false }, { label: "🍓🍓🍓🍓🍓🍓", correct: true }], explanation: "6 is fewer than 7, so tap the side with 6 🍓." },
+    { question: "Tap the side with fewer 🍪", layout: "row", items: [{ label: "🍪🍪🍪🍪🍪", correct: true }, { label: "🍪🍪🍪🍪🍪🍪🍪🍪", correct: false }], explanation: "5 is fewer than 8, so tap the side with 5 🍪." },
+    { question: "Tap the side with fewer 🍪", layout: "row", items: [{ label: "🍪🍪", correct: true }, { label: "🍪🍪🍪🍪🍪", correct: false }], explanation: "2 is fewer than 5, so tap the side with 2 🍪." },
+    { question: "Tap the side with fewer ⭐", layout: "row", items: [{ label: "⭐⭐⭐⭐⭐", correct: false }, { label: "⭐⭐", correct: true }], explanation: "2 is fewer than 5, so tap the side with 2 ⭐." },
+    { question: "Tap the side with fewer 🌸", layout: "row", items: [{ label: "🌸🌸🌸🌸🌸", correct: false }, { label: "🌸", correct: true }], explanation: "1 is fewer than 5, so tap the side with 1 🌸." },
+    { question: "Tap the side with fewer 🐟", layout: "row", items: [{ label: "🐟🐟", correct: true }, { label: "🐟🐟🐟🐟🐟", correct: false }], explanation: "2 is fewer than 5, so tap the side with 2 🐟." },
+    { question: "Tap the side with more 🐟", layout: "row", items: [{ label: "🐟", correct: false }, { label: "🐟🐟🐟🐟", correct: true }], explanation: "4 is more than 1, so tap the side with 4 🐟." },
+    { question: "Tap the side with more 🍊", layout: "row", items: [{ label: "🍊🍊🍊🍊🍊", correct: true }, { label: "🍊🍊🍊🍊", correct: false }], explanation: "5 is more than 4, so tap the side with 5 🍊." },
+    { question: "Tap the side with more 🐟", layout: "row", items: [{ label: "🐟🐟🐟🐟🐟🐟", correct: true }, { label: "🐟🐟🐟", correct: false }], explanation: "6 is more than 3, so tap the side with 6 🐟." },
+    { question: "Tap the side with fewer 🐞", layout: "row", items: [{ label: "🐞🐞🐞🐞🐞🐞", correct: false }, { label: "🐞", correct: true }], explanation: "1 is fewer than 6, so tap the side with 1 🐞." },
+    { question: "Tap the side with more 🧸", layout: "row", items: [{ label: "🧸🧸🧸🧸🧸🧸", correct: true }, { label: "🧸🧸🧸🧸🧸", correct: false }], explanation: "6 is more than 5, so tap the side with 6 🧸." },
+    { question: "Tap the side with more 🐝", layout: "row", items: [{ label: "🐝🐝🐝🐝🐝🐝", correct: false }, { label: "🐝🐝🐝🐝🐝🐝🐝🐝", correct: true }], explanation: "8 is more than 6, so tap the side with 8 🐝." },
+    { question: "Tap the side with more 🧸", layout: "row", items: [{ label: "🧸🧸🧸🧸🧸🧸", correct: true }, { label: "🧸🧸🧸🧸🧸", correct: false }], explanation: "6 is more than 5, so tap the side with 6 🧸." },
+    { question: "Tap the side with fewer 🐞", layout: "row", items: [{ label: "🐞🐞🐞🐞🐞", correct: false }, { label: "🐞🐞", correct: true }], explanation: "2 is fewer than 5, so tap the side with 2 🐞." },
+    { question: "Tap the side with fewer 🐟", layout: "row", items: [{ label: "🐟🐟🐟🐟🐟🐟", correct: true }, { label: "🐟🐟🐟🐟🐟🐟🐟🐟", correct: false }], explanation: "6 is fewer than 8, so tap the side with 6 🐟." },
+    { question: "Tap the side with more 🌸", layout: "row", items: [{ label: "🌸🌸🌸🌸🌸🌸🌸", correct: true }, { label: "🌸🌸🌸", correct: false }], explanation: "7 is more than 3, so tap the side with 7 🌸." },
+    { question: "Tap the side with more 🐞", layout: "row", items: [{ label: "🐞🐞🐞🐞🐞🐞", correct: true }, { label: "🐞🐞🐞", correct: false }], explanation: "6 is more than 3, so tap the side with 6 🐞." },
+    { question: "Tap the side with fewer 🎈", layout: "row", items: [{ label: "🎈🎈🎈🎈🎈", correct: false }, { label: "🎈🎈", correct: true }], explanation: "2 is fewer than 5, so tap the side with 2 🎈." },
+    { question: "Tap the side with fewer 🍊", layout: "row", items: [{ label: "🍊🍊🍊🍊🍊🍊", correct: false }, { label: "🍊🍊🍊🍊", correct: true }], explanation: "4 is fewer than 6, so tap the side with 4 🍊." },
+    { question: "Tap the side with more 🚗", layout: "row", items: [{ label: "🚗🚗🚗", correct: false }, { label: "🚗🚗🚗🚗", correct: true }], explanation: "4 is more than 3, so tap the side with 4 🚗." },
+    { question: "Tap the side with more 🍎", layout: "row", items: [{ label: "🍎🍎🍎🍎", correct: false }, { label: "🍎🍎🍎🍎🍎🍎🍎", correct: true }], explanation: "7 is more than 4, so tap the side with 7 🍎." },
+    { question: "Tap the side with more 🐝", layout: "row", items: [{ label: "🐝", correct: false }, { label: "🐝🐝", correct: true }], explanation: "2 is more than 1, so tap the side with 2 🐝." },
+    { question: "Tap the side with fewer 🦆", layout: "row", items: [{ label: "🦆", correct: true }, { label: "🦆🦆", correct: false }], explanation: "1 is fewer than 2, so tap the side with 1 🦆." },
+    { question: "Tap the side with fewer 🧸", layout: "row", items: [{ label: "🧸🧸🧸🧸🧸", correct: false }, { label: "🧸🧸", correct: true }], explanation: "2 is fewer than 5, so tap the side with 2 🧸." },
+    { question: "Tap the side with fewer 🐞", layout: "row", items: [{ label: "🐞🐞", correct: true }, { label: "🐞🐞🐞🐞🐞🐞🐞🐞", correct: false }], explanation: "2 is fewer than 8, so tap the side with 2 🐞." },
+    { question: "Tap the side with more ⚽", layout: "row", items: [{ label: "⚽⚽⚽⚽⚽", correct: false }, { label: "⚽⚽⚽⚽⚽⚽", correct: true }], explanation: "6 is more than 5, so tap the side with 6 ⚽." },
+    { question: "Tap the side with more 🐝", layout: "row", items: [{ label: "🐝🐝🐝", correct: true }, { label: "🐝🐝", correct: false }], explanation: "3 is more than 2, so tap the side with 3 🐝." },
+    { question: "Tap the side with fewer 🚗", layout: "row", items: [{ label: "🚗🚗🚗🚗", correct: true }, { label: "🚗🚗🚗🚗🚗🚗🚗🚗", correct: false }], explanation: "4 is fewer than 8, so tap the side with 4 🚗." },
+    { question: "Tap the side with fewer ⭐", layout: "row", items: [{ label: "⭐⭐", correct: true }, { label: "⭐⭐⭐", correct: false }], explanation: "2 is fewer than 3, so tap the side with 2 ⭐." },
+    { question: "Tap the side with more 🍎", layout: "row", items: [{ label: "🍎🍎🍎🍎🍎", correct: false }, { label: "🍎🍎🍎🍎🍎🍎🍎", correct: true }], explanation: "7 is more than 5, so tap the side with 7 🍎." },
+    { question: "Tap the side with fewer ⭐", layout: "row", items: [{ label: "⭐⭐⭐", correct: false }, { label: "⭐", correct: true }], explanation: "1 is fewer than 3, so tap the side with 1 ⭐." },
+    { question: "Tap the side with more ⭐", layout: "row", items: [{ label: "⭐⭐⭐⭐", correct: true }, { label: "⭐⭐", correct: false }], explanation: "4 is more than 2, so tap the side with 4 ⭐." },
+    { question: "Tap the side with fewer 🐞", layout: "row", items: [{ label: "🐞🐞🐞🐞🐞🐞🐞", correct: false }, { label: "🐞🐞🐞🐞🐞", correct: true }], explanation: "5 is fewer than 7, so tap the side with 5 🐞." },
+    { question: "Tap the side with fewer 🍌", layout: "row", items: [{ label: "🍌🍌", correct: true }, { label: "🍌🍌🍌🍌", correct: false }], explanation: "2 is fewer than 4, so tap the side with 2 🍌." },
+    { question: "Tap the side with fewer 🐞", layout: "row", items: [{ label: "🐞🐞🐞", correct: true }, { label: "🐞🐞🐞🐞🐞🐞🐞", correct: false }], explanation: "3 is fewer than 7, so tap the side with 3 🐞." },
+    { question: "Tap the side with more 🐱", layout: "row", items: [{ label: "🐱🐱🐱🐱🐱🐱🐱", correct: false }, { label: "🐱🐱🐱🐱🐱🐱🐱🐱", correct: true }], explanation: "8 is more than 7, so tap the side with 8 🐱." },
+    { question: "Tap the side with more ⚽", layout: "row", items: [{ label: "⚽⚽⚽⚽⚽⚽", correct: true }, { label: "⚽⚽⚽⚽", correct: false }], explanation: "6 is more than 4, so tap the side with 6 ⚽." },
+    { question: "Tap the side with more 🐱", layout: "row", items: [{ label: "🐱🐱🐱🐱🐱🐱", correct: true }, { label: "🐱🐱🐱", correct: false }], explanation: "6 is more than 3, so tap the side with 6 🐱." },
+    { question: "Tap the side with fewer 🐱", layout: "row", items: [{ label: "🐱🐱🐱🐱", correct: true }, { label: "🐱🐱🐱🐱🐱🐱", correct: false }], explanation: "4 is fewer than 6, so tap the side with 4 🐱." },
+    { question: "Tap the side with more 🍓", layout: "row", items: [{ label: "🍓🍓🍓🍓", correct: true }, { label: "🍓🍓🍓", correct: false }], explanation: "4 is more than 3, so tap the side with 4 🍓." },
+    { question: "Tap the side with more 🧸", layout: "row", items: [{ label: "🧸🧸🧸🧸", correct: true }, { label: "🧸🧸", correct: false }], explanation: "4 is more than 2, so tap the side with 4 🧸." },
+    { question: "Tap the side with more ⚽", layout: "row", items: [{ label: "⚽⚽⚽⚽⚽⚽⚽", correct: true }, { label: "⚽⚽", correct: false }], explanation: "7 is more than 2, so tap the side with 7 ⚽." },
+    { question: "Tap the side with fewer 🧸", layout: "row", items: [{ label: "🧸", correct: true }, { label: "🧸🧸🧸🧸", correct: false }], explanation: "1 is fewer than 4, so tap the side with 1 🧸." },
+    { question: "Tap the side with fewer 🍊", layout: "row", items: [{ label: "🍊🍊🍊🍊", correct: false }, { label: "🍊🍊", correct: true }], explanation: "2 is fewer than 4, so tap the side with 2 🍊." },
+    { question: "Tap the side with fewer 🐱", layout: "row", items: [{ label: "🐱", correct: true }, { label: "🐱🐱🐱🐱🐱🐱🐱🐱", correct: false }], explanation: "1 is fewer than 8, so tap the side with 1 🐱." },
+    { question: "Tap the side with fewer 🍎", layout: "row", items: [{ label: "🍎🍎🍎🍎🍎🍎", correct: true }, { label: "🍎🍎🍎🍎🍎🍎🍎", correct: false }], explanation: "6 is fewer than 7, so tap the side with 6 🍎." },
+    { question: "Tap the side with fewer 🍌", layout: "row", items: [{ label: "🍌🍌🍌🍌🍌🍌🍌", correct: true }, { label: "🍌🍌🍌🍌🍌🍌🍌🍌", correct: false }], explanation: "7 is fewer than 8, so tap the side with 7 🍌." },
+    { question: "Tap the side with more 🍓", layout: "row", items: [{ label: "🍓🍓", correct: false }, { label: "🍓🍓🍓🍓🍓🍓🍓🍓", correct: true }], explanation: "8 is more than 2, so tap the side with 8 🍓." },
+    { question: "Tap the side with more 🦆", layout: "row", items: [{ label: "🦆🦆🦆🦆🦆", correct: false }, { label: "🦆🦆🦆🦆🦆🦆🦆🦆", correct: true }], explanation: "8 is more than 5, so tap the side with 8 🦆." },
+    { question: "Tap the side with fewer 🐟", layout: "row", items: [{ label: "🐟🐟🐟🐟", correct: false }, { label: "🐟🐟🐟", correct: true }], explanation: "3 is fewer than 4, so tap the side with 3 🐟." },
+    { question: "Tap the side with fewer ⭐", layout: "row", items: [{ label: "⭐⭐⭐⭐⭐⭐", correct: true }, { label: "⭐⭐⭐⭐⭐⭐⭐⭐", correct: false }], explanation: "6 is fewer than 8, so tap the side with 6 ⭐." },
+    { question: "Tap the side with more 🦆", layout: "row", items: [{ label: "🦆🦆", correct: false }, { label: "🦆🦆🦆🦆🦆🦆🦆🦆", correct: true }], explanation: "8 is more than 2, so tap the side with 8 🦆." },
+    { question: "Tap the side with fewer 🐱", layout: "row", items: [{ label: "🐱🐱🐱", correct: false }, { label: "🐱🐱", correct: true }], explanation: "2 is fewer than 3, so tap the side with 2 🐱." },
+    { question: "Tap the side with more 🐟", layout: "row", items: [{ label: "🐟🐟🐟🐟🐟🐟", correct: true }, { label: "🐟🐟", correct: false }], explanation: "6 is more than 2, so tap the side with 6 🐟." },
+    { question: "Tap the side with fewer 🐝", layout: "row", items: [{ label: "🐝🐝", correct: true }, { label: "🐝🐝🐝🐝🐝🐝🐝🐝", correct: false }], explanation: "2 is fewer than 8, so tap the side with 2 🐝." },
+    { question: "Tap the side with more 🐱", layout: "row", items: [{ label: "🐱", correct: false }, { label: "🐱🐱🐱🐱🐱", correct: true }], explanation: "5 is more than 1, so tap the side with 5 🐱." },
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+
+    <!-- Tap-select engine (exposes window.initTapSelectQuiz) -->
+    <script src="../../js/tap_select.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => initTapSelectQuiz(questions));
+    </script>
+  </body>
+</html>

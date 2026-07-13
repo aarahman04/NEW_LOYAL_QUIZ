@@ -151,6 +151,22 @@
 
     const quizContainer = document.querySelector(".quiz-container") || document.body;
 
+    // Optional scene image (created once; mirrors the MCQ engine). Lets any
+    // subject show a picture above the question — e.g. a spatial scene. Image
+    // paths may be TODO placeholders: a missing image hides itself gracefully
+    // instead of showing a broken-image icon.
+    const questionSection = document.querySelector(".question-section") || quizContainer;
+    let questionImage = questionSection.querySelector("img.question-image");
+    if (!questionImage) {
+      questionImage = document.createElement("img");
+      questionImage.className = "question-image hidden";
+      questionSection.insertBefore(questionImage, questionSection.firstChild);
+    }
+    questionImage.addEventListener("error", () => {
+      questionImage.classList.add("hidden");
+      questionImage.removeAttribute("src");
+    });
+
     // Grid the tiles are rendered into (author supplies #tap-grid).
     let grid = document.getElementById("tap-grid");
     if (!grid) {
@@ -237,6 +253,17 @@
       // Question text
       qText.innerHTML = stripLeadingNumber(q.question) || "Tap the correct answer.";
 
+      // Optional scene image (TODO placeholders allowed; hidden if missing)
+      if (q.image) {
+        questionImage.src = q.image;
+        questionImage.alt = q.alt || "";
+        questionImage.classList.remove("hidden");
+      } else {
+        questionImage.classList.add("hidden");
+        questionImage.removeAttribute("src");
+        questionImage.removeAttribute("alt");
+      }
+
       // Reset feedback / explanation / buttons
       feedback.classList.add("hidden");
       explanation.classList.add("hidden");
@@ -258,8 +285,12 @@
         setCheckEnabled(false);
       }
 
-      // Build tiles
-      grid.classList.remove("locked");
+      // Build tiles. An optional per-question layout ("row" / "column")
+      // arranges tiles for spatial concepts (left/right, above/below);
+      // otherwise the default responsive grid is used. Setting className
+      // fresh also clears the "locked" state from the previous question.
+      const layout = (q.layout === "row" || q.layout === "column") ? " tap-grid--" + q.layout : "";
+      grid.className = "tap-grid" + layout;
       grid.innerHTML = "";
       items.forEach((it, idx) => {
         const tile = document.createElement("button");

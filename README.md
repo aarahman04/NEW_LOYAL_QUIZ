@@ -43,7 +43,8 @@ Each exercise file stores a **bank of 100 questions** but shows the learner a **
 | Feature | Summary |
 |---|---|
 | Multiple subjects | Math, English, Science, General Knowledge |
-| Three quiz formats | Multiple-choice (MCQ), drag-and-drop, listen-and-choose (audio) |
+| Two levels | **KG-3** (early years) and **Level 1** (Grade 1) |
+| Four quiz formats | Multiple-choice (MCQ), drag-and-drop, **tap-to-select**, listen-and-choose (audio) |
 | 100-question banks | Every math & GK exercise holds 100 questions internally |
 | 25-question attempts | A fresh random 25 is drawn from the 100 on every open |
 | Instant feedback | Correct/incorrect highlighting, an explanation, and emoji "rain" |
@@ -58,7 +59,7 @@ Each exercise file stores a **bank of 100 questions** but shows the learner a **
 | Layer | Technology | Notes |
 |---|---|---|
 | Markup | HTML5 | One static file per page/exercise |
-| Styling | CSS3 | Design tokens via CSS custom properties; 4 stylesheets |
+| Styling | CSS3 | Design tokens via CSS custom properties; 5 stylesheets |
 | Behavior | Vanilla JavaScript (ES6) | No framework; global init functions on `window` |
 | Fonts | Google Fonts | **Baloo 2** (display) + **Nunito** (body), via `@import` |
 | Icons | Bootstrap Icons | Loaded from a CDN by `js/partials.js` (footer icons) |
@@ -80,10 +81,12 @@ NEW_LOYAL_QUIZ/
 │   ├── index.css              # Home, section/options pages, header, footer
 │   ├── question.css           # MCQ quiz pages (the quiz "shell")
 │   ├── dnd.css                # Drag-and-drop quiz layer (loaded with question.css)
+│   ├── tap_select.css         # Tap-to-select quiz layer (loaded with question.css)
 │   └── audio_style.css        # Audio "listen & choose" pages (loaded with index.css)
 ├── js/
 │   ├── script.js              # MCQ quiz engine (initMCQQuiz) + emoji rain
 │   ├── drag_and_drop.js       # Drag-and-drop engines (initDragDropQuiz / initTwoBoxSortQuiz)
+│   ├── tap_select.js          # Tap-to-select engine (initTapSelectQuiz) — match & count modes
 │   ├── audio.js               # Listen-and-choose engine (Web Speech API)
 │   └── partials.js            # Injects header/footer/favicons; computes site root
 ├── partials/                  # Reference copies of the header/footer markup (not loaded directly)
@@ -92,6 +95,9 @@ NEW_LOYAL_QUIZ/
 ├── start-page/                # Level → subject selection pages
 │   └── subject_level1.html    # Level 1: English / Math / Science / GK
 ├── start-page2/               # Subject → topic (exercise) selection pages
+│   ├── KG_3/                   # KG-3: English / Math options pages
+│   │   ├── kg3_math_options.html
+│   │   └── kg3_eng_options.html
 │   └── Level 1/
 │       ├── Level1_math_options.html
 │       ├── Level1_science_options.html
@@ -99,6 +105,7 @@ NEW_LOYAL_QUIZ/
 │       └── subject_level1_english_options.html
 ├── start-page3/               # Extra sub-grouping pages (English: identify / sight words)
 ├── question/                  # All exercise (quiz) pages
+│   ├── KG-3_math/             # 6 KG-3 math exercises (tap-to-select, 100 questions each)
 │   ├── Level 1 Maths/         # 47 math exercises (MCQ, 100 questions each)
 │   ├── level_1_GK/            # 25 GK exercises (100 questions each)
 │   ├── level-1/English/       # English exercises (MCQ, drag-and-drop, audio)
@@ -137,10 +144,17 @@ leaves of the tree and contain the actual question data.
 
 | Section | Folder | Count | Engine |
 |---|---|---|---|
+| KG-3 Math | `question/KG-3_math/` | 6 files | Tap-to-select (`initTapSelectQuiz`) |
 | Math | `question/Level 1 Maths/` | 47 files | MCQ (`initMCQQuiz`) |
 | General Knowledge | `question/level_1_GK/` | 25 files | MCQ (`initMCQQuiz`) |
 | Science | `question/level-1_Science/` | 20 files | MCQ (`initMCQQuiz`) |
 | English | `question/level-1/English/` | ~49 files | MCQ + drag-and-drop + audio |
+
+> **KG-3** is an early-years level reached from the home page. Its math section uses
+> the **tap-to-select** engine (`js/tap_select.js`): the learner taps the right
+> picture(s) or taps a given *number* of things. Like the MCQ and audio engines it draws
+> a random 25 from a 100-question bank per attempt. The engine is subject-agnostic and can
+> be reused for English/Science/GK too. See [Quiz Engine](docs/quiz-engine.md#the-tap-to-select-engine).
 
 ---
 
@@ -188,6 +202,9 @@ certainly opening files directly from disk instead of through a server — see
   URL), so they work at any folder depth and on GitHub Pages subdirectories.
 - **MCQ exercises** define a global `const questions = [...]` and call
   `initMCQQuiz(questions)` on `DOMContentLoaded`.
+- **Tap-to-select exercises** (KG-3 math) use the same pattern with
+  `initTapSelectQuiz(questions)`, add a `<div id="tap-grid">`, and link
+  `css/tap_select.css` alongside `css/question.css`.
 - **The 100-question array is the source of truth.** The engine never mutates it; it
   shuffles a copy and shows the first 25.
 - **Do not rename** the shared DOM ids/classes (`#question-text`, `#options-list`,
