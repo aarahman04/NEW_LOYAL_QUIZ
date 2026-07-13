@@ -9,6 +9,18 @@
      .tap-label, .tap-badge, #tap-counter, #check-btn
    ============================================================ */
 
+/* ---------- Object "scene" shown inside the question ----------
+   Used by counting-style questions that render a group of objects in
+   the question text (e.g. "How many? 🍎🍎🍎"). */
+.tap-scene {
+  display: block;
+  margin-top: .6rem;
+  font-size: clamp(2rem, 1.5rem + 3vw, 3rem);
+  line-height: 1.35;
+  letter-spacing: .12em;
+  word-break: break-word;
+}
+
 /* ---------- Grid of tappable tiles ---------- */
 .tap-grid {
   display: grid;
