@@ -1,0 +1,154 @@
+/* ============================================================
+   tap_select.css — Tap-to-select quiz layer
+   Loaded together with question.css (which defines the tokens
+   and the quiz shell). Uses ONLY the shared design tokens, so it
+   can't clash with the site's look.
+
+   Hooks used by js/tap_select.js:
+     .tap-grid, .tap-tile (.selected/.correct/.incorrect/.missed),
+     .tap-label, .tap-badge, #tap-counter, #check-btn
+   ============================================================ */
+
+/* ---------- Grid of tappable tiles ---------- */
+.tap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: .85rem;
+  margin: 1.5rem 0 .25rem;
+  justify-items: stretch;
+}
+
+/* A single tile — big, rounded, forgiving touch target for small hands */
+.tap-tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 92px;
+  padding: .75rem .5rem;
+  background: var(--surface-soft);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  font-family: var(--font-display);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: transform .12s ease, box-shadow var(--transition),
+              background var(--transition), border-color var(--transition);
+}
+.tap-label {
+  font-size: clamp(2rem, 1.4rem + 3.5vw, 2.9rem);
+  line-height: 1.05;
+  text-align: center;
+  word-break: break-word;
+}
+/* Text (non-emoji) tiles read better a touch smaller & bolder */
+.tap-tile .tap-label { font-weight: 700; }
+
+/* Lift only on real hover devices, so phones don't get a stuck state */
+@media (hover: hover) {
+  .tap-tile:hover {
+    border-color: var(--accent);
+    background: var(--light-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+}
+.tap-tile:active { transform: scale(.97); }
+
+/* Selected (chosen but not yet checked) */
+.tap-tile.selected {
+  border-color: var(--accent);
+  background: var(--light-hover);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, .25);
+  transform: translateY(-2px);
+}
+
+/* ---------- Result states ---------- */
+.tap-tile.correct {
+  border-color: var(--success);
+  background: var(--correct-bg);
+  color: #14532d;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, .18);
+}
+.tap-tile.incorrect {
+  border-color: var(--danger);
+  background: var(--incorrect-bg);
+  color: #7f1d1d;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, .14);
+}
+/* "You should have tapped this too" — a gentle green reveal */
+.tap-tile.missed {
+  border-color: var(--success);
+  border-style: dashed;
+  background: var(--correct-bg);
+  color: #14532d;
+}
+
+/* Once the question is answered, tiles are no longer interactive */
+.tap-grid.locked .tap-tile { cursor: default; pointer-events: none; }
+.tap-grid.locked .tap-tile:active { transform: none; }
+
+/* ---------- Tick / cross badge on a tile ---------- */
+.tap-badge {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 1.15rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ---------- Live tap counter (count / multi-select modes) ---------- */
+#tap-counter.tap-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin: .25rem 0 0;
+  padding: .4rem .9rem;
+  border-radius: var(--radius-pill);
+  background: var(--light-hover);
+  border: 1px solid #dfe3ff;
+  color: var(--accent-dark);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+#tap-counter .tap-counter-icon { font-size: 1.1rem; }
+#tap-counter strong { color: var(--accent-dark); font-size: 1.15rem; }
+
+/* ---------- Check button ---------- */
+/* question.css already styles `.quiz-container > button:not(#back-btn)`
+   as an accent pill; we make Check brand-coloured so it reads as a
+   distinct "confirm" action from the accent Next button. */
+#check-btn {
+  background: var(--brand);
+  margin-right: .5rem;
+}
+#check-btn:hover { background: var(--brand-dark); }
+#check-btn.is-disabled,
+#check-btn.is-disabled:hover {
+  opacity: .5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  background: var(--brand);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .tap-grid {
+    grid-template-columns: repeat(auto-fit, minmax(74px, 1fr));
+    gap: .6rem;
+  }
+  .tap-tile { min-height: 78px; border-radius: var(--radius-md); }
+}
+@media (max-width: 480px) {
+  .tap-grid { grid-template-columns: repeat(4, 1fr); }
+  #check-btn,
+  #next-btn { width: 100%; margin-right: 0; }
+  #check-btn { margin-bottom: .5rem; }
+}
