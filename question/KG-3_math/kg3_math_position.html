@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Where Is It?</title>
+    <!-- Quiz shell + tap-select layer (tokens live in question.css) -->
+    <link rel="stylesheet" href="../../css/question.css" />
+    <link rel="stylesheet" href="../../css/tap_select.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+      </div>
+
+      <!-- Tap-select tiles are rendered here by the engine -->
+      <div id="tap-grid" class="tap-grid"></div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+
+    <script>
+      // POSITION (spatial): tap-select match mode.
+      //  - left/right/middle  -> layout:"row"
+      //  - top/above/below/bottom -> layout:"column"
+      //  - inside/outside -> word tiles + a TODO scene image (see below).
+      const questions = [
+    { question: "Tap the picture at the BOTTOM", layout: "column", items: [{ label: "🍌", correct: false }, { label: "🐝", correct: false }, { label: "🚗", correct: true }], explanation: "The picture at the bottom (below) is 🚗." },
+    { question: "Tap the picture at the TOP", layout: "column", items: [{ label: "🐝", correct: true }, { label: "🚗", correct: false }, { label: "🍓", correct: false }], explanation: "The picture at the top (above) is 🐝." },
+    { question: "Tap the picture at the MIDDLE", layout: "column", items: [{ label: "🍪", correct: false }, { label: "🎈", correct: true }, { label: "🐝", correct: false }], explanation: "The picture at the middle (middle) is 🎈." },
+    { question: "Tap the picture on the MIDDLE (middle)", layout: "row", items: [{ label: "🐝", correct: false }, { label: "🍎", correct: true }, { label: "🚗", correct: false }], explanation: "The picture on the middle is 🍎." },
+    { question: "Tap the picture at the TOP", layout: "column", items: [{ label: "🍌", correct: true }, { label: "🚌", correct: false }, { label: "🐱", correct: false }], explanation: "The picture at the top (above) is 🍌." },
+    { question: "Tap the picture on the RIGHT", layout: "row", items: [{ label: "🦆", correct: false }, { label: "🐱", correct: false }, { label: "🧸", correct: true }], explanation: "The picture on the right is 🧸." },
+    { question: "Tap the picture at the MIDDLE", layout: "column", items: [{ label: "🚌", correct: false }, { label: "🐶", correct: true }, { label: "🍌", correct: false }], explanation: "The picture at the middle (middle) is 🐶." },
+    { question: "Tap the one that is ABOVE", layout: "column", items: [{ label: "🍌", correct: true }, { label: "🚗", correct: false }], explanation: "🍌 is above the other one." },
+    { question: "Tap the picture on the RIGHT", layout: "row", items: [{ label: "🧸", correct: false }, { label: "🚌", correct: false }, { label: "🍎", correct: true }], explanation: "The picture on the right is 🍎." },
+    { question: "Tap the picture at the BOTTOM", layout: "column", items: [{ label: "🍎", correct: false }, { label: "🚌", correct: false }, { label: "🎈", correct: true }], explanation: "The picture at the bottom (below) is 🎈." },
+    { question: "Tap the one that is BELOW", layout: "column", items: [{ label: "🐟", correct: false }, { label: "🍓", correct: true }], explanation: "🍓 is below the other one." },
+    { question: "Tap the picture at the MIDDLE", layout: "column", items: [{ label: "⚽", correct: false }, { label: "🐶", correct: true }, { label: "🍎", correct: false }], explanation: "The picture at the middle (middle) is 🐶." },
+    { question: "Tap the picture on the LEFT", layout: "row", items: [{ label: "🧸", correct: true }, { label: "🍌", correct: false }, { label: "🚌", correct: false }], explanation: "The picture on the left is 🧸." },
+    { question: "Tap the picture at the TOP", layout: "column", items: [{ label: "🧸", correct: true }, { label: "🐶", correct: false }, { label: "🍪", correct: false }], explanation: "The picture at the top (above) is 🧸." },
+    { question: "Tap the picture at the BOTTOM", layout: "column", items: [{ label: "🌸", correct: false }, { label: "🍎", correct: false }, { label: "🧸", correct: true }], explanation: "The picture at the bottom (below) is 🧸." },
+    { question: "Tap the one that is BELOW", layout: "column", items: [{ label: "🍓", correct: false }, { label: "🐶", correct: true }], explanation: "🐶 is below the other one." },
+    { question: "Tap the picture on the LEFT", layout: "row", items: [{ label: "🐱", correct: true }, { label: "🍓", correct: false }, { label: "🚌", correct: false }], explanation: "The picture on the left is 🐱." },
+    { question: "Tap the one that is ABOVE", layout: "column", items: [{ label: "⭐", correct: true }, { label: "🌸", correct: false }], explanation: "⭐ is above the other one." },
+    { question: "Tap the one that is ABOVE", layout: "column", items: [{ label: "⚽", correct: true }, { label: "🍎", correct: false }], explanation: "⚽ is above the other one." },
+    { question: "Tap the picture at the TOP", layout: "column", items: [{ label: "🚗", correct: true }, { label: "🎈", correct: false }, { label: "🍌", correct: false }], explanation: "The picture at the top (above) is 🚗." },
+    { question: "Tap the one that is ABOVE", layout: "column", items: [{ label: "⭐", correct: true }, { label: "🍓", correct: false }], explanation: "⭐ is above the other one." },
+    { question: "Tap the picture on the LEFT", layout: "row", items: [{ label: "🍓", correct: true }, { label: "🍌", correct: false }, { label: "⭐", correct: false }], explanation: "The picture on the left is 🍓." },
+    { question: "Tap the picture at the TOP", layout: "column", items: [{ label: "🐝", correct: true }, { label: "🍓", correct: false }, { label: "🍪", correct: false }], explanation: "The picture at the top (above) is 🐝." },
+    { question: "Tap the picture at the TOP", layout: "column", items: [{ label: "🍪", correct: true }, { label: "🐟", correct: false }, { label: "⭐", correct: false }], explanation: "The picture at the top (above) is 🍪." },
+    { question: "Tap the picture on the RIGHT", layout: "row", items: [{ label: "🐶", correct: false }, { label: "🌸", correct: false }, { label: "🐱", correct: true }], explanation: "The picture on the right is 🐱." },
+    { question: "Tap the one that is ABOVE", layout: "column", items: [{ label: "🌸", correct: true }, { label: "🍎", correct: false }], explanation: "🌸 is above the other one." },
+    { question: "Tap the picture on the RIGHT", layout: "row", items: [{ label: "🦆", correct: false }, { label: "🍎", correct: false }, { label: "🚌", correct: true }], explanation: "The picture on the right is 🚌." },
+    { question: "Tap the picture on the RIGHT", layout: "row", items: [{ label: "🚌", correct: false }, { label: "🐱", correct: false }, { label: "🎈", correct: true }], explanation: "The picture on the right is 🎈." },
+    { question: "Tap the one that is ABOVE", layout: "column", items: [{ label: "🐟", correct: true }, { label: "🚗", correct: false }], explanation: "🐟 is above the other one." },
+    { question: "Tap the picture at the BOTTOM", layout: "column", items: [{ label: "🌸", correct: false }, { label: "⚽", correct: false }, { label: "🍎", correct: true }], explanation: "The picture at the bottom (below) is 🍎." },
+    { question: "Tap the picture on the LEFT", layout: "row", items: [{ label: "🚗", correct: true }, { label: "🐱", correct: false }, { label: "🍓", correct: false }], explanation: "The picture on the left is 🚗." },
+    { question: "Tap the picture on the RIGHT", layout: "row", items: [{ label: "🐝", correct: false }, { label: "🍓", correct: false }, { label: "🚗", correct: true }], explanation: "The picture on the right is 🚗." },
+    { question: "Tap the one that is ABOVE", layout: "column", items: [{ label: "🧸", correct: true }, { label: "🦆", correct: false }], explanation: "🧸 is above the other one." },
+    { question: "Tap the picture at the TOP", layout: "column", items: [{ label: "🎈", correct: true }, { label: "⚽", correct: false }, { label: "🐝", correct: false }], explanation: "The picture at the top (above) is 🎈." },
+    { question: "Tap the picture at the TOP", layout: "column", items: [{ label: "🍪", correct: true }, { label: "🐱", correct: false }, { label: "🧸", correct: false }], explanation: "The picture at the top (above) is 🍪." },
+    { question: "Tap the picture on the LEFT", layout: "row", items: [{ label: "🐟", correct: true }, { label: "🎈", correct: false }, { label: "🦆", correct: false }], explanation: "The picture on the left is 🐟." },
+    { question: "Tap the one that is ABOVE", layout: "column", items: [{ label: "🍎", correct: true }, { label: "🐶", correct: false }], explanation: "🍎 is above the other one." },
+    { question: "Tap the picture at the TOP", layout: "column", items: [{ label: "🎈", correct: true }, { label: "🐶", correct: false }, { label: "🐟", correct: false }], explanation: "The picture at the top (above) is 🎈." },
+    { question: "Tap the one that is BELOW", layout: "column", items: [{ label: "🦆", correct: false }, { label: "🎈", correct: true }], explanation: "🎈 is below the other one." },
+    { question: "Tap the picture on the MIDDLE (middle)", layout: "row", items: [{ label: "🐝", correct: false }, { label: "🐱", correct: true }, { label: "🍪", correct: false }], explanation: "The picture on the middle is 🐱." },
+    { question: "Tap the picture on the MIDDLE (middle)", layout: "row", items: [{ label: "⭐", correct: false }, { label: "🍎", correct: true }, { label: "⚽", correct: false }], explanation: "The picture on the middle is 🍎." },
+    { question: "Tap the picture at the TOP", layout: "column", items: [{ label: "🍌", correct: true }, { label: "🌸", correct: false }, { label: "🚗", correct: false }], explanation: "The picture at the top (above) is 🍌." },
+    { question: "Tap the picture at the BOTTOM", layout: "column", items: [{ label: "🍪", correct: false }, { label: "⭐", correct: false }, { label: "🚌", correct: true }], explanation: "The picture at the bottom (below) is 🚌." },
+    { question: "Tap the picture on the MIDDLE (middle)", layout: "row", items: [{ label: "⭐", correct: false }, { label: "🐝", correct: true }, { label: "🚗", correct: false }], explanation: "The picture on the middle is 🐝." },
+    { question: "Tap the picture on the RIGHT", layout: "row", items: [{ label: "🐝", correct: false }, { label: "🍪", correct: false }, { label: "🐶", correct: true }], explanation: "The picture on the right is 🐶." },
+    { question: "Tap the picture at the TOP", layout: "column", items: [{ label: "🍎", correct: true }, { label: "🦆", correct: false }, { label: "⭐", correct: false }], explanation: "The picture at the top (above) is 🍎." },
+    { question: "Tap the picture on the MIDDLE (middle)", layout: "row", items: [{ label: "🐟", correct: false }, { label: "🎈", correct: true }, { label: "🍌", correct: false }], explanation: "The picture on the middle is 🎈." },
+    { question: "Tap the picture on the LEFT", layout: "row", items: [{ label: "🍓", correct: true }, { label: "🐝", correct: false }, { label: "🍎", correct: false }], explanation: "The picture on the left is 🍓." },
+    { question: "Tap the picture on the LEFT", layout: "row", items: [{ label: "🌸", correct: true }, { label: "🍎", correct: false }, { label: "🐶", correct: false }], explanation: "The picture on the left is 🌸." },
+    { question: "Tap the picture at the MIDDLE", layout: "column", items: [{ label: "🎈", correct: false }, { label: "🌸", correct: true }, { label: "🧸", correct: false }], explanation: "The picture at the middle (middle) is 🌸." },
+    { question: "Tap the picture on the RIGHT", layout: "row", items: [{ label: "🐱", correct: false }, { label: "🎈", correct: false }, { label: "🚌", correct: true }], explanation: "The picture on the right is 🚌." },
+    { question: "Tap the picture on the MIDDLE (middle)", layout: "row", items: [{ label: "🧸", correct: false }, { label: "⚽", correct: true }, { label: "🦆", correct: false }], explanation: "The picture on the middle is ⚽." },
+    { question: "Tap the one that is ABOVE", layout: "column", items: [{ label: "🐝", correct: true }, { label: "🍪", correct: false }], explanation: "🐝 is above the other one." },
+    { question: "Tap the picture at the BOTTOM", layout: "column", items: [{ label: "🚗", correct: false }, { label: "⭐", correct: false }, { label: "🦆", correct: true }], explanation: "The picture at the bottom (below) is 🦆." },
+    { question: "Tap the picture on the LEFT", layout: "row", items: [{ label: "🧸", correct: true }, { label: "🎈", correct: false }, { label: "🦆", correct: false }], explanation: "The picture on the left is 🧸." },
+    { question: "Tap the one that is BELOW", layout: "column", items: [{ label: "🚌", correct: false }, { label: "🧸", correct: true }], explanation: "🧸 is below the other one." },
+    { question: "Tap the one that is BELOW", layout: "column", items: [{ label: "🍓", correct: false }, { label: "🧸", correct: true }], explanation: "🧸 is below the other one." },
+    { question: "Tap the picture at the TOP", layout: "column", items: [{ label: "🍎", correct: true }, { label: "🌸", correct: false }, { label: "🎈", correct: false }], explanation: "The picture at the top (above) is 🍎." },
+    { question: "Tap the picture at the MIDDLE", layout: "column", items: [{ label: "🚌", correct: false }, { label: "⭐", correct: true }, { label: "🎈", correct: false }], explanation: "The picture at the middle (middle) is ⭐." },
+    { question: "Tap the picture on the RIGHT", layout: "row", items: [{ label: "🚌", correct: false }, { label: "🚗", correct: false }, { label: "🐝", correct: true }], explanation: "The picture on the right is 🐝." },
+    { question: "Tap the one that is ABOVE", layout: "column", items: [{ label: "⚽", correct: true }, { label: "🦆", correct: false }], explanation: "⚽ is above the other one." },
+    { question: "Tap the picture on the RIGHT", layout: "row", items: [{ label: "⚽", correct: false }, { label: "🚌", correct: false }, { label: "🦆", correct: true }], explanation: "The picture on the right is 🦆." },
+    { question: "Tap the picture on the RIGHT", layout: "row", items: [{ label: "🍪", correct: false }, { label: "⭐", correct: false }, { label: "⚽", correct: true }], explanation: "The picture on the right is ⚽." },
+    { question: "Tap the one that is ABOVE", layout: "column", items: [{ label: "🚌", correct: true }, { label: "🚗", correct: false }], explanation: "🚌 is above the other one." },
+    { question: "Tap the picture on the RIGHT", layout: "row", items: [{ label: "🌸", correct: false }, { label: "🚌", correct: false }, { label: "🧸", correct: true }], explanation: "The picture on the right is 🧸." },
+    { question: "Tap the picture on the MIDDLE (middle)", layout: "row", items: [{ label: "🍌", correct: false }, { label: "⭐", correct: true }, { label: "🍓", correct: false }], explanation: "The picture on the middle is ⭐." },
+    { question: "Tap the picture on the LEFT", layout: "row", items: [{ label: "🐟", correct: true }, { label: "🍎", correct: false }, { label: "🦆", correct: false }], explanation: "The picture on the left is 🐟." },
+    { question: "Tap the picture on the LEFT", layout: "row", items: [{ label: "🐝", correct: true }, { label: "🍌", correct: false }, { label: "🚗", correct: false }], explanation: "The picture on the left is 🐝." },
+    { question: "Tap the picture at the BOTTOM", layout: "column", items: [{ label: "🚌", correct: false }, { label: "🐝", correct: false }, { label: "🐱", correct: true }], explanation: "The picture at the bottom (below) is 🐱." },
+    { question: "Tap the one that is ABOVE", layout: "column", items: [{ label: "🎈", correct: true }, { label: "🍎", correct: false }], explanation: "🎈 is above the other one." },
+    { question: "Tap the picture on the LEFT", layout: "row", items: [{ label: "🍪", correct: true }, { label: "🚌", correct: false }, { label: "🚗", correct: false }], explanation: "The picture on the left is 🍪." },
+    { question: "Tap the picture on the RIGHT", layout: "row", items: [{ label: "🚗", correct: false }, { label: "⭐", correct: false }, { label: "🍎", correct: true }], explanation: "The picture on the right is 🍎." },
+    { question: "Tap the one that is ABOVE", layout: "column", items: [{ label: "🍎", correct: true }, { label: "🚌", correct: false }], explanation: "🍎 is above the other one." },
+    { question: "Tap the picture at the BOTTOM", layout: "column", items: [{ label: "🐱", correct: false }, { label: "🍪", correct: false }, { label: "🌸", correct: true }], explanation: "The picture at the bottom (below) is 🌸." },
+    { question: "Tap the picture on the MIDDLE (middle)", layout: "row", items: [{ label: "🍎", correct: false }, { label: "🌸", correct: true }, { label: "🦆", correct: false }], explanation: "The picture on the middle is 🌸." },
+    { question: "Tap the one that is ABOVE", layout: "column", items: [{ label: "🚗", correct: true }, { label: "🌸", correct: false }], explanation: "🚗 is above the other one." },
+    { question: "Tap the picture at the MIDDLE", layout: "column", items: [{ label: "🐟", correct: false }, { label: "⭐", correct: true }, { label: "🍓", correct: false }], explanation: "The picture at the middle (middle) is ⭐." },
+    { question: "Tap the picture at the MIDDLE", layout: "column", items: [{ label: "🦆", correct: false }, { label: "🐝", correct: true }, { label: "🍎", correct: false }], explanation: "The picture at the middle (middle) is 🐝." },
+    { question: "Tap the picture on the RIGHT", layout: "row", items: [{ label: "⭐", correct: false }, { label: "🐟", correct: false }, { label: "🍪", correct: true }], explanation: "The picture on the right is 🍪." },
+    { question: "Tap the picture at the MIDDLE", layout: "column", items: [{ label: "🦆", correct: false }, { label: "🍪", correct: true }, { label: "⭐", correct: false }], explanation: "The picture at the middle (middle) is 🍪." },
+    { question: "Tap the picture at the TOP", layout: "column", items: [{ label: "🦆", correct: true }, { label: "🧸", correct: false }, { label: "🍓", correct: false }], explanation: "The picture at the top (above) is 🦆." },
+    { question: "Tap the picture on the LEFT", layout: "row", items: [{ label: "🎈", correct: true }, { label: "🐟", correct: false }, { label: "🌸", correct: false }], explanation: "The picture on the left is 🎈." },
+    { question: "Tap the picture at the MIDDLE", layout: "column", items: [{ label: "🍎", correct: false }, { label: "🚗", correct: true }, { label: "🐶", correct: false }], explanation: "The picture at the middle (middle) is 🚗." },
+    { question: "Tap the one that is ABOVE", layout: "column", items: [{ label: "🌸", correct: true }, { label: "🍪", correct: false }], explanation: "🌸 is above the other one." },
+
+    // ----- inside / outside (need real images; see TODOs) -----
+    // TODO: add image at ../../image/kg3_math/position/out_box_00.png (inside/outside needs a real scene)
+    { question: "Is the 🐱 inside or outside the box \ud83d\udce6?", image: "../../image/kg3_math/position/out_box_00.png", items: [{ label: "inside", correct: false }, { label: "outside", correct: true }], explanation: "Look at the box: the 🐱 is outside the box." },
+    // TODO: add image at ../../image/kg3_math/position/in_box_01.png (inside/outside needs a real scene)
+    { question: "Is the 🐱 inside or outside the box \ud83d\udce6?", image: "../../image/kg3_math/position/in_box_01.png", items: [{ label: "inside", correct: true }, { label: "outside", correct: false }], explanation: "Look at the box: the 🐱 is inside the box." },
+    // TODO: add image at ../../image/kg3_math/position/out_box_02.png (inside/outside needs a real scene)
+    { question: "Is the 🐭 inside or outside the box \ud83d\udce6?", image: "../../image/kg3_math/position/out_box_02.png", items: [{ label: "inside", correct: false }, { label: "outside", correct: true }], explanation: "Look at the box: the 🐭 is outside the box." },
+    // TODO: add image at ../../image/kg3_math/position/in_box_03.png (inside/outside needs a real scene)
+    { question: "Is the 🐶 inside or outside the box \ud83d\udce6?", image: "../../image/kg3_math/position/in_box_03.png", items: [{ label: "inside", correct: true }, { label: "outside", correct: false }], explanation: "Look at the box: the 🐶 is inside the box." },
+    // TODO: add image at ../../image/kg3_math/position/out_box_04.png (inside/outside needs a real scene)
+    { question: "Is the 🐥 inside or outside the box \ud83d\udce6?", image: "../../image/kg3_math/position/out_box_04.png", items: [{ label: "inside", correct: false }, { label: "outside", correct: true }], explanation: "Look at the box: the 🐥 is outside the box." },
+    // TODO: add image at ../../image/kg3_math/position/out_box_05.png (inside/outside needs a real scene)
+    { question: "Is the 🐶 inside or outside the box \ud83d\udce6?", image: "../../image/kg3_math/position/out_box_05.png", items: [{ label: "inside", correct: false }, { label: "outside", correct: true }], explanation: "Look at the box: the 🐶 is outside the box." },
+    // TODO: add image at ../../image/kg3_math/position/in_box_06.png (inside/outside needs a real scene)
+    { question: "Is the 🐥 inside or outside the box \ud83d\udce6?", image: "../../image/kg3_math/position/in_box_06.png", items: [{ label: "inside", correct: true }, { label: "outside", correct: false }], explanation: "Look at the box: the 🐥 is inside the box." },
+    // TODO: add image at ../../image/kg3_math/position/in_box_07.png (inside/outside needs a real scene)
+    { question: "Is the 🐱 inside or outside the box \ud83d\udce6?", image: "../../image/kg3_math/position/in_box_07.png", items: [{ label: "inside", correct: true }, { label: "outside", correct: false }], explanation: "Look at the box: the 🐱 is inside the box." },
+    // TODO: add image at ../../image/kg3_math/position/in_box_08.png (inside/outside needs a real scene)
+    { question: "Is the 🐱 inside or outside the box \ud83d\udce6?", image: "../../image/kg3_math/position/in_box_08.png", items: [{ label: "inside", correct: true }, { label: "outside", correct: false }], explanation: "Look at the box: the 🐱 is inside the box." },
+    // TODO: add image at ../../image/kg3_math/position/in_box_09.png (inside/outside needs a real scene)
+    { question: "Is the 🐱 inside or outside the box \ud83d\udce6?", image: "../../image/kg3_math/position/in_box_09.png", items: [{ label: "inside", correct: true }, { label: "outside", correct: false }], explanation: "Look at the box: the 🐱 is inside the box." },
+    // TODO: add image at ../../image/kg3_math/position/out_box_10.png (inside/outside needs a real scene)
+    { question: "Is the 🐸 inside or outside the box \ud83d\udce6?", image: "../../image/kg3_math/position/out_box_10.png", items: [{ label: "inside", correct: false }, { label: "outside", correct: true }], explanation: "Look at the box: the 🐸 is outside the box." },
+    // TODO: add image at ../../image/kg3_math/position/in_box_11.png (inside/outside needs a real scene)
+    { question: "Is the 🐭 inside or outside the box \ud83d\udce6?", image: "../../image/kg3_math/position/in_box_11.png", items: [{ label: "inside", correct: true }, { label: "outside", correct: false }], explanation: "Look at the box: the 🐭 is inside the box." },
+    // TODO: add image at ../../image/kg3_math/position/in_box_12.png (inside/outside needs a real scene)
+    { question: "Is the 🐸 inside or outside the box \ud83d\udce6?", image: "../../image/kg3_math/position/in_box_12.png", items: [{ label: "inside", correct: true }, { label: "outside", correct: false }], explanation: "Look at the box: the 🐸 is inside the box." },
+    // TODO: add image at ../../image/kg3_math/position/in_box_13.png (inside/outside needs a real scene)
+    { question: "Is the 🐸 inside or outside the box \ud83d\udce6?", image: "../../image/kg3_math/position/in_box_13.png", items: [{ label: "inside", correct: true }, { label: "outside", correct: false }], explanation: "Look at the box: the 🐸 is inside the box." },
+    // TODO: add image at ../../image/kg3_math/position/in_box_14.png (inside/outside needs a real scene)
+    { question: "Is the 🐸 inside or outside the box \ud83d\udce6?", image: "../../image/kg3_math/position/in_box_14.png", items: [{ label: "inside", correct: true }, { label: "outside", correct: false }], explanation: "Look at the box: the 🐸 is inside the box." },
+    // TODO: add image at ../../image/kg3_math/position/out_box_15.png (inside/outside needs a real scene)
+    { question: "Is the 🐰 inside or outside the box \ud83d\udce6?", image: "../../image/kg3_math/position/out_box_15.png", items: [{ label: "inside", correct: false }, { label: "outside", correct: true }], explanation: "Look at the box: the 🐰 is outside the box." },
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+
+    <!-- Tap-select engine (exposes window.initTapSelectQuiz) -->
+    <script src="../../js/tap_select.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => initTapSelectQuiz(questions));
+    </script>
+  </body>
+</html>

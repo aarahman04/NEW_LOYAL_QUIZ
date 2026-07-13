@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Big or Small?</title>
+    <!-- Quiz shell + tap-select layer (tokens live in question.css) -->
+    <link rel="stylesheet" href="../../css/question.css" />
+    <link rel="stylesheet" href="../../css/tap_select.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+      </div>
+
+      <!-- Tap-select tiles are rendered here by the engine -->
+      <div id="tap-grid" class="tap-grid"></div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+
+    <script>
+      // BIG vs SMALL: compare sizes (same object at different sizes).
+      // Sizes are set with an inline font-size span; instant tap.
+      const questions = [
+    { question: "Tap the biggest 🍓", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🍓</span>", correct: true }, { label: "<span style='font-size:2.4rem'>🍓</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🍓</span>", correct: false }], explanation: "Find the biggest 🍓." },
+    { question: "Tap the bigger 🍎", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🍎</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🍎</span>", correct: true }], explanation: "The big 🍎 is the big one." },
+    { question: "Tap the bigger 🎈", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🎈</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🎈</span>", correct: true }], explanation: "The big 🎈 is the big one." },
+    { question: "Tap the bigger 🐭", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐭</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🐭</span>", correct: true }], explanation: "The big 🐭 is the big one." },
+    { question: "Tap the bigger ⭐", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>⭐</span>", correct: true }, { label: "<span style='font-size:1.4rem'>⭐</span>", correct: false }], explanation: "The big ⭐ is the big one." },
+    { question: "Tap the bigger 🐭", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐭</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🐭</span>", correct: true }], explanation: "The big 🐭 is the big one." },
+    { question: "Tap the bigger ⭐", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>⭐</span>", correct: false }, { label: "<span style='font-size:3.6rem'>⭐</span>", correct: true }], explanation: "The big ⭐ is the big one." },
+    { question: "Tap the biggest 🚗", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🚗</span>", correct: true }, { label: "<span style='font-size:2.4rem'>🚗</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🚗</span>", correct: false }], explanation: "Find the biggest 🚗." },
+    { question: "Tap the bigger 🐻", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐻</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🐻</span>", correct: false }], explanation: "The big 🐻 is the big one." },
+    { question: "Tap the biggest 🐘", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐘</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🐘</span>", correct: false }, { label: "<span style='font-size:2.4rem'>🐘</span>", correct: false }], explanation: "Find the biggest 🐘." },
+    { question: "Tap the smaller 🐱", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐱</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐱</span>", correct: true }], explanation: "The small 🐱 is the small one." },
+    { question: "Tap the bigger 🐘", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐘</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🐘</span>", correct: true }], explanation: "The big 🐘 is the big one." },
+    { question: "Tap the biggest 🐱", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐱</span>", correct: true }, { label: "<span style='font-size:2.4rem'>🐱</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐱</span>", correct: false }], explanation: "Find the biggest 🐱." },
+    { question: "Tap the biggest 🐘", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐘</span>", correct: false }, { label: "<span style='font-size:2.4rem'>🐘</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🐘</span>", correct: true }], explanation: "Find the biggest 🐘." },
+    { question: "Tap the smaller 🐰", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐰</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🐰</span>", correct: false }], explanation: "The small 🐰 is the small one." },
+    { question: "Tap the biggest ⭐", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>⭐</span>", correct: false }, { label: "<span style='font-size:2.4rem'>⭐</span>", correct: false }, { label: "<span style='font-size:3.6rem'>⭐</span>", correct: true }], explanation: "Find the biggest ⭐." },
+    { question: "Tap the smaller 🎈", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🎈</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🎈</span>", correct: true }], explanation: "The small 🎈 is the small one." },
+    { question: "Tap the bigger 🐟", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐟</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🐟</span>", correct: true }], explanation: "The big 🐟 is the big one." },
+    { question: "Tap the smallest 🐻", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐻</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐻</span>", correct: true }, { label: "<span style='font-size:2.4rem'>🐻</span>", correct: false }], explanation: "Find the smallest 🐻." },
+    { question: "Tap the smaller 🐝", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐝</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐝</span>", correct: true }], explanation: "The small 🐝 is the small one." },
+    { question: "Tap the bigger 🦆", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🦆</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🦆</span>", correct: true }], explanation: "The big 🦆 is the big one." },
+    { question: "Tap the smaller 🌳", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🌳</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🌳</span>", correct: true }], explanation: "The small 🌳 is the small one." },
+    { question: "Tap the bigger ⭐", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>⭐</span>", correct: false }, { label: "<span style='font-size:3.6rem'>⭐</span>", correct: true }], explanation: "The big ⭐ is the big one." },
+    { question: "Tap the bigger 🐢", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐢</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🐢</span>", correct: false }], explanation: "The big 🐢 is the big one." },
+    { question: "Tap the smaller 🌳", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🌳</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🌳</span>", correct: false }], explanation: "The small 🌳 is the small one." },
+    { question: "Tap the smaller 🍎", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🍎</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🍎</span>", correct: false }], explanation: "The small 🍎 is the small one." },
+    { question: "Tap the smallest 🐭", layout: "row", items: [{ label: "<span style='font-size:2.4rem'>🐭</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐭</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🐭</span>", correct: false }], explanation: "Find the smallest 🐭." },
+    { question: "Tap the biggest 🚗", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🚗</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🚗</span>", correct: true }, { label: "<span style='font-size:2.4rem'>🚗</span>", correct: false }], explanation: "Find the biggest 🚗." },
+    { question: "Tap the smaller 🐶", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐶</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐶</span>", correct: true }], explanation: "The small 🐶 is the small one." },
+    { question: "Tap the bigger 🦆", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🦆</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🦆</span>", correct: false }], explanation: "The big 🦆 is the big one." },
+    { question: "Tap the smaller 🐶", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐶</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐶</span>", correct: true }], explanation: "The small 🐶 is the small one." },
+    { question: "Tap the bigger 🍎", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🍎</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🍎</span>", correct: true }], explanation: "The big 🍎 is the big one." },
+    { question: "Tap the bigger 🐭", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐭</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🐭</span>", correct: false }], explanation: "The big 🐭 is the big one." },
+    { question: "Tap the smallest ⭐", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>⭐</span>", correct: false }, { label: "<span style='font-size:2.4rem'>⭐</span>", correct: false }, { label: "<span style='font-size:1.4rem'>⭐</span>", correct: true }], explanation: "Find the smallest ⭐." },
+    { question: "Tap the bigger 🍓", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🍓</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🍓</span>", correct: false }], explanation: "The big 🍓 is the big one." },
+    { question: "Tap the bigger 🚗", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🚗</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🚗</span>", correct: false }], explanation: "The big 🚗 is the big one." },
+    { question: "Tap the bigger 🦆", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🦆</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🦆</span>", correct: true }], explanation: "The big 🦆 is the big one." },
+    { question: "Tap the smallest 🐰", layout: "row", items: [{ label: "<span style='font-size:2.4rem'>🐰</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🐰</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐰</span>", correct: true }], explanation: "Find the smallest 🐰." },
+    { question: "Tap the smallest ⭐", layout: "row", items: [{ label: "<span style='font-size:2.4rem'>⭐</span>", correct: false }, { label: "<span style='font-size:3.6rem'>⭐</span>", correct: false }, { label: "<span style='font-size:1.4rem'>⭐</span>", correct: true }], explanation: "Find the smallest ⭐." },
+    { question: "Tap the smaller 🐰", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐰</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐰</span>", correct: true }], explanation: "The small 🐰 is the small one." },
+    { question: "Tap the smallest 🐟", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐟</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🐟</span>", correct: false }, { label: "<span style='font-size:2.4rem'>🐟</span>", correct: false }], explanation: "Find the smallest 🐟." },
+    { question: "Tap the bigger 🚗", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🚗</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🚗</span>", correct: true }], explanation: "The big 🚗 is the big one." },
+    { question: "Tap the smaller 🐰", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐰</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐰</span>", correct: true }], explanation: "The small 🐰 is the small one." },
+    { question: "Tap the bigger 🐢", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐢</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🐢</span>", correct: false }], explanation: "The big 🐢 is the big one." },
+    { question: "Tap the bigger 🍓", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🍓</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🍓</span>", correct: false }], explanation: "The big 🍓 is the big one." },
+    { question: "Tap the biggest 🐝", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐝</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🐝</span>", correct: true }, { label: "<span style='font-size:2.4rem'>🐝</span>", correct: false }], explanation: "Find the biggest 🐝." },
+    { question: "Tap the biggest 🐢", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐢</span>", correct: false }, { label: "<span style='font-size:2.4rem'>🐢</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🐢</span>", correct: true }], explanation: "Find the biggest 🐢." },
+    { question: "Tap the smaller 🐱", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐱</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐱</span>", correct: true }], explanation: "The small 🐱 is the small one." },
+    { question: "Tap the biggest 🐻", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐻</span>", correct: true }, { label: "<span style='font-size:2.4rem'>🐻</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐻</span>", correct: false }], explanation: "Find the biggest 🐻." },
+    { question: "Tap the smaller ⭐", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>⭐</span>", correct: true }, { label: "<span style='font-size:3.6rem'>⭐</span>", correct: false }], explanation: "The small ⭐ is the small one." },
+    { question: "Tap the smaller 🍓", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🍓</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🍓</span>", correct: false }], explanation: "The small 🍓 is the small one." },
+    { question: "Tap the biggest 🦋", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🦋</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🦋</span>", correct: false }, { label: "<span style='font-size:2.4rem'>🦋</span>", correct: false }], explanation: "Find the biggest 🦋." },
+    { question: "Tap the biggest 🍎", layout: "row", items: [{ label: "<span style='font-size:2.4rem'>🍎</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🍎</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🍎</span>", correct: true }], explanation: "Find the biggest 🍎." },
+    { question: "Tap the bigger 🐶", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐶</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🐶</span>", correct: false }], explanation: "The big 🐶 is the big one." },
+    { question: "Tap the bigger 🍎", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🍎</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🍎</span>", correct: true }], explanation: "The big 🍎 is the big one." },
+    { question: "Tap the smaller 🐘", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐘</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐘</span>", correct: true }], explanation: "The small 🐘 is the small one." },
+    { question: "Tap the biggest 🐭", layout: "row", items: [{ label: "<span style='font-size:2.4rem'>🐭</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🐭</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🐭</span>", correct: false }], explanation: "Find the biggest 🐭." },
+    { question: "Tap the smaller 🐟", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐟</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🐟</span>", correct: false }], explanation: "The small 🐟 is the small one." },
+    { question: "Tap the bigger 🐭", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐭</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🐭</span>", correct: false }], explanation: "The big 🐭 is the big one." },
+    { question: "Tap the smaller 🎈", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🎈</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🎈</span>", correct: false }], explanation: "The small 🎈 is the small one." },
+    { question: "Tap the smallest 🍎", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🍎</span>", correct: false }, { label: "<span style='font-size:2.4rem'>🍎</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🍎</span>", correct: true }], explanation: "Find the smallest 🍎." },
+    { question: "Tap the smallest 🏀", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🏀</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🏀</span>", correct: true }, { label: "<span style='font-size:2.4rem'>🏀</span>", correct: false }], explanation: "Find the smallest 🏀." },
+    { question: "Tap the bigger 🎈", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🎈</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🎈</span>", correct: true }], explanation: "The big 🎈 is the big one." },
+    { question: "Tap the smaller 🐻", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐻</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🐻</span>", correct: false }], explanation: "The small 🐻 is the small one." },
+    { question: "Tap the smaller 🐱", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐱</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐱</span>", correct: true }], explanation: "The small 🐱 is the small one." },
+    { question: "Tap the smaller 🐝", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐝</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🐝</span>", correct: false }], explanation: "The small 🐝 is the small one." },
+    { question: "Tap the smaller 🚗", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🚗</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🚗</span>", correct: true }], explanation: "The small 🚗 is the small one." },
+    { question: "Tap the bigger 🦋", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🦋</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🦋</span>", correct: false }], explanation: "The big 🦋 is the big one." },
+    { question: "Tap the smallest 🍎", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🍎</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🍎</span>", correct: false }, { label: "<span style='font-size:2.4rem'>🍎</span>", correct: false }], explanation: "Find the smallest 🍎." },
+    { question: "Tap the bigger 🚗", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🚗</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🚗</span>", correct: true }], explanation: "The big 🚗 is the big one." },
+    { question: "Tap the smaller 🐢", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐢</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🐢</span>", correct: false }], explanation: "The small 🐢 is the small one." },
+    { question: "Tap the smallest 🐝", layout: "row", items: [{ label: "<span style='font-size:2.4rem'>🐝</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐝</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🐝</span>", correct: false }], explanation: "Find the smallest 🐝." },
+    { question: "Tap the smaller 🏀", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🏀</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🏀</span>", correct: false }], explanation: "The small 🏀 is the small one." },
+    { question: "Tap the biggest 🐘", layout: "row", items: [{ label: "<span style='font-size:2.4rem'>🐘</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🐘</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🐘</span>", correct: false }], explanation: "Find the biggest 🐘." },
+    { question: "Tap the bigger 🐻", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐻</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🐻</span>", correct: true }], explanation: "The big 🐻 is the big one." },
+    { question: "Tap the bigger 🍓", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🍓</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🍓</span>", correct: false }], explanation: "The big 🍓 is the big one." },
+    { question: "Tap the smallest 🐰", layout: "row", items: [{ label: "<span style='font-size:2.4rem'>🐰</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🐰</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐰</span>", correct: true }], explanation: "Find the smallest 🐰." },
+    { question: "Tap the smaller 🦋", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🦋</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🦋</span>", correct: true }], explanation: "The small 🦋 is the small one." },
+    { question: "Tap the smaller 🐰", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐰</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🐰</span>", correct: false }], explanation: "The small 🐰 is the small one." },
+    { question: "Tap the bigger 🍎", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🍎</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🍎</span>", correct: false }], explanation: "The big 🍎 is the big one." },
+    { question: "Tap the smaller 🌳", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🌳</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🌳</span>", correct: false }], explanation: "The small 🌳 is the small one." },
+    { question: "Tap the smaller 🐝", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐝</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🐝</span>", correct: false }], explanation: "The small 🐝 is the small one." },
+    { question: "Tap the bigger 🌳", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🌳</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🌳</span>", correct: false }], explanation: "The big 🌳 is the big one." },
+    { question: "Tap the bigger 🐭", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐭</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🐭</span>", correct: true }], explanation: "The big 🐭 is the big one." },
+    { question: "Tap the smaller 🐰", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐰</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🐰</span>", correct: false }], explanation: "The small 🐰 is the small one." },
+    { question: "Tap the smaller ⭐", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>⭐</span>", correct: false }, { label: "<span style='font-size:1.4rem'>⭐</span>", correct: true }], explanation: "The small ⭐ is the small one." },
+    { question: "Tap the bigger 🐘", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐘</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🐘</span>", correct: false }], explanation: "The big 🐘 is the big one." },
+    { question: "Tap the smallest ⭐", layout: "row", items: [{ label: "<span style='font-size:2.4rem'>⭐</span>", correct: false }, { label: "<span style='font-size:1.4rem'>⭐</span>", correct: true }, { label: "<span style='font-size:3.6rem'>⭐</span>", correct: false }], explanation: "Find the smallest ⭐." },
+    { question: "Tap the bigger 🐶", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐶</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🐶</span>", correct: false }], explanation: "The big 🐶 is the big one." },
+    { question: "Tap the smallest 🐟", layout: "row", items: [{ label: "<span style='font-size:2.4rem'>🐟</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐟</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🐟</span>", correct: false }], explanation: "Find the smallest 🐟." },
+    { question: "Tap the biggest 🐰", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐰</span>", correct: false }, { label: "<span style='font-size:2.4rem'>🐰</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🐰</span>", correct: true }], explanation: "Find the biggest 🐰." },
+    { question: "Tap the bigger ⭐", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>⭐</span>", correct: true }, { label: "<span style='font-size:1.4rem'>⭐</span>", correct: false }], explanation: "The big ⭐ is the big one." },
+    { question: "Tap the bigger 🐝", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐝</span>", correct: true }, { label: "<span style='font-size:1.4rem'>🐝</span>", correct: false }], explanation: "The big 🐝 is the big one." },
+    { question: "Tap the smallest 🦋", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🦋</span>", correct: true }, { label: "<span style='font-size:2.4rem'>🦋</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🦋</span>", correct: false }], explanation: "Find the smallest 🦋." },
+    { question: "Tap the smallest 🐢", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🐢</span>", correct: false }, { label: "<span style='font-size:2.4rem'>🐢</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🐢</span>", correct: true }], explanation: "Find the smallest 🐢." },
+    { question: "Tap the smaller 🐶", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐶</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🐶</span>", correct: false }], explanation: "The small 🐶 is the small one." },
+    { question: "Tap the bigger 🐭", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐭</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🐭</span>", correct: true }], explanation: "The big 🐭 is the big one." },
+    { question: "Tap the bigger 🚗", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🚗</span>", correct: false }, { label: "<span style='font-size:3.6rem'>🚗</span>", correct: true }], explanation: "The big 🚗 is the big one." },
+    { question: "Tap the smaller 🐻", layout: "row", items: [{ label: "<span style='font-size:1.4rem'>🐻</span>", correct: true }, { label: "<span style='font-size:3.6rem'>🐻</span>", correct: false }], explanation: "The small 🐻 is the small one." },
+    { question: "Tap the smaller 🏀", layout: "row", items: [{ label: "<span style='font-size:3.6rem'>🏀</span>", correct: false }, { label: "<span style='font-size:1.4rem'>🏀</span>", correct: true }], explanation: "The small 🏀 is the small one." },
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+
+    <!-- Tap-select engine (exposes window.initTapSelectQuiz) -->
+    <script src="../../js/tap_select.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => initTapSelectQuiz(questions));
+    </script>
+  </body>
+</html>

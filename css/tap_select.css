@@ -9,6 +9,18 @@
      .tap-label, .tap-badge, #tap-counter, #check-btn
    ============================================================ */
 
+/* ---------- Object "scene" shown inside the question ----------
+   Used by counting-style questions that render a group of objects in
+   the question text (e.g. "How many? 🍎🍎🍎"). */
+.tap-scene {
+  display: block;
+  margin-top: .6rem;
+  font-size: clamp(2rem, 1.5rem + 3vw, 3rem);
+  line-height: 1.35;
+  letter-spacing: .12em;
+  word-break: break-word;
+}
+
 /* ---------- Grid of tappable tiles ---------- */
 .tap-grid {
   display: grid;
@@ -17,6 +29,23 @@
   margin: 1.5rem 0 .25rem;
   justify-items: stretch;
 }
+
+/* Spatial layouts — keep tiles in a fixed row or column so position
+   words (left / right / middle, above / below) stay meaningful on every
+   screen instead of reflowing like the default grid. */
+.tap-grid.tap-grid--row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+}
+.tap-grid.tap-grid--row .tap-tile { flex: 1 1 0; min-width: 0; }
+.tap-grid.tap-grid--column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tap-grid.tap-grid--column .tap-tile { width: min(78%, 260px); }
 
 /* A single tile — big, rounded, forgiving touch target for small hands */
 .tap-tile {

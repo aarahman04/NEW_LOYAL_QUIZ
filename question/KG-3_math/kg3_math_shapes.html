@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shapes</title>
+    <!-- Quiz shell + tap-select layer (tokens live in question.css) -->
+    <link rel="stylesheet" href="../../css/question.css" />
+    <link rel="stylesheet" href="../../css/tap_select.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+      </div>
+
+      <!-- Tap-select tiles are rendered here by the engine -->
+      <div id="tap-grid" class="tap-grid"></div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+
+    <script>
+      // SHAPES: recognise & match. Single "tap the shape" (instant tap)
+      // and multi "tap all the shapes" (tap several, then Check).
+      const questions = [
+    { question: "Tap the triangle", items: [{ label: "🔽", correct: true }, { label: "🟧", correct: false }, { label: "⭐", correct: false }, { label: "❤️", correct: false }], explanation: "A triangle shape is 🔻." },
+    { question: "Tap the circle", items: [{ label: "🔽", correct: false }, { label: "⭐", correct: false }, { label: "🟡", correct: true }, { label: "🔶", correct: false }], explanation: "A circle shape is 🟡." },
+    { question: "Tap all the squares", items: [{ label: "🟦", correct: true }, { label: "⬛", correct: true }, { label: "♦️", correct: false }, { label: "🌟", correct: false }, { label: "🔽", correct: false }], explanation: "There are 2 squares. Tap them all!" },
+    { question: "Tap the square", items: [{ label: "🔽", correct: false }, { label: "🟪", correct: true }, { label: "🌟", correct: false }, { label: "🟢", correct: false }], explanation: "A square shape is 🟥." },
+    { question: "Tap the heart", items: [{ label: "🟪", correct: false }, { label: "🔻", correct: false }, { label: "💚", correct: true }, { label: "🔴", correct: false }], explanation: "A heart shape is 💚." },
+    { question: "Tap all the squares", items: [{ label: "⬛", correct: true }, { label: "🟨", correct: true }, { label: "⭐", correct: false }, { label: "❤️", correct: false }, { label: "🟧", correct: true }, { label: "♦️", correct: false }], explanation: "There are 3 squares. Tap them all!" },
+    { question: "Tap all the hearts", items: [{ label: "💜", correct: true }, { label: "🌟", correct: false }, { label: "🟥", correct: false }, { label: "🔻", correct: false }, { label: "❤️", correct: true }], explanation: "There are 2 hearts. Tap them all!" },
+    { question: "Tap all the triangles", items: [{ label: "⚪", correct: false }, { label: "🌟", correct: false }, { label: "🔻", correct: true }, { label: "🧡", correct: false }, { label: "🔽", correct: true }], explanation: "There are 2 triangles. Tap them all!" },
+    { question: "Tap all the squares", items: [{ label: "🟥", correct: true }, { label: "⭐", correct: false }, { label: "🟪", correct: true }, { label: "🔶", correct: false }, { label: "🧡", correct: false }], explanation: "There are 2 squares. Tap them all!" },
+    { question: "Tap all the circles", items: [{ label: "❤️", correct: false }, { label: "⬛", correct: false }, { label: "🟣", correct: true }, { label: "🔻", correct: false }, { label: "🟠", correct: true }], explanation: "There are 2 circles. Tap them all!" },
+    { question: "Tap all the diamonds", items: [{ label: "🔶", correct: true }, { label: "⭐", correct: false }, { label: "💚", correct: false }, { label: "🔼", correct: false }, { label: "🔷", correct: true }], explanation: "There are 2 diamonds. Tap them all!" },
+    { question: "Tap all the squares", items: [{ label: "🟧", correct: true }, { label: "🔻", correct: false }, { label: "💚", correct: false }, { label: "🔴", correct: false }, { label: "🟨", correct: true }], explanation: "There are 2 squares. Tap them all!" },
+    { question: "Tap the circle", items: [{ label: "🔽", correct: false }, { label: "❤️", correct: false }, { label: "🟣", correct: true }, { label: "🟨", correct: false }], explanation: "A circle shape is ⚫." },
+    { question: "Tap all the stars", items: [{ label: "⭐", correct: true }, { label: "♦️", correct: false }, { label: "🔺", correct: false }, { label: "🌟", correct: true }, { label: "⬜", correct: false }], explanation: "There are 2 stars. Tap them all!" },
+    { question: "Tap the diamond", items: [{ label: "⬛", correct: false }, { label: "♦️", correct: true }, { label: "💙", correct: false }, { label: "🔺", correct: false }], explanation: "A diamond shape is 🔷." },
+    { question: "Tap the diamond", items: [{ label: "⭐", correct: false }, { label: "♦️", correct: true }, { label: "🔺", correct: false }, { label: "🟦", correct: false }], explanation: "A diamond shape is 🔶." },
+    { question: "Tap all the hearts", items: [{ label: "🔼", correct: false }, { label: "🧡", correct: true }, { label: "🔷", correct: false }, { label: "💚", correct: true }, { label: "💜", correct: true }, { label: "⭐", correct: false }], explanation: "There are 3 hearts. Tap them all!" },
+    { question: "Tap the star", items: [{ label: "💛", correct: false }, { label: "🟢", correct: false }, { label: "⭐", correct: true }, { label: "🔻", correct: false }], explanation: "A star shape is 🌟." },
+    { question: "Tap the star", items: [{ label: "⭐", correct: true }, { label: "💚", correct: false }, { label: "⚫", correct: false }, { label: "🔶", correct: false }], explanation: "A star shape is 🌟." },
+    { question: "Tap all the triangles", items: [{ label: "🔺", correct: true }, { label: "⭐", correct: false }, { label: "🔻", correct: true }, { label: "🧡", correct: false }, { label: "🟦", correct: false }, { label: "🔽", correct: true }], explanation: "There are 3 triangles. Tap them all!" },
+    { question: "Tap the square", items: [{ label: "🔷", correct: false }, { label: "⬛", correct: true }, { label: "🟡", correct: false }, { label: "🌟", correct: false }], explanation: "A square shape is 🟨." },
+    { question: "Tap the diamond", items: [{ label: "🟥", correct: false }, { label: "🟣", correct: false }, { label: "⭐", correct: false }, { label: "♦️", correct: true }], explanation: "A diamond shape is 🔶." },
+    { question: "Tap the diamond", items: [{ label: "⭐", correct: false }, { label: "❤️", correct: false }, { label: "🔽", correct: false }, { label: "♦️", correct: true }], explanation: "A diamond shape is ♦️." },
+    { question: "Tap the heart", items: [{ label: "🔽", correct: false }, { label: "🔷", correct: false }, { label: "⭐", correct: false }, { label: "🧡", correct: true }], explanation: "A heart shape is ❤️." },
+    { question: "Tap the star", items: [{ label: "🟣", correct: false }, { label: "🔶", correct: false }, { label: "🟦", correct: false }, { label: "⭐", correct: true }], explanation: "A star shape is 🌟." },
+    { question: "Tap the circle", items: [{ label: "🔴", correct: true }, { label: "🟥", correct: false }, { label: "⭐", correct: false }, { label: "💛", correct: false }], explanation: "A circle shape is ⚪." },
+    { question: "Tap the star", items: [{ label: "🟨", correct: false }, { label: "🔶", correct: false }, { label: "🧡", correct: false }, { label: "🌟", correct: true }], explanation: "A star shape is 🌟." },
+    { question: "Tap the heart", items: [{ label: "💙", correct: true }, { label: "🔽", correct: false }, { label: "🟧", correct: false }, { label: "♦️", correct: false }], explanation: "A heart shape is 💚." },
+    { question: "Tap the square", items: [{ label: "⬜", correct: true }, { label: "⭐", correct: false }, { label: "🔶", correct: false }, { label: "🔵", correct: false }], explanation: "A square shape is 🟨." },
+    { question: "Tap the star", items: [{ label: "⚫", correct: false }, { label: "⭐", correct: true }, { label: "🔶", correct: false }, { label: "🔺", correct: false }], explanation: "A star shape is ⭐." },
+    { question: "Tap all the circles", items: [{ label: "💛", correct: false }, { label: "🟡", correct: true }, { label: "🔼", correct: false }, { label: "🟠", correct: true }, { label: "🌟", correct: false }], explanation: "There are 2 circles. Tap them all!" },
+    { question: "Tap the diamond", items: [{ label: "🧡", correct: false }, { label: "🔻", correct: false }, { label: "🌟", correct: false }, { label: "♦️", correct: true }], explanation: "A diamond shape is ♦️." },
+    { question: "Tap the diamond", items: [{ label: "🧡", correct: false }, { label: "🔷", correct: true }, { label: "🔼", correct: false }, { label: "⚪", correct: false }], explanation: "A diamond shape is ♦️." },
+    { question: "Tap the circle", items: [{ label: "🔽", correct: false }, { label: "♦️", correct: false }, { label: "⚫", correct: true }, { label: "⭐", correct: false }], explanation: "A circle shape is 🔴." },
+    { question: "Tap the triangle", items: [{ label: "🔽", correct: true }, { label: "🌟", correct: false }, { label: "♦️", correct: false }, { label: "🔴", correct: false }], explanation: "A triangle shape is 🔻." },
+    { question: "Tap all the squares", items: [{ label: "⬜", correct: true }, { label: "🔻", correct: false }, { label: "🟧", correct: true }, { label: "❤️", correct: false }, { label: "🔶", correct: false }], explanation: "There are 2 squares. Tap them all!" },
+    { question: "Tap the diamond", items: [{ label: "⬛", correct: false }, { label: "🔶", correct: true }, { label: "⚫", correct: false }, { label: "💛", correct: false }], explanation: "A diamond shape is 🔶." },
+    { question: "Tap the star", items: [{ label: "🌟", correct: true }, { label: "🔵", correct: false }, { label: "🟧", correct: false }, { label: "♦️", correct: false }], explanation: "A star shape is ⭐." },
+    { question: "Tap the triangle", items: [{ label: "🔻", correct: true }, { label: "⚪", correct: false }, { label: "♦️", correct: false }, { label: "⭐", correct: false }], explanation: "A triangle shape is 🔺." },
+    { question: "Tap the square", items: [{ label: "🔷", correct: false }, { label: "⬛", correct: true }, { label: "💜", correct: false }, { label: "🌟", correct: false }], explanation: "A square shape is 🟦." },
+    { question: "Tap the star", items: [{ label: "💙", correct: false }, { label: "🔽", correct: false }, { label: "♦️", correct: false }, { label: "🌟", correct: true }], explanation: "A star shape is ⭐." },
+    { question: "Tap the circle", items: [{ label: "🔷", correct: false }, { label: "🔻", correct: false }, { label: "❤️", correct: false }, { label: "⚫", correct: true }], explanation: "A circle shape is 🟢." },
+    { question: "Tap the circle", items: [{ label: "⭐", correct: false }, { label: "💙", correct: false }, { label: "⬜", correct: false }, { label: "🟣", correct: true }], explanation: "A circle shape is 🟡." },
+    { question: "Tap the diamond", items: [{ label: "⭐", correct: false }, { label: "⬛", correct: false }, { label: "🔶", correct: true }, { label: "🔻", correct: false }], explanation: "A diamond shape is 🔷." },
+    { question: "Tap all the triangles", items: [{ label: "🔺", correct: true }, { label: "🔼", correct: true }, { label: "⭐", correct: false }, { label: "💙", correct: false }, { label: "🟥", correct: false }, { label: "🔽", correct: true }], explanation: "There are 3 triangles. Tap them all!" },
+    { question: "Tap the triangle", items: [{ label: "🔽", correct: true }, { label: "❤️", correct: false }, { label: "🔶", correct: false }, { label: "⭐", correct: false }], explanation: "A triangle shape is 🔻." },
+    { question: "Tap all the diamonds", items: [{ label: "🔶", correct: true }, { label: "🌟", correct: false }, { label: "🟣", correct: false }, { label: "♦️", correct: true }, { label: "⬛", correct: false }], explanation: "There are 2 diamonds. Tap them all!" },
+    { question: "Tap all the stars", items: [{ label: "🌟", correct: true }, { label: "🟢", correct: false }, { label: "⭐", correct: true }, { label: "🔷", correct: false }, { label: "💛", correct: false }], explanation: "There are 2 stars. Tap them all!" },
+    { question: "Tap the diamond", items: [{ label: "🟩", correct: false }, { label: "🌟", correct: false }, { label: "💙", correct: false }, { label: "🔷", correct: true }], explanation: "A diamond shape is 🔷." },
+    { question: "Tap all the stars", items: [{ label: "💜", correct: false }, { label: "🔻", correct: false }, { label: "⭐", correct: true }, { label: "🌟", correct: true }, { label: "♦️", correct: false }], explanation: "There are 2 stars. Tap them all!" },
+    { question: "Tap all the circles", items: [{ label: "🟠", correct: true }, { label: "🟡", correct: true }, { label: "⬜", correct: false }, { label: "🔻", correct: false }, { label: "🌟", correct: false }, { label: "⚫", correct: true }], explanation: "There are 3 circles. Tap them all!" },
+    { question: "Tap all the squares", items: [{ label: "🟧", correct: true }, { label: "♦️", correct: false }, { label: "🟦", correct: true }, { label: "🧡", correct: false }, { label: "🟪", correct: true }, { label: "🟡", correct: false }], explanation: "There are 3 squares. Tap them all!" },
+    { question: "Tap all the squares", items: [{ label: "🟨", correct: true }, { label: "🟩", correct: true }, { label: "💜", correct: false }, { label: "🌟", correct: false }, { label: "⬛", correct: true }, { label: "♦️", correct: false }], explanation: "There are 3 squares. Tap them all!" },
+    { question: "Tap all the circles", items: [{ label: "⭐", correct: false }, { label: "🔽", correct: false }, { label: "🟣", correct: true }, { label: "❤️", correct: false }, { label: "🔴", correct: true }], explanation: "There are 2 circles. Tap them all!" },
+    { question: "Tap all the stars", items: [{ label: "🔷", correct: false }, { label: "⭐", correct: true }, { label: "🔴", correct: false }, { label: "🌟", correct: true }, { label: "🧡", correct: false }], explanation: "There are 2 stars. Tap them all!" },
+    { question: "Tap all the triangles", items: [{ label: "🌟", correct: false }, { label: "🟢", correct: false }, { label: "💜", correct: false }, { label: "🔽", correct: true }, { label: "🔺", correct: true }], explanation: "There are 2 triangles. Tap them all!" },
+    { question: "Tap all the hearts", items: [{ label: "💙", correct: true }, { label: "🟧", correct: false }, { label: "⚪", correct: false }, { label: "🧡", correct: true }, { label: "🔼", correct: false }], explanation: "There are 2 hearts. Tap them all!" },
+    { question: "Tap all the hearts", items: [{ label: "🔷", correct: false }, { label: "💛", correct: true }, { label: "🔵", correct: false }, { label: "💜", correct: true }, { label: "⭐", correct: false }], explanation: "There are 2 hearts. Tap them all!" },
+    { question: "Tap all the squares", items: [{ label: "⬛", correct: true }, { label: "🟦", correct: true }, { label: "🔺", correct: false }, { label: "💛", correct: false }, { label: "🔶", correct: false }, { label: "⬜", correct: true }], explanation: "There are 3 squares. Tap them all!" },
+    { question: "Tap all the triangles", items: [{ label: "🔽", correct: true }, { label: "🟥", correct: false }, { label: "🔺", correct: true }, { label: "💜", correct: false }, { label: "🌟", correct: false }, { label: "🔻", correct: true }], explanation: "There are 3 triangles. Tap them all!" },
+    { question: "Tap the heart", items: [{ label: "💚", correct: true }, { label: "🟠", correct: false }, { label: "🌟", correct: false }, { label: "♦️", correct: false }], explanation: "A heart shape is ❤️." },
+    { question: "Tap all the hearts", items: [{ label: "🔷", correct: false }, { label: "❤️", correct: true }, { label: "🟠", correct: false }, { label: "⭐", correct: false }, { label: "💚", correct: true }], explanation: "There are 2 hearts. Tap them all!" },
+    { question: "Tap the heart", items: [{ label: "⬛", correct: false }, { label: "🔷", correct: false }, { label: "⭐", correct: false }, { label: "🧡", correct: true }], explanation: "A heart shape is 💛." },
+    { question: "Tap the circle", items: [{ label: "🔷", correct: false }, { label: "🔺", correct: false }, { label: "🟪", correct: false }, { label: "🔴", correct: true }], explanation: "A circle shape is 🔵." },
+    { question: "Tap all the hearts", items: [{ label: "🔵", correct: false }, { label: "🔽", correct: false }, { label: "❤️", correct: true }, { label: "🌟", correct: false }, { label: "💜", correct: true }, { label: "💚", correct: true }], explanation: "There are 3 hearts. Tap them all!" },
+    { question: "Tap all the circles", items: [{ label: "🟡", correct: true }, { label: "🔻", correct: false }, { label: "⭐", correct: false }, { label: "🔴", correct: true }, { label: "💙", correct: false }], explanation: "There are 2 circles. Tap them all!" },
+    { question: "Tap the heart", items: [{ label: "⚫", correct: false }, { label: "❤️", correct: true }, { label: "🔼", correct: false }, { label: "🌟", correct: false }], explanation: "A heart shape is 💛." },
+    { question: "Tap all the triangles", items: [{ label: "🔶", correct: false }, { label: "🌟", correct: false }, { label: "🔻", correct: true }, { label: "🔼", correct: true }, { label: "🔺", correct: true }, { label: "🟡", correct: false }], explanation: "There are 3 triangles. Tap them all!" },
+    { question: "Tap the star", items: [{ label: "⭐", correct: true }, { label: "🔷", correct: false }, { label: "💜", correct: false }, { label: "🔵", correct: false }], explanation: "A star shape is ⭐." },
+    { question: "Tap the star", items: [{ label: "🧡", correct: false }, { label: "⬜", correct: false }, { label: "🌟", correct: true }, { label: "🔻", correct: false }], explanation: "A star shape is 🌟." },
+    { question: "Tap the star", items: [{ label: "🔷", correct: false }, { label: "🔻", correct: false }, { label: "🌟", correct: true }, { label: "⚪", correct: false }], explanation: "A star shape is ⭐." },
+    { question: "Tap all the squares", items: [{ label: "⬜", correct: true }, { label: "🟪", correct: true }, { label: "🌟", correct: false }, { label: "💙", correct: false }, { label: "🔼", correct: false }], explanation: "There are 2 squares. Tap them all!" },
+    { question: "Tap the triangle", items: [{ label: "🔺", correct: true }, { label: "🟧", correct: false }, { label: "🌟", correct: false }, { label: "💙", correct: false }], explanation: "A triangle shape is 🔽." },
+    { question: "Tap the star", items: [{ label: "⭐", correct: true }, { label: "🟪", correct: false }, { label: "🔴", correct: false }, { label: "💚", correct: false }], explanation: "A star shape is ⭐." },
+    { question: "Tap the square", items: [{ label: "⬜", correct: true }, { label: "🟢", correct: false }, { label: "♦️", correct: false }, { label: "🔻", correct: false }], explanation: "A square shape is 🟨." },
+    { question: "Tap all the stars", items: [{ label: "💜", correct: false }, { label: "⭐", correct: true }, { label: "🌟", correct: true }, { label: "🟠", correct: false }, { label: "🔼", correct: false }], explanation: "There are 2 stars. Tap them all!" },
+    { question: "Tap the diamond", items: [{ label: "🟡", correct: false }, { label: "🟧", correct: false }, { label: "🌟", correct: false }, { label: "🔷", correct: true }], explanation: "A diamond shape is 🔶." },
+    { question: "Tap the triangle", items: [{ label: "⭐", correct: false }, { label: "🔽", correct: true }, { label: "♦️", correct: false }, { label: "⬜", correct: false }], explanation: "A triangle shape is 🔽." },
+    { question: "Tap the diamond", items: [{ label: "🟢", correct: false }, { label: "🟨", correct: false }, { label: "♦️", correct: true }, { label: "🌟", correct: false }], explanation: "A diamond shape is 🔷." },
+    { question: "Tap the diamond", items: [{ label: "🟧", correct: false }, { label: "🧡", correct: false }, { label: "🔽", correct: false }, { label: "♦️", correct: true }], explanation: "A diamond shape is 🔷." },
+    { question: "Tap the heart", items: [{ label: "🔻", correct: false }, { label: "⬜", correct: false }, { label: "🔴", correct: false }, { label: "💙", correct: true }], explanation: "A heart shape is 💛." },
+    { question: "Tap the triangle", items: [{ label: "⭐", correct: false }, { label: "🔺", correct: true }, { label: "🔶", correct: false }, { label: "🟪", correct: false }], explanation: "A triangle shape is 🔽." },
+    { question: "Tap all the hearts", items: [{ label: "🧡", correct: true }, { label: "🔽", correct: false }, { label: "🔴", correct: false }, { label: "⭐", correct: false }, { label: "💚", correct: true }], explanation: "There are 2 hearts. Tap them all!" },
+    { question: "Tap the circle", items: [{ label: "🔷", correct: false }, { label: "🟦", correct: false }, { label: "🔻", correct: false }, { label: "🟣", correct: true }], explanation: "A circle shape is 🟡." },
+    { question: "Tap the circle", items: [{ label: "⚫", correct: true }, { label: "⭐", correct: false }, { label: "♦️", correct: false }, { label: "🟩", correct: false }], explanation: "A circle shape is 🟡." },
+    { question: "Tap the diamond", items: [{ label: "🌟", correct: false }, { label: "⚫", correct: false }, { label: "♦️", correct: true }, { label: "🔽", correct: false }], explanation: "A diamond shape is 🔶." },
+    { question: "Tap all the hearts", items: [{ label: "🧡", correct: true }, { label: "🔷", correct: false }, { label: "🟠", correct: false }, { label: "🟥", correct: false }, { label: "💛", correct: true }], explanation: "There are 2 hearts. Tap them all!" },
+    { question: "Tap all the squares", items: [{ label: "⬜", correct: true }, { label: "🔼", correct: false }, { label: "⬛", correct: true }, { label: "🟢", correct: false }, { label: "🟦", correct: true }, { label: "🌟", correct: false }], explanation: "There are 3 squares. Tap them all!" },
+    { question: "Tap all the triangles", items: [{ label: "🔻", correct: true }, { label: "🔵", correct: false }, { label: "🔷", correct: false }, { label: "🔽", correct: true }, { label: "🔼", correct: true }, { label: "⭐", correct: false }], explanation: "There are 3 triangles. Tap them all!" },
+    { question: "Tap the square", items: [{ label: "🟧", correct: true }, { label: "💜", correct: false }, { label: "🟢", correct: false }, { label: "🔶", correct: false }], explanation: "A square shape is ⬛." },
+    { question: "Tap the star", items: [{ label: "🌟", correct: true }, { label: "🔵", correct: false }, { label: "🔷", correct: false }, { label: "🧡", correct: false }], explanation: "A star shape is 🌟." },
+    { question: "Tap all the circles", items: [{ label: "🟠", correct: true }, { label: "♦️", correct: false }, { label: "🔵", correct: true }, { label: "🌟", correct: false }, { label: "🟡", correct: true }, { label: "💜", correct: false }], explanation: "There are 3 circles. Tap them all!" },
+    { question: "Tap all the circles", items: [{ label: "🔶", correct: false }, { label: "⚫", correct: true }, { label: "⬛", correct: false }, { label: "🌟", correct: false }, { label: "🔴", correct: true }, { label: "🟢", correct: true }], explanation: "There are 3 circles. Tap them all!" },
+    { question: "Tap the square", items: [{ label: "🔵", correct: false }, { label: "🟦", correct: true }, { label: "⭐", correct: false }, { label: "💙", correct: false }], explanation: "A square shape is ⬛." },
+    { question: "Tap the circle", items: [{ label: "💚", correct: false }, { label: "🟣", correct: true }, { label: "🌟", correct: false }, { label: "♦️", correct: false }], explanation: "A circle shape is 🟣." },
+    { question: "Tap the heart", items: [{ label: "🔽", correct: false }, { label: "🟦", correct: false }, { label: "🟠", correct: false }, { label: "💛", correct: true }], explanation: "A heart shape is 💙." },
+    { question: "Tap the diamond", items: [{ label: "♦️", correct: true }, { label: "🟪", correct: false }, { label: "🟡", correct: false }, { label: "❤️", correct: false }], explanation: "A diamond shape is ♦️." },
+    { question: "Tap all the squares", items: [{ label: "🔷", correct: false }, { label: "🟩", correct: true }, { label: "🔻", correct: false }, { label: "🟧", correct: true }, { label: "🌟", correct: false }], explanation: "There are 2 squares. Tap them all!" },
+    { question: "Tap the diamond", items: [{ label: "🔶", correct: true }, { label: "🌟", correct: false }, { label: "🟠", correct: false }, { label: "🔺", correct: false }], explanation: "A diamond shape is 🔶." },
+    { question: "Tap the star", items: [{ label: "🟧", correct: false }, { label: "♦️", correct: false }, { label: "⚪", correct: false }, { label: "⭐", correct: true }], explanation: "A star shape is ⭐." },
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+
+    <!-- Tap-select engine (exposes window.initTapSelectQuiz) -->
+    <script src="../../js/tap_select.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => initTapSelectQuiz(questions));
+    </script>
+  </body>
+</html>

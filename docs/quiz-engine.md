@@ -1,7 +1,8 @@
 # Quiz Engine & Exercise Logic
 
-There are **three** quiz engines, each in its own JavaScript file. The MCQ engine powers
-the large majority of exercises (all Math, GK, Science, and most English).
+There are **four** quiz engines, each in its own JavaScript file. The MCQ engine powers
+the large majority of exercises (all Level-1 Math, GK, Science, and most English); the
+tap-to-select engine powers the KG-3 math section.
 
 - [The MCQ engine (`initMCQQuiz`)](#the-mcq-engine-initmcqquiz)
 - [Question data shape](#question-data-shape)
@@ -11,6 +12,7 @@ the large majority of exercises (all Math, GK, Science, and most English).
 - [Emoji rain](#emoji-rain)
 - [The drag-and-drop engines](#the-drag-and-drop-engines)
 - [The audio engine](#the-audio-engine)
+- [The tap-to-select engine](#the-tap-to-select-engine)
 
 ---
 
@@ -198,3 +200,64 @@ Relevant DOM ids: `#playBtn`, `#options`, `#feedback`, `#instruction`, `#qimg`,
 classes; the Next button gets `.is-disabled` until an answer is chosen. Styling lives in
 `css/audio_style.css`. Like the drag-and-drop engines, audio exercises have their own
 fixed question lists and are independent of the MCQ 25-of-100 logic.
+
+---
+
+## The tap-to-select engine
+
+Defined in `js/tap_select.js` and exposed as `window.initTapSelectQuiz`. It powers the
+**KG-3 math** section and is deliberately **subject-agnostic** (reusable for
+English/Science/GK). The learner taps the correct picture(s), or taps a given *number* of
+things. Like the MCQ and audio engines, it **follows the 100-in-bank / 25-shown
+contract** — the full `questions` array is never mutated; a fresh random 25 is drawn on
+open.
+
+A page calls it once, links `css/question.css` **and** `css/tap_select.css`, and provides
+a `<div id="tap-grid">` for the tiles (plus the usual shared hooks). The engine creates
+the live tap-counter and the **Check** button itself:
+
+```js
+window.addEventListener("DOMContentLoaded", () => initTapSelectQuiz(questions));
+```
+
+It reuses `#question-text`, `#feedback`, `#explanation`, `#next-btn`, `.quiz-container`
+and adds `#tap-grid`. Two question shapes:
+
+**Match mode** — tap the item(s) that fit a rule:
+
+```js
+{
+  question: "Tap the 🔺 triangle",
+  items: [
+    { label: "🔺", correct: true },
+    { label: "🟦", correct: false },
+    { label: "⚫", correct: false }
+  ],
+  explanation: "A triangle has 3 sides."   // optional
+}
+```
+
+- `items` may also be plain strings (treated as `correct:false` distractors).
+- **1 correct** item → a single tap checks instantly (MCQ-like).
+- **>1 correct** items → tap several, then press the **Check** button (multi-select).
+
+**Count mode** — tap a given *number* of things:
+
+```js
+{ question: "Tap 4 apples 🍎", count: 4, items: ["🍎","🍎","🍎","🍎","🍎","🍎"],
+  explanation: "Count 1, 2, 3, 4 as you tap." }
+```
+
+- Any `count` tiles are accepted; a live "Tapped: N" counter helps young learners.
+
+**Optional per-question fields:**
+
+| Field | Effect |
+|---|---|
+| `image` | Shows a scene image above the question (hidden gracefully if missing — used for image TODOs). |
+| `layout` | `"row"` or `"column"` fixes the tile arrangement for spatial concepts (left/right, above/below). Default is the responsive grid. |
+
+Feedback matches the MCQ engine ("Well done ❤️" / "Oops, try again 😢" with emoji rain);
+result tiles get `.correct` / `.incorrect`, and unpicked correct answers are revealed with
+`.missed`. Styling lives in `css/tap_select.css` (a thin layer over the quiz shell that
+uses the shared design tokens only).
