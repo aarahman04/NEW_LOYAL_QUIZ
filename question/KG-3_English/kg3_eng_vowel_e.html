@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vowel E — Picture Words</title>
+    <!-- Shared MCQ quiz shell (design tokens live in question.css) -->
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options rendered by the MCQ engine -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+
+    <script>
+      // Short-vowel 'e' picture words (source: questions vowel e.md)
+      // Bank of 100; the MCQ engine shows a fresh random 25 per attempt.
+      const questions = [
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/1.png", options: ["bed", "but"], correct: "bed", explanation: "The picture matches <strong>bed</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/2.png", options: ["because", "beg"], correct: "beg", explanation: "The picture matches <strong>beg</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/3.png", options: ["bag", "beg"], correct: "beg", explanation: "The picture matches <strong>beg</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/4.png", options: ["bet", "beg"], correct: "bet", explanation: "The picture matches <strong>bet</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/5.png", options: ["bet", "den"], correct: "den", explanation: "The picture matches <strong>den</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/6.png", options: ["fed", "first"], correct: "fed", explanation: "The picture matches <strong>fed</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/7.png", options: ["gel", "got"], correct: "gel", explanation: "The picture matches <strong>gel</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/8.png", options: ["gel", "gem"], correct: "gem", explanation: "The picture matches <strong>gem</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/9.png", options: ["gel", "get"], correct: "get", explanation: "The picture matches <strong>get</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/10.png", options: ["hen", "hat"], correct: "hen", explanation: "The picture matches <strong>hen</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/11.png", options: ["hen", "hat"], correct: "hen", explanation: "The picture matches <strong>hen</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/12.png", options: ["jet", "set"], correct: "jet", explanation: "The picture matches <strong>jet</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/13.png", options: ["bed", "led"], correct: "led", explanation: "The picture matches <strong>led</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/14.png", options: ["led", "leg"], correct: "leg", explanation: "The picture matches <strong>leg</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/15.png", options: ["men", "man"], correct: "men", explanation: "The picture matches <strong>men</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/16.png", options: ["wed", "wet"], correct: "wet", explanation: "The picture matches <strong>wet</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/17.png", options: ["net", "not"], correct: "net", explanation: "The picture matches <strong>net</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/18.png", options: ["peg", "play"], correct: "peg", explanation: "The picture matches <strong>peg</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/19.png", options: ["pen", "peg"], correct: "pen", explanation: "The picture matches <strong>pen</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/20.png", options: ["pen", "pet"], correct: "pet", explanation: "The picture matches <strong>pet</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/21.png", options: ["red", "get"], correct: "red", explanation: "The picture matches <strong>red</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/22.png", options: ["met", "set"], correct: "set", explanation: "The picture matches <strong>set</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/23.png", options: ["ten", "set"], correct: "ten", explanation: "The picture matches <strong>ten</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/24.png", options: ["ten", "vet"], correct: "vet", explanation: "The picture matches <strong>vet</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/25.png", options: ["web", "wet"], correct: "web", explanation: "The picture matches <strong>web</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/26.png", options: ["yes", "no"], correct: "yes", explanation: "The picture matches <strong>yes</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/27.png", options: ["chef", "bled"], correct: "chef", explanation: "The picture matches <strong>chef</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/28.png", options: ["flex", "bled"], correct: "flex", explanation: "The picture matches <strong>flex</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/29.png", options: ["bell", "bled"], correct: "bell", explanation: "The picture matches <strong>bell</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/30.png", options: ["well", "bell"], correct: "bell", explanation: "The picture matches <strong>bell</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/31.png", options: ["shed", "she"], correct: "shed", explanation: "The picture matches <strong>shed</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/32.png", options: ["set", "sled"], correct: "sled", explanation: "The picture matches <strong>sled</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/33.png", options: ["stem", "set"], correct: "stem", explanation: "The picture matches <strong>stem</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/34.png", options: ["belt", "bend"], correct: "belt", explanation: "The picture matches <strong>belt</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/35.png", options: ["belt", "bend"], correct: "bend", explanation: "The picture matches <strong>bend</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/36.png", options: ["bent", "bed"], correct: "bent", explanation: "The picture matches <strong>bent</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/37.png", options: ["best", "bed"], correct: "best", explanation: "The picture matches <strong>best</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/38.png", options: ["desk", "stem"], correct: "desk", explanation: "The picture matches <strong>desk</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/39.png", options: ["best", "nest"], correct: "nest", explanation: "The picture matches <strong>nest</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/40.png", options: ["best", "melt"], correct: "melt", explanation: "The picture matches <strong>melt</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/41.png", options: ["dent", "help"], correct: "help", explanation: "The picture matches <strong>help</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/42.png", options: ["help", "hen"], correct: "help", explanation: "The picture matches <strong>help</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/43.png", options: ["kept", "left"], correct: "left", explanation: "The picture matches <strong>left</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/44.png", options: ["lend", "left"], correct: "lend", explanation: "The picture matches <strong>lend</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/45.png", options: ["lend", "mend"], correct: "mend", explanation: "The picture matches <strong>mend</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/46.png", options: ["mend", "lend"], correct: "mend", explanation: "The picture matches <strong>mend</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/47.png", options: ["less", "mess"], correct: "mess", explanation: "The picture matches <strong>mess</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/48.png", options: ["deck", "neck"], correct: "neck", explanation: "The picture matches <strong>neck</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/49.png", options: ["neck", "nest"], correct: "nest", explanation: "The picture matches <strong>nest</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/50.png", options: ["next", "nest"], correct: "next", explanation: "The picture matches <strong>next</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/51.png", options: ["nest", "next"], correct: "next", explanation: "The picture matches <strong>next</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/52.png", options: ["pest", "next"], correct: "pest", explanation: "The picture matches <strong>pest</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/53.png", options: ["pest", "next"], correct: "pest", explanation: "The picture matches <strong>pest</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/54.png", options: ["next", "pest"], correct: "pest", explanation: "The picture matches <strong>pest</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/55.png", options: ["rest", "pest"], correct: "rest", explanation: "The picture matches <strong>rest</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/56.png", options: ["best", "rest"], correct: "rest", explanation: "The picture matches <strong>rest</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/57.png", options: ["sell", "test"], correct: "sell", explanation: "The picture matches <strong>sell</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/58.png", options: ["tell", "sell"], correct: "sell", explanation: "The picture matches <strong>sell</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/59.png", options: ["send", "sell"], correct: "send", explanation: "The picture matches <strong>send</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/60.png", options: ["lend", "send"], correct: "send", explanation: "The picture matches <strong>send</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/61.png", options: ["lend", "send"], correct: "send", explanation: "The picture matches <strong>send</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/62.png", options: ["tell", "send"], correct: "tell", explanation: "The picture matches <strong>tell</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/63.png", options: ["sell", "tell"], correct: "tell", explanation: "The picture matches <strong>tell</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/64.png", options: ["tell", "tent"], correct: "tent", explanation: "The picture matches <strong>tent</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/65.png", options: ["tell", "tent"], correct: "tent", explanation: "The picture matches <strong>tent</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/66.png", options: ["test", "tent"], correct: "test", explanation: "The picture matches <strong>test</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/67.png", options: ["test", "tent"], correct: "test", explanation: "The picture matches <strong>test</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/68.png", options: ["test", "vest"], correct: "vest", explanation: "The picture matches <strong>vest</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/69.png", options: ["test", "vest"], correct: "vest", explanation: "The picture matches <strong>vest</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/70.png", options: ["well", "west"], correct: "well", explanation: "The picture matches <strong>well</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/71.png", options: ["what", "well"], correct: "well", explanation: "The picture matches <strong>well</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/72.png", options: ["west", "well"], correct: "west", explanation: "The picture matches <strong>west</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/73.png", options: ["west", "well"], correct: "west", explanation: "The picture matches <strong>west</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/74.png", options: ["west", "went"], correct: "went", explanation: "The picture matches <strong>went</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/75.png", options: ["stem", "step"], correct: "step", explanation: "The picture matches <strong>step</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/76.png", options: ["cent", "stem"], correct: "cent", explanation: "The picture matches <strong>cent</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/77.png", options: ["cent", "stem"], correct: "cent", explanation: "The picture matches <strong>cent</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/78.png", options: ["fed", "fret"], correct: "fret", explanation: "The picture matches <strong>fret</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/79.png", options: ["wed", "web"], correct: "wed", explanation: "The picture matches <strong>wed</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/80.png", options: ["vat", "vet"], correct: "vet", explanation: "The picture matches <strong>vet</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/81.png", options: ["bed", "but"], correct: "bed", explanation: "The picture matches <strong>bed</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/82.png", options: ["because", "beg"], correct: "beg", explanation: "The picture matches <strong>beg</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/83.png", options: ["bag", "beg"], correct: "beg", explanation: "The picture matches <strong>beg</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/84.png", options: ["bet", "beg"], correct: "bet", explanation: "The picture matches <strong>bet</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/85.png", options: ["bet", "den"], correct: "den", explanation: "The picture matches <strong>den</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/86.png", options: ["fed", "first"], correct: "fed", explanation: "The picture matches <strong>fed</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/87.png", options: ["gel", "got"], correct: "gel", explanation: "The picture matches <strong>gel</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/88.png", options: ["gel", "gem"], correct: "gem", explanation: "The picture matches <strong>gem</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/89.png", options: ["gel", "get"], correct: "get", explanation: "The picture matches <strong>get</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/90.png", options: ["hen", "hat"], correct: "hen", explanation: "The picture matches <strong>hen</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/91.png", options: ["hen", "hat"], correct: "hen", explanation: "The picture matches <strong>hen</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/92.png", options: ["jet", "set"], correct: "jet", explanation: "The picture matches <strong>jet</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/93.png", options: ["bed", "led"], correct: "led", explanation: "The picture matches <strong>led</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/94.png", options: ["led", "leg"], correct: "leg", explanation: "The picture matches <strong>leg</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/95.png", options: ["men", "man"], correct: "men", explanation: "The picture matches <strong>men</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/96.png", options: ["wed", "wet"], correct: "wet", explanation: "The picture matches <strong>wet</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/97.png", options: ["net", "not"], correct: "net", explanation: "The picture matches <strong>net</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/98.png", options: ["peg", "play"], correct: "peg", explanation: "The picture matches <strong>peg</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/99.png", options: ["pen", "peg"], correct: "pen", explanation: "The picture matches <strong>pen</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_Vowel_E/100.png", options: ["pen", "pet"], correct: "pet", explanation: "The picture matches <strong>pet</strong>. Say it slowly — it has the short <strong>e</strong> sound." },
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+
+    <!-- MCQ engine (exposes window.initMCQQuiz) -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));
+    </script>
+  </body>
+</html>

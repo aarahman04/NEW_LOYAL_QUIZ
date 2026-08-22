@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find the Consonant</title>
+    <!-- Shared MCQ quiz shell (design tokens live in question.css) -->
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options rendered by the MCQ engine -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+
+    <script>
+      // Letter MCQ: which letter is a consonant (source: Consonant_100_MCQ.md)
+      // Bank of 100; the MCQ engine shows a fresh random 25 per attempt.
+      const questions = [
+    { question: "Which of the following letters is a consonant?", options: ["b", "a", "e"], correct: "b", explanation: "<strong>b</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["i", "m", "o"], correct: "m", explanation: "<strong>m</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["u", "e", "t"], correct: "t", explanation: "<strong>t</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["c", "a", "i"], correct: "c", explanation: "<strong>c</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["o", "r", "u"], correct: "r", explanation: "<strong>r</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["e", "a", "k"], correct: "k", explanation: "<strong>k</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["p", "i", "o"], correct: "p", explanation: "<strong>p</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["a", "g", "e"], correct: "g", explanation: "<strong>g</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["u", "n", "i"], correct: "n", explanation: "<strong>n</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["d", "o", "a"], correct: "d", explanation: "<strong>d</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["e", "l", "i"], correct: "l", explanation: "<strong>l</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["a", "u", "v"], correct: "v", explanation: "<strong>v</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["s", "e", "o"], correct: "s", explanation: "<strong>s</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["i", "q", "a"], correct: "q", explanation: "<strong>q</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["o", "u", "h"], correct: "h", explanation: "<strong>h</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["j", "e", "i"], correct: "j", explanation: "<strong>j</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["a", "z", "o"], correct: "z", explanation: "<strong>z</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["e", "u", "f"], correct: "f", explanation: "<strong>f</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["w", "a", "i"], correct: "w", explanation: "<strong>w</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["o", "x", "e"], correct: "x", explanation: "<strong>x</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["i", "b", "u"], correct: "b", explanation: "<strong>b</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["i", "o", "m"], correct: "m", explanation: "<strong>m</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["t", "e", "i"], correct: "t", explanation: "<strong>t</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["u", "c", "o"], correct: "c", explanation: "<strong>c</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["a", "r", "e"], correct: "r", explanation: "<strong>r</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["i", "o", "k"], correct: "k", explanation: "<strong>k</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["p", "u", "a"], correct: "p", explanation: "<strong>p</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["e", "g", "o"], correct: "g", explanation: "<strong>g</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["i", "n", "u"], correct: "n", explanation: "<strong>n</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["d", "a", "o"], correct: "d", explanation: "<strong>d</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["e", "u", "l"], correct: "l", explanation: "<strong>l</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["v", "i", "a"], correct: "v", explanation: "<strong>v</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["o", "s", "e"], correct: "s", explanation: "<strong>s</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["u", "q", "i"], correct: "q", explanation: "<strong>q</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["a", "e", "h"], correct: "h", explanation: "<strong>h</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["j", "o", "u"], correct: "j", explanation: "<strong>j</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["i", "z", "a"], correct: "z", explanation: "<strong>z</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["e", "u", "f"], correct: "f", explanation: "<strong>f</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["w", "o", "a"], correct: "w", explanation: "<strong>w</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["i", "x", "e"], correct: "x", explanation: "<strong>x</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["y", "a", "o"], correct: "y", explanation: "<strong>y</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["e", "b", "u"], correct: "b", explanation: "<strong>b</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["a", "i", "c"], correct: "c", explanation: "<strong>c</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["d", "o", "e"], correct: "d", explanation: "<strong>d</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["u", "f", "i"], correct: "f", explanation: "<strong>f</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["a", "o", "g"], correct: "g", explanation: "<strong>g</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["h", "e", "u"], correct: "h", explanation: "<strong>h</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["i", "j", "a"], correct: "j", explanation: "<strong>j</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["o", "u", "k"], correct: "k", explanation: "<strong>k</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["l", "e", "a"], correct: "l", explanation: "<strong>l</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["i", "m", "o"], correct: "m", explanation: "<strong>m</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["u", "a", "n"], correct: "n", explanation: "<strong>n</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["p", "e", "i"], correct: "p", explanation: "<strong>p</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["a", "q", "o"], correct: "q", explanation: "<strong>q</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["u", "r", "e"], correct: "r", explanation: "<strong>r</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["s", "i", "a"], correct: "s", explanation: "<strong>s</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["o", "t", "u"], correct: "t", explanation: "<strong>t</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["e", "a", "v"], correct: "v", explanation: "<strong>v</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["w", "i", "o"], correct: "w", explanation: "<strong>w</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["a", "x", "u"], correct: "x", explanation: "<strong>x</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["e", "y", "i"], correct: "y", explanation: "<strong>y</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["z", "o", "a"], correct: "z", explanation: "<strong>z</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["u", "b", "e"], correct: "b", explanation: "<strong>b</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["i", "a", "c"], correct: "c", explanation: "<strong>c</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["d", "u", "o"], correct: "d", explanation: "<strong>d</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["e", "f", "a"], correct: "f", explanation: "<strong>f</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["i", "o", "g"], correct: "g", explanation: "<strong>g</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["h", "a", "u"], correct: "h", explanation: "<strong>h</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["e", "j", "o"], correct: "j", explanation: "<strong>j</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["i", "u", "k"], correct: "k", explanation: "<strong>k</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["l", "a", "e"], correct: "l", explanation: "<strong>l</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["o", "m", "i"], correct: "m", explanation: "<strong>m</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["u", "n", "a"], correct: "n", explanation: "<strong>n</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["p", "i", "e"], correct: "p", explanation: "<strong>p</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["a", "q", "u"], correct: "q", explanation: "<strong>q</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["o", "r", "i"], correct: "r", explanation: "<strong>r</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["s", "e", "a"], correct: "s", explanation: "<strong>s</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["u", "t", "o"], correct: "t", explanation: "<strong>t</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["i", "a", "v"], correct: "v", explanation: "<strong>v</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["w", "e", "u"], correct: "w", explanation: "<strong>w</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["a", "x", "o"], correct: "x", explanation: "<strong>x</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["s", "u", "o"], correct: "s", explanation: "<strong>s</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["e", "f", "a"], correct: "f", explanation: "<strong>f</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["i", "o", "b"], correct: "b", explanation: "<strong>b</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["h", "a", "u"], correct: "h", explanation: "<strong>h</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["e", "c", "o"], correct: "c", explanation: "<strong>c</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["i", "u", "p"], correct: "p", explanation: "<strong>p</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["l", "a", "e"], correct: "l", explanation: "<strong>l</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["o", "w", "i"], correct: "w", explanation: "<strong>w</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["u", "s", "a"], correct: "s", explanation: "<strong>s</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["g", "i", "e"], correct: "g", explanation: "<strong>g</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["a", "q", "u"], correct: "q", explanation: "<strong>q</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["o", "r", "i"], correct: "r", explanation: "<strong>r</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["s", "e", "a"], correct: "s", explanation: "<strong>s</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["u", "a", "y"], correct: "y", explanation: "<strong>y</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["d", "o", "a"], correct: "d", explanation: "<strong>d</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["o", "none", "u"], correct: "none", explanation: "None of these is a consonant — <strong>o</strong> and <strong>u</strong> are vowels. The vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a consonant?", options: ["a", "i", "h"], correct: "h", explanation: "<strong>h</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["a", "b", "e"], correct: "b", explanation: "<strong>b</strong> is a consonant. Every letter that is not a, e, i, o or u is a consonant." },
+    { question: "Which of the following letters is a consonant?", options: ["o", "none", "u"], correct: "none", explanation: "None of these is a consonant — <strong>o</strong> and <strong>u</strong> are vowels. The vowels are a, e, i, o, u." },
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+
+    <!-- MCQ engine (exposes window.initMCQQuiz) -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find the Vowel</title>
+    <!-- Shared MCQ quiz shell (design tokens live in question.css) -->
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options rendered by the MCQ engine -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+
+    <script>
+      // Letter MCQ: which letter is a vowel (source: Vowels_100_MCQ.md)
+      // Bank of 100; the MCQ engine shows a fresh random 25 per attempt.
+      const questions = [
+    { question: "Which of the following letters is a vowel?", options: ["b", "a", "s"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["i", "m", "s"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["t", "e", "s"], correct: "e", explanation: "<strong>e</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["c", "a", "q"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "b", "u"], correct: "u", explanation: "<strong>u</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["k", "t", "e"], correct: "e", explanation: "<strong>e</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["p", "s", "o"], correct: "o", explanation: "<strong>o</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["t", "r", "e"], correct: "e", explanation: "<strong>e</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["u", "n", "s"], correct: "u", explanation: "<strong>u</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["q", "s", "a"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "l", "i"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["q", "u", "s"], correct: "u", explanation: "<strong>u</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "e", "m"], correct: "e", explanation: "<strong>e</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["i", "q", "z"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["o", "x", "h"], correct: "o", explanation: "<strong>o</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["j", "e", "c"], correct: "e", explanation: "<strong>e</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["a", "z", "w"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["q", "u", "f"], correct: "u", explanation: "<strong>u</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["w", "a", "b"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["o", "x", "s"], correct: "o", explanation: "<strong>o</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["a", "b", "m"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["j", "o", "m"], correct: "o", explanation: "<strong>o</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["t", "e", "p"], correct: "e", explanation: "<strong>e</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["u", "c", "r"], correct: "u", explanation: "<strong>u</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["b", "r", "e"], correct: "e", explanation: "<strong>e</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["i", "l", "m"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "x", "a"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["v", "g", "o"], correct: "o", explanation: "<strong>o</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["i", "n", "z"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["d", "m", "a"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["q", "a", "z"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["v", "i", "q"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["b", "s", "e"], correct: "e", explanation: "<strong>e</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["z", "q", "i"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["w", "e", "h"], correct: "e", explanation: "<strong>e</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["j", "r", "u"], correct: "u", explanation: "<strong>u</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["f", "z", "a"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "u", "f"], correct: "u", explanation: "<strong>u</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["t", "m", "a"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["i", "x", "y"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["y", "p", "o"], correct: "o", explanation: "<strong>o</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "b", "u"], correct: "u", explanation: "<strong>u</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "i", "c"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["d", "o", "X"], correct: "o", explanation: "<strong>o</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["m", "f", "i"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["w", "o", "g"], correct: "o", explanation: "<strong>o</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["h", "z", "u"], correct: "u", explanation: "<strong>u</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["i", "j", "n"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["z", "u", "k"], correct: "u", explanation: "<strong>u</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["l", "e", "s"], correct: "e", explanation: "<strong>e</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "m", "o"], correct: "o", explanation: "<strong>o</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["w", "a", "n"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["p", "e", "t"], correct: "e", explanation: "<strong>e</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["a", "q", "s"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "r", "e"], correct: "e", explanation: "<strong>e</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "i", "t"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "t", "u"], correct: "u", explanation: "<strong>u</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["d", "a", "v"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["k", "s", "o"], correct: "o", explanation: "<strong>o</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["a", "x", "m"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["z", "y", "i"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["z", "s", "a"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["w", "b", "e"], correct: "e", explanation: "<strong>e</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["i", "s", "c"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["z", "u", "m"], correct: "u", explanation: "<strong>u</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["e", "f", "d"], correct: "e", explanation: "<strong>e</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "o", "g"], correct: "o", explanation: "<strong>o</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["h", "q", "u"], correct: "u", explanation: "<strong>u</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["y", "j", "o"], correct: "o", explanation: "<strong>o</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["w", "u", "k"], correct: "u", explanation: "<strong>u</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["l", "a", "b"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["o", "m", "z"], correct: "o", explanation: "<strong>o</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["q", "n", "a"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["p", "i", "r"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["a", "q", "s"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["z", "a", "x"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "v", "a"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["q", "t", "a"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["i", "g", "v"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["w", "e", "b"], correct: "e", explanation: "<strong>e</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["a", "x", "v"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "u", "b"], correct: "u", explanation: "<strong>u</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["x", "z", "a"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["m", "o", "b"], correct: "o", explanation: "<strong>o</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["h", "r", "u"], correct: "u", explanation: "<strong>u</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["x", "c", "o"], correct: "o", explanation: "<strong>o</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["y", "u", "p"], correct: "u", explanation: "<strong>u</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["l", "s", "e"], correct: "e", explanation: "<strong>e</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["m", "w", "i"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["a", "s", "x"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["g", "i", "n"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["a", "q", "x"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["y", "o", "s"], correct: "o", explanation: "<strong>o</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "b", "a"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "d", "i"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["n", "o", "v"], correct: "o", explanation: "<strong>o</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["v", "none", "x"], correct: "none", explanation: "None of these is a vowel — <strong>v</strong> and <strong>x</strong> are consonants. The vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "i", "h"], correct: "i", explanation: "<strong>i</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["s", "b", "a"], correct: "a", explanation: "<strong>a</strong> is a vowel. The five vowels are a, e, i, o, u." },
+    { question: "Which of the following letters is a vowel?", options: ["c", "none", "m"], correct: "none", explanation: "None of these is a vowel — <strong>c</strong> and <strong>m</strong> are consonants. The vowels are a, e, i, o, u." },
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+
+    <!-- MCQ engine (exposes window.initMCQQuiz) -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vowel I — Picture Words</title>
+    <!-- Shared MCQ quiz shell (design tokens live in question.css) -->
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options rendered by the MCQ engine -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+
+    <script>
+      // Short-vowel 'i' picture words (source: questions vowel i.md)
+      // Bank of 100; the MCQ engine shows a fresh random 25 per attempt.
+      const questions = [
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/1.png", options: ["sit", "bit"], correct: "sit", explanation: "The picture matches <strong>sit</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/2.png", options: ["sit", "bit"], correct: "bit", explanation: "The picture matches <strong>bit</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/3.png", options: ["sit", "bit"], correct: "bit", explanation: "The picture matches <strong>bit</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/4.png", options: ["fit", "bit"], correct: "fit", explanation: "The picture matches <strong>fit</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/5.png", options: ["fit", "bit"], correct: "fit", explanation: "The picture matches <strong>fit</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/6.png", options: ["hit", "bit"], correct: "hit", explanation: "The picture matches <strong>hit</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/7.png", options: ["fit", "hit"], correct: "hit", explanation: "The picture matches <strong>hit</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/8.png", options: ["fit", "kit"], correct: "kit", explanation: "The picture matches <strong>kit</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/9.png", options: ["kit", "sit"], correct: "kit", explanation: "The picture matches <strong>kit</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/10.png", options: ["kit", "lit"], correct: "lit", explanation: "The picture matches <strong>lit</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/11.png", options: ["quit", "lit"], correct: "quit", explanation: "The picture matches <strong>quit</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/12.png", options: ["quit", "lit"], correct: "quit", explanation: "The picture matches <strong>quit</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/13.png", options: ["kid", "lit"], correct: "kid", explanation: "The picture matches <strong>kid</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/14.png", options: ["kid", "kids"], correct: "kids", explanation: "The picture matches <strong>kids</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/15.png", options: ["kid", "lid"], correct: "lid", explanation: "The picture matches <strong>lid</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/16.png", options: ["kid", "lid"], correct: "lid", explanation: "The picture matches <strong>lid</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/17.png", options: ["hid", "lid"], correct: "hid", explanation: "The picture matches <strong>hid</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/18.png", options: ["fit", "hid"], correct: "hid", explanation: "The picture matches <strong>hid</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/19.png", options: ["fit", "bid"], correct: "bid", explanation: "The picture matches <strong>bid</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/20.png", options: ["fit", "bid"], correct: "bid", explanation: "The picture matches <strong>bid</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/21.png", options: ["rib", "bid"], correct: "rib", explanation: "The picture matches <strong>rib</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/22.png", options: ["rib", "bib"], correct: "bib", explanation: "The picture matches <strong>bib</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/23.png", options: ["rib", "bib"], correct: "bib", explanation: "The picture matches <strong>bib</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/24.png", options: ["fin", "bib"], correct: "fin", explanation: "The picture matches <strong>fin</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/25.png", options: ["fin", "tin"], correct: "tin", explanation: "The picture matches <strong>tin</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/26.png", options: ["fin", "tin"], correct: "tin", explanation: "The picture matches <strong>tin</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/27.png", options: ["fin", "win"], correct: "win", explanation: "The picture matches <strong>win</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/28.png", options: ["win", "web"], correct: "win", explanation: "The picture matches <strong>win</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/29.png", options: ["win", "bin"], correct: "bin", explanation: "The picture matches <strong>bin</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/30.png", options: ["pin", "bin"], correct: "pin", explanation: "The picture matches <strong>pin</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/31.png", options: ["fix", "mix"], correct: "fix", explanation: "The picture matches <strong>fix</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/32.png", options: ["six", "fix"], correct: "fix", explanation: "The picture matches <strong>fix</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/33.png", options: ["six", "mix"], correct: "mix", explanation: "The picture matches <strong>mix</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/34.png", options: ["six", "mix"], correct: "mix", explanation: "The picture matches <strong>mix</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/35.png", options: ["six", "big"], correct: "big", explanation: "The picture matches <strong>big</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/36.png", options: ["big", "pig"], correct: "big", explanation: "The picture matches <strong>big</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/37.png", options: ["big", "pig"], correct: "pig", explanation: "The picture matches <strong>pig</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/38.png", options: ["big", "pig"], correct: "pig", explanation: "The picture matches <strong>pig</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/39.png", options: ["pig", "big"], correct: "pig", explanation: "The picture matches <strong>pig</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/40.png", options: ["fig", "big"], correct: "fig", explanation: "The picture matches <strong>fig</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/41.png", options: ["big", "fig"], correct: "fig", explanation: "The picture matches <strong>fig</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/42.png", options: ["wig", "fit"], correct: "wig", explanation: "The picture matches <strong>wig</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/43.png", options: ["wig", "fit"], correct: "wig", explanation: "The picture matches <strong>wig</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/44.png", options: ["wig", "hill"], correct: "hill", explanation: "The picture matches <strong>hill</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/45.png", options: ["hill", "will"], correct: "hill", explanation: "The picture matches <strong>hill</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/46.png", options: ["fill", "will"], correct: "fill", explanation: "The picture matches <strong>fill</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/47.png", options: ["fill", "mill"], correct: "mill", explanation: "The picture matches <strong>mill</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/48.png", options: ["fill", "mill"], correct: "mill", explanation: "The picture matches <strong>mill</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/49.png", options: ["mill", "milk"], correct: "mill", explanation: "The picture matches <strong>mill</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/50.png", options: ["mill", "pill"], correct: "pill", explanation: "The picture matches <strong>pill</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/51.png", options: ["pill", "bill"], correct: "pill", explanation: "The picture matches <strong>pill</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/52.png", options: ["pill", "bill"], correct: "bill", explanation: "The picture matches <strong>bill</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/53.png", options: ["pill", "bill"], correct: "bill", explanation: "The picture matches <strong>bill</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/54.png", options: ["crib", "bile"], correct: "crib", explanation: "The picture matches <strong>crib</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/55.png", options: ["crib", "bile"], correct: "crib", explanation: "The picture matches <strong>crib</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/56.png", options: ["crib", "flip"], correct: "flip", explanation: "The picture matches <strong>flip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/57.png", options: ["flip", "rip"], correct: "flip", explanation: "The picture matches <strong>flip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/58.png", options: ["flip", "slip"], correct: "slip", explanation: "The picture matches <strong>slip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/59.png", options: ["flip", "slip"], correct: "slip", explanation: "The picture matches <strong>slip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/60.png", options: ["trip", "slip"], correct: "trip", explanation: "The picture matches <strong>trip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/61.png", options: ["tip", "trip"], correct: "trip", explanation: "The picture matches <strong>trip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/62.png", options: ["trip", "trim"], correct: "trip", explanation: "The picture matches <strong>trip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/63.png", options: ["trip", "drip"], correct: "drip", explanation: "The picture matches <strong>drip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/64.png", options: ["drip", "trip"], correct: "drip", explanation: "The picture matches <strong>drip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/65.png", options: ["grip", "trip"], correct: "grip", explanation: "The picture matches <strong>grip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/66.png", options: ["trip", "grip"], correct: "grip", explanation: "The picture matches <strong>grip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/67.png", options: ["clip", "grip"], correct: "clip", explanation: "The picture matches <strong>clip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/68.png", options: ["clip", "grip"], correct: "clip", explanation: "The picture matches <strong>clip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/69.png", options: ["clip", "ship"], correct: "ship", explanation: "The picture matches <strong>ship</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/70.png", options: ["clip", "ship"], correct: "ship", explanation: "The picture matches <strong>ship</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/71.png", options: ["clip", "chip"], correct: "chip", explanation: "The picture matches <strong>chip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/72.png", options: ["clip", "chip"], correct: "chip", explanation: "The picture matches <strong>chip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/73.png", options: ["whip", "chip"], correct: "whip", explanation: "The picture matches <strong>whip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/74.png", options: ["whip", "chip"], correct: "whip", explanation: "The picture matches <strong>whip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/75.png", options: ["skip", "chip"], correct: "skip", explanation: "The picture matches <strong>skip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/76.png", options: ["skip", "chip"], correct: "skip", explanation: "The picture matches <strong>skip</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/77.png", options: ["skip", "thin"], correct: "thin", explanation: "The picture matches <strong>thin</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/78.png", options: ["chin", "thin"], correct: "chin", explanation: "The picture matches <strong>chin</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/79.png", options: ["chin", "thin"], correct: "chin", explanation: "The picture matches <strong>chin</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/80.png", options: ["chin", "thin"], correct: "chin", explanation: "The picture matches <strong>chin</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/81.png", options: ["chin", "skin"], correct: "skin", explanation: "The picture matches <strong>skin</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/82.png", options: ["skin", "skip"], correct: "skin", explanation: "The picture matches <strong>skin</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/83.png", options: ["spin", "skip"], correct: "spin", explanation: "The picture matches <strong>spin</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/84.png", options: ["skin", "spin"], correct: "spin", explanation: "The picture matches <strong>spin</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/85.png", options: ["twin", "spin"], correct: "twin", explanation: "The picture matches <strong>twin</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/86.png", options: ["twin", "fish"], correct: "fish", explanation: "The picture matches <strong>fish</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/87.png", options: ["dish", "fish"], correct: "dish", explanation: "The picture matches <strong>dish</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/88.png", options: ["wish", "fish"], correct: "wish", explanation: "The picture matches <strong>wish</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/89.png", options: ["six", "fish"], correct: "six", explanation: "The picture matches <strong>six</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/90.png", options: ["sick", "lick"], correct: "sick", explanation: "The picture matches <strong>sick</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/91.png", options: ["kick", "lick"], correct: "kick", explanation: "The picture matches <strong>kick</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/92.png", options: ["kick", "pick"], correct: "pick", explanation: "The picture matches <strong>pick</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/93.png", options: ["trick", "pink"], correct: "trick", explanation: "The picture matches <strong>trick</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/94.png", options: ["trick", "brick"], correct: "brick", explanation: "The picture matches <strong>brick</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/95.png", options: ["quick", "brick"], correct: "quick", explanation: "The picture matches <strong>quick</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/96.png", options: ["quick", "chill"], correct: "chill", explanation: "The picture matches <strong>chill</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/97.png", options: ["milk", "chill"], correct: "milk", explanation: "The picture matches <strong>milk</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/98.png", options: ["gift", "chill"], correct: "gift", explanation: "The picture matches <strong>gift</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/99.png", options: ["kit", "lift"], correct: "lift", explanation: "The picture matches <strong>lift</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/KG_3_Vowel_i/100.png", options: ["king", "lift"], correct: "king", explanation: "The picture matches <strong>king</strong>. Say it slowly — it has the short <strong>i</strong> sound." },
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+
+    <!-- MCQ engine (exposes window.initMCQQuiz) -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));
+    </script>
+  </body>
+</html>
