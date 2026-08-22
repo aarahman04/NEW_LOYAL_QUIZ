@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pattern Party</title>
+    <!-- Quiz shell + tap-select layer (tokens live in question.css) -->
+    <link rel="stylesheet" href="../../css/question.css" />
+    <link rel="stylesheet" href="../../css/tap_select.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+      </div>
+
+      <!-- Tap-select tiles are rendered here by the engine -->
+      <div id="tap-grid" class="tap-grid"></div>
+
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+
+    <script>
+      // MATCH MODE: tap the picture that continues the repeating pattern.
+      // Bank of 100; the tap-select engine shows a fresh random 25 per attempt.
+      const questions = [
+    { question: "What comes next?&nbsp; 🔴 🔵 🔴 🔵 🔴 🔵 &nbsp;<strong>?</strong>", items: [{ label: "🔵", correct: false }, { label: "🔴", correct: true }, { label: "💚", correct: false }], explanation: "The pattern repeats 🔴 🔵. After 🔵 comes <strong>🔴</strong>." },
+    { question: "What comes next?&nbsp; ⭐ 🌟 ⭐ 🌟 ⭐ 🌟 &nbsp;<strong>?</strong>", items: [{ label: "🌟", correct: false }, { label: "💜", correct: false }, { label: "⭐", correct: true }], explanation: "The pattern repeats ⭐ 🌟. After 🌟 comes <strong>⭐</strong>." },
+    { question: "What comes next?&nbsp; 🍎 🍌 🍎 🍌 🍎 🍌 &nbsp;<strong>?</strong>", items: [{ label: "🍌", correct: false }, { label: "💛", correct: false }, { label: "🍎", correct: true }], explanation: "The pattern repeats 🍎 🍌. After 🍌 comes <strong>🍎</strong>." },
+    { question: "What comes next?&nbsp; 🐱 🐶 🐱 🐶 🐱 🐶 &nbsp;<strong>?</strong>", items: [{ label: "🐱", correct: true }, { label: "🍄", correct: false }, { label: "🐶", correct: false }], explanation: "The pattern repeats 🐱 🐶. After 🐶 comes <strong>🐱</strong>." },
+    { question: "What comes next?&nbsp; 🔸 🔹 🔸 🔹 🔸 🔹 &nbsp;<strong>?</strong>", items: [{ label: "🔹", correct: false }, { label: "🔸", correct: true }, { label: "🔶", correct: false }], explanation: "The pattern repeats 🔸 🔹. After 🔹 comes <strong>🔸</strong>." },
+    { question: "What comes next?&nbsp; 🌻 🌷 🌻 🌷 🌻 🌷 &nbsp;<strong>?</strong>", items: [{ label: "🌿", correct: false }, { label: "🌷", correct: false }, { label: "🌻", correct: true }], explanation: "The pattern repeats 🌻 🌷. After 🌷 comes <strong>🌻</strong>." },
+    { question: "What comes next?&nbsp; 🐝 🐞 🐝 🐞 🐝 🐞 &nbsp;<strong>?</strong>", items: [{ label: "🐞", correct: false }, { label: "🐝", correct: true }, { label: "🐛", correct: false }], explanation: "The pattern repeats 🐝 🐞. After 🐞 comes <strong>🐝</strong>." },
+    { question: "What comes next?&nbsp; 🟩 🟥 🟩 🟥 🟩 🟥 &nbsp;<strong>?</strong>", items: [{ label: "🟩", correct: true }, { label: "🟦", correct: false }, { label: "🟥", correct: false }], explanation: "The pattern repeats 🟩 🟥. After 🟥 comes <strong>🟩</strong>." },
+    { question: "What comes next?&nbsp; 🍨 🍩 🍨 🍩 🍨 🍩 &nbsp;<strong>?</strong>", items: [{ label: "🍩", correct: false }, { label: "🍨", correct: true }, { label: "🍭", correct: false }], explanation: "The pattern repeats 🍨 🍩. After 🍩 comes <strong>🍨</strong>." },
+    { question: "What comes next?&nbsp; 🚃 🚕 🚃 🚕 🚃 🚕 &nbsp;<strong>?</strong>", items: [{ label: "🚕", correct: false }, { label: "🚃", correct: true }, { label: "🚲", correct: false }], explanation: "The pattern repeats 🚃 🚕. After 🚕 comes <strong>🚃</strong>." },
+    { question: "What comes next?&nbsp; 🐟 🐙 🐟 🐙 🐟 🐙 &nbsp;<strong>?</strong>", items: [{ label: "🐟", correct: true }, { label: "🐙", correct: false }, { label: "🐠", correct: false }], explanation: "The pattern repeats 🐟 🐙. After 🐙 comes <strong>🐟</strong>." },
+    { question: "What comes next?&nbsp; 🏀 ⚽ 🏀 ⚽ 🏀 ⚽ &nbsp;<strong>?</strong>", items: [{ label: "🎾", correct: false }, { label: "⚽", correct: false }, { label: "🏀", correct: true }], explanation: "The pattern repeats 🏀 ⚽. After ⚽ comes <strong>🏀</strong>." },
+    { question: "What comes next?&nbsp; 🥚 🧀 🥚 🧀 🥚 🧀 &nbsp;<strong>?</strong>", items: [{ label: "🧀", correct: false }, { label: "🥚", correct: true }, { label: "🍯", correct: false }], explanation: "The pattern repeats 🥚 🧀. After 🧀 comes <strong>🥚</strong>." },
+    { question: "What comes next?&nbsp; 🦄 🐎 🦄 🐎 🦄 🐎 &nbsp;<strong>?</strong>", items: [{ label: "🐘", correct: false }, { label: "🦄", correct: true }, { label: "🐎", correct: false }], explanation: "The pattern repeats 🦄 🐎. After 🐎 comes <strong>🦄</strong>." },
+    { question: "What comes next?&nbsp; 🌍 🌞 🌍 🌞 🌍 🌞 &nbsp;<strong>?</strong>", items: [{ label: "🌑", correct: false }, { label: "🌍", correct: true }, { label: "🌞", correct: false }], explanation: "The pattern repeats 🌍 🌞. After 🌞 comes <strong>🌍</strong>." },
+    { question: "What comes next?&nbsp; 🔴 🔴 🔵 🔴 🔴 🔵 &nbsp;<strong>?</strong>", items: [{ label: "🔵", correct: false }, { label: "💚", correct: false }, { label: "🔴", correct: true }], explanation: "The pattern repeats 🔴 🔴 🔵. After 🔵 comes <strong>🔴</strong>." },
+    { question: "What comes next?&nbsp; ⭐ ⭐ 🌟 ⭐ ⭐ 🌟 &nbsp;<strong>?</strong>", items: [{ label: "⭐", correct: true }, { label: "💜", correct: false }, { label: "🌟", correct: false }], explanation: "The pattern repeats ⭐ ⭐ 🌟. After 🌟 comes <strong>⭐</strong>." },
+    { question: "What comes next?&nbsp; 🍎 🍎 🍌 🍎 🍎 🍌 &nbsp;<strong>?</strong>", items: [{ label: "💛", correct: false }, { label: "🍌", correct: false }, { label: "🍎", correct: true }], explanation: "The pattern repeats 🍎 🍎 🍌. After 🍌 comes <strong>🍎</strong>." },
+    { question: "What comes next?&nbsp; 🐱 🐱 🐶 🐱 🐱 🐶 &nbsp;<strong>?</strong>", items: [{ label: "🐶", correct: false }, { label: "🐱", correct: true }, { label: "🍄", correct: false }], explanation: "The pattern repeats 🐱 🐱 🐶. After 🐶 comes <strong>🐱</strong>." },
+    { question: "What comes next?&nbsp; 🔸 🔸 🔹 🔸 🔸 🔹 &nbsp;<strong>?</strong>", items: [{ label: "🔹", correct: false }, { label: "🔸", correct: true }, { label: "🔶", correct: false }], explanation: "The pattern repeats 🔸 🔸 🔹. After 🔹 comes <strong>🔸</strong>." },
+    { question: "What comes next?&nbsp; 🌻 🌻 🌷 🌻 🌻 🌷 &nbsp;<strong>?</strong>", items: [{ label: "🌻", correct: true }, { label: "🌿", correct: false }, { label: "🌷", correct: false }], explanation: "The pattern repeats 🌻 🌻 🌷. After 🌷 comes <strong>🌻</strong>." },
+    { question: "What comes next?&nbsp; 🐝 🐝 🐞 🐝 🐝 🐞 &nbsp;<strong>?</strong>", items: [{ label: "🐛", correct: false }, { label: "🐝", correct: true }, { label: "🐞", correct: false }], explanation: "The pattern repeats 🐝 🐝 🐞. After 🐞 comes <strong>🐝</strong>." },
+    { question: "What comes next?&nbsp; 🟩 🟩 🟥 🟩 🟩 🟥 &nbsp;<strong>?</strong>", items: [{ label: "🟦", correct: false }, { label: "🟥", correct: false }, { label: "🟩", correct: true }], explanation: "The pattern repeats 🟩 🟩 🟥. After 🟥 comes <strong>🟩</strong>." },
+    { question: "What comes next?&nbsp; 🍨 🍨 🍩 🍨 🍨 🍩 &nbsp;<strong>?</strong>", items: [{ label: "🍭", correct: false }, { label: "🍨", correct: true }, { label: "🍩", correct: false }], explanation: "The pattern repeats 🍨 🍨 🍩. After 🍩 comes <strong>🍨</strong>." },
+    { question: "What comes next?&nbsp; 🚃 🚃 🚕 🚃 🚃 🚕 &nbsp;<strong>?</strong>", items: [{ label: "🚕", correct: false }, { label: "🚃", correct: true }, { label: "🚲", correct: false }], explanation: "The pattern repeats 🚃 🚃 🚕. After 🚕 comes <strong>🚃</strong>." },
+    { question: "What comes next?&nbsp; 🐟 🐟 🐙 🐟 🐟 🐙 &nbsp;<strong>?</strong>", items: [{ label: "🐙", correct: false }, { label: "🐟", correct: true }, { label: "🐠", correct: false }], explanation: "The pattern repeats 🐟 🐟 🐙. After 🐙 comes <strong>🐟</strong>." },
+    { question: "What comes next?&nbsp; 🏀 🏀 ⚽ 🏀 🏀 ⚽ &nbsp;<strong>?</strong>", items: [{ label: "🏀", correct: true }, { label: "🎾", correct: false }, { label: "⚽", correct: false }], explanation: "The pattern repeats 🏀 🏀 ⚽. After ⚽ comes <strong>🏀</strong>." },
+    { question: "What comes next?&nbsp; 🥚 🥚 🧀 🥚 🥚 🧀 &nbsp;<strong>?</strong>", items: [{ label: "🥚", correct: true }, { label: "🍯", correct: false }, { label: "🧀", correct: false }], explanation: "The pattern repeats 🥚 🥚 🧀. After 🧀 comes <strong>🥚</strong>." },
+    { question: "What comes next?&nbsp; 🦄 🦄 🐎 🦄 🦄 🐎 &nbsp;<strong>?</strong>", items: [{ label: "🦄", correct: true }, { label: "🐘", correct: false }, { label: "🐎", correct: false }], explanation: "The pattern repeats 🦄 🦄 🐎. After 🐎 comes <strong>🦄</strong>." },
+    { question: "What comes next?&nbsp; 🌍 🌍 🌞 🌍 🌍 🌞 &nbsp;<strong>?</strong>", items: [{ label: "🌑", correct: false }, { label: "🌞", correct: false }, { label: "🌍", correct: true }], explanation: "The pattern repeats 🌍 🌍 🌞. After 🌞 comes <strong>🌍</strong>." },
+    { question: "What comes next?&nbsp; 🔴 🔵 🔵 🔴 🔵 🔵 &nbsp;<strong>?</strong>", items: [{ label: "🔴", correct: true }, { label: "💚", correct: false }, { label: "🔵", correct: false }], explanation: "The pattern repeats 🔴 🔵 🔵. After 🔵 comes <strong>🔴</strong>." },
+    { question: "What comes next?&nbsp; ⭐ 🌟 🌟 ⭐ 🌟 🌟 &nbsp;<strong>?</strong>", items: [{ label: "💜", correct: false }, { label: "⭐", correct: true }, { label: "🌟", correct: false }], explanation: "The pattern repeats ⭐ 🌟 🌟. After 🌟 comes <strong>⭐</strong>." },
+    { question: "What comes next?&nbsp; 🍎 🍌 🍌 🍎 🍌 🍌 &nbsp;<strong>?</strong>", items: [{ label: "🍌", correct: false }, { label: "🍎", correct: true }, { label: "💛", correct: false }], explanation: "The pattern repeats 🍎 🍌 🍌. After 🍌 comes <strong>🍎</strong>." },
+    { question: "What comes next?&nbsp; 🐱 🐶 🐶 🐱 🐶 🐶 &nbsp;<strong>?</strong>", items: [{ label: "🐶", correct: false }, { label: "🐱", correct: true }, { label: "🍄", correct: false }], explanation: "The pattern repeats 🐱 🐶 🐶. After 🐶 comes <strong>🐱</strong>." },
+    { question: "What comes next?&nbsp; 🔸 🔹 🔹 🔸 🔹 🔹 &nbsp;<strong>?</strong>", items: [{ label: "🔶", correct: false }, { label: "🔹", correct: false }, { label: "🔸", correct: true }], explanation: "The pattern repeats 🔸 🔹 🔹. After 🔹 comes <strong>🔸</strong>." },
+    { question: "What comes next?&nbsp; 🌻 🌷 🌷 🌻 🌷 🌷 &nbsp;<strong>?</strong>", items: [{ label: "🌻", correct: true }, { label: "🌿", correct: false }, { label: "🌷", correct: false }], explanation: "The pattern repeats 🌻 🌷 🌷. After 🌷 comes <strong>🌻</strong>." },
+    { question: "What comes next?&nbsp; 🐝 🐞 🐞 🐝 🐞 🐞 &nbsp;<strong>?</strong>", items: [{ label: "🐝", correct: true }, { label: "🐞", correct: false }, { label: "🐛", correct: false }], explanation: "The pattern repeats 🐝 🐞 🐞. After 🐞 comes <strong>🐝</strong>." },
+    { question: "What comes next?&nbsp; 🟩 🟥 🟥 🟩 🟥 🟥 &nbsp;<strong>?</strong>", items: [{ label: "🟥", correct: false }, { label: "🟦", correct: false }, { label: "🟩", correct: true }], explanation: "The pattern repeats 🟩 🟥 🟥. After 🟥 comes <strong>🟩</strong>." },
+    { question: "What comes next?&nbsp; 🍨 🍩 🍩 🍨 🍩 🍩 &nbsp;<strong>?</strong>", items: [{ label: "🍭", correct: false }, { label: "🍨", correct: true }, { label: "🍩", correct: false }], explanation: "The pattern repeats 🍨 🍩 🍩. After 🍩 comes <strong>🍨</strong>." },
+    { question: "What comes next?&nbsp; 🚃 🚕 🚕 🚃 🚕 🚕 &nbsp;<strong>?</strong>", items: [{ label: "🚃", correct: true }, { label: "🚕", correct: false }, { label: "🚲", correct: false }], explanation: "The pattern repeats 🚃 🚕 🚕. After 🚕 comes <strong>🚃</strong>." },
+    { question: "What comes next?&nbsp; 🐟 🐙 🐙 🐟 🐙 🐙 &nbsp;<strong>?</strong>", items: [{ label: "🐠", correct: false }, { label: "🐙", correct: false }, { label: "🐟", correct: true }], explanation: "The pattern repeats 🐟 🐙 🐙. After 🐙 comes <strong>🐟</strong>." },
+    { question: "What comes next?&nbsp; 🏀 ⚽ ⚽ 🏀 ⚽ ⚽ &nbsp;<strong>?</strong>", items: [{ label: "🏀", correct: true }, { label: "🎾", correct: false }, { label: "⚽", correct: false }], explanation: "The pattern repeats 🏀 ⚽ ⚽. After ⚽ comes <strong>🏀</strong>." },
+    { question: "What comes next?&nbsp; 🥚 🧀 🧀 🥚 🧀 🧀 &nbsp;<strong>?</strong>", items: [{ label: "🥚", correct: true }, { label: "🧀", correct: false }, { label: "🍯", correct: false }], explanation: "The pattern repeats 🥚 🧀 🧀. After 🧀 comes <strong>🥚</strong>." },
+    { question: "What comes next?&nbsp; 🦄 🐎 🐎 🦄 🐎 🐎 &nbsp;<strong>?</strong>", items: [{ label: "🦄", correct: true }, { label: "🐘", correct: false }, { label: "🐎", correct: false }], explanation: "The pattern repeats 🦄 🐎 🐎. After 🐎 comes <strong>🦄</strong>." },
+    { question: "What comes next?&nbsp; 🌍 🌞 🌞 🌍 🌞 🌞 &nbsp;<strong>?</strong>", items: [{ label: "🌞", correct: false }, { label: "🌍", correct: true }, { label: "🌑", correct: false }], explanation: "The pattern repeats 🌍 🌞 🌞. After 🌞 comes <strong>🌍</strong>." },
+    { question: "What comes next?&nbsp; 🔴 🔵 💚 🔴 🔵 💚 &nbsp;<strong>?</strong>", items: [{ label: "🔴", correct: true }, { label: "🔵", correct: false }, { label: "💚", correct: false }], explanation: "The pattern repeats 🔴 🔵 💚. After 💚 comes <strong>🔴</strong>." },
+    { question: "What comes next?&nbsp; ⭐ 🌟 💜 ⭐ 🌟 💜 &nbsp;<strong>?</strong>", items: [{ label: "🌟", correct: false }, { label: "⭐", correct: true }, { label: "💜", correct: false }], explanation: "The pattern repeats ⭐ 🌟 💜. After 💜 comes <strong>⭐</strong>." },
+    { question: "What comes next?&nbsp; 🍎 🍌 💛 🍎 🍌 💛 &nbsp;<strong>?</strong>", items: [{ label: "🍎", correct: true }, { label: "💛", correct: false }, { label: "🍌", correct: false }], explanation: "The pattern repeats 🍎 🍌 💛. After 💛 comes <strong>🍎</strong>." },
+    { question: "What comes next?&nbsp; 🐱 🐶 🍄 🐱 🐶 🍄 &nbsp;<strong>?</strong>", items: [{ label: "🐱", correct: true }, { label: "🐶", correct: false }, { label: "🍄", correct: false }], explanation: "The pattern repeats 🐱 🐶 🍄. After 🍄 comes <strong>🐱</strong>." },
+    { question: "What comes next?&nbsp; 🔸 🔹 🔶 🔸 🔹 🔶 &nbsp;<strong>?</strong>", items: [{ label: "🔸", correct: true }, { label: "🔶", correct: false }, { label: "🔹", correct: false }], explanation: "The pattern repeats 🔸 🔹 🔶. After 🔶 comes <strong>🔸</strong>." },
+    { question: "What comes next?&nbsp; 🌻 🌷 🌿 🌻 🌷 🌿 &nbsp;<strong>?</strong>", items: [{ label: "🌷", correct: false }, { label: "🌻", correct: true }, { label: "🌿", correct: false }], explanation: "The pattern repeats 🌻 🌷 🌿. After 🌿 comes <strong>🌻</strong>." },
+    { question: "What comes next?&nbsp; 🐝 🐞 🐛 🐝 🐞 🐛 &nbsp;<strong>?</strong>", items: [{ label: "🐝", correct: true }, { label: "🐛", correct: false }, { label: "🐞", correct: false }], explanation: "The pattern repeats 🐝 🐞 🐛. After 🐛 comes <strong>🐝</strong>." },
+    { question: "What comes next?&nbsp; 🟩 🟥 🟦 🟩 🟥 🟦 &nbsp;<strong>?</strong>", items: [{ label: "🟥", correct: false }, { label: "🟩", correct: true }, { label: "🟦", correct: false }], explanation: "The pattern repeats 🟩 🟥 🟦. After 🟦 comes <strong>🟩</strong>." },
+    { question: "What comes next?&nbsp; 🍨 🍩 🍭 🍨 🍩 🍭 &nbsp;<strong>?</strong>", items: [{ label: "🍨", correct: true }, { label: "🍩", correct: false }, { label: "🍭", correct: false }], explanation: "The pattern repeats 🍨 🍩 🍭. After 🍭 comes <strong>🍨</strong>." },
+    { question: "What comes next?&nbsp; 🚃 🚕 🚲 🚃 🚕 🚲 &nbsp;<strong>?</strong>", items: [{ label: "🚃", correct: true }, { label: "🚕", correct: false }, { label: "🚲", correct: false }], explanation: "The pattern repeats 🚃 🚕 🚲. After 🚲 comes <strong>🚃</strong>." },
+    { question: "What comes next?&nbsp; 🐟 🐙 🐠 🐟 🐙 🐠 &nbsp;<strong>?</strong>", items: [{ label: "🐠", correct: false }, { label: "🐙", correct: false }, { label: "🐟", correct: true }], explanation: "The pattern repeats 🐟 🐙 🐠. After 🐠 comes <strong>🐟</strong>." },
+    { question: "What comes next?&nbsp; 🏀 ⚽ 🎾 🏀 ⚽ 🎾 &nbsp;<strong>?</strong>", items: [{ label: "🎾", correct: false }, { label: "⚽", correct: false }, { label: "🏀", correct: true }], explanation: "The pattern repeats 🏀 ⚽ 🎾. After 🎾 comes <strong>🏀</strong>." },
+    { question: "What comes next?&nbsp; 🥚 🧀 🍯 🥚 🧀 🍯 &nbsp;<strong>?</strong>", items: [{ label: "🧀", correct: false }, { label: "🥚", correct: true }, { label: "🍯", correct: false }], explanation: "The pattern repeats 🥚 🧀 🍯. After 🍯 comes <strong>🥚</strong>." },
+    { question: "What comes next?&nbsp; 🦄 🐎 🐘 🦄 🐎 🐘 &nbsp;<strong>?</strong>", items: [{ label: "🦄", correct: true }, { label: "🐘", correct: false }, { label: "🐎", correct: false }], explanation: "The pattern repeats 🦄 🐎 🐘. After 🐘 comes <strong>🦄</strong>." },
+    { question: "What comes next?&nbsp; 🌍 🌞 🌑 🌍 🌞 🌑 &nbsp;<strong>?</strong>", items: [{ label: "🌑", correct: false }, { label: "🌞", correct: false }, { label: "🌍", correct: true }], explanation: "The pattern repeats 🌍 🌞 🌑. After 🌑 comes <strong>🌍</strong>." },
+    { question: "What comes next?&nbsp; 🔵 🔴 🔵 🔴 🔵 🔴 &nbsp;<strong>?</strong>", items: [{ label: "🍄", correct: false }, { label: "🔵", correct: true }, { label: "🔴", correct: false }], explanation: "The pattern repeats 🔵 🔴. After 🔴 comes <strong>🔵</strong>." },
+    { question: "What comes next?&nbsp; 🌟 🌟 ⭐ 🌟 🌟 ⭐ &nbsp;<strong>?</strong>", items: [{ label: "🔶", correct: false }, { label: "🌟", correct: true }, { label: "⭐", correct: false }], explanation: "The pattern repeats 🌟 🌟 ⭐. After ⭐ comes <strong>🌟</strong>." },
+    { question: "What comes next?&nbsp; 🍌 🍎 🍎 🍌 🍎 🍎 &nbsp;<strong>?</strong>", items: [{ label: "🍎", correct: false }, { label: "🌿", correct: false }, { label: "🍌", correct: true }], explanation: "The pattern repeats 🍌 🍎 🍎. After 🍎 comes <strong>🍌</strong>." },
+    { question: "What comes next?&nbsp; 🐛 🐱 🐶 🐛 🐱 🐶 &nbsp;<strong>?</strong>", items: [{ label: "🐱", correct: false }, { label: "🐶", correct: false }, { label: "🐛", correct: true }], explanation: "The pattern repeats 🐛 🐱 🐶. After 🐶 comes <strong>🐛</strong>." },
+    { question: "What comes next?&nbsp; 🔹 🔸 🔹 🔸 🔹 🔸 &nbsp;<strong>?</strong>", items: [{ label: "🟦", correct: false }, { label: "🔹", correct: true }, { label: "🔸", correct: false }], explanation: "The pattern repeats 🔹 🔸. After 🔸 comes <strong>🔹</strong>." },
+    { question: "What comes next?&nbsp; 🌷 🌷 🌻 🌷 🌷 🌻 &nbsp;<strong>?</strong>", items: [{ label: "🌻", correct: false }, { label: "🍭", correct: false }, { label: "🌷", correct: true }], explanation: "The pattern repeats 🌷 🌷 🌻. After 🌻 comes <strong>🌷</strong>." },
+    { question: "What comes next?&nbsp; 🐞 🐝 🐝 🐞 🐝 🐝 &nbsp;<strong>?</strong>", items: [{ label: "🐞", correct: true }, { label: "🐝", correct: false }, { label: "🚲", correct: false }], explanation: "The pattern repeats 🐞 🐝 🐝. After 🐝 comes <strong>🐞</strong>." },
+    { question: "What comes next?&nbsp; 🐠 🟩 🟥 🐠 🟩 🟥 &nbsp;<strong>?</strong>", items: [{ label: "🟥", correct: false }, { label: "🟩", correct: false }, { label: "🐠", correct: true }], explanation: "The pattern repeats 🐠 🟩 🟥. After 🟥 comes <strong>🐠</strong>." },
+    { question: "What comes next?&nbsp; 🍩 🍨 🍩 🍨 🍩 🍨 &nbsp;<strong>?</strong>", items: [{ label: "🍩", correct: true }, { label: "🎾", correct: false }, { label: "🍨", correct: false }], explanation: "The pattern repeats 🍩 🍨. After 🍨 comes <strong>🍩</strong>." },
+    { question: "What comes next?&nbsp; 🚕 🚕 🚃 🚕 🚕 🚃 &nbsp;<strong>?</strong>", items: [{ label: "🍯", correct: false }, { label: "🚃", correct: false }, { label: "🚕", correct: true }], explanation: "The pattern repeats 🚕 🚕 🚃. After 🚃 comes <strong>🚕</strong>." },
+    { question: "What comes next?&nbsp; 🐙 🐟 🐟 🐙 🐟 🐟 &nbsp;<strong>?</strong>", items: [{ label: "🐟", correct: false }, { label: "🐘", correct: false }, { label: "🐙", correct: true }], explanation: "The pattern repeats 🐙 🐟 🐟. After 🐟 comes <strong>🐙</strong>." },
+    { question: "What comes next?&nbsp; 🌑 🏀 ⚽ 🌑 🏀 ⚽ &nbsp;<strong>?</strong>", items: [{ label: "🏀", correct: false }, { label: "🌑", correct: true }, { label: "⚽", correct: false }], explanation: "The pattern repeats 🌑 🏀 ⚽. After ⚽ comes <strong>🌑</strong>." },
+    { question: "What comes next?&nbsp; 🧀 🥚 🧀 🥚 🧀 🥚 &nbsp;<strong>?</strong>", items: [{ label: "🧀", correct: true }, { label: "🥚", correct: false }, { label: "💚", correct: false }], explanation: "The pattern repeats 🧀 🥚. After 🥚 comes <strong>🧀</strong>." },
+    { question: "What comes next?&nbsp; 🐎 🐎 🦄 🐎 🐎 🦄 &nbsp;<strong>?</strong>", items: [{ label: "💜", correct: false }, { label: "🦄", correct: false }, { label: "🐎", correct: true }], explanation: "The pattern repeats 🐎 🐎 🦄. After 🦄 comes <strong>🐎</strong>." },
+    { question: "What comes next?&nbsp; 🌞 🌍 🌍 🌞 🌍 🌍 &nbsp;<strong>?</strong>", items: [{ label: "🌍", correct: false }, { label: "💛", correct: false }, { label: "🌞", correct: true }], explanation: "The pattern repeats 🌞 🌍 🌍. After 🌍 comes <strong>🌞</strong>." },
+    { question: "What comes next?&nbsp; 🍄 🔴 🔵 🍄 🔴 🔵 &nbsp;<strong>?</strong>", items: [{ label: "🔵", correct: false }, { label: "🍄", correct: true }, { label: "🔴", correct: false }], explanation: "The pattern repeats 🍄 🔴 🔵. After 🔵 comes <strong>🍄</strong>." },
+    { question: "What comes next?&nbsp; 🌟 ⭐ 🌟 ⭐ 🌟 ⭐ &nbsp;<strong>?</strong>", items: [{ label: "🌟", correct: true }, { label: "🔶", correct: false }, { label: "⭐", correct: false }], explanation: "The pattern repeats 🌟 ⭐. After ⭐ comes <strong>🌟</strong>." },
+    { question: "What comes next?&nbsp; 🍌 🍌 🍎 🍌 🍌 🍎 &nbsp;<strong>?</strong>", items: [{ label: "🌿", correct: false }, { label: "🍎", correct: false }, { label: "🍌", correct: true }], explanation: "The pattern repeats 🍌 🍌 🍎. After 🍎 comes <strong>🍌</strong>." },
+    { question: "What comes next?&nbsp; 🐶 🐱 🐱 🐶 🐱 🐱 &nbsp;<strong>?</strong>", items: [{ label: "🐶", correct: true }, { label: "🐱", correct: false }, { label: "🐛", correct: false }], explanation: "The pattern repeats 🐶 🐱 🐱. After 🐱 comes <strong>🐶</strong>." },
+    { question: "What comes next?&nbsp; 🟦 🔸 🔹 🟦 🔸 🔹 &nbsp;<strong>?</strong>", items: [{ label: "🔹", correct: false }, { label: "🔸", correct: false }, { label: "🟦", correct: true }], explanation: "The pattern repeats 🟦 🔸 🔹. After 🔹 comes <strong>🟦</strong>." },
+    { question: "What comes next?&nbsp; 🌷 🌻 🌷 🌻 🌷 🌻 &nbsp;<strong>?</strong>", items: [{ label: "🍭", correct: false }, { label: "🌻", correct: false }, { label: "🌷", correct: true }], explanation: "The pattern repeats 🌷 🌻. After 🌻 comes <strong>🌷</strong>." },
+    { question: "What comes next?&nbsp; 🐞 🐞 🐝 🐞 🐞 🐝 &nbsp;<strong>?</strong>", items: [{ label: "🐝", correct: false }, { label: "🚲", correct: false }, { label: "🐞", correct: true }], explanation: "The pattern repeats 🐞 🐞 🐝. After 🐝 comes <strong>🐞</strong>." },
+    { question: "What comes next?&nbsp; 🟥 🟩 🟩 🟥 🟩 🟩 &nbsp;<strong>?</strong>", items: [{ label: "🐠", correct: false }, { label: "🟥", correct: true }, { label: "🟩", correct: false }], explanation: "The pattern repeats 🟥 🟩 🟩. After 🟩 comes <strong>🟥</strong>." },
+    { question: "What comes next?&nbsp; 🎾 🍨 🍩 🎾 🍨 🍩 &nbsp;<strong>?</strong>", items: [{ label: "🎾", correct: true }, { label: "🍨", correct: false }, { label: "🍩", correct: false }], explanation: "The pattern repeats 🎾 🍨 🍩. After 🍩 comes <strong>🎾</strong>." },
+    { question: "What comes next?&nbsp; 🚕 🚃 🚕 🚃 🚕 🚃 &nbsp;<strong>?</strong>", items: [{ label: "🍯", correct: false }, { label: "🚃", correct: false }, { label: "🚕", correct: true }], explanation: "The pattern repeats 🚕 🚃. After 🚃 comes <strong>🚕</strong>." },
+    { question: "What comes next?&nbsp; 🐙 🐙 🐟 🐙 🐙 🐟 &nbsp;<strong>?</strong>", items: [{ label: "🐟", correct: false }, { label: "🐘", correct: false }, { label: "🐙", correct: true }], explanation: "The pattern repeats 🐙 🐙 🐟. After 🐟 comes <strong>🐙</strong>." },
+    { question: "What comes next?&nbsp; ⚽ 🏀 🏀 ⚽ 🏀 🏀 &nbsp;<strong>?</strong>", items: [{ label: "⚽", correct: true }, { label: "🌑", correct: false }, { label: "🏀", correct: false }], explanation: "The pattern repeats ⚽ 🏀 🏀. After 🏀 comes <strong>⚽</strong>." },
+    { question: "What comes next?&nbsp; 💚 🥚 🧀 💚 🥚 🧀 &nbsp;<strong>?</strong>", items: [{ label: "🥚", correct: false }, { label: "🧀", correct: false }, { label: "💚", correct: true }], explanation: "The pattern repeats 💚 🥚 🧀. After 🧀 comes <strong>💚</strong>." },
+    { question: "What comes next?&nbsp; 🐎 🦄 🐎 🦄 🐎 🦄 &nbsp;<strong>?</strong>", items: [{ label: "🦄", correct: false }, { label: "💜", correct: false }, { label: "🐎", correct: true }], explanation: "The pattern repeats 🐎 🦄. After 🦄 comes <strong>🐎</strong>." },
+    { question: "What comes next?&nbsp; 🌞 🌞 🌍 🌞 🌞 🌍 &nbsp;<strong>?</strong>", items: [{ label: "💛", correct: false }, { label: "🌍", correct: false }, { label: "🌞", correct: true }], explanation: "The pattern repeats 🌞 🌞 🌍. After 🌍 comes <strong>🌞</strong>." },
+    { question: "What comes next?&nbsp; 🔵 🔴 🔴 🔵 🔴 🔴 &nbsp;<strong>?</strong>", items: [{ label: "🔴", correct: false }, { label: "🔵", correct: true }, { label: "🍄", correct: false }], explanation: "The pattern repeats 🔵 🔴 🔴. After 🔴 comes <strong>🔵</strong>." },
+    { question: "What comes next?&nbsp; 🔶 ⭐ 🌟 🔶 ⭐ 🌟 &nbsp;<strong>?</strong>", items: [{ label: "🔶", correct: true }, { label: "⭐", correct: false }, { label: "🌟", correct: false }], explanation: "The pattern repeats 🔶 ⭐ 🌟. After 🌟 comes <strong>🔶</strong>." },
+    { question: "What comes next?&nbsp; 🍌 🍎 🍌 🍎 🍌 🍎 &nbsp;<strong>?</strong>", items: [{ label: "🍌", correct: true }, { label: "🍎", correct: false }, { label: "🌿", correct: false }], explanation: "The pattern repeats 🍌 🍎. After 🍎 comes <strong>🍌</strong>." },
+    { question: "What comes next?&nbsp; 🐶 🐶 🐱 🐶 🐶 🐱 &nbsp;<strong>?</strong>", items: [{ label: "🐛", correct: false }, { label: "🐱", correct: false }, { label: "🐶", correct: true }], explanation: "The pattern repeats 🐶 🐶 🐱. After 🐱 comes <strong>🐶</strong>." },
+    { question: "What comes next?&nbsp; 🔹 🔸 🔸 🔹 🔸 🔸 &nbsp;<strong>?</strong>", items: [{ label: "🔹", correct: true }, { label: "🔸", correct: false }, { label: "🟦", correct: false }], explanation: "The pattern repeats 🔹 🔸 🔸. After 🔸 comes <strong>🔹</strong>." },
+    { question: "What comes next?&nbsp; 🍭 🌻 🌷 🍭 🌻 🌷 &nbsp;<strong>?</strong>", items: [{ label: "🍭", correct: true }, { label: "🌷", correct: false }, { label: "🌻", correct: false }], explanation: "The pattern repeats 🍭 🌻 🌷. After 🌷 comes <strong>🍭</strong>." },
+    { question: "What comes next?&nbsp; 🐞 🐝 🐞 🐝 🐞 🐝 &nbsp;<strong>?</strong>", items: [{ label: "🐞", correct: true }, { label: "🐝", correct: false }, { label: "🚲", correct: false }], explanation: "The pattern repeats 🐞 🐝. After 🐝 comes <strong>🐞</strong>." },
+    { question: "What comes next?&nbsp; 🟥 🟥 🟩 🟥 🟥 🟩 &nbsp;<strong>?</strong>", items: [{ label: "🟩", correct: false }, { label: "🟥", correct: true }, { label: "🐠", correct: false }], explanation: "The pattern repeats 🟥 🟥 🟩. After 🟩 comes <strong>🟥</strong>." },
+    { question: "What comes next?&nbsp; 🍩 🍨 🍨 🍩 🍨 🍨 &nbsp;<strong>?</strong>", items: [{ label: "🍩", correct: true }, { label: "🍨", correct: false }, { label: "🎾", correct: false }], explanation: "The pattern repeats 🍩 🍨 🍨. After 🍨 comes <strong>🍩</strong>." },
+    { question: "What comes next?&nbsp; 🍯 🚃 🚕 🍯 🚃 🚕 &nbsp;<strong>?</strong>", items: [{ label: "🚕", correct: false }, { label: "🚃", correct: false }, { label: "🍯", correct: true }], explanation: "The pattern repeats 🍯 🚃 🚕. After 🚕 comes <strong>🍯</strong>." },
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+
+    <!-- Tap-select engine (exposes window.initTapSelectQuiz) -->
+    <script src="../../js/tap_select.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => initTapSelectQuiz(questions));
+    </script>
+  </body>
+</html>
