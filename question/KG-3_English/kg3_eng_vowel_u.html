@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vowel U — Picture Words</title>
+    <!-- Shared MCQ quiz shell (design tokens live in question.css) -->
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options rendered by the MCQ engine -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+
+    <script>
+      // Short-vowel 'u' picture words (source: questions vowel u.md)
+      // Bank of 91; the MCQ engine shows a fresh random 25 per attempt.
+      const questions = [
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/1.png", options: ["sun", "sum"], correct: "sun", explanation: "The picture matches <strong>sun</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/2.png", options: ["sun", "sum"], correct: "sun", explanation: "The picture matches <strong>sun</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/3.png", options: ["cup", "sum"], correct: "cup", explanation: "The picture matches <strong>cup</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/4.png", options: ["cup", "run"], correct: "run", explanation: "The picture matches <strong>run</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/5.png", options: ["cup", "fun"], correct: "fun", explanation: "The picture matches <strong>fun</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/6.png", options: ["hut", "fun"], correct: "hut", explanation: "The picture matches <strong>hut</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/7.png", options: ["but", "hut"], correct: "hut", explanation: "The picture matches <strong>hut</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/8.png", options: ["cut", "hut"], correct: "cut", explanation: "The picture matches <strong>cut</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/9.png", options: ["cut", "hut"], correct: "cut", explanation: "The picture matches <strong>cut</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/10.png", options: ["cut", "hut"], correct: "cut", explanation: "The picture matches <strong>cut</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/11.png", options: ["cut", "nut"], correct: "nut", explanation: "The picture matches <strong>nut</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/12.png", options: ["cut", "bug"], correct: "bug", explanation: "The picture matches <strong>bug</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/13.png", options: ["bun", "bug"], correct: "bun", explanation: "The picture matches <strong>bun</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/14.png", options: ["bun", "bug"], correct: "bun", explanation: "The picture matches <strong>bun</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/15.png", options: ["bun", "mud"], correct: "mud", explanation: "The picture matches <strong>mud</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/16.png", options: ["mug", "mud"], correct: "mug", explanation: "The picture matches <strong>mug</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/17.png", options: ["mug", "rug"], correct: "rug", explanation: "The picture matches <strong>rug</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/18.png", options: ["jug", "rug"], correct: "jug", explanation: "The picture matches <strong>jug</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/19.png", options: ["jug", "tub"], correct: "tub", explanation: "The picture matches <strong>tub</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/20.png", options: ["rub", "but"], correct: "rub", explanation: "The picture matches <strong>rub</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/21.png", options: ["rub", "sum"], correct: "sum", explanation: "The picture matches <strong>sum</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/22.png", options: ["hug", "sum"], correct: "hug", explanation: "The picture matches <strong>hug</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/23.png", options: ["sum", "hug"], correct: "hug", explanation: "The picture matches <strong>hug</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/24.png", options: ["gun", "hug"], correct: "gun", explanation: "The picture matches <strong>gun</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/25.png", options: ["gun", "buy"], correct: "buy", explanation: "The picture matches <strong>buy</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/26.png", options: ["gun", "buy"], correct: "buy", explanation: "The picture matches <strong>buy</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/27.png", options: ["dug", "buy"], correct: "dug", explanation: "The picture matches <strong>dug</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/28.png", options: ["but", "pup"], correct: "pup", explanation: "The picture matches <strong>pup</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/29.png", options: ["put", "pup"], correct: "put", explanation: "The picture matches <strong>put</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/30.png", options: ["put", "bud"], correct: "bud", explanation: "The picture matches <strong>bud</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/31.png", options: ["put", "bud"], correct: "bud", explanation: "The picture matches <strong>bud</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/32.png", options: ["fur", "fun"], correct: "fur", explanation: "The picture matches <strong>fur</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/33.png", options: ["fur", "run"], correct: "run", explanation: "The picture matches <strong>run</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/34.png", options: ["jump", "run"], correct: "jump", explanation: "The picture matches <strong>jump</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/35.png", options: ["jump", "duck"], correct: "duck", explanation: "The picture matches <strong>duck</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/36.png", options: ["drum", "duck"], correct: "drum", explanation: "The picture matches <strong>drum</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/37.png", options: ["drum", "club"], correct: "club", explanation: "The picture matches <strong>club</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/38.png", options: ["plum", "club"], correct: "plum", explanation: "The picture matches <strong>plum</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/39.png", options: ["alum", "hunt"], correct: "hunt", explanation: "The picture matches <strong>hunt</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/40.png", options: ["alum", "pump"], correct: "pump", explanation: "The picture matches <strong>pump</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/41.png", options: ["dump", "pump"], correct: "dump", explanation: "The picture matches <strong>dump</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/42.png", options: ["dump", "dust"], correct: "dust", explanation: "The picture matches <strong>dust</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/43.png", options: ["dump", "luck"], correct: "luck", explanation: "The picture matches <strong>luck</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/44.png", options: ["bulk", "luck"], correct: "bulk", explanation: "The picture matches <strong>bulk</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/45.png", options: ["bulk", "bunk"], correct: "bunk", explanation: "The picture matches <strong>bunk</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/46.png", options: ["curl", "bunk"], correct: "curl", explanation: "The picture matches <strong>curl</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/47.png", options: ["curl", "turn"], correct: "turn", explanation: "The picture matches <strong>turn</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/48.png", options: ["burn", "turn"], correct: "burn", explanation: "The picture matches <strong>burn</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/49.png", options: ["burn", "hurt"], correct: "hurt", explanation: "The picture matches <strong>hurt</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/50.png", options: ["burn", "hurt"], correct: "hurt", explanation: "The picture matches <strong>hurt</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/51.png", options: ["surf", "hurt"], correct: "surf", explanation: "The picture matches <strong>surf</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/52.png", options: ["full", "hurt"], correct: "full", explanation: "The picture matches <strong>full</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/53.png", options: ["pull", "hurt"], correct: "pull", explanation: "The picture matches <strong>pull</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/54.png", options: ["pull", "tuna"], correct: "tuna", explanation: "The picture matches <strong>tuna</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/55.png", options: ["rule", "tuna"], correct: "rule", explanation: "The picture matches <strong>rule</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/56.png", options: ["tube", "tuna"], correct: "tube", explanation: "The picture matches <strong>tube</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/57.png", options: ["tune", "tuna"], correct: "tune", explanation: "The picture matches <strong>tune</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/58.png", options: ["tuna", "tune"], correct: "tune", explanation: "The picture matches <strong>tune</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/59.png", options: ["rude", "tune"], correct: "rude", explanation: "The picture matches <strong>rude</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/60.png", options: ["sun", "sumo"], correct: "sumo", explanation: "The picture matches <strong>sumo</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/61.png", options: ["sun", "mule"], correct: "mule", explanation: "The picture matches <strong>mule</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/62.png", options: ["cute", "mule"], correct: "cute", explanation: "The picture matches <strong>cute</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/63.png", options: ["cute", "flu"], correct: "flu", explanation: "The picture matches <strong>flu</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/64.png", options: ["cute", "flu"], correct: "flu", explanation: "The picture matches <strong>flu</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/65.png", options: ["bus", "sum"], correct: "bus", explanation: "The picture matches <strong>bus</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/67.png", options: ["cup", "sum"], correct: "cup", explanation: "The picture matches <strong>cup</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/68.png", options: ["cup", "run"], correct: "run", explanation: "The picture matches <strong>run</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/69.png", options: ["cup", "fun"], correct: "fun", explanation: "The picture matches <strong>fun</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/70.png", options: ["hut", "fun"], correct: "hut", explanation: "The picture matches <strong>hut</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/71.png", options: ["but", "hut"], correct: "hut", explanation: "The picture matches <strong>hut</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/72.png", options: ["cut", "hut"], correct: "cut", explanation: "The picture matches <strong>cut</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/73.png", options: ["cut", "hut"], correct: "cut", explanation: "The picture matches <strong>cut</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/74.png", options: ["but", "cut"], correct: "cut", explanation: "The picture matches <strong>cut</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/75.png", options: ["cut", "nut"], correct: "nut", explanation: "The picture matches <strong>nut</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/76.png", options: ["cut", "bug"], correct: "bug", explanation: "The picture matches <strong>bug</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/77.png", options: ["bun", "bug"], correct: "bun", explanation: "The picture matches <strong>bun</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/78.png", options: ["bun", "bug"], correct: "bun", explanation: "The picture matches <strong>bun</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/79.png", options: ["bun", "mud"], correct: "mud", explanation: "The picture matches <strong>mud</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/80.png", options: ["mug", "mud"], correct: "mug", explanation: "The picture matches <strong>mug</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/81.png", options: ["mug", "rug"], correct: "rug", explanation: "The picture matches <strong>rug</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/82.png", options: ["jug", "rug"], correct: "jug", explanation: "The picture matches <strong>jug</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/83.png", options: ["jug", "flu"], correct: "flu", explanation: "The picture matches <strong>flu</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/84.png", options: ["dump", "dust"], correct: "dust", explanation: "The picture matches <strong>dust</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/85.png", options: ["dump", "luck"], correct: "luck", explanation: "The picture matches <strong>luck</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/86.png", options: ["bulk", "luck"], correct: "bulk", explanation: "The picture matches <strong>bulk</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/87.png", options: ["bulk", "bunk"], correct: "bunk", explanation: "The picture matches <strong>bunk</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/88.png", options: ["curl", "bunk"], correct: "curl", explanation: "The picture matches <strong>curl</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/89.png", options: ["turn", "bunk"], correct: "turn", explanation: "The picture matches <strong>turn</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/90.png", options: ["curl", "turn"], correct: "turn", explanation: "The picture matches <strong>turn</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/91.png", options: ["turn", "curl"], correct: "curl", explanation: "The picture matches <strong>curl</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/Kg_3_Vowel_U/92.png", options: ["curl", "mum"], correct: "mum", explanation: "The picture matches <strong>mum</strong>. Say it slowly — it has the short <strong>u</strong> sound." },
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+
+    <!-- MCQ engine (exposes window.initMCQQuiz) -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));
+    </script>
+  </body>
+</html>

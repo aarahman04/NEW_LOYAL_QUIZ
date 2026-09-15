@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sh Words — Picture Words</title>
+    <!-- Shared MCQ quiz shell (design tokens live in question.css) -->
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+
+    <!-- Sticky Header -->
+    <div id="site-header-placeholder"></div>
+
+    <!-- Quiz Content -->
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list">
+          <!-- Options rendered by the MCQ engine -->
+        </ul>
+      </div>
+      <div id="feedback" class="hidden"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+
+    <script>
+      // 'sh' picture words (source: sh_words_questions.md)
+      // Bank of 100; the MCQ engine shows a fresh random 25 per attempt.
+      const questions = [
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/1.png", options: ["she", "shop"], correct: "shop", explanation: "The picture matches <strong>shop</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/2.png", options: ["shed", "shop"], correct: "shed", explanation: "The picture matches <strong>shed</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/3.png", options: ["ship", "shop"], correct: "ship", explanation: "The picture matches <strong>ship</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/4.png", options: ["shoe", "shot"], correct: "shoe", explanation: "The picture matches <strong>shoe</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/5.png", options: ["shut", "shot"], correct: "shut", explanation: "The picture matches <strong>shut</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/6.png", options: ["shut", "shot"], correct: "shut", explanation: "The picture matches <strong>shut</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/7.png", options: ["shut", "shy"], correct: "shy", explanation: "The picture matches <strong>shy</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/8.png", options: ["shy", "shoe"], correct: "shy", explanation: "The picture matches <strong>shy</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/9.png", options: ["show", "shoe"], correct: "show", explanation: "The picture matches <strong>show</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/10.png", options: ["shy", "show"], correct: "show", explanation: "The picture matches <strong>show</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/11.png", options: ["shy", "shark"], correct: "shark", explanation: "The picture matches <strong>shark</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/12.png", options: ["shy", "shark"], correct: "shark", explanation: "The picture matches <strong>shark</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/13.png", options: ["sheep", "shark"], correct: "sheep", explanation: "The picture matches <strong>sheep</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/14.png", options: ["sheep", "shell"], correct: "shell", explanation: "The picture matches <strong>shell</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/15.png", options: ["short", "shell"], correct: "short", explanation: "The picture matches <strong>short</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/16.png", options: ["short", "shirt"], correct: "shirt", explanation: "The picture matches <strong>shirt</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/17.png", options: ["short", "shirt"], correct: "shirt", explanation: "The picture matches <strong>shirt</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/18.png", options: ["shake", "shirt"], correct: "shake", explanation: "The picture matches <strong>shake</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/19.png", options: ["shake", "share"], correct: "share", explanation: "The picture matches <strong>share</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/20.png", options: ["shape", "share"], correct: "shape", explanation: "The picture matches <strong>shape</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/21.png", options: ["shape", "shine"], correct: "shine", explanation: "The picture matches <strong>shine</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/22.png", options: ["shout", "shine"], correct: "shout", explanation: "The picture matches <strong>shout</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/23.png", options: ["shout", "shampoo"], correct: "shampoo", explanation: "The picture matches <strong>shampoo</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/24.png", options: ["shampoo", "soup"], correct: "shampoo", explanation: "The picture matches <strong>shampoo</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/25.png", options: ["shrimp", "soup"], correct: "shrimp", explanation: "The picture matches <strong>shrimp</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/26.png", options: ["shiver", "soup"], correct: "shiver", explanation: "The picture matches <strong>shiver</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/27.png", options: ["shiver", "shrub"], correct: "shrub", explanation: "The picture matches <strong>shrub</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/28.png", options: ["shiver", "shrub"], correct: "shrub", explanation: "The picture matches <strong>shrub</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/29.png", options: ["shave", "shrub"], correct: "shave", explanation: "The picture matches <strong>shave</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/30.png", options: ["shelf", "shrub"], correct: "shelf", explanation: "The picture matches <strong>shelf</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/31.png", options: ["shelf", "shrub"], correct: "shelf", explanation: "The picture matches <strong>shelf</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/32.png", options: ["shelf", "shoot"], correct: "shoot", explanation: "The picture matches <strong>shoot</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/33.png", options: ["shelter", "shoot"], correct: "shelter", explanation: "The picture matches <strong>shelter</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/34.png", options: ["shelter", "shoulder"], correct: "shoulder", explanation: "The picture matches <strong>shoulder</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/35.png", options: ["shatter", "shoulder"], correct: "shatter", explanation: "The picture matches <strong>shatter</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/36.png", options: ["shock", "shoulder"], correct: "shock", explanation: "The picture matches <strong>shock</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/37.png", options: ["she", "shed"], correct: "shed", explanation: "The picture matches <strong>shed</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/38.png", options: ["she", "ship"], correct: "ship", explanation: "The picture matches <strong>ship</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/39.png", options: ["ship", "shop"], correct: "ship", explanation: "The picture matches <strong>ship</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/40.png", options: ["shoe", "shot"], correct: "shoe", explanation: "The picture matches <strong>shoe</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/41.png", options: ["shut", "shot"], correct: "shut", explanation: "The picture matches <strong>shut</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/42.png", options: ["shut", "shot"], correct: "shut", explanation: "The picture matches <strong>shut</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/43.png", options: ["shut", "shy"], correct: "shy", explanation: "The picture matches <strong>shy</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/44.png", options: ["shy", "shoe"], correct: "shy", explanation: "The picture matches <strong>shy</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/45.png", options: ["show", "shoe"], correct: "show", explanation: "The picture matches <strong>show</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/46.png", options: ["shy", "show"], correct: "show", explanation: "The picture matches <strong>show</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/47.png", options: ["shy", "shark"], correct: "shark", explanation: "The picture matches <strong>shark</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/48.png", options: ["shy", "shark"], correct: "shark", explanation: "The picture matches <strong>shark</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/49.png", options: ["sheep", "shark"], correct: "sheep", explanation: "The picture matches <strong>sheep</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/50.png", options: ["sheep", "shell"], correct: "shell", explanation: "The picture matches <strong>shell</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/51.png", options: ["short", "shell"], correct: "short", explanation: "The picture matches <strong>short</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/52.png", options: ["short", "shirt"], correct: "shirt", explanation: "The picture matches <strong>shirt</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/53.png", options: ["short", "shirt"], correct: "shirt", explanation: "The picture matches <strong>shirt</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/54.png", options: ["shake", "shirt"], correct: "shake", explanation: "The picture matches <strong>shake</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/55.png", options: ["shake", "share"], correct: "share", explanation: "The picture matches <strong>share</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/56.png", options: ["shape", "share"], correct: "shape", explanation: "The picture matches <strong>shape</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/57.png", options: ["shape", "shine"], correct: "shine", explanation: "The picture matches <strong>shine</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/58.png", options: ["shout", "shine"], correct: "shout", explanation: "The picture matches <strong>shout</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/59.png", options: ["shout", "shampoo"], correct: "shampoo", explanation: "The picture matches <strong>shampoo</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/60.png", options: ["shampoo", "soup"], correct: "shampoo", explanation: "The picture matches <strong>shampoo</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/61.png", options: ["shrimp", "soup"], correct: "shrimp", explanation: "The picture matches <strong>shrimp</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/62.png", options: ["shiver", "soup"], correct: "shiver", explanation: "The picture matches <strong>shiver</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/63.png", options: ["shiver", "shrub"], correct: "shrub", explanation: "The picture matches <strong>shrub</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/64.png", options: ["shiver", "shrub"], correct: "shrub", explanation: "The picture matches <strong>shrub</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/65.png", options: ["shave", "shrub"], correct: "shave", explanation: "The picture matches <strong>shave</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/66.png", options: ["shelf", "shrub"], correct: "shelf", explanation: "The picture matches <strong>shelf</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/67.png", options: ["shelf", "shrub"], correct: "shelf", explanation: "The picture matches <strong>shelf</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/68.png", options: ["shelf", "shoot"], correct: "shoot", explanation: "The picture matches <strong>shoot</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/69.png", options: ["shelter", "shoot"], correct: "shelter", explanation: "The picture matches <strong>shelter</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/70.png", options: ["shelter", "shoulder"], correct: "shoulder", explanation: "The picture matches <strong>shoulder</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/71.png", options: ["shatter", "shoulder"], correct: "shatter", explanation: "The picture matches <strong>shatter</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/72.png", options: ["shiver", "soup"], correct: "shiver", explanation: "The picture matches <strong>shiver</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/73.png", options: ["shiver", "shrub"], correct: "shrub", explanation: "The picture matches <strong>shrub</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/74.png", options: ["shiver", "shrub"], correct: "shrub", explanation: "The picture matches <strong>shrub</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/75.png", options: ["shiver", "shrub"], correct: "shrub", explanation: "The picture matches <strong>shrub</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/76.png", options: ["shave", "shrub"], correct: "shave", explanation: "The picture matches <strong>shave</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/77.png", options: ["shelf", "shrub"], correct: "shelf", explanation: "The picture matches <strong>shelf</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/78.png", options: ["she", "shelf"], correct: "shelf", explanation: "The picture matches <strong>shelf</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/79.png", options: ["shelf", "shoot"], correct: "shoot", explanation: "The picture matches <strong>shoot</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/80.png", options: ["shelter", "shoot"], correct: "shelter", explanation: "The picture matches <strong>shelter</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/81.png", options: ["shelter", "shoulder"], correct: "shoulder", explanation: "The picture matches <strong>shoulder</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/82.png", options: ["shop", "shoulder"], correct: "shop", explanation: "The picture matches <strong>shop</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/83.png", options: ["shop", "shell"], correct: "shell", explanation: "The picture matches <strong>shell</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/84.png", options: ["shop", "shell"], correct: "shell", explanation: "The picture matches <strong>shell</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/85.png", options: ["shop", "ship"], correct: "ship", explanation: "The picture matches <strong>ship</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/86.png", options: ["shop", "shoe"], correct: "shoe", explanation: "The picture matches <strong>shoe</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/87.png", options: ["sheep", "shoe"], correct: "sheep", explanation: "The picture matches <strong>sheep</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/88.png", options: ["sheep", "shape"], correct: "shape", explanation: "The picture matches <strong>shape</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/89.png", options: ["shower", "shape"], correct: "shower", explanation: "The picture matches <strong>shower</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/90.png", options: ["shower", "shoe"], correct: "shoe", explanation: "The picture matches <strong>shoe</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/91.png", options: ["shark", "share"], correct: "shark", explanation: "The picture matches <strong>shark</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/92.png", options: ["ship", "shoe"], correct: "shoe", explanation: "The picture matches <strong>shoe</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/93.png", options: ["shut", "shot"], correct: "shut", explanation: "The picture matches <strong>shut</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/94.png", options: ["shut", "shot"], correct: "shut", explanation: "The picture matches <strong>shut</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/95.png", options: ["shut", "shy"], correct: "shy", explanation: "The picture matches <strong>shy</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/96.png", options: ["shy", "shoe"], correct: "shy", explanation: "The picture matches <strong>shy</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/97.png", options: ["show", "shoe"], correct: "show", explanation: "The picture matches <strong>show</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/98.png", options: ["shy", "show"], correct: "show", explanation: "The picture matches <strong>show</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/99.png", options: ["shy", "shark"], correct: "shark", explanation: "The picture matches <strong>shark</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+    { question: "Which word matches the picture?", image: "../../image/kg3_eng_sh_words_images/100.png", options: ["shy", "shark"], correct: "shark", explanation: "The picture matches <strong>shark</strong>. Say it slowly — it starts with the <strong>sh</strong> sound." },
+      ];
+    </script>
+
+    <div id="site-footer-placeholder"></div>
+
+    <!-- MCQ engine (exposes window.initMCQQuiz) -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));
+    </script>
+  </body>
+</html>
