@@ -23,19 +23,20 @@ const expected = {
   singular_form: [96, 'Singular Form'], plural_form: [105, 'plural Form'],
   plural_singular: [100, 'Cocktail Plural/ Singular'], a_an: [100, 'Articles A/An'],
   have_has: [101, 'Have/ Has'], do_did: [98, 'Do/ Did'],
+  verbs: [101, 'Verbs'],
 };
 const menuPath = path.join(root, 'start-page2/KG_3/kg3_eng_options.html');
 const menu = fs.readFileSync(menuPath, 'utf8');
 const links = [...menu.matchAll(/href="([^"]+kg3_eng_[^"]+\.html)"/g)].map(m => m[1]);
-assert.equal(links.length, 17);
+assert.equal(links.length, 18);
 assert(links[0].endsWith('kg3_eng_uppercase.html'));
 assert(links[1].endsWith('kg3_eng_lowercase.html'));
-assert.equal(new Set(links).size, 17);
+assert.equal(new Set(links).size, 18);
 assert.deepEqual([...menu.matchAll(/class="card-title">([^<]+)<\/h3>/g)].map(m => m[1]), Object.values(expected).map(([, title]) => title));
 const jsonFiles = process.argv[2]
   ? fs.readdirSync(process.argv[2]).filter(f => f.endsWith('.json')).map(f => JSON.parse(fs.readFileSync(path.join(process.argv[2], f), 'utf8')))
   : null;
-if (jsonFiles) assert.equal(jsonFiles.length, 17);
+if (jsonFiles) assert.equal(jsonFiles.length, 18);
 
 let total = 0, images = 0;
 for (const [order, [suffix, [count, title]]] of Object.entries(expected).entries()) {
@@ -70,6 +71,11 @@ for (const [order, [suffix, [count, title]]] of Object.entries(expected).entries
     assert.equal(new Set(q.options).size, q.options.length, label);
     assert(q.options.includes(q.correct), label);
     assert(q.explanation, label);
+    if (suffix === 'verbs') {
+      assert.equal(q.question, 'Look at the picture and choose the correct verb.', label);
+      assert.equal(q.image, `../../image/KG3 English Verbs/${i + 1}.png`, label);
+      assert(q.alt?.trim(), label);
+    }
     if (q.image) {
       const asset = fs.readFileSync(path.resolve(folder, q.image));
       assert.equal(asset.subarray(1, 4).toString(), 'PNG', label);
@@ -95,6 +101,7 @@ for (const [order, [suffix, [count, title]]] of Object.entries(expected).entries
       assert.equal(exported.type, q.image ? 'image' : 'mcq', label);
       if (q.image) {
         assert.equal(exported.media.source_path, q.image, label);
+        if (suffix === 'verbs') assert.equal(exported.media.alt, q.alt, label);
         const prefix = q.image.includes('/KG_Vowel_E/') ? 'questions/shared/' : 'questions/kg3/english/';
         assert.equal(exported.media.path, prefix + q.image.split('/image/')[1].replace(/\.[^.]+$/, '.webp'), label);
       } else assert.equal(exported.media, null, label);
@@ -106,6 +113,6 @@ for (const [order, [suffix, [count, title]]] of Object.entries(expected).entries
     assert.equal(new Set(bank.map(q => q.options.indexOf(q.correct))).size, 3);
   }
 }
-assert.equal(total, 1554);
-assert.equal(images, 1103);
-console.log(`Validated 17 banks, ${total} questions, ${images} image references, menu links${jsonFiles ? ' and all JSON exports' : ''}.`);
+assert.equal(total, 1655);
+assert.equal(images, 1204);
+console.log(`Validated 18 banks, ${total} questions, ${images} image references, menu links${jsonFiles ? ' and all JSON exports' : ''}.`);
