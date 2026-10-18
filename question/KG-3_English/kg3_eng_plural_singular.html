@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cocktail Plural/ Singular — KG3 English</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden" aria-live="polite"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+    <script>
+      const questions = [
+        {"question": "Look at the picture and choose the singular form of “cats”.", "options": ["cat", "kitten"], "correct": "cat", "explanation": "The answer is <strong>cat</strong>.", "image": "../../image/KG_3_Plural_Singular/1.png"},
+        {"question": "Look at the picture and choose the plural form of “dog”.", "options": ["cat", "dogs"], "correct": "dogs", "explanation": "The answer is <strong>dogs</strong>.", "image": "../../image/KG_3_Plural_Singular/2.png"},
+        {"question": "Look at the picture and choose the plural form of “bird”.", "options": ["cat", "birds"], "correct": "birds", "explanation": "The answer is <strong>birds</strong>.", "image": "../../image/KG_3_Plural_Singular/3.png"},
+        {"question": "Look at the picture and choose the singular form of “cows”.", "options": ["cat", "cow"], "correct": "cow", "explanation": "The answer is <strong>cow</strong>.", "image": "../../image/KG_3_Plural_Singular/4.png"},
+        {"question": "Look at the picture and choose the plural form of “pig”.", "options": ["pigs", "cows"], "correct": "pigs", "explanation": "The answer is <strong>pigs</strong>.", "image": "../../image/KG_3_Plural_Singular/5.png"},
+        {"question": "Look at the picture and choose the plural form of “hen”.", "options": ["hens", "hat"], "correct": "hens", "explanation": "The answer is <strong>hens</strong>.", "image": "../../image/KG_3_Plural_Singular/6.png"},
+        {"question": "Look at the picture and choose the singular form of “ducks”.", "options": ["duck", "hen"], "correct": "duck", "explanation": "The answer is <strong>duck</strong>.", "image": "../../image/KG_3_Plural_Singular/7.png"},
+        {"question": "Look at the picture and choose the singular form of “ducks”.", "options": ["ducks", "duck"], "correct": "duck", "explanation": "The answer is <strong>duck</strong>.", "image": "../../image/KG_3_Plural_Singular/8.png"},
+        {"question": "Look at the picture and choose the singular form of “horses”.", "options": ["ducks", "horse"], "correct": "horse", "explanation": "The answer is <strong>horse</strong>.", "image": "../../image/KG_3_Plural_Singular/9.png"},
+        {"question": "Look at the picture and choose the plural form of “goat”.", "options": ["goat", "goats"], "correct": "goats", "explanation": "The answer is <strong>goats</strong>.", "image": "../../image/KG_3_Plural_Singular/10.png"},
+        {"question": "Look at the picture and choose the singular form of “goats”.", "options": ["goat", "coats"], "correct": "goat", "explanation": "The answer is <strong>goat</strong>.", "image": "../../image/KG_3_Plural_Singular/11.png"},
+        {"question": "Look at the picture and choose the plural form of “rabbit”.", "options": ["robot", "rabbits"], "correct": "rabbits", "explanation": "The answer is <strong>rabbits</strong>.", "image": "../../image/KG_3_Plural_Singular/12.png"},
+        {"question": "Look at the picture and choose the singular form of “rabbits”.", "options": ["robot", "rabbit"], "correct": "rabbit", "explanation": "The answer is <strong>rabbit</strong>.", "image": "../../image/KG_3_Plural_Singular/13.png"},
+        {"question": "Look at the picture and choose the singular form of “lions”.", "options": ["lion", "lionesses"], "correct": "lion", "explanation": "The answer is <strong>lion</strong>.", "image": "../../image/KG_3_Plural_Singular/14.png"},
+        {"question": "Look at the picture and choose the singular form of “camels”.", "options": ["camp", "camel"], "correct": "camel", "explanation": "The answer is <strong>camel</strong>.", "image": "../../image/KG_3_Plural_Singular/15.png"},
+        {"question": "Look at the picture and choose the plural form of “tiger”.", "options": ["tiger", "tigers"], "correct": "tigers", "explanation": "The answer is <strong>tigers</strong>.", "image": "../../image/KG_3_Plural_Singular/16.png"},
+        {"question": "Look at the picture and choose the singular form of “bears”.", "options": ["bear", "bears"], "correct": "bear", "explanation": "The answer is <strong>bear</strong>.", "image": "../../image/KG_3_Plural_Singular/17.png"},
+        {"question": "Look at the picture and choose the singular form of “frogs”.", "options": ["frog", "froggy"], "correct": "frog", "explanation": "The answer is <strong>frog</strong>.", "image": "../../image/KG_3_Plural_Singular/18.png"},
+        {"question": "Look at the picture and choose the plural form of “frog”.", "options": ["frog", "frogs"], "correct": "frogs", "explanation": "The answer is <strong>frogs</strong>.", "image": "../../image/KG_3_Plural_Singular/19.png"},
+        {"question": "Look at the picture and choose the singular form of “trees”.", "options": ["tree", "three"], "correct": "tree", "explanation": "The answer is <strong>tree</strong>.", "image": "../../image/KG_3_Plural_Singular/20.png"},
+        {"question": "Look at the picture and choose the singular form of “bees”.", "options": ["bee", "bees"], "correct": "bee", "explanation": "The answer is <strong>bee</strong>.", "image": "../../image/KG_3_Plural_Singular/21.png"},
+        {"question": "Look at the picture and choose the singular form of “ants”.", "options": ["ant", "aunt"], "correct": "ant", "explanation": "The answer is <strong>ant</strong>.", "image": "../../image/KG_3_Plural_Singular/22.png"},
+        {"question": "Look at the picture and choose the singular form of “bugs”.", "options": ["bag", "bug"], "correct": "bug", "explanation": "The answer is <strong>bug</strong>.", "image": "../../image/KG_3_Plural_Singular/23.png"},
+        {"question": "Look at the picture and choose the plural form of “apple”.", "options": ["apples", "orange"], "correct": "apples", "explanation": "The answer is <strong>apples</strong>.", "image": "../../image/KG_3_Plural_Singular/24.png"},
+        {"question": "Look at the picture and choose the plural form of “orange”.", "options": ["oranges", "orange"], "correct": "oranges", "explanation": "The answer is <strong>oranges</strong>.", "image": "../../image/KG_3_Plural_Singular/25.png"},
+        {"question": "Look at the picture and choose the plural form of “star”.", "options": ["start", "stars"], "correct": "stars", "explanation": "The answer is <strong>stars</strong>.", "image": "../../image/KG_3_Plural_Singular/26.png"},
+        {"question": "Look at the picture and choose the singular form of “Pears”.", "options": ["pear", "please"], "correct": "pear", "explanation": "The answer is <strong>pear</strong>.", "image": "../../image/KG_3_Plural_Singular/27.png"},
+        {"question": "Look at the picture and choose the plural form of “cake”.", "options": ["cucumber", "cakes"], "correct": "cakes", "explanation": "The answer is <strong>cakes</strong>.", "image": "../../image/KG_3_Plural_Singular/28.png"},
+        {"question": "Look at the picture and choose the plural form of “cupcake”.", "options": ["cupcakes", "cup"], "correct": "cupcakes", "explanation": "The answer is <strong>cupcakes</strong>.", "image": "../../image/KG_3_Plural_Singular/29.png"},
+        {"question": "Look at the picture and choose the plural form of “egg”.", "options": ["eggs", "eggshell"], "correct": "eggs", "explanation": "The answer is <strong>eggs</strong>.", "image": "../../image/KG_3_Plural_Singular/30.png"},
+        {"question": "Look at the picture and choose the plural form of “cookie”.", "options": ["egg", "cookies"], "correct": "cookies", "explanation": "The answer is <strong>cookies</strong>.", "image": "../../image/KG_3_Plural_Singular/31.png"},
+        {"question": "Look at the picture and choose the plural form of “hamburger”.", "options": ["hamburgers", "cookies"], "correct": "hamburgers", "explanation": "The answer is <strong>hamburgers</strong>.", "image": "../../image/KG_3_Plural_Singular/32.png"},
+        {"question": "Look at the picture and choose the plural form of “ball”.", "options": ["but", "balls"], "correct": "balls", "explanation": "The answer is <strong>balls</strong>.", "image": "../../image/KG_3_Plural_Singular/33.png"},
+        {"question": "Look at the picture and choose the plural form of “doll”.", "options": ["dolls", "ball"], "correct": "dolls", "explanation": "The answer is <strong>dolls</strong>.", "image": "../../image/KG_3_Plural_Singular/34.png"},
+        {"question": "Look at the picture and choose the singular form of “toys”.", "options": ["boys", "toy"], "correct": "toy", "explanation": "The answer is <strong>toy</strong>.", "image": "../../image/KG_3_Plural_Singular/35.png"},
+        {"question": "Look at the picture and choose the singular form of “cars”.", "options": ["car", "bike"], "correct": "car", "explanation": "The answer is <strong>car</strong>.", "image": "../../image/KG_3_Plural_Singular/36.png"},
+        {"question": "Look at the picture and choose the singular form of “buses”.", "options": ["box", "bus"], "correct": "bus", "explanation": "The answer is <strong>bus</strong>.", "image": "../../image/KG_3_Plural_Singular/37.png"},
+        {"question": "Look at the picture and choose the singular form of “bikes”.", "options": ["box", "bike"], "correct": "bike", "explanation": "The answer is <strong>bike</strong>.", "image": "../../image/KG_3_Plural_Singular/38.png"},
+        {"question": "Look at the picture and choose the plural form of “train”.", "options": ["trains", "tract"], "correct": "trains", "explanation": "The answer is <strong>trains</strong>.", "image": "../../image/KG_3_Plural_Singular/39.png"},
+        {"question": "Look at the picture and choose the singular form of “flowers”.", "options": ["flower", "tract"], "correct": "flower", "explanation": "The answer is <strong>flower</strong>.", "image": "../../image/KG_3_Plural_Singular/40.png"},
+        {"question": "Look at the picture and choose the singular form of “boats”.", "options": ["boot", "boat"], "correct": "boat", "explanation": "The answer is <strong>boat</strong>.", "image": "../../image/KG_3_Plural_Singular/41.png"},
+        {"question": "Look at the picture and choose the singular form of “books”.", "options": ["boot", "book"], "correct": "book", "explanation": "The answer is <strong>book</strong>.", "image": "../../image/KG_3_Plural_Singular/42.png"},
+        {"question": "Look at the picture and choose the plural form of “book”.", "options": ["books", "boom"], "correct": "books", "explanation": "The answer is <strong>books</strong>.", "image": "../../image/KG_3_Plural_Singular/43.png"},
+        {"question": "Look at the picture and choose the singular form of “pencils”.", "options": ["book", "pencil"], "correct": "pencil", "explanation": "The answer is <strong>pencil</strong>.", "image": "../../image/KG_3_Plural_Singular/44.png"},
+        {"question": "Look at the picture and choose the singular form of “crayons”.", "options": ["crayon", "pencil"], "correct": "crayon", "explanation": "The answer is <strong>crayon</strong>.", "image": "../../image/KG_3_Plural_Singular/45.png"},
+        {"question": "Look at the picture and choose the plural form of “bag”.", "options": ["crayon", "bags"], "correct": "bags", "explanation": "The answer is <strong>bags</strong>.", "image": "../../image/KG_3_Plural_Singular/46.png"},
+        {"question": "Look at the picture and choose the singular form of “cups”.", "options": ["crayon", "cup"], "correct": "cup", "explanation": "The answer is <strong>cup</strong>.", "image": "../../image/KG_3_Plural_Singular/47.png"},
+        {"question": "Look at the picture and choose the plural form of “plate”.", "options": ["crayon", "plates"], "correct": "plates", "explanation": "The answer is <strong>plates</strong>.", "image": "../../image/KG_3_Plural_Singular/48.png"},
+        {"question": "Look at the picture and choose the plural form of “spoon”.", "options": ["crayon", "spoons"], "correct": "spoons", "explanation": "The answer is <strong>spoons</strong>.", "image": "../../image/KG_3_Plural_Singular/49.png"},
+        {"question": "Look at the picture and choose the plural form of “shoe”.", "options": ["shoes", "shoot"], "correct": "shoes", "explanation": "The answer is <strong>shoes</strong>.", "image": "../../image/KG_3_Plural_Singular/50.png"},
+        {"question": "Look at the picture and choose the plural form of “sock”.", "options": ["suck", "socks"], "correct": "socks", "explanation": "The answer is <strong>socks</strong>.", "image": "../../image/KG_3_Plural_Singular/51.png"},
+        {"question": "Look at the picture and choose the plural form of “hat”.", "options": ["hots", "hats"], "correct": "hats", "explanation": "The answer is <strong>hats</strong>.", "image": "../../image/KG_3_Plural_Singular/52.png"},
+        {"question": "Look at the picture and choose the singular form of “shirts”.", "options": ["shorts", "shirt"], "correct": "shirt", "explanation": "The answer is <strong>shirt</strong>.", "image": "../../image/KG_3_Plural_Singular/53.png"},
+        {"question": "Look at the picture and choose the singular form of “boys”.", "options": ["shirts", "boy"], "correct": "boy", "explanation": "The answer is <strong>boy</strong>.", "image": "../../image/KG_3_Plural_Singular/54.png"},
+        {"question": "Look at the picture and choose the singular form of “girls”.", "options": ["girl", "boy"], "correct": "girl", "explanation": "The answer is <strong>girl</strong>.", "image": "../../image/KG_3_Plural_Singular/55.png"},
+        {"question": "Look at the picture and choose the singular form of “friends”.", "options": ["fried", "friend"], "correct": "friend", "explanation": "The answer is <strong>friend</strong>.", "image": "../../image/KG_3_Plural_Singular/56.png"},
+        {"question": "Look at the picture and choose the singular form of “teachers”.", "options": ["friend", "teacher"], "correct": "teacher", "explanation": "The answer is <strong>teacher</strong>.", "image": "../../image/KG_3_Plural_Singular/57.png"},
+        {"question": "Look at the picture and choose the plural form of “student”.", "options": ["students", "teacher"], "correct": "students", "explanation": "The answer is <strong>students</strong>.", "image": "../../image/KG_3_Plural_Singular/58.png"},
+        {"question": "Look at the picture and choose the plural form of “doctor”.", "options": ["doctor", "doctors"], "correct": "doctors", "explanation": "The answer is <strong>doctors</strong>.", "image": "../../image/KG_3_Plural_Singular/59.png"},
+        {"question": "Look at the picture and choose the plural form of “hand”.", "options": ["fingers", "hands"], "correct": "hands", "explanation": "The answer is <strong>hands</strong>.", "image": "../../image/KG_3_Plural_Singular/60.png"},
+        {"question": "Look at the picture and choose the singular form of “eyes”.", "options": ["eye", "hand"], "correct": "eye", "explanation": "The answer is <strong>eye</strong>.", "image": "../../image/KG_3_Plural_Singular/61.png"},
+        {"question": "Look at the picture and choose the singular form of “houses”.", "options": ["eye", "house"], "correct": "house", "explanation": "The answer is <strong>house</strong>.", "image": "../../image/KG_3_Plural_Singular/62.png"},
+        {"question": "Look at the picture and choose the singular form of “clouds”.", "options": ["cloud", "house"], "correct": "cloud", "explanation": "The answer is <strong>cloud</strong>.", "image": "../../image/KG_3_Plural_Singular/63.png"},
+        {"question": "Look at the picture and choose the plural form of “window”.", "options": ["windows", "house"], "correct": "windows", "explanation": "The answer is <strong>windows</strong>.", "image": "../../image/KG_3_Plural_Singular/64.png"},
+        {"question": "Look at the picture and choose the plural form of “chair”.", "options": ["check", "chairs"], "correct": "chairs", "explanation": "The answer is <strong>chairs</strong>.", "image": "../../image/KG_3_Plural_Singular/65.png"},
+        {"question": "Look at the picture and choose the plural form of “lamp”.", "options": ["lamps", "chair"], "correct": "lamps", "explanation": "The answer is <strong>lamps</strong>.", "image": "../../image/KG_3_Plural_Singular/66.png"},
+        {"question": "Look at the picture and choose the plural form of “key”.", "options": ["lamp", "keys"], "correct": "keys", "explanation": "The answer is <strong>keys</strong>.", "image": "../../image/KG_3_Plural_Singular/67.png"},
+        {"question": "Look at the picture and choose the plural form of “balloon”.", "options": ["camp", "balloons"], "correct": "balloons", "explanation": "The answer is <strong>balloons</strong>.", "image": "../../image/KG_3_Plural_Singular/68.png"},
+        {"question": "Look at the picture and choose the singular form of “vans”.", "options": ["van", "vice"], "correct": "van", "explanation": "The answer is <strong>van</strong>.", "image": "../../image/KG_3_Plural_Singular/69.png"},
+        {"question": "Look at the picture and choose the singular form of “kites”.", "options": ["site", "kite"], "correct": "kite", "explanation": "The answer is <strong>kite</strong>.", "image": "../../image/KG_3_Plural_Singular/70.png"},
+        {"question": "Look at the picture and choose the singular form of “schools”.", "options": ["school", "student"], "correct": "school", "explanation": "The answer is <strong>school</strong>.", "image": "../../image/KG_3_Plural_Singular/71.png"},
+        {"question": "Look at the picture and choose the singular form of “baskets”.", "options": ["school", "basket"], "correct": "basket", "explanation": "The answer is <strong>basket</strong>.", "image": "../../image/KG_3_Plural_Singular/72.png"},
+        {"question": "Look at the picture and choose the singular form of “toys”.", "options": ["toy", "ball"], "correct": "toy", "explanation": "The answer is <strong>toy</strong>.", "image": "../../image/KG_3_Plural_Singular/73.png"},
+        {"question": "Look at the picture and choose the plural form of “rabbit”.", "options": ["toy", "rabbits"], "correct": "rabbits", "explanation": "The answer is <strong>rabbits</strong>.", "image": "../../image/KG_3_Plural_Singular/74.png"},
+        {"question": "Look at the picture and choose the singular form of “penguins”.", "options": ["penguin", "Pendant"], "correct": "penguin", "explanation": "The answer is <strong>penguin</strong>.", "image": "../../image/KG_3_Plural_Singular/75.png"},
+        {"question": "Look at the picture and choose the plural form of “owl”.", "options": ["Owner", "owls"], "correct": "owls", "explanation": "The answer is <strong>owls</strong>.", "image": "../../image/KG_3_Plural_Singular/76.png"},
+        {"question": "Look at the picture and choose the plural form of “crab”.", "options": ["crab", "Can"], "correct": "crab", "explanation": "The answer is <strong>crab</strong>.", "image": "../../image/KG_3_Plural_Singular/77.png"},
+        {"question": "Look at the picture and choose the plural form of “parrot”.", "options": ["parrots", "crab"], "correct": "parrots", "explanation": "The answer is <strong>parrots</strong>.", "image": "../../image/KG_3_Plural_Singular/78.png"},
+        {"question": "Look at the picture and choose the singular form of “sharks”.", "options": ["shark", "shake"], "correct": "shark", "explanation": "The answer is <strong>shark</strong>.", "image": "../../image/KG_3_Plural_Singular/79.png"},
+        {"question": "Look at the picture and choose the singular form of “swans”.", "options": ["swan", "goat"], "correct": "swan", "explanation": "The answer is <strong>swan</strong>.", "image": "../../image/KG_3_Plural_Singular/80.png"},
+        {"question": "Look at the picture and choose the singular form of “sheep”.", "options": ["sheep", "shop"], "correct": "sheep", "explanation": "The answer is <strong>sheep</strong>.", "image": "../../image/KG_3_Plural_Singular/81.png"},
+        {"question": "Look at the picture and choose the singular form of “ducks”.", "options": ["duck", "sheep"], "correct": "duck", "explanation": "The answer is <strong>duck</strong>.", "image": "../../image/KG_3_Plural_Singular/82.png"},
+        {"question": "Look at the picture and choose the plural form of “seals]”.", "options": ["duck", "seal"], "correct": "seal", "explanation": "The answer is <strong>seal</strong>.", "image": "../../image/KG_3_Plural_Singular/83.png"},
+        {"question": "Look at the picture and choose the plural form of “goat”.", "options": ["goats", "good"], "correct": "goats", "explanation": "The answer is <strong>goats</strong>.", "image": "../../image/KG_3_Plural_Singular/84.png"},
+        {"question": "Look at the picture and choose the singular form of “birds”.", "options": ["goat", "bird"], "correct": "bird", "explanation": "The answer is <strong>bird</strong>.", "image": "../../image/KG_3_Plural_Singular/85.png"},
+        {"question": "Look at the picture and choose the singular form of “cows”.", "options": ["cow", "bird"], "correct": "cow", "explanation": "The answer is <strong>cow</strong>.", "image": "../../image/KG_3_Plural_Singular/86.png"},
+        {"question": "Look at the picture and choose the plural form of “snail”.", "options": ["cow", "snails"], "correct": "snails", "explanation": "The answer is <strong>snails</strong>.", "image": "../../image/KG_3_Plural_Singular/87.png"},
+        {"question": "Look at the picture and choose the singular form of “horses”.", "options": ["horse", "snail"], "correct": "horse", "explanation": "The answer is <strong>horse</strong>.", "image": "../../image/KG_3_Plural_Singular/88.png"},
+        {"question": "Look at the picture and choose the singular form of “starfish”.", "options": ["horse", "starfish"], "correct": "starfish", "explanation": "The answer is <strong>starfish</strong>.", "image": "../../image/KG_3_Plural_Singular/89.png"},
+        {"question": "Look at the picture and choose the singular form of “owls”.", "options": ["owl", "starfish"], "correct": "owl", "explanation": "The answer is <strong>owl</strong>.", "image": "../../image/KG_3_Plural_Singular/90.png"},
+        {"question": "Look at the picture and choose the plural form of “squirrel”.", "options": ["chipmunk", "squirrels"], "correct": "squirrels", "explanation": "The answer is <strong>squirrels</strong>.", "image": "../../image/KG_3_Plural_Singular/91.png"},
+        {"question": "Look at the picture and choose the singular form of “ants”.", "options": ["ant", "squirrel"], "correct": "ant", "explanation": "The answer is <strong>ant</strong>.", "image": "../../image/KG_3_Plural_Singular/92.png"},
+        {"question": "Look at the picture and choose the singular form of “sloths”.", "options": ["monkey", "sloth"], "correct": "sloth", "explanation": "The answer is <strong>sloth</strong>.", "image": "../../image/KG_3_Plural_Singular/93.png"},
+        {"question": "Look at the picture and choose the singular form of “bats”.", "options": ["bat", "bird"], "correct": "bat", "explanation": "The answer is <strong>bat</strong>.", "image": "../../image/KG_3_Plural_Singular/94.png"},
+        {"question": "Look at the picture and choose the singular form of “circle”.", "options": ["bat", "circles"], "correct": "circles", "explanation": "The answer is <strong>circles</strong>.", "image": "../../image/KG_3_Plural_Singular/95.png"},
+        {"question": "Look at the picture and choose the plural form of “otter”.", "options": ["deer", "otters"], "correct": "otters", "explanation": "The answer is <strong>otters</strong>.", "image": "../../image/KG_3_Plural_Singular/96.png"},
+        {"question": "Look at the picture and choose the plural form of “flower”.", "options": ["flowers", "floor"], "correct": "flowers", "explanation": "The answer is <strong>flowers</strong>.", "image": "../../image/KG_3_Plural_Singular/97.png"},
+        {"question": "Look at the picture and choose the singular form of “fan”.", "options": ["fun", "fans"], "correct": "fans", "explanation": "The answer is <strong>fans</strong>.", "image": "../../image/KG_3_Plural_Singular/98.png"},
+        {"question": "Look at the picture and choose the plural form of “rat”.", "options": ["rats", "fans"], "correct": "rats", "explanation": "The answer is <strong>rats</strong>.", "image": "../../image/KG_3_Plural_Singular/99.png"},
+        {"question": "Look at the picture and choose the plural form of “rat”.", "options": ["rats", "fans"], "correct": "rats", "explanation": "The answer is <strong>rats</strong>.", "image": "../../image/KG_3_Plural_Singular/100.png"}
+      ];
+    </script>
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));</script>
+  </body>
+</html>

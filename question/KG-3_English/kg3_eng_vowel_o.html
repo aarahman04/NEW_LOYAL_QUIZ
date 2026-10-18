@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vowel o — KG3 English</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden" aria-live="polite"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+    <script>
+      const questions = [
+        {"question": "Which word matches the picture?", "options": ["ox", "hot"], "correct": "ox", "explanation": "The picture matches <strong>ox</strong>.", "image": "../../image/KG_3_Vowel_O/1.png"},
+        {"question": "Which word matches the picture?", "options": ["ox", "hot"], "correct": "hot", "explanation": "The picture matches <strong>hot</strong>.", "image": "../../image/KG_3_Vowel_O/2.png"},
+        {"question": "Which word matches the picture?", "options": ["box", "hot"], "correct": "box", "explanation": "The picture matches <strong>box</strong>.", "image": "../../image/KG_3_Vowel_O/3.png"},
+        {"question": "Which word matches the picture?", "options": ["box", "boy"], "correct": "boy", "explanation": "The picture matches <strong>boy</strong>.", "image": "../../image/KG_3_Vowel_O/4.png"},
+        {"question": "Which word matches the picture?", "options": ["cop", "cot"], "correct": "cop", "explanation": "The picture matches <strong>cop</strong>.", "image": "../../image/KG_3_Vowel_O/5.png"},
+        {"question": "Which word matches the picture?", "options": ["cop", "cot"], "correct": "cot", "explanation": "The picture matches <strong>cot</strong>.", "image": "../../image/KG_3_Vowel_O/6.png"},
+        {"question": "Which word matches the picture?", "options": ["dog", "cot"], "correct": "dog", "explanation": "The picture matches <strong>dog</strong>.", "image": "../../image/KG_3_Vowel_O/7.png"},
+        {"question": "Which word matches the picture?", "options": ["dog", "fog"], "correct": "fog", "explanation": "The picture matches <strong>fog</strong>.", "image": "../../image/KG_3_Vowel_O/8.png"},
+        {"question": "Which word matches the picture?", "options": ["fox", "fog"], "correct": "fox", "explanation": "The picture matches <strong>fox</strong>.", "image": "../../image/KG_3_Vowel_O/9.png"},
+        {"question": "Which word matches the picture?", "options": ["fox", "hog"], "correct": "hog", "explanation": "The picture matches <strong>hog</strong>.", "image": "../../image/KG_3_Vowel_O/10.png"},
+        {"question": "Which word matches the picture?", "options": ["hop", "hog"], "correct": "hop", "explanation": "The picture matches <strong>hop</strong>.", "image": "../../image/KG_3_Vowel_O/11.png"},
+        {"question": "Which word matches the picture?", "options": ["hop", "job"], "correct": "job", "explanation": "The picture matches <strong>job</strong>.", "image": "../../image/KG_3_Vowel_O/12.png"},
+        {"question": "Which word matches the picture?", "options": ["jog", "job"], "correct": "jog", "explanation": "The picture matches <strong>jog</strong>.", "image": "../../image/KG_3_Vowel_O/13.png"},
+        {"question": "Which word matches the picture?", "options": ["jog", "log"], "correct": "log", "explanation": "The picture matches <strong>log</strong>.", "image": "../../image/KG_3_Vowel_O/14.png"},
+        {"question": "Which word matches the picture?", "options": ["jog", "mop"], "correct": "mop", "explanation": "The picture matches <strong>mop</strong>.", "image": "../../image/KG_3_Vowel_O/15.png"},
+        {"question": "Which word matches the picture?", "options": ["pod", "log"], "correct": "pod", "explanation": "The picture matches <strong>pod</strong>.", "image": "../../image/KG_3_Vowel_O/16.png"},
+        {"question": "Which word matches the picture?", "options": ["pod", "pot"], "correct": "pot", "explanation": "The picture matches <strong>pot</strong>.", "image": "../../image/KG_3_Vowel_O/17.png"},
+        {"question": "Which word matches the picture?", "options": ["rod", "pod"], "correct": "rod", "explanation": "The picture matches <strong>rod</strong>.", "image": "../../image/KG_3_Vowel_O/18.png"},
+        {"question": "Which word matches the picture?", "options": ["pop", "pod"], "correct": "pop", "explanation": "The picture matches <strong>pop</strong>.", "image": "../../image/KG_3_Vowel_O/19.png"},
+        {"question": "Which word matches the picture?", "options": ["pop", "rob"], "correct": "rob", "explanation": "The picture matches <strong>rob</strong>.", "image": "../../image/KG_3_Vowel_O/20.png"},
+        {"question": "Which word matches the picture?", "options": ["sob", "rob"], "correct": "sob", "explanation": "The picture matches <strong>sob</strong>.", "image": "../../image/KG_3_Vowel_O/21.png"},
+        {"question": "Which word matches the picture?", "options": ["sob", "top"], "correct": "top", "explanation": "The picture matches <strong>top</strong>.", "image": "../../image/KG_3_Vowel_O/22.png"},
+        {"question": "Which word matches the picture?", "options": ["won", "top"], "correct": "won", "explanation": "The picture matches <strong>won</strong>.", "image": "../../image/KG_3_Vowel_O/23.png"},
+        {"question": "Which word matches the picture?", "options": ["won", "clock"], "correct": "clock", "explanation": "The picture matches <strong>clock</strong>.", "image": "../../image/KG_3_Vowel_O/24.png"},
+        {"question": "Which word matches the picture?", "options": ["blot", "clock"], "correct": "blot", "explanation": "The picture matches <strong>blot</strong>.", "image": "../../image/KG_3_Vowel_O/25.png"},
+        {"question": "Which word matches the picture?", "options": ["clock", "bond"], "correct": "bond", "explanation": "The picture matches <strong>bond</strong>.", "image": "../../image/KG_3_Vowel_O/26.png"},
+        {"question": "Which word matches the picture?", "options": ["boss", "bond"], "correct": "boss", "explanation": "The picture matches <strong>boss</strong>.", "image": "../../image/KG_3_Vowel_O/27.png"},
+        {"question": "Which word matches the picture?", "options": ["boss", "chop"], "correct": "chop", "explanation": "The picture matches <strong>chop</strong>.", "image": "../../image/KG_3_Vowel_O/28.png"},
+        {"question": "Which word matches the picture?", "options": ["chop", "shop"], "correct": "chop", "explanation": "The picture matches <strong>chop</strong>.", "image": "../../image/KG_3_Vowel_O/29.png"},
+        {"question": "Which word matches the picture?", "options": ["chop", "drop"], "correct": "drop", "explanation": "The picture matches <strong>drop</strong>.", "image": "../../image/KG_3_Vowel_O/30.png"},
+        {"question": "Which word matches the picture?", "options": ["flock", "drop"], "correct": "flock", "explanation": "The picture matches <strong>flock</strong>.", "image": "../../image/KG_3_Vowel_O/31.png"},
+        {"question": "Which word matches the picture?", "options": ["clock", "flock"], "correct": "flock", "explanation": "The picture matches <strong>flock</strong>.", "image": "../../image/KG_3_Vowel_O/32.png"},
+        {"question": "Which word matches the picture?", "options": ["flop", "flock"], "correct": "flop", "explanation": "The picture matches <strong>flop</strong>.", "image": "../../image/KG_3_Vowel_O/33.png"},
+        {"question": "Which word matches the picture?", "options": ["frog", "from"], "correct": "frog", "explanation": "The picture matches <strong>frog</strong>.", "image": "../../image/KG_3_Vowel_O/34.png"},
+        {"question": "Which word matches the picture?", "options": ["fog", "golf"], "correct": "golf", "explanation": "The picture matches <strong>golf</strong>.", "image": "../../image/KG_3_Vowel_O/35.png"},
+        {"question": "Which word matches the picture?", "options": ["gone", "golf"], "correct": "gone", "explanation": "The picture matches <strong>gone</strong>.", "image": "../../image/KG_3_Vowel_O/36.png"},
+        {"question": "Which word matches the picture?", "options": ["gone", "golf"], "correct": "gone", "explanation": "The picture matches <strong>gone</strong>.", "image": "../../image/KG_3_Vowel_O/37.png"},
+        {"question": "Which word matches the picture?", "options": ["gone", "shop"], "correct": "shop", "explanation": "The picture matches <strong>shop</strong>.", "image": "../../image/KG_3_Vowel_O/38.png"},
+        {"question": "Which word matches the picture?", "options": ["stop", "shop"], "correct": "stop", "explanation": "The picture matches <strong>stop</strong>.", "image": "../../image/KG_3_Vowel_O/39.png"},
+        {"question": "Which word matches the picture?", "options": ["gone", "sock"], "correct": "sock", "explanation": "The picture matches <strong>sock</strong>.", "image": "../../image/KG_3_Vowel_O/40.png"},
+        {"question": "Which word matches the picture?", "options": ["gone", "song"], "correct": "song", "explanation": "The picture matches <strong>song</strong>.", "image": "../../image/KG_3_Vowel_O/41.png"},
+        {"question": "Which word matches the picture?", "options": ["gone", "song"], "correct": "song", "explanation": "The picture matches <strong>song</strong>.", "image": "../../image/KG_3_Vowel_O/42.png"},
+        {"question": "Which word matches the picture?", "options": ["long", "song"], "correct": "long", "explanation": "The picture matches <strong>long</strong>.", "image": "../../image/KG_3_Vowel_O/43.png"},
+        {"question": "Which word matches the picture?", "options": ["long", "lost"], "correct": "lost", "explanation": "The picture matches <strong>lost</strong>.", "image": "../../image/KG_3_Vowel_O/44.png"},
+        {"question": "Which word matches the picture?", "options": ["lock", "lost"], "correct": "lock", "explanation": "The picture matches <strong>lock</strong>.", "image": "../../image/KG_3_Vowel_O/45.png"},
+        {"question": "Which word matches the picture?", "options": ["lock", "mock"], "correct": "mock", "explanation": "The picture matches <strong>mock</strong>.", "image": "../../image/KG_3_Vowel_O/46.png"},
+        {"question": "Which word matches the picture?", "options": ["rock", "mock"], "correct": "rock", "explanation": "The picture matches <strong>rock</strong>.", "image": "../../image/KG_3_Vowel_O/47.png"},
+        {"question": "Which word matches the picture?", "options": ["rock", "pond"], "correct": "pond", "explanation": "The picture matches <strong>pond</strong>.", "image": "../../image/KG_3_Vowel_O/48.png"},
+        {"question": "Which word matches the picture?", "options": ["found", "pond"], "correct": "found", "explanation": "The picture matches <strong>found</strong>.", "image": "../../image/KG_3_Vowel_O/49.png"},
+        {"question": "Which word matches the picture?", "options": ["found", "pond"], "correct": "found", "explanation": "The picture matches <strong>found</strong>.", "image": "../../image/KG_3_Vowel_O/50.png"},
+        {"question": "Which word matches the picture?", "options": ["cost", "pond"], "correct": "cost", "explanation": "The picture matches <strong>cost</strong>.", "image": "../../image/KG_3_Vowel_O/51.png"},
+        {"question": "Which word matches the picture?", "options": ["cost", "doll"], "correct": "doll", "explanation": "The picture matches <strong>doll</strong>.", "image": "../../image/KG_3_Vowel_O/52.png"},
+        {"question": "Which word matches the picture?", "options": ["moss", "doll"], "correct": "moss", "explanation": "The picture matches <strong>moss</strong>.", "image": "../../image/KG_3_Vowel_O/53.png"},
+        {"question": "Which word matches the picture?", "options": ["moss", "toss"], "correct": "toss", "explanation": "The picture matches <strong>toss</strong>.", "image": "../../image/KG_3_Vowel_O/54.png"},
+        {"question": "Which word matches the picture?", "options": ["loss", "toss"], "correct": "loss", "explanation": "The picture matches <strong>loss</strong>.", "image": "../../image/KG_3_Vowel_O/55.png"},
+        {"question": "Which word matches the picture?", "options": ["loss", "boss"], "correct": "boss", "explanation": "The picture matches <strong>boss</strong>.", "image": "../../image/KG_3_Vowel_O/56.png"},
+        {"question": "Which word matches the picture?", "options": ["block", "clock"], "correct": "block", "explanation": "The picture matches <strong>block</strong>.", "image": "../../image/KG_3_Vowel_O/57.png"},
+        {"question": "Which word matches the picture?", "options": ["block", "cross"], "correct": "cross", "explanation": "The picture matches <strong>cross</strong>.", "image": "../../image/KG_3_Vowel_O/58.png"},
+        {"question": "Which word matches the picture?", "options": ["frog", "fork"], "correct": "fork", "explanation": "The picture matches <strong>fork</strong>.", "image": "../../image/KG_3_Vowel_O/59.png"},
+        {"question": "Which word matches the picture?", "options": ["gloss", "cross"], "correct": "gloss", "explanation": "The picture matches <strong>gloss</strong>.", "image": "../../image/KG_3_Vowel_O/60.png"},
+        {"question": "Which word matches the picture?", "options": ["gloss", "plonk"], "correct": "plonk", "explanation": "The picture matches <strong>plonk</strong>.", "image": "../../image/KG_3_Vowel_O/61.png"},
+        {"question": "Which word matches the picture?", "options": ["shock", "plonk"], "correct": "shock", "explanation": "The picture matches <strong>shock</strong>.", "image": "../../image/KG_3_Vowel_O/62.png"},
+        {"question": "Which word matches the picture?", "options": ["stock", "shock"], "correct": "shock", "explanation": "The picture matches <strong>shock</strong>.", "image": "../../image/KG_3_Vowel_O/63.png"},
+        {"question": "Which word matches the picture?", "options": ["short", "shock"], "correct": "short", "explanation": "The picture matches <strong>short</strong>.", "image": "../../image/KG_3_Vowel_O/64.png"},
+        {"question": "Which word matches the picture?", "options": ["string", "strong"], "correct": "strong", "explanation": "The picture matches <strong>strong</strong>.", "image": "../../image/KG_3_Vowel_O/65.png"},
+        {"question": "Which word matches the picture?", "options": ["cob", "box"], "correct": "cob", "explanation": "The picture matches <strong>cob</strong>.", "image": "../../image/KG_3_Vowel_O/66.png"},
+        {"question": "Which word matches the picture?", "options": ["cob", "doc"], "correct": "doc", "explanation": "The picture matches <strong>doc</strong>.", "image": "../../image/KG_3_Vowel_O/67.png"},
+        {"question": "Which word matches the picture?", "options": ["cob", "doc"], "correct": "doc", "explanation": "The picture matches <strong>doc</strong>.", "image": "../../image/KG_3_Vowel_O/68.png"},
+        {"question": "Which word matches the picture?", "options": ["mop", "doc"], "correct": "mop", "explanation": "The picture matches <strong>mop</strong>.", "image": "../../image/KG_3_Vowel_O/69.png"},
+        {"question": "Which word matches the picture?", "options": ["mop", "lot"], "correct": "lot", "explanation": "The picture matches <strong>lot</strong>.", "image": "../../image/KG_3_Vowel_O/70.png"},
+        {"question": "Which word matches the picture?", "options": ["mop", "lot"], "correct": "lot", "explanation": "The picture matches <strong>lot</strong>.", "image": "../../image/KG_3_Vowel_O/71.png"},
+        {"question": "Which word matches the picture?", "options": ["jog", "lot"], "correct": "jog", "explanation": "The picture matches <strong>jog</strong>.", "image": "../../image/KG_3_Vowel_O/72.png"},
+        {"question": "Which word matches the picture?", "options": ["jog", "moth"], "correct": "moth", "explanation": "The picture matches <strong>moth</strong>.", "image": "../../image/KG_3_Vowel_O/73.png"},
+        {"question": "Which word matches the picture?", "options": ["clog", "moth"], "correct": "clog", "explanation": "The picture matches <strong>clog</strong>.", "image": "../../image/KG_3_Vowel_O/74.png"},
+        {"question": "Which word matches the picture?", "options": ["clog", "moth"], "correct": "clog", "explanation": "The picture matches <strong>clog</strong>.", "image": "../../image/KG_3_Vowel_O/75.png"},
+        {"question": "Which word matches the picture?", "options": ["clog", "clock"], "correct": "clock", "explanation": "The picture matches <strong>clock</strong>.", "image": "../../image/KG_3_Vowel_O/76.png"},
+        {"question": "Which word matches the picture?", "options": ["clog", "clock"], "correct": "clock", "explanation": "The picture matches <strong>clock</strong>.", "image": "../../image/KG_3_Vowel_O/77.png"},
+        {"question": "Which word matches the picture?", "options": ["clog", "golf"], "correct": "golf", "explanation": "The picture matches <strong>golf</strong>.", "image": "../../image/KG_3_Vowel_O/78.png"},
+        {"question": "Which word matches the picture?", "options": ["pot", "golf"], "correct": "pot", "explanation": "The picture matches <strong>pot</strong>.", "image": "../../image/KG_3_Vowel_O/79.png"},
+        {"question": "Which word matches the picture?", "options": ["pot", "sob"], "correct": "sob", "explanation": "The picture matches <strong>sob</strong>.", "image": "../../image/KG_3_Vowel_O/80.png"},
+        {"question": "Which word matches the picture?", "options": ["gold", "sob"], "correct": "gold", "explanation": "The picture matches <strong>gold</strong>.", "image": "../../image/KG_3_Vowel_O/81.png"},
+        {"question": "Which word matches the picture?", "options": ["ox", "hot"], "correct": "ox", "explanation": "The picture matches <strong>ox</strong>.", "image": "../../image/KG_3_Vowel_O/82.png"},
+        {"question": "Which word matches the picture?", "options": ["ox", "hot"], "correct": "hot", "explanation": "The picture matches <strong>hot</strong>.", "image": "../../image/KG_3_Vowel_O/83.png"},
+        {"question": "Which word matches the picture?", "options": ["box", "hot"], "correct": "box", "explanation": "The picture matches <strong>box</strong>.", "image": "../../image/KG_3_Vowel_O/84.png"},
+        {"question": "Which word matches the picture?", "options": ["box", "boy"], "correct": "boy", "explanation": "The picture matches <strong>boy</strong>.", "image": "../../image/KG_3_Vowel_O/85.png"},
+        {"question": "Which word matches the picture?", "options": ["cop", "cot"], "correct": "cop", "explanation": "The picture matches <strong>cop</strong>.", "image": "../../image/KG_3_Vowel_O/86.png"},
+        {"question": "Which word matches the picture?", "options": ["cop", "cot"], "correct": "cot", "explanation": "The picture matches <strong>cot</strong>.", "image": "../../image/KG_3_Vowel_O/87.png"},
+        {"question": "Which word matches the picture?", "options": ["dog", "cot"], "correct": "dog", "explanation": "The picture matches <strong>dog</strong>.", "image": "../../image/KG_3_Vowel_O/88.png"},
+        {"question": "Which word matches the picture?", "options": ["dog", "fog"], "correct": "fog", "explanation": "The picture matches <strong>fog</strong>.", "image": "../../image/KG_3_Vowel_O/89.png"},
+        {"question": "Which word matches the picture?", "options": ["fox", "fog"], "correct": "fox", "explanation": "The picture matches <strong>fox</strong>.", "image": "../../image/KG_3_Vowel_O/90.png"},
+        {"question": "Which word matches the picture?", "options": ["fox", "hog"], "correct": "hog", "explanation": "The picture matches <strong>hog</strong>.", "image": "../../image/KG_3_Vowel_O/91.png"},
+        {"question": "Which word matches the picture?", "options": ["hop", "hog"], "correct": "hop", "explanation": "The picture matches <strong>hop</strong>.", "image": "../../image/KG_3_Vowel_O/92.png"},
+        {"question": "Which word matches the picture?", "options": ["hop", "job"], "correct": "job", "explanation": "The picture matches <strong>job</strong>.", "image": "../../image/KG_3_Vowel_O/93.png"},
+        {"question": "Which word matches the picture?", "options": ["jog", "job"], "correct": "jog", "explanation": "The picture matches <strong>jog</strong>.", "image": "../../image/KG_3_Vowel_O/94.png"},
+        {"question": "Which word matches the picture?", "options": ["jog", "log"], "correct": "log", "explanation": "The picture matches <strong>log</strong>.", "image": "../../image/KG_3_Vowel_O/95.png"},
+        {"question": "Which word matches the picture?", "options": ["jog", "mop"], "correct": "mop", "explanation": "The picture matches <strong>mop</strong>.", "image": "../../image/KG_3_Vowel_O/96.png"},
+        {"question": "Which word matches the picture?", "options": ["pod", "log"], "correct": "pod", "explanation": "The picture matches <strong>pod</strong>.", "image": "../../image/KG_3_Vowel_O/97.png"},
+        {"question": "Which word matches the picture?", "options": ["mot", "pot"], "correct": "pot", "explanation": "The picture matches <strong>pot</strong>.", "image": "../../image/KG_3_Vowel_O/98.png"},
+        {"question": "Which word matches the picture?", "options": ["shop", "so"], "correct": "shop", "explanation": "The picture matches <strong>shop</strong>.", "image": "../../image/KG_3_Vowel_O/99.png"},
+        {"question": "Which word matches the picture?", "options": ["gone", "stop"], "correct": "stop", "explanation": "The picture matches <strong>stop</strong>.", "image": "../../image/KG_3_Vowel_O/100.png"},
+        {"question": "Which word matches the picture?", "options": ["sock", "shop"], "correct": "sock", "explanation": "The picture matches <strong>sock</strong>.", "image": "../../image/KG_3_Vowel_O/101.png"}
+      ];
+    </script>
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));</script>
+  </body>
+</html>

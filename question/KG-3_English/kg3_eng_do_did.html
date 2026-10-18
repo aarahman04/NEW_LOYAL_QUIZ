@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Do/ Did — KG3 English</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden" aria-live="polite"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+    <script>
+      const questions = [
+        {"question": "___ you like apples?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ you go to school yesterday?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ they play football every day?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ you visit your uncle last week?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ we need more pencils?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ you eat pizza last night?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ your friends like ice cream?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ she call you yesterday?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ you drink milk every morning?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ they watch a movie last night?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ you have a blue bag?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ he finish his homework yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ we have English class today?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ you see a lion at the zoo last Sunday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ your parents work on Fridays?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ they clean the classroom yesterday?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ you enjoy reading books?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ Sam buy a new bicycle last month?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ the children play in the park every afternoon?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ you lose your pencil yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ we have enough chairs?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ Sara bake a cake yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ you brush your teeth every morning?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ the boys win the game last Friday?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ your sisters like drawing?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ you wash your shoes yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ they live near your house?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ your father cook dinner last night?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ you know the answer?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ the baby sleep well last night?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ we need to bring our books?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ you find your toy yesterday?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ your cousins visit you often?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ he open the window this morning?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ you like chocolate cake?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ the boys finish the test yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ they speak English at home?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ your mother buy oranges yesterday?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ you help your mother every day?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ the cat eat its food last night?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ we have a test tomorrow?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ you meet your teacher yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ your friends enjoy swimming?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ the girl sing a song yesterday?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ you wear a uniform to school?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ they travel to Dubai last year?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ you understand this question?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ your brother break the glass yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ we have any homework today?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ the dog bark last night?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ they arrive late yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ your classmates bring lunch to school?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ the teacher explain the lesson yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ you enjoy music?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ your aunt send a gift last week?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ we have a library in our school?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ the children make a snowman last winter?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ you like playing basketball?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ your grandfather tell you a story yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ they have a pet rabbit?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ you close the door last night?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ your friends walk to school?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ she paint a picture yesterday?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ you eat breakfast every day?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ the boys swim in the pool yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ we need to wear jackets today?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ your sister lose her bag last week?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ you like rainy days?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ the boys visit the museum yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ your parents have a car?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ you take a photo last night?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ the girls dance every Saturday?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ your uncle repair the chair yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ you want some water?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ the children find a kitten yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ we have enough paper?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ your mother make soup last night?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ you listen to music every evening?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ the boys catch the bus yesterday?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ they enjoy science lessons?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ your father wash the car last Saturday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ you remember my name?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ the children plant flowers yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ we have art class on Mondays?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ the girl drop her pencil yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ she play yesterday?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ your grandmother visit the doctor yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ they like watching cartoons?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ you need a ruler?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ the children eat cupcakes?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ the dogs bark?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ your brother feed the birds yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ they enjoy sleeping?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ the teacher give you a sticker yesterday?", "options": ["did", "do"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."},
+        {"question": "___ you enjoy going to the beach?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ you like cats?", "options": ["did", "do"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ you like bees?", "options": ["do", "did"], "correct": "do", "explanation": "<strong>Do</strong> is used with I, you, we and they to ask about habits or the present."},
+        {"question": "___ you finish your project last week?", "options": ["do", "did"], "correct": "did", "explanation": "<strong>Did</strong> is used to ask about the past."}
+      ];
+    </script>
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));</script>
+  </body>
+</html>

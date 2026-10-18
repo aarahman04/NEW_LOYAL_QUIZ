@@ -136,21 +136,39 @@
       (q.options || []).forEach((opt, idx) => {
         const li = document.createElement("li");
         li.className = "mcq-option";
+        li.tabIndex = 0;
+        li.setAttribute("role", "button");
         li.innerHTML = `
           <span class="option-label">${optionLabels[idx] || ""}.</span>
           <span class="option-text">${opt}</span>
           <span class="icon" id="icon-${idx}" aria-hidden="true"></span>
         `;
         li.onclick = () => checkAnswer(li, opt, q.correct, `icon-${idx}`);
+        li.onkeydown = event => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            if (!event.repeat) li.click();
+          }
+        };
         optionsList.appendChild(li);
       });
+      if (document.body.classList.contains("letter-quiz") && window.letterGuideMarkup) {
+        questionSection.querySelectorAll(".case-letter, .option-text").forEach(el => {
+          if (!el.querySelector("svg")) el.innerHTML = window.letterGuideMarkup(el.textContent);
+        });
+      }
     }
 
     function checkAnswer(selectedLI, chosen, correct, iconId) {
       if (answered) return;                 // ignore repeat taps / double submits
       answered = true;
       // Disable further clicks
-      optionsList.querySelectorAll("li").forEach(li => li.onclick = null);
+      optionsList.querySelectorAll("li").forEach(li => {
+        li.onclick = null;
+        li.onkeydown = null;
+        li.tabIndex = -1;
+        li.setAttribute("aria-disabled", "true");
+      });
 
       const isCorrect = (chosen === correct);
       let messageText, messageColor, rainEmoji;

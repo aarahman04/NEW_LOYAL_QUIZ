@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Have/ Has — KG3 English</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden" aria-live="polite"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+    <script>
+      const questions = [
+        {"question": "She ___ a doll.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "I ___ a pen.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "He ___ a bike.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "They ___ a car.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "We ___ a house.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "It ___ a tail.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "You ___ a bag.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "Ali ___ a ball.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "Sara ___ a cat.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "The boys ___ toys.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "My mother ___ a dress.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "My father ___ a watch.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "The girls ___ dolls.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "The dog ___ a tail.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "The cats ___ long tails.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "I ___ two pencils.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "She ___ a red bag.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "We ___ new books.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "He ___ a blue shirt.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "They ___ many friends.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "The baby ___ a toy.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "You ___ nice shoes.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "My sister ___ a rabbit.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "My brothers ___ bikes.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "The bird ___ wings.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "Birds ___ wings.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "I ___ a yellow cup.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "She ___ long hair.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "He ___ a small dog.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "We ___ a big garden.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "They ___ new bags.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "The teacher ___ a book.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "The students ___ pencils.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "My uncle ___ a car.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "My cousins ___ toys.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "The elephant ___ a trunk.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "Elephants ___ big ears.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "She ___ a pink hat.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "I ___ a green shirt.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "He ___ a black cap.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "We ___ two cats.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "They ___ three dogs.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "She ___ a doll.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "I ___ a pen.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "He ___ a bike.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "They ___ a car.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "We ___ a house.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "It ___ a tail.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "You ___ a bag.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "Sam ___ a ball.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "Sandy ___ a dog.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "The boys ___ cars.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "My mother ___ a dress.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "My mother ___ a watch.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "The girls ___ blocks.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "The dog ___ a tail.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "The cats ___ long tails.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "I ___ three pencils.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "She ___ a red bag.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "They ___ old books.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "He ___ a red shirt.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "We ___ many friends.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "The girl ___ a toy.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "You ___ nice dresses.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "My sister ___ a rabbit.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "My brothers ___ bikes.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "The eagle ___ wings.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "Birds ___ wings.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "I ___ a red cup.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "She ___ short hair.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "He ___ a small dog.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "They ___ a big garden.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "We ___ new bags.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "The teacher ___ a book.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "The students ___ pencils.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "My uncle ___ a car.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "My cousins ___ bikes.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "The elephant ___ a trunk.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "Elephants ___ big ears.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "She ___ a pink hat.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "I ___ a black shirt.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "He ___ a red cap.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "We ___ two cats.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "We ___ five dogs.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "The lion ___ a long tail.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "The lions ___ sharp teeth.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "My friend ___ a kite.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "Sam and Sama ___ kites.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "Juna ___ a nice smile.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "Juna ___ a new pencil.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "He ___ a toy train.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "I ___ a little brother.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "We ___ a big classroom.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "The girl ___ a balloon.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "The children ___ balloons.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "The rabbit ___ long ears.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "Rabbits ___ short tails.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "My aunt ___ a baby.", "options": ["has", "have"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "My parents ___ a big house.", "options": ["have", "has"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."},
+        {"question": "She ___ a pretty dress.", "options": ["have", "has"], "correct": "has", "explanation": "Use <strong>has</strong> with he, she, it or one person or thing."},
+        {"question": "They ___ colorful pens.", "options": ["has", "have"], "correct": "have", "explanation": "Use <strong>have</strong> with I, you, we, they or more than one person or thing."}
+      ];
+    </script>
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));</script>
+  </body>
+</html>

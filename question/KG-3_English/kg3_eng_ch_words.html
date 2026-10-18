@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Words Ch — KG3 English</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden" aria-live="polite"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+    <script>
+      const questions = [
+        {"question": "Which word matches the picture?", "options": ["choice", "chair"], "correct": "chair", "explanation": "The picture matches <strong>chair</strong>.", "image": "../../image/KG_3_CH_Words/1.png"},
+        {"question": "Which word matches the picture?", "options": ["choice", "chalk"], "correct": "chalk", "explanation": "The picture matches <strong>chalk</strong>.", "image": "../../image/KG_3_CH_Words/2.png"},
+        {"question": "Which word matches the picture?", "options": ["chalk", "challenging"], "correct": "chalk", "explanation": "The picture matches <strong>chalk</strong>.", "image": "../../image/KG_3_CH_Words/3.png"},
+        {"question": "Which word matches the picture?", "options": ["cheese", "challenging"], "correct": "cheese", "explanation": "The picture matches <strong>cheese</strong>.", "image": "../../image/KG_3_CH_Words/4.png"},
+        {"question": "Which word matches the picture?", "options": ["check", "cheese"], "correct": "cheese", "explanation": "The picture matches <strong>cheese</strong>.", "image": "../../image/KG_3_CH_Words/5.png"},
+        {"question": "Which word matches the picture?", "options": ["check", "cheese"], "correct": "cheese", "explanation": "The picture matches <strong>cheese</strong>.", "image": "../../image/KG_3_CH_Words/6.png"},
+        {"question": "Which word matches the picture?", "options": ["check", "chicken"], "correct": "chicken", "explanation": "The picture matches <strong>chicken</strong>.", "image": "../../image/KG_3_CH_Words/7.png"},
+        {"question": "Which word matches the picture?", "options": ["chicken", "chow"], "correct": "chicken", "explanation": "The picture matches <strong>chicken</strong>.", "image": "../../image/KG_3_CH_Words/8.png"},
+        {"question": "Which word matches the picture?", "options": ["child", "chow"], "correct": "child", "explanation": "The picture matches <strong>child</strong>.", "image": "../../image/KG_3_CH_Words/9.png"},
+        {"question": "Which word matches the picture?", "options": ["child", "chow"], "correct": "child", "explanation": "The picture matches <strong>child</strong>.", "image": "../../image/KG_3_CH_Words/10.png"},
+        {"question": "Which word matches the picture?", "options": ["child", "chow"], "correct": "child", "explanation": "The picture matches <strong>child</strong>.", "image": "../../image/KG_3_CH_Words/11.png"},
+        {"question": "Which word matches the picture?", "options": ["child", "chow"], "correct": "child", "explanation": "The picture matches <strong>child</strong>.", "image": "../../image/KG_3_CH_Words/12.png"},
+        {"question": "Which word matches the picture?", "options": ["child", "chow"], "correct": "child", "explanation": "The picture matches <strong>child</strong>.", "image": "../../image/KG_3_CH_Words/13.png"},
+        {"question": "Which word matches the picture?", "options": ["chill", "child"], "correct": "child", "explanation": "The picture matches <strong>child</strong>.", "image": "../../image/KG_3_CH_Words/14.png"},
+        {"question": "Which word matches the picture?", "options": ["chocolate", "child"], "correct": "chocolate", "explanation": "The picture matches <strong>chocolate</strong>.", "image": "../../image/KG_3_CH_Words/15.png"},
+        {"question": "Which word matches the picture?", "options": ["chocolate", "child"], "correct": "chocolate", "explanation": "The picture matches <strong>chocolate</strong>.", "image": "../../image/KG_3_CH_Words/16.png"},
+        {"question": "Which word matches the picture?", "options": ["chocolate", "child"], "correct": "chocolate", "explanation": "The picture matches <strong>chocolate</strong>.", "image": "../../image/KG_3_CH_Words/17.png"},
+        {"question": "Which word matches the picture?", "options": ["choose", "chocolate"], "correct": "chocolate", "explanation": "The picture matches <strong>chocolate</strong>.", "image": "../../image/KG_3_CH_Words/18.png"},
+        {"question": "Which word matches the picture?", "options": ["cherry", "chocolate"], "correct": "cherry", "explanation": "The picture matches <strong>cherry</strong>.", "image": "../../image/KG_3_CH_Words/19.png"},
+        {"question": "Which word matches the picture?", "options": ["cheese", "cherry"], "correct": "cherry", "explanation": "The picture matches <strong>cherry</strong>.", "image": "../../image/KG_3_CH_Words/20.png"},
+        {"question": "Which word matches the picture?", "options": ["cherry", "cheese"], "correct": "cherry", "explanation": "The picture matches <strong>cherry</strong>.", "image": "../../image/KG_3_CH_Words/21.png"},
+        {"question": "Which word matches the picture?", "options": ["cherry", "chain"], "correct": "chain", "explanation": "The picture matches <strong>chain</strong>.", "image": "../../image/KG_3_CH_Words/22.png"},
+        {"question": "Which word matches the picture?", "options": ["chain", "cheese"], "correct": "chain", "explanation": "The picture matches <strong>chain</strong>.", "image": "../../image/KG_3_CH_Words/23.png"},
+        {"question": "Which word matches the picture?", "options": ["chain", "cheek"], "correct": "cheek", "explanation": "The picture matches <strong>cheek</strong>.", "image": "../../image/KG_3_CH_Words/24.png"},
+        {"question": "Which word matches the picture?", "options": ["chain", "cheek"], "correct": "cheek", "explanation": "The picture matches <strong>cheek</strong>.", "image": "../../image/KG_3_CH_Words/25.png"},
+        {"question": "Which word matches the picture?", "options": ["check", "cheek"], "correct": "check", "explanation": "The picture matches <strong>check</strong>.", "image": "../../image/KG_3_CH_Words/26.png"},
+        {"question": "Which word matches the picture?", "options": ["cheese", "check"], "correct": "check", "explanation": "The picture matches <strong>check</strong>.", "image": "../../image/KG_3_CH_Words/27.png"},
+        {"question": "Which word matches the picture?", "options": ["chest", "check"], "correct": "chest", "explanation": "The picture matches <strong>chest</strong>.", "image": "../../image/KG_3_CH_Words/28.png"},
+        {"question": "Which word matches the picture?", "options": ["cheat", "chest"], "correct": "chest", "explanation": "The picture matches <strong>chest</strong>.", "image": "../../image/KG_3_CH_Words/29.png"},
+        {"question": "Which word matches the picture?", "options": ["chime", "chimney"], "correct": "chimney", "explanation": "The picture matches <strong>chimney</strong>.", "image": "../../image/KG_3_CH_Words/30.png"},
+        {"question": "Which word matches the picture?", "options": ["chime", "chimney"], "correct": "chimney", "explanation": "The picture matches <strong>chimney</strong>.", "image": "../../image/KG_3_CH_Words/31.png"},
+        {"question": "Which word matches the picture?", "options": ["chime", "chimney"], "correct": "chimney", "explanation": "The picture matches <strong>chimney</strong>.", "image": "../../image/KG_3_CH_Words/32.png"},
+        {"question": "Which word matches the picture?", "options": ["chase", "chimney"], "correct": "chase", "explanation": "The picture matches <strong>chase</strong>.", "image": "../../image/KG_3_CH_Words/33.png"},
+        {"question": "Which word matches the picture?", "options": ["chose", "chase"], "correct": "chase", "explanation": "The picture matches <strong>chase</strong>.", "image": "../../image/KG_3_CH_Words/34.png"},
+        {"question": "Which word matches the picture?", "options": ["chose", "chase"], "correct": "chase", "explanation": "The picture matches <strong>chase</strong>.", "image": "../../image/KG_3_CH_Words/35.png"},
+        {"question": "Which word matches the picture?", "options": ["choose", "chase"], "correct": "choose", "explanation": "The picture matches <strong>choose</strong>.", "image": "../../image/KG_3_CH_Words/36.png"},
+        {"question": "Which word matches the picture?", "options": ["chicken", "choose"], "correct": "choose", "explanation": "The picture matches <strong>choose</strong>.", "image": "../../image/KG_3_CH_Words/37.png"},
+        {"question": "Which word matches the picture?", "options": ["chicken", "choose"], "correct": "choose", "explanation": "The picture matches <strong>choose</strong>.", "image": "../../image/KG_3_CH_Words/38.png"},
+        {"question": "Which word matches the picture?", "options": ["cheer", "choose"], "correct": "cheer", "explanation": "The picture matches <strong>cheer</strong>.", "image": "../../image/KG_3_CH_Words/39.png"},
+        {"question": "Which word matches the picture?", "options": ["cheer", "choose"], "correct": "cheer", "explanation": "The picture matches <strong>cheer</strong>.", "image": "../../image/KG_3_CH_Words/40.png"},
+        {"question": "Which word matches the picture?", "options": ["cheek", "cheer"], "correct": "cheer", "explanation": "The picture matches <strong>cheer</strong>.", "image": "../../image/KG_3_CH_Words/41.png"},
+        {"question": "Which word matches the picture?", "options": ["cheek", "cheap"], "correct": "cheap", "explanation": "The picture matches <strong>cheap</strong>.", "image": "../../image/KG_3_CH_Words/42.png"},
+        {"question": "Which word matches the picture?", "options": ["cheap", "cheese"], "correct": "cheap", "explanation": "The picture matches <strong>cheap</strong>.", "image": "../../image/KG_3_CH_Words/43.png"},
+        {"question": "Which word matches the picture?", "options": ["cheap", "check"], "correct": "check", "explanation": "The picture matches <strong>check</strong>.", "image": "../../image/KG_3_CH_Words/44.png"},
+        {"question": "Which word matches the picture?", "options": ["chef", "check"], "correct": "chef", "explanation": "The picture matches <strong>chef</strong>.", "image": "../../image/KG_3_CH_Words/45.png"},
+        {"question": "Which word matches the picture?", "options": ["chef", "check"], "correct": "chef", "explanation": "The picture matches <strong>chef</strong>.", "image": "../../image/KG_3_CH_Words/46.png"},
+        {"question": "Which word matches the picture?", "options": ["chew", "chef"], "correct": "chef", "explanation": "The picture matches <strong>chef</strong>.", "image": "../../image/KG_3_CH_Words/47.png"},
+        {"question": "Which word matches the picture?", "options": ["chew", "chef"], "correct": "chef", "explanation": "The picture matches <strong>chef</strong>.", "image": "../../image/KG_3_CH_Words/48.png"},
+        {"question": "Which word matches the picture?", "options": ["chilly", "chief"], "correct": "chilly", "explanation": "The picture matches <strong>chilly</strong>.", "image": "../../image/KG_3_CH_Words/49.png"},
+        {"question": "Which word matches the picture?", "options": ["child", "chilly"], "correct": "chilly", "explanation": "The picture matches <strong>chilly</strong>.", "image": "../../image/KG_3_CH_Words/50.png"},
+        {"question": "Which word matches the picture?", "options": ["chilly", "child"], "correct": "chilly", "explanation": "The picture matches <strong>chilly</strong>.", "image": "../../image/KG_3_CH_Words/51.png"},
+        {"question": "Which word matches the picture?", "options": ["chilly", "choke"], "correct": "choke", "explanation": "The picture matches <strong>choke</strong>.", "image": "../../image/KG_3_CH_Words/52.png"},
+        {"question": "Which word matches the picture?", "options": ["choke", "chose"], "correct": "choke", "explanation": "The picture matches <strong>choke</strong>.", "image": "../../image/KG_3_CH_Words/53.png"},
+        {"question": "Which word matches the picture?", "options": ["choke", "chose"], "correct": "choke", "explanation": "The picture matches <strong>choke</strong>.", "image": "../../image/KG_3_CH_Words/54.png"},
+        {"question": "Which word matches the picture?", "options": ["chew", "chose"], "correct": "chew", "explanation": "The picture matches <strong>chew</strong>.", "image": "../../image/KG_3_CH_Words/55.png"},
+        {"question": "Which word matches the picture?", "options": ["chef", "chapter"], "correct": "chapter", "explanation": "The picture matches <strong>chapter</strong>.", "image": "../../image/KG_3_CH_Words/56.png"},
+        {"question": "Which word matches the picture?", "options": ["chef", "chapter"], "correct": "chapter", "explanation": "The picture matches <strong>chapter</strong>.", "image": "../../image/KG_3_CH_Words/57.png"},
+        {"question": "Which word matches the picture?", "options": ["champion", "chapter"], "correct": "champion", "explanation": "The picture matches <strong>champion</strong>.", "image": "../../image/KG_3_CH_Words/58.png"},
+        {"question": "Which word matches the picture?", "options": ["change", "champion"], "correct": "champion", "explanation": "The picture matches <strong>champion</strong>.", "image": "../../image/KG_3_CH_Words/59.png"},
+        {"question": "Which word matches the picture?", "options": ["champion", "change"], "correct": "champion", "explanation": "The picture matches <strong>champion</strong>.", "image": "../../image/KG_3_CH_Words/60.png"},
+        {"question": "Which word matches the picture?", "options": ["champion", "charge"], "correct": "champion", "explanation": "The picture matches <strong>champion</strong>.", "image": "../../image/KG_3_CH_Words/61.png"},
+        {"question": "Which word matches the picture?", "options": ["champion", "chuckle"], "correct": "chuckle", "explanation": "The picture matches <strong>chuckle</strong>.", "image": "../../image/KG_3_CH_Words/62.png"},
+        {"question": "Which word matches the picture?", "options": ["charity", "chuckle"], "correct": "charity", "explanation": "The picture matches <strong>charity</strong>.", "image": "../../image/KG_3_CH_Words/63.png"},
+        {"question": "Which word matches the picture?", "options": ["charity", "chuckle"], "correct": "charity", "explanation": "The picture matches <strong>charity</strong>.", "image": "../../image/KG_3_CH_Words/64.png"},
+        {"question": "Which word matches the picture?", "options": ["charity", "chuckle"], "correct": "charity", "explanation": "The picture matches <strong>charity</strong>.", "image": "../../image/KG_3_CH_Words/65.png"},
+        {"question": "Which word matches the picture?", "options": ["clarity", "charity"], "correct": "charity", "explanation": "The picture matches <strong>charity</strong>.", "image": "../../image/KG_3_CH_Words/66.png"},
+        {"question": "Which word matches the picture?", "options": ["clarity", "charity"], "correct": "charity", "explanation": "The picture matches <strong>charity</strong>.", "image": "../../image/KG_3_CH_Words/67.png"},
+        {"question": "Which word matches the picture?", "options": ["charity", "chief"], "correct": "charity", "explanation": "The picture matches <strong>charity</strong>.", "image": "../../image/KG_3_CH_Words/68.png"},
+        {"question": "Which word matches the picture?", "options": ["charity", "child"], "correct": "child", "explanation": "The picture matches <strong>child</strong>.", "image": "../../image/KG_3_CH_Words/69.png"},
+        {"question": "Which word matches the picture?", "options": ["children", "chicks"], "correct": "children", "explanation": "The picture matches <strong>children</strong>.", "image": "../../image/KG_3_CH_Words/70.png"},
+        {"question": "Which word matches the picture?", "options": ["children", "chicks"], "correct": "children", "explanation": "The picture matches <strong>children</strong>.", "image": "../../image/KG_3_CH_Words/71.png"},
+        {"question": "Which word matches the picture?", "options": ["children", "child"], "correct": "child", "explanation": "The picture matches <strong>child</strong>.", "image": "../../image/KG_3_CH_Words/72.png"},
+        {"question": "Which word matches the picture?", "options": ["children", "child"], "correct": "children", "explanation": "The picture matches <strong>children</strong>.", "image": "../../image/KG_3_CH_Words/73.png"},
+        {"question": "Which word matches the picture?", "options": ["child", "children"], "correct": "child", "explanation": "The picture matches <strong>child</strong>.", "image": "../../image/KG_3_CH_Words/74.png"},
+        {"question": "Which word matches the picture?", "options": ["child", "children"], "correct": "children", "explanation": "The picture matches <strong>children</strong>.", "image": "../../image/KG_3_CH_Words/75.png"},
+        {"question": "Which word matches the picture?", "options": ["child", "children"], "correct": "child", "explanation": "The picture matches <strong>child</strong>.", "image": "../../image/KG_3_CH_Words/76.png"},
+        {"question": "Which word matches the picture?", "options": ["child", "chat"], "correct": "chat", "explanation": "The picture matches <strong>chat</strong>.", "image": "../../image/KG_3_CH_Words/77.png"},
+        {"question": "Which word matches the picture?", "options": ["chat", "check"], "correct": "chat", "explanation": "The picture matches <strong>chat</strong>.", "image": "../../image/KG_3_CH_Words/78.png"},
+        {"question": "Which word matches the picture?", "options": ["chat", "check"], "correct": "chat", "explanation": "The picture matches <strong>chat</strong>.", "image": "../../image/KG_3_CH_Words/79.png"},
+        {"question": "Which word matches the picture?", "options": ["chat", "chess"], "correct": "chess", "explanation": "The picture matches <strong>chess</strong>.", "image": "../../image/KG_3_CH_Words/80.png"},
+        {"question": "Which word matches the picture?", "options": ["chess", "chat"], "correct": "chess", "explanation": "The picture matches <strong>chess</strong>.", "image": "../../image/KG_3_CH_Words/81.png"},
+        {"question": "Which word matches the picture?", "options": ["chat", "chess"], "correct": "chess", "explanation": "The picture matches <strong>chess</strong>.", "image": "../../image/KG_3_CH_Words/82.png"},
+        {"question": "Which word matches the picture?", "options": ["chat", "chess"], "correct": "chess", "explanation": "The picture matches <strong>chess</strong>.", "image": "../../image/KG_3_CH_Words/83.png"},
+        {"question": "Which word matches the picture?", "options": ["change", "chess"], "correct": "change", "explanation": "The picture matches <strong>change</strong>.", "image": "../../image/KG_3_CH_Words/84.png"},
+        {"question": "Which word matches the picture?", "options": ["change", "chicken"], "correct": "chicken", "explanation": "The picture matches <strong>chicken</strong>.", "image": "../../image/KG_3_CH_Words/85.png"},
+        {"question": "Which word matches the picture?", "options": ["choice", "chalk"], "correct": "chalk", "explanation": "The picture matches <strong>chalk</strong>.", "image": "../../image/KG_3_CH_Words/86.png"},
+        {"question": "Which word matches the picture?", "options": ["cheese", "challenging"], "correct": "cheese", "explanation": "The picture matches <strong>cheese</strong>.", "image": "../../image/KG_3_CH_Words/87.png"},
+        {"question": "Which word matches the picture?", "options": ["check", "cheese"], "correct": "cheese", "explanation": "The picture matches <strong>cheese</strong>.", "image": "../../image/KG_3_CH_Words/88.png"},
+        {"question": "Which word matches the picture?", "options": ["check", "cheese"], "correct": "cheese", "explanation": "The picture matches <strong>cheese</strong>.", "image": "../../image/KG_3_CH_Words/89.png"},
+        {"question": "Which word matches the picture?", "options": ["check", "chicken"], "correct": "chicken", "explanation": "The picture matches <strong>chicken</strong>.", "image": "../../image/KG_3_CH_Words/90.png"},
+        {"question": "Which word matches the picture?", "options": ["chicken", "chow"], "correct": "chicken", "explanation": "The picture matches <strong>chicken</strong>.", "image": "../../image/KG_3_CH_Words/91.png"},
+        {"question": "Which word matches the picture?", "options": ["child", "chow"], "correct": "child", "explanation": "The picture matches <strong>child</strong>.", "image": "../../image/KG_3_CH_Words/92.png"},
+        {"question": "Which word matches the picture?", "options": ["child", "chow"], "correct": "child", "explanation": "The picture matches <strong>child</strong>.", "image": "../../image/KG_3_CH_Words/93.png"},
+        {"question": "Which word matches the picture?", "options": ["child", "chow"], "correct": "child", "explanation": "The picture matches <strong>child</strong>.", "image": "../../image/KG_3_CH_Words/94.png"},
+        {"question": "Which word matches the picture?", "options": ["child", "chow"], "correct": "child", "explanation": "The picture matches <strong>child</strong>.", "image": "../../image/KG_3_CH_Words/95.png"},
+        {"question": "Which word matches the picture?", "options": ["child", "chow"], "correct": "child", "explanation": "The picture matches <strong>child</strong>.", "image": "../../image/KG_3_CH_Words/96.png"},
+        {"question": "Which word matches the picture?", "options": ["chill", "child"], "correct": "child", "explanation": "The picture matches <strong>child</strong>.", "image": "../../image/KG_3_CH_Words/97.png"},
+        {"question": "Which word matches the picture?", "options": ["chocolate", "child"], "correct": "chocolate", "explanation": "The picture matches <strong>chocolate</strong>.", "image": "../../image/KG_3_CH_Words/98.png"},
+        {"question": "Which word matches the picture?", "options": ["chocolate", "child"], "correct": "chocolate", "explanation": "The picture matches <strong>chocolate</strong>.", "image": "../../image/KG_3_CH_Words/99.png"},
+        {"question": "Which word matches the picture?", "options": ["chocolate", "child"], "correct": "chocolate", "explanation": "The picture matches <strong>chocolate</strong>.", "image": "../../image/KG_3_CH_Words/100.png"},
+        {"question": "Which word matches the picture?", "options": ["choose", "chocolate"], "correct": "chocolate", "explanation": "The picture matches <strong>chocolate</strong>.", "image": "../../image/KG_3_CH_Words/101.png"},
+        {"question": "Which word matches the picture?", "options": ["cherry", "chocolate"], "correct": "cherry", "explanation": "The picture matches <strong>cherry</strong>.", "image": "../../image/KG_3_CH_Words/102.png"},
+        {"question": "Which word matches the picture?", "options": ["Chat", "cherry"], "correct": "cherry", "explanation": "The picture matches <strong>cherry</strong>.", "image": "../../image/KG_3_CH_Words/103.png"},
+        {"question": "Which word matches the picture?", "options": ["cherry", "cheese"], "correct": "cherry", "explanation": "The picture matches <strong>cherry</strong>.", "image": "../../image/KG_3_CH_Words/104.png"},
+        {"question": "Which word matches the picture?", "options": ["cherry", "chain"], "correct": "chain", "explanation": "The picture matches <strong>chain</strong>.", "image": "../../image/KG_3_CH_Words/105.png"},
+        {"question": "Which word matches the picture?", "options": ["chain", "cheese"], "correct": "chain", "explanation": "The picture matches <strong>chain</strong>.", "image": "../../image/KG_3_CH_Words/106.png"},
+        {"question": "Which word matches the picture?", "options": ["chain", "cheek"], "correct": "cheek", "explanation": "The picture matches <strong>cheek</strong>.", "image": "../../image/KG_3_CH_Words/107.png"},
+        {"question": "Which word matches the picture?", "options": ["chain", "cheek"], "correct": "cheek", "explanation": "The picture matches <strong>cheek</strong>.", "image": "../../image/KG_3_CH_Words/108.png"},
+        {"question": "Which word matches the picture?", "options": ["check", "cheek"], "correct": "check", "explanation": "The picture matches <strong>check</strong>.", "image": "../../image/KG_3_CH_Words/109.png"},
+        {"question": "Which word matches the picture?", "options": ["cheese", "check"], "correct": "check", "explanation": "The picture matches <strong>check</strong>.", "image": "../../image/KG_3_CH_Words/110.png"}
+      ];
+    </script>
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));</script>
+  </body>
+</html>
