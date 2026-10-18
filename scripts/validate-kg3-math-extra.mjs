@@ -116,3 +116,68 @@ for (const [suffix, [slug, title]] of Object.entries(pages)) {
   console.log(`${file}: ${bank.length} ok`);
 }
 console.log(`All six pages valid (${total} questions).`);
+
+// ---- Four older pages fixed by scripts/fix_kg3_math_older.py
+const FAM = {circle: '🔴🟠🟡🟢🔵🟣⚫⚪', square: '🟥🟧🟨🟩🟦🟪⬛⬜', triangle: '🔺🔻', heart: '❤️🧡💛💚💙💜', star: '⭐🌟', diamond: '🔶🔷♦️'};
+const famOf = e => Object.keys(FAM).find(f => glyphs(FAM[f]).includes(e));
+const ANIMAL = {cat: '🐱', dog: '🐶', mouse: '🐭', rabbit: '🐰', frog: '🐸', chick: '🐥', bear: '🐻', panda: '🐼'};
+const exportChoice = label => {
+  const m = label.match(/^<span style='font-size:([\d.]+)rem'>(.+)<\/span>$/);
+  if (m) return {emoji: m[2], size: {3.6: 'xl', 2.4: 'lg', 1.4: 'sm'}[m[1]]};
+  const g = glyphs(label);
+  return g.length && new Set(g).size === 1 && g[0].codePointAt(0) >= 0x2190 ? {emoji: g[0], count: g.length} : {text: label};
+};
+for (const name of ['position', 'shapes', 'big_small', 'more_less']) {
+  const file = `kg3_math_${name}.html`;
+  const src = fs.readFileSync(path.join(folder, file), 'utf8');
+  // JSON round trip: arrays from the vm realm fail deepStrictEqual against plain ones
+  const bank = JSON.parse(JSON.stringify(vm.runInNewContext(src.match(/const questions = (\[[\s\S]*?\n\s*\]);/)[1])));
+  const data = JSON.parse(fs.readFileSync(path.join(jsonDir, `math-${name.replace('_', '-')}.json`), 'utf8'));
+  assert.equal(bank.length, 100, file);
+  assert.equal(data.questions.length, 100, file);
+  assert.equal(data.total_questions, 100, file);
+  assert(!/TODO|\(middle\)|\(above\)|\(below\)/.test(src), `${file} leftover wording`);
+  const seen = new Set();
+  bank.forEach((q, i) => {
+    const tag = `${file} q${i + 1}`;
+    const ex = data.questions[i];
+    const labels = q.items.map(it => it.label);
+    const right = q.items.filter(it => it.correct).map(it => it.label);
+    const key = q.question + labels.join('|') + (q.image || '');
+    assert(!seen.has(key), `${tag} duplicate`); seen.add(key);
+    assert.equal(new Set(labels).size, labels.length, tag);
+    assert(right.length >= 1, tag);
+    // JSON parity
+    assert.equal(ex.prompt, q.question.replace(/<[^>]+>/g, ''), tag);
+    assert.equal(ex.explanation, q.explanation, tag);
+    assert.deepEqual(ex.options.choices, labels.map((l, j) => ({id: `c${j + 1}`, ...exportChoice(l)})), tag);
+    assert.deepEqual(ex.answer_key.correct, q.items.flatMap((it, j) => it.correct ? [`c${j + 1}`] : []), tag);
+    assert.equal(ex.media?.source_path ?? null, q.image ?? null, tag);
+    if (name === 'position' && q.image) {
+      const png = fs.readFileSync(path.resolve(folder, q.image));
+      assert.equal(png.subarray(1, 4).toString(), 'PNG', tag);
+      const [, where, animal] = q.image.match(/(in|out)_box_(\w+)\.png$/);
+      assert(q.question.includes(ANIMAL[animal]), `${tag} picture shows the asked animal`);
+      assert.deepEqual(right, [where === 'in' ? 'inside' : 'outside'], `${tag} answer matches picture`);
+      assert.equal(ex.media.alt, q.alt, tag);
+    }
+    if (name === 'shapes') {
+      const target = q.question.match(/(circle|square|triangle|heart|star|diamond)/)[1];
+      q.items.forEach(it => assert.equal(it.correct, famOf(it.label) === target, `${tag} ${it.label}`));
+      if (target === 'square') assert(!labels.some(l => famOf(l) === 'diamond'), `${tag} diamond in square question`);
+      right.forEach(r => assert(q.explanation.includes(r), `${tag} explanation names ${r}`));
+      if (!q.question.startsWith('Tap all')) assert.equal(right.length, 1, tag);
+    }
+    if (name === 'big_small') {
+      const word = q.question.match(/(biggest|smallest|bigger|smaller)/)[1];
+      const sizes = labels.map(l => Number(l.match(/font-size:([\d.]+)/)[1]));
+      assert.equal(Number(right[0].match(/font-size:([\d.]+)/)[1]), word.startsWith('big') ? Math.max(...sizes) : Math.min(...sizes), tag);
+    }
+    if (name === 'more_less') {
+      const counts = labels.map(l => glyphs(l).length);
+      assert.equal(glyphs(right[0]).length, /more/.test(q.question) ? Math.max(...counts) : Math.min(...counts), tag);
+      assert.notEqual(counts[0], counts[1], tag);
+    }
+  });
+  console.log(`${file}: 100 ok (fixed page)`);
+}

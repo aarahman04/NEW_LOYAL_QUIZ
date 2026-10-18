@@ -82,6 +82,12 @@
   .kg3-math-extra .tap-grid:not(.tap-grid--row):not(.tap-grid--column) { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* ---------- Word answers (inside / outside): whole words, never split ---------- */
+.kg3-position .tap-grid:not(.tap-grid--row):not(.tap-grid--column) .tap-label {
+  font-size: clamp(1.5rem, 1.1rem + 2vw, 2.2rem);
+  word-break: keep-all;
+}
+
 /* ---------- Groups of things inside one tile ---------- */
 .kg3-math-extra .kg3-group {
   display: inline-block;
