@@ -108,15 +108,7 @@
 .kg3-ordinal .kg3-line { display: inline-block; margin-bottom: .3rem; font-size: clamp(1.8rem, 1.3rem + 2.5vw, 2.6rem); letter-spacing: .04em; }
 .kg3-ordinal .kg3-word { display: block; font-size: .45em; font-weight: 600; }
 
-/* ---------- Fair share: one line per child ---------- */
-.kg3-math-extra .kg3-share {
-  display: inline-block;
-  margin-top: .6rem;
-  text-align: left;
-  font-size: clamp(1.8rem, 1.4rem + 2.5vw, 2.6rem);
-  line-height: 1.4;
-  letter-spacing: .08em;
-}
+/* ---------- Fair share: children side by side (pictures from the generator) ---------- */
 .kg3-fair-share .tap-label { font-size: clamp(1.4rem, 1.1rem + 2vw, 2rem); }
 
 /* ---------- Reduced motion: no falling emoji, no tile lift ---------- */

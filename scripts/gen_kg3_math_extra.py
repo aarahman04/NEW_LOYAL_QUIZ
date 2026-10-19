@@ -336,40 +336,176 @@ def ordinal(rng):
 
 
 # ---------------------------------------------------------------- 6. fair share
-KIDS = ["👧", "👦", "🧒"]
-TREATS = ["🍪", "🍎", "🍓", "🍬", "🧁", "🍌", "🎈", "⭐", "🍩", "🥕"]
+# Own flat drawings (no yellow emoji people). Every picture has one structure:
+# the children stand side by side, each with a plate in front, treats in one line.
+FS_DIR = ROOT / "image" / "KG3_math_fair_share"
+# name, pronoun, skin, shirt, hair, hair style
+KIDS = [("Lina", "her", (141, 85, 54), (236, 72, 153), (40, 26, 18), "pigtails"),
+        ("Omar", "his", (198, 134, 90), (37, 99, 235), (30, 20, 14), "short"),
+        ("Sara", "her", (96, 56, 36), (22, 163, 74), (20, 14, 10), "curly")]
+TREATS = {"cookie": "cookies", "apple": "apples", "star": "stars",
+          "donut": "donuts", "strawberry": "strawberries", "candy": "candies"}
+T, S = 52, 2                                   # treat size, supersample factor
+INK = (55, 65, 81)
+
+
+def fs_font(px):
+    from PIL import ImageFont
+    return ImageFont.truetype(r"C:\Windows\Fonts\comicbd.ttf", px * S)
+
+
+def draw_treat(d, kind, x, y):
+    """Draw one treat in the T x T box whose top-left is (x, y), at 1x units."""
+    def b(*v):
+        return [c * S for c in v]
+    cx, cy, r = x + T / 2, y + T / 2, T / 2 - 4
+    if kind == "cookie":
+        d.ellipse(b(cx - r, cy - r, cx + r, cy + r), fill=(222, 170, 98), outline=(160, 105, 50), width=3 * S)
+        for dx, dy in ((-8, -7), (7, -9), (-2, 6), (10, 6), (-11, 8)):
+            d.ellipse(b(cx + dx - 3, cy + dy - 3, cx + dx + 3, cy + dy + 3), fill=(92, 52, 24))
+    elif kind == "apple":
+        d.line(b(cx, cy - r + 6, cx + 2, cy - r - 2), fill=(110, 70, 30), width=4 * S)
+        d.ellipse(b(cx + 2, cy - r - 4, cx + 16, cy - r + 4), fill=(34, 160, 70))
+        d.ellipse(b(cx - r, cy - r + 6, cx + r, cy + r), fill=(220, 38, 38), outline=(150, 20, 20), width=3 * S)
+        d.ellipse(b(cx - 12, cy - 6, cx - 5, cy + 4), fill=(248, 140, 140))
+    elif kind == "star":
+        import math
+        pts = []
+        for i in range(10):
+            rr = r if i % 2 == 0 else r * .45
+            a = -math.pi / 2 + i * math.pi / 5
+            pts += [(cx + rr * math.cos(a)) * S, (cy + 2 + rr * math.sin(a)) * S]
+        d.polygon(pts, fill=(250, 190, 30), outline=(200, 120, 10), width=3 * S)
+    elif kind == "donut":
+        d.ellipse(b(cx - r, cy - r, cx + r, cy + r), fill=(214, 160, 100), outline=(150, 100, 50), width=3 * S)
+        d.ellipse(b(cx - r + 4, cy - r + 4, cx + r - 4, cy + r - 6), fill=(244, 114, 182))
+        for dx, dy, col in ((-10, -10, (59, 130, 246)), (8, -12, (250, 204, 21)), (12, 4, (34, 197, 94)),
+                            (-12, 6, (250, 250, 250)), (2, 12, (59, 130, 246))):
+            d.rectangle(b(cx + dx - 2, cy + dy - 2, cx + dx + 3, cy + dy + 2), fill=col)
+        d.ellipse(b(cx - 7, cy - 7, cx + 7, cy + 7), fill=(255, 255, 255), outline=(150, 100, 50), width=2 * S)
+    elif kind == "strawberry":
+        d.polygon(b(cx - r, cy - 8, cx + r, cy - 8, cx, cy + r), fill=(225, 29, 72), outline=(150, 15, 45))
+        d.ellipse(b(cx - r, cy - 16, cx + r, cy + 4), fill=(225, 29, 72))
+        for dx, dy in ((-8, -4), (6, -6), (0, 6), (-4, 14), (8, 8)):
+            d.ellipse(b(cx + dx - 1.5, cy + dy - 1.5, cx + dx + 1.5, cy + dy + 1.5), fill=(253, 230, 138))
+        d.polygon(b(cx - 12, cy - 14, cx, cy - 22, cx + 12, cy - 14, cx, cy - 10), fill=(34, 160, 70))
+    elif kind == "candy":
+        d.polygon(b(cx - r, cy - 10, cx - 10, cy, cx - r, cy + 10), fill=(251, 146, 60), outline=(194, 65, 12))
+        d.polygon(b(cx + r, cy - 10, cx + 10, cy, cx + r, cy + 10), fill=(251, 146, 60), outline=(194, 65, 12))
+        d.ellipse(b(cx - 13, cy - 13, cx + 13, cy + 13), fill=(249, 115, 22), outline=(194, 65, 12), width=3 * S)
+        d.arc(b(cx - 7, cy - 7, cx + 7, cy + 7), 200, 320, fill=(255, 237, 213), width=3 * S)
+
+
+def draw_kid(d, kid, cx, top):
+    """A smiling child, head and shoulders, 150 tall; cx = centre line, at 1x units."""
+    _, _, skin, shirt, hair, style = kid
+    def b(*v):
+        return [c * S for c in v]
+    d.rounded_rectangle(b(cx - 52, top + 100, cx + 52, top + 160), radius=30 * S, fill=shirt)
+    hx, hy, hr = cx, top + 55, 40
+    if style == "pigtails":
+        for sx in (-1, 1):
+            d.ellipse(b(cx + sx * 48 - 15, hy - 5, cx + sx * 48 + 15, hy + 25), fill=hair)
+    if style == "curly":
+        for dx, dy in ((-36, -18), (-22, -36), (0, -44), (22, -36), (36, -18), (-42, 4), (42, 4)):
+            d.ellipse(b(hx + dx - 16, hy + dy - 16, hx + dx + 16, hy + dy + 16), fill=hair)
+    d.ellipse(b(hx - hr, hy - hr, hx + hr, hy + hr), fill=skin)
+    if style in ("pigtails", "short"):
+        d.chord(b(hx - hr - 2, hy - hr - 4, hx + hr + 2, hy + hr - 14), 180, 360, fill=hair)
+    for ex in (-14, 14):
+        d.ellipse(b(hx + ex - 5, hy - 2, hx + ex + 5, hy + 10), fill=(30, 30, 40))
+        d.ellipse(b(hx + ex - 2, hy, hx + ex + 1, hy + 3), fill=(255, 255, 255))
+    for ex in (-24, 24):
+        d.ellipse(b(hx + ex - 7, hy + 12, hx + ex + 7, hy + 20), fill=tuple(min(255, c + 45) for c in skin))
+    d.arc(b(hx - 13, hy + 4, hx + 13, hy + 26), 20, 160, fill=(120, 30, 30), width=3 * S)
+
+
+def fs_picture(name, kids, counts, treat, pile=0):
+    """kids side by side; counts[i] treats on kid i's plate (None = empty plate with ?); pile above."""
+    per = max([c or 0 for c in counts] + [3])
+    plate_w = per * (T + 8) + 28
+    col = max(plate_w, 150) + 24
+    pile_rows = -(-pile // 5)
+    pile_h = pile_rows * (T + 8) + 36 if pile else 0
+    w, h = col * len(kids) + 32, pile_h + 290
+    img = Image.new("RGBA", (w * S, h * S), (255, 255, 255, 0))   # transparent: sits on any card colour
+    d = ImageDraw.Draw(img)
+    if pile:                                     # the treats to share, in a basket
+        bw = min(pile, 5) * (T + 8) + 36
+        bx = (w - bw) / 2
+        d.rounded_rectangle([bx * S, 10 * S, (bx + bw) * S, (pile_h - 6) * S], radius=22 * S,
+                            fill=(255, 241, 214), outline=(210, 160, 100), width=4 * S)
+        for i in range(pile):
+            row, k = divmod(i, 5)
+            in_row = min(5, pile - row * 5)
+            x0 = (w - in_row * (T + 8) + 8) / 2
+            draw_treat(d, treat, x0 + k * (T + 8), 24 + row * (T + 8))
+    for i, (kid, c) in enumerate(zip(kids, counts)):
+        cx = 16 + col * i + col / 2
+        top = pile_h + 8
+        draw_kid(d, kid, cx, top)
+        px, py = cx - plate_w / 2, top + 140    # plate in front of the child
+        d.ellipse([px * S, py * S, (px + plate_w) * S, (py + T + 30) * S],
+                  fill=(241, 245, 249), outline=(148, 163, 184), width=4 * S)
+        if c is None:
+            d.text((cx * S, (py + 15 + T / 2) * S), "?", font=fs_font(40), fill=INK, anchor="mm")
+        for k in range(c or 0):                  # one line, left-aligned so plates compare one to one
+            draw_treat(d, treat, px + 14 + k * (T + 8), py + 15)
+        d.text((cx * S, (py + T + 52) * S), kid[0], font=fs_font(22), fill=INK, anchor="mm")
+    FS_DIR.mkdir(parents=True, exist_ok=True)
+    img.resize((w, h), Image.LANCZOS).save(FS_DIR / f"{name}.png", optimize=True)
+
+
+def fs_media(name, alt):
+    return {"image": f"../../image/KG3_math_fair_share/{name}.png", "alt": alt,
+            "media": {"kind": "image", "path": f"questions/kg3/math/fair-share/{name}.webp",
+                      "alt": alt, "source_path": f"../../image/KG3_math_fair_share/{name}.png"}}
+
+
+def names(kids):
+    n = [k[0] for k in kids]
+    return " and ".join(n) if len(n) == 2 else f"{n[0]}, {n[1]} and {n[2]}"
 
 
 def share_each(rng):
-    kids = rng.choice([2, 2, 3])
-    each = rng.randint(1, 5 if kids == 2 else 3)
-    t = rng.choice(TREATS)
-    who = KIDS[:kids] if kids == 3 else rng.sample(KIDS, 2)
-    total = each * kids
-    deal = "<br>".join(f"{k} {t * each}" for k in who)
-    exp = f"Give one each, again and again, until they are all gone:<br>{deal}<br>Each child gets <strong>{each}</strong>."
-    return q(f"Share the {t} fairly with {' '.join(who)}.<br>{scene(t, total)}How many does each child get?",
-             f"Share {total} {t} fairly with {' '.join(who)}. How many does each child get?",
-             num_items(rng, each, 1, 6), exp, scene={"emoji": t, "count": total})
+    kids = KIDS if rng.random() < 1 / 3 else rng.sample(KIDS, 2)
+    each = rng.randint(1, 5 if len(kids) == 2 else 3)
+    t = rng.choice(list(TREATS))
+    total = each * len(kids)
+    name = f"fs_share_{'-'.join(k[0].lower() for k in kids)}_{t}_{total}"
+    fs_picture(name, kids, [None] * len(kids), t, pile=total)
+    alt = f"A basket with {total} {TREATS[t] if total > 1 else t}. {names(kids)} each have an empty plate."
+    deal = "<br>".join(f"{k[0]} gets {each}." for k in kids)
+    exp = f"Give one each, again and again, until the basket is empty:<br>{deal}<br>Each child gets <strong>{each}</strong>."
+    return q(f"Share the {TREATS[t]} fairly.<br>How many does <strong>each</strong> child get?",
+             "Share them fairly. How many does each child get?",
+             num_items(rng, each, 1, 6), exp, **fs_media(name, alt))
 
 
 FAIR = ("👍 Fair", "👎 Not fair")
 
 
 def is_fair(rng):
-    t = rng.choice(TREATS)
+    t = rng.choice(list(TREATS))
     a, b = rng.sample(KIDS, 2)
     x = rng.randint(1, 5)
     y = x if rng.random() < .5 else rng.choice([n for n in range(1, 6) if n != x])
     fair = x == y
-    exp = (f"Both have {x}. Same number, so it is <strong>fair</strong>." if fair else
-           f"{a} has {x} and {b} has {y}. {max(x, y)} is more than {min(x, y)}, so it is <strong>not fair</strong>.")
-    return q(f"Is this fair?<br><span class=\"kg3-share\">{a} {t * x}<br>{b} {t * y}</span>",
-             f"Is this fair? {a} has {t * x} and {b} has {t * y}.",
-             [item(FAIR[0], fair, {"text": FAIR[0]}), item(FAIR[1], not fair, {"text": FAIR[1]})], exp, layout="row")
+    name = f"fs_fair_{a[0].lower()}-{b[0].lower()}_{t}_{x}-{y}"
+    fs_picture(name, [a, b], [x, y], t)
+    alt = (f"{a[0]} has {x} {TREATS[t] if x > 1 else t} on {a[1]} plate. "
+           f"{b[0]} has {y} {TREATS[t] if y > 1 else t} on {b[1]} plate.")
+    exp = (f"{a[0]} has {x} and {b[0]} has {y}. Same number, so it is <strong>fair</strong>." if fair else
+           f"{a[0]} has {x} and {b[0]} has {y}. {max(x, y)} is more than {min(x, y)}, so it is <strong>not fair</strong>.")
+    return q("Is this <strong>fair</strong>?", "Is this fair?",
+             [item(FAIR[0], fair, {"text": FAIR[0]}), item(FAIR[1], not fair, {"text": FAIR[1]})], exp,
+             layout="row", **fs_media(name, alt))
 
 
 def fair_share(rng):
+    for old in FS_DIR.glob("fs_*.png"):          # no stale pictures from earlier runs
+        old.unlink()
+    fs_picture("fs_example", KIDS[:2], [2, 2], "cookie")
     return collect(rng, [share_each, is_fair], [45, 55])
 
 
@@ -397,8 +533,8 @@ EXERCISES = [
          tip="🐢 is <strong>first</strong>, 🐇 is <strong>second</strong>, 🦊 is <strong>third</strong> &mdash; and last."),
     dict(file="kg3_math_fair_share", slug="math-fair-share", title="Fair Share", icon="🍪", build=fair_share,
          desc="Share so everyone gets the same", say="Fair means everyone gets the same.",
-         example='<span class="kg3-intro-row">👧 🍪🍪</span><span class="kg3-intro-row">👦 🍪🍪</span>',
-         tip="Give one each, again and again. Both have 2 &mdash; that is <strong>fair</strong> 👍."),
+         example='<img src="../../image/KG3_math_fair_share/fs_example.png" alt="Lina has 2 cookies on her plate. Omar has 2 cookies on his plate." class="kg3-intro-img">',
+         tip="Lina has 2. Omar has 2. Both the same &mdash; that is <strong>fair</strong> 👍."),
 ]
 
 

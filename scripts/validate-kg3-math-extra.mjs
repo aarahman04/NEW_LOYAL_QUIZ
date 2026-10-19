@@ -103,12 +103,13 @@ for (const [suffix, [slug, title]] of Object.entries(pages)) {
         assert.equal(q.layout, 'row', tag);
       }
     } else if (suffix === 'fair_share') {
-      if (sceneText) {
-        const kids = glyphs(strip(q.question).split('fairly with')[1].split('.')[0]).length;
-        assert.equal(n * kids, glyphs(sceneText).length, tag);
-      } else {
-        const [a, b] = q.question.match(/kg3-share">(.*?)<\/span>/)[1].split('<br>').map(r => glyphs(r).length - 1);
+      // Picture names carry what is drawn: fs_share_<kids>_<treat>_<total> or fs_fair_<a-b>_<treat>_<x-y>
+      const share = q.image.match(/fs_share_([a-z-]+)_[a-z]+_(\d+)\.png$/);
+      if (share) assert.equal(n * share[1].split('-').length, Number(share[2]), tag);
+      else {
+        const [, a, b] = q.image.match(/fs_fair_[a-z]+-[a-z]+_[a-z]+_(\d)-(\d)\.png$/);
         assert.equal(labels[right], a === b ? '👍 Fair' : '👎 Not fair', tag);
+        assert(q.alt.includes(` has ${a} `) && q.alt.includes(` has ${b} `), tag);
       }
     }
   });

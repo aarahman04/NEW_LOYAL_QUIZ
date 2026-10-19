@@ -86,7 +86,7 @@ for (const [order, [suffix, [count, title]]] of Object.entries(expected).entries
       const glyph = q.question.match(/class="case-letter" data-letter="([A-Za-z])"/)?.[1];
       assert(glyph, label);
       assert(q.question.includes('stroke-dasharray="3 3"'), label);
-      assert(q.question.includes(letterWindow.letterGuideMarkup(glyph)), label);
+      assert(q.question.includes(letterWindow.letterGuideMarkup(glyph, '#e23744')), label);
       assert.equal(q.correct, suffix === 'uppercase' ? glyph.toLowerCase() : glyph.toUpperCase(), label);
       assert(q.options.every(option => suffix === 'uppercase' ? /^[a-z]$/.test(option) : /^[A-Z]$/.test(option)), label);
     }

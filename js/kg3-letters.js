@@ -55,12 +55,13 @@
     z: 'M35 60H85L35 100H85'
   };
 
-  window.letterGuideMarkup = function (letter) {
+  // The question letter is drawn red so it stands out; answer letters stay dark.
+  window.letterGuideMarkup = function (letter, color = '#232a3b') {
     if (!Object.hasOwn(letters, letter)) throw new Error('Expected one English letter');
     return '<svg class="letter-guides" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" width="120" height="160" aria-hidden="true" focusable="false">' +
       '<path d="M8 20H112M8 100H112" fill="none" stroke="#e23744" stroke-width="1.2"/>' +
       '<path d="M8 60H112" fill="none" stroke="#e23744" stroke-width="1.2" stroke-dasharray="3 3"/>' +
-      '<path d="' + letters[letter] + '" fill="none" stroke="#232a3b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<path d="' + letters[letter] + '" fill="none" stroke="' + color + '" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>' +
       '</svg><span class="letter-label">' + letter + '</span>';
   };
 })();
