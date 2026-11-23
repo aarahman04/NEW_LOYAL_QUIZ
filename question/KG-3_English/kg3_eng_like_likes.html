@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Like / Likes — KG3 English</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden" aria-live="polite"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+    <script>
+      const questions = [
+        {"question": "I ___ eating healthy food.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "He ___ the weather.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "She ___ when the teacher gives us free time.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "It ___ eating bananas.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "We ___ eating together.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "They ___ the new teacher.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "You ___ eating.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "He ___ petting the cat.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "We ___ playing football.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "She ___ putting on makeup.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "They ___ doing their homework.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "I ___ studying.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "She ___ sleeping.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "We ___ going on trips.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "It ___ treats.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "I ___ playing football at my school.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "He ___ listening to music.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "It ___ playing ball.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "We ___ solving math questions.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "You ___ football.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "He ___ history class.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "I ___ reading the Quran.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "They ___ stretching.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "She ___ camping.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "You ___ school.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "The cat ___ to play with strings.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "He ___ teaching us.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "I ___ playing football with my brother.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "We ___ playing chess.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "They ___ the warm water.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "She ___ playing football in the rain.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "It ___ drinking water from a plastic bowl.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "She ___ eating with a fork.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "You ___ swimming with a floaty.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "I ___ cooking with my little brother.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "They ___ watching TV.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "He ___ reading books before sleeping.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "We ___ playing hide and seek.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "I ___ writing in exams.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "You ___ studying with Dean.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "Sam ___ taking long walks.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "She ___ watching a movie.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "She ___ sleeping.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "They ___ praying together.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "We ___ listening to music.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "She ___ reading a book.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "They ___ running.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "It ___ swimming in the lake.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "I ___ cars.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "I ___ playing games.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "It ___ the beach.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "She ___ long walks.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "We ___ visiting our cousins.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "They ___ playing tag.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "He ___ solving questions.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "I ___ playing PlayStation games.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "You ___ sleeping on the soft bed.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "We ___ watching CoComelon.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "He ___ to climb.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "It ___ to run.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "I ___ to bike.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "She ___ to watch.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "I ___ to dance.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "They ___ cooking.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "I ___ my mother’s cookies.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "You ___ watching the news.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "It ___ to jump.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "We ___ Dean’s food.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "You ___ playing football.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "She ___ reading books.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "They ___ watching cartoons.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "He ___ eating pizza.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "We ___ listening to music.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "He ___ playing games.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "I ___ drinking milk.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "You ___ drawing pictures.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "They ___ swimming.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "He ___ cooking.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "It ___ to run.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "It ___ sleeping.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "You ___ eating apples.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "He ___ watching TV.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "We ___ playing in the park.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "I ___ watching TV.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "He ___ playing football.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "She ___ reading a book.", "options": ["likes", "like"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "It ___ to jump.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "We ___ eating pizza.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "They ___ watching cartoons.", "options": ["likes", "like"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "You ___ listening to music.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "I ___ drinking milk.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "He ___ swimming.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "She ___ dancing.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "It ___ to run.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."},
+        {"question": "We ___ playing games.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "They ___ eating ice cream.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "You ___ reading books.", "options": ["like", "likes"], "correct": "like", "explanation": "Use <strong>like</strong> with I, you, we, or they."},
+        {"question": "He ___ watching the news.", "options": ["like", "likes"], "correct": "likes", "explanation": "Use <strong>likes</strong> with he, she, it, or one named person or animal."}
+      ];
+    </script>
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));</script>
+  </body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eat / Drink — KG3 English</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden" aria-live="polite"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+    <script>
+      const questions = [
+        {"question": "I ___ the sandwich.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "She likes to ___ water.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "They all ___ milkshakes.", "options": ["drink", "eat"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "It likes to ___ water.", "options": ["drink", "eat"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "I like to ___ hamburgers.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "You like to ___ Pepsi.", "options": ["drink", "eat"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "They ___ orange juice.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "I ___ a hot dog.", "options": ["drink", "eat"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "She likes to ___ sparkling water.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "We ___ orange juice after football.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "They ___ dinner after school.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "I like to ___ chicken strips.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "He likes to ___ coffee every morning.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "She likes to ___ salad.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "He likes to ___ tea.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "We ___ tuna sandwiches.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "You ___ potato chips.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "I love to ___ sunflower seeds.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "He likes to ___ water every day.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "She likes to ___ a milkshake with her dad.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "They ___ orange soda.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "He likes to ___ rice.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "They ___ pizza.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "They ___ water.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "I ___ a cucumber.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "They ___ soda.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "We ___ sparkling water.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "You ___ orange juice.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "She likes to ___ a tuna sandwich.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "He likes to ___ smoothies.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "They ___ breakfast.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "We ___ lemon juice.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "I ___ meatballs.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "They like to ___ spaghetti.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "You like to ___ a doughnut.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "She likes to ___ matcha.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "We ___ carrots.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "I like to ___ milk before sleeping.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "They ___ rice with chicken.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "I ___ tea.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "We ___ iced tea.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "She likes to ___ a milkshake every morning.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "We ___ steak every month.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "We ___ pizza every Saturday night.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "I like to ___ bananas.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "I like to ___ smoothies after every run.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "He likes to ___ hot chocolate.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "I like to ___ watermelon.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "She likes to ___ sour juices.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "Sandy likes to ___ salad.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "He likes to ___ apple juice.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "Sam likes to ___ Pepsi.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "Juna likes to ___ soda.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "I like to ___ ice cream.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "He likes to ___ coconut water.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "We ___ soup through a straw.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "She likes to ___ lemonade.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "Dean likes to ___ salad.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "He likes to ___ chocolate milk.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "They like to ___ hot dogs.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "You ___ pineapple juice.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "He likes to ___ mango juice.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "She likes to ___ French fries.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "I like to ___ strawberry milk.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "I ___ fried eggs.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "They ___ watermelon juice.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "Ruby likes to ___ watermelon.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "She likes to ___ cake.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "I ___ a milkshake.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "You ___ shrimp.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "It likes to ___ coconut water.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "He likes to ___ peach juice.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "She likes to ___ coffee.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "They like to ___ pasta.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "We like to ___ tea together.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "It likes to ___ milk.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "You ___ popcorn.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "He likes to ___ orange juice.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "She likes to ___ an omelet.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "We ___ mac and cheese.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "They ___ a fruit smoothie.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "It likes to ___ meat.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "You ___ a turkey sandwich.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "He likes to ___ carrot juice.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "She likes to ___ eggplant.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "I ___ iced tea.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "Sarah likes to ___ steak.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "It likes to ___ nuts.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "He likes to ___ mango juice.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "We like to ___ vegetables.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "They ___ grape juice.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "I ___ a tomato.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "He likes to ___ banana juice.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "She likes to ___ cookies.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "They like to ___ candy.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "You ___ coconut milk.", "options": ["eat", "drink"], "correct": "drink", "explanation": "Use <strong>drink</strong> for liquids."},
+        {"question": "I ___ chocolate.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."},
+        {"question": "John likes to ___ cake.", "options": ["eat", "drink"], "correct": "eat", "explanation": "Use <strong>eat</strong> for food."}
+      ];
+    </script>
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));</script>
+  </body>
+</html>

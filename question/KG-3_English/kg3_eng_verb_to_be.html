@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verb to Be — KG3 English</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden" aria-live="polite"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+    <script>
+      const questions = [
+        {"question": "I ___ happy.", "options": ["am", "is"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "He ___ sad.", "options": ["is", "are"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "She ___ sleeping.", "options": ["are", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "It ___ a cat.", "options": ["is", "am"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "They ___ having fun.", "options": ["is", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "You ___ nice.", "options": ["am", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "We ___ hungry.", "options": ["are", "is"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "You ___ kind.", "options": ["are", "is"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "He ___ tall.", "options": ["is", "are"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "She ___ smart.", "options": ["is", "am"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "It ___ small.", "options": ["is", "am"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "I ___ hungry.", "options": ["am", "is"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "We ___ friends.", "options": ["is", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "They ___ busy.", "options": ["is", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "I ___ sleepy.", "options": ["am", "is"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "You ___ nice.", "options": ["are", "is"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "He ___ angry.", "options": ["are", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "She ___ beautiful.", "options": ["is", "am"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "It ___ hot.", "options": ["is", "are"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "We ___ late.", "options": ["am", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "They ___ quiet.", "options": ["are", "is"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "I ___ young.", "options": ["am", "are"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "You ___ strong.", "options": ["am", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "He ___ funny.", "options": ["is", "are"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "She ___ clever.", "options": ["am", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "It ___ clean.", "options": ["are", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "We ___ excited.", "options": ["is", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "They ___ helpful.", "options": ["are", "am"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "I ___ nervous.", "options": ["am", "are"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "You ___ honest.", "options": ["is", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "He ___ funny.", "options": ["are", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "She ___ busy.", "options": ["are", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "It ___ dirty.", "options": ["is", "are"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "I ___ tired.", "options": ["am", "is"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "She ___ tired.", "options": ["is", "am"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "He ___ sick.", "options": ["is", "are"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "I ___ careful.", "options": ["is", "am"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "We ___ friendly.", "options": ["am", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "He ___ quiet.", "options": ["is", "are"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "I ___ brave.", "options": ["is", "am"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "She ___ praying.", "options": ["are", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "They ___ praying.", "options": ["are", "am"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "We ___ excited.", "options": ["are", "is"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "They ___ friendly.", "options": ["is", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "She ___ angry.", "options": ["are", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "It ___ warm.", "options": ["is", "are"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "I ___ playing.", "options": ["am", "is"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "You ___ nervous.", "options": ["is", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "He ___ honest.", "options": ["is", "am"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "I ___ smart.", "options": ["are", "am"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "He ___ angry.", "options": ["is", "am"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "They ___ helpful.", "options": ["are", "is"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "It ___ soft.", "options": ["are", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "I ___ floating.", "options": ["are", "am"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "They ___ polite.", "options": ["are", "is"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "We ___ angry.", "options": ["am", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "She ___ strong.", "options": ["are", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "It ___ broken.", "options": ["are", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "I ___ watching.", "options": ["am", "is"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "They ___ excited.", "options": ["am", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "She ___ crying.", "options": ["is", "am"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "I ___ late.", "options": ["am", "is"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "She ___ eating.", "options": ["are", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "They ___ busy.", "options": ["is", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "He ___ running.", "options": ["is", "am"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "I ___ sleeping.", "options": ["am", "are"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "They ___ studying.", "options": ["are", "is"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "She ___ petting the dog.", "options": ["am", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "I ___ sleeping with the dog.", "options": ["is", "am"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "He ___ winning by 3 points.", "options": ["is", "am"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "They ___ writing an essay.", "options": ["is", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "It ___ a horse.", "options": ["is", "are"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "I ___ studying.", "options": ["am", "is"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "You ___ getting better at basketball.", "options": ["are", "am"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "She ___ writing an essay.", "options": ["are", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "They ___ getting tired of this game.", "options": ["is", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "I ___ sleeping outside today.", "options": ["am", "is"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "You ___ jumping too high.", "options": ["are", "is"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "He ___ funny.", "options": ["are", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "I ___ printing my project.", "options": ["is", "am"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "You ___ clever.", "options": ["are", "am"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "She ___ lucky.", "options": ["is", "are"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "I ___ faster than Dean.", "options": ["is", "am"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "It ___ heavy.", "options": ["are", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "You ___ ready.", "options": ["are", "is"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "I ___ ready for the exam.", "options": ["am", "is"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "He ___ getting ready.", "options": ["are", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "They ___ sleeping.", "options": ["am", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "You ___ good at baseball.", "options": ["are", "is"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "I ___ getting sick.", "options": ["am", "are"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "He ___ driving.", "options": ["am", "is"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "We ___ a family.", "options": ["is", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "I ___ strong.", "options": ["am", "is"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "She ___ happy.", "options": ["is", "am"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "He ___ skinny.", "options": ["is", "are"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "I ___ driving my new car.", "options": ["is", "am"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "We ___ climbing.", "options": ["am", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."},
+        {"question": "It ___ warm.", "options": ["is", "are"], "correct": "is", "explanation": "Use <strong>is</strong> with he, she, or it."},
+        {"question": "I ___ dancing.", "options": ["am", "is"], "correct": "am", "explanation": "Use <strong>am</strong> with I."},
+        {"question": "You ___ eating.", "options": ["is", "are"], "correct": "are", "explanation": "Use <strong>are</strong> with you, we, or they."}
+      ];
+    </script>
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));</script>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nouns — KG3 English</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden" aria-live="polite"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+    <script>
+      const questions = [
+        {"question": "Which noun names a plant?", "options": ["tree", "run"], "correct": "tree", "explanation": "<strong>tree</strong> names a plant."},
+        {"question": "Which noun names a person?", "options": ["run", "boy"], "correct": "boy", "explanation": "<strong>boy</strong> names a person."},
+        {"question": "Which noun names a fruit or vegetable?", "options": ["apple", "jump"], "correct": "apple", "explanation": "<strong>apple</strong> names a fruit or vegetable."},
+        {"question": "Which noun names a person?", "options": ["eat", "teacher"], "correct": "teacher", "explanation": "<strong>teacher</strong> names a person."},
+        {"question": "Which noun names a place?", "options": ["happy", "school"], "correct": "school", "explanation": "<strong>school</strong> names a place."},
+        {"question": "Which of the following words is a noun?", "options": ["pencil", "write"], "correct": "pencil", "explanation": "<strong>pencil</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which noun names a person?", "options": ["sleep", "mother"], "correct": "mother", "explanation": "<strong>mother</strong> names a person."},
+        {"question": "Which of the following words is a noun?", "options": ["table", "dance"], "correct": "table", "explanation": "<strong>table</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which noun names an animal?", "options": ["sing", "bird"], "correct": "bird", "explanation": "<strong>bird</strong> names an animal."},
+        {"question": "Which of the following words is a noun?", "options": ["beautiful", "flower"], "correct": "flower", "explanation": "<strong>flower</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which noun names something you wear?", "options": ["lowly", "shoes"], "correct": "shoes", "explanation": "<strong>shoes</strong> names something you wear."},
+        {"question": "Which noun names something you can sit on?", "options": ["chair", "walk"], "correct": "chair", "explanation": "<strong>chair</strong> names something you can sit on."},
+        {"question": "Which noun names an animal?", "options": ["swim", "fish"], "correct": "fish", "explanation": "<strong>fish</strong> names an animal."},
+        {"question": "Which noun names something you read?", "options": ["book", "ran"], "correct": "book", "explanation": "<strong>book</strong> names something you read."},
+        {"question": "Which of the following words is a noun?", "options": ["ran", "rain"], "correct": "rain", "explanation": "<strong>rain</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which noun names an animal?", "options": ["jump", "rabbit"], "correct": "rabbit", "explanation": "<strong>rabbit</strong> names an animal."},
+        {"question": "Which noun names something you can see through?", "options": ["window", "eat"], "correct": "window", "explanation": "<strong>window</strong> names something you can see through."},
+        {"question": "Which of the following words is a noun?", "options": ["carefully", "baby"], "correct": "baby", "explanation": "<strong>baby</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which of the following words is a noun?", "options": ["mountain", "climb"], "correct": "mountain", "explanation": "<strong>mountain</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which noun names an animal?", "options": ["study", "kitten"], "correct": "kitten", "explanation": "<strong>kitten</strong> names an animal."},
+        {"question": "Which noun names a person?", "options": ["farmer", "work"], "correct": "farmer", "explanation": "<strong>farmer</strong> names a person."},
+        {"question": "Which of the following words is a noun?", "options": ["leaf", "write"], "correct": "leaf", "explanation": "<strong>leaf</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which noun names an animal?", "options": ["cow", "help"], "correct": "cow", "explanation": "<strong>cow</strong> names an animal."},
+        {"question": "Which of the following words is a noun?", "options": ["write", "bed"], "correct": "bed", "explanation": "<strong>bed</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which noun names something you use to call someone?", "options": ["walk", "phone"], "correct": "phone", "explanation": "<strong>phone</strong> names something you use to call someone."},
+        {"question": "Which of the following words is a noun?", "options": ["white", "pen"], "correct": "pen", "explanation": "<strong>pen</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which noun names a person?", "options": ["princess", "is"], "correct": "princess", "explanation": "<strong>princess</strong> names a person."},
+        {"question": "Which noun names something you wear?", "options": ["sleep", "glasses"], "correct": "glasses", "explanation": "<strong>glasses</strong> names something you wear."},
+        {"question": "Which noun names an animal?", "options": ["bear", "buy"], "correct": "bear", "explanation": "<strong>bear</strong> names an animal."},
+        {"question": "Which noun names something you can drink?", "options": ["beer", "bring"], "correct": "beer", "explanation": "<strong>beer</strong> names something you can drink."},
+        {"question": "Which noun names an animal?", "options": ["butterfly", "walk"], "correct": "butterfly", "explanation": "<strong>butterfly</strong> names an animal."},
+        {"question": "Which noun names something you read?", "options": ["forgive", "booklet"], "correct": "booklet", "explanation": "<strong>booklet</strong> names something you read."},
+        {"question": "Which of the following words is a noun?", "options": ["pillow", "sing"], "correct": "pillow", "explanation": "<strong>pillow</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which noun names an animal?", "options": ["run", "dog"], "correct": "dog", "explanation": "<strong>dog</strong> names an animal."},
+        {"question": "Which noun names an animal?", "options": ["like", "bird"], "correct": "bird", "explanation": "<strong>bird</strong> names an animal."},
+        {"question": "Which noun names something in the sky?", "options": ["cloud", "cry"], "correct": "cloud", "explanation": "<strong>cloud</strong> names something in the sky."},
+        {"question": "Which of the following words is a noun?", "options": ["loud", "cat"], "correct": "cat", "explanation": "<strong>cat</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which of the following words is a noun?", "options": ["drive", "baby"], "correct": "baby", "explanation": "<strong>baby</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which of the following words is a noun?", "options": ["because", "van"], "correct": "van", "explanation": "<strong>van</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which noun names something you use to cool down?", "options": ["fly", "fan"], "correct": "fan", "explanation": "<strong>fan</strong> names something you use to cool down."},
+        {"question": "Which noun names something you can see through?", "options": ["window", "drink"], "correct": "window", "explanation": "<strong>window</strong> names something you can see through."},
+        {"question": "Which noun names a plant?", "options": ["grass", "drink"], "correct": "grass", "explanation": "<strong>grass</strong> names a plant."},
+        {"question": "Which noun names a body of water?", "options": ["river", "flow"], "correct": "river", "explanation": "<strong>river</strong> names a body of water."},
+        {"question": "Which of the following words is a noun?", "options": ["loudly", "lion"], "correct": "lion", "explanation": "<strong>lion</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which noun names something with two wheels?", "options": ["bicycle", "ride"], "correct": "bicycle", "explanation": "<strong>bicycle</strong> names something with two wheels."},
+        {"question": "Which noun names a place?", "options": ["look", "kitchen"], "correct": "kitchen", "explanation": "<strong>kitchen</strong> names a place."},
+        {"question": "Which of the following words is a noun?", "options": ["computer", "type"], "correct": "computer", "explanation": "<strong>computer</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which noun names an animal?", "options": ["cat", "swim"], "correct": "cat", "explanation": "<strong>cat</strong> names an animal."},
+        {"question": "Which noun names an animal?", "options": ["dog", "swim"], "correct": "dog", "explanation": "<strong>dog</strong> names an animal."},
+        {"question": "Which noun names a plant?", "options": ["walk", "tree"], "correct": "tree", "explanation": "<strong>tree</strong> names a plant."},
+        {"question": "Which of the following words is a noun?", "options": ["hospital", "carefully"], "correct": "hospital", "explanation": "<strong>hospital</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which noun names something you can fly in?", "options": ["fly", "airplane"], "correct": "airplane", "explanation": "<strong>airplane</strong> names something you can fly in."},
+        {"question": "Which noun names something that can hold things?", "options": ["basket", "carry"], "correct": "basket", "explanation": "<strong>basket</strong> names something that can hold things."},
+        {"question": "Which noun names an animal?", "options": ["quickly", "turtle"], "correct": "turtle", "explanation": "<strong>turtle</strong> names an animal."},
+        {"question": "Which noun names an animal?", "options": ["monkey", "climb"], "correct": "monkey", "explanation": "<strong>monkey</strong> names an animal."},
+        {"question": "Which noun names something you play on?", "options": ["climb", "swing"], "correct": "swing", "explanation": "<strong>swing</strong> names something you play on."},
+        {"question": "Which noun names something you can eat?", "options": ["drink", "bread"], "correct": "bread", "explanation": "<strong>bread</strong> names something you can eat."},
+        {"question": "Which noun names something you can drive?", "options": ["want", "car"], "correct": "car", "explanation": "<strong>car</strong> names something you can drive."},
+        {"question": "Which noun names something you can drive?", "options": ["car", "want"], "correct": "car", "explanation": "<strong>car</strong> names something you can drive."},
+        {"question": "Which noun names an animal?", "options": ["cat", "go"], "correct": "cat", "explanation": "<strong>cat</strong> names an animal."},
+        {"question": "Which noun names an animal?", "options": ["bird", "go"], "correct": "bird", "explanation": "<strong>bird</strong> names an animal."},
+        {"question": "Which noun names an animal?", "options": ["paint", "whale"], "correct": "whale", "explanation": "<strong>whale</strong> names an animal."},
+        {"question": "Which noun names something that rolls?", "options": ["draw", "wheel"], "correct": "wheel", "explanation": "<strong>wheel</strong> names something that rolls."},
+        {"question": "Which noun names something you read?", "options": ["book", "read"], "correct": "book", "explanation": "<strong>book</strong> names something you read."},
+        {"question": "Which of the following words is a noun?", "options": ["look", "squid"], "correct": "squid", "explanation": "<strong>squid</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which noun names an animal?", "options": ["write", "fish"], "correct": "fish", "explanation": "<strong>fish</strong> names an animal."},
+        {"question": "Which noun names a place?", "options": ["dive", "camp"], "correct": "camp", "explanation": "<strong>camp</strong> names a place."},
+        {"question": "Which noun names something in the sky?", "options": ["sit", "star"], "correct": "star", "explanation": "<strong>star</strong> names something in the sky."},
+        {"question": "Which noun names an animal?", "options": ["dive", "cow"], "correct": "cow", "explanation": "<strong>cow</strong> names an animal."},
+        {"question": "Which noun names something that gives light?", "options": ["lamp", "dance"], "correct": "lamp", "explanation": "<strong>lamp</strong> names something that gives light."},
+        {"question": "Which noun names something in the sky?", "options": ["sky", "wow"], "correct": "sky", "explanation": "<strong>sky</strong> names something in the sky."},
+        {"question": "Which noun names something you wear?", "options": ["dress", "start"], "correct": "dress", "explanation": "<strong>dress</strong> names something you wear."},
+        {"question": "Which of the following words is a noun?", "options": ["bird", "fight"], "correct": "bird", "explanation": "<strong>bird</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which noun names something that gives light?", "options": ["lamp", "drive"], "correct": "lamp", "explanation": "<strong>lamp</strong> names something that gives light."},
+        {"question": "Which noun names something in the sky?", "options": ["say", "sky"], "correct": "sky", "explanation": "<strong>sky</strong> names something in the sky."},
+        {"question": "Which noun names a building you can live in?", "options": ["wipe", "house"], "correct": "house", "explanation": "<strong>house</strong> names a building you can live in."},
+        {"question": "Which noun names a person?", "options": ["drive", "girl"], "correct": "girl", "explanation": "<strong>girl</strong> names a person."},
+        {"question": "Which noun names a fruit or vegetable?", "options": ["apple", "dump"], "correct": "apple", "explanation": "<strong>apple</strong> names a fruit or vegetable."},
+        {"question": "Which noun names something you can eat?", "options": ["eat", "pizza"], "correct": "pizza", "explanation": "<strong>pizza</strong> names something you can eat."},
+        {"question": "Which noun names a place?", "options": ["go", "school"], "correct": "school", "explanation": "<strong>school</strong> names a place."},
+        {"question": "Which of the following words is a noun?", "options": ["pencil", "wrote"], "correct": "pencil", "explanation": "<strong>pencil</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which noun names a person?", "options": ["see", "mother"], "correct": "mother", "explanation": "<strong>mother</strong> names a person."},
+        {"question": "Which noun names something you wear?", "options": ["sock", "wear"], "correct": "sock", "explanation": "<strong>sock</strong> names something you wear."},
+        {"question": "Which noun names an animal?", "options": ["sing", "turtle"], "correct": "turtle", "explanation": "<strong>turtle</strong> names an animal."},
+        {"question": "Which of the following words is a noun?", "options": ["beautiful", "rose"], "correct": "rose", "explanation": "<strong>rose</strong> is a noun. A noun names a person, place, animal, or thing."},
+        {"question": "Which noun names something you play with?", "options": ["toy", "play"], "correct": "toy", "explanation": "<strong>toy</strong> names something you play with."},
+        {"question": "Which noun names a time of day?", "options": ["night", "break"], "correct": "night", "explanation": "<strong>night</strong> names a time of day."},
+        {"question": "Which noun names something that gives light?", "options": ["lamp", "drive"], "correct": "lamp", "explanation": "<strong>lamp</strong> names something that gives light."},
+        {"question": "Which noun names an animal?", "options": ["sat", "cat"], "correct": "cat", "explanation": "<strong>cat</strong> names an animal."},
+        {"question": "Which noun names a person?", "options": ["wife", "jump"], "correct": "wife", "explanation": "<strong>wife</strong> names a person."},
+        {"question": "Which noun names a person?", "options": ["drive", "boy"], "correct": "boy", "explanation": "<strong>boy</strong> names a person."},
+        {"question": "Which noun names a fruit or vegetable?", "options": ["apple", "build"], "correct": "apple", "explanation": "<strong>apple</strong> names a fruit or vegetable."},
+        {"question": "Which noun names something you can eat?", "options": ["write", "pizza"], "correct": "pizza", "explanation": "<strong>pizza</strong> names something you can eat."},
+        {"question": "Which noun names a person?", "options": ["walk", "pilot"], "correct": "pilot", "explanation": "<strong>pilot</strong> names a person."},
+        {"question": "Which noun names something you can fly in?", "options": ["aircraft", "drive"], "correct": "aircraft", "explanation": "<strong>aircraft</strong> names something you can fly in."},
+        {"question": "Which noun names the time when the sun is up?", "options": ["day", "clean"], "correct": "day", "explanation": "<strong>day</strong> names the time when the sun is up."},
+        {"question": "Which noun names a fruit or vegetable?", "options": ["have", "grapes"], "correct": "grapes", "explanation": "<strong>grapes</strong> names a fruit or vegetable."},
+        {"question": "Which noun names an animal?", "options": ["butterfly", "enjoy"], "correct": "butterfly", "explanation": "<strong>butterfly</strong> names an animal."},
+        {"question": "Which noun names a person?", "options": ["wife", "forget"], "correct": "wife", "explanation": "<strong>wife</strong> names a person."},
+        {"question": "Which noun names a person?", "options": ["husband", "create"], "correct": "husband", "explanation": "<strong>husband</strong> names a person."},
+        {"question": "Which noun names a fruit or vegetable?", "options": ["strawberry", "find"], "correct": "strawberry", "explanation": "<strong>strawberry</strong> names a fruit or vegetable."},
+        {"question": "Which noun names a fruit or vegetable?", "options": ["learn", "cucumber"], "correct": "cucumber", "explanation": "<strong>cucumber</strong> names a fruit or vegetable."}
+      ];
+    </script>
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));</script>
+  </body>
+</html>

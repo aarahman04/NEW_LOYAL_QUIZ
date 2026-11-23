@@ -25,21 +25,30 @@ const expected = {
   have_has: [101, 'Have/ Has'], do_did: [98, 'Do/ Did'],
   verbs: [101, 'Verbs'],
 };
+const worksheetBanks = {
+  nouns: [102, 'Nouns'], pronouns: [101, 'Pronouns'],
+  verb_to_be: [100, 'Verb to Be'], like_likes: [98, 'Like / Likes'],
+  eat_drink: [98, 'Eat / Drink'], where_when: [100, 'Where / When'],
+  what_where_why: [100, 'What / Where / Why'], who_how: [101, 'Who / How'],
+};
+const allBanks = {...expected, ...worksheetBanks};
+const websiteCount = Object.keys(allBanks).length;
+const legacyCount = Object.keys(expected).length;
 const menuPath = path.join(root, 'start-page2/KG_3/kg3_eng_options.html');
 const menu = fs.readFileSync(menuPath, 'utf8');
 const links = [...menu.matchAll(/href="([^"]+kg3_eng_[^"]+\.html)"/g)].map(m => m[1]);
-assert.equal(links.length, 18);
-assert(links[0].endsWith('kg3_eng_uppercase.html'));
-assert(links[1].endsWith('kg3_eng_lowercase.html'));
-assert.equal(new Set(links).size, 18);
-assert.deepEqual([...menu.matchAll(/class="card-title">([^<]+)<\/h3>/g)].map(m => m[1]), Object.values(expected).map(([, title]) => title));
+assert.equal(links.length, websiteCount);
+assert.equal(new Set(links).size, websiteCount);
+assert.deepEqual([...menu.matchAll(/data-level="(\d+)"/g)].map(m => Number(m[1])),
+  Array.from({length: websiteCount}, (_, index) => index + 1));
+assert.deepEqual([...menu.matchAll(/class="card-title">([^<]+)<\/h3>/g)].map(m => m[1]), Object.values(allBanks).map(([, title]) => title));
 const jsonFiles = process.argv[2]
   ? fs.readdirSync(process.argv[2]).filter(f => f.endsWith('.json')).map(f => JSON.parse(fs.readFileSync(path.join(process.argv[2], f), 'utf8')))
   : null;
-if (jsonFiles) assert.equal(jsonFiles.length, 18);
+if (jsonFiles) assert.equal(jsonFiles.length, legacyCount);
 
 let total = 0, images = 0;
-for (const [order, [suffix, [count, title]]] of Object.entries(expected).entries()) {
+for (const [order, [suffix, [count, title]]] of Object.entries(allBanks).entries()) {
   const filename = `kg3_eng_${suffix}.html`;
   const source = fs.readFileSync(path.join(folder, filename), 'utf8');
   assert.equal(source.match(/<title>([^<]+)<\/title>/)?.[1], `${title} — KG3 English`, filename);
@@ -47,11 +56,14 @@ for (const [order, [suffix, [count, title]]] of Object.entries(expected).entries
   assert(match, filename);
   const bank = JSON.parse(JSON.stringify(vm.runInNewContext(match[1], {}, {timeout: 1000})));
   assert.equal(bank.length, count, filename);
-  assert(links.some(link => path.resolve(path.dirname(menuPath), link) === path.join(folder, filename)));
-  assert(links[order].endsWith(filename), filename);
+  const isWorksheet = Object.hasOwn(worksheetBanks, suffix);
+  if (isWorksheet) {
+    assert(source.includes('initMCQQuiz(questions)'), filename);
+  }
+  assert.equal(path.resolve(path.dirname(menuPath), links[order]), path.join(folder, filename), filename);
   total += bank.length;
   const data = jsonFiles?.find(file => file._source_file === filename);
-  if (jsonFiles) {
+  if (jsonFiles && order < legacyCount) {
     assert(data, filename);
     assert.equal(data.total_questions, count);
     assert.equal(data.questions.length, count);
@@ -71,6 +83,11 @@ for (const [order, [suffix, [count, title]]] of Object.entries(expected).entries
     assert.equal(new Set(q.options).size, q.options.length, label);
     assert(q.options.includes(q.correct), label);
     assert(q.explanation, label);
+    if (isWorksheet) {
+      assert.equal(q.options.length, 2, label);
+      assert.equal((q.question.match(/___/g) || []).length, suffix === 'nouns' ? 0 : 1, label);
+      assert.equal(q.image, undefined, label);
+    }
     if (suffix === 'verbs') {
       assert.equal(q.question, 'Look at the picture and choose the correct verb.', label);
       assert.equal(q.image, `../../image/KG3 English Verbs/${i + 1}.png`, label);
@@ -113,6 +130,6 @@ for (const [order, [suffix, [count, title]]] of Object.entries(expected).entries
     assert.equal(new Set(bank.map(q => q.options.indexOf(q.correct))).size, 3);
   }
 }
-assert.equal(total, 1655);
+assert.equal(total, 2455);
 assert.equal(images, 1204);
-console.log(`Validated 18 banks, ${total} questions, ${images} image references, menu links${jsonFiles ? ' and all JSON exports' : ''}.`);
+console.log(`Validated ${websiteCount} banks, ${total} questions, ${images} image references, menu links${jsonFiles ? ` and ${jsonFiles.length} JSON exports` : ''}.`);

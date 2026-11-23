@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Where / When — KG3 English</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden" aria-live="polite"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+    <script>
+      const questions = [
+        {"question": "___ do you go to sleep?", "options": ["What", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is your school?", "options": ["What", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ did you eat breakfast?", "options": ["When", "Where"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is your schoolbag?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ did you go to bed?", "options": ["When", "What"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is your classroom?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ did you brush your teeth?", "options": ["When", "What"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is your pencil?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ did you play basketball?", "options": ["Where", "What"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ did he wake up?", "options": ["Where", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is your car parked?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ did Sam eat lunch?", "options": ["When", "Were"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the dog sleeping?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a place.<br>___ did the man go?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ is the teacher standing?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ did you wear that jacket?", "options": ["Where", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the dog playing?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ did you take your bath?", "options": ["Were", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is your computer?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ did you go to the movies?", "options": ["When", "Where"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the bird sitting?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ did you use that phone?", "options": ["When", "Where"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is your mother cooking?", "options": ["Were", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "Ask about a time.<br>___ do you celebrate your birthday?", "options": ["When", "Where"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is your toy car?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ did you wear your pajamas?", "options": ["Where", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the ball?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ did he leave for the park?", "options": ["When", "Where"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the baby sleeping?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a place.<br>___ do you wash your hands?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ is the bus stop?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ will you travel?", "options": ["Where", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is your cat?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you go swimming?", "options": ["Where", "Were"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ is the clock hanging?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ did you buy that raincoat?", "options": ["When", "Where"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is your house?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ do you visit your grandparents?", "options": ["Where", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the rabbit hiding?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ did you do your homework?", "options": ["When", "What"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is your favorite book?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ do you drink milk?", "options": ["Where", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the fish swimming?", "options": ["Where", "What"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ did you go to the zoo?", "options": ["When", "Where"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is your teacher's desk?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ did you wear that sweater?", "options": ["What", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the butterfly flying?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you eat your snack?", "options": ["When", "What"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the playground?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ did you see that movie?", "options": ["Where", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is your red crayon?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ will you open your presents?", "options": ["When", "Where"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the elephant standing?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ will you go to the beach?", "options": ["Where", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the milk kept?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ will you wear your school uniform?", "options": ["When", "Where"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the monkey climbing?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a place.<br>___ do you watch cartoons?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ is your notebook?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ did you see the moon?", "options": ["When", "Where"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the lion sleeping?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you wear sunglasses?", "options": ["When", "What"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is your bicycle?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ will you go on holiday?", "options": ["When", "Where"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the duck swimming?", "options": ["What", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ is Sam studying?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ is the apple?", "options": ["Were", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you celebrate your birthday?", "options": ["When", "Were"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is your little sister?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ will Sam drink hot chocolate?", "options": ["What", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the flower growing?", "options": ["Where", "Were"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ will George visit the doctor?", "options": ["Were", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the train stopping?", "options": ["Were", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ do you fly a kite?", "options": ["Where", "What"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ is the mouse hiding?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you use a blanket?", "options": ["What", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is your green pencil?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ will John go to the library?", "options": ["Were", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the cow eating grass?", "options": ["Where", "What"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you wear gloves?", "options": ["Where", "Were"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ is the frog jumping?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ will Ann clean your room?", "options": ["Where", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the cake?", "options": ["Were", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ will John plant his flowers?", "options": ["Were", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a place.<br>___ is your father working?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you see a rainbow?", "options": ["Were", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ is the kitten playing?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ will Juna go to the dentist?", "options": ["Where", "When"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the banana?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you wear boots?", "options": ["What", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ is the giraffe standing?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a time.<br>___ will you buy the dress?", "options": ["When", "Where"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the school bus waiting?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ will you go for dinner?", "options": ["Where", "What"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ is the horse running?", "options": ["Where", "What"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a place.<br>___ will Sandy buy her books?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ is your blue bag?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you celebrate National Day?", "options": ["When", "What"], "correct": "When", "explanation": "Use <strong>When</strong> to ask about a time."},
+        {"question": "___ is the turtle walking?", "options": ["When", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask about a place.<br>___ will you cook dinner?", "options": ["Where", "When"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."}
+      ];
+    </script>
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));</script>
+  </body>
+</html>

@@ -5,6 +5,7 @@ quiz logic, paths, or styling.
 
 - [Golden rules](#golden-rules)
 - [Add a new MCQ exercise (math / GK / science)](#add-a-new-mcq-exercise-math--gk--science)
+- [Add a KG-3 English worksheet](#add-a-kg-3-english-worksheet)
 - [Add the exercise to its options page](#add-the-exercise-to-its-options-page)
 - [Add or edit questions in an existing bank](#add-or-edit-questions-in-an-existing-bank)
 - [Add a new English drag-and-drop or audio exercise](#add-a-new-english-drag-and-drop-or-audio-exercise)
@@ -56,10 +57,28 @@ Minimal question array:
 
 ---
 
+## Add a KG-3 English worksheet
+
+1. Copy a sentence MCQ such as `question/KG-3_English/kg3_eng_verb_to_be.html`.
+2. Set the title to `Exercise Name — KG3 English`. Put each actual worksheet item in
+   the inline `questions` array in source order. Count the items directly when the PDF
+   repeats or skips printed numbers. Check the answer marks against the text and give
+   each question one valid answer and a short explanation.
+3. Link the page from `start-page2/KG_3/kg3_eng_options.html` with a matching card
+   title and the next `data-level` value. Use the existing `../../question/KG-3_English/`
+   prefix.
+4. Add the filename suffix, question count, and title to
+   `scripts/validate-kg3-english.mjs`, update the expected total, and run
+   `node scripts/validate-kg3-english.mjs`.
+
+The shared engine draws up to 25 questions at random from each bank. See
+[KG-3 English grammar worksheets](KG3_ENGLISH_GRAMMAR_UPDATE.md) for the November
+2026 source counts and answer corrections.
+
 ## Add the exercise to its options page
 
 A new exercise file is invisible until a card links to it. Edit the matching options page
-in `start-page2/Level 1/`:
+under `start-page2/`:
 
 | Subject | Options page |
 |---|---|
@@ -67,6 +86,7 @@ in `start-page2/Level 1/`:
 | Science | `Level1_science_options.html` |
 | GK | `Level1_gk_options.html` |
 | English | `subject_level1_english_options.html` |
+| KG-3 English | `KG_3/kg3_eng_options.html` |
 
 Copy an existing card block and update the badge number, icon, title, description, and
 link:
@@ -133,6 +153,7 @@ depth:
 | `/index.html` | `` (none) | `css/index.css` |
 | `/pages/x.html` | `../` | `../css/index.css` |
 | `/start-page2/Level 1/x.html` | `../../` | `../../css/index.css` |
+| `/question/KG-3_English/x.html` | `../../` | `../../css/question.css` |
 | `/question/Level 1 Maths/x.html` | `../../` | `../../css/question.css` |
 | `/question/level-1/English/sub/x.html` | `../../../../` | `../../../../css/question.css` |
 

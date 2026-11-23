@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Who / How — KG3 English</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden" aria-live="polite"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+    <script>
+      const questions = [
+        {"question": "___ is your best friend?", "options": ["Why", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you go to school?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is your teacher?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ are you feeling today?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is sitting next to you?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you brush your teeth?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is your mother?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you wash your hands?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is your father?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you open the door?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is singing a song?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you drink water?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is playing outside?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you eat your food?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is driving the bus?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you write your name?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is cooking dinner?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you clean your room?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is knocking at the door?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you draw a picture?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is wearing a red hat?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you make a sandwich?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is reading a book?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you ride a bicycle?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is feeding the cat?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ did you water the plants?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is helping the teacher?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you tie your shoes?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is playing with the ball?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you wash your face?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is eating an apple?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "Ask about a person.<br>___ is eating the meal?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you make your bed?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is standing near the window?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you cut paper?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is flying the airplane?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you put on your shoes?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is painting a picture?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you open your schoolbag?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is your sister?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you brush your hair?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is your brother?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you make a paper boat?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is talking to the teacher?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you cross the road safely?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is playing the piano?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you put on your jacket?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is carrying the baby?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you keep your hands clean?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is sleeping on the bed?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you turn on the light?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is eating lunch?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you close the window?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is washing the car?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you make a snowman?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is opening the box?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you play football?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is dancing on the stage?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you clean the table?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is wearing blue shoes?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you make a birthday card?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is watering the flowers?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you hold a pencil?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is sitting on the chair?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you make a cup of juice?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is helping the little boy?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you climb the stairs?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is jumping on the grass?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you fold your clothes?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is drawing a house?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you carry your books?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is looking at the stars?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you keep your toys tidy?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is playing with the puppy?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you use an umbrella?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is sitting under the tree?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you dry your hands?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is building a sandcastle?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "Ask how someone is doing.<br>___ is your father doing?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is eating pizza?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you make bubbles?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is playing with the blocks?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ did you open that bottle?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is cleaning the classroom?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you make a kite?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is wearing a yellow dress?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ did you wash that apple?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is holding that balloon?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you play the drum?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is looking after the baby?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you keep your feet warm?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is riding that horse?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you open that box?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is playing in the garden?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ did you make that fruit salad?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is helping the doctor?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ did you put on your socks?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is talking on the phone?", "options": ["Who", "How"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ did you make your room so pretty?", "options": ["How", "Who"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."},
+        {"question": "Ask about a person.<br>___ is knocking at the window?", "options": ["How", "Who"], "correct": "Who", "explanation": "Use <strong>Who</strong> to ask about a person."},
+        {"question": "___ do you say goodbye politely?", "options": ["Who", "How"], "correct": "How", "explanation": "Use <strong>How</strong> to ask about a way to do something or how someone is doing."}
+      ];
+    </script>
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));</script>
+  </body>
+</html>

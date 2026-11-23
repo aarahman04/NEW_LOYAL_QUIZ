@@ -33,8 +33,8 @@ server (or GitHub Pages).
   *subject*, then a *topic/exercise*. Each exercise presents one question at a time with
   tappable answer options, instant feedback, a short explanation, and a final score.
 
-Each exercise file stores a **bank of 100 questions** but shows the learner a **random
-25** per attempt, so repeated practice stays fresh.
+Most MCQ exercises show up to **25 questions per attempt**, drawn at random from
+that exercise’s bank. Bank sizes vary with the source material.
 
 ---
 
@@ -46,7 +46,7 @@ Each exercise file stores a **bank of 100 questions** but shows the learner a **
 | Two levels | **KG-3** (early years) and **Level 1** (Grade 1) |
 | Four quiz formats | Multiple-choice (MCQ), drag-and-drop, **tap-to-select**, listen-and-choose (audio) |
 | 100-question banks | Every math & GK exercise holds 100 questions internally |
-| 25-question attempts | A fresh random 25 is drawn from the 100 on every open |
+| 25-question attempts | Up to 25 questions are drawn at random from the exercise bank on every open |
 | Instant feedback | Correct/incorrect highlighting, an explanation, and emoji "rain" |
 | Shared header/footer | Injected by JavaScript so every page stays consistent |
 | Fully responsive | Desktop, tablet, and mobile layouts with an off-canvas mobile menu |
@@ -105,6 +105,7 @@ NEW_LOYAL_QUIZ/
 │       └── subject_level1_english_options.html
 ├── start-page3/               # Extra sub-grouping pages (English: identify / sight words)
 ├── question/                  # All exercise (quiz) pages
+│   ├── KG-3_English/          # 26 KG-3 English exercises (MCQ)
 │   ├── KG-3_math/             # 6 KG-3 math exercises (tap-to-select, 100 questions each)
 │   ├── Level 1 Maths/         # 47 math exercises (MCQ, 100 questions each)
 │   ├── level_1_GK/            # 25 GK exercises (100 questions each)
@@ -144,6 +145,7 @@ leaves of the tree and contain the actual question data.
 
 | Section | Folder | Count | Engine |
 |---|---|---|---|
+| KG-3 English | `question/KG-3_English/` | 26 files | MCQ (`initMCQQuiz`) |
 | KG-3 Math | `question/KG-3_math/` | 6 files | Tap-to-select (`initTapSelectQuiz`) |
 | Math | `question/Level 1 Maths/` | 47 files | MCQ (`initMCQQuiz`) |
 | General Knowledge | `question/level_1_GK/` | 25 files | MCQ (`initMCQQuiz`) |
@@ -187,6 +189,7 @@ certainly opening files directly from disk instead of through a server — see
 | [docs/quiz-engine.md](docs/quiz-engine.md) | The three quiz engines, question data shape, feedback, the 25-of-100 logic |
 | [docs/question-banks.md](docs/question-banks.md) | Math/GK file structure, generators, content guidelines |
 | [docs/ui-and-styling.md](docs/ui-and-styling.md) | Design tokens, the four CSS files, components, responsiveness, assets |
+| [KG-3 English grammar worksheets](docs/KG3_ENGLISH_GRAMMAR_UPDATE.md) | Worksheet counts, answer-key corrections, and validation |
 | [docs/extending.md](docs/extending.md) | How to add exercises, questions, and option-page cards safely |
 | [docs/troubleshooting.md](docs/troubleshooting.md) | Diagnosing path, partial, logo, favicon, rendering, and randomization issues |
 | [docs/glossary.md](docs/glossary.md) | Project-specific terms |
@@ -205,8 +208,8 @@ certainly opening files directly from disk instead of through a server — see
 - **Tap-to-select exercises** (KG-3 math) use the same pattern with
   `initTapSelectQuiz(questions)`, add a `<div id="tap-grid">`, and link
   `css/tap_select.css` alongside `css/question.css`.
-- **The 100-question array is the source of truth.** The engine never mutates it; it
-  shuffles a copy and shows the first 25.
+- **The inline question bank is the source of truth.** The MCQ engine shuffles a copy
+  and shows up to 25 questions.
 - **Do not rename** the shared DOM ids/classes (`#question-text`, `#options-list`,
   `#feedback`, `#explanation`, `#next-btn`, `#back-btn`, `.quiz-container`, `.options`)
   without updating the JS that depends on them.

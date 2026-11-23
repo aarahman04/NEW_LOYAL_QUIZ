@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pronouns — KG3 English</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden" aria-live="polite"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+    <script>
+      const questions = [
+        {"question": "___ is my father.", "options": ["He", "She"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ is a red apple.", "options": ["They", "It"], "correct": "It", "explanation": "Use <strong>It</strong> when you talk about one thing or animal."},
+        {"question": "___ am six years old.", "options": ["I", "We"], "correct": "I", "explanation": "Use <strong>I</strong> when you talk about yourself."},
+        {"question": "___ are my friends.", "options": ["He", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ is my sister.", "options": ["She", "He"], "correct": "She", "explanation": "Use <strong>She</strong> when you talk about a girl or woman."},
+        {"question": "___ are going to school together.", "options": ["It", "We"], "correct": "We", "explanation": "Use <strong>We</strong> when you talk about yourself and others."},
+        {"question": "___ is a big elephant.", "options": ["It", "They"], "correct": "It", "explanation": "Use <strong>It</strong> when you talk about one thing or animal."},
+        {"question": "___ is my uncle.", "options": ["She", "He"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ am very happy.", "options": ["I", "They"], "correct": "I", "explanation": "Use <strong>I</strong> when you talk about yourself."},
+        {"question": "___ are flying in the sky.", "options": ["It", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ is my grandmother.", "options": ["She", "He"], "correct": "She", "explanation": "Use <strong>She</strong> when you talk about a girl or woman."},
+        {"question": "___ is a blue car.", "options": ["We", "It"], "correct": "It", "explanation": "Use <strong>It</strong> when you talk about one thing or animal."},
+        {"question": "___ are eating lunch together.", "options": ["We", "He"], "correct": "We", "explanation": "Use <strong>We</strong> when you talk about yourself and others."},
+        {"question": "___ is a little boy.", "options": ["They", "He"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ am reading a book.", "options": ["I", "She"], "correct": "I", "explanation": "Use <strong>I</strong> when you talk about yourself."},
+        {"question": "___ are my shoes.", "options": ["It", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ is my aunt.", "options": ["She", "He"], "correct": "She", "explanation": "Use <strong>She</strong> when you talk about a girl or woman."},
+        {"question": "___ is a yellow banana.", "options": ["He", "It"], "correct": "It", "explanation": "Use <strong>It</strong> when you talk about one thing or animal."},
+        {"question": "___ is a red apple.", "options": ["He", "It"], "correct": "It", "explanation": "Use <strong>It</strong> when you talk about one thing or animal."},
+        {"question": "___ are singing a song together.", "options": ["We", "It"], "correct": "We", "explanation": "Use <strong>We</strong> when you talk about yourself and others."},
+        {"question": "___ is my brother.", "options": ["She", "He"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ am drawing a flower.", "options": ["I", "We"], "correct": "I", "explanation": "Use <strong>I</strong> when you talk about yourself."},
+        {"question": "___ are beautiful flowers.", "options": ["He", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ are beautiful cats.", "options": ["He", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ are beautiful cars.", "options": ["He", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ is drawing a train.", "options": ["He", "We"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ are drawing a train.", "options": ["He", "We"], "correct": "We", "explanation": "Use <strong>We</strong> when you talk about yourself and others."},
+        {"question": "___ are eating breakfast.", "options": ["He", "We"], "correct": "We", "explanation": "Use <strong>We</strong> when you talk about yourself and others."},
+        {"question": "___ is playing with the neighbors.", "options": ["He", "We"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ are flying to Africa.", "options": ["He", "We"], "correct": "We", "explanation": "Use <strong>We</strong> when you talk about yourself and others."},
+        {"question": "___ are flying to Germany.", "options": ["We", "I"], "correct": "We", "explanation": "Use <strong>We</strong> when you talk about yourself and others."},
+        {"question": "___ are beautiful flowers.", "options": ["He", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ is a little girl.", "options": ["She", "It"], "correct": "She", "explanation": "Use <strong>She</strong> when you talk about a girl or woman."},
+        {"question": "___ is a green frog.", "options": ["They", "It"], "correct": "It", "explanation": "Use <strong>It</strong> when you talk about one thing or animal."},
+        {"question": "___ are playing football together.", "options": ["We", "She"], "correct": "We", "explanation": "Use <strong>We</strong> when you talk about yourself and others."},
+        {"question": "___ is a kind man.", "options": ["It", "He"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ am drinking.", "options": ["I", "She"], "correct": "I", "explanation": "Use <strong>I</strong> when you talk about yourself."},
+        {"question": "___ is drinking.", "options": ["I", "She"], "correct": "She", "explanation": "Use <strong>She</strong> when you talk about a girl or woman."},
+        {"question": "___ am drinking water.", "options": ["I", "They"], "correct": "I", "explanation": "Use <strong>I</strong> when you talk about yourself."},
+        {"question": "___ are my pencils.", "options": ["It", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ is a nice woman.", "options": ["She", "He"], "correct": "She", "explanation": "Use <strong>She</strong> when you talk about a girl or woman."},
+        {"question": "___ is a small table.", "options": ["We", "It"], "correct": "It", "explanation": "Use <strong>It</strong> when you talk about one thing or animal."},
+        {"question": "___ are walking to school together.", "options": ["I", "We"], "correct": "We", "explanation": "Use <strong>We</strong> when you talk about yourself and others."},
+        {"question": "___ are walking to the park together.", "options": ["We", "It"], "correct": "We", "explanation": "Use <strong>We</strong> when you talk about yourself and others."},
+        {"question": "___ is my grandfather.", "options": ["She", "He"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ am wearing a hat.", "options": ["I", "He"], "correct": "I", "explanation": "Use <strong>I</strong> when you talk about yourself."},
+        {"question": "___ are yellow ducks.", "options": ["It", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ is my mother.", "options": ["She", "He"], "correct": "She", "explanation": "Use <strong>She</strong> when you talk about a girl or woman."},
+        {"question": "___ is a big house.", "options": ["They", "It"], "correct": "It", "explanation": "Use <strong>It</strong> when you talk about one thing or animal."},
+        {"question": "___ are cleaning our classroom together.", "options": ["We", "He"], "correct": "We", "explanation": "Use <strong>We</strong> when you talk about yourself and others."},
+        {"question": "___ is a tall boy.", "options": ["She", "He"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ am eating an orange.", "options": ["I", "It"], "correct": "I", "explanation": "Use <strong>I</strong> when you talk about yourself."},
+        {"question": "___ are my toys.", "options": ["He", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ is a happy girl.", "options": ["She", "He"], "correct": "She", "explanation": "Use <strong>She</strong> when you talk about a girl or woman."},
+        {"question": "___ is a happy boy.", "options": ["They", "He"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ is very sad.", "options": ["They", "He"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ is a sad girl.", "options": ["She", "He"], "correct": "She", "explanation": "Use <strong>She</strong> when you talk about a girl or woman."},
+        {"question": "___ is a sad boy.", "options": ["We", "He"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ are very sad.", "options": ["They", "He"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ are great students.", "options": ["They", "He"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ are great students in our class.", "options": ["He", "We"], "correct": "We", "explanation": "Use <strong>We</strong> when you talk about yourself and others."},
+        {"question": "___ is from Germany.", "options": ["He", "We"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ is from Africa.", "options": ["He", "We"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ is from Africa.", "options": ["He", "We"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ is playing with the cat.", "options": ["They", "He"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ am washing my hands.", "options": ["I", "We"], "correct": "I", "explanation": "Use <strong>I</strong> when you talk about yourself."},
+        {"question": "___ are white clouds.", "options": ["It", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ is my teacher, Miss Sara.", "options": ["She", "He"], "correct": "She", "explanation": "Use <strong>She</strong> when you talk about a girl or woman."},
+        {"question": "___ is a long pencil.", "options": ["They", "It"], "correct": "It", "explanation": "Use <strong>It</strong> when you talk about one thing or animal."},
+        {"question": "___ are learning English together.", "options": ["We", "She"], "correct": "We", "explanation": "Use <strong>We</strong> when you talk about yourself and others."},
+        {"question": "___ is a doctor named Omar.", "options": ["She", "He"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ am brushing my teeth.", "options": ["I", "They"], "correct": "I", "explanation": "Use <strong>I</strong> when you talk about yourself."},
+        {"question": "___ are little stars.", "options": ["It", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ is a nurse named Hana.", "options": ["She", "He"], "correct": "She", "explanation": "Use <strong>She</strong> when you talk about a girl or woman."},
+        {"question": "___ is a black chair.", "options": ["We", "It"], "correct": "It", "explanation": "Use <strong>It</strong> when you talk about one thing or animal."},
+        {"question": "___ is a farmer named Ahmed.", "options": ["She", "He"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ am opening the door.", "options": ["I", "She"], "correct": "I", "explanation": "Use <strong>I</strong> when you talk about yourself."},
+        {"question": "___ are green trees.", "options": ["It", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ is a queen.", "options": ["She", "He"], "correct": "She", "explanation": "Use <strong>She</strong> when you talk about a girl or woman."},
+        {"question": "___ is a yellow bus.", "options": ["They", "It"], "correct": "It", "explanation": "Use <strong>It</strong> when you talk about one thing or animal."},
+        {"question": "___ are having fun together.", "options": ["We", "He"], "correct": "We", "explanation": "Use <strong>We</strong> when you talk about yourself and others."},
+        {"question": "___ is my cousin, a boy named Sam.", "options": ["She", "He"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ am jumping high.", "options": ["I", "We"], "correct": "I", "explanation": "Use <strong>I</strong> when you talk about yourself."},
+        {"question": "___ are my socks.", "options": ["It", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ is my cousin, a girl named Juna.", "options": ["She", "He"], "correct": "She", "explanation": "Use <strong>She</strong> when you talk about a girl or woman."},
+        {"question": "___ is a big balloon.", "options": ["He", "It"], "correct": "It", "explanation": "Use <strong>It</strong> when you talk about one thing or animal."},
+        {"question": "___ are reading stories together.", "options": ["We", "It"], "correct": "We", "explanation": "Use <strong>We</strong> when you talk about yourself and others."},
+        {"question": "___ is a young prince.", "options": ["She", "He"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ am sitting on a chair.", "options": ["I", "They"], "correct": "I", "explanation": "Use <strong>I</strong> when you talk about yourself."},
+        {"question": "___ are colorful butterflies.", "options": ["It", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ is the girl dancing on stage.", "options": ["She", "He"], "correct": "She", "explanation": "Use <strong>She</strong> when you talk about a girl or woman."},
+        {"question": "___ is a chocolate cake.", "options": ["They", "It"], "correct": "It", "explanation": "Use <strong>It</strong> when you talk about one thing or animal."},
+        {"question": "___ are building a sandcastle together.", "options": ["We", "He"], "correct": "We", "explanation": "Use <strong>We</strong> when you talk about yourself and others."},
+        {"question": "___ is a boy named Dean.", "options": ["She", "He"], "correct": "He", "explanation": "Use <strong>He</strong> when you talk about a boy or man."},
+        {"question": "___ am going to the zoo.", "options": ["I", "They"], "correct": "I", "explanation": "Use <strong>I</strong> when you talk about yourself."},
+        {"question": "___ are my crayons.", "options": ["It", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ are my friends.", "options": ["It", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ are parents.", "options": ["They", "It"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ are my friends.", "options": ["It", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ are my friends.", "options": ["It", "They"], "correct": "They", "explanation": "Use <strong>They</strong> when you talk about more than one person or thing."},
+        {"question": "___ is painting a portrait.", "options": ["She", "They"], "correct": "She", "explanation": "Use <strong>She</strong> when you talk about a girl or woman."}
+      ];
+    </script>
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));</script>
+  </body>
+</html>

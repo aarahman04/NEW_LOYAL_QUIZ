@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What / Where / Why — KG3 English</title>
+    <link rel="stylesheet" href="../../css/question.css" />
+  </head>
+  <body>
+    <div id="site-header-placeholder"></div>
+    <main class="quiz-container">
+      <div class="question-section">
+        <h3 id="question-text">Loading...</h3>
+        <ul class="options" id="options-list"></ul>
+      </div>
+      <div id="feedback" class="hidden" aria-live="polite"></div>
+      <div id="explanation" class="hidden"></div>
+      <button id="back-btn" class="hidden">Back</button>
+      <button id="next-btn" class="hidden">Next</button>
+    </main>
+    <script>
+      const questions = [
+        {"question": "___ is your name?", "options": ["What", "Why"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "Ask about a place.<br>___ do you sleep?", "options": ["Why", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you drink water?", "options": ["Why", "What"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do fish live?", "options": ["Where", "What"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ color is the sun?", "options": ["Why", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ are you sad?", "options": ["Why", "Where"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do you use to write?", "options": ["What", "Why"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ are you going?", "options": ["What", "Why"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ is his name?", "options": ["What", "Where"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ fruit is red?", "options": ["What", "Why"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do you cook food?", "options": ["Where", "What"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you sleep at night?", "options": ["What", "Why"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ animal can fly?", "options": ["Where", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "Ask for a reason.<br>___ are you sad today?", "options": ["Why", "Where"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do you see animals?", "options": ["Where", "What"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you wear on your feet?", "options": ["Why", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do birds fly?", "options": ["Where", "What"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you wash your hands?", "options": ["Why", "What"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ color is grass?", "options": ["What", "Where"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do you go to school?", "options": ["What", "Why"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ is her name?", "options": ["What", "Where"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do you use to eat soup?", "options": ["What", "Why"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ is that?", "options": ["We’re", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do you wear a jacket?", "options": ["What", "Why"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ animal gives us milk?", "options": ["What", "Where"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do you use an umbrella?", "options": ["Were", "Why"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do you play football?", "options": ["Where", "Were"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you use to see?", "options": ["Why", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "Ask about a place.<br>___ do you find books?", "options": ["Where", "Why"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ is the sky blue?", "options": ["Why", "Where"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ color is milk?", "options": ["Where", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ does a cow live?", "options": ["What", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you drink milk?", "options": ["Why", "What"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ animal says woof?", "options": ["What", "Why"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "Ask for a reason.<br>___ do you read books?", "options": ["We’re", "Why"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do you go when you are sick?", "options": ["Where", "What"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you use to cut paper?", "options": ["Why", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do you swim?", "options": ["Where", "We’re"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you use a pencil?", "options": ["Why", "What"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do you wear on your head?", "options": ["Where", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do you wear a hat?", "options": ["What", "Why"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do you watch movies?", "options": ["Where", "What"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you drink when you are thirsty?", "options": ["What", "Were"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ does a lion live?", "options": ["Why", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you take a bath?", "options": ["Why", "What"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do you use to hear?", "options": ["Where", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "Ask about a place.<br>___ do you play?", "options": ["Why", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you keep your clothes?", "options": ["What", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you sleep on?", "options": ["What", "Why"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ color is the tree?", "options": ["Where", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "Ask for a reason.<br>___ do you say thank you?", "options": ["Why", "Where"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ animal has a long trunk?", "options": ["Where", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do you eat vegetables?", "options": ["What", "Why"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do you buy bread?", "options": ["Where", "Were"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you use to brush your teeth?", "options": ["What", "Where"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do you sit in class?", "options": ["Where", "Were"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you turn on the light?", "options": ["Why", "What"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ color is the sun?", "options": ["Where", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "Ask for a reason.<br>___ do you use a fan?", "options": ["Why", "Where"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do you wash your hands?", "options": ["Where", "What"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ is the opposite of hot?", "options": ["Why", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do bees live?", "options": ["What", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you wear a raincoat?", "options": ["Why", "What"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ is your name?", "options": ["What", "Where"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do you wash your face?", "options": ["Where", "Were"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ did you put your shoes?", "options": ["What", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you use to clean your hair?", "options": ["What", "Why"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do you go to see a doctor?", "options": ["Where", "What"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you use a blanket?", "options": ["What", "Why"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ color is a banana?", "options": ["Where", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "Ask for a reason.<br>___ do you go to the park?", "options": ["Why", "Where"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do you plant flowers?", "options": ["Were", "Why"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do you use to draw?", "options": ["What", "Where"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ does a monkey climb?", "options": ["We’re", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you drink juice?", "options": ["Why", "What"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ animal lives in water?", "options": ["Where", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "Ask for a reason.<br>___ do you wear sunglasses?", "options": ["Why", "Where"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do you keep ice cream?", "options": ["What", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ is her name?", "options": ["What", "Why"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ is the name of that animal?", "options": ["Where", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do you use a comb?", "options": ["Why", "Were"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do you use to tell time?", "options": ["Were", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ did you say sorry?", "options": ["Why", "Were"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ did you find?", "options": ["What", "Were"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do you play with?", "options": ["What", "Why"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do you keep your books?", "options": ["Where", "What"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ are you scared?", "options": ["Why", "Were"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do you use to open a door?", "options": ["Where", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do you eat breakfast?", "options": ["Why", "Were"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ are you crying?", "options": ["Were", "Why"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do you wear when it is cold?", "options": ["What", "Where"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ does a baby sleep?", "options": ["Were", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you wear socks?", "options": ["Why", "What"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do you eat for breakfast?", "options": ["Were", "What"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "Ask about a place.<br>___ do you drink water after running?", "options": ["Where", "What"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you see stars?", "options": ["What", "Where"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "Ask for a name.<br>___ do you call your best friend?", "options": ["What", "Were"], "correct": "What", "explanation": "Use <strong>What</strong> to ask about a thing, a name, or an idea."},
+        {"question": "___ do you buy medicine?", "options": ["Where", "What"], "correct": "Where", "explanation": "Use <strong>Where</strong> to ask about a place."},
+        {"question": "___ do you listen to your teacher?", "options": ["What", "Why"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."},
+        {"question": "___ do you listen to your teacher?", "options": ["What", "Why"], "correct": "Why", "explanation": "Use <strong>Why</strong> to ask for a reason."}
+      ];
+    </script>
+    <div id="site-footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/partials.js"></script>
+    <script>window.addEventListener("DOMContentLoaded", () => initMCQQuiz(questions));</script>
+  </body>
+</html>
